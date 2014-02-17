@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 include(FindPackageHandleStandardArgs)
 project(BulletHelloWorld)
 
-set(BULLET_ROOT "C:/bullet-2.82-r2704")
+set(BULLET_ROOT $ENV{BULLET_ROOT})
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/Modules)
 
 
