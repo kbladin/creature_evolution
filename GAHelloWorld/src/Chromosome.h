@@ -19,7 +19,7 @@ public:
 	Chromosome();
 
 	std::string GetGene();
-	unsigned int GetFitness();
+	unsigned int GetFitness() const;
 	void SetGene(std::string debug_gene_code); //primarily for testing/debugging
 	static bool Equals();
 	
@@ -35,8 +35,11 @@ public:
 
 struct ChromosomeLessThan
 {
-	bool operator()(const Chromosome& c1,const Chromosome& c2) {
-		return c1.GetFitness() < c2.GetFitness();
+	bool operator()(const Chromosome& c1,const Chromosome& c2) const {
+		int c1_fitness = c1.GetFitness();
+		int c2_fitness = c2.GetFitness();
+
+		return (c1_fitness < c2_fitness);
 	}
 };
 

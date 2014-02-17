@@ -18,7 +18,7 @@ std::string Chromosome::GetGene() {
 	return gene_code_;
 }
 
-unsigned int Chromosome::GetFitness() {
+unsigned int Chromosome::GetFitness() const{
 	return fitness_;
 }
 

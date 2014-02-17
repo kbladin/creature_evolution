@@ -12,7 +12,7 @@ option(test "Build all tests." OFF) # Makes boolean 'test' available.
 set(PROJECT_NAME GAHelloWorld)
 project(${PROJECT_NAME})
 
-set(CMAKE_CXX_FLAGS "-std=c++11 -g -fpermissive")
+set(CMAKE_CXX_FLAGS "-g")
 
 # If you want your own include/ directory, set this, and then you can do
 # include_directories(${COMMON_INCLUDES}) in other CMakeLists.txt files.
@@ -29,9 +29,10 @@ add_executable(GAHelloWorld src/GAHelloWorld.cpp)
 # Key idea: SEPARATE OUT your main() function into its own file so it can be its
 # own executable. Separating out main() means you can add this library to be
 # used elsewhere.
+set_target_properties(GAHelloWorld_lib PROPERTIES COMPILE_FLAGS "-std=c++11")
+set_target_properties(GAHelloWorld PROPERTIES COMPILE_FLAGS "-std=c++11")
 
 target_link_libraries(GAHelloWorld GAHelloWorld_lib)
-
 ################################
 # Testing
 ################################
@@ -56,6 +57,7 @@ if (test)
   ##############
   add_executable(runUnitTests test/GA_ChromosomeTest.cpp 
   				test/GA_PopulationTest.cpp)
+  set_target_properties(runUnitTests PROPERTIES COMPILE_FLAGS "-std=gnu++11")
 
   # Standard linking to gtest stuff.
   target_link_libraries(runUnitTests gtest gtest_main)
