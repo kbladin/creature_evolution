@@ -12,7 +12,7 @@ option(test "Build all tests." OFF) # Makes boolean 'test' available.
 set(PROJECT_NAME GAHelloWorld)
 project(${PROJECT_NAME})
 
-set(CMAKE_CXX_FLAGS "-std=c++11 -g -fpermissive")
+set(CMAKE_CXX_FLAGS "-std=c++11 -g")
 
 # If you want your own include/ directory, set this, and then you can do
 # include_directories(${COMMON_INCLUDES}) in other CMakeLists.txt files.
