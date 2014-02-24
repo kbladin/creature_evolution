@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/linneamellblom/Documents/GIT_mappar/creature_evolution/linneaTestar/src/AutoInitRNG.h
+random
+-
+ctime
+-
+
+/Users/linneamellblom/Documents/GIT_mappar/creature_evolution/linneaTestar/src/Creature.cpp
+Creature.h
+/Users/linneamellblom/Documents/GIT_mappar/creature_evolution/linneaTestar/src/Creature.h
+cmath
+-
+ctime
+-
+
+/Users/linneamellblom/Documents/GIT_mappar/creature_evolution/linneaTestar/src/Creature.h
+AutoInitRNG.h
+/Users/linneamellblom/Documents/GIT_mappar/creature_evolution/linneaTestar/src/AutoInitRNG.h
+iostream
+-
+string
+-
+
