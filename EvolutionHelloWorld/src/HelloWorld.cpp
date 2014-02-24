@@ -5,10 +5,10 @@
 
 int main(){
 	const int population_size = 2048;
-	const int max_generations = 16384;
+	const int max_generations = 1000;
 	const float crossover_ratio = 0.8f;
 	const float elitism_ratio = 0.2f;
-	const float mutation_ratio = 0.5f;
+	const float mutation_ratio = 0.1f;
 
 	std::clock_t start_time;
 	start_time = std::clock();
@@ -29,11 +29,12 @@ int main(){
 	int i=0;
 	Creature best = population[0]; // den bästa tas fram
 
-	while( (i++ <= max_generations) && (best.GetFitness() != 0) ) {
+	while( (++i < max_generations) && (best.GetFitness() != 0) ) {
 		std:: cout << "Generation " << i << ": " << best.GetGene() << std::endl;
-		population = ev.nextGeneration(population);
+		// Trying some other mating and mutating with nextGenerationMixedMating.
+		population = ev.nextGenerationMixedMating(population);
 		std::sort(population.begin(), population.end(), CreatureLessThan());
-		best = population[0]; 
+		best = population[0];
 	}
 
 	std::cout << "Generation " << i << ": "<< best.GetGene() << std::endl;

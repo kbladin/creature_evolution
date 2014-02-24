@@ -16,7 +16,7 @@ Creature::Creature(){
 	fitness_ = 9999;
 }
 
-std::string Creature::GetGene() {
+std::string Creature::GetGene() const{
 	return gene_code_;
 }
 
@@ -48,6 +48,20 @@ std::vector<Creature> Creature::Mate(Creature mate){
 	children.push_back(child_2);
 
 	return children;
+}
+
+Creature Creature::MixMate(Creature mate) const{
+	std::uniform_int_distribution<int> int_dist_index_(0,1);
+	
+	std::string new_gene = gene_code_;
+  for (int i = 0; i < new_gene.length(); ++i){
+    if (int_dist_index_(rng_.mt_rng_)){
+      new_gene[i] = mate.GetGene()[i];
+    }
+  }
+
+  Creature child(new_gene);
+  return child;
 }
 
 Creature Creature::Mutate() const{
