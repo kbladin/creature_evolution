@@ -5,10 +5,10 @@ project(BulletHelloWorld)
 set(BULLET_ROOT $ENV{BULLET_ROOT})
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/Modules)
 
-if( MSVC )
-	set(CMAKE_CXX_FLAGS_RELEASE "/MT")
-	set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
-endif( MSVC )
+# if( MSVC )
+# 	set(CMAKE_CXX_FLAGS_RELEASE "/MT")
+# 	set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
+# endif( MSVC )
 
 set(bullet3test BulletHelloWorld)
 
