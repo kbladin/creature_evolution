@@ -15,15 +15,15 @@ project(${PROJECT_NAME})
 set(CMAKE_CXX_FLAGS "-g")
 
 # If you want your own include/ directory, set this, and then you can do
-# include_directories(${COMMON_INCLUDES}) in other CMakeLists.txt files.
-# set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
+set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
+include_directories(${COMMON_INCLUDES})
 
 ################################
 # Normal Libraries & Executables
 ################################
 file(GLOB Library_SOURCES src/AutoInitRNG.cpp src/Evolution.cpp 
 		src/Creature.cpp)
-file(GLOB Library_HEADERS src/AutoInitRNG.h src/Evolution.h src/Creature.h)
+file(GLOB Library_HEADERS include/AutoInitRNG.h include/Evolution.h include/Creature.h)
 add_library(HelloWorld_lib ${Library_SOURCES} ${Library_HEADERS})
 add_executable(HelloWorld src/HelloWorld.cpp)
 # Key idea: SEPARATE OUT your main() function into its own file so it can be its

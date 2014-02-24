@@ -4,6 +4,7 @@
 #include "AutoInitRNG.h"
 #include "Creature.h"
 #include <vector>
+#include <cassert>
 
 class Evolution {
 private:
@@ -23,7 +24,7 @@ public:
 	~Evolution(void); 
 
 	std::vector<Creature> nextGeneration(const std::vector<Creature> &population); // uppdaterar den nuvarande populationen?
-
+	std::vector<Creature> nextGenerationMixedMating( const std::vector<Creature> &population );
 };
 
 

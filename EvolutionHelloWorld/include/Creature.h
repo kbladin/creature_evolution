@@ -19,10 +19,11 @@ public:
 	Creature(std::string gene_code);
 	Creature();
 
-	std::string GetGene();
+	std::string GetGene() const;
 	unsigned int GetFitness() const;
 
 	std::vector<Creature> Mate(Creature mate);
+	Creature MixMate(Creature mate) const;
 	Creature Mutate() const; 
 
 	static Creature random();
