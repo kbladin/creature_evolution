@@ -13,12 +13,12 @@ Evolution::Evolution(float crossover_ratio, float elitism_ratio,
 Evolution::~Evolution(void){
 }
 
-std::vector<Creature> Evolution::nextGeneration(const std::vector<Creature> &population ) {
+Population Evolution::nextGeneration(const Population &population ) {
 
 	int top_candidates_pivot = (int) (population.size() * elitism_);
 
 	// creates where the new population will be
-	std::vector<Creature> buffer (&population[0], 
+	Population buffer (&population[0], 
 		&population[top_candidates_pivot]);
 	buffer.resize(population.size());
 
@@ -26,29 +26,35 @@ std::vector<Creature> Evolution::nextGeneration(const std::vector<Creature> &pop
 
 	while(count_new_population < population.size()-1){
 
-		std::vector<Creature> parents = SelectParents(population);
+		Population parents = TournamentSelection(population);
 
 		// mate the "parents" if crossover_ratio low, take the parents instead.
-		std::vector<Creature> children = parents[0].Crossover(parents[1], crossover_);
+		std::vector<Chromosome> children_chromosome = parents[0].Crossover(parents[1], crossover_);
 
 		// mutate the children?
-		children[0].Mutate(mutation_);
-		children[1].Mutate(mutation_);  
+		children_chromosome[0].Mutate(mutation_);
+		children_chromosome[1].Mutate(mutation_); 
+
+		// create the creature with its fitness 
+		Creature child_1(children_chromosome[0]);
+		Creature child_2(children_chromosome[1]);
+
+		// efter att ha gjort crossover och/eller mutate ska den räkna ut barnens fitness!
 
 		// add to the buffer.
-		buffer[count_new_population++] = children[0];
-		buffer[count_new_population++] = children[1];
+		buffer[count_new_population++] = child_1;
+		buffer[count_new_population++] = child_2;
 	}
 
 	return buffer; 
 
 }
-
-void Evolution::nextGenerationMixedMating( std::vector<Creature> &population ){
+/*
+void Evolution::nextGenerationMixedMating( Population &population ){
   int top_candidates_pivot = (int) (population.size() * elitism_);
-  std::vector<Creature> parents (&population[0], 
+  Population parents (&population[0], 
   	&population[top_candidates_pivot]);
-  //std::vector<Creature> child_buffer(population.size());
+  //Population child_buffer(population.size());
 
   //First do the mating of the top candidates and put the children in a new vector
   std::uniform_int_distribution<int> parents_decider(0,top_candidates_pivot-1);
@@ -68,10 +74,10 @@ void Evolution::nextGenerationMixedMating( std::vector<Creature> &population ){
   }  
 
 }
-
+*/
 // Private class function. help to select the best parents
-std::vector<Creature> Evolution::SelectParents(const std::vector<Creature> &population) {
-	std::vector<Creature> parents;
+Population Evolution::TournamentSelection(const Population &population) {
+	Population parents;
 	parents.resize(2);
 	std::uniform_int_distribution<int> int_dist_index_(0,
 						population.size()-1);
@@ -94,7 +100,7 @@ std::vector<Creature> Evolution::SelectParents(const std::vector<Creature> &popu
 //  each creature has a "slice" that is proportional to the fitness.
 // 	better fitness, higher chance to go trough but the best creature can die..
 // 	NOTE: take more time to go trough. så maybe not so good. 
-Creature Evolution::Roulette(float total_fitness, const std::vector<Creature> &population){
+Creature Evolution::Roulette(float total_fitness, const Population &population){
 	// generate a random number between 0 & total_fitness
 	std::uniform_real_distribution<float> float_dist_index_(0,total_fitness);
 	float slice = float_dist_index_(rng_.mt_rng_);
@@ -115,7 +121,7 @@ Creature Evolution::Roulette(float total_fitness, const std::vector<Creature> &p
 }
 
 // Help function in roulette. 
-float Evolution::CalculateTotalFitness(const std::vector<Creature> &population){
+float Evolution::CalculateTotalFitness(const Population &population){
 	float total_fitness = 0.0f;
 
 	for (int i=0; i<population.size(); ++i) {

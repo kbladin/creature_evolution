@@ -1,34 +1,35 @@
 #ifndef CREATURE_H
 #define CREATURE_H
 
+#include "Chromosome.h"
 #include "AutoInitRNG.h"
 #include <iostream>
 #include <string>
 
+
 class Creature {
 private:
-	std::string gene_code_;
+	Chromosome chromosome_;
 
 	unsigned int fitness_; 
 	static const char TARGET_[];
-	static unsigned int CalculateFitness(std::string gene_code);
-	void updateGene(std::string gene_code); 
+	static unsigned int CalculateFitness(Chromosome chromsome);
+	void updateGene(Chromosome chromosome); 
 	static AutoInitRNG rng_;
 
 public:
 	// Constructor, one that will define the gene_code and one random
-	Creature(std::string gene_code);
+	Creature(Chromosome cromosome);
 	Creature();
 
-	std::string GetGene() const;
+	Chromosome GetGene() const;
 	unsigned int GetFitness() const;
 
-
-	std::vector<Creature> Crossover(Creature mate,float crossover);
-	std::vector<Creature> Mate(Creature mate);
-	Creature MixMate(Creature mate) const;
-	Creature Mutate() const;
-	void Mutate(float mutation); 
+	std::vector<Chromosome> Crossover(Creature mate,float crossover);
+	//std::vector<Creature> Mate(Creature mate);
+	//Creature MixMate(Creature mate) const;
+	//Creature Mutate() const;
+	//void Mutate(float mutation); 
 
 	static Creature random();
 
