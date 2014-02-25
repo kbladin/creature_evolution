@@ -2,9 +2,9 @@
 #include <GL/glew.h>
 
 
-Renderer::Renderer(btDiscreteDynamicsWorld* world)
+Renderer::Renderer(Simulation* sim)
 {
-	dynamicsWorld = world;
+	dynamicsWorld = sim->getDynamicsWorld();
 	debugDrawer = new DebugDraw(dynamicsWorld);
 	debug = true;
 }

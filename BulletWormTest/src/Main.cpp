@@ -42,8 +42,8 @@ int main (int argc, char** argv) {
 	//initalize simulation
 	helloWorld = new Simulation();
 
-	//initialize debugDrawer
-	bajs = new Renderer(helloWorld->getDynamicsWorld());
+	//initialize debugDrawer for simulation
+	bajs = new Renderer(helloWorld);
 
 	glutMainLoop();
 
@@ -52,8 +52,16 @@ int main (int argc, char** argv) {
 
 void render()
 {
+	//transforms
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	glScalef(0.1,0.1,0.1);
+	glRotatef(30.0, 1.0, 0.5, 0.0);
+
+	//draw scene
 	bajs->render();
 
+	//must have
 	glutSwapBuffers();
 	glutPostRedisplay();
 }

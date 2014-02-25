@@ -19,6 +19,7 @@ Simulation::Simulation(void)
 
 	dynamicsWorld->setGravity(btVector3(0,-10,0));
 
+	//worm = new WormBulletCreature(5,dynamicsWorld,btVector3(2.0,0.2,2.0));
 
 	groundShape = new btStaticPlaneShape(btVector3(0,1,0),1);
 
@@ -31,7 +32,7 @@ Simulation::Simulation(void)
 	dynamicsWorld->addRigidBody(groundRigidBody);
 
 
-	fallMotionState = new btDefaultMotionState(btTransform(btQuaternion(0,0,0,1),btVector3(0,2,0)));
+	fallMotionState = new btDefaultMotionState(btTransform(btQuaternion(0,0,0,1),btVector3(0,10,0)));
 	mass = 1;
 	btVector3 fallInertia(0,0,0);
 	fallShape->calculateLocalInertia(mass,fallInertia);
@@ -43,6 +44,8 @@ Simulation::Simulation(void)
 
 Simulation::~Simulation(void)
 {
+	delete worm;
+
 	dynamicsWorld->removeRigidBody(fallRigidBody);
 	delete fallRigidBody->getMotionState();
 	delete fallRigidBody;
@@ -66,12 +69,7 @@ Simulation::~Simulation(void)
 
 void Simulation::step()
 {
-	dynamicsWorld->stepSimulation(1/6000.f,1000);
-
-	btTransform trans;
-	fallRigidBody->getMotionState()->getWorldTransform(trans);
-
-	std::cout << "sphere height: " << trans.getOrigin().getY() << std::endl;
+	dynamicsWorld->stepSimulation(1/600.f,100);
 }
 
 btDiscreteDynamicsWorld* Simulation::getDynamicsWorld()
