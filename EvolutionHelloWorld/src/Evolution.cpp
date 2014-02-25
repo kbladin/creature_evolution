@@ -13,6 +13,20 @@ Evolution::Evolution(float crossover_ratio, float elitism_ratio,
 Evolution::~Evolution(void){
 }
 
+std::vector<Creature> Evolution::nextGen(const std::vector<Creature> &population ) {
+
+	// creates where the new population will be
+	std::vector<Creature> buffer;
+	buffer.resize(population.size());
+
+	int count_new_population = 0;
+
+	while(count_new_population < population.size()) {
+		
+	}
+
+
+}
 
 std::vector<Creature> Evolution::nextGeneration(const std::vector<Creature> &population ) {
 	int top_candidates_pivot = (int) (population.size() * elitism_);
@@ -26,6 +40,7 @@ std::vector<Creature> Evolution::nextGeneration(const std::vector<Creature> &pop
 
 	// fyll på creature så länge det finns plats i buffern.
 	while (top_candidates_pivot < buffer.size() - 1) {
+
 		if(crossover_decider(rng_.mt_rng_) <= crossover_) {
 			std::vector<Creature> parents = SelectParents(population);
 			std::vector<Creature> children = parents[0].Mate(parents[1]);
@@ -103,3 +118,42 @@ std::vector<Creature> Evolution::SelectParents(const std::vector<Creature> &popu
 
 	return parents;
 }
+
+//	selects a creature from the population via roulette wheel selection
+//  each creature has a "slice" that is proportional to the fitness.
+// higher fitness, higher chance to go trough but the best creature can die..
+// instead of select partens. 
+Creature Evolution::Roulette(const std::vector<Creature> &population){
+	// generate a random number between 0 & total_fitness
+	float total_fitness = CalculateTotalFitness(population);
+	std::uniform_real_distribution<float> float_dist_index_(0,total_fitness);
+	float slice = float_dist_index_(rng.mt_rng_);
+
+	//go through the creatures adding up the fitness so far
+	float fitness_so_far = 0.0f;
+
+	for (int i=0; i<population.size(); ++i){
+		fitness_so_far += population[i].GetFitness();
+
+		if (fitness_so_far >= slice)
+			return population[i]; 
+	}
+
+// should have gone trought the whole list, but if not the first object is returned
+	return population[0]; 
+}
+
+
+// Help function in roulette. 
+float Evolution::CalculateTotalFitness(const std::vector<Creture> &population){
+	float total_fitness = 0.0f;
+
+	for (int i=0; i<population.size(); ++i) {
+		total_fitness += population[i].GetFitness();
+	}
+
+	return total_fitness; 
+}
+
+
+
