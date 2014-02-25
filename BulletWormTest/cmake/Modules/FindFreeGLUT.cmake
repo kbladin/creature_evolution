@@ -3,8 +3,12 @@ macro(_FIND_FREEGLUT_LIBRARY _var)
 		NAMES
 			${ARGN}
 		HINTS
-			${FREEGLUT_ROOT}/lib/x64
-			${FREEGLUT_ROOT}/lib/x64/Debug
+			if(WIN32)
+				${FREEGLUT_ROOT}/lib/win/x64
+			endif(WIN32)
+			if(APPLE)
+				${FREEGLUT_ROOT}/lib/osx/x64
+			endif(APPLE)
 		PATH_SUFFIXES lib	
 	)
 	mark_as_advanced(${_var})
