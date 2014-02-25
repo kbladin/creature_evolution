@@ -59,28 +59,29 @@ std::vector<Creature> Evolution::nextGeneration(const std::vector<Creature> &pop
 	return buffer; 
 }
 
-std::vector<Creature> Evolution::nextGenerationMixedMating( const std::vector<Creature> &population ){
+void Evolution::nextGenerationMixedMating( std::vector<Creature> &population ){
   int top_candidates_pivot = (int) (population.size() * elitism_);
-  std::vector<Creature> child_buffer(population.size());  
+  std::vector<Creature> parents (&population[0], 
+  	&population[top_candidates_pivot]);
+  //std::vector<Creature> child_buffer(population.size());
 
   //First do the mating of the top candidates and put the children in a new vector
   std::uniform_int_distribution<int> parents_decider(0,top_candidates_pivot-1);
-  for (int i = 0; i < child_buffer.size(); ++i){
+  for (int i = 0; i < population.size(); ++i){
     //Pick parents from among the "best" (left side of pivot)
-    Creature firstParent = population[parents_decider(rng_.mt_rng_)];
-    Creature secondParent = population[parents_decider(rng_.mt_rng_)];
-    child_buffer[i] = firstParent.MixMate(secondParent);
+    Creature firstParent = parents[parents_decider(rng_.mt_rng_)];
+    Creature secondParent = parents[parents_decider(rng_.mt_rng_)];
+    population[i] = firstParent.Mate(secondParent)[0];
   }
 
   //Then mutate them poor bastards
   std::uniform_real_distribution<float> mutation_decider(0,1);
-  for (int i = 0; i < child_buffer.size(); ++i){
+  for (int i = 0; i < population.size(); ++i){
     if (mutation_decider(rng_.mt_rng_) <= mutation_){
-      child_buffer[i] = child_buffer[i].Mutate();
+      population[i] = population[i].Mutate();
     }
   }  
 
-  return child_buffer;
 }
 
 // private class function. help to select the best parents

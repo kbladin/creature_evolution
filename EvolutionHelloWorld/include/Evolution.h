@@ -24,7 +24,7 @@ public:
 	~Evolution(void); 
 
 	std::vector<Creature> nextGeneration(const std::vector<Creature> &population); // uppdaterar den nuvarande populationen?
-	std::vector<Creature> nextGenerationMixedMating( const std::vector<Creature> &population );
+	void nextGenerationMixedMating( std::vector<Creature> &population );
 };
 
 

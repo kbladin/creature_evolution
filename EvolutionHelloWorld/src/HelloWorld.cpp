@@ -32,7 +32,8 @@ int main(){
 	while( (++i < max_generations) && (best.GetFitness() != 0) ) {
 		std:: cout << "Generation " << i << ": " << best.GetGene() << std::endl;
 		// Trying some other mating and mutating with nextGenerationMixedMating.
-		population = ev.nextGenerationMixedMating(population);
+		//population = ev.nextGeneration(population);
+		ev.nextGenerationMixedMating(population);
 		std::sort(population.begin(), population.end(), CreatureLessThan());
 		best = population[0];
 	}
