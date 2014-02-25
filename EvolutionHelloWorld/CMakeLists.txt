@@ -22,8 +22,9 @@ include_directories(${COMMON_INCLUDES})
 # Normal Libraries & Executables
 ################################
 file(GLOB Library_SOURCES src/AutoInitRNG.cpp src/Evolution.cpp 
-		src/Creature.cpp)
-file(GLOB Library_HEADERS include/AutoInitRNG.h include/Evolution.h include/Creature.h)
+		src/Creature.cpp src/Chromosome.cpp)
+file(GLOB Library_HEADERS include/AutoInitRNG.h include/Evolution.h include/Creature.h
+  include/Chromosome.h)
 add_library(HelloWorld_lib ${Library_SOURCES} ${Library_HEADERS})
 add_executable(HelloWorld src/HelloWorld.cpp)
 # Key idea: SEPARATE OUT your main() function into its own file so it can be its
