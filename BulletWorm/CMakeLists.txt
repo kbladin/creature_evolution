@@ -8,6 +8,11 @@ set(btWorm BulletWorm)
 # (because of size) this is generally only required for Windows, OSX finds it # automagically
 set(BULLET_ROOT $ENV{BULLET_ROOT})
 
+if(MSVC)
+	set(CMAKE_CXX_FLAGS_RELEASE "/MT")
+	set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
+endif(MSVC)
+
 # freeglut and glew are included in source control
 set(FREEGLUT_ROOT "../libs/freeglut")
 set(GLEW_ROOT "../libs/glew")
