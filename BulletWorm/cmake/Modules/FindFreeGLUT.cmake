@@ -6,9 +6,9 @@ macro(_FIND_FREEGLUT_LIBRARY _var)
 			if(WIN32)
 				${FREEGLUT_ROOT}/lib/win/x64
 			endif(WIN32)
-			if(APPLE)
-				${FREEGLUT_ROOT}/lib/osx/x64
-			endif(APPLE)
+			# if(APPLE)
+			# 	${FREEGLUT_ROOT}/lib/osx/x64
+			# endif(APPLE)
 		PATH_SUFFIXES lib	
 	)
 	mark_as_advanced(${_var})
@@ -29,9 +29,14 @@ find_path(FREEGLUT_INCLUDE_DIR NAMES freeglut.h
 	PATH_SUFFIXES freeglut
 )
 
-_FIND_FREEGLUT_LIBRARY(FREEGLUT_LIBRARY freeglut)
-_FIND_FREEGLUT_LIBRARY(FREEGLUT_LIBRARY_DEBUG freeglut_d)
-
+if(WIN32)
+	_FIND_FREEGLUT_LIBRARY(FREEGLUT_LIBRARY freeglut)
+	_FIND_FREEGLUT_LIBRARY(FREEGLUT_LIBRARY_DEBUG freeglut_d)
+endif(WIN32)
+if(APPLE)
+	_FIND_FREEGLUT_LIBRARY(FREEGLUT_LIBRARY libglut )
+	_FIND_FREEGLUT_LIBRARY(FREEGLUT_LIBRARY_DEBUG libglut)
+endif(APPLE)
 
 # handle the QUIETLY and REQUIRED arguments and set BULLET_FOUND to TRUE if
 # all listed variables are TRUE
