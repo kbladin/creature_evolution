@@ -30,17 +30,17 @@ int main(){
 	Creature best = population[0]; // den bästa tas fram
 
 	while( (++i < max_generations) && (best.GetFitness() != 0) ) {
-		std:: cout << "Generation " << i << ": " << best.GetGene() << std::endl;
+		std:: cout << "Generation " << i << ": " << best.GetGene().GetGene() << std::endl;
 		// Trying some other mating and mutating with nextGenerationMixedMating.
 
-		ev.nextGenerationMixedMating(population);
-		//population = ev.nextGeneration(population);
+		//ev.nextGenerationMixedMating(population);
+		population = ev.nextGeneration(population);
 
 		std::sort(population.begin(), population.end(), CreatureLessThan());
 		best = population[0];
 	}
 
-	std::cout << "Generation " << i << ": "<< best.GetGene() << std::endl;
+	std::cout << "Generation " << i << ": "<< best.GetGene().GetGene() << std::endl;
 
 	std::cout << "Total time: " << std::clock() -start_time << 
 			" ms" << std::endl;

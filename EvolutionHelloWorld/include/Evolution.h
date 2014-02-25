@@ -6,6 +6,8 @@
 #include <vector>
 #include <cassert>
 
+typedef std::vector<Creature> Population;  // define the population as a vector of creatures
+
 class Evolution {
 private:
 	const static int TOURNAMENT_SIZE_ = 3; // används i nextGen.
@@ -14,8 +16,9 @@ private:
 	float mutation_;
 	float crossover_;
 
-	std::vector<Creature> SelectParents(const std::vector<Creature> &population);
-	float CalculateTotalFitness(const std::vector<Creature> &population);
+	Population TournamentSelection(const Population &population);
+	Creature Roulette(float total_fitness, const Population &population);
+	float CalculateTotalFitness(const Population &population);
 
 	static AutoInitRNG rng_;
 
@@ -24,10 +27,8 @@ public:
 		float mutation_ratio);  // int size sen kanske? 
 	~Evolution(void); 
 
-	std::vector<Creature> nextGeneration(const std::vector<Creature> &population); // uppdaterar den nuvarande populationen?
-
-	void nextGenerationMixedMating( std::vector<Creature> &population );
-	Creature Roulette(float total_fitness, const std::vector<Creature> &population);
+	Population nextGeneration(const Population &population); // uppdaterar den nuvarande populationen?
+	//void nextGenerationMixedMating(Population &population );
 };
 
 
