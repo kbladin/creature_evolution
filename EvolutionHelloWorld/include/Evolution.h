@@ -15,8 +15,8 @@ private:
 	float crossover_;
 
 	std::vector<Creature> SelectParents(const std::vector<Creature> &population);
-	float Evolution::CalculateTotalFitness(const std::vector<Creture> &population)
-	
+	float CalculateTotalFitness(const std::vector<Creature> &population);
+
 	static AutoInitRNG rng_;
 
 public:
@@ -26,7 +26,7 @@ public:
 
 	std::vector<Creature> nextGeneration(const std::vector<Creature> &population); // uppdaterar den nuvarande populationen?
 	std::vector<Creature> nextGenerationMixedMating( const std::vector<Creature> &population );
-	Creature Evolution::Roulette(const std::vector<Creature> &population)
+	Creature Roulette(float total_fitness, const std::vector<Creature> &population);
 
 };
 

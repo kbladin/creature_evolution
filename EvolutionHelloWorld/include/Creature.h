@@ -12,6 +12,7 @@ private:
 	unsigned int fitness_; 
 	static const char TARGET_[];
 	static unsigned int CalculateFitness(std::string gene_code);
+	void updateGene(std::string gene_code); 
 	static AutoInitRNG rng_;
 
 public:
@@ -22,9 +23,12 @@ public:
 	std::string GetGene() const;
 	unsigned int GetFitness() const;
 
+
+	std::vector<Creature> Crossover(Creature mate,float crossover);
 	std::vector<Creature> Mate(Creature mate);
 	Creature MixMate(Creature mate) const;
-	Creature Mutate() const; 
+	Creature Mutate() const;
+	void Mutate(float mutation); 
 
 	static Creature random();
 
