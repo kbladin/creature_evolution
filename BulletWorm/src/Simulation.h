@@ -3,6 +3,9 @@
 
 #include <btBulletDynamicsCommon.h>
 
+#include "WormBulletCreature.h"
+
+
 class Simulation
 {
 public:
@@ -32,6 +35,7 @@ private:
 	btScalar mass;
 	btRigidBody* fallRigidBody;
 
+	WormBulletCreature* worm;
 };
 
 

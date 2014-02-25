@@ -7,8 +7,9 @@
 
 class Renderer
 {
+
 public:
-	Renderer(btDiscreteDynamicsWorld* world);
+	Renderer(Simulation* sim);
 	~Renderer(void);
 	void render();
 
