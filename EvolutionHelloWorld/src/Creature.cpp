@@ -22,7 +22,7 @@ void Creature::updateGene(Chromosome chromosome) {
 	fitness_ = CalculateFitness(chromosome); 
 }
 
-Chromosome Creature::GetGene() const{
+Chromosome Creature::GetChromosome() const{
 	return chromosome_;
 }
 
@@ -39,37 +39,14 @@ std::vector<Chromosome> Creature::Crossover(Creature mate, float crossover){
 	
 	// depends on the crossover rate, should we mate or not
 	if (crossover_decider(rng_.mt_rng_) <= crossover) {
-
-		std::uniform_int_distribution<int> int_dist_index_(0,chromosome_.GetGene().size()-1);
-
-		int pivot_point = int_dist_index_(rng_.mt_rng_);
-
-		std::string child_1_gene;
-		std::string child_2_gene;
-
-		child_1_gene = chromosome_.GetGene().substr(0,pivot_point);
-		child_1_gene.append(mate.GetGene().GetGene(),pivot_point,
-			mate.GetGene().GetGene().size());
-
-		child_2_gene = mate.GetGene().GetGene().substr(0, pivot_point);
-		child_2_gene.append(chromosome_.GetGene(),pivot_point, chromosome_.GetGene().size());
-
-		Chromosome child_1(child_1_gene);
-		Chromosome child_2(child_2_gene);
-
-		//Creature child_1(child_1_gene);
-		//Creature child_2(child_2_gene);
-		
-		children.push_back(child_1);
-		children.push_back(child_2);
-
+		children = chromosome_.CrossOverMate(mate.GetChromosome());
 		return children;
 	}
 
 	//Creature this_creature(gene_code_); // to return this creatures
 
 	children.push_back(chromosome_);
-	children.push_back(mate.GetGene());
+	children.push_back(mate.GetChromosome());
 
 	// should return the parents if not mated
 	return children; 

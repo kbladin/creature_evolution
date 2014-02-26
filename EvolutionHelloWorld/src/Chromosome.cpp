@@ -33,6 +33,29 @@ void Chromosome::Mutate(float mutation){
 		// change this cretures gene and fitness code
 		gene_code_ = new_gene; 
 	}
+}
 
+std::vector<Chromosome> Chromosome::CrossOverMate(Chromosome c){
+	std::uniform_int_distribution<int> int_dist_index_(0, gene_code_.size()-1);
 
+	int pivot_point = int_dist_index_(rng_.mt_rng_);
+
+	std::string child_1_gene;
+	std::string child_2_gene;
+
+	child_1_gene = gene_code_.substr(0, pivot_point);
+	child_1_gene.append(c.GetGene(), pivot_point,
+		c.GetGene().size());
+
+	child_2_gene = c.GetGene().substr(0, pivot_point);
+	child_2_gene.append(gene_code_, pivot_point, gene_code_.size());
+
+	Chromosome child_1(child_1_gene);
+	Chromosome child_2(child_2_gene);
+
+	std::vector<Chromosome> children;
+	children.push_back(child_1);
+	children.push_back(child_2);
+
+	return children;	
 }

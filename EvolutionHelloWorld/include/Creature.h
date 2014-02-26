@@ -22,7 +22,7 @@ public:
 	Creature(Chromosome cromosome);
 	Creature();
 
-	Chromosome GetGene() const;
+	Chromosome GetChromosome() const;
 	unsigned int GetFitness() const;
 
 	std::vector<Chromosome> Crossover(Creature mate,float crossover);

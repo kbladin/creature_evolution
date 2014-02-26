@@ -11,7 +11,8 @@ public:
 	Chromosome();
 
 	std::string GetGene();
-	void Mutate(float mutation); 
+	void Mutate(float mutation);
+	std::vector<Chromosome> CrossOverMate(Chromosome c);
 
 private:
 	std::string gene_code_;
