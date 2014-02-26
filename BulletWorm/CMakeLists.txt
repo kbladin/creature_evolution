@@ -25,9 +25,18 @@ find_package(BULLET REQUIRED)
 find_package(GLUT REQUIRED)
 find_package(GLEW REQUIRED)
 
+if(APPLE)
+	find_package(PkgConfig REQUIRED)
+	pkg_search_module(GLFW REQUIRED glfw3)
+	find_library(OPENGL_FRAMEWORK OpenGL)
+	find_library(COCOA_FRAMEWORK Cocoa)
+endif(APPLE)
+
 include_directories(${BULLET_INCLUDE_DIR})
 include_directories(${GLUT_INCLUDE_DIRS})
 include_directories(${GLEW_INCLUDE_DIRS})
+include_directories(${GLFW_INCLUDE_DIRS})
+
 
 # source code is here
 add_subdirectory(src)
@@ -63,12 +72,18 @@ target_link_libraries(${btWorm} BulletWorm_lib)
 
 ######### FREEGLUT LIBRARY #########
 	if(APPLE)
-		target_link_libraries(${btWorm} optimized ${GLUT_LIBRARIES}) 
+		target_link_libraries(${btWorm} optimized ${GLUT_LIBRARIES} ${GLFW_LIBRARIES})
 	endif(APPLE)
 	if(WIN32)
 		target_link_libraries(${btWorm} optimized ${GLUT_LIBRARIES}) 
 		# target_link_libraries(${btWorm} debug ${FREEGLUT_LIBRARY_DEBUG}) 
 	endif(WIN32)
+####################################
+
+######### OPENGL LIBRARY (ONLY FOR OSX) #############
+if(APPLE)
+	target_link_libraries(${btWorm} ${OPENGL_FRAMEWORK} ${COCOA_FRAMEWORK})
+endif(APPLE)
 ####################################
 
 ######### GLEW LIBRARY #############
