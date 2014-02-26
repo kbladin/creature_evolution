@@ -39,8 +39,6 @@ Population Evolution::nextGeneration(const Population &population ) {
 		Creature child_1(children_chromosome[0]);
 		Creature child_2(children_chromosome[1]);
 
-		// efter att ha gjort crossover och/eller mutate ska den räkna ut barnens fitness!
-
 		// add to the buffer.
 		buffer[count_new_population++] = child_1;
 		buffer[count_new_population++] = child_2;

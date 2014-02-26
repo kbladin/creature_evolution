@@ -1,7 +1,7 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include <linearmath\btidebugdraw.h>
+#include <linearmath/btidebugdraw.h>
 #include "Simulation.h"
 #include "debugDraw.h"
 

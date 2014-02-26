@@ -1,7 +1,7 @@
 #ifndef DEBUGDRAW_H
 #define DEBUGDRAW_H
 
-#include <linearmath\btidebugdraw.h>
+#include <linearmath/btidebugdraw.h>
 #include "Simulation.h"
 
 class DebugDraw :

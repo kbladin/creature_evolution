@@ -26,8 +26,8 @@ find_package(GLUT REQUIRED)
 find_package(GLEW REQUIRED)
 
 include_directories(${BULLET_INCLUDE_DIR})
-include_directories(${GLUT_INCLUDE_DIR})
-include_directories(${GLEW_INCLUDE_DIR})
+include_directories(${GLUT_INCLUDE_DIRS})
+include_directories(${GLEW_INCLUDE_DIRS})
 
 # source code is here
 add_subdirectory(src)
@@ -72,7 +72,7 @@ target_link_libraries(${btWorm} BulletWorm_lib)
 ####################################
 
 ######### GLEW LIBRARY #############
-	target_link_libraries(${btWorm} ${GLEW_LIBRARY})
+	target_link_libraries(${btWorm} ${GLEW_LIBRARIES})
 ####################################
 
 # TODO:
