@@ -36,6 +36,8 @@ private:
 	btRigidBody* fallRigidBody;
 
 	WormBulletCreature* worm;
+
+	int counter;
 };
 
 

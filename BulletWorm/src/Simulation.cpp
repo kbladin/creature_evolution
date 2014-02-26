@@ -8,13 +8,15 @@
 
 Simulation::Simulation(void)
 {
+	counter = 0;
+
 	//init world
 	broadphase = new btDbvtBroadphase();
 	collisionConfiguration = new btDefaultCollisionConfiguration();
 	dispatcher = new btCollisionDispatcher(collisionConfiguration);
 	solver = new btSequentialImpulseConstraintSolver;
 	dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher,broadphase,solver,collisionConfiguration);
-	dynamicsWorld->setGravity(btVector3(0,-1,0.1));
+	dynamicsWorld->setGravity(btVector3(0,-10,0));
 
 	worm = new WormBulletCreature(50,dynamicsWorld,btVector3(0.0,0.0,0.0));
 
@@ -66,7 +68,9 @@ Simulation::~Simulation(void)
 
 void Simulation::step()
 {
-	dynamicsWorld->stepSimulation(1/600.f,100);
+	dynamicsWorld->stepSimulation(1/600.f);
+	worm->updateMovement((float)counter/600.0);
+	counter++;
 }
 
 btDiscreteDynamicsWorld* Simulation::getDynamicsWorld()

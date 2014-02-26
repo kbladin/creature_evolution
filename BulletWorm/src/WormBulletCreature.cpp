@@ -1,4 +1,5 @@
 #include "WormBulletCreature.h"
+#include <cmath>
 
 
 WormBulletCreature::WormBulletCreature(int segment_count, btDiscreteDynamicsWorld* world, const btVector3& position)
@@ -24,7 +25,7 @@ WormBulletCreature::WormBulletCreature(int segment_count, btDiscreteDynamicsWorl
 	for(int i=0; i < segment_count; i++)
 	{
 		transform.setIdentity();
-		transform.setOrigin(btVector3(btScalar(0.), btScalar(i*shape_radius*2), btScalar(0.)));
+		transform.setOrigin(btVector3(btScalar(0.), btScalar(0.), btScalar(i*shape_radius*2)));
 
 		motion_state = new btDefaultMotionState(offset*transform);
 		btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass_,motion_state,m_shape_,fallInertia);
@@ -40,7 +41,6 @@ WormBulletCreature::WormBulletCreature(int segment_count, btDiscreteDynamicsWorl
 	
 	//setup joints
 	btTransform localA, localB;
-	bool useLinearReferenceFrameA = true;
 	for(int i=0; i < segment_count-1; i++)
 	{
 		localA.setIdentity();
@@ -48,13 +48,12 @@ WormBulletCreature::WormBulletCreature(int segment_count, btDiscreteDynamicsWorl
 		localA.setOrigin(btVector3(btScalar(0.), btScalar(shape_radius), btScalar(0.)));
 		localB.setOrigin(btVector3(btScalar(0.), btScalar(-shape_radius), btScalar(0.)));
 		
-		m_joints_[i] = new btGeneric6DofConstraint(*(m_bodies_[i]), *(m_bodies_[i+1]), localA, localB,useLinearReferenceFrameA);
-		m_joints_[i]->setAngularLowerLimit(btVector3(-SIMD_PI*0.3f,-SIMD_EPSILON,-SIMD_PI*0.3f));
-		m_joints_[i]->setAngularUpperLimit(btVector3(SIMD_PI*0.5f,SIMD_EPSILON,SIMD_PI*0.3f));
-
+		m_joints_[i] = new btHingeConstraint(*(m_bodies_[i]), *(m_bodies_[i+1]), localA, localB);
+		m_joints_[i]->setLimit(btScalar(-SIMD_PI*0.01), btScalar(SIMD_PI*0.01));
 		
 		dynamics_world_->addConstraint(m_joints_[i], true);
 	}
+	m_joints_[segment_count/2]->enableAngularMotor(true, -1000.0f, 1000.0f);
 }
 
 
@@ -77,5 +76,13 @@ WormBulletCreature::~WormBulletCreature(void)
 
 		delete m_shape_;
 
+	}
+}
+
+void WormBulletCreature::updateMovement(float time)
+{
+	for(int i=0; i < m_joints_.size(); i++)
+	{
+		m_joints_[i]->enableAngularMotor(true, 10*sin(time+i) , 1000.65f);
 	}
 }
