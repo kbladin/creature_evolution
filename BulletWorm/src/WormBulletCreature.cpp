@@ -24,7 +24,7 @@ WormBulletCreature::WormBulletCreature(int segment_count, btDiscreteDynamicsWorl
 	for(int i=0; i < segment_count; i++)
 	{
 		transform.setIdentity();
-		transform.setOrigin(btVector3(btScalar(0.), btScalar(i*shape_radius), btScalar(shape_radius*i*2)));
+		transform.setOrigin(btVector3(btScalar(0.), btScalar(i*shape_radius*2), btScalar(0.)));
 
 		motion_state = new btDefaultMotionState(offset*transform);
 		btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass_,motion_state,m_shape_,fallInertia);
@@ -32,26 +32,25 @@ WormBulletCreature::WormBulletCreature(int segment_count, btDiscreteDynamicsWorl
 		dynamics_world_->addRigidBody(m_bodies_[i]);
 
 		//damping
-		m_bodies_[i]->setDamping(0.05f, 0.85f);
-		m_bodies_[i]->setDeactivationTime(0.8f);
-		m_bodies_[i]->setSleepingThresholds(1.6f, 2.5f);
+		//m_bodies_[i]->setDamping(0.05f, 0.85f);
+		//m_bodies_[i]->setDeactivationTime(0.8f);
+		//m_bodies_[i]->setSleepingThresholds(1.6f, 2.5f);
 	}
 
 	
 	//setup joints
 	btTransform localA, localB;
-	btGeneric6DofConstraint* constraint;
 	bool useLinearReferenceFrameA = true;
 	for(int i=0; i < segment_count-1; i++)
 	{
 		localA.setIdentity();
 		localB.setIdentity();
-		localA.setOrigin(btVector3(btScalar(0.), btScalar(i*shape_radius*2), btScalar(0.)));
-		localB.setOrigin(btVector3(btScalar(0.), btScalar((i+1)*shape_radius*2), btScalar(0.)));
+		localA.setOrigin(btVector3(btScalar(0.), btScalar(shape_radius), btScalar(0.)));
+		localB.setOrigin(btVector3(btScalar(0.), btScalar(-shape_radius), btScalar(0.)));
 		
 		m_joints_[i] = new btGeneric6DofConstraint(*(m_bodies_[i]), *(m_bodies_[i+1]), localA, localB,useLinearReferenceFrameA);
-		//m_joints_[i]->setAngularLowerLimit(btVector3(-SIMD_PI*0.3f,-SIMD_EPSILON,-SIMD_PI*0.3f));
-		//m_joints_[i]->setAngularUpperLimit(btVector3(SIMD_PI*0.5f,SIMD_EPSILON,SIMD_PI*0.3f));
+		m_joints_[i]->setAngularLowerLimit(btVector3(-SIMD_PI*0.3f,-SIMD_EPSILON,-SIMD_PI*0.3f));
+		m_joints_[i]->setAngularUpperLimit(btVector3(SIMD_PI*0.5f,SIMD_EPSILON,SIMD_PI*0.3f));
 
 		
 		dynamics_world_->addConstraint(m_joints_[i], true);

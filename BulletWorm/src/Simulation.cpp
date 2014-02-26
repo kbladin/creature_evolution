@@ -14,9 +14,9 @@ Simulation::Simulation(void)
 	dispatcher = new btCollisionDispatcher(collisionConfiguration);
 	solver = new btSequentialImpulseConstraintSolver;
 	dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher,broadphase,solver,collisionConfiguration);
-	dynamicsWorld->setGravity(btVector3(0,-10,0));
+	dynamicsWorld->setGravity(btVector3(0,-1,0.1));
 
-	worm = new WormBulletCreature(20,dynamicsWorld,btVector3(0.0,0.0,0.0));
+	worm = new WormBulletCreature(50,dynamicsWorld,btVector3(0.0,0.0,0.0));
 
 	//ground
 	groundShape = new btStaticPlaneShape(btVector3(0,1,0),1);

@@ -22,7 +22,6 @@ Renderer* bajs;
 
 int main (int argc, char** argv) {
 	current_time = glutGet(GLUT_ELAPSED_TIME);
-	//for(int i=0; i<1; i++) simulation->advance();
 	glutInitWindowSize(kWindowWidth, kWindowHeight);
 	glutInit(&argc, argv);
 	glutInitDisplayString("samples stencil>=3 rgb double depth");
@@ -55,7 +54,7 @@ void render()
 	//transforms
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	glScalef(0.2,0.2,0.2);
+	glScalef(0.1,0.1,0.1);
 	glRotatef(30.0, 1.0, 0.5, 0.0);
 
 	//draw scene
