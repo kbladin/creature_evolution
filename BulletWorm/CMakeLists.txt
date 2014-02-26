@@ -14,19 +14,19 @@ if(MSVC)
 endif(MSVC)
 
 # freeglut and glew are included in source control
-set(FREEGLUT_ROOT "../libs/freeglut")
-set(GLEW_ROOT "../libs/glew")
+# set(FREEGLUT_ROOT "../libs/freeglut")
+# set(GLEW_ROOT "../libs/glew")
 
 # set path to custom find modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/Modules)
 
 # find FreeGLUT, BULLET, GLEW for OSX and Windows
 find_package(BULLET REQUIRED)
-find_package(FREEGLUT REQUIRED)
+find_package(GLUT REQUIRED)
 find_package(GLEW REQUIRED)
 
 include_directories(${BULLET_INCLUDE_DIR})
-include_directories(${FREEGLUT_INCLUDE_DIR})
+include_directories(${GLUT_INCLUDE_DIR})
 include_directories(${GLEW_INCLUDE_DIR})
 
 # source code is here
@@ -44,20 +44,31 @@ target_link_libraries(${btWorm} BulletWorm_lib)
 
 
 ######### BULLET LIBRARIES #########
-	target_link_libraries(${btWorm} debug ${BULLET_DYNAMICS_LIBRARY_DEBUG})
-	target_link_libraries(${btWorm} optimized ${BULLET_DYNAMICS_LIBRARY})
+	if(APPLE)
+		target_link_libraries(${btWorm} optimized ${BULLET_DYNAMICS_LIBRARY})
+		target_link_libraries(${btWorm} optimized ${BULLET_COLLISION_LIBRARY})
+		target_link_libraries(${btWorm} optimized ${BULLET_MATH_LIBRARY}) 
+	endif(APPLE)
 
-	target_link_libraries(${btWorm} debug ${BULLET_COLLISION_LIBRARY_DEBUG})
-	target_link_libraries(${btWorm} optimized ${BULLET_COLLISION_LIBRARY})
-
-	target_link_libraries(${btWorm} debug ${BULLET_MATH_LIBRARY_DEBUG}) 
-	target_link_libraries(${btWorm} optimized ${BULLET_MATH_LIBRARY}) 
+	if(WIN32)
+		target_link_libraries(${btWorm} debug ${BULLET_DYNAMICS_LIBRARY_DEBUG})
+		target_link_libraries(${btWorm} optimized ${BULLET_DYNAMICS_LIBRARY})
+		target_link_libraries(${btWorm} debug ${BULLET_COLLISION_LIBRARY_DEBUG})
+		target_link_libraries(${btWorm} optimized ${BULLET_COLLISION_LIBRARY})
+		target_link_libraries(${btWorm} debug ${BULLET_MATH_LIBRARY_DEBUG})
+		target_link_libraries(${btWorm} optimized ${BULLET_MATH_LIBRARY}) 
+	endif(WIN32)
 ####################################
 
 
 ######### FREEGLUT LIBRARY #########
-	target_link_libraries(${btWorm} debug ${FREEGLUT_LIBRARY_DEBUG}) 
-	target_link_libraries(${btWorm} optimized ${FREEGLUT_LIBRARY}) 
+	if(APPLE)
+		target_link_libraries(${btWorm} optimized ${GLUT_LIBRARIES}) 
+	endif(APPLE)
+	if(WIN32)
+		target_link_libraries(${btWorm} optimized ${GLUT_LIBRARIES}) 
+		# target_link_libraries(${btWorm} debug ${FREEGLUT_LIBRARY_DEBUG}) 
+	endif(WIN32)
 ####################################
 
 ######### GLEW LIBRARY #############
