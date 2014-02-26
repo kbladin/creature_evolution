@@ -15,8 +15,8 @@ private:
 	btDiscreteDynamicsWorld* dynamics_world_;
 	btCollisionShape* m_shape_;
 	btScalar mass_;
-	std::vector<btRigidBody> m_bodies_;
-	std::vector<btGeneric6DofConstraint> m_joints_;
+	std::vector<btRigidBody*> m_bodies_;
+	std::vector<btGeneric6DofConstraint*> m_joints_;
 };
 
 #endif // WORMBULLETCREATURE_H
