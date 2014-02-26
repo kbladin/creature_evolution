@@ -55,7 +55,7 @@ void render()
 	//transforms
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	glScalef(0.1,0.1,0.1);
+	glScalef(0.2,0.2,0.2);
 	glRotatef(30.0, 1.0, 0.5, 0.0);
 
 	//draw scene
