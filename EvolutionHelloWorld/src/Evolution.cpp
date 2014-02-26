@@ -45,36 +45,9 @@ Population Evolution::nextGeneration(const Population &population ) {
 		buffer[count_new_population++] = child_1;
 		buffer[count_new_population++] = child_2;
 	}
-
 	return buffer; 
-
 }
-/*
-void Evolution::nextGenerationMixedMating( Population &population ){
-  int top_candidates_pivot = (int) (population.size() * elitism_);
-  Population parents (&population[0], 
-  	&population[top_candidates_pivot]);
-  //Population child_buffer(population.size());
 
-  //First do the mating of the top candidates and put the children in a new vector
-  std::uniform_int_distribution<int> parents_decider(0,top_candidates_pivot-1);
-  for (int i = 0; i < population.size(); ++i){
-    //Pick parents from among the "best" (left side of pivot)
-    Creature firstParent = parents[parents_decider(rng_.mt_rng_)];
-    Creature secondParent = parents[parents_decider(rng_.mt_rng_)];
-    population[i] = firstParent.Mate(secondParent)[0];
-  }
-
-  //Then mutate them poor bastards
-  std::uniform_real_distribution<float> mutation_decider(0,1);
-  for (int i = 0; i < population.size(); ++i){
-    if (mutation_decider(rng_.mt_rng_) <= mutation_){
-      population[i] = population[i].Mutate();
-    }
-  }  
-
-}
-*/
 // Private class function. help to select the best parents
 Population Evolution::TournamentSelection(const Population &population) {
 	Population parents;

@@ -14,7 +14,6 @@ private:
 	unsigned int fitness_; 
 	static const char TARGET_[];
 	static unsigned int CalculateFitness(Chromosome chromsome);
-	void updateGene(Chromosome chromosome); 
 	static AutoInitRNG rng_;
 
 public:
@@ -26,15 +25,9 @@ public:
 	unsigned int GetFitness() const;
 
 	std::vector<Chromosome> Crossover(Creature mate,float crossover);
-	//std::vector<Creature> Mate(Creature mate);
-	//Creature MixMate(Creature mate) const;
-	//Creature Mutate() const;
-	//void Mutate(float mutation); 
 
 	static Creature random();
-
 };
-
 
 struct CreatureLessThan
 {
