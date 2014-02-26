@@ -103,6 +103,3 @@ float Evolution::CalculateTotalFitness(const Population &population){
 
 	return total_fitness; 
 }
-
-
-

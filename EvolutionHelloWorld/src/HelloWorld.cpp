@@ -20,7 +20,7 @@ int main(){
 	population.resize(population_size);
 
 	for (int i=0; i<population_size; ++i){
-		population[i] = Creature::random();
+		population[i] = Creature(Chromosome::random());//Creature::random();
 	}
 
 	// sortera Creature

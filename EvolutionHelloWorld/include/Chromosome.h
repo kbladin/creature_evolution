@@ -14,6 +14,9 @@ public:
 	void Mutate(float mutation);
 	std::vector<Chromosome> CrossOverMate(Chromosome c);
 
+	static Chromosome random();
+	static const char TARGET_[];
+
 private:
 	std::string gene_code_;
 

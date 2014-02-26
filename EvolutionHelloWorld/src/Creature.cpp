@@ -3,18 +3,13 @@
 #include <ctime>
 AutoInitRNG Creature::rng_;
 
-// testningssyfte!!!
-const char Creature::TARGET_[] = "Hello, world!";
+Creature::Creature(Chromosome chromosome) : 
+	chromosome_(chromosome) ,
+	fitness_(CalculateFitness(chromosome_)){}
 
-Creature::Creature(Chromosome chromosome){
-	chromosome_ = chromosome;
-	fitness_ = CalculateFitness(chromosome); 
-}
-
-Creature::Creature(){
-	chromosome_ = Chromosome("Hello, debug!"); // bara för detta exempel! 
-	fitness_ = 9999;
-}
+Creature::Creature() : 
+	chromosome_(Chromosome("Hello, debug!")) ,
+	fitness_(CalculateFitness(chromosome_)) {}
 
 Chromosome Creature::GetChromosome() const{
 	return chromosome_;
@@ -49,27 +44,7 @@ std::vector<Chromosome> Creature::Crossover(Creature mate, float crossover){
 unsigned int Creature::CalculateFitness(Chromosome chromosome){
 	int fitness = 0;
 	for (int i = 0; i < chromosome.GetGene().size(); ++i) {
-		fitness += abs(((int) chromosome.GetGene()[i]) - ((int) TARGET_[i]));
+		fitness += abs(((int) chromosome.GetGene()[i]) - ((int) Chromosome::TARGET_[i]));
 	}
 	return fitness;
-}
-
-Creature Creature::random() {
-	std::string target = TARGET_; 
-	int random_gene_size = target.size();
-	std::uniform_int_distribution<int> int_dist_ascii_(32,126);
-
-	std::string random_gene;
-	random_gene.resize(random_gene_size);
-
-	for (int i = 0; i < random_gene_size; ++i) {
-		
-		random_gene[i] = (char) int_dist_ascii_(rng_.mt_rng_);
-	}
-
-
-	Chromosome random_chromosom(random_gene); 
-	
-	Creature random(random_chromosom);
-	return random;
 }

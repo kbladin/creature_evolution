@@ -2,6 +2,10 @@
 
 AutoInitRNG Chromosome::rng_;
 
+// testningssyfte!!!
+const char Chromosome::TARGET_[] = "Hello, world!";
+
+
 Chromosome::Chromosome(std::string gene_code){
 	gene_code_ = gene_code;
 }
@@ -58,4 +62,24 @@ std::vector<Chromosome> Chromosome::CrossOverMate(Chromosome c){
 	children.push_back(child_2);
 
 	return children;	
+}
+
+Chromosome Chromosome::random(){
+	std::string target = TARGET_; 
+	int random_gene_size = target.size();
+	std::uniform_int_distribution<int> int_dist_ascii_(32,126);
+
+	std::string random_gene;
+	random_gene.resize(random_gene_size);
+
+	for (int i = 0; i < random_gene_size; ++i) {
+		
+		random_gene[i] = (char) int_dist_ascii_(rng_.mt_rng_);
+	}
+
+
+	Chromosome random(random_gene); 
+	
+	//Creature random(random_chromosom);
+	return random;
 }
