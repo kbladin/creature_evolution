@@ -28,7 +28,6 @@ public:
 	~Evolution(void); 
 
 	Population nextGeneration(const Population &population); // uppdaterar den nuvarande populationen?
-	//void nextGenerationMixedMating(Population &population );
 };
 
 

@@ -33,7 +33,6 @@ int main(){
 		std:: cout << "Generation " << i << ": " << best.GetChromosome().GetGene() << std::endl;
 		// Trying some other mating and mutating with nextGenerationMixedMating.
 
-		//ev.nextGenerationMixedMating(population);
 		population = ev.nextGeneration(population);
 
 		std::sort(population.begin(), population.end(), CreatureLessThan());

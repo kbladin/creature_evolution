@@ -38,7 +38,6 @@ std::vector<Chromosome> Creature::Crossover(Creature mate, float crossover){
 	}
 
 	//Creature this_creature(gene_code_); // to return this creatures
-
 	children.push_back(chromosome_);
 	children.push_back(mate.GetChromosome());
 
