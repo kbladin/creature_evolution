@@ -16,8 +16,8 @@ WormBulletCreature::WormBulletCreature(int segment_count, btDiscreteDynamicsWorl
 	//setup segments
 	btScalar shape_radius = 0.1;
 	//m_shape_ = new btSphereShape(shape_radius);
-	m_shape_ = new btBoxShape(btVector3(shape_radius*2,shape_radius*2,shape_radius));
-	mass_ = 0.005;
+	m_shape_ = new btBoxShape(btVector3(shape_radius*2,shape_radius,shape_radius*2));
+	mass_ = 5;
 	btVector3 fallInertia(0,0,0);
 	m_shape_->calculateLocalInertia(mass_,fallInertia);
 
@@ -51,8 +51,8 @@ WormBulletCreature::WormBulletCreature(int segment_count, btDiscreteDynamicsWorl
 		localA.getBasis().setEulerZYX(0,SIMD_PI/2,0);
 		localB.getBasis().setEulerZYX(0,SIMD_PI/2,0);
 
-		localA.setOrigin(btVector3(btScalar(0.), btScalar(shape_radius)*2, btScalar(0.)));
-		localB.setOrigin(btVector3(btScalar(0.), btScalar(-shape_radius)*2, btScalar(0.)));
+		localA.setOrigin(btVector3(btScalar(0.), btScalar(0.), btScalar(shape_radius*2)));
+		localB.setOrigin(btVector3(btScalar(0.), btScalar(0.), btScalar(-shape_radius*2)));
 		
 		m_joints_[i] = new btHingeConstraint(*(m_bodies_[i]), *(m_bodies_[i+1]), localA, localB);
 		m_joints_[i]->setLimit(btScalar(-SIMD_PI*0.15), btScalar(SIMD_PI*0.15));
