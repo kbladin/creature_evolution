@@ -23,10 +23,11 @@ Simulation::Simulation(void)
 	groundMotionState = new btDefaultMotionState(btTransform(btQuaternion(0,0,0,1),btVector3(0,-1,0)));
 	btRigidBody::btRigidBodyConstructionInfo groundRigidBodyCI(0,groundMotionState,groundShape,btVector3(0,0,0));
 	groundRigidBody = new btRigidBody(groundRigidBodyCI);
+	groundRigidBody->setFriction(1.0f);
 	dynamicsWorld->addRigidBody(groundRigidBody);
 
 	//creature
-	worm = new WormBulletCreature(60,dynamicsWorld,btVector3(0.0,0.0,0.0));
+	worm = new WormBulletCreature(10,dynamicsWorld,btVector3(0.0,1.0,4.0));
 
 }
 
