@@ -22,8 +22,10 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/Modules)
 
 # find FreeGLUT, BULLET, GLEW for OSX and Windows
 find_package(BULLET REQUIRED)
-find_package(GLUT REQUIRED)
+# find_package(GLUT REQUIRED)
+find_package(OPENGL REQUIRED)
 find_package(GLEW REQUIRED)
+find_package(GLFW3 REQUIRED)
 
 if(APPLE)
 	find_package(PkgConfig REQUIRED)
@@ -32,11 +34,11 @@ if(APPLE)
 	find_library(COCOA_FRAMEWORK Cocoa)
 endif(APPLE)
 
+# include_directories(${GLUT_INCLUDE_DIRS})
 include_directories(${BULLET_INCLUDE_DIR})
-include_directories(${GLUT_INCLUDE_DIRS})
 include_directories(${GLEW_INCLUDE_DIRS})
 include_directories(${GLFW_INCLUDE_DIRS})
-
+include_directories(${OPENGL_INCLUDE_DIR})
 
 # source code is here
 add_subdirectory(src)
@@ -69,15 +71,21 @@ target_link_libraries(${btWorm} BulletWorm_lib)
 	endif(WIN32)
 ####################################
 
+############# GLFW3 ################
+	
+target_link_libraries(${btWorm} ${GLFW_LIBRARIES})
+target_link_libraries(${btWorm} ${OPENGL_LIBRARIES})
+
 
 ######### FREEGLUT LIBRARY #########
-	if(APPLE)
-		target_link_libraries(${btWorm} optimized ${GLUT_LIBRARIES} ${GLFW_LIBRARIES})
-	endif(APPLE)
-	if(WIN32)
-		target_link_libraries(${btWorm} optimized ${GLUT_LIBRARIES}) 
-		# target_link_libraries(${btWorm} debug ${FREEGLUT_LIBRARY_DEBUG}) 
-	endif(WIN32)
+
+	# if(APPLE)
+	# 	target_link_libraries(${btWorm} optimized ${GLUT_LIBRARIES}) 
+	# endif(APPLE)
+	# if(WIN32)
+	# 	target_link_libraries(${btWorm} optimized ${GLUT_LIBRARIES}) 
+	# 	# target_link_libraries(${btWorm} debug ${FREEGLUT_LIBRARY_DEBUG}) 
+	# endif(WIN32)
 ####################################
 
 ######### OPENGL LIBRARY (ONLY FOR OSX) #############
@@ -87,7 +95,7 @@ endif(APPLE)
 ####################################
 
 ######### GLEW LIBRARY #############
-	target_link_libraries(${btWorm} ${GLEW_LIBRARIES})
+target_link_libraries(${btWorm} ${GLEW_LIBRARY})
 ####################################
 
 # TODO:
