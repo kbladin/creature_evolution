@@ -2,11 +2,11 @@
 #include <GL/glew.h>
 
 
-Renderer::Renderer(Simulation* sim)
+Renderer::Renderer(Simulation* sim, bool debug_mode)
 {
 	dynamicsWorld = sim->getDynamicsWorld();
 	debugDrawer = new DebugDraw(dynamicsWorld);
-	debug = true;
+	debug = debug_mode;
 }
 
 

@@ -3,14 +3,10 @@
 #include <stdlib.h>
 
 #include <GL/glew.h>
-#include <GL/freeglut.h>
+#include <GLFW/glfw3.h>
 
 #include "Simulation.h"
 #include "Renderer.h"
-
-
-#define kWindowWidth 800
-#define kWindowHeight 800
 
 void render();
 void update();
@@ -18,33 +14,48 @@ void update();
 int current_time;
 
 Simulation* helloWorld;
-Renderer* bajs;
+Renderer* render_engine;
 
 int main (int argc, char** argv) {
-	current_time = glutGet(GLUT_ELAPSED_TIME);
-	glutInitWindowSize(kWindowWidth, kWindowHeight);
-	glutInit(&argc, argv);
-	glutInitDisplayString("samples stencil>=3 rgb double depth");
-	glutCreateWindow("Bullet Test");
-	glutDisplayFunc(render);
-	glutIdleFunc(update);
-	// start GLEW extension handler
-	glewExperimental = GL_TRUE;
-	glewInit();
-
-	// get version info
-	const GLubyte* renderer = glGetString (GL_RENDERER); // get renderer string
-	const GLubyte* version = glGetString (GL_VERSION); // version as a string
-	printf ("Renderer: %s\n", renderer);
-	printf ("OpenGL version supported %s\n", version);
 
 	//initalize simulation
 	helloWorld = new Simulation();
 
 	//initialize debugDrawer for simulation
-	bajs = new Renderer(helloWorld);
+	render_engine = new Renderer(helloWorld, true);
 
-	glutMainLoop();
+	GLFWwindow* window;
+
+	if (!glfwInit())
+		exit(EXIT_FAILURE);
+	window = glfwCreateWindow(800, 600, "Simple example", NULL, NULL);
+	if (!window)
+	{
+		glfwTerminate();
+		exit(EXIT_FAILURE);
+	}
+
+	glfwMakeContextCurrent(window);
+
+	// start GLEW extension handler
+	glewExperimental = GL_TRUE;
+	glewInit();
+	
+	while (!glfwWindowShouldClose(window)) {
+		float ratio;
+		int width, height;
+		glfwGetFramebufferSize(window, &width, &height);
+		ratio = width / (float) height;
+		update();
+		render();
+		
+		glfwSwapBuffers(window);
+		glfwPollEvents();
+	}
+
+	glfwDestroyWindow(window);
+	glfwTerminate();
+	exit(EXIT_SUCCESS);
 
 	return 0;
 }
@@ -58,11 +69,9 @@ void render()
 	glRotatef(30.0, 1.0, 0.5, 0.0);
 
 	//draw scene
-	bajs->render();
+	render_engine->render();
 
 	//must have
-	glutSwapBuffers();
-	glutPostRedisplay();
 }
 
 void update()
