@@ -1,6 +1,6 @@
 #include "WormBulletCreature.h"
 #include <cmath>
-
+#include <iostream>
 
 WormBulletCreature::WormBulletCreature(int segment_count, btDiscreteDynamicsWorld* world, const btVector3& position)
 {
@@ -15,8 +15,9 @@ WormBulletCreature::WormBulletCreature(int segment_count, btDiscreteDynamicsWorl
 
 	//setup segments
 	btScalar shape_radius = 0.1;
-	m_shape_ = new btSphereShape(shape_radius);
-	mass_ = 1;
+	//m_shape_ = new btSphereShape(shape_radius);
+	m_shape_ = new btBoxShape(btVector3(shape_radius*2,shape_radius,shape_radius*2));
+	mass_ = 5;
 	btVector3 fallInertia(0,0,0);
 	m_shape_->calculateLocalInertia(mass_,fallInertia);
 
@@ -25,11 +26,12 @@ WormBulletCreature::WormBulletCreature(int segment_count, btDiscreteDynamicsWorl
 	for(int i=0; i < segment_count; i++)
 	{
 		transform.setIdentity();
-		transform.setOrigin(btVector3(btScalar(0.), btScalar(0.), btScalar(i*shape_radius*2)));
+		transform.setOrigin(btVector3(btScalar(0.), btScalar(0.), btScalar(i*shape_radius)));
 
 		motion_state = new btDefaultMotionState(offset*transform);
 		btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass_,motion_state,m_shape_,fallInertia);
 		m_bodies_[i] = new btRigidBody(fallRigidBodyCI);
+		m_bodies_[i]->setFriction(0.1f);
 		dynamics_world_->addRigidBody(m_bodies_[i]);
 
 		//damping
@@ -45,15 +47,18 @@ WormBulletCreature::WormBulletCreature(int segment_count, btDiscreteDynamicsWorl
 	{
 		localA.setIdentity();
 		localB.setIdentity();
-		localA.setOrigin(btVector3(btScalar(0.), btScalar(shape_radius), btScalar(0.)));
-		localB.setOrigin(btVector3(btScalar(0.), btScalar(-shape_radius), btScalar(0.)));
+
+		localA.getBasis().setEulerZYX(0,SIMD_PI/2,0);
+		localB.getBasis().setEulerZYX(0,SIMD_PI/2,0);
+
+		localA.setOrigin(btVector3(btScalar(0.), btScalar(0.), btScalar(shape_radius*2)));
+		localB.setOrigin(btVector3(btScalar(0.), btScalar(0.), btScalar(-shape_radius*2)));
 		
 		m_joints_[i] = new btHingeConstraint(*(m_bodies_[i]), *(m_bodies_[i+1]), localA, localB);
-		m_joints_[i]->setLimit(btScalar(-SIMD_PI*0.01), btScalar(SIMD_PI*0.01));
+		m_joints_[i]->setLimit(btScalar(-SIMD_PI*0.15), btScalar(SIMD_PI*0.15));
 		
 		dynamics_world_->addConstraint(m_joints_[i], true);
 	}
-	m_joints_[segment_count/2]->enableAngularMotor(true, -1000.0f, 1000.0f);
 }
 
 
@@ -81,8 +86,18 @@ WormBulletCreature::~WormBulletCreature(void)
 
 void WormBulletCreature::updateMovement(float time)
 {
+	float impulse = 10.0;
+	float target_velocity = 20.0;
+	float wavelength = 10.0;
+	float speed = 3.0;
+
+	float radians_moved = speed*(float)time;
+
 	for(int i=0; i < m_joints_.size(); i++)
 	{
-		m_joints_[i]->enableAngularMotor(true, 10*sin(time+i) , 1000.65f);
+		float delay = ((float)i*SIMD_PI*2)/wavelength;
+		m_joints_[i]->enableAngularMotor(true, target_velocity*sin(radians_moved + delay) , impulse);
+
+		//if(i == 0) std::cout << sin(radians_moved + delay) << std::endl;
 	}
 }
