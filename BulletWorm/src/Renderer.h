@@ -9,7 +9,7 @@ class Renderer
 {
 
 public:
-	Renderer(Simulation* sim);
+	Renderer(Simulation* sim, bool debug_mode);
 	~Renderer(void);
 	void render();
 
