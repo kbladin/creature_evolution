@@ -1,0 +1,54 @@
+{
+	"folders":
+	[
+		{
+			"path": "../",
+			"folder_exclude_patterns": ["build"]
+		}
+	],
+	"build_systems":
+	[
+		{
+			"name": "HelloWorld - all",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "all"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		},
+		{
+			"name": "HelloWorld - clean",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "clean"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		},
+		{
+			"name": "HelloWorld - HelloWorld",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "HelloWorld"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		},
+		{
+			"name": "HelloWorld - HelloWorld/fast",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "HelloWorld/fast"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		},
+		{
+			"name": "HelloWorld - HelloWorld_lib",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "HelloWorld_lib"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		},
+		{
+			"name": "HelloWorld - HelloWorld_lib/fast",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "HelloWorld_lib/fast"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		},
+		{
+			"name": "HelloWorld - rebuild_cache",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "rebuild_cache"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		}
+	]
+	}

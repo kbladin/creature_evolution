@@ -1,0 +1,48 @@
+{
+	"folders":
+	[
+		{
+			"path": "../",
+			"folder_exclude_patterns": ["build"]
+		}
+	],
+	"build_systems":
+	[
+		{
+			"name": "gtest - all",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "all"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		},
+		{
+			"name": "gtest - clean",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "clean"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		},
+		{
+			"name": "gtest - gtest",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "gtest"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		},
+		{
+			"name": "gtest - gtest/fast",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "gtest/fast"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		},
+		{
+			"name": "gtest - gtest_main",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "gtest_main"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		},
+		{
+			"name": "gtest - gtest_main/fast",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "gtest_main/fast"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		}
+	]
+	}
