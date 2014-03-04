@@ -52,7 +52,7 @@ int main() {
 	sf::Clock clock;
 
 
-	// BULLET 
+	// -------------BULLET TEST
 
 	btBroadphaseInterface* broadphase = new btDbvtBroadphase();
 
@@ -87,7 +87,7 @@ int main() {
     btRigidBody* fallRigidBody = new btRigidBody(fallRigidBodyCI);
     dynamicsWorld->addRigidBody(fallRigidBody);
 
-
+    // -------------------------------
 
 
 

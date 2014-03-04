@@ -5,4 +5,4 @@ file(GLOB to_remove Main.cpp)
 
 list(REMOVE_ITEM SOURCES ${to_remove})
 
-# add_library(sfguihw_lib ${SOURCES} ${HEADERS})
+add_library(sfguihw_lib ${SOURCES} ${HEADERS})
