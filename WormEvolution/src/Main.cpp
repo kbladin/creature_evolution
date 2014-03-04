@@ -24,22 +24,22 @@ int main(){
 	}
 
 	// sortera Creature
-	std::sort(population.begin(), population.end(), CreatureLessThan());
+	std::sort(population.begin(), population.end(), CreatureLargerThan());
 
 	int i=0;
 	Creature best = population[0]; // den bästa tas fram
 
-	while( (++i < max_generations) && (best.GetFitness() != 0) ) {
-		std:: cout << "Generation " << i << ": " << best.GetChromosome().GetGene() << std::endl;
+	while( (++i < max_generations) && (best.GetFitness() < 30) ) {
+		std:: cout << "Generation " << i << ": " << best << std::endl;
 		// Trying some other mating and mutating with nextGenerationMixedMating.
 
 		population = ev.nextGeneration(population);
 
-		std::sort(population.begin(), population.end(), CreatureLessThan());
+		std::sort(population.begin(), population.end(), CreatureLargerThan());
 		best = population[0];
 	}
 
-	std::cout << "Generation " << i << ": "<< best.GetChromosome().GetGene() << std::endl;
+	std::cout << "Generation " << i << ": "<< best << std::endl;
 
 	std::cout << "Total time: " << std::clock() -start_time << 
 			" ms" << std::endl;

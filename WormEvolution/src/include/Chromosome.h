@@ -3,24 +3,39 @@
 
 #include "AutoInitRNG.h"
 #include <iostream>
+#include <iomanip>
 #include <string>
 
 class Chromosome {
 public:
-	Chromosome(std::string gene_code);
+	Chromosome(std::vector<float> gene_code);
 	Chromosome();
 
-	std::string GetGene();
+	std::vector<float> GetGene() const;
 	void Mutate(float mutation);
-	std::vector<Chromosome> CrossOverMate(Chromosome c);
+	std::vector<Chromosome> CrossOverMate(const Chromosome c);
 
 	static Chromosome random();
-	static const char TARGET_[];
+
+	static const int GENE_LENGTH = 30;
 
 private:
-	std::string gene_code_;
-
+	std::vector<float> gene_code_;
 	static AutoInitRNG rng_;
 };
+
+static std::ostream& operator<<(std::ostream& os, const Chromosome c){
+	for (int i = 0; i < c.GetGene().size(); ++i){
+		os << std::setprecision(3) << c.GetGene()[i] << " ";  
+	}
+    return os;
+}
+
+static std::ostream& operator<<(std::ostream& os, const std::vector<float> c){
+	for (int i = 0; i < c.size(); ++i){
+		os << std::setprecision(3) << c[i] << " ";  
+	}
+    return os;
+}
 
 #endif // CHROMOSOME_H
