@@ -17,7 +17,7 @@ public:
 
 	static Chromosome random();
 
-	static const int GENE_LENGTH = 30;
+	static const int GENE_LENGTH = 40;
 
 private:
 	std::vector<float> gene_code_;
