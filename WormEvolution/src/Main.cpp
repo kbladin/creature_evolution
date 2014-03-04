@@ -5,8 +5,8 @@
 #include <algorithm>
 
 int main(){
-	const int population_size = 2048;
-	const int max_generations = 1000;
+	const int population_size = 10;
+	const int max_generations = 10;
 	const float crossover_ratio = 0.8f;
 	const float elitism_ratio = 0.2f;
 	const float mutation_ratio = 0.1f;

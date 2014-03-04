@@ -30,7 +30,7 @@ Simulation::Simulation(std::vector<float> genes)
 	//creature
 
 	//test vector
-	worm = new WormBulletCreature(genes, dynamicsWorld, btVector3(0.0,1.0,4.0));
+	worm = new WormBulletCreature(genes, dynamicsWorld, btVector3(0.0,1.0,0.0));
 
 }
 

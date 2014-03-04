@@ -17,6 +17,8 @@ public:
 	float getFitnessValue();
 
 private:
+	WormBulletCreature* worm;
+
 	btBroadphaseInterface* broadphase;
 	btDefaultCollisionConfiguration* collisionConfiguration;
 	btCollisionDispatcher* dispatcher;
@@ -36,7 +38,6 @@ private:
 	btScalar mass;
 	btRigidBody* fallRigidBody;
 
-	WormBulletCreature* worm;
 
 	int counter;
 };
