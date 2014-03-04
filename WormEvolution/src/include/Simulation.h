@@ -26,16 +26,12 @@ private:
 
 	btCollisionShape* groundShape;
 
-	btCollisionShape* fallShape;
-
-
 	btDefaultMotionState* groundMotionState;
 	btRigidBody* groundRigidBody;
 
 
 	btDefaultMotionState* fallMotionState;
 	btScalar mass;
-	btRigidBody* fallRigidBody;
 
 
 	int counter;

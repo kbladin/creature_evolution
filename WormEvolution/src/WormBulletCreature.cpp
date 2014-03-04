@@ -5,8 +5,8 @@ WormBulletCreature::WormBulletCreature(const std::vector<float> genes, btDiscret
 	genes_ = genes;
 	int segment_count = genes_.size()/4;
 
-	m_bodies_.resize(segment_count);
-	m_joints_.resize(segment_count-1);
+	m_bodies_.resize(segment_count+1);
+	m_joints_.resize(segment_count);
 	dynamics_world_ = world;
 	
 
@@ -25,7 +25,7 @@ WormBulletCreature::WormBulletCreature(const std::vector<float> genes, btDiscret
 
 	btDefaultMotionState* motion_state;
 	btTransform transform;
-	for(int i=0; i < segment_count; i++)
+	for(int i=0; i < m_bodies_.size(); i++)
 	{
 		transform.setIdentity();
 		transform.setOrigin(btVector3(btScalar(0.), btScalar(0.), btScalar(i*shape_radius*2)));
@@ -45,7 +45,7 @@ WormBulletCreature::WormBulletCreature(const std::vector<float> genes, btDiscret
 	
 	//setup joints
 	btTransform localA, localB;
-	for(int i=0; i < segment_count-1; i++)
+	for(int i=0; i < m_joints_.size(); i++)
 	{
 		localA.setIdentity();
 		localB.setIdentity();
@@ -80,10 +80,8 @@ WormBulletCreature::~WormBulletCreature(void)
 
 		delete m_bodies_[i];
 		m_bodies_[i] = 0;
-
-		delete m_shape_;
-
 	}
+	delete m_shape_;
 }
 
 void WormBulletCreature::updateMovement(float time)
@@ -91,7 +89,7 @@ void WormBulletCreature::updateMovement(float time)
 	float max_impulse = 10.0;
 	float max_velocity = 20;
 	float max_a_velocity = 3.0;
-	float max_a_phase = SIMD_PI;
+	float max_a_phase = 2*SIMD_PI;
 
 	for(int i=0; i < m_joints_.size(); i++)
 	{
