@@ -64,12 +64,20 @@ int main (int argc, char** argv) {
 	return 0;
 }
 
+
 void render() {
-	//transforms
+    //transforms
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	glScalef(0.1,0.1,0.1);
 	glRotatef(90.0, 0.0, 1.0, 0.0);
+
+
+	glBegin(GL_LINES);
+	    glColor3f(1, 0, 0);
+	    glVertex3d(0, 0, 0);
+	    glVertex3d(1, 1, 0);
+	glEnd();
 
 	//draw scene
 	render_engine->render();

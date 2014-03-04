@@ -1,6 +1,5 @@
 #include "Creature.h"
-#include <cmath>
-#include <ctime>
+
 AutoInitRNG Creature::rng_;
 
 Creature::Creature(Chromosome chromosome) : 
@@ -8,14 +7,14 @@ Creature::Creature(Chromosome chromosome) :
 	fitness_(CalculateFitness(chromosome_)){}
 
 Creature::Creature() : 
-	chromosome_(Chromosome("Hello, debug!")) ,
+	chromosome_(Chromosome()) ,
 	fitness_(CalculateFitness(chromosome_)) {}
 
 Chromosome Creature::GetChromosome() const{
 	return chromosome_;
 }
 
-unsigned int Creature::GetFitness() const{
+float Creature::GetFitness() const{
 	return fitness_;
 }
 
@@ -41,10 +40,17 @@ std::vector<Chromosome> Creature::Crossover(Creature mate, float crossover){
 }
 
 // är beroeden på vad vi vill ha för fitnesscriteria, vår simulering. 
-unsigned int Creature::CalculateFitness(Chromosome chromosome){
-	int fitness = 0;
+float Creature::CalculateFitness(Chromosome chromosome){
+	float fitness = 0.0f;
+	/*
 	for (int i = 0; i < chromosome.GetGene().size(); ++i) {
 		fitness += abs(((int) chromosome.GetGene()[i]) - ((int) Chromosome::TARGET_[i]));
 	}
+	*/
+
+	for (int i = 0; i < chromosome.GetGene().size(); ++i){
+		fitness += chromosome.GetGene()[i];
+	}
+
 	return fitness;
 }

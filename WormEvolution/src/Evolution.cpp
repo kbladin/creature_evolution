@@ -57,7 +57,7 @@ Population Evolution::TournamentSelection(const Population &population) {
 		parents[i] = population[int_dist_index_(rng_.mt_rng_)];
 		for (int j = 0; j < TOURNAMENT_SIZE_; ++j) {
 			int idx = int_dist_index_(rng_.mt_rng_);
-			if(population[idx].GetFitness() < 
+			if(population[idx].GetFitness() > 
 										parents[i].GetFitness()) {
 				parents[i] = population[idx];
 			}

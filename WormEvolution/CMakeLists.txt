@@ -119,7 +119,7 @@ if (test)
   ##############
   # Unit Tests
   ##############
-  add_executable(runUnitTests test/CreatureTest.cpp)
+  add_executable(runUnitTests test/CreatureTest.cpp test/ChromosomeTest.cpp)
   set_target_properties(runUnitTests PROPERTIES COMPILE_FLAGS "-std=gnu++11")
 
   # Standard linking to gtest stuff.
