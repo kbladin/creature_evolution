@@ -67,11 +67,20 @@ int main (int argc, char** argv) {
 
 void render()
 {
+	glClear(GL_COLOR_BUFFER_BIT);
+
 	//transforms
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	glScalef(0.1,0.1,0.1);
 	glRotatef(30.0, 0.5, 1.0, 0.0);
+
+
+	glBegin(GL_LINES);
+	    glColor3f(1, 0, 0);
+	    glVertex3d(0, 0, 0);
+	    glVertex3d(1, 1, 0);
+	glEnd();
 
 	//draw scene
 	render_engine->render();
