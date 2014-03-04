@@ -1,11 +1,10 @@
 #ifndef WORMBULLETCREATURE_H
 #define WORMBULLETCREATURE_H
 
+#include <cmath>
+#include <iostream>
 #include <vector>
-
 #include <btBulletDynamicsCommon.h>
-
-#include "Creature.h"
 
 class WormBulletCreature {
 public:

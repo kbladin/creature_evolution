@@ -1,6 +1,4 @@
 #include "WormBulletCreature.h"
-#include <cmath>
-#include <iostream>
 
 WormBulletCreature::WormBulletCreature(const std::vector<float> genes, btDiscreteDynamicsWorld* world, const btVector3& position)
 {

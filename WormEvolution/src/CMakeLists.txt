@@ -1,5 +1,6 @@
+add_subdirectory(include)
 file(GLOB SOURCES *.cpp)
-file(GLOB HEADERS *.h)
+#file(GLOB HEADERS *.h)
 file(GLOB to_remove Main.cpp)
 
 list(REMOVE_ITEM SOURCES ${to_remove})

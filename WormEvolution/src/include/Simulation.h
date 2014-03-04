@@ -5,7 +5,6 @@
 
 #include "WormBulletCreature.h"
 
-
 class Simulation
 {
 public:

@@ -7,7 +7,7 @@
 #include <iomanip>
 #include <string>
 
-
+#include "Simulation.h"
 #include "Chromosome.h"
 #include "AutoInitRNG.h"
 
