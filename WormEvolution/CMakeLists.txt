@@ -6,42 +6,32 @@ project(CreatureEvolution)
 option(test "Build all tests." OFF) # Makes boolean 'test' available.
 
 set(ctEvo CreatureEvolution)
+# set path to custom find modules
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/Modules)
 
 # Bullet is a completely external library, not included in the source control
-# (because of size) this is generally only required for Windows, OSX finds it # automagically
-set(BULLET_ROOT $ENV{BULLET_ROOT})
+# (because of size) this is generally only required for Windows, OSX finds it automagically
+
+#NOTE: this is probably stupid (non-general)
+if(MSVC)
+  set(BULLET_ROOT $ENV{BULLET_ROOT})
+endif(MSVC)
 
 if(MSVC)
   set(CMAKE_CXX_FLAGS_RELEASE "/MT")
   set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
 endif(MSVC)
 
-# freeglut and glew are included in source control
-# set(FREEGLUT_ROOT "../libs/freeglut")
-# set(GLEW_ROOT "../libs/glew")
-
-# set path to custom find modules
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/Modules)
-
 # find FreeGLUT, BULLET, GLEW for OSX and Windows
 find_package(BULLET REQUIRED)
-# find_package(GLUT REQUIRED)
 find_package(OPENGL REQUIRED)
-find_package(GLEW REQUIRED)
-find_package(GLFW3 REQUIRED)
+find_package(SFML 2 REQUIRED system window graphics network audio)
+find_package(SFGUI REQUIRED)
 
-if(APPLE)
-  find_package(PkgConfig REQUIRED)
-  pkg_search_module(GLFW REQUIRED glfw3)
-  find_library(OPENGL_FRAMEWORK OpenGL)
-  find_library(COCOA_FRAMEWORK Cocoa)
-endif(APPLE)
-
-# include_directories(${GLUT_INCLUDE_DIRS})
-include_directories(${BULLET_INCLUDE_DIR})
-include_directories(${GLEW_INCLUDE_DIRS})
-include_directories(${GLFW_INCLUDE_DIRS})
 include_directories(${OPENGL_INCLUDE_DIR})
+include_directories(${BULLET_INCLUDE_DIR})
+include_directories(${SFML_INCLUDE_DIR})
+include_directories(${SFGUI_INCLUDE_DIR})
 
 # If you want your own include/ directory, set this, and then you can do
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/src/include)
@@ -57,45 +47,24 @@ set(MAIN "src/Main.cpp")
 # link main file to executable
 add_executable(${ctEvo} ${MAIN})
 
+set_target_properties(CreatureEvolution_lib PROPERTIES COMPILE_FLAGS "-std=c++11")
+set_target_properties(${ctEvo} PROPERTIES COMPILE_FLAGS "-std=c++11")
+
 # this is defined in the sub directory src/
 target_link_libraries(${ctEvo} CreatureEvolution_lib)
 
+# Linking Bullet. NOTE: For now, no debug libraries
+target_link_libraries(${sfguihw} ${BULLET_DYNAMICS_LIBRARY} ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
 
-######### BULLET LIBRARIES #########
-if(APPLE)
-  target_link_libraries(${ctEvo} optimized ${BULLET_DYNAMICS_LIBRARY})
-  target_link_libraries(${ctEvo} optimized ${BULLET_COLLISION_LIBRARY})
-  target_link_libraries(${ctEvo} optimized ${BULLET_MATH_LIBRARY}) 
-endif(APPLE)
 
-if(WIN32)
-  target_link_libraries(${ctEvo} debug ${BULLET_DYNAMICS_LIBRARY_DEBUG})
-  target_link_libraries(${ctEvo} optimized ${BULLET_DYNAMICS_LIBRARY})
-  target_link_libraries(${ctEvo} debug ${BULLET_COLLISION_LIBRARY_DEBUG})
-  target_link_libraries(${ctEvo} optimized ${BULLET_COLLISION_LIBRARY})
-  target_link_libraries(${ctEvo} debug ${BULLET_MATH_LIBRARY_DEBUG})
-  target_link_libraries(${ctEvo} optimized ${BULLET_MATH_LIBRARY}) 
-endif(WIN32)
-####################################
-
-############# GLFW3 ################
-target_link_libraries(${ctEvo} ${GLFW_LIBRARIES})
-target_link_libraries(${ctEvo} ${OPENGL_LIBRARIES})
+# Linking OpenGL, SFML, SFGui
+target_link_libraries(${sfguihw} ${SFML_LIBRARIES} ${SFGUI_LIBRARY} ${OPENGL_LIBRARIES})
 
 ######### OPENGL LIBRARY (ONLY FOR OSX) #############
 if(APPLE)
   target_link_libraries(${ctEvo} ${OPENGL_FRAMEWORK} ${COCOA_FRAMEWORK})
 endif(APPLE)
 ####################################
-
-######### GLEW LIBRARY #############
-target_link_libraries(${ctEvo} ${GLEW_LIBRARY})
-####################################
-
-# TODO:
-# 1. post-build scripts to move dll/binaries to output folders for MSVC
-# and OSX
-
 
 ################################
 # Testing
