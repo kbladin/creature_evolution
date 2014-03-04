@@ -3,11 +3,12 @@
 
 #include <cmath>
 #include <ctime>
-#include "Chromosome.h"
-#include "AutoInitRNG.h"
 #include <iostream>
 #include <iomanip>
 #include <string>
+
+#include "Chromosome.h"
+#include "AutoInitRNG.h"
 
 class Creature {
 private:
