@@ -2,12 +2,16 @@
 #include <cmath>
 #include <iostream>
 
-WormBulletCreature::WormBulletCreature(int segment_count, btDiscreteDynamicsWorld* world, const btVector3& position)
+WormBulletCreature::WormBulletCreature(const std::vector<float> genes, btDiscreteDynamicsWorld* world, const btVector3& position)
 {
+	genes_ = genes;
+	int segment_count = genes_.size()/4;
+
 	m_bodies_.resize(segment_count);
 	m_joints_.resize(segment_count-1);
 	dynamics_world_ = world;
 	
+
 	//world position
 	btTransform offset;
 	offset.setIdentity();
@@ -86,18 +90,35 @@ WormBulletCreature::~WormBulletCreature(void)
 
 void WormBulletCreature::updateMovement(float time)
 {
-	float impulse = 10.0;
-	float target_velocity = 20.0;
-	float wavelength = 10.0;
-	float speed = 3.0;
-
-	float radians_moved = speed*(float)time;
+	float max_impulse = 10.0;
+	float max_velocity = 20;
+	float max_a_velocity = 3.0;
+	float max_a_phase = SIMD_PI;
 
 	for(int i=0; i < m_joints_.size(); i++)
 	{
-		float delay = ((float)i*SIMD_PI*2)/wavelength;
-		m_joints_[i]->enableAngularMotor(true, target_velocity*sin(radians_moved + delay) , impulse);
+		float velocity = max_velocity*genes_[i*4];
+		float a_velocity = max_a_velocity*genes_[i*4 + 1];
+		float a_phase = max_a_phase*genes_[i*4 + 2];
+		float impulse = max_impulse*genes_[i*4 + 3];
+
+		m_joints_[i]->enableAngularMotor(true, velocity*sin(a_velocity*time + a_phase) , impulse);
 
 		//if(i == 0) std::cout << sin(radians_moved + delay) << std::endl;
 	}
+}
+
+btVector3 WormBulletCreature::getCenterOfMass()
+{
+	btVector3 center_of_mass = btVector3(0.0,0.0,0.0);
+	for(int i=0; i < m_bodies_.size(); i++)
+	{
+		btTransform trans;
+		m_bodies_[i]->getMotionState()->getWorldTransform(trans);
+
+		center_of_mass += trans.getOrigin();
+	}
+	center_of_mass /= m_bodies_.size();
+
+	return center_of_mass;
 }

@@ -34,8 +34,7 @@ int main (int argc, char** argv) {
 	if (!glfwInit())
 		exit(EXIT_FAILURE);
 	window = glfwCreateWindow(800, 600, "Simple example", NULL, NULL);
-	if (!window)
-	{
+	if (!window) {
 		glfwTerminate();
 		exit(EXIT_FAILURE);
 	}
@@ -65,19 +64,17 @@ int main (int argc, char** argv) {
 	return 0;
 }
 
-void render()
-{
+void render() {
 	//transforms
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	glScalef(0.1,0.1,0.1);
-	glRotatef(30.0, 0.5, 1.0, 0.0);
+	glRotatef(90.0, 0.0, 1.0, 0.0);
 
 	//draw scene
 	render_engine->render();
 }
 
-void update()
-{
+void update() {
 	helloWorld->step();
 }

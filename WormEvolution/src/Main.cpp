@@ -2,6 +2,7 @@
 #include "Evolution.h"
 #include "Creature.h"
 #include <iostream>
+#include <algorithm>
 
 int main(){
 	const int population_size = 2048;
