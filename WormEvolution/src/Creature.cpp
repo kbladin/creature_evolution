@@ -47,15 +47,13 @@ float Creature::CalculateFitness(Chromosome chromosome){
 		fitness += abs(((int) chromosome.GetGene()[i]) - ((int) Chromosome::TARGET_[i]));
 	}
 	*/
-
 	/*
 	for (int i = 0; i < chromosome.GetGene().size(); ++i){
 		fitness += chromosome.GetGene()[i];
-	}
-	*/
+	}*/
 
 	Simulation sim(chromosome.GetGene());
-	for (int i = 0; i < 20*60*10; ++i){
+	for (int i = 0; i < 20*60; ++i){
 		sim.step();
 	}
 	fitness = sim.getFitnessValue();
