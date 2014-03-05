@@ -17,7 +17,7 @@ public:
 
 	static Chromosome random();
 
-	static const int GENE_LENGTH = 40;
+	static const int GENE_LENGTH = 12; //Worm length * 4 - 1
 
 private:
 	std::vector<float> gene_code_;
