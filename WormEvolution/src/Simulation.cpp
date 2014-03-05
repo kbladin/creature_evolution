@@ -29,9 +29,6 @@ Simulation::Simulation()
 
 Simulation::~Simulation(void)
 {
-
-	//delete worm_;
-
 	dynamics_world_->removeRigidBody(ground_rigid_body_);
 	delete ground_rigid_body_->getMotionState();
 	delete ground_rigid_body_;
@@ -65,19 +62,13 @@ void Simulation::RemoveCreatureFromWorld(WormBulletCreature* worm){
 void Simulation::Step(float dt)
 {
 	for (int i = 0; i < creatures_.size(); ++i){
-		creatures_[i]->UpdateMovement((float)counter_/60.0);
+		creatures_[i]->UpdateMovement(counter_);
 	}
-	dynamics_world_->stepSimulation(1/60.f,1000);
-	counter_++;
+	dynamics_world_->stepSimulation(dt,1000);
+	counter_ += dt;
 }
 
 btDiscreteDynamicsWorld* Simulation::GetDynamicsWorld()
 {
 	return dynamics_world_;
 }
-/*
-float Simulation::getFitnessValue()
-{
-	return worm_->getCenterOfMass().getZ();
-}
-*/

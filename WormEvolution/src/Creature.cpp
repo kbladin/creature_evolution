@@ -49,7 +49,7 @@ float Creature::CalculateFitness(Chromosome chromosome){
 	int fps = 60;
 	int n_seconds = 40;
 	for (int i = 0; i < fps*n_seconds; ++i){
-		sim.Step(1/fps);
+		sim.Step(1/float(fps));
 	}
 	float fitness = worm->GetFitnessValue();
 

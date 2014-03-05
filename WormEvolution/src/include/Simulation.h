@@ -39,7 +39,7 @@ private:
 	btDefaultMotionState* fall_motion_state_;
 	btScalar mass_;
 
-	int counter_;
+	float counter_;
 };
 
 
