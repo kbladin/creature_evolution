@@ -18,10 +18,8 @@ public:
 	void Step(float dt);
 	void DebugDraw();
 	btDiscreteDynamicsWorld* GetDynamicsWorld();
-	//float getFitnessValue();
 
 private:
-	//WormBulletCreature* worm_;
 	std::vector<WormBulletCreature*> creatures_;
 
 	btBroadphaseInterface* broad_phase_;
