@@ -57,7 +57,7 @@ Simulation::~Simulation(void)
 
 void Simulation::step()
 {
-	dynamicsWorld->stepSimulation(1/60.f,1000);
+	dynamicsWorld->stepSimulation(1/60.f,1);
 	worm->updateMovement((float)counter/60.0);
 	counter++;
 }

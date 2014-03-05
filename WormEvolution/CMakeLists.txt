@@ -54,11 +54,10 @@ set_target_properties(${ctEvo} PROPERTIES COMPILE_FLAGS "-std=c++11")
 target_link_libraries(${ctEvo} CreatureEvolution_lib)
 
 # Linking Bullet. NOTE: For now, no debug libraries
-target_link_libraries(${sfguihw} ${BULLET_DYNAMICS_LIBRARY} ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
-
+target_link_libraries(${ctEvo} ${BULLET_DYNAMICS_LIBRARY} ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
 
 # Linking OpenGL, SFML, SFGui
-target_link_libraries(${sfguihw} ${SFML_LIBRARIES} ${SFGUI_LIBRARY} ${OPENGL_LIBRARIES})
+target_link_libraries(${ctEvo} ${SFML_LIBRARIES} ${SFGUI_LIBRARY} ${OPENGL_LIBRARIES})
 
 ######### OPENGL LIBRARY (ONLY FOR OSX) #############
 if(APPLE)
@@ -96,6 +95,7 @@ if (test)
 
   # Extra linking for the project.
   target_link_libraries(runUnitTests CreatureEvolution_lib)
+  target_link_libraries(runUnitTests ${BULLET_DYNAMICS_LIBRARY} ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
 
   # This is so you can do 'make test' to see all your tests run, instead of
   # manually running the executable runUnitTests to see those specific tests.
