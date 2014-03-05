@@ -8,12 +8,14 @@
 
 class WormBulletCreature {
 public:
-	WormBulletCreature(const std::vector<float> genes, btDiscreteDynamicsWorld* world, const btVector3& position);
+	WormBulletCreature(const std::vector<float> genes, const btVector3& position);
 	~WormBulletCreature(void);
-	void updateMovement(float time);
-	btVector3 getCenterOfMass();
+	void AddToDynamicsWorld(btDiscreteDynamicsWorld* world);
+	void RemoveFromDynamicsWorld(btDiscreteDynamicsWorld* world);
+	void UpdateMovement(float time);
+	btVector3 GetCenterOfMass();
+	float GetFitnessValue();
 private:
-	btDiscreteDynamicsWorld* dynamics_world_;
 	btCollisionShape* m_shape_;
 	btScalar mass_;
 	std::vector<btRigidBody*> m_bodies_;

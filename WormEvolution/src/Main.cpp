@@ -73,7 +73,7 @@ int main(){
 
 
 
-
+/*
 	//The while true loop is so that the rendering can be re-done if
 	//it does not draw
 	//while (true) {
@@ -116,7 +116,7 @@ int main(){
 		glfwTerminate();
 
 	//}
-
+*/
 
 		exit(EXIT_SUCCESS);
 
@@ -152,5 +152,5 @@ void render() {
 }
 
 void update() {
-	helloWorld->step();
+	//helloWorld->step();
 }
