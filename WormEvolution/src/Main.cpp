@@ -21,7 +21,7 @@ int width, height;
 
 int main(){
 	const int population_size = 20;
-	const int max_generations = 100;
+	const int max_generations = 10;
 	const float crossover_ratio = 0.8f;
 	const float elitism_ratio = 0.2f;
 	const float mutation_ratio = 0.1f;
@@ -58,8 +58,8 @@ int main(){
 
 	std::cout << "Generation " << i << ": "<< best << std::endl;
 
-	std::cout << "Total time: " << std::clock() -start_time << 
-			" ms" << std::endl;
+	std::cout << "Total time: " << double( (std::clock() - start_time) / CLOCKS_PER_SEC ) << 
+			" s" << std::endl;
 
 
 
