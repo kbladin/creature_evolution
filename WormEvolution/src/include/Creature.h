@@ -11,6 +11,12 @@
 #include "Chromosome.h"
 #include "AutoInitRNG.h"
 
+//! A definition of a creature.
+
+/*!
+A creature contains of a chromosome and a fitness value. 
+*/
+
 class Creature {
 private:
 	Chromosome chromosome_;
