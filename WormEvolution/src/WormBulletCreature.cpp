@@ -1,13 +1,11 @@
 #include "WormBulletCreature.h"
 
-WormBulletCreature::WormBulletCreature(const std::vector<float> genes, btDiscreteDynamicsWorld* world, const btVector3& position)
-{
+WormBulletCreature::WormBulletCreature(const std::vector<float> genes, const btVector3& position) {
 	genes_ = genes;
 	int segment_count = genes_.size()/4;
 
 	m_bodies_.resize(segment_count+1);
 	m_joints_.resize(segment_count);
-	dynamics_world_ = world;
 	
 
 	//world position
@@ -25,8 +23,7 @@ WormBulletCreature::WormBulletCreature(const std::vector<float> genes, btDiscret
 
 	btDefaultMotionState* motion_state;
 	btTransform transform;
-	for(int i=0; i < m_bodies_.size(); i++)
-	{
+	for(int i=0; i < m_bodies_.size(); i++) {
 		transform.setIdentity();
 		transform.setOrigin(btVector3(btScalar(0.), btScalar(0.), btScalar(i*shape_radius*2)));
 
@@ -34,19 +31,16 @@ WormBulletCreature::WormBulletCreature(const std::vector<float> genes, btDiscret
 		btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass_,motion_state,m_shape_,fallInertia);
 		m_bodies_[i] = new btRigidBody(fallRigidBodyCI);
 		m_bodies_[i]->setFriction(0.1f);
-		dynamics_world_->addRigidBody(m_bodies_[i]);
 
 		//damping
 		//m_bodies_[i]->setDamping(0.05f, 0.85f);
 		//m_bodies_[i]->setDeactivationTime(0.8f);
 		//m_bodies_[i]->setSleepingThresholds(1.6f, 2.5f);
 	}
-
 	
 	//setup joints
 	btTransform localA, localB;
-	for(int i=0; i < m_joints_.size(); i++)
-	{
+	for(int i=0; i < m_joints_.size(); i++) {
 		localA.setIdentity();
 		localB.setIdentity();
 
@@ -58,54 +52,64 @@ WormBulletCreature::WormBulletCreature(const std::vector<float> genes, btDiscret
 		
 		m_joints_[i] = new btHingeConstraint(*(m_bodies_[i]), *(m_bodies_[i+1]), localA, localB);
 		m_joints_[i]->setLimit(btScalar(-SIMD_PI*0.15), btScalar(SIMD_PI*0.15));
-		
-		dynamics_world_->addConstraint(m_joints_[i], true);
 	}
 }
 
 
-WormBulletCreature::~WormBulletCreature(void)
-{
-	for(int i=0; i < m_joints_.size(); i++)
-	{
-		dynamics_world_->removeConstraint(m_joints_[i]);
+WormBulletCreature::~WormBulletCreature(void){
+	for(int i=0; i < m_joints_.size(); i++){
 		delete m_joints_[i];
 		m_joints_[i] = 0;
 	}
 
-	for(int i=0; i < m_bodies_.size(); i++)
-	{
-		dynamics_world_->removeRigidBody(m_bodies_[i]);
+	for(int i=0; i < m_bodies_.size(); i++){
 		delete m_bodies_[i]->getMotionState();
-
 		delete m_bodies_[i];
 		m_bodies_[i] = 0;
 	}
 	delete m_shape_;
 }
 
-void WormBulletCreature::updateMovement(float time)
+void WormBulletCreature::AddToDynamicsWorld(btDiscreteDynamicsWorld* world){
+	//Add bodies
+	for(int i=0; i < m_bodies_.size(); i++){
+		world->addRigidBody(m_bodies_[i]);
+	}
+	//Add joints
+	btTransform localA, localB;
+	for(int i=0; i < m_joints_.size(); i++){
+		world->addConstraint(m_joints_[i], true);
+	}
+}
+
+void WormBulletCreature::RemoveFromDynamicsWorld(btDiscreteDynamicsWorld* dynamics_world){
+	for(int i=0; i < m_joints_.size(); i++){
+		dynamics_world->removeConstraint(m_joints_[i]);
+	}
+
+	for(int i=0; i < m_bodies_.size(); i++){
+		dynamics_world->removeRigidBody(m_bodies_[i]);
+	}
+}
+
+void WormBulletCreature::UpdateMovement(float time)
 {
 	float max_impulse = 10.0;
 	float max_velocity = 20;
 	float max_a_velocity = 3.0;
 	float max_a_phase = 2*SIMD_PI;
 
-	for(int i=0; i < m_joints_.size(); i++)
-	{
+	for(int i=0; i < m_joints_.size(); i++){
 		float velocity = max_velocity*genes_[i*4];
 		float a_velocity = max_a_velocity*genes_[i*4 + 1];
 		float a_phase = max_a_phase*genes_[i*4 + 2];
 		float impulse = max_impulse*genes_[i*4 + 3];
 
 		m_joints_[i]->enableAngularMotor(true, velocity*sin(a_velocity*time + a_phase) , impulse);
-
-		//if(i == 0) std::cout << sin(radians_moved + delay) << std::endl;
 	}
 }
 
-btVector3 WormBulletCreature::getCenterOfMass()
-{
+btVector3 WormBulletCreature::GetCenterOfMass(){
 	btVector3 center_of_mass = btVector3(0.0,0.0,0.0);
 	for(int i=0; i < m_bodies_.size(); i++)
 	{
@@ -117,4 +121,8 @@ btVector3 WormBulletCreature::getCenterOfMass()
 	center_of_mass /= m_bodies_.size();
 
 	return center_of_mass;
+}
+
+float WormBulletCreature::GetFitnessValue(){
+	return GetCenterOfMass().getZ();
 }

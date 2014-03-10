@@ -20,15 +20,11 @@ Renderer* render_engine;
 int width, height;
 
 int main(){
-	
-
-
-
 	const int population_size = 20;
 	const int max_generations = 2;
 	const float crossover_ratio = 0.8f;
 	const float elitism_ratio = 0.2f;
-	const float mutation_ratio = 0.1f;
+	const float mutation_ratio = 0.8f;
 
 	std::clock_t start_time;
 	start_time = std::clock();
@@ -50,20 +46,25 @@ int main(){
 	Creature best = population[0]; // den bästa tas fram
 
 	while( (++i < max_generations) && (best.GetFitness() < 30) ) {
-		//std:: cout << "Generation " << i << ": " << best << std::endl;
-		// Trying some other mating and mutating with nextGenerationMixedMating.
-		std::cout << "Generation : " << i << std::endl;
 
 		population = ev.nextGeneration(population);
 
 		std::sort(population.begin(), population.end(), CreatureLargerThan());
 		best = population[0];
+
+		//std:: cout << "Generation " << i << ": " << best << std::endl;
+		// Trying some other mating and mutating with nextGenerationMixedMating.
+		std::cout << "Generation : " << i << std::endl;
+		std::cout << "Best fitness : " << best.GetFitness() << std::endl;
 	}
 
 	std::cout << "Generation " << i << ": "<< best << std::endl;
 
-	std::cout << "Total time: " << std::clock() -start_time << 
-			" ms" << std::endl;
+	std::cout << "Total time: " << double( (std::clock() - start_time) / CLOCKS_PER_SEC ) << 
+			" s" << std::endl;
+
+
+
 
 
 	
@@ -87,11 +88,18 @@ int main(){
 	opengl_window->Add( opengl_canvas );
 	opengl_canvas->SetRequisition( sf::Vector2f( 200.f, 150.f ) );
 
-	//initalize simulation
-	helloWorld = new Simulation(population[0].GetChromosome().GetGene());
 
-	//initialize debugDrawer for simulation
-	render_engine = new Renderer(helloWorld, true);
+	//The while true loop is so that the rendering can be re-done if
+	//it does not draw
+	//while (true) {
+		//initalize simulation
+		//helloWorld = new Simulation(best.GetChromosome().GetGene());
+		WormBulletCreature *worm = new WormBulletCreature(best.GetChromosome().GetGene(), btVector3(0,0,0));
+		helloWorld = new Simulation(); 
+		helloWorld->AddCreatureToWorld(worm);
+
+		//initialize debugDrawer for simulation
+		render_engine = new Renderer(helloWorld, true);
 
 	// Create a desktop to contain our Windows.
 	sfg::Desktop desktop;
@@ -132,11 +140,7 @@ int main(){
 		opengl_canvas->Bind();
 		opengl_canvas->Clear( sf::Color( 0, 0, 0, 0 ), true );
 
-		update();
-		//render();
-
-		///////
-
+		helloWorld->Step(1/60.0f);
 
 		//transforms
 		/*glEnable( GL_DEPTH_TEST );
@@ -147,15 +151,6 @@ int main(){
 		glLoadIdentity();
 		
 		glScalef(0.1,0.1,0.1);
-		//glRotatef(90.0, 0.0, 1.0, 0.0);
-
-/*		glBegin(GL_LINES);
-		    glColor3f(1, 0, 0);
-		    glVertex3d(0, 0, 0);
-		    glVertex3d(1, 1, 0);
-		glEnd();
-
-*/
 
 		glViewport( 0, 0, static_cast<int>( opengl_canvas->GetAllocation().width ), static_cast<int>( opengl_canvas->GetAllocation().height ) );	
 
@@ -181,6 +176,8 @@ int main(){
 
 	}
 
+	helloWorld->RemoveCreatureFromWorld(worm);
+	delete worm; 
 	delete helloWorld;
 	delete render_engine;
 
@@ -190,9 +187,9 @@ int main(){
 }
 
 void render() {
-    
+
 }
 
 void update() {
-	helloWorld->step();
+	//helloWorld->step();
 }

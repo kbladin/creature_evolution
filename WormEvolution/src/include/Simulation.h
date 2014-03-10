@@ -2,39 +2,44 @@
 #define SIMULATION_H
 
 #include <btBulletDynamicsCommon.h>
+#include <algorithm>
 
 #include "WormBulletCreature.h"
+
+
 
 class Simulation
 {
 public:
-	Simulation(std::vector<float> genes);
+	Simulation();
 	~Simulation(void);
-	void step();
-	void debugDraw();
-	btDiscreteDynamicsWorld* getDynamicsWorld();
-	float getFitnessValue();
+	void AddCreatureToWorld(WormBulletCreature* worm);
+	void RemoveCreatureFromWorld(WormBulletCreature* worm);
+	void Step(float dt);
+	void DebugDraw();
+	btDiscreteDynamicsWorld* GetDynamicsWorld();
+	//float getFitnessValue();
 
 private:
-	WormBulletCreature* worm;
+	//WormBulletCreature* worm_;
+	std::vector<WormBulletCreature*> creatures_;
 
-	btBroadphaseInterface* broadphase;
-	btDefaultCollisionConfiguration* collisionConfiguration;
-	btCollisionDispatcher* dispatcher;
-	btSequentialImpulseConstraintSolver* solver;
-	btDiscreteDynamicsWorld* dynamicsWorld;
+	btBroadphaseInterface* broad_phase_;
+	btDefaultCollisionConfiguration* collision_configuration_;
+	btCollisionDispatcher* dispatcher_;
+	btSequentialImpulseConstraintSolver* solver_;
+	btDiscreteDynamicsWorld* dynamics_world_;
 
-	btCollisionShape* groundShape;
+	btCollisionShape* ground_shape_;
 
-	btDefaultMotionState* groundMotionState;
-	btRigidBody* groundRigidBody;
-
-
-	btDefaultMotionState* fallMotionState;
-	btScalar mass;
+	btDefaultMotionState* ground_motion_state_;
+	btRigidBody* ground_rigid_body_;
 
 
-	int counter;
+	btDefaultMotionState* fall_motion_state_;
+	btScalar mass_;
+
+	float counter_;
 };
 
 
