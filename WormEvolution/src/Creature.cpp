@@ -42,14 +42,19 @@ std::vector<Chromosome> Creature::Crossover(Creature mate, float crossover){
 // är beroeden på vad vi vill ha för fitnesscriteria, vår simulering. 
 float Creature::CalculateFitness(Chromosome chromosome){
 
+	WormBulletCreature* worm = new WormBulletCreature(chromosome.GetGene(), btVector3(0.0, 1.0, 0.0));
+	Simulation sim;
+	sim.AddCreatureToWorld(worm);
+
 	int fps = 60;
 	int n_seconds = 40;
-
-	Simulation sim(chromosome.GetGene());
 	for (int i = 0; i < fps*n_seconds; ++i){
-		sim.step();
+		sim.Step(1/float(fps));
 	}
-	float fitness = sim.getFitnessValue();
+	float fitness = worm->GetFitnessValue();
+
+	sim.RemoveCreatureFromWorld(worm);
+	delete worm;
 
 	return fitness;
 }

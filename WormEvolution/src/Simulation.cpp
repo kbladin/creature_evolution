@@ -6,68 +6,69 @@
 #include <vector>
 
 
-Simulation::Simulation(std::vector<float> genes)
+Simulation::Simulation()
 {
-	counter = 0;
+	counter_ = 0;
 
 	//init world
-	broadphase = new btDbvtBroadphase();
-	collisionConfiguration = new btDefaultCollisionConfiguration();
-	dispatcher = new btCollisionDispatcher(collisionConfiguration);
-	solver = new btSequentialImpulseConstraintSolver;
-	dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher,broadphase,solver,collisionConfiguration);
+	broad_phase_ = new btDbvtBroadphase();
+	collision_configuration_ = new btDefaultCollisionConfiguration();
+	dispatcher_ = new btCollisionDispatcher(collision_configuration_);
+	solver_ = new btSequentialImpulseConstraintSolver;
+	dynamics_world_ = new btDiscreteDynamicsWorld(dispatcher_,broad_phase_,solver_,collision_configuration_);
 
 	//environment
-	dynamicsWorld->setGravity(btVector3(0,-10,0));
-	groundShape = new btStaticPlaneShape(btVector3(0,1,0),1);
-	groundMotionState = new btDefaultMotionState(btTransform(btQuaternion(0,0,0,1),btVector3(0,-1,0)));
-	btRigidBody::btRigidBodyConstructionInfo groundRigidBodyCI(0,groundMotionState,groundShape,btVector3(0,0,0));
-	groundRigidBody = new btRigidBody(groundRigidBodyCI);
-	groundRigidBody->setFriction(1.0f);
-	dynamicsWorld->addRigidBody(groundRigidBody);
-
-
-	//creature
-
-	//test vector
-	worm = new WormBulletCreature(genes, dynamicsWorld, btVector3(0.0,1.0,0.0));
-
+	dynamics_world_->setGravity(btVector3(0,-10,0));
+	ground_shape_ = new btStaticPlaneShape(btVector3(0,1,0),1);
+	ground_motion_state_ = new btDefaultMotionState(btTransform(btQuaternion(0,0,0,1),btVector3(0,-1,0)));
+	btRigidBody::btRigidBodyConstructionInfo ground_rigid_bodyCI(0,ground_motion_state_,ground_shape_,btVector3(0,0,0));
+	ground_rigid_body_ = new btRigidBody(ground_rigid_bodyCI);
+	ground_rigid_body_->setFriction(1.0f);
+	dynamics_world_->addRigidBody(ground_rigid_body_);
 }
-
 
 Simulation::~Simulation(void)
 {
-	
-	delete worm;
+	dynamics_world_->removeRigidBody(ground_rigid_body_);
+	delete ground_rigid_body_->getMotionState();
+	delete ground_rigid_body_;
 
-	dynamicsWorld->removeRigidBody(groundRigidBody);
-	delete groundRigidBody->getMotionState();
-	delete groundRigidBody;
-
-	delete groundShape;
+	delete ground_shape_;
 
 
-	delete dynamicsWorld;
-	delete solver;
-	delete collisionConfiguration;
-	delete dispatcher;
-	delete broadphase;
-	
+	delete dynamics_world_;
+	delete solver_;
+	delete collision_configuration_;
+	delete dispatcher_;
+	delete broad_phase_;	
 }
 
-void Simulation::step()
-{
-	dynamicsWorld->stepSimulation(1/60.f,1000);
-	worm->updateMovement((float)counter/60.0);
-	counter++;
+void Simulation::AddCreatureToWorld(WormBulletCreature* worm){
+	creatures_.push_back(worm);
+	worm->AddToDynamicsWorld(GetDynamicsWorld());
 }
 
-btDiscreteDynamicsWorld* Simulation::getDynamicsWorld()
-{
-	return dynamicsWorld;
+void Simulation::RemoveCreatureFromWorld(WormBulletCreature* worm){
+	for( std::vector<WormBulletCreature*>::iterator iter = creatures_.begin(); iter != creatures_.end(); ++iter ) {
+	    if( *iter == worm ){
+			creatures_[iter - creatures_.begin()]->RemoveFromDynamicsWorld(GetDynamicsWorld());
+	        creatures_.erase(iter);
+	        return;
+	    }
+	}
+	std::cout << "Warning! Could not remove creature from the list of creatures!" << std::endl;
 }
 
-float Simulation::getFitnessValue()
+void Simulation::Step(float dt)
 {
-	return worm->getCenterOfMass().getZ();
+	for (int i = 0; i < creatures_.size(); ++i){
+		creatures_[i]->UpdateMovement(counter_);
+	}
+	dynamics_world_->stepSimulation(dt,1000);
+	counter_ += dt;
+}
+
+btDiscreteDynamicsWorld* Simulation::GetDynamicsWorld()
+{
+	return dynamics_world_;
 }
