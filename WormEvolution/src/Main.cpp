@@ -1,3 +1,5 @@
+
+// 🐢
 #include <ctime>
 #include "Evolution.h"
 #include "Creature.h"
@@ -19,6 +21,7 @@ Renderer* render_engine;
 int width, height;
 
 int main(){
+
 	const int population_size = 10;
 	const int max_generations = 10;
 	const float crossover_ratio = 0.8f;
@@ -53,7 +56,7 @@ int main(){
 
 		//std:: cout << "Generation " << i << ": " << best << std::endl;
 		// Trying some other mating and mutating with nextGenerationMixedMating.
-		std::cout << "Generation : " << i << std::endl;
+		std::cout << "🐢" << "Generation : " << i << std::endl;
 		std::cout << "Best fitness : " << best.GetFitness() << std::endl;
 	}
 
