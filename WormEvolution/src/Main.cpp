@@ -4,6 +4,7 @@
 #include <iostream>
 #include <algorithm>
 
+#include <GL/glew.h>
 #include <SFML/Graphics.hpp>
 #include <SFGUI/SFGUI.hpp>
 
@@ -19,8 +20,12 @@ Renderer* render_engine;
 int width, height;
 
 int main(){
+	
+
+
+
 	const int population_size = 20;
-	const int max_generations = 10;
+	const int max_generations = 2;
 	const float crossover_ratio = 0.8f;
 	const float elitism_ratio = 0.2f;
 	const float mutation_ratio = 0.1f;
@@ -61,6 +66,8 @@ int main(){
 			" ms" << std::endl;
 
 
+	
+
 
 	// Create the main SFML window
 	sf::RenderWindow app_window( sf::VideoMode( 800, 600 ), "SFGUI Canvas Example", sf::Style::Titlebar | sf::Style::Close );
@@ -91,6 +98,14 @@ int main(){
 	desktop.Add( opengl_window );
 
 	sf::Clock clock;
+
+	// Initialize GLEW
+	glewExperimental = true; // Needed for core profile
+	if (glewInit() != GLEW_OK) {
+		fprintf(stderr, "Failed to initialize GLEW\n");
+		return -1;
+	}
+
 
 	// Start the game loop
 	while ( app_window.isOpen() ) {
@@ -124,23 +139,23 @@ int main(){
 
 
 		//transforms
-		glEnable( GL_DEPTH_TEST );
+		/*glEnable( GL_DEPTH_TEST );
 		glDepthMask( GL_TRUE );
-		glDisable( GL_TEXTURE_2D );
+		glDisable( GL_TEXTURE_2D );*/
 		glMatrixMode(GL_MODELVIEW);
 
 		glLoadIdentity();
 		
 		glScalef(0.1,0.1,0.1);
-		glRotatef(90.0, 0.0, 1.0, 0.0);
+		//glRotatef(90.0, 0.0, 1.0, 0.0);
 
-		glBegin(GL_LINES);
+/*		glBegin(GL_LINES);
 		    glColor3f(1, 0, 0);
 		    glVertex3d(0, 0, 0);
 		    glVertex3d(1, 1, 0);
 		glEnd();
 
-
+*/
 
 		glViewport( 0, 0, static_cast<int>( opengl_canvas->GetAllocation().width ), static_cast<int>( opengl_canvas->GetAllocation().height ) );	
 
@@ -148,8 +163,8 @@ int main(){
 
 		glViewport( 0, 0, app_window.getSize().x, app_window.getSize().y );
 
-		glEnable( GL_TEXTURE_2D );
-		glDisable( GL_DEPTH_TEST );
+		//glEnable( GL_TEXTURE_2D );
+		//glDisable( GL_DEPTH_TEST );
 
 		///////
 
