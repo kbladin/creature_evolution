@@ -56,7 +56,7 @@ int main(){
 
 		//std:: cout << "Generation " << i << ": " << best << std::endl;
 		// Trying some other mating and mutating with nextGenerationMixedMating.
-		std::cout << "🐢" << "Generation : " << i << std::endl;
+		std::cout << "🐛" << "Generation : " << i << std::endl;
 		std::cout << "Best fitness : " << best.GetFitness() << std::endl;
 	}
 
