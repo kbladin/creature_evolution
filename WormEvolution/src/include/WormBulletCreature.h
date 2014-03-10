@@ -14,7 +14,6 @@ public:
 	void RemoveFromDynamicsWorld(btDiscreteDynamicsWorld* world);
 	void UpdateMovement(float time);
 	btVector3 GetCenterOfMass();
-	float GetFitnessValue();
 private:
 	btCollisionShape* m_shape_;
 	btScalar mass_;

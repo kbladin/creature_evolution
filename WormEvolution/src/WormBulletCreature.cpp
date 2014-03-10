@@ -122,7 +122,3 @@ btVector3 WormBulletCreature::GetCenterOfMass(){
 
 	return center_of_mass;
 }
-
-float WormBulletCreature::GetFitnessValue(){
-	return GetCenterOfMass().getZ();
-}

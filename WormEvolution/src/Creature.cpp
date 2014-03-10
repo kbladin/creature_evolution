@@ -51,7 +51,7 @@ float Creature::CalculateFitness(Chromosome chromosome){
 	for (int i = 0; i < fps*n_seconds; ++i){
 		sim.Step(1/float(fps));
 	}
-	float fitness = worm->GetFitnessValue();
+	float fitness = worm->GetCenterOfMass().getZ();
 
 	sim.RemoveCreatureFromWorld(worm);
 	delete worm;
