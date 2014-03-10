@@ -1,4 +1,5 @@
 #include "Renderer.h"
+#include <GL/glew.h>
 
 Renderer::Renderer(Simulation* sim, bool debug_mode)
 {
@@ -18,5 +19,7 @@ void Renderer::render()
 	if(debug)
 	{
 		debugDrawer->drawWorld();
+		debugDrawer->BufferSetup();
+		debugDrawer->DrawBuffers();
 	}
 }

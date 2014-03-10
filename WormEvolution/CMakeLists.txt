@@ -24,12 +24,14 @@ endif(MSVC)
 
 # find FreeGLUT, BULLET, GLEW for OSX and Windows
 find_package(BULLET REQUIRED)
-find_package(OPENGL REQUIRED)
+find_package(OpenGL REQUIRED)
+find_package(GLEW REQUIRED)
 find_package(SFML 2 REQUIRED system window graphics network audio)
 find_package(SFGUI REQUIRED)
 
 include_directories(${OPENGL_INCLUDE_DIR})
 include_directories(${BULLET_INCLUDE_DIR})
+include_directories(${GLEW_INCLUDE_DIR})
 include_directories(${SFML_INCLUDE_DIR})
 include_directories(${SFGUI_INCLUDE_DIR})
 
@@ -57,7 +59,7 @@ target_link_libraries(${ctEvo} CreatureEvolution_lib)
 target_link_libraries(${ctEvo} ${BULLET_DYNAMICS_LIBRARY} ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
 
 # Linking OpenGL, SFML, SFGui
-target_link_libraries(${ctEvo} ${SFML_LIBRARIES} ${SFGUI_LIBRARY} ${OPENGL_LIBRARIES})
+target_link_libraries(${ctEvo} ${GLEW_LIBRARY} ${SFML_LIBRARIES} ${SFGUI_LIBRARY} ${OPENGL_LIBRARIES})
 
 ######### OPENGL LIBRARY (ONLY FOR OSX) #############
 if(APPLE)

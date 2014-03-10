@@ -1,9 +1,9 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include <linearmath/btidebugdraw.h>
+#include <LinearMath/btIDebugDraw.h>
 #include "Simulation.h"
-#include "debugDraw.h"
+#include "DebugDraw.h"
 
 class Renderer
 {

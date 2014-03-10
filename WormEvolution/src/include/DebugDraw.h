@@ -1,7 +1,7 @@
 #ifndef DEBUGDRAW_H
 #define DEBUGDRAW_H
 
-#include <linearmath/btidebugdraw.h>
+#include <LinearMath/btIDebugDraw.h>
 #include "Simulation.h"
 
 class DebugDraw :
@@ -30,11 +30,15 @@ public:
 	virtual int     getDebugMode() const { return m_debugMode;}
 
 	void drawWorld();
+	void BufferSetup();
+	void DrawBuffers();
 
 private:
 	btDiscreteDynamicsWorld* dynamicsWorld;
 	unsigned int vbo_;
+	unsigned int vao_;
 
+	std::vector<float> lines_;
 };
 
 #endif // DEBUGDRAW_H

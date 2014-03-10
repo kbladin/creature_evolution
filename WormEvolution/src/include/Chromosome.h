@@ -6,6 +6,8 @@
 #include <iomanip>
 #include <string>
 
+//! A chromosome that a creature contains of. 
+
 class Chromosome {
 public:
 	Chromosome(std::vector<float> gene_code);

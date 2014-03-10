@@ -4,6 +4,7 @@
 #include <iostream>
 #include <algorithm>
 
+#include <GL/glew.h>
 #include <SFML/Graphics.hpp>
 #include <SFGUI/SFGUI.hpp>
 
@@ -21,7 +22,8 @@ int width, height;
 int main(){
 
 	const int population_size = 20;
-	const int max_generations = 10;
+	const int max_generations = 2;
+
 	const float crossover_ratio = 0.8f;
 	const float elitism_ratio = 0.2f;
 	const float mutation_ratio = 0.8f;
@@ -60,9 +62,14 @@ int main(){
 
 	std::cout << "Generation " << i << ": "<< best << std::endl;
 
-	std::cout << "Total time: " << std::clock() -start_time << 
-			" ms" << std::endl;
+	std::cout << "Total time: " << double( (std::clock() - start_time) / CLOCKS_PER_SEC ) << 
+			" s" << std::endl;
 
+
+
+
+
+	
 
 
 	// Create the main SFML window
@@ -84,13 +91,32 @@ int main(){
 	opengl_canvas->SetRequisition( sf::Vector2f( 200.f, 150.f ) );
 
 
+	//The while true loop is so that the rendering can be re-done if
+	//it does not draw
+	//while (true) {
+		//initalize simulation
+		//helloWorld = new Simulation(best.GetChromosome().GetGene());
+		WormBulletCreature *worm = new WormBulletCreature(best.GetChromosome().GetGene(), btVector3(0,0,0));
+		helloWorld = new Simulation(); 
+		helloWorld->AddCreatureToWorld(worm);
 
+		//initialize debugDrawer for simulation
+		render_engine = new Renderer(helloWorld, true);
 
 	// Create a desktop to contain our Windows.
 	sfg::Desktop desktop;
 	desktop.Add( opengl_window );
 
 	sf::Clock clock;
+
+	// Initialize GLEW
+	glewExperimental = true; // Needed for core profile
+	if (glewInit() != GLEW_OK) {
+		fprintf(stderr, "Failed to initialize GLEW\n");
+		return -1;
+	}
+    
+    std::cout << "OpenGL version: " << glGetString(GL_VERSION) << std::endl;
 
 	// Start the game loop
 	while ( app_window.isOpen() ) {
@@ -117,30 +143,17 @@ int main(){
 		opengl_canvas->Bind();
 		opengl_canvas->Clear( sf::Color( 0, 0, 0, 0 ), true );
 
-		update();
-		//render();
-
-		///////
-
+		helloWorld->Step(1/60.0f);
 
 		//transforms
-		glEnable( GL_DEPTH_TEST );
+		/*glEnable( GL_DEPTH_TEST );
 		glDepthMask( GL_TRUE );
-		glDisable( GL_TEXTURE_2D );
+		glDisable( GL_TEXTURE_2D );*/
 		glMatrixMode(GL_MODELVIEW);
 
 		glLoadIdentity();
 		
-		glScalef(0.1,0.1,0.1);
-		glRotatef(90.0, 0.0, 1.0, 0.0);
-
-		glBegin(GL_LINES);
-		    glColor3f(1, 0, 0);
-		    glVertex3d(0, 0, 0);
-		    glVertex3d(1, 1, 0);
-		glEnd();
-
-
+		//glScalef(0.1,0.1,0.1);
 
 		glViewport( 0, 0, static_cast<int>( opengl_canvas->GetAllocation().width ), static_cast<int>( opengl_canvas->GetAllocation().height ) );	
 
@@ -148,8 +161,8 @@ int main(){
 
 		glViewport( 0, 0, app_window.getSize().x, app_window.getSize().y );
 
-		glEnable( GL_TEXTURE_2D );
-		glDisable( GL_DEPTH_TEST );
+		//glEnable( GL_TEXTURE_2D );
+		//glDisable( GL_DEPTH_TEST );
 
 		///////
 
@@ -167,6 +180,9 @@ int main(){
 	}
 
 
+	helloWorld->RemoveCreatureFromWorld(worm);
+	delete worm; 
+
 	delete helloWorld;
 	delete render_engine;
 
@@ -177,7 +193,7 @@ int main(){
 
 
 void render() {
-    
+
 }
 
 void update() {
