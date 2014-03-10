@@ -2,6 +2,15 @@
 
 AutoInitRNG Evolution::rng_;
 
+//! Creates a evolution and stores the arguments.
+/*!
+	Stores the arguments for a evolution so that every generation 
+	will get the same constants.
+
+\param crossover_ratio How likely the creatures will crossover (mate)
+\param elitism_ratio How many creatures that will be transfered to the new generation.
+\param mutation_ratio The odds of the mutation of the genes.
+*/
 Evolution::Evolution(float crossover_ratio, float elitism_ratio, 
 		float mutation_ratio){
 	
@@ -10,14 +19,22 @@ Evolution::Evolution(float crossover_ratio, float elitism_ratio,
 	mutation_ = mutation_ratio;
 }
 
+//! A destructor
 Evolution::~Evolution(void){
 }
 
+
+//! Get the population and evolve the generation to get a new population. 
+/*! 
+	Take a generation (a population) we want to evolve to get the next generation from. 
+
+\param population The population we want to get a new generation from.
+\return A population is returned with the new creatures that have survived, borned and evolved..
+*/
 Population Evolution::nextGeneration(const Population &population ) {
 
 	int top_candidates_pivot = (int) (population.size() * elitism_);
 
-	// creates where the new population will be
 	Population buffer (&population[0], 
 		&population[top_candidates_pivot]);
 	buffer.resize(population.size());
@@ -28,25 +45,31 @@ Population Evolution::nextGeneration(const Population &population ) {
 
 		Population parents = TournamentSelection(population);
 
-		// mate the "parents" if crossover_ratio low, take the parents instead.
 		std::vector<Chromosome> children_chromosome = parents[0].Crossover(parents[1], crossover_);
 
-		// mutate the children?
 		children_chromosome[0].Mutate(mutation_);
 		children_chromosome[1].Mutate(mutation_); 
 
-		// create the creature with its fitness 
 		Creature child_1(children_chromosome[0]);
 		Creature child_2(children_chromosome[1]);
 
-		// add to the buffer.
 		buffer[count_new_population++] = child_1;
 		buffer[count_new_population++] = child_2;
 	}
 	return buffer; 
 }
 
-// Private class function. help to select the best parents
+//! Private class function that helps to select the best cretures in the population. 
+/*!
+
+The function uses the algorithm Tournament selection. It is running several "tournaments"
+among the creatures from the population. The winner of each tournament (the one with best fitness)
+is selected to be a parent (and maybe later use to crossover). The selection pressure is adjusted 
+by changing the TOURNAMENT_SIZE_. 
+
+\param population The population that we pick random creatures from to compete in the tournament. 
+\return A new population with the two parents.
+*/
 Population Evolution::TournamentSelection(const Population &population) {
 	Population parents;
 	parents.resize(2);
@@ -67,16 +90,22 @@ Population Evolution::TournamentSelection(const Population &population) {
 	return parents;
 }
 
-//	selects a creature from the population via roulette wheel selection
-//  each creature has a "slice" that is proportional to the fitness.
-// 	better fitness, higher chance to go trough but the best creature can die..
-// 	NOTE: take more time to go trough. så maybe not so good. 
+//! Private class function that helps to select the best creatures in the population. 
+/*!
+	Uses the algorithm roulette. Selects a creature from the population via wheel selection.
+	Each creature has "slice" that is proportional to the fitness. Better fitness, higher
+	chance to be choosen. 
+
+	NOTE: this algoritm take a litte more time to go through..
+
+\param population The population that we pick random creatures from
+\param total_fitness Total fitness of the population. May be calculated by function CalculateTotalFitness. 
+\return A new population with the two parents.
+*/
 Creature Evolution::Roulette(float total_fitness, const Population &population){
-	// generate a random number between 0 & total_fitness
 	std::uniform_real_distribution<float> float_dist_index_(0,total_fitness);
 	float slice = float_dist_index_(rng_.mt_rng_);
 
-	//go through the creatures adding up the fitness so far
 	float fitness_so_far = 0.0f;
 
 	for (int i=0; i<population.size(); ++i){
@@ -87,11 +116,17 @@ Creature Evolution::Roulette(float total_fitness, const Population &population){
 			return population[i]; 
 	}
 
-// should have gone trought the whole list, but if not the first object is returned
+	// should have gone trought the whole list, but if not the first object is returned
 	return population[0]; 
 }
 
-// Help function in roulette. 
+//! Help to the Roulette function
+/*!
+
+	Calculates the whole fitness in the population in order to get the "slices"
+	correct size in Roulette function. 
+\return The total fitness of the whole population.
+*/
 float Evolution::CalculateTotalFitness(const Population &population){
 	float total_fitness = 0.0f;
 

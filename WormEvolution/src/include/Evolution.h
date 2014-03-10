@@ -6,13 +6,15 @@
 #include <vector>
 #include <cassert>
 
-typedef std::vector<Creature> Population;  // define the population as a vector of creatures
+typedef std::vector<Creature> Population;
+
+//! Evolves a population based on elitism, mutation and crossover ratio.
 
 class Evolution {
 private:
-	const static int TOURNAMENT_SIZE_ = 3; // används i nextGen.
+	const static int TOURNAMENT_SIZE_ = 3;
 
-	float elitism_; // dessa kanske vara const istället?
+	float elitism_; 
 	float mutation_;
 	float crossover_;
 
@@ -24,10 +26,10 @@ private:
 
 public:
 	Evolution(float crossover_ratio, float elitism_ratio, 
-		float mutation_ratio);  // int size sen kanske? 
+		float mutation_ratio);
 	~Evolution(void); 
 
-	Population nextGeneration(const Population &population); // uppdaterar den nuvarande populationen?
+	Population nextGeneration(const Population &population); // uppdatera den nuvarande populationen sen kanske ist?
 };
 
 

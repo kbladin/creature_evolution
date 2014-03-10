@@ -2,7 +2,7 @@
 
 Renderer::Renderer(Simulation* sim, bool debug_mode)
 {
-	dynamicsWorld = sim->getDynamicsWorld();
+	dynamicsWorld = sim->GetDynamicsWorld();
 	debugDrawer = new DebugDraw(dynamicsWorld);
 	debug = debug_mode;
 }
