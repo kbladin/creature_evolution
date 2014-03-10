@@ -16,7 +16,7 @@ DebugDraw::~DebugDraw(void)
 
 void DebugDraw::drawLine(const btVector3& from,const btVector3& to,const btVector3& color)
 {
-
+/*
 	lines_.push_back(from.getX());
 	lines_.push_back(from.getY());
 	lines_.push_back(from.getZ());
@@ -24,12 +24,12 @@ void DebugDraw::drawLine(const btVector3& from,const btVector3& to,const btVecto
 	lines_.push_back(to.getX());
 	lines_.push_back(to.getY());
 	lines_.push_back(to.getZ());
-
-    /*glBegin(GL_LINES);
+*/
+    glBegin(GL_LINES);
         glColor3f(color.getX(), color.getY(), color.getZ());
         glVertex3d(from.getX(), from.getY(), from.getZ());
         glVertex3d(to.getX(), to.getY(), to.getZ());
-    glEnd();*/
+    glEnd();
 }
 
 void DebugDraw::drawWorld()
@@ -52,7 +52,6 @@ void DebugDraw::BufferSetup() {
 }
 
 void DebugDraw::DrawBuffers() {
-	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glBindVertexArray (vao_);
 	glDrawArrays (GL_LINES, 0, lines_.size());
 

@@ -157,6 +157,14 @@ int main(){
 
 		glViewport( 0, 0, static_cast<int>( opengl_canvas->GetAllocation().width ), static_cast<int>( opengl_canvas->GetAllocation().height ) );	
 
+        glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        
+        glColor3f(1, 0, 1);
+        glBegin(GL_LINES);
+        glVertex2d(0, 0);
+        glVertex2d(1, 1);
+        glEnd();
+        
 		render_engine->render();
 
 		glViewport( 0, 0, app_window.getSize().x, app_window.getSize().y );

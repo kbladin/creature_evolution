@@ -4,8 +4,11 @@
 #   GLEW_INCLUDE_DIRS - list of include directories
 #   GLEW_LIBRARIES - options for the linker
 
-find_package(PkgConfig)
-pkg_check_modules(PC_GLEW QUIET glew)
+if(APPLE)
+	find_package(PkgConfig)
+	pkg_check_modules(PC_GLEW QUIET glew)
+endif(APPLE)
+
 
 find_path(GLEW_INCLUDE_DIR
 	GL/glew.h
