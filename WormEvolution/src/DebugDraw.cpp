@@ -1,7 +1,6 @@
 #include "DebugDraw.h"
-#include "GL/glew.h"
 #include "Simulation.h"
-
+#include <SFML/OpenGL.hpp>
 
 DebugDraw::DebugDraw(btDiscreteDynamicsWorld* world)
 {
