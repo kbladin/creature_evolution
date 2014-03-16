@@ -1,0 +1,1724 @@
+// !$*UTF8*$!
+{
+       archiveVersion = 1;
+       classes = {
+       };
+       objectVersion = 46;
+       objects = {
+
+/* Begin PBXAggregateTarget section */
+              64FFF1F3A3EE433289766A3B /* ALL_BUILD */ = {
+                     isa = PBXAggregateTarget;
+                     buildConfigurationList = 6420D5F9978F46E0A7E22438 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+                     buildPhases = (
+                            176B1FF15389446892D9800E /* CMake Rules */,
+                     );
+                     dependencies = (
+                            ED80C0EF00574846902537E5 /* PBXTargetDependency */,
+                            0605D395402A4E349A84864E /* PBXTargetDependency */,
+                            3D60413CDF7849378C19A70D /* PBXTargetDependency */,
+                            B2038AFFD72A4F05A3A58252 /* PBXTargetDependency */,
+                            690B4052B27D4190928B4D8F /* PBXTargetDependency */,
+                            FA3C4AFB16974F9B912C72B8 /* PBXTargetDependency */,
+                     );
+                     name = ALL_BUILD;
+                     productName = ALL_BUILD;
+              };
+              D129746C81204C70A7EA4219 /* RUN_TESTS */ = {
+                     isa = PBXAggregateTarget;
+                     buildConfigurationList = 49984E52D3B4439892293E82 /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */;
+                     buildPhases = (
+                            2DA8A003909F4246B1E1A2B6 /* CMake PostBuild Rules */,
+                     );
+                     dependencies = (
+                     );
+                     name = RUN_TESTS;
+                     productName = RUN_TESTS;
+              };
+              63DDE80737F0498089FD496B /* ZERO_CHECK */ = {
+                     isa = PBXAggregateTarget;
+                     buildConfigurationList = 801004A5EB9E4F84891365E5 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+                     buildPhases = (
+                            31E2692046D04C539071A44E /* CMake Rules */,
+                     );
+                     dependencies = (
+                     );
+                     name = ZERO_CHECK;
+                     productName = ZERO_CHECK;
+              };
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+DEBE5469628544F9B5FBA534 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = A134A21F00D940C69BD1EAD9 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/CMakeLists.txt */; settings = { COMPILER_FLAGS = ""; }; };
+6A59758C8B8C4745BD0163AA /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Main.cpp */ = {isa = PBXBuildFile; fileRef = 3E36E40A31E34BF493A1DA4C /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Main.cpp */; settings = { COMPILER_FLAGS = ""; }; };
+420B388F132D4D9E9CBA3565 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = A134A21F00D940C69BD1EAD9 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/CMakeLists.txt */; settings = { COMPILER_FLAGS = ""; }; };
+745D523D55C44DBB9C71A299 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/ChromosomeTest.cpp */ = {isa = PBXBuildFile; fileRef = C9D97178A9B14E25A3986A61 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/ChromosomeTest.cpp */; settings = { COMPILER_FLAGS = ""; }; };
+11E3F6526B9441F085F1541B /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp */ = {isa = PBXBuildFile; fileRef = 6045964B31B74B22B008B42D /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp */; settings = { COMPILER_FLAGS = ""; }; };
+52EF7A4BD365408DACB27AEE /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/AutoInitRNG.cpp */ = {isa = PBXBuildFile; fileRef = A1768062CEE043218089372F /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/AutoInitRNG.cpp */; settings = { COMPILER_FLAGS = ""; }; };
+1A3957481ADE4E53B042A864 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = C93CCAC21179415A8308E862 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CMakeLists.txt */; settings = { COMPILER_FLAGS = ""; }; };
+DC2E7B8C9A3E4EDF9869ECB2 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp */ = {isa = PBXBuildFile; fileRef = 753CC503DB0240728EC05655 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp */; settings = { COMPILER_FLAGS = ""; }; };
+86B98024F345490684181A55 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp */ = {isa = PBXBuildFile; fileRef = 1163B356DA47451883BB93E8 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp */; settings = { COMPILER_FLAGS = ""; }; };
+4EBC75A5D546446D83A18EAF /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CreatureEvolution.cpp */ = {isa = PBXBuildFile; fileRef = FAC4B5AB1495451681A591EE /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CreatureEvolution.cpp */; settings = { COMPILER_FLAGS = ""; }; };
+827966BCEC8E4D7D965B96A4 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp */ = {isa = PBXBuildFile; fileRef = 09BA07CEA2824F0AAB19F4DA /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp */; settings = { COMPILER_FLAGS = ""; }; };
+D4A930F9D3314F05905C3626 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp */ = {isa = PBXBuildFile; fileRef = F22A44D3DA954570879DEE60 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp */; settings = { COMPILER_FLAGS = ""; }; };
+59E04C2015034D1887E64932 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Population.cpp */ = {isa = PBXBuildFile; fileRef = F72D5FF87E474DD492B0420D /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Population.cpp */; settings = { COMPILER_FLAGS = ""; }; };
+6FE31AF1723B45D49540D75C /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp */ = {isa = PBXBuildFile; fileRef = 47B3682E3ADA4004A2D408AD /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp */; settings = { COMPILER_FLAGS = ""; }; };
+A39CA3FEB7274895A89A35E2 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Shader.cpp */ = {isa = PBXBuildFile; fileRef = 8FA384D9D441420C9FB97DBD /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Shader.cpp */; settings = { COMPILER_FLAGS = ""; }; };
+2AF4AE2FB3EB430D90CF2251 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp */ = {isa = PBXBuildFile; fileRef = CC5808B4792C498DB955D122 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp */; settings = { COMPILER_FLAGS = ""; }; };
+7F5185B3B1A5463A99292BE4 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp */ = {isa = PBXBuildFile; fileRef = 0F8ED3388CCB4989B0DE82FA /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp */; settings = { COMPILER_FLAGS = ""; }; };
+2B0335AE4D1F43FFABF7542D /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/AutoInitRNG.h */ = {isa = PBXBuildFile; fileRef = D9B65E215FF34100AC8A8A21 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/AutoInitRNG.h */; settings = { COMPILER_FLAGS = ""; }; };
+CC2C787385E44CA08C3EA5EE /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h */ = {isa = PBXBuildFile; fileRef = 994B0D75A0F344EC8C2DA23E /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h */; settings = { COMPILER_FLAGS = ""; }; };
+E6C8DA4D2F99491C8693EFFB /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h */ = {isa = PBXBuildFile; fileRef = 214D2553974E4736816E6379 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h */; settings = { COMPILER_FLAGS = ""; }; };
+EF4E17B3F26E4A11991FF999 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/CreatureEvolution.h */ = {isa = PBXBuildFile; fileRef = 3A0DE7C2B46B40A0B8573CC1 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/CreatureEvolution.h */; settings = { COMPILER_FLAGS = ""; }; };
+4A2A11F5BDE044AFA84905F6 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/DebugDraw.h */ = {isa = PBXBuildFile; fileRef = 66B08ADB16B54C4482AF7467 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/DebugDraw.h */; settings = { COMPILER_FLAGS = ""; }; };
+7D6AE62313564E2380494EF0 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h */ = {isa = PBXBuildFile; fileRef = 2F8AEBB29FAC44F0BAEBB589 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h */; settings = { COMPILER_FLAGS = ""; }; };
+493F5F24595F43F690C86A5E /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Population.h */ = {isa = PBXBuildFile; fileRef = B6B1E1B6D87B4A94A2A8E9DD /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Population.h */; settings = { COMPILER_FLAGS = ""; }; };
+C60F33947AD34E16BBD54DC1 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Renderer.h */ = {isa = PBXBuildFile; fileRef = 9F3EF5B68AA9461AAA15618A /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Renderer.h */; settings = { COMPILER_FLAGS = ""; }; };
+7F6C292B61784B8088450B6D /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h */ = {isa = PBXBuildFile; fileRef = 7FD35AB3A1CD4A71898D0BCB /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h */; settings = { COMPILER_FLAGS = ""; }; };
+3850F05343C84FFE901E4F2B /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h */ = {isa = PBXBuildFile; fileRef = 1E1666C8F37F415881AE28C4 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h */; settings = { COMPILER_FLAGS = ""; }; };
+9ADB06489BD24019A5494847 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = FBCB13B642C3462BAC333C33 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/CMakeLists.txt */; settings = { COMPILER_FLAGS = ""; }; };
+D566D41C718D43BFBE5D526B /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest-all.cc */ = {isa = PBXBuildFile; fileRef = 16CF34E7F3114C5DBE95E916 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest-all.cc */; settings = { COMPILER_FLAGS = ""; }; };
+754D874F5645478C82C8C7B8 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = FBCB13B642C3462BAC333C33 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/CMakeLists.txt */; settings = { COMPILER_FLAGS = ""; }; };
+740D4BD5CA6E4E7AB2F0C5DA /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest_main.cc */ = {isa = PBXBuildFile; fileRef = E869960BEF8242E9A4CC394E /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest_main.cc */; settings = { COMPILER_FLAGS = ""; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+              3EBF822AC5D84D96B915B260 /*  */ = {
+                     isa = PBXBuildStyle;
+              };
+              6164A8687D3E431291FBD276 /* Debug */ = {
+                     isa = PBXBuildStyle;
+                     buildSettings = {
+                            COPY_PHASE_STRIP = NO;
+                     };
+                     name = Debug;
+              };
+              30DC4A65B0334DE68756B2DD /* Release */ = {
+                     isa = PBXBuildStyle;
+                     buildSettings = {
+                            COPY_PHASE_STRIP = NO;
+                     };
+                     name = Release;
+              };
+              167BC7F80EA94F69BB045C95 /* MinSizeRel */ = {
+                     isa = PBXBuildStyle;
+                     buildSettings = {
+                            COPY_PHASE_STRIP = NO;
+                     };
+                     name = MinSizeRel;
+              };
+              C40EC58D993B4BCD9088F786 /* RelWithDebInfo */ = {
+                     isa = PBXBuildStyle;
+                     buildSettings = {
+                            COPY_PHASE_STRIP = NO;
+                     };
+                     name = RelWithDebInfo;
+              };
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+              02B5C33A15324EF793A7621E /* PBXContainerItemProxy */ = {
+                     isa = PBXContainerItemProxy;
+                     containerPortal = 9E050CB470944E83904E6D6B /* Project object */;
+                     proxyType = 1;
+                     remoteGlobalIDString = 375D314DC82F4A5F90334D23;
+                     remoteInfo = runUnitTests;
+              };
+              EF821AA9FC224D1A9C98101E /* PBXContainerItemProxy */ = {
+                     isa = PBXContainerItemProxy;
+                     containerPortal = 9E050CB470944E83904E6D6B /* Project object */;
+                     proxyType = 1;
+                     remoteGlobalIDString = F8934783716B41159DD2F8D8;
+                     remoteInfo = gtest_main;
+              };
+              F0A9E942F8A54AA7879AB862 /* PBXContainerItemProxy */ = {
+                     isa = PBXContainerItemProxy;
+                     containerPortal = 9E050CB470944E83904E6D6B /* Project object */;
+                     proxyType = 1;
+                     remoteGlobalIDString = 2BB9D93169424429A20E58A2;
+                     remoteInfo = gtest;
+              };
+              968F48BF117A4281BDD99C53 /* PBXContainerItemProxy */ = {
+                     isa = PBXContainerItemProxy;
+                     containerPortal = 9E050CB470944E83904E6D6B /* Project object */;
+                     proxyType = 1;
+                     remoteGlobalIDString = D445A74B5E4B4AB690B902B8;
+                     remoteInfo = CreatureEvolution_lib;
+              };
+              0085D98DF98A48B8A665E7E8 /* PBXContainerItemProxy */ = {
+                     isa = PBXContainerItemProxy;
+                     containerPortal = 9E050CB470944E83904E6D6B /* Project object */;
+                     proxyType = 1;
+                     remoteGlobalIDString = 63DDE80737F0498089FD496B;
+                     remoteInfo = ZERO_CHECK;
+              };
+              77E78D44F92F428AA0242F27 /* PBXContainerItemProxy */ = {
+                     isa = PBXContainerItemProxy;
+                     containerPortal = 9E050CB470944E83904E6D6B /* Project object */;
+                     proxyType = 1;
+                     remoteGlobalIDString = 7529EF61EF204F84807E2A15;
+                     remoteInfo = CreatureEvolution;
+              };
+              2ABB192E58FB492FB748F4E7 /* PBXContainerItemProxy */ = {
+                     isa = PBXContainerItemProxy;
+                     containerPortal = 9E050CB470944E83904E6D6B /* Project object */;
+                     proxyType = 1;
+                     remoteGlobalIDString = D445A74B5E4B4AB690B902B8;
+                     remoteInfo = CreatureEvolution_lib;
+              };
+              B8CBCF5A0F6B4B78AD07D2AA /* PBXContainerItemProxy */ = {
+                     isa = PBXContainerItemProxy;
+                     containerPortal = 9E050CB470944E83904E6D6B /* Project object */;
+                     proxyType = 1;
+                     remoteGlobalIDString = 63DDE80737F0498089FD496B;
+                     remoteInfo = ZERO_CHECK;
+              };
+              D3FC889CD59149769DB9EAAD /* PBXContainerItemProxy */ = {
+                     isa = PBXContainerItemProxy;
+                     containerPortal = 9E050CB470944E83904E6D6B /* Project object */;
+                     proxyType = 1;
+                     remoteGlobalIDString = F8934783716B41159DD2F8D8;
+                     remoteInfo = gtest_main;
+              };
+              6ADB5376B5B04458B2457B97 /* PBXContainerItemProxy */ = {
+                     isa = PBXContainerItemProxy;
+                     containerPortal = 9E050CB470944E83904E6D6B /* Project object */;
+                     proxyType = 1;
+                     remoteGlobalIDString = 2BB9D93169424429A20E58A2;
+                     remoteInfo = gtest;
+              };
+              AB869013621B493C8B9DC7E4 /* PBXContainerItemProxy */ = {
+                     isa = PBXContainerItemProxy;
+                     containerPortal = 9E050CB470944E83904E6D6B /* Project object */;
+                     proxyType = 1;
+                     remoteGlobalIDString = D445A74B5E4B4AB690B902B8;
+                     remoteInfo = CreatureEvolution_lib;
+              };
+              91A35A40352E46D197D7E878 /* PBXContainerItemProxy */ = {
+                     isa = PBXContainerItemProxy;
+                     containerPortal = 9E050CB470944E83904E6D6B /* Project object */;
+                     proxyType = 1;
+                     remoteGlobalIDString = 63DDE80737F0498089FD496B;
+                     remoteInfo = ZERO_CHECK;
+              };
+              63B7CAEC8E3841B982BD652F /* PBXContainerItemProxy */ = {
+                     isa = PBXContainerItemProxy;
+                     containerPortal = 9E050CB470944E83904E6D6B /* Project object */;
+                     proxyType = 1;
+                     remoteGlobalIDString = 2BB9D93169424429A20E58A2;
+                     remoteInfo = gtest;
+              };
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+A134A21F00D940C69BD1EAD9 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = "sourcecode.text"; fileEncoding = 4; name = "CMakeLists.txt"; path = "CMakeLists.txt"; sourceTree = SOURCE_ROOT; };
+3E36E40A31E34BF493A1DA4C /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Main.cpp */ = {isa = PBXFileReference; explicitFileType = "sourcecode.cpp.cpp"; fileEncoding = 4; name = "Main.cpp"; path = "src/Main.cpp"; sourceTree = SOURCE_ROOT; };
+33F30155560F44EB9DE5C390 /* CreatureEvolution */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = CreatureEvolution; refType = 0; sourceTree = BUILT_PRODUCTS_DIR; };
+C9D97178A9B14E25A3986A61 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/ChromosomeTest.cpp */ = {isa = PBXFileReference; explicitFileType = "sourcecode.cpp.cpp"; fileEncoding = 4; name = "ChromosomeTest.cpp"; path = "test/ChromosomeTest.cpp"; sourceTree = SOURCE_ROOT; };
+6045964B31B74B22B008B42D /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp */ = {isa = PBXFileReference; explicitFileType = "sourcecode.cpp.cpp"; fileEncoding = 4; name = "CreatureTest.cpp"; path = "test/CreatureTest.cpp"; sourceTree = SOURCE_ROOT; };
+1821FB054BAE4A8E8E2E9B21 /* runUnitTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = runUnitTests; refType = 0; sourceTree = BUILT_PRODUCTS_DIR; };
+A1768062CEE043218089372F /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/AutoInitRNG.cpp */ = {isa = PBXFileReference; explicitFileType = "sourcecode.cpp.cpp"; fileEncoding = 4; name = "AutoInitRNG.cpp"; path = "src/AutoInitRNG.cpp"; sourceTree = SOURCE_ROOT; };
+C93CCAC21179415A8308E862 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = "sourcecode.text"; fileEncoding = 4; name = "CMakeLists.txt"; path = "src/CMakeLists.txt"; sourceTree = SOURCE_ROOT; };
+753CC503DB0240728EC05655 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp */ = {isa = PBXFileReference; explicitFileType = "sourcecode.cpp.cpp"; fileEncoding = 4; name = "Chromosome.cpp"; path = "src/Chromosome.cpp"; sourceTree = SOURCE_ROOT; };
+1163B356DA47451883BB93E8 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp */ = {isa = PBXFileReference; explicitFileType = "sourcecode.cpp.cpp"; fileEncoding = 4; name = "Creature.cpp"; path = "src/Creature.cpp"; sourceTree = SOURCE_ROOT; };
+FAC4B5AB1495451681A591EE /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CreatureEvolution.cpp */ = {isa = PBXFileReference; explicitFileType = "sourcecode.cpp.cpp"; fileEncoding = 4; name = "CreatureEvolution.cpp"; path = "src/CreatureEvolution.cpp"; sourceTree = SOURCE_ROOT; };
+09BA07CEA2824F0AAB19F4DA /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp */ = {isa = PBXFileReference; explicitFileType = "sourcecode.cpp.cpp"; fileEncoding = 4; name = "DebugDraw.cpp"; path = "src/DebugDraw.cpp"; sourceTree = SOURCE_ROOT; };
+F22A44D3DA954570879DEE60 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp */ = {isa = PBXFileReference; explicitFileType = "sourcecode.cpp.cpp"; fileEncoding = 4; name = "Evolution.cpp"; path = "src/Evolution.cpp"; sourceTree = SOURCE_ROOT; };
+F72D5FF87E474DD492B0420D /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Population.cpp */ = {isa = PBXFileReference; explicitFileType = "sourcecode.cpp.cpp"; fileEncoding = 4; name = "Population.cpp"; path = "src/Population.cpp"; sourceTree = SOURCE_ROOT; };
+47B3682E3ADA4004A2D408AD /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp */ = {isa = PBXFileReference; explicitFileType = "sourcecode.cpp.cpp"; fileEncoding = 4; name = "Renderer.cpp"; path = "src/Renderer.cpp"; sourceTree = SOURCE_ROOT; };
+8FA384D9D441420C9FB97DBD /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Shader.cpp */ = {isa = PBXFileReference; explicitFileType = "sourcecode.cpp.cpp"; fileEncoding = 4; name = "Shader.cpp"; path = "src/Shader.cpp"; sourceTree = SOURCE_ROOT; };
+CC5808B4792C498DB955D122 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp */ = {isa = PBXFileReference; explicitFileType = "sourcecode.cpp.cpp"; fileEncoding = 4; name = "Simulation.cpp"; path = "src/Simulation.cpp"; sourceTree = SOURCE_ROOT; };
+0F8ED3388CCB4989B0DE82FA /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp */ = {isa = PBXFileReference; explicitFileType = "sourcecode.cpp.cpp"; fileEncoding = 4; name = "WormBulletCreature.cpp"; path = "src/WormBulletCreature.cpp"; sourceTree = SOURCE_ROOT; };
+D9B65E215FF34100AC8A8A21 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/AutoInitRNG.h */ = {isa = PBXFileReference; explicitFileType = "sourcecode.c.h"; fileEncoding = 4; name = "AutoInitRNG.h"; path = "src/include/AutoInitRNG.h"; sourceTree = SOURCE_ROOT; };
+994B0D75A0F344EC8C2DA23E /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h */ = {isa = PBXFileReference; explicitFileType = "sourcecode.c.h"; fileEncoding = 4; name = "Chromosome.h"; path = "src/include/Chromosome.h"; sourceTree = SOURCE_ROOT; };
+214D2553974E4736816E6379 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h */ = {isa = PBXFileReference; explicitFileType = "sourcecode.c.h"; fileEncoding = 4; name = "Creature.h"; path = "src/include/Creature.h"; sourceTree = SOURCE_ROOT; };
+3A0DE7C2B46B40A0B8573CC1 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/CreatureEvolution.h */ = {isa = PBXFileReference; explicitFileType = "sourcecode.c.h"; fileEncoding = 4; name = "CreatureEvolution.h"; path = "src/include/CreatureEvolution.h"; sourceTree = SOURCE_ROOT; };
+66B08ADB16B54C4482AF7467 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/DebugDraw.h */ = {isa = PBXFileReference; explicitFileType = "sourcecode.c.h"; fileEncoding = 4; name = "DebugDraw.h"; path = "src/include/DebugDraw.h"; sourceTree = SOURCE_ROOT; };
+2F8AEBB29FAC44F0BAEBB589 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h */ = {isa = PBXFileReference; explicitFileType = "sourcecode.c.h"; fileEncoding = 4; name = "Evolution.h"; path = "src/include/Evolution.h"; sourceTree = SOURCE_ROOT; };
+B6B1E1B6D87B4A94A2A8E9DD /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Population.h */ = {isa = PBXFileReference; explicitFileType = "sourcecode.c.h"; fileEncoding = 4; name = "Population.h"; path = "src/include/Population.h"; sourceTree = SOURCE_ROOT; };
+9F3EF5B68AA9461AAA15618A /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Renderer.h */ = {isa = PBXFileReference; explicitFileType = "sourcecode.c.h"; fileEncoding = 4; name = "Renderer.h"; path = "src/include/Renderer.h"; sourceTree = SOURCE_ROOT; };
+7FD35AB3A1CD4A71898D0BCB /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h */ = {isa = PBXFileReference; explicitFileType = "sourcecode.c.h"; fileEncoding = 4; name = "Simulation.h"; path = "src/include/Simulation.h"; sourceTree = SOURCE_ROOT; };
+1E1666C8F37F415881AE28C4 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h */ = {isa = PBXFileReference; explicitFileType = "sourcecode.c.h"; fileEncoding = 4; name = "WormBulletCreature.h"; path = "src/include/WormBulletCreature.h"; sourceTree = SOURCE_ROOT; };
+5594CA2F1F9B47A2A737DB6C /* CreatureEvolution_lib */ = {isa = PBXFileReference; explicitFileType = "archive.ar"; path = "libCreatureEvolution_lib.a"; refType = 0; sourceTree = BUILT_PRODUCTS_DIR; };
+FBCB13B642C3462BAC333C33 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = "sourcecode.text"; fileEncoding = 4; name = "CMakeLists.txt"; path = "external_libs/gtest-1.7.0/CMakeLists.txt"; sourceTree = SOURCE_ROOT; };
+16CF34E7F3114C5DBE95E916 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest-all.cc */ = {isa = PBXFileReference; explicitFileType = "sourcecode.cpp.cpp"; fileEncoding = 4; name = "gtest-all.cc"; path = "external_libs/gtest-1.7.0/src/gtest-all.cc"; sourceTree = SOURCE_ROOT; };
+3073C4DFAA0041FCA4E02A55 /* gtest */ = {isa = PBXFileReference; explicitFileType = "archive.ar"; path = "libgtest.a"; refType = 0; sourceTree = BUILT_PRODUCTS_DIR; };
+E869960BEF8242E9A4CC394E /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest_main.cc */ = {isa = PBXFileReference; explicitFileType = "sourcecode.cpp.cpp"; fileEncoding = 4; name = "gtest_main.cc"; path = "external_libs/gtest-1.7.0/src/gtest_main.cc"; sourceTree = SOURCE_ROOT; };
+FD436B7DDC0440E2A6A5B2EB /* gtest_main */ = {isa = PBXFileReference; explicitFileType = "archive.ar"; path = "libgtest_main.a"; refType = 0; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+              9198354AFDA048829263DFD4  = {
+                     isa = PBXGroup;
+                     children = (
+                            8E7DEF2524FA4E2CB77E36D1 /* Sources */,
+                            7895335093B344D196B0F40A /* Resources */,
+                            72B8C5FA44AE4C30923C5392 /* Products */,
+                     );
+                     sourceTree = "<group>";
+              };
+              8E7DEF2524FA4E2CB77E36D1 /* Sources */ = {
+                     isa = PBXGroup;
+                     children = (
+                            CBBC7FCE23484333AB1CF7D0 /* ALL_BUILD */,
+                            9604DA3A3AF045B99C639765 /* CreatureEvolution */,
+                            84A4EF548B4A4C65A17241D1 /* ZERO_CHECK */,
+                            BED991D3808349359ED97D8E /* runUnitTests */,
+                            517BD6F55FA24D3B97DBF8EE /* CreatureEvolution_lib */,
+                            C40AA7D35BF4403F81C7681F /* gtest */,
+                            254DF2486FBD42C2A9D9C35C /* gtest_main */,
+                     );
+                     name = Sources;
+                     sourceTree = "<group>";
+              };
+              7895335093B344D196B0F40A /* Resources */ = {
+                     isa = PBXGroup;
+                     children = (
+                     );
+                     name = Resources;
+                     sourceTree = "<group>";
+              };
+              CBBC7FCE23484333AB1CF7D0 /* ALL_BUILD */ = {
+                     isa = PBXGroup;
+                     children = (
+                            EBFA81B46AB8403AAEDF35C3 /* CMake Rules */,
+                            A134A21F00D940C69BD1EAD9 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/CMakeLists.txt */,
+                     );
+                     name = ALL_BUILD;
+                     sourceTree = "<group>";
+              };
+              EBFA81B46AB8403AAEDF35C3 /* CMake Rules */ = {
+                     isa = PBXGroup;
+                     children = (
+                     );
+                     name = "CMake Rules";
+                     sourceTree = "<group>";
+              };
+              9604DA3A3AF045B99C639765 /* CreatureEvolution */ = {
+                     isa = PBXGroup;
+                     children = (
+                            475C0B2C4C8E4F8C97DDD65D /* Source Files */,
+                            A134A21F00D940C69BD1EAD9 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/CMakeLists.txt */,
+                     );
+                     name = CreatureEvolution;
+                     sourceTree = "<group>";
+              };
+              475C0B2C4C8E4F8C97DDD65D /* Source Files */ = {
+                     isa = PBXGroup;
+                     children = (
+                            3E36E40A31E34BF493A1DA4C /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Main.cpp */,
+                     );
+                     name = "Source Files";
+                     sourceTree = "<group>";
+              };
+              84A4EF548B4A4C65A17241D1 /* ZERO_CHECK */ = {
+                     isa = PBXGroup;
+                     children = (
+                            01DC2E64197D4874941CE3D6 /* CMake Rules */,
+                            A134A21F00D940C69BD1EAD9 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/CMakeLists.txt */,
+                     );
+                     name = ZERO_CHECK;
+                     sourceTree = "<group>";
+              };
+              01DC2E64197D4874941CE3D6 /* CMake Rules */ = {
+                     isa = PBXGroup;
+                     children = (
+                     );
+                     name = "CMake Rules";
+                     sourceTree = "<group>";
+              };
+              BED991D3808349359ED97D8E /* runUnitTests */ = {
+                     isa = PBXGroup;
+                     children = (
+                            28657B6AF8B64A419A3A5546 /* Source Files */,
+                            A134A21F00D940C69BD1EAD9 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/CMakeLists.txt */,
+                     );
+                     name = runUnitTests;
+                     sourceTree = "<group>";
+              };
+              28657B6AF8B64A419A3A5546 /* Source Files */ = {
+                     isa = PBXGroup;
+                     children = (
+                            C9D97178A9B14E25A3986A61 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/ChromosomeTest.cpp */,
+                            6045964B31B74B22B008B42D /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp */,
+                     );
+                     name = "Source Files";
+                     sourceTree = "<group>";
+              };
+              517BD6F55FA24D3B97DBF8EE /* CreatureEvolution_lib */ = {
+                     isa = PBXGroup;
+                     children = (
+                            D28C443394884B8D814FD083 /* Source Files */,
+                            00F01E12DC4E40D0806DA093 /* Header Files */,
+                            C93CCAC21179415A8308E862 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CMakeLists.txt */,
+                     );
+                     name = CreatureEvolution_lib;
+                     sourceTree = "<group>";
+              };
+              D28C443394884B8D814FD083 /* Source Files */ = {
+                     isa = PBXGroup;
+                     children = (
+                            A1768062CEE043218089372F /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/AutoInitRNG.cpp */,
+                            753CC503DB0240728EC05655 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp */,
+                            1163B356DA47451883BB93E8 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp */,
+                            FAC4B5AB1495451681A591EE /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CreatureEvolution.cpp */,
+                            09BA07CEA2824F0AAB19F4DA /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp */,
+                            F22A44D3DA954570879DEE60 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp */,
+                            F72D5FF87E474DD492B0420D /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Population.cpp */,
+                            47B3682E3ADA4004A2D408AD /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp */,
+                            8FA384D9D441420C9FB97DBD /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Shader.cpp */,
+                            CC5808B4792C498DB955D122 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp */,
+                            0F8ED3388CCB4989B0DE82FA /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp */,
+                     );
+                     name = "Source Files";
+                     sourceTree = "<group>";
+              };
+              00F01E12DC4E40D0806DA093 /* Header Files */ = {
+                     isa = PBXGroup;
+                     children = (
+                            D9B65E215FF34100AC8A8A21 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/AutoInitRNG.h */,
+                            994B0D75A0F344EC8C2DA23E /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h */,
+                            214D2553974E4736816E6379 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h */,
+                            3A0DE7C2B46B40A0B8573CC1 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/CreatureEvolution.h */,
+                            66B08ADB16B54C4482AF7467 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/DebugDraw.h */,
+                            2F8AEBB29FAC44F0BAEBB589 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h */,
+                            B6B1E1B6D87B4A94A2A8E9DD /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Population.h */,
+                            9F3EF5B68AA9461AAA15618A /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Renderer.h */,
+                            7FD35AB3A1CD4A71898D0BCB /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h */,
+                            1E1666C8F37F415881AE28C4 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h */,
+                     );
+                     name = "Header Files";
+                     sourceTree = "<group>";
+              };
+              C40AA7D35BF4403F81C7681F /* gtest */ = {
+                     isa = PBXGroup;
+                     children = (
+                            1F775DE24EB546E590527BBE /* Source Files */,
+                            FBCB13B642C3462BAC333C33 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/CMakeLists.txt */,
+                     );
+                     name = gtest;
+                     sourceTree = "<group>";
+              };
+              1F775DE24EB546E590527BBE /* Source Files */ = {
+                     isa = PBXGroup;
+                     children = (
+                            16CF34E7F3114C5DBE95E916 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest-all.cc */,
+                     );
+                     name = "Source Files";
+                     sourceTree = "<group>";
+              };
+              254DF2486FBD42C2A9D9C35C /* gtest_main */ = {
+                     isa = PBXGroup;
+                     children = (
+                            6F646111106C497F93DD0DE3 /* Source Files */,
+                            FBCB13B642C3462BAC333C33 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/CMakeLists.txt */,
+                     );
+                     name = gtest_main;
+                     sourceTree = "<group>";
+              };
+              6F646111106C497F93DD0DE3 /* Source Files */ = {
+                     isa = PBXGroup;
+                     children = (
+                            E869960BEF8242E9A4CC394E /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest_main.cc */,
+                     );
+                     name = "Source Files";
+                     sourceTree = "<group>";
+              };
+              72B8C5FA44AE4C30923C5392 /* Products */ = {
+                     isa = PBXGroup;
+                     children = (
+                            33F30155560F44EB9DE5C390 /* CreatureEvolution */,
+                            1821FB054BAE4A8E8E2E9B21 /* runUnitTests */,
+                            5594CA2F1F9B47A2A737DB6C /* CreatureEvolution_lib */,
+                            3073C4DFAA0041FCA4E02A55 /* gtest */,
+                            FD436B7DDC0440E2A6A5B2EB /* gtest_main */,
+                     );
+                     name = Products;
+                     sourceTree = "<group>";
+              };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+              7529EF61EF204F84807E2A15 /* CreatureEvolution */ = {
+                     isa = PBXNativeTarget;
+                     buildConfigurationList = 3B4528655740437EAEC76A81 /* Build configuration list for PBXNativeTarget "CreatureEvolution" */;
+                     buildPhases = (
+                            1A370E45FC7349A898A45F27 /* Sources */,
+                     );
+                     buildRules = (
+                     );
+                     dependencies = (
+                            C8228CFFD9C34C6F96E586E7 /* PBXTargetDependency */,
+                            EC480E46B42B4D4D8E7A3A4B /* PBXTargetDependency */,
+                     );
+                     name = CreatureEvolution;
+                     productName = CreatureEvolution;
+                     productReference = 33F30155560F44EB9DE5C390 /* CreatureEvolution */;
+                     productType = "com.apple.product-type.tool";
+              };
+              375D314DC82F4A5F90334D23 /* runUnitTests */ = {
+                     isa = PBXNativeTarget;
+                     buildConfigurationList = B7E9795C9CCE4F4DA665C026 /* Build configuration list for PBXNativeTarget "runUnitTests" */;
+                     buildPhases = (
+                            4D5257F4C78B4B60BB422D7A /* Sources */,
+                     );
+                     buildRules = (
+                     );
+                     dependencies = (
+                            8D2F46EFF7D64FE88B855506 /* PBXTargetDependency */,
+                            700829EF9A2A42C3B84178B5 /* PBXTargetDependency */,
+                            7F663199D88D46DD88DE1341 /* PBXTargetDependency */,
+                            FEA139C55EDC471EB26555F3 /* PBXTargetDependency */,
+                     );
+                     name = runUnitTests;
+                     productName = runUnitTests;
+                     productReference = 1821FB054BAE4A8E8E2E9B21 /* runUnitTests */;
+                     productType = "com.apple.product-type.tool";
+              };
+              D445A74B5E4B4AB690B902B8 /* CreatureEvolution_lib */ = {
+                     isa = PBXNativeTarget;
+                     buildConfigurationList = 9B76547FB39B435292D0B2B4 /* Build configuration list for PBXNativeTarget "CreatureEvolution_lib" */;
+                     buildPhases = (
+                            BDC62205409540EABC6CD0AE /* Sources */,
+                     );
+                     buildRules = (
+                     );
+                     dependencies = (
+                     );
+                     name = CreatureEvolution_lib;
+                     productName = CreatureEvolution_lib;
+                     productReference = 5594CA2F1F9B47A2A737DB6C /* CreatureEvolution_lib */;
+                     productType = "com.apple.product-type.library.static";
+              };
+              2BB9D93169424429A20E58A2 /* gtest */ = {
+                     isa = PBXNativeTarget;
+                     buildConfigurationList = F8DEA78247C3453795B0A850 /* Build configuration list for PBXNativeTarget "gtest" */;
+                     buildPhases = (
+                            C9F7FD6446E84B6B90055427 /* Sources */,
+                     );
+                     buildRules = (
+                     );
+                     dependencies = (
+                     );
+                     name = gtest;
+                     productName = gtest;
+                     productReference = 3073C4DFAA0041FCA4E02A55 /* gtest */;
+                     productType = "com.apple.product-type.library.static";
+              };
+              F8934783716B41159DD2F8D8 /* gtest_main */ = {
+                     isa = PBXNativeTarget;
+                     buildConfigurationList = 577ADDDFCB03471EB54B07C1 /* Build configuration list for PBXNativeTarget "gtest_main" */;
+                     buildPhases = (
+                            76053E3C934C4526B7AB8033 /* Sources */,
+                     );
+                     buildRules = (
+                     );
+                     dependencies = (
+                            DF83A7297317419D92D02A54 /* PBXTargetDependency */,
+                     );
+                     name = gtest_main;
+                     productName = gtest_main;
+                     productReference = FD436B7DDC0440E2A6A5B2EB /* gtest_main */;
+                     productType = "com.apple.product-type.library.static";
+              };
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+              9E050CB470944E83904E6D6B /* Project object */ = {
+                     isa = PBXProject;
+                     attributes = {
+                            BuildIndependentTargetsInParallel = YES;
+                     };
+                     buildConfigurationList = 983D4D0DA39B483F9D29261D /* Build configuration list for PBXProject  "CreatureEvolution" */;
+                     buildSettings = {
+                     };
+                     buildStyles = (
+                            6164A8687D3E431291FBD276 /* Debug */,
+                            30DC4A65B0334DE68756B2DD /* Release */,
+                            167BC7F80EA94F69BB045C95 /* MinSizeRel */,
+                            C40EC58D993B4BCD9088F786 /* RelWithDebInfo */,
+                     );
+                     compatibilityVersion = "Xcode 3.2";
+                     hasScannedForEncodings = 0;
+                     mainGroup = 9198354AFDA048829263DFD4;
+                     projectDirPath = "..";
+                     projectRoot = "";
+                     targets = (
+                            64FFF1F3A3EE433289766A3B /* ALL_BUILD */,
+                            7529EF61EF204F84807E2A15 /* CreatureEvolution */,
+                            D129746C81204C70A7EA4219 /* RUN_TESTS */,
+                            63DDE80737F0498089FD496B /* ZERO_CHECK */,
+                            375D314DC82F4A5F90334D23 /* runUnitTests */,
+                            D445A74B5E4B4AB690B902B8 /* CreatureEvolution_lib */,
+                            2BB9D93169424429A20E58A2 /* gtest */,
+                            F8934783716B41159DD2F8D8 /* gtest_main */,
+                     );
+              };
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+              4160A8AAFF314F44B51C71DB /*  */ = {
+                     isa = PBXShellScriptBuildPhase;
+                     buildActionMask = 2147483647;
+                     files = (
+                     );
+                     inputPaths = (
+                     );
+                     outputPaths = (
+                     );
+                     runOnlyForDeploymentPostprocessing = 0;
+                     shellPath = /bin/sh;
+                     shellScript = "# shell script goes here
+exit 0";
+                     showEnvVarsInLog = 0;
+              };
+              176B1FF15389446892D9800E /* CMake Rules */ = {
+                     isa = PBXShellScriptBuildPhase;
+                     buildActionMask = 2147483647;
+                     files = (
+                     );
+                     name = "CMake Rules";
+                     runOnlyForDeploymentPostprocessing = 0;
+                     shellPath = /bin/sh;
+                     shellScript = "make -C /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build -f /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+                     showEnvVarsInLog = 0;
+              };
+              B80C5FEF4E594AA3B8C3D46B /*  */ = {
+                     isa = PBXShellScriptBuildPhase;
+                     buildActionMask = 2147483647;
+                     files = (
+                     );
+                     inputPaths = (
+                     );
+                     outputPaths = (
+                     );
+                     runOnlyForDeploymentPostprocessing = 0;
+                     shellPath = /bin/sh;
+                     shellScript = "# shell script goes here
+exit 0";
+                     showEnvVarsInLog = 0;
+              };
+              2DA8A003909F4246B1E1A2B6 /* CMake PostBuild Rules */ = {
+                     isa = PBXShellScriptBuildPhase;
+                     buildActionMask = 2147483647;
+                     files = (
+                     );
+                     name = "CMake PostBuild Rules";
+                     runOnlyForDeploymentPostprocessing = 0;
+                     shellPath = /bin/sh;
+                     shellScript = "make -C /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build -f /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CMakeScripts/RUN_TESTS_postBuildPhase.make$CONFIGURATION all";
+                     showEnvVarsInLog = 0;
+              };
+              712884881418474181BCC5BA /*  */ = {
+                     isa = PBXShellScriptBuildPhase;
+                     buildActionMask = 2147483647;
+                     files = (
+                     );
+                     inputPaths = (
+                     );
+                     outputPaths = (
+                     );
+                     runOnlyForDeploymentPostprocessing = 0;
+                     shellPath = /bin/sh;
+                     shellScript = "# shell script goes here
+exit 0";
+                     showEnvVarsInLog = 0;
+              };
+              31E2692046D04C539071A44E /* CMake Rules */ = {
+                     isa = PBXShellScriptBuildPhase;
+                     buildActionMask = 2147483647;
+                     files = (
+                     );
+                     name = "CMake Rules";
+                     runOnlyForDeploymentPostprocessing = 0;
+                     shellPath = /bin/sh;
+                     shellScript = "make -C /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build -f /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+                     showEnvVarsInLog = 0;
+              };
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+              1A370E45FC7349A898A45F27 /* Sources */ = {
+                     isa = PBXSourcesBuildPhase;
+                     buildActionMask = 2147483647;
+                     files = (
+                            6A59758C8B8C4745BD0163AA /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Main.cpp */,
+                     );
+                     runOnlyForDeploymentPostprocessing = 0;
+              };
+              4D5257F4C78B4B60BB422D7A /* Sources */ = {
+                     isa = PBXSourcesBuildPhase;
+                     buildActionMask = 2147483647;
+                     files = (
+                            745D523D55C44DBB9C71A299 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/ChromosomeTest.cpp */,
+                            11E3F6526B9441F085F1541B /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp */,
+                     );
+                     runOnlyForDeploymentPostprocessing = 0;
+              };
+              BDC62205409540EABC6CD0AE /* Sources */ = {
+                     isa = PBXSourcesBuildPhase;
+                     buildActionMask = 2147483647;
+                     files = (
+                            52EF7A4BD365408DACB27AEE /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/AutoInitRNG.cpp */,
+                            DC2E7B8C9A3E4EDF9869ECB2 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp */,
+                            86B98024F345490684181A55 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp */,
+                            4EBC75A5D546446D83A18EAF /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CreatureEvolution.cpp */,
+                            827966BCEC8E4D7D965B96A4 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp */,
+                            D4A930F9D3314F05905C3626 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp */,
+                            59E04C2015034D1887E64932 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Population.cpp */,
+                            6FE31AF1723B45D49540D75C /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp */,
+                            A39CA3FEB7274895A89A35E2 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Shader.cpp */,
+                            2AF4AE2FB3EB430D90CF2251 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp */,
+                            7F5185B3B1A5463A99292BE4 /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp */,
+                     );
+                     runOnlyForDeploymentPostprocessing = 0;
+              };
+              C9F7FD6446E84B6B90055427 /* Sources */ = {
+                     isa = PBXSourcesBuildPhase;
+                     buildActionMask = 2147483647;
+                     files = (
+                            D566D41C718D43BFBE5D526B /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest-all.cc */,
+                     );
+                     runOnlyForDeploymentPostprocessing = 0;
+              };
+              76053E3C934C4526B7AB8033 /* Sources */ = {
+                     isa = PBXSourcesBuildPhase;
+                     buildActionMask = 2147483647;
+                     files = (
+                            740D4BD5CA6E4E7AB2F0C5DA /* /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest_main.cc */,
+                     );
+                     runOnlyForDeploymentPostprocessing = 0;
+              };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+              ED80C0EF00574846902537E5 /* PBXTargetDependency */ = {
+                     isa = PBXTargetDependency;
+                     target = 375D314DC82F4A5F90334D23 /* runUnitTests */;
+                     targetProxy = 02B5C33A15324EF793A7621E /* PBXContainerItemProxy */;
+              };
+              0605D395402A4E349A84864E /* PBXTargetDependency */ = {
+                     isa = PBXTargetDependency;
+                     target = F8934783716B41159DD2F8D8 /* gtest_main */;
+                     targetProxy = EF821AA9FC224D1A9C98101E /* PBXContainerItemProxy */;
+              };
+              3D60413CDF7849378C19A70D /* PBXTargetDependency */ = {
+                     isa = PBXTargetDependency;
+                     target = 2BB9D93169424429A20E58A2 /* gtest */;
+                     targetProxy = F0A9E942F8A54AA7879AB862 /* PBXContainerItemProxy */;
+              };
+              B2038AFFD72A4F05A3A58252 /* PBXTargetDependency */ = {
+                     isa = PBXTargetDependency;
+                     target = D445A74B5E4B4AB690B902B8 /* CreatureEvolution_lib */;
+                     targetProxy = 968F48BF117A4281BDD99C53 /* PBXContainerItemProxy */;
+              };
+              690B4052B27D4190928B4D8F /* PBXTargetDependency */ = {
+                     isa = PBXTargetDependency;
+                     target = 63DDE80737F0498089FD496B /* ZERO_CHECK */;
+                     targetProxy = 0085D98DF98A48B8A665E7E8 /* PBXContainerItemProxy */;
+              };
+              FA3C4AFB16974F9B912C72B8 /* PBXTargetDependency */ = {
+                     isa = PBXTargetDependency;
+                     target = 7529EF61EF204F84807E2A15 /* CreatureEvolution */;
+                     targetProxy = 77E78D44F92F428AA0242F27 /* PBXContainerItemProxy */;
+              };
+              C8228CFFD9C34C6F96E586E7 /* PBXTargetDependency */ = {
+                     isa = PBXTargetDependency;
+                     target = D445A74B5E4B4AB690B902B8 /* CreatureEvolution_lib */;
+                     targetProxy = 2ABB192E58FB492FB748F4E7 /* PBXContainerItemProxy */;
+              };
+              EC480E46B42B4D4D8E7A3A4B /* PBXTargetDependency */ = {
+                     isa = PBXTargetDependency;
+                     target = 63DDE80737F0498089FD496B /* ZERO_CHECK */;
+                     targetProxy = B8CBCF5A0F6B4B78AD07D2AA /* PBXContainerItemProxy */;
+              };
+              8D2F46EFF7D64FE88B855506 /* PBXTargetDependency */ = {
+                     isa = PBXTargetDependency;
+                     target = F8934783716B41159DD2F8D8 /* gtest_main */;
+                     targetProxy = D3FC889CD59149769DB9EAAD /* PBXContainerItemProxy */;
+              };
+              700829EF9A2A42C3B84178B5 /* PBXTargetDependency */ = {
+                     isa = PBXTargetDependency;
+                     target = 2BB9D93169424429A20E58A2 /* gtest */;
+                     targetProxy = 6ADB5376B5B04458B2457B97 /* PBXContainerItemProxy */;
+              };
+              7F663199D88D46DD88DE1341 /* PBXTargetDependency */ = {
+                     isa = PBXTargetDependency;
+                     target = D445A74B5E4B4AB690B902B8 /* CreatureEvolution_lib */;
+                     targetProxy = AB869013621B493C8B9DC7E4 /* PBXContainerItemProxy */;
+              };
+              FEA139C55EDC471EB26555F3 /* PBXTargetDependency */ = {
+                     isa = PBXTargetDependency;
+                     target = 63DDE80737F0498089FD496B /* ZERO_CHECK */;
+                     targetProxy = 91A35A40352E46D197D7E878 /* PBXContainerItemProxy */;
+              };
+              DF83A7297317419D92D02A54 /* PBXTargetDependency */ = {
+                     isa = PBXTargetDependency;
+                     target = 2BB9D93169424429A20E58A2 /* gtest */;
+                     targetProxy = 63B7CAEC8E3841B982BD652F /* PBXContainerItemProxy */;
+              };
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+              0027654D41324E62A8D34E5A /* Debug */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+                            ONLY_ACTIVE_ARCH = YES;
+                            SDKROOT = "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/build";
+                     };
+                     name = Debug;
+              };
+              618E8CA708204F289CACA60E /* Release */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+                            ONLY_ACTIVE_ARCH = YES;
+                            SDKROOT = "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/build";
+                     };
+                     name = Release;
+              };
+              E2143038EB85426EA3B47CE7 /* MinSizeRel */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+                            ONLY_ACTIVE_ARCH = YES;
+                            SDKROOT = "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/build";
+                     };
+                     name = MinSizeRel;
+              };
+              B053CDFCE63E4EBE947C6EFD /* RelWithDebInfo */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+                            ONLY_ACTIVE_ARCH = YES;
+                            SDKROOT = "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/build";
+                     };
+                     name = RelWithDebInfo;
+              };
+              0689F35782014F5C87C6645A /* Debug */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            OTHER_CFLAGS = "  ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = ALL_BUILD;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = Debug;
+              };
+              B07B6B75447440FBBCB11DE8 /* Release */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            OTHER_CFLAGS = "  ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = ALL_BUILD;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = Release;
+              };
+              49FCA6F8CD1E4ADAA5058F6A /* MinSizeRel */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            OTHER_CFLAGS = "  ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = ALL_BUILD;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = MinSizeRel;
+              };
+              3026EEBC0FB84F3EBA364112 /* RelWithDebInfo */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            OTHER_CFLAGS = "  ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = ALL_BUILD;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = RelWithDebInfo;
+              };
+              FDC5597071294ED69E6843C3 /* Debug */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = "";
+                            EXECUTABLE_SUFFIX = "";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            LIBRARY_SEARCH_PATHS = "";
+                            OTHER_CFLAGS = "   -std=c++11  ";
+                            OTHER_CPLUSPLUSFLAGS = "   -std=c++11  ";
+                            OTHER_LDFLAGS = "  -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/libCreatureEvolution_lib.a /usr/local/lib/libBulletDynamics.a /usr/local/lib/libBulletCollision.a /usr/local/lib/libLinearMath.a /usr/local/Cellar/glew/1.10.0/lib/libGLEW.1.10.0.dylib -framework sfml-system -framework sfml-window -framework sfml-graphics -framework sfml-network -framework sfml-audio /usr/local/lib/libsfgui.dylib -framework AGL -framework OpenGL";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = CreatureEvolution;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = Debug;
+              };
+              B773ED0F02CF4F59B7EFF8A8 /* Release */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = "";
+                            EXECUTABLE_SUFFIX = "";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 3;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            LIBRARY_SEARCH_PATHS = "";
+                            OTHER_CFLAGS = "    -DNDEBUG -std=c++11  ";
+                            OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG -std=c++11  ";
+                            OTHER_LDFLAGS = "  -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Release/libCreatureEvolution_lib.a /usr/local/lib/libBulletDynamics.a /usr/local/lib/libBulletCollision.a /usr/local/lib/libLinearMath.a /usr/local/Cellar/glew/1.10.0/lib/libGLEW.1.10.0.dylib -framework sfml-system -framework sfml-window -framework sfml-graphics -framework sfml-network -framework sfml-audio /usr/local/lib/libsfgui.dylib -framework AGL -framework OpenGL";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = CreatureEvolution;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = Release;
+              };
+              90FC30D8E70B43F48DDC1F63 /* MinSizeRel */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = "";
+                            EXECUTABLE_SUFFIX = "";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = s;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            LIBRARY_SEARCH_PATHS = "";
+                            OTHER_CFLAGS = "    -DNDEBUG -std=c++11  ";
+                            OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG -std=c++11  ";
+                            OTHER_LDFLAGS = "  -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/MinSizeRel/libCreatureEvolution_lib.a /usr/local/lib/libBulletDynamics.a /usr/local/lib/libBulletCollision.a /usr/local/lib/libLinearMath.a /usr/local/Cellar/glew/1.10.0/lib/libGLEW.1.10.0.dylib -framework sfml-system -framework sfml-window -framework sfml-graphics -framework sfml-network -framework sfml-audio /usr/local/lib/libsfgui.dylib -framework AGL -framework OpenGL";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = CreatureEvolution;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = MinSizeRel;
+              };
+              8B851499EF9442DC9205E269 /* RelWithDebInfo */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = "";
+                            EXECUTABLE_SUFFIX = "";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 2;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            LIBRARY_SEARCH_PATHS = "";
+                            OTHER_CFLAGS = "       -DNDEBUG -std=c++11  ";
+                            OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG -std=c++11  ";
+                            OTHER_LDFLAGS = "  -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/RelWithDebInfo/libCreatureEvolution_lib.a /usr/local/lib/libBulletDynamics.a /usr/local/lib/libBulletCollision.a /usr/local/lib/libLinearMath.a /usr/local/Cellar/glew/1.10.0/lib/libGLEW.1.10.0.dylib -framework sfml-system -framework sfml-window -framework sfml-graphics -framework sfml-network -framework sfml-audio /usr/local/lib/libsfgui.dylib -framework AGL -framework OpenGL";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = CreatureEvolution;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = RelWithDebInfo;
+              };
+              EC9F19A727334613A47D859C /* Debug */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            OTHER_CFLAGS = "  ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = RUN_TESTS;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = Debug;
+              };
+              FCDD93E8F5144233A4AB75CC /* Release */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            OTHER_CFLAGS = "  ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = RUN_TESTS;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = Release;
+              };
+              234EDBA11A7E422DB65D28E6 /* MinSizeRel */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            OTHER_CFLAGS = "  ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = RUN_TESTS;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = MinSizeRel;
+              };
+              8B121FCB218944D4BF0BD3BF /* RelWithDebInfo */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            OTHER_CFLAGS = "  ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = RUN_TESTS;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = RelWithDebInfo;
+              };
+              9DED222A4099459493EEB31C /* Debug */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            OTHER_CFLAGS = "  ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = ZERO_CHECK;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = Debug;
+              };
+              F13EC99CA69A4F7B85B53699 /* Release */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            OTHER_CFLAGS = "  ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = ZERO_CHECK;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = Release;
+              };
+              3C4223A2E30845B28BDB0595 /* MinSizeRel */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            OTHER_CFLAGS = "  ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = ZERO_CHECK;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = MinSizeRel;
+              };
+              E4C480DD4AA4444387337B0E /* RelWithDebInfo */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            OTHER_CFLAGS = "  ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = ZERO_CHECK;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = RelWithDebInfo;
+              };
+              EEDB7E65F5034EBFADC1DE82 /* Debug */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = "";
+                            EXECUTABLE_SUFFIX = "";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            LIBRARY_SEARCH_PATHS = "";
+                            OTHER_CFLAGS = "   -std=gnu++11  ";
+                            OTHER_CPLUSPLUSFLAGS = "   -std=gnu++11  ";
+                            OTHER_LDFLAGS = "  -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Debug/libgtest.a /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Debug/libgtest_main.a /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/libCreatureEvolution_lib.a /usr/local/lib/libBulletDynamics.a /usr/local/lib/libBulletCollision.a /usr/local/lib/libLinearMath.a /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Debug/libgtest.a";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = runUnitTests;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = Debug;
+              };
+              5EC774F171C4414083147B3E /* Release */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = "";
+                            EXECUTABLE_SUFFIX = "";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 3;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            LIBRARY_SEARCH_PATHS = "";
+                            OTHER_CFLAGS = "    -DNDEBUG -std=gnu++11  ";
+                            OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG -std=gnu++11  ";
+                            OTHER_LDFLAGS = "  -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Release/libgtest.a /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Release/libgtest_main.a /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Release/libCreatureEvolution_lib.a /usr/local/lib/libBulletDynamics.a /usr/local/lib/libBulletCollision.a /usr/local/lib/libLinearMath.a /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Release/libgtest.a";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = runUnitTests;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = Release;
+              };
+              C5D440DCF128471081967D92 /* MinSizeRel */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = "";
+                            EXECUTABLE_SUFFIX = "";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = s;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            LIBRARY_SEARCH_PATHS = "";
+                            OTHER_CFLAGS = "    -DNDEBUG -std=gnu++11  ";
+                            OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG -std=gnu++11  ";
+                            OTHER_LDFLAGS = "  -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/MinSizeRel/libgtest.a /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/MinSizeRel/libgtest_main.a /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/MinSizeRel/libCreatureEvolution_lib.a /usr/local/lib/libBulletDynamics.a /usr/local/lib/libBulletCollision.a /usr/local/lib/libLinearMath.a /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/MinSizeRel/libgtest.a";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = runUnitTests;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = MinSizeRel;
+              };
+              11C08069AD904514BDA93428 /* RelWithDebInfo */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = "";
+                            EXECUTABLE_SUFFIX = "";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 2;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            LIBRARY_SEARCH_PATHS = "";
+                            OTHER_CFLAGS = "       -DNDEBUG -std=gnu++11  ";
+                            OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG -std=gnu++11  ";
+                            OTHER_LDFLAGS = "  -Wl,-search_paths_first -Wl,-headerpad_max_install_names  /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/RelWithDebInfo/libgtest.a /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/RelWithDebInfo/libgtest_main.a /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/RelWithDebInfo/libCreatureEvolution_lib.a /usr/local/lib/libBulletDynamics.a /usr/local/lib/libBulletCollision.a /usr/local/lib/libLinearMath.a /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/RelWithDebInfo/libgtest.a";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = runUnitTests;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = RelWithDebInfo;
+              };
+              C3AEEABB97784552B1FA1857 /* Debug */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = lib;
+                            EXECUTABLE_SUFFIX = ".a";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", );
+                            INSTALL_PATH = "";
+                            LIBRARY_STYLE = STATIC;
+                            OTHER_CFLAGS = "   -std=c++11  ";
+                            OTHER_CPLUSPLUSFLAGS = "   -std=c++11  ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = CreatureEvolution_lib;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = Debug;
+              };
+              EBD489BBF79D404397CA7A1C /* Release */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = lib;
+                            EXECUTABLE_SUFFIX = ".a";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 3;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", );
+                            INSTALL_PATH = "";
+                            LIBRARY_STYLE = STATIC;
+                            OTHER_CFLAGS = "    -DNDEBUG -std=c++11  ";
+                            OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG -std=c++11  ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = CreatureEvolution_lib;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = Release;
+              };
+              C9041FF68F6047ABA9B1C1B0 /* MinSizeRel */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = lib;
+                            EXECUTABLE_SUFFIX = ".a";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = s;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", );
+                            INSTALL_PATH = "";
+                            LIBRARY_STYLE = STATIC;
+                            OTHER_CFLAGS = "    -DNDEBUG -std=c++11  ";
+                            OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG -std=c++11  ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = CreatureEvolution_lib;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = MinSizeRel;
+              };
+              673B990ADC7147D5B26DB8E7 /* RelWithDebInfo */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = lib;
+                            EXECUTABLE_SUFFIX = ".a";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 2;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", );
+                            INSTALL_PATH = "";
+                            LIBRARY_STYLE = STATIC;
+                            OTHER_CFLAGS = "       -DNDEBUG -std=c++11  ";
+                            OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG -std=c++11  ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = CreatureEvolution_lib;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = RelWithDebInfo;
+              };
+              A5261F0360B14BD896FB8DB9 /* Debug */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = lib;
+                            EXECUTABLE_SUFFIX = ".a";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            LIBRARY_STYLE = STATIC;
+                            OTHER_CFLAGS = "     -DGTEST_HAS_PTHREAD=1    ";
+                            OTHER_CPLUSPLUSFLAGS = "     -DGTEST_HAS_PTHREAD=1    ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = gtest;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = Debug;
+              };
+              3B1F0DD4764F43909A049294 /* Release */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = lib;
+                            EXECUTABLE_SUFFIX = ".a";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 3;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            LIBRARY_STYLE = STATIC;
+                            OTHER_CFLAGS = "    -DNDEBUG   -DGTEST_HAS_PTHREAD=1    ";
+                            OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG   -DGTEST_HAS_PTHREAD=1    ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = gtest;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = Release;
+              };
+              0A3FA119BFB94281AACC60EB /* MinSizeRel */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = lib;
+                            EXECUTABLE_SUFFIX = ".a";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = s;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            LIBRARY_STYLE = STATIC;
+                            OTHER_CFLAGS = "    -DNDEBUG   -DGTEST_HAS_PTHREAD=1    ";
+                            OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG   -DGTEST_HAS_PTHREAD=1    ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = gtest;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = MinSizeRel;
+              };
+              0515EE5D23024C14AF2F5443 /* RelWithDebInfo */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = lib;
+                            EXECUTABLE_SUFFIX = ".a";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 2;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            LIBRARY_STYLE = STATIC;
+                            OTHER_CFLAGS = "       -DNDEBUG   -DGTEST_HAS_PTHREAD=1    ";
+                            OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG   -DGTEST_HAS_PTHREAD=1    ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = gtest;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = RelWithDebInfo;
+              };
+              5BAC9931025941D1BEECBB75 /* Debug */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = lib;
+                            EXECUTABLE_SUFFIX = ".a";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 0;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            LIBRARY_STYLE = STATIC;
+                            OTHER_CFLAGS = "     -DGTEST_HAS_PTHREAD=1    ";
+                            OTHER_CPLUSPLUSFLAGS = "     -DGTEST_HAS_PTHREAD=1    ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = gtest_main;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = Debug;
+              };
+              E46E467C42C7482A8764A262 /* Release */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = lib;
+                            EXECUTABLE_SUFFIX = ".a";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 3;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            LIBRARY_STYLE = STATIC;
+                            OTHER_CFLAGS = "    -DNDEBUG   -DGTEST_HAS_PTHREAD=1    ";
+                            OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG   -DGTEST_HAS_PTHREAD=1    ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = gtest_main;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = Release;
+              };
+              5C13081F7D0C4ED49D73B030 /* MinSizeRel */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = lib;
+                            EXECUTABLE_SUFFIX = ".a";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = s;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            LIBRARY_STYLE = STATIC;
+                            OTHER_CFLAGS = "    -DNDEBUG   -DGTEST_HAS_PTHREAD=1    ";
+                            OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG   -DGTEST_HAS_PTHREAD=1    ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = gtest_main;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = MinSizeRel;
+              };
+              6AF761B8ED574D6CA9F571E5 /* RelWithDebInfo */ = {
+                     isa = XCBuildConfiguration;
+                     buildSettings = {
+                            COMBINE_HIDPI_IMAGES = YES;
+                            EXECUTABLE_PREFIX = lib;
+                            EXECUTABLE_SUFFIX = ".a";
+                            FRAMEWORK_SEARCH_PATHS = ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks", /Library/Frameworks, );
+                            GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+                            GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+                            GCC_OPTIMIZATION_LEVEL = 2;
+                            GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+                            GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+                            HEADER_SEARCH_PATHS = (/usr/local/include/bullet, /usr/local/include, "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include", "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0", );
+                            INSTALL_PATH = "";
+                            LIBRARY_STYLE = STATIC;
+                            OTHER_CFLAGS = "       -DNDEBUG   -DGTEST_HAS_PTHREAD=1    ";
+                            OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG   -DGTEST_HAS_PTHREAD=1    ";
+                            OTHER_LDFLAGS = " ";
+                            OTHER_REZFLAGS = "";
+                            PRODUCT_NAME = gtest_main;
+                            SECTORDER_FLAGS = "";
+                            SYMROOT = "/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0";
+                            USE_HEADERMAP = NO;
+                            WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", );
+                     };
+                     name = RelWithDebInfo;
+              };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+              983D4D0DA39B483F9D29261D /* Build configuration list for PBXProject  "CreatureEvolution" */ = {
+                     isa = XCConfigurationList;
+                     buildConfigurations = (
+                            0027654D41324E62A8D34E5A /* Debug */,
+                            618E8CA708204F289CACA60E /* Release */,
+                            E2143038EB85426EA3B47CE7 /* MinSizeRel */,
+                            B053CDFCE63E4EBE947C6EFD /* RelWithDebInfo */,
+                     );
+                     defaultConfigurationIsVisible = 0;
+                     defaultConfigurationName = Debug;
+              };
+              6420D5F9978F46E0A7E22438 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+                     isa = XCConfigurationList;
+                     buildConfigurations = (
+                            0689F35782014F5C87C6645A /* Debug */,
+                            B07B6B75447440FBBCB11DE8 /* Release */,
+                            49FCA6F8CD1E4ADAA5058F6A /* MinSizeRel */,
+                            3026EEBC0FB84F3EBA364112 /* RelWithDebInfo */,
+                     );
+                     defaultConfigurationIsVisible = 0;
+                     defaultConfigurationName = Debug;
+              };
+              3B4528655740437EAEC76A81 /* Build configuration list for PBXNativeTarget "CreatureEvolution" */ = {
+                     isa = XCConfigurationList;
+                     buildConfigurations = (
+                            FDC5597071294ED69E6843C3 /* Debug */,
+                            B773ED0F02CF4F59B7EFF8A8 /* Release */,
+                            90FC30D8E70B43F48DDC1F63 /* MinSizeRel */,
+                            8B851499EF9442DC9205E269 /* RelWithDebInfo */,
+                     );
+                     defaultConfigurationIsVisible = 0;
+                     defaultConfigurationName = Debug;
+              };
+              49984E52D3B4439892293E82 /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */ = {
+                     isa = XCConfigurationList;
+                     buildConfigurations = (
+                            EC9F19A727334613A47D859C /* Debug */,
+                            FCDD93E8F5144233A4AB75CC /* Release */,
+                            234EDBA11A7E422DB65D28E6 /* MinSizeRel */,
+                            8B121FCB218944D4BF0BD3BF /* RelWithDebInfo */,
+                     );
+                     defaultConfigurationIsVisible = 0;
+                     defaultConfigurationName = Debug;
+              };
+              801004A5EB9E4F84891365E5 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+                     isa = XCConfigurationList;
+                     buildConfigurations = (
+                            9DED222A4099459493EEB31C /* Debug */,
+                            F13EC99CA69A4F7B85B53699 /* Release */,
+                            3C4223A2E30845B28BDB0595 /* MinSizeRel */,
+                            E4C480DD4AA4444387337B0E /* RelWithDebInfo */,
+                     );
+                     defaultConfigurationIsVisible = 0;
+                     defaultConfigurationName = Debug;
+              };
+              B7E9795C9CCE4F4DA665C026 /* Build configuration list for PBXNativeTarget "runUnitTests" */ = {
+                     isa = XCConfigurationList;
+                     buildConfigurations = (
+                            EEDB7E65F5034EBFADC1DE82 /* Debug */,
+                            5EC774F171C4414083147B3E /* Release */,
+                            C5D440DCF128471081967D92 /* MinSizeRel */,
+                            11C08069AD904514BDA93428 /* RelWithDebInfo */,
+                     );
+                     defaultConfigurationIsVisible = 0;
+                     defaultConfigurationName = Debug;
+              };
+              9B76547FB39B435292D0B2B4 /* Build configuration list for PBXNativeTarget "CreatureEvolution_lib" */ = {
+                     isa = XCConfigurationList;
+                     buildConfigurations = (
+                            C3AEEABB97784552B1FA1857 /* Debug */,
+                            EBD489BBF79D404397CA7A1C /* Release */,
+                            C9041FF68F6047ABA9B1C1B0 /* MinSizeRel */,
+                            673B990ADC7147D5B26DB8E7 /* RelWithDebInfo */,
+                     );
+                     defaultConfigurationIsVisible = 0;
+                     defaultConfigurationName = Debug;
+              };
+              F8DEA78247C3453795B0A850 /* Build configuration list for PBXNativeTarget "gtest" */ = {
+                     isa = XCConfigurationList;
+                     buildConfigurations = (
+                            A5261F0360B14BD896FB8DB9 /* Debug */,
+                            3B1F0DD4764F43909A049294 /* Release */,
+                            0A3FA119BFB94281AACC60EB /* MinSizeRel */,
+                            0515EE5D23024C14AF2F5443 /* RelWithDebInfo */,
+                     );
+                     defaultConfigurationIsVisible = 0;
+                     defaultConfigurationName = Debug;
+              };
+              577ADDDFCB03471EB54B07C1 /* Build configuration list for PBXNativeTarget "gtest_main" */ = {
+                     isa = XCConfigurationList;
+                     buildConfigurations = (
+                            5BAC9931025941D1BEECBB75 /* Debug */,
+                            E46E467C42C7482A8764A262 /* Release */,
+                            5C13081F7D0C4ED49D73B030 /* MinSizeRel */,
+                            6AF761B8ED574D6CA9F571E5 /* RelWithDebInfo */,
+                     );
+                     defaultConfigurationIsVisible = 0;
+                     defaultConfigurationName = Debug;
+              };
+/* End XCConfigurationList section */
+       };
+       rootObject = 9E050CB470944E83904E6D6B;
+}

@@ -1,0 +1,92 @@
+Tgtest_main
+v6
+r1
+cCheck dependencies
+cCompileC build/external_libs/gtest-1.7.0/CreatureEvolution.build/Debug/gtest_main.build/Objects-normal/x86_64/gtest_main.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest_main.cc normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cLibtool /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Debug/libgtest_main.a normal x86_64
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
+c00000000531EDC2D00000000000000AA
+t1394531373
+s170
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/SDKSettings.plist
+c00000000521962FC000000000000044C
+t1377395452
+s1100
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/CoreServices/SystemVersion.plist
+c00000000531EDC2100000000000001DE
+t1394531361
+s478
+
+N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/CreatureEvolution.build/Debug/gtest_main.build/Objects-normal/x86_64/gtest_main.LinkFileList
+c000000005325CF9100000000000000B7
+t1394986897
+s183
+
+N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/CreatureEvolution.build/Debug/gtest_main.build/Objects-normal/x86_64/gtest_main.o
+t1394986897
+s3952
+
+N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Debug/libgtest_main.a
+t2
+s0
+
+N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest_main.cc
+c000000005314951F00000000000006E5
+t1393857823
+s1765
+
+CBuild AST from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest_main.cc
+r0
+
+CCheck dependencies
+r0
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependenciescb4a4b1107d6b841^0b994b1107d6b841^---0#1#1#--18"Check dependencies36"C74E43F5-F91E-4825-AF1A-99B07570F8EC-
+
+CCompileC build/external_libs/gtest-1.7.0/CreatureEvolution.build/Debug/gtest_main.build/Objects-normal/x86_64/gtest_main.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest_main.cc normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s416679697.295964
+e416679697.964919
+r1
+xCompileC
+xbuild/external_libs/gtest-1.7.0/CreatureEvolution.build/Debug/gtest_main.build/Objects-normal/x86_64/gtest_main.o
+x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest_main.cc
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest_main.cc
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-internal.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-port.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-tuple.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-message.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-string.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-filepath.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-type-util.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-death-test.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-death-test-internal.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-param-test.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-param-util.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-linked_ptr.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-printers.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-param-util-generated.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest_prod.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-test-part.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-typed-test.h
+d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest_pred_impl.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection120"Compile /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest_main.cc228"CompileC build/external_libs/gtest-1.7.0/CreatureEvolution.build/Debug/gtest_main.build/Objects-normal/x86_64/gtest_main.o external_libs/gtest-1.7.0/src/gtest_main.cc normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler02d54b1107d6b841^af07f71107d6b841^---0#0#1#-19%DVTDocumentLocation2@119"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest_main.cc0000000000000000^3216"CompileC build/external_libs/gtest-1.7.0/CreatureEvolution.build/Debug/gtest_main.build/Objects-normal/x86_64/gtest_main.o external_libs/gtest-1.7.0/src/gtest_main.cc normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -Wno-sign-conversion -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Debug/include -I/usr/local/include/bullet -I/usr/local/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/CreatureEvolution.build/Debug/gtest_main.build/DerivedSources/x86_64 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/CreatureEvolution.build/Debug/gtest_main.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Debug -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks -F/Library/Frameworks -DGTEST_HAS_PTHREAD=1 -MMD -MT dependencies -MF /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/CreatureEvolution.build/Debug/gtest_main.build/Objects-normal/x86_64/gtest_main.d --serialize-diagnostics /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/CreatureEvolution.build/Debug/gtest_main.build/Objects-normal/x86_64/gtest_main.dia -c /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/src/gtest_main.cc -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/CreatureEvolution.build/Debug/gtest_main.build/Objects-normal/x86_64/gtest_main.o36"95AF2B26-1EB8-4454-9385-57187FE17F80-
+bEDB92B5F-A385-431D-963E-C6E16AD76637
+
+CLibtool /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Debug/libgtest_main.a normal x86_64
+s416679697.965489
+e416679697.969503
+r1
+xLibtool
+x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Debug/libgtest_main.a
+xnormal
+xx86_64
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection75"Libtool build/external_libs/gtest-1.7.0/Debug/libgtest_main.a normal x86_6475"Libtool build/external_libs/gtest-1.7.0/Debug/libgtest_main.a normal x86_644836f71107d6b841^1a34f81107d6b841^---0#0#1#--868"Libtool build/external_libs/gtest-1.7.0/Debug/libgtest_main.a normal x86_64    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export MACOSX_DEPLOYMENT_TARGET=10.9    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only x86_64 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -L/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Debug -filelist /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/CreatureEvolution.build/Debug/gtest_main.build/Objects-normal/x86_64/gtest_main.LinkFileList -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Debug/libgtest_main.a36"E8938899-6406-49F4-9B7F-F5D1DE17A846-
+bEDB92B5F-A385-431D-963E-C6E16AD76637
+
