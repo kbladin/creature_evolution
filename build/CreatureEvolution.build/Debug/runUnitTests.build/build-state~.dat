@@ -1,315 +1,0 @@
-TrunUnitTests
-v6
-r1
-cCheck dependencies
-cCompileC build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/ChromosomeTest.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/ChromosomeTest.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/CreatureTest.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cLd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/Debug/runUnitTests normal x86_64
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
-c00000000531EDC2D00000000000000AA
-t1394531373
-s170
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/SDKSettings.plist
-c00000000521962FC000000000000044C
-t1377395452
-s1100
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/CoreServices/SystemVersion.plist
-c00000000531EDC2100000000000001DE
-t1394531361
-s478
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/ChromosomeTest.o
-t1394986898
-s215392
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/CreatureTest.o
-t1394986899
-s349160
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/runUnitTests.LinkFileList
-c000000005325CF910000000000000144
-t1394986897
-s324
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/Debug/runUnitTests
-t2
-s0
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/ChromosomeTest.cpp
-c000000005315A9700000000000000526
-t1393928560
-s1318
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp
-c000000005314951F000000000000018E
-t1393857823
-s398
-
-CBuild AST from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/ChromosomeTest.cpp
-r0
-
-CBuild AST from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp
-r0
-
-CCheck dependencies
-r0
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies069df81107d6b841^32c9f81107d6b841^---0#1#1#--18"Check dependencies36"2F85BA1F-DCA0-4863-A274-B040518B8E45-
-
-CCompileC build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/ChromosomeTest.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/ChromosomeTest.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s416679697.972238
-e416679698.873033
-r1
-xCompileC
-xbuild/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/ChromosomeTest.o
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/ChromosomeTest.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/ChromosomeTest.cpp
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-internal.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-port.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-message.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-string.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-filepath.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-type-util.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-death-test.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-death-test-internal.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-param-test.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-param-util.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-linked_ptr.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-printers.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-param-util-generated.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest_prod.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-test-part.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-typed-test.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest_pred_impl.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/AutoInitRNG.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection100"Compile /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/ChromosomeTest.cpp188"CompileC build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/ChromosomeTest.o test/ChromosomeTest.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler8cf6f81107d6b841^0280df1207d6b841^---0#0#1#-19%DVTDocumentLocation2@99"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/ChromosomeTest.cpp0000000000000000^2987"CompileC build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/ChromosomeTest.o test/ChromosomeTest.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -Wno-sign-conversion -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/Debug/include -I/usr/local/include/bullet -I/usr/local/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/DerivedSources/x86_64 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/Debug -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks -F/Library/Frameworks -std=gnu++11 -MMD -MT dependencies -MF /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/ChromosomeTest.d --serialize-diagnostics /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/ChromosomeTest.dia -c /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/ChromosomeTest.cpp -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/ChromosomeTest.o36"2F6D518A-E083-42F4-B373-A3340AB76824-
-bF22E20B8-618F-468D-9091-78E9F7141DE6
-
-CCompileC build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/CreatureTest.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s416679697.972449
-e416679699.191706
-r1
-xCompileC
-xbuild/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/CreatureTest.o
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-internal.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-port.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-message.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-string.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-filepath.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-type-util.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-death-test.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-death-test-internal.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-param-test.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-param-util.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-linked_ptr.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-printers.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/internal/gtest-param-util-generated.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest_prod.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-test-part.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest-typed-test.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include/gtest/gtest_pred_impl.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h
-d/usr/local/include/bullet/btBulletDynamicsCommon.h
-d/usr/local/include/bullet/btBulletCollisionCommon.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionWorld.h
-d/usr/local/include/bullet/LinearMath/btVector3.h
-d/usr/local/include/bullet/LinearMath/btScalar.h
-d/usr/local/include/bullet/LinearMath/btMinMax.h
-d/usr/local/include/bullet/LinearMath/btAlignedAllocator.h
-d/usr/local/include/bullet/LinearMath/btTransform.h
-d/usr/local/include/bullet/LinearMath/btMatrix3x3.h
-d/usr/local/include/bullet/LinearMath/btQuaternion.h
-d/usr/local/include/bullet/LinearMath/btQuadWord.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionObject.h
-d/usr/local/include/bullet/LinearMath/btMotionState.h
-d/usr/local/include/bullet/LinearMath/btAlignedObjectArray.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionDispatcher.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDispatcher.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h
-d/usr/local/include/bullet/LinearMath/btTransformUtil.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btManifoldResult.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCollisionShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCollisionMargin.h
-d/usr/local/include/bullet/LinearMath/btAabbUtil2.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btSphereShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCapsuleShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCylinderShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConeShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btStaticPlaneShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConcaveShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleCallback.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleMesh.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btStridingMeshInterface.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btOptimizedBvh.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btQuantizedBvh.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleInfoMap.h
-d/usr/local/include/bullet/LinearMath/btHashMap.h
-d/usr/local/include/bullet/LinearMath/btSerializer.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCompoundShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTetrahedronShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btEmptyShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btMultiSphereShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btUniformScalingShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionConfiguration.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDbvt.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btMultiSapBroadphase.h
-d/usr/local/include/bullet/LinearMath/btDefaultMotionState.h
-d/usr/local/include/bullet/LinearMath/btQuickprof.h
-d/usr/local/include/bullet/LinearMath/btIDebugDraw.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btContactSolverInfo.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btSimpleDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btRigidBody.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btJacobianEntry.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btTypedConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSolverConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSolverBody.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btHingeConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btConeTwistConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSliderConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btUniversalConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btHinge2Constraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGearConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btFixedConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btConstraintSolver.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btRaycastVehicle.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btVehicleRaycaster.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btWheelInfo.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btActionInterface.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/AutoInitRNG.h
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp:4:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:10:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:
-oIn file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:
-oIn file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:
-o/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h:76:15: warning: 'btConvexHullShape::project' hides overloaded virtual function [-Woverloaded-virtual]
-o        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& minProj, btScalar& maxProj, btVector3& witnesPtMin,btVector3& witnesPtMax) const;
-o                     ^
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp:4:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:10:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:
-oIn file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:
-oIn file included from /usr/local/include/bullet/btBulletCollisionCommon.h:26:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h:19:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h:20:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h:19:
-o/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h:55:15: note: hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)
-o        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& min, btScalar& max) const;
-o                     ^
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp:4:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:11:
-o/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h:29:22: warning: unused function 'operator<<' [-Wunused-function]
-ostatic std::ostream& operator<<(std::ostream& os, const Chromosome c){
-o                     ^
-o/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h:36:22: warning: unused function 'operator<<' [-Wunused-function]
-ostatic std::ostream& operator<<(std::ostream& os, const std::vector<float> c){
-o                     ^
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp:4:
-o/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:49:22: warning: unused function 'operator<<' [-Wunused-function]
-ostatic std::ostream& operator<<(std::ostream& os, const Creature c){
-o                     ^
-o4 warnings generated.
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection98"Compile /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp184"CompileC build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/CreatureTest.o test/CreatureTest.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compilerc500f91107d6b841^8313311307d6b841^-3177"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp:4:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:10:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h:76:15: warning: 'btConvexHullShape::project' hides overloaded virtual function [-Woverloaded-virtual]        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& minProj, btScalar& maxProj, btVector3& witnesPtMin,btVector3& witnesPtMax) const;                     ^In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp:4:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:10:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:26:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h:19:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h:20:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h:19:/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h:55:15: note: hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& min, btScalar& max) const;                     ^In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp:4:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:11:/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h:29:22: warning: unused function 'operator<<' [-Wunused-function]static std::ostream& operator<<(std::ostream& os, const Chromosome c){                     ^/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h:36:22: warning: unused function 'operator<<' [-Wunused-function]static std::ostream& operator<<(std::ostream& os, const std::vector<float> c){                     ^In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp:4:/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:49:22: warning: unused function 'operator<<' [-Wunused-function]static std::ostream& operator<<(std::ostream& os, const Creature c){                     ^4 warnings generated.4(36%IDEClangDiagnosticActivityLogMessage2@62"'btConvexHullShape::project' hides overloaded virtual function-416679699#18446744073709551615#0#6(2@115"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp:4:-416679699#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@97"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp0000000000000000^3#9#3#9#55#0#21"Apple LLVM 5.0 Notice--2@117"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:10:-416679699#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@98"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h0000000000000000^9#9#9#9#140#0#21"Apple LLVM 5.0 Notice--2@118"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:-416679699#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@100"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h0000000000000000^3#9#3#9#52#0#21"Apple LLVM 5.0 Notice--2@76"In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:-416679699#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@57"file:///usr/local/include/bullet/btBulletDynamicsCommon.h0000000000000000^19#9#19#9#1106#0#21"Apple LLVM 5.0 Notice--2@77"In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:-416679699#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@58"file:///usr/local/include/bullet/btBulletCollisionCommon.h0000000000000000^31#9#31#9#1659#0#21"Apple LLVM 5.0 Notice--2@114"Hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)-416679699#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@80"file:///usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h0000000000000000^54#14#54#14#2228#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@84"file:///usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h0000000000000000^75#14#75#14#2899#0#14"Semantic Issue--2@28"Unused function 'operator<<'-416679699#18446744073709551615#0#2(2@115"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp:4:-416679699#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@97"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp0000000000000000^3#9#3#9#55#0#21"Apple LLVM 5.0 Notice--2@117"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:11:-416679699#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@98"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h0000000000000000^10#9#10#9#164#0#21"Apple LLVM 5.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@100"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h0000000000000000^28#21#28#21#569#0#19"Unused Entity Issue--2@28"Unused function 'operator<<'-416679699#18446744073709551615#0#2(2@115"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp:4:-416679699#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@97"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp0000000000000000^3#9#3#9#55#0#21"Apple LLVM 5.0 Notice--2@117"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:11:-416679699#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@98"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h0000000000000000^10#9#10#9#164#0#21"Apple LLVM 5.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@100"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h0000000000000000^35#21#35#21#765#0#19"Unused Entity Issue--2@28"Unused function 'operator<<'-416679699#18446744073709551615#0#1(2@115"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp:4:-416679699#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@97"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp0000000000000000^3#9#3#9#55#0#21"Apple LLVM 5.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@98"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h0000000000000000^48#21#48#21#944#0#19"Unused Entity Issue--0#0#1#-19%DVTDocumentLocation4@97"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp0000000000000000^2975"CompileC build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/CreatureTest.o test/CreatureTest.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -Wno-sign-conversion -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/Debug/include -I/usr/local/include/bullet -I/usr/local/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/external_libs/gtest-1.7.0 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/DerivedSources/x86_64 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/Debug -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks -F/Library/Frameworks -std=gnu++11 -MMD -MT dependencies -MF /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/CreatureTest.d --serialize-diagnostics /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/CreatureTest.dia -c /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/test/CreatureTest.cpp -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/CreatureTest.o36"92C2F92A-494E-48CB-BF49-99BF4933611D-
-bF22E20B8-618F-468D-9091-78E9F7141DE6
-
-CLd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/Debug/runUnitTests normal x86_64
-s416679699.192342
-e416679699.273353
-r1
-xLd
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/Debug/runUnitTests
-xnormal
-xx86_64
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/runUnitTests.LinkFileList
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/ChromosomeTest.o
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/CreatureTest.o
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Debug/libgtest.a
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Debug/libgtest_main.a
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/libCreatureEvolution_lib.a
-d/usr/local/lib/libBulletDynamics.a
-d/usr/local/lib/libBulletCollision.a
-d/usr/local/lib/libLinearMath.a
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libc++.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libSystem.dylib
-d/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/lib/darwin/libclang_rt.osx.a
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcache.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcommonCrypto.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcompiler_rt.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcopyfile.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libcorecrypto.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libdispatch.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libdyld.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libkeymgr.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/liblaunch.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libmacho.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libquarantine.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libremovefile.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_asl.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_blocks.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_c.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_configuration.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_dnssd.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_info.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_kernel.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_m.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_malloc.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_network.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_notify.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_platform.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_pthread.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_sandbox.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libsystem_stats.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libunc.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libunwind.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/system/libxpc.dylib
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection98"Link /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/Debug/runUnitTests41"Ld build/Debug/runUnitTests normal x86_64f949311307d6b841^b9fa451307d6b841^---0#0#1#--1844"Ld build/Debug/runUnitTests normal x86_64    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export MACOSX_DEPLOYMENT_TARGET=10.9    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -L/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/Debug -F/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/Debug -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks -F/Library/Frameworks -filelist /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/runUnitTests.LinkFileList -mmacosx-version-min=10.9 -Wl,-search_paths_first -Wl,-headerpad_max_install_names /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Debug/libgtest.a /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Debug/libgtest_main.a /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/libCreatureEvolution_lib.a /usr/local/lib/libBulletDynamics.a /usr/local/lib/libBulletCollision.a /usr/local/lib/libLinearMath.a /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/external_libs/gtest-1.7.0/Debug/libgtest.a -Xlinker -dependency_info -Xlinker /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/runUnitTests.build/Objects-normal/x86_64/runUnitTests_dependency_info.dat -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/Debug/runUnitTests36"86ED0ED9-608A-4A9A-9F14-6C27A80339D3-
-bF22E20B8-618F-468D-9091-78E9F7141DE6
-

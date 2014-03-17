@@ -1,1677 +1,0 @@
-TCreatureEvolution_lib
-v6
-r1
-cCheck dependencies
-cCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/AutoInitRNG.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/AutoInitRNG.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Chromosome.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Creature.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/CreatureEvolution.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CreatureEvolution.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/DebugDraw.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Evolution.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Population.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Population.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Renderer.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Shader.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Shader.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Simulation.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/WormBulletCreature.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cLibtool /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/libCreatureEvolution_lib.a normal x86_64
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
-c00000000531EDC2D00000000000000AA
-t1394531373
-s170
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/SDKSettings.plist
-c00000000521962FC000000000000044C
-t1377395452
-s1100
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/CoreServices/SystemVersion.plist
-c00000000531EDC2100000000000001DE
-t1394531361
-s478
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/AutoInitRNG.o
-t1394986895
-s8708
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Chromosome.o
-t1394986895
-s197196
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Creature.o
-t1394986895
-s348312
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/CreatureEvolution.o
-t1394986894
-s1792
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/CreatureEvolution_lib.LinkFileList
-c000000005325CF8E000000000000076A
-t1394986894
-s1898
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/DebugDraw.o
-t1394986896
-s429360
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Evolution.o
-t1394986895
-s262116
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Population.o
-t1394986894
-s1780
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Renderer.o
-t1394986895
-s250064
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Shader.o
-t1394986895
-s178332
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Simulation.o
-t1394986896
-s417940
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/WormBulletCreature.o
-t1394986896
-s376712
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/libCreatureEvolution_lib.a
-t1394986896
-s2511080
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/AutoInitRNG.cpp
-c000000005314951F0000000000000062
-t1393857823
-s98
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp
-c00000000531DB6300000000000000B1B
-t1394456112
-s2843
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp
-c00000000531DB62700000000000005F1
-t1394456103
-s1521
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CreatureEvolution.cpp
-c000000005314951F0000000000000020
-t1393857823
-s32
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp
-c00000000531DCCBD0000000000000571
-t1394461885
-s1393
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp
-c00000000531DB6300000000000001148
-t1394456112
-s4424
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Population.cpp
-c000000005314951F000000000000004A
-t1393857823
-s74
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp
-c00000000531DB630000000000000018C
-t1394456112
-s396
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Shader.cpp
-c00000000531DB6300000000000000D15
-t1394456112
-s3349
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp
-c000000005316FB3E0000000000000893
-t1394015038
-s2195
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp
-c00000000531DB6270000000000000E34
-t1394456103
-s3636
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/AutoInitRNG.h
-c000000005314951F00000000000000AF
-t1393857823
-s175
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h
-c00000000531DB63000000000000003B6
-t1394456112
-s950
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h
-c00000000531DB6300000000000000491
-t1394456112
-s1169
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/CreatureEvolution.h
-c000000005314951F000000000000008D
-t1393857823
-s141
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/DebugDraw.h
-c00000000531DB63000000000000003F1
-t1394456112
-s1009
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h
-c00000000531DB6300000000000000347
-t1394456112
-s839
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Population.h
-c000000005314951F0000000000000117
-t1393857823
-s279
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Renderer.h
-c00000000531DB6300000000000000158
-t1394456112
-s344
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Shader.hpp
-c00000000531DB6300000000000000088
-t1394456112
-s136
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h
-c00000000531D98EC0000000000000383
-t1394448620
-s899
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h
-c00000000531DB62700000000000002C0
-t1394456103
-s704
-
-N/usr/local/include/GL/glew.h
-c00000000530DF36600000000000E1ECC
-t1393423206
-s925388
-
-N/usr/local/include/SFML/Config.hpp
-c0000000051F3860600000000000012A9
-t1374914054
-s4777
-
-N/usr/local/include/SFML/OpenGL.hpp
-c0000000051F38606000000000000082C
-t1374914054
-s2092
-
-N/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3.h
-c00000000506DF2440000000000007E6E
-t1349382724
-s32366
-
-N/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h
-c000000004D96080C0000000000000E03
-t1301678092
-s3587
-
-N/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h
-c000000004F1DD3A00000000000001EA9
-t1327354784
-s7849
-
-N/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h
-c000000004FCFFC3E00000000000009FE
-t1339030590
-s2558
-
-N/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDbvt.h
-c000000004FCFFC3E0000000000007EB0
-t1339030590
-s32432
-
-N/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h
-c000000004B744BAE000000000000185A
-t1265912750
-s6234
-
-N/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDispatcher.h
-c00000000518AD58F0000000000000E1D
-t1368053135
-s3613
-
-N/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btMultiSapBroadphase.h
-c000000004A175C5A0000000000001509
-t1243044954
-s5385
-
-N/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h
-c00000000523215E700000000000030CB
-t1379014119
-s12491
-
-N/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h
-c0000000048B4BACB00000000000006AE
-t1219803851
-s1710
-
-N/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btQuantizedBvh.h
-c000000004FCFFC3E00000000000047B7
-t1339030590
-s18359
-
-N/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h
-c000000004D96080C00000000000014F2
-t1301678092
-s5362
-
-N/usr/local/include/bullet/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h
-c000000004FCFFC3E0000000000000693
-t1339030590
-s1683
-
-N/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionConfiguration.h
-c00000000518AD58F0000000000000675
-t1368053135
-s1653
-
-N/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h
-c000000004FCFFC3E00000000000006C4
-t1339030590
-s1732
-
-N/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionDispatcher.h
-c000000004FCFFC3E000000000000149A
-t1339030590
-s5274
-
-N/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionObject.h
-c00000000524B51B70000000000003B4F
-t1380667831
-s15183
-
-N/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h
-c00000000509DB10B000000000000067E
-t1352511755
-s1662
-
-N/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionWorld.h
-c00000000524CFD050000000000004907
-t1380777221
-s18695
-
-N/usr/local/include/bullet/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h
-c00000000523215E70000000000001374
-t1379014119
-s4980
-
-N/usr/local/include/bullet/BulletCollision/CollisionDispatch/btManifoldResult.h
-c00000000506F4DDF0000000000001131
-t1349471711
-s4401
-
-N/usr/local/include/bullet/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h
-c000000004FCFFC3E0000000000000BE0
-t1339030590
-s3040
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h
-c000000004FCFFC3E0000000000002061
-t1339030590
-s8289
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h
-c0000000050CB8C87000000000000149D
-t1355517063
-s5277
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btCapsuleShape.h
-c00000000505605E5000000000000177D
-t1347814885
-s6013
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btCollisionMargin.h
-c000000004E7241300000000000000595
-t1316110640
-s1429
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btCollisionShape.h
-c00000000505605E500000000000012EB
-t1347814885
-s4843
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btCompoundShape.h
-c000000004D96080C00000000000019D2
-t1301678092
-s6610
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btConcaveShape.h
-c000000004FCFFC3E000000000000084D
-t1339030590
-s2125
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btConeShape.h
-c0000000052333E9F00000000000012CE
-t1379090079
-s4814
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h
-c0000000050D38CB700000000000010CF
-t1356041399
-s4303
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h
-c000000004FCFFC3E00000000000019D4
-t1339030590
-s6612
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h
-c000000004F4DA09D0000000000000C9A
-t1330487453
-s3226
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.h
-c000000004FCFFC3E0000000000000E4F
-t1339030590
-s3663
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btCylinderShape.h
-c00000000505605E5000000000000186C
-t1347814885
-s6252
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btEmptyShape.h
-c000000004FCFFC3E00000000000008B2
-t1339030590
-s2226
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btMultiSphereShape.h
-c000000004FCFFC3E0000000000000C40
-t1339030590
-s3136
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btOptimizedBvh.h
-c000000004D96080C0000000000000951
-t1301678092
-s2385
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h
-c0000000050654E680000000000000E79
-t1348816488
-s3705
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h
-c000000004FCFFC3E0000000000000DE0
-t1339030590
-s3552
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btSphereShape.h
-c000000004D96080C0000000000000A84
-t1301678092
-s2692
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btStaticPlaneShape.h
-c000000004FCFFC3E0000000000000D00
-t1339030590
-s3328
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btStridingMeshInterface.h
-c000000004FCFFC3E0000000000001552
-t1339030590
-s5458
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btTetrahedronShape.h
-c000000004FCFFC3E00000000000009DF
-t1339030590
-s2527
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleCallback.h
-c000000004D96080C00000000000006AB
-t1301678092
-s1707
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h
-c000000004F4DBA6700000000000014AF
-t1330494055
-s5295
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleInfoMap.h
-c00000000504EBFE900000000000020D0
-t1347338217
-s8400
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleMesh.h
-c0000000052323E970000000000000C10
-t1379024535
-s3088
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleMeshShape.h
-c000000004FCFFC3E0000000000000AF5
-t1339030590
-s2805
-
-N/usr/local/include/bullet/BulletCollision/CollisionShapes/btUniformScalingShape.h
-c000000004FCFFC3E0000000000000C18
-t1339030590
-s3096
-
-N/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h
-c00000000518AD58F0000000000000C96
-t1368053135
-s3222
-
-N/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h
-c00000000505425A10000000000001183
-t1347691937
-s4483
-
-N/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h
-c00000000504E8C2B0000000000001ED0
-t1347324971
-s7888
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btConeTwistConstraint.h
-c000000005234939B000000000000284E
-t1379177371
-s10318
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btConstraintSolver.h
-c0000000052685D310000000000000852
-t1382571313
-s2130
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btContactSolverInfo.h
-c00000000505D1D11000000000000154E
-t1348279569
-s5454
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btFixedConstraint.h
-c00000000524C953A000000000000069E
-t1380750650
-s1694
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGearConstraint.h
-c000000005234A20D0000000000001074
-t1379181069
-s4212
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h
-c000000005234939B0000000000004C07
-t1379177371
-s19463
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.h
-c000000005234939B00000000000012B5
-t1379177371
-s4789
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btHinge2Constraint.h
-c000000004FCFFC3E0000000000000954
-t1339030590
-s2388
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btHingeConstraint.h
-c000000005234939B000000000000302A
-t1379177371
-s12330
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btJacobianEntry.h
-c0000000050411490000000000000151F
-t1346442384
-s5407
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.h
-c000000005234939B0000000000001558
-t1379177371
-s5464
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h
-c0000000052685D310000000000001E5D
-t1382571313
-s7773
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSliderConstraint.h
-c000000005234939B00000000000035F7
-t1379177371
-s13815
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSolverBody.h
-c00000000526644B00000000000001E8E
-t1382433968
-s7822
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSolverConstraint.h
-c0000000052641506000000000000095C
-t1382290694
-s2396
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btTypedConstraint.h
-c000000005266BFA50000000000003631
-t1382465445
-s13873
-
-N/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btUniversalConstraint.h
-c000000004FCFFC3E0000000000000A91
-t1339030590
-s2705
-
-N/usr/local/include/bullet/BulletDynamics/Dynamics/btActionInterface.h
-c000000004C86DAF700000000000005FC
-t1283906295
-s1532
-
-N/usr/local/include/bullet/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h
-c00000000526866370000000000001C8D
-t1382573623
-s7309
-
-N/usr/local/include/bullet/BulletDynamics/Dynamics/btDynamicsWorld.h
-c00000000518AD58F0000000000001679
-t1368053135
-s5753
-
-N/usr/local/include/bullet/BulletDynamics/Dynamics/btRigidBody.h
-c0000000051C102BA00000000000046F5
-t1371603642
-s18165
-
-N/usr/local/include/bullet/BulletDynamics/Dynamics/btSimpleDynamicsWorld.h
-c000000004E7248310000000000000C28
-t1316112433
-s3112
-
-N/usr/local/include/bullet/BulletDynamics/Vehicle/btRaycastVehicle.h
-c000000004D96080C0000000000001614
-t1301678092
-s5652
-
-N/usr/local/include/bullet/BulletDynamics/Vehicle/btVehicleRaycaster.h
-c000000004D96080C0000000000000409
-t1301678092
-s1033
-
-N/usr/local/include/bullet/BulletDynamics/Vehicle/btWheelInfo.h
-c000000004D96080C0000000000000D61
-t1301678092
-s3425
-
-N/usr/local/include/bullet/LinearMath/btAabbUtil2.h
-c000000004FCFFC3E0000000000002154
-t1339030590
-s8532
-
-N/usr/local/include/bullet/LinearMath/btAlignedAllocator.h
-c00000000499C9113000000000000114F
-t1234997523
-s4431
-
-N/usr/local/include/bullet/LinearMath/btAlignedObjectArray.h
-c000000004FCFFC3E0000000000002BCB
-t1339030590
-s11211
-
-N/usr/local/include/bullet/LinearMath/btDefaultMotionState.h
-c000000004FCFFC3E00000000000004FA
-t1339030590
-s1274
-
-N/usr/local/include/bullet/LinearMath/btHashMap.h
-c000000004D96080C00000000000024A8
-t1301678092
-s9384
-
-N/usr/local/include/bullet/LinearMath/btIDebugDraw.h
-c000000005237B7EA000000000000410A
-t1379383274
-s16650
-
-N/usr/local/include/bullet/LinearMath/btMatrix3x3.h
-c000000005266CE54000000000000ADC0
-t1382469204
-s44480
-
-N/usr/local/include/bullet/LinearMath/btMinMax.h
-c000000004EE6324700000000000006C6
-t1323708999
-s1734
-
-N/usr/local/include/bullet/LinearMath/btMotionState.h
-c00000000499C9113000000000000063D
-t1234997523
-s1597
-
-N/usr/local/include/bullet/LinearMath/btQuadWord.h
-c000000004FCFFC3E0000000000001C89
-t1339030590
-s7305
-
-N/usr/local/include/bullet/LinearMath/btQuaternion.h
-c00000000525F04600000000000006E31
-t1381958752
-s28209
-
-N/usr/local/include/bullet/LinearMath/btQuickprof.h
-c000000004E5C58E00000000000001410
-t1314674912
-s5136
-
-N/usr/local/include/bullet/LinearMath/btScalar.h
-c000000005266CB8100000000000053B9
-t1382468481
-s21433
-
-N/usr/local/include/bullet/LinearMath/btSerializer.h
-c000000005232260A0000000000003413
-t1379018250
-s13331
-
-N/usr/local/include/bullet/LinearMath/btTransform.h
-c000000004FCFFC3E0000000000002241
-t1339030590
-s8769
-
-N/usr/local/include/bullet/LinearMath/btTransformUtil.h
-c000000004D96080C0000000000001C3F
-t1301678092
-s7231
-
-N/usr/local/include/bullet/LinearMath/btVector3.h
-c000000005266CE540000000000009D3C
-t1382469204
-s40252
-
-N/usr/local/include/bullet/btBulletCollisionCommon.h
-c000000005018133F0000000000000D48
-t1343755071
-s3400
-
-N/usr/local/include/bullet/btBulletDynamicsCommon.h
-c00000000524C953A00000000000008A4
-t1380750650
-s2212
-
-CBuild AST from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/AutoInitRNG.cpp
-r0
-
-CBuild AST from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp
-r0
-
-CBuild AST from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp
-r0
-
-CBuild AST from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CreatureEvolution.cpp
-r0
-
-CBuild AST from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp
-r0
-
-CBuild AST from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp
-r0
-
-CBuild AST from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Population.cpp
-r0
-
-CBuild AST from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp
-r0
-
-CBuild AST from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Shader.cpp
-r0
-
-CBuild AST from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp
-r0
-
-CBuild AST from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp
-r0
-
-CCheck dependencies
-r0
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies73b9411807d6b841^b1e04a1807d6b841^---0#1#1#--18"Check dependencies36"EC34A9A4-EC4F-4CF7-A526-E43EDC10A69E-
-
-CCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/AutoInitRNG.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/AutoInitRNG.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s416679694.130750
-e416679695.033199
-r1
-xCompileC
-xbuild/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/AutoInitRNG.o
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/AutoInitRNG.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/AutoInitRNG.cpp
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/AutoInitRNG.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection96"Compile /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/AutoInitRNG.cpp194"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/AutoInitRNG.o src/AutoInitRNG.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compilereb8e210e07d6b841^c2c3080f07d6b841^---0#0#1#-19%DVTDocumentLocation2@95"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/AutoInitRNG.cpp0000000000000000^2849"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/AutoInitRNG.o src/AutoInitRNG.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -Wno-sign-conversion -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/include -I/usr/local/include/bullet -I/usr/local/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources/x86_64 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks -F/Library/Frameworks -std=c++11 -MMD -MT dependencies -MF /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/AutoInitRNG.d --serialize-diagnostics /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/AutoInitRNG.dia -c /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/AutoInitRNG.cpp -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/AutoInitRNG.o36"FA65994D-A35F-48CA-B742-D94DF114D8DF-
-b5E69A7CA-3BBE-44CE-A96A-BD1B3B6DB712
-
-CCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Chromosome.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s416679694.131239
-e416679695.307660
-r1
-xCompileC
-xbuild/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Chromosome.o
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/AutoInitRNG.h
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp:1:
-o/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h:29:22: warning: unused function 'operator<<' [-Wunused-function]
-ostatic std::ostream& operator<<(std::ostream& os, const Chromosome c){
-o                     ^
-o/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h:36:22: warning: unused function 'operator<<' [-Wunused-function]
-ostatic std::ostream& operator<<(std::ostream& os, const std::vector<float> c){
-o                     ^
-o2 warnings generated.
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection95"Compile /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp192"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Chromosome.o src/Chromosome.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compilera7b1210e07d6b841^1b7f4e0f07d6b841^-649"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp:1:/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h:29:22: warning: unused function 'operator<<' [-Wunused-function]static std::ostream& operator<<(std::ostream& os, const Chromosome c){                     ^/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h:36:22: warning: unused function 'operator<<' [-Wunused-function]static std::ostream& operator<<(std::ostream& os, const std::vector<float> c){                     ^2 warnings generated.2(36%IDEClangDiagnosticActivityLogMessage2@28"Unused function 'operator<<'-416679695#18446744073709551615#0#1(2@112"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp:1:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@94"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp0000000000000000^0#9#0#9#9#0#21"Apple LLVM 5.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@100"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h0000000000000000^28#21#28#21#569#0#19"Unused Entity Issue--2@28"Unused function 'operator<<'-416679695#18446744073709551615#0#1(2@112"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp:1:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@94"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp0000000000000000^0#9#0#9#9#0#21"Apple LLVM 5.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@100"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h0000000000000000^35#21#35#21#765#0#19"Unused Entity Issue--0#0#1#-19%DVTDocumentLocation4@94"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp0000000000000000^2843"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Chromosome.o src/Chromosome.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -Wno-sign-conversion -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/include -I/usr/local/include/bullet -I/usr/local/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources/x86_64 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks -F/Library/Frameworks -std=c++11 -MMD -MT dependencies -MF /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Chromosome.d --serialize-diagnostics /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Chromosome.dia -c /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Chromosome.cpp -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Chromosome.o36"C875FA13-DAE7-4789-BBDD-C03AA8675BB0-
-b5E69A7CA-3BBE-44CE-A96A-BD1B3B6DB712
-
-CCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Creature.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s416679694.131673
-e416679695.909363
-r1
-xCompileC
-xbuild/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Creature.o
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h
-d/usr/local/include/bullet/btBulletDynamicsCommon.h
-d/usr/local/include/bullet/btBulletCollisionCommon.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionWorld.h
-d/usr/local/include/bullet/LinearMath/btVector3.h
-d/usr/local/include/bullet/LinearMath/btScalar.h
-d/usr/local/include/bullet/LinearMath/btMinMax.h
-d/usr/local/include/bullet/LinearMath/btAlignedAllocator.h
-d/usr/local/include/bullet/LinearMath/btTransform.h
-d/usr/local/include/bullet/LinearMath/btMatrix3x3.h
-d/usr/local/include/bullet/LinearMath/btQuaternion.h
-d/usr/local/include/bullet/LinearMath/btQuadWord.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionObject.h
-d/usr/local/include/bullet/LinearMath/btMotionState.h
-d/usr/local/include/bullet/LinearMath/btAlignedObjectArray.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionDispatcher.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDispatcher.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h
-d/usr/local/include/bullet/LinearMath/btTransformUtil.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btManifoldResult.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCollisionShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCollisionMargin.h
-d/usr/local/include/bullet/LinearMath/btAabbUtil2.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btSphereShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCapsuleShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCylinderShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConeShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btStaticPlaneShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConcaveShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleCallback.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleMesh.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btStridingMeshInterface.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btOptimizedBvh.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btQuantizedBvh.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleInfoMap.h
-d/usr/local/include/bullet/LinearMath/btHashMap.h
-d/usr/local/include/bullet/LinearMath/btSerializer.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCompoundShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTetrahedronShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btEmptyShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btMultiSphereShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btUniformScalingShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionConfiguration.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDbvt.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btMultiSapBroadphase.h
-d/usr/local/include/bullet/LinearMath/btDefaultMotionState.h
-d/usr/local/include/bullet/LinearMath/btQuickprof.h
-d/usr/local/include/bullet/LinearMath/btIDebugDraw.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btContactSolverInfo.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btSimpleDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btRigidBody.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btJacobianEntry.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btTypedConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSolverConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSolverBody.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btHingeConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btConeTwistConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSliderConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btUniversalConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btHinge2Constraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGearConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btFixedConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btConstraintSolver.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btRaycastVehicle.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btVehicleRaycaster.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btWheelInfo.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btActionInterface.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/AutoInitRNG.h
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp:1:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:10:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:
-oIn file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:
-oIn file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:
-o/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h:76:15: warning: 'btConvexHullShape::project' hides overloaded virtual function [-Woverloaded-virtual]
-o        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& minProj, btScalar& maxProj, btVector3& witnesPtMin,btVector3& witnesPtMax) const;
-o                     ^
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp:1:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:10:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:
-oIn file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:
-oIn file included from /usr/local/include/bullet/btBulletCollisionCommon.h:26:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h:19:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h:20:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h:19:
-o/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h:55:15: note: hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)
-o        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& min, btScalar& max) const;
-o                     ^
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp:1:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:11:
-o/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h:29:22: warning: unused function 'operator<<' [-Wunused-function]
-ostatic std::ostream& operator<<(std::ostream& os, const Chromosome c){
-o                     ^
-o/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h:36:22: warning: unused function 'operator<<' [-Wunused-function]
-ostatic std::ostream& operator<<(std::ostream& os, const std::vector<float> c){
-o                     ^
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp:1:
-o/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:49:22: warning: unused function 'operator<<' [-Wunused-function]
-ostatic std::ostream& operator<<(std::ostream& os, const Creature c){
-o                     ^
-o4 warnings generated.
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection93"Compile /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp188"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Creature.o src/Creature.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler7cd2210e07d6b841^f3cbe80f07d6b841^-3157"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp:1:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:10:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h:76:15: warning: 'btConvexHullShape::project' hides overloaded virtual function [-Woverloaded-virtual]        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& minProj, btScalar& maxProj, btVector3& witnesPtMin,btVector3& witnesPtMax) const;                     ^In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp:1:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:10:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:26:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h:19:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h:20:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h:19:/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h:55:15: note: hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& min, btScalar& max) const;                     ^In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp:1:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:11:/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h:29:22: warning: unused function 'operator<<' [-Wunused-function]static std::ostream& operator<<(std::ostream& os, const Chromosome c){                     ^/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h:36:22: warning: unused function 'operator<<' [-Wunused-function]static std::ostream& operator<<(std::ostream& os, const std::vector<float> c){                     ^In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp:1:/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:49:22: warning: unused function 'operator<<' [-Wunused-function]static std::ostream& operator<<(std::ostream& os, const Creature c){                     ^4 warnings generated.4(36%IDEClangDiagnosticActivityLogMessage2@62"'btConvexHullShape::project' hides overloaded virtual function-416679695#18446744073709551615#0#6(2@110"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp:1:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@92"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp0000000000000000^0#9#0#9#9#0#21"Apple LLVM 5.0 Notice--2@117"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:10:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@98"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h0000000000000000^9#9#9#9#140#0#21"Apple LLVM 5.0 Notice--2@118"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@100"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h0000000000000000^3#9#3#9#52#0#21"Apple LLVM 5.0 Notice--2@76"In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@57"file:///usr/local/include/bullet/btBulletDynamicsCommon.h0000000000000000^19#9#19#9#1106#0#21"Apple LLVM 5.0 Notice--2@77"In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@58"file:///usr/local/include/bullet/btBulletCollisionCommon.h0000000000000000^31#9#31#9#1659#0#21"Apple LLVM 5.0 Notice--2@114"Hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@80"file:///usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h0000000000000000^54#14#54#14#2228#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@84"file:///usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h0000000000000000^75#14#75#14#2899#0#14"Semantic Issue--2@28"Unused function 'operator<<'-416679695#18446744073709551615#0#2(2@110"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp:1:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@92"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp0000000000000000^0#9#0#9#9#0#21"Apple LLVM 5.0 Notice--2@117"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:11:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@98"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h0000000000000000^10#9#10#9#164#0#21"Apple LLVM 5.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@100"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h0000000000000000^28#21#28#21#569#0#19"Unused Entity Issue--2@28"Unused function 'operator<<'-416679695#18446744073709551615#0#2(2@110"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp:1:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@92"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp0000000000000000^0#9#0#9#9#0#21"Apple LLVM 5.0 Notice--2@117"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:11:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@98"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h0000000000000000^10#9#10#9#164#0#21"Apple LLVM 5.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@100"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h0000000000000000^35#21#35#21#765#0#19"Unused Entity Issue--2@28"Unused function 'operator<<'-416679695#18446744073709551615#0#1(2@110"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp:1:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@92"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp0000000000000000^0#9#0#9#9#0#21"Apple LLVM 5.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@98"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h0000000000000000^48#21#48#21#944#0#19"Unused Entity Issue--0#0#1#-19%DVTDocumentLocation4@92"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp0000000000000000^2831"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Creature.o src/Creature.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -Wno-sign-conversion -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/include -I/usr/local/include/bullet -I/usr/local/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources/x86_64 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks -F/Library/Frameworks -std=c++11 -MMD -MT dependencies -MF /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Creature.d --serialize-diagnostics /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Creature.dia -c /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Creature.cpp -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Creature.o36"FB0366BF-33CE-4368-B98B-14C798E54689-
-b5E69A7CA-3BBE-44CE-A96A-BD1B3B6DB712
-
-CCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/CreatureEvolution.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CreatureEvolution.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s416679694.132151
-e416679694.150787
-r1
-xCompileC
-xbuild/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/CreatureEvolution.o
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CreatureEvolution.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CreatureEvolution.cpp
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/CreatureEvolution.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection102"Compile /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CreatureEvolution.cpp206"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/CreatureEvolution.o src/CreatureEvolution.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compilercff9210e07d6b841^3d9a260e07d6b841^---0#0#1#-19%DVTDocumentLocation2@101"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CreatureEvolution.cpp0000000000000000^2885"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/CreatureEvolution.o src/CreatureEvolution.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -Wno-sign-conversion -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/include -I/usr/local/include/bullet -I/usr/local/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources/x86_64 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks -F/Library/Frameworks -std=c++11 -MMD -MT dependencies -MF /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/CreatureEvolution.d --serialize-diagnostics /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/CreatureEvolution.dia -c /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/CreatureEvolution.cpp -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/CreatureEvolution.o36"42B45D96-9BAE-400A-8115-E44378978275-
-b5E69A7CA-3BBE-44CE-A96A-BD1B3B6DB712
-
-CCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/DebugDraw.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s416679694.133268
-e416679696.166464
-r1
-xCompileC
-xbuild/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/DebugDraw.o
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/DebugDraw.h
-d/usr/local/include/bullet/LinearMath/btIDebugDraw.h
-d/usr/local/include/bullet/LinearMath/btVector3.h
-d/usr/local/include/bullet/LinearMath/btScalar.h
-d/usr/local/include/bullet/LinearMath/btMinMax.h
-d/usr/local/include/bullet/LinearMath/btAlignedAllocator.h
-d/usr/local/include/bullet/LinearMath/btTransform.h
-d/usr/local/include/bullet/LinearMath/btMatrix3x3.h
-d/usr/local/include/bullet/LinearMath/btQuaternion.h
-d/usr/local/include/bullet/LinearMath/btQuadWord.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h
-d/usr/local/include/bullet/btBulletDynamicsCommon.h
-d/usr/local/include/bullet/btBulletCollisionCommon.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionWorld.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionObject.h
-d/usr/local/include/bullet/LinearMath/btMotionState.h
-d/usr/local/include/bullet/LinearMath/btAlignedObjectArray.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionDispatcher.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDispatcher.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h
-d/usr/local/include/bullet/LinearMath/btTransformUtil.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btManifoldResult.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCollisionShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCollisionMargin.h
-d/usr/local/include/bullet/LinearMath/btAabbUtil2.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btSphereShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCapsuleShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCylinderShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConeShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btStaticPlaneShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConcaveShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleCallback.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleMesh.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btStridingMeshInterface.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btOptimizedBvh.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btQuantizedBvh.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleInfoMap.h
-d/usr/local/include/bullet/LinearMath/btHashMap.h
-d/usr/local/include/bullet/LinearMath/btSerializer.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCompoundShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTetrahedronShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btEmptyShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btMultiSphereShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btUniformScalingShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionConfiguration.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDbvt.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btMultiSapBroadphase.h
-d/usr/local/include/bullet/LinearMath/btDefaultMotionState.h
-d/usr/local/include/bullet/LinearMath/btQuickprof.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btContactSolverInfo.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btSimpleDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btRigidBody.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btJacobianEntry.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btTypedConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSolverConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSolverBody.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btHingeConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btConeTwistConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSliderConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btUniversalConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btHinge2Constraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGearConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btFixedConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btConstraintSolver.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btRaycastVehicle.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btVehicleRaycaster.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btWheelInfo.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btActionInterface.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h
-d/usr/local/include/GL/glew.h
-d/usr/local/include/SFML/OpenGL.hpp
-d/usr/local/include/SFML/Config.hpp
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp:1:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/DebugDraw.h:5:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:
-oIn file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:
-oIn file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:
-o/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h:76:15: warning: 'btConvexHullShape::project' hides overloaded virtual function [-Woverloaded-virtual]
-o        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& minProj, btScalar& maxProj, btVector3& witnesPtMin,btVector3& witnesPtMax) const;
-o                     ^
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp:1:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/DebugDraw.h:5:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:
-oIn file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:
-oIn file included from /usr/local/include/bullet/btBulletCollisionCommon.h:26:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h:19:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h:20:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h:19:
-o/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h:55:15: note: hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)
-o        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& min, btScalar& max) const;
-o                     ^
-o1 warning generated.
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection94"Compile /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp190"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/DebugDraw.o src/DebugDraw.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler9a7d220e07d6b841^849d2a1007d6b841^-2055"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp:1:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/DebugDraw.h:5:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h:76:15: warning: 'btConvexHullShape::project' hides overloaded virtual function [-Woverloaded-virtual]        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& minProj, btScalar& maxProj, btVector3& witnesPtMin,btVector3& witnesPtMax) const;                     ^In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp:1:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/DebugDraw.h:5:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:26:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h:19:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h:20:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h:19:/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h:55:15: note: hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& min, btScalar& max) const;                     ^1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@62"'btConvexHullShape::project' hides overloaded virtual function-416679696#18446744073709551615#0#6(2@111"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp:1:-416679696#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@93"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp0000000000000000^0#9#0#9#9#0#21"Apple LLVM 5.0 Notice--2@117"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/DebugDraw.h:5:-416679696#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@99"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/DebugDraw.h0000000000000000^4#9#4#9#87#0#21"Apple LLVM 5.0 Notice--2@118"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:-416679696#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@100"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h0000000000000000^3#9#3#9#52#0#21"Apple LLVM 5.0 Notice--2@76"In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:-416679696#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@57"file:///usr/local/include/bullet/btBulletDynamicsCommon.h0000000000000000^19#9#19#9#1106#0#21"Apple LLVM 5.0 Notice--2@77"In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:-416679696#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@58"file:///usr/local/include/bullet/btBulletCollisionCommon.h0000000000000000^31#9#31#9#1659#0#21"Apple LLVM 5.0 Notice--2@114"Hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)-416679696#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@80"file:///usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h0000000000000000^54#14#54#14#2228#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@84"file:///usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h0000000000000000^75#14#75#14#2899#0#14"Semantic Issue--0#0#1#-19%DVTDocumentLocation4@93"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp0000000000000000^2837"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/DebugDraw.o src/DebugDraw.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -Wno-sign-conversion -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/include -I/usr/local/include/bullet -I/usr/local/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources/x86_64 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks -F/Library/Frameworks -std=c++11 -MMD -MT dependencies -MF /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/DebugDraw.d --serialize-diagnostics /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/DebugDraw.dia -c /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/DebugDraw.cpp -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/DebugDraw.o36"164E4582-1DBC-4245-9F22-663E8E74DB5E-
-b5E69A7CA-3BBE-44CE-A96A-BD1B3B6DB712
-
-CCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Evolution.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s416679694.134205
-e416679695.907830
-r1
-xCompileC
-xbuild/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Evolution.o
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/AutoInitRNG.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h
-d/usr/local/include/bullet/btBulletDynamicsCommon.h
-d/usr/local/include/bullet/btBulletCollisionCommon.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionWorld.h
-d/usr/local/include/bullet/LinearMath/btVector3.h
-d/usr/local/include/bullet/LinearMath/btScalar.h
-d/usr/local/include/bullet/LinearMath/btMinMax.h
-d/usr/local/include/bullet/LinearMath/btAlignedAllocator.h
-d/usr/local/include/bullet/LinearMath/btTransform.h
-d/usr/local/include/bullet/LinearMath/btMatrix3x3.h
-d/usr/local/include/bullet/LinearMath/btQuaternion.h
-d/usr/local/include/bullet/LinearMath/btQuadWord.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionObject.h
-d/usr/local/include/bullet/LinearMath/btMotionState.h
-d/usr/local/include/bullet/LinearMath/btAlignedObjectArray.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionDispatcher.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDispatcher.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h
-d/usr/local/include/bullet/LinearMath/btTransformUtil.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btManifoldResult.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCollisionShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCollisionMargin.h
-d/usr/local/include/bullet/LinearMath/btAabbUtil2.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btSphereShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCapsuleShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCylinderShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConeShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btStaticPlaneShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConcaveShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleCallback.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleMesh.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btStridingMeshInterface.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btOptimizedBvh.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btQuantizedBvh.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleInfoMap.h
-d/usr/local/include/bullet/LinearMath/btHashMap.h
-d/usr/local/include/bullet/LinearMath/btSerializer.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCompoundShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTetrahedronShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btEmptyShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btMultiSphereShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btUniformScalingShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionConfiguration.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDbvt.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btMultiSapBroadphase.h
-d/usr/local/include/bullet/LinearMath/btDefaultMotionState.h
-d/usr/local/include/bullet/LinearMath/btQuickprof.h
-d/usr/local/include/bullet/LinearMath/btIDebugDraw.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btContactSolverInfo.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btSimpleDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btRigidBody.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btJacobianEntry.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btTypedConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSolverConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSolverBody.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btHingeConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btConeTwistConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSliderConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btUniversalConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btHinge2Constraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGearConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btFixedConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btConstraintSolver.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btRaycastVehicle.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btVehicleRaycaster.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btWheelInfo.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btActionInterface.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp:1:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h:5:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:10:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:
-oIn file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:
-oIn file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:
-o/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h:76:15: warning: 'btConvexHullShape::project' hides overloaded virtual function [-Woverloaded-virtual]
-o        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& minProj, btScalar& maxProj, btVector3& witnesPtMin,btVector3& witnesPtMax) const;
-o                     ^
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp:1:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h:5:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:10:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:
-oIn file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:
-oIn file included from /usr/local/include/bullet/btBulletCollisionCommon.h:26:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h:19:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h:20:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h:19:
-o/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h:55:15: note: hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)
-o        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& min, btScalar& max) const;
-o                     ^
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp:1:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h:5:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:11:
-o/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h:29:22: warning: unused function 'operator<<' [-Wunused-function]
-ostatic std::ostream& operator<<(std::ostream& os, const Chromosome c){
-o                     ^
-o/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h:36:22: warning: unused function 'operator<<' [-Wunused-function]
-ostatic std::ostream& operator<<(std::ostream& os, const std::vector<float> c){
-o                     ^
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp:1:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h:5:
-o/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:49:22: warning: unused function 'operator<<' [-Wunused-function]
-ostatic std::ostream& operator<<(std::ostream& os, const Creature c){
-o                     ^
-o4 warnings generated.
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection94"Compile /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp190"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Evolution.o src/Evolution.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler3272220e07d6b841^4967e80f07d6b841^-3633"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp:1:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h:5:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:10:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h:76:15: warning: 'btConvexHullShape::project' hides overloaded virtual function [-Woverloaded-virtual]        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& minProj, btScalar& maxProj, btVector3& witnesPtMin,btVector3& witnesPtMax) const;                     ^In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp:1:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h:5:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:10:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:26:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h:19:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h:20:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h:19:/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h:55:15: note: hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& min, btScalar& max) const;                     ^In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp:1:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h:5:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:11:/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h:29:22: warning: unused function 'operator<<' [-Wunused-function]static std::ostream& operator<<(std::ostream& os, const Chromosome c){                     ^/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h:36:22: warning: unused function 'operator<<' [-Wunused-function]static std::ostream& operator<<(std::ostream& os, const std::vector<float> c){                     ^In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp:1:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h:5:/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:49:22: warning: unused function 'operator<<' [-Wunused-function]static std::ostream& operator<<(std::ostream& os, const Creature c){                     ^4 warnings generated.4(36%IDEClangDiagnosticActivityLogMessage2@62"'btConvexHullShape::project' hides overloaded virtual function-416679695#18446744073709551615#0#7(2@111"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp:1:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@93"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp0000000000000000^0#9#0#9#9#0#21"Apple LLVM 5.0 Notice--2@117"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h:5:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@99"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h0000000000000000^4#9#4#9#75#0#21"Apple LLVM 5.0 Notice--2@117"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:10:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@98"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h0000000000000000^9#9#9#9#140#0#21"Apple LLVM 5.0 Notice--2@118"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@100"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h0000000000000000^3#9#3#9#52#0#21"Apple LLVM 5.0 Notice--2@76"In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@57"file:///usr/local/include/bullet/btBulletDynamicsCommon.h0000000000000000^19#9#19#9#1106#0#21"Apple LLVM 5.0 Notice--2@77"In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@58"file:///usr/local/include/bullet/btBulletCollisionCommon.h0000000000000000^31#9#31#9#1659#0#21"Apple LLVM 5.0 Notice--2@114"Hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@80"file:///usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h0000000000000000^54#14#54#14#2228#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@84"file:///usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h0000000000000000^75#14#75#14#2899#0#14"Semantic Issue--2@28"Unused function 'operator<<'-416679695#18446744073709551615#0#3(2@111"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp:1:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@93"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp0000000000000000^0#9#0#9#9#0#21"Apple LLVM 5.0 Notice--2@117"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h:5:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@99"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h0000000000000000^4#9#4#9#75#0#21"Apple LLVM 5.0 Notice--2@117"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:11:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@98"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h0000000000000000^10#9#10#9#164#0#21"Apple LLVM 5.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@100"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h0000000000000000^28#21#28#21#569#0#19"Unused Entity Issue--2@28"Unused function 'operator<<'-416679695#18446744073709551615#0#3(2@111"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp:1:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@93"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp0000000000000000^0#9#0#9#9#0#21"Apple LLVM 5.0 Notice--2@117"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h:5:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@99"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h0000000000000000^4#9#4#9#75#0#21"Apple LLVM 5.0 Notice--2@117"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h:11:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@98"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h0000000000000000^10#9#10#9#164#0#21"Apple LLVM 5.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@100"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Chromosome.h0000000000000000^35#21#35#21#765#0#19"Unused Entity Issue--2@28"Unused function 'operator<<'-416679695#18446744073709551615#0#2(2@111"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp:1:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@93"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp0000000000000000^0#9#0#9#9#0#21"Apple LLVM 5.0 Notice--2@117"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h:5:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@99"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Evolution.h0000000000000000^4#9#4#9#75#0#21"Apple LLVM 5.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@98"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Creature.h0000000000000000^48#21#48#21#944#0#19"Unused Entity Issue--0#0#1#-19%DVTDocumentLocation4@93"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp0000000000000000^2837"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Evolution.o src/Evolution.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -Wno-sign-conversion -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/include -I/usr/local/include/bullet -I/usr/local/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources/x86_64 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks -F/Library/Frameworks -std=c++11 -MMD -MT dependencies -MF /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Evolution.d --serialize-diagnostics /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Evolution.dia -c /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Evolution.cpp -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Evolution.o36"A453478F-EDD9-4BA5-82CF-091C045EAB3E-
-b5E69A7CA-3BBE-44CE-A96A-BD1B3B6DB712
-
-CCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Population.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Population.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s416679694.152201
-e416679694.182065
-r1
-xCompileC
-xbuild/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Population.o
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Population.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Population.cpp
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Population.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection95"Compile /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Population.cpp192"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Population.o src/Population.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compilerb11a270e07d6b841^f19b2e0e07d6b841^---0#0#1#-19%DVTDocumentLocation2@94"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Population.cpp0000000000000000^2843"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Population.o src/Population.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -Wno-sign-conversion -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/include -I/usr/local/include/bullet -I/usr/local/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources/x86_64 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks -F/Library/Frameworks -std=c++11 -MMD -MT dependencies -MF /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Population.d --serialize-diagnostics /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Population.dia -c /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Population.cpp -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Population.o36"42E586D6-AC31-48C6-B903-A60324B97AFB-
-b5E69A7CA-3BBE-44CE-A96A-BD1B3B6DB712
-
-CCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Renderer.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s416679694.168448
-e416679695.866686
-r1
-xCompileC
-xbuild/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Renderer.o
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Renderer.h
-d/usr/local/include/bullet/LinearMath/btIDebugDraw.h
-d/usr/local/include/bullet/LinearMath/btVector3.h
-d/usr/local/include/bullet/LinearMath/btScalar.h
-d/usr/local/include/bullet/LinearMath/btMinMax.h
-d/usr/local/include/bullet/LinearMath/btAlignedAllocator.h
-d/usr/local/include/bullet/LinearMath/btTransform.h
-d/usr/local/include/bullet/LinearMath/btMatrix3x3.h
-d/usr/local/include/bullet/LinearMath/btQuaternion.h
-d/usr/local/include/bullet/LinearMath/btQuadWord.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h
-d/usr/local/include/bullet/btBulletDynamicsCommon.h
-d/usr/local/include/bullet/btBulletCollisionCommon.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionWorld.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionObject.h
-d/usr/local/include/bullet/LinearMath/btMotionState.h
-d/usr/local/include/bullet/LinearMath/btAlignedObjectArray.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionDispatcher.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDispatcher.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h
-d/usr/local/include/bullet/LinearMath/btTransformUtil.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btManifoldResult.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCollisionShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCollisionMargin.h
-d/usr/local/include/bullet/LinearMath/btAabbUtil2.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btSphereShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCapsuleShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCylinderShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConeShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btStaticPlaneShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConcaveShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleCallback.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleMesh.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btStridingMeshInterface.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btOptimizedBvh.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btQuantizedBvh.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleInfoMap.h
-d/usr/local/include/bullet/LinearMath/btHashMap.h
-d/usr/local/include/bullet/LinearMath/btSerializer.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCompoundShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTetrahedronShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btEmptyShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btMultiSphereShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btUniformScalingShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionConfiguration.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDbvt.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btMultiSapBroadphase.h
-d/usr/local/include/bullet/LinearMath/btDefaultMotionState.h
-d/usr/local/include/bullet/LinearMath/btQuickprof.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btContactSolverInfo.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btSimpleDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btRigidBody.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btJacobianEntry.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btTypedConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSolverConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSolverBody.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btHingeConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btConeTwistConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSliderConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btUniversalConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btHinge2Constraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGearConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btFixedConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btConstraintSolver.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btRaycastVehicle.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btVehicleRaycaster.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btWheelInfo.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btActionInterface.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/DebugDraw.h
-d/usr/local/include/GL/glew.h
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp:1:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Renderer.h:5:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:
-oIn file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:
-oIn file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:
-o/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h:76:15: warning: 'btConvexHullShape::project' hides overloaded virtual function [-Woverloaded-virtual]
-o        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& minProj, btScalar& maxProj, btVector3& witnesPtMin,btVector3& witnesPtMax) const;
-o                     ^
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp:1:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Renderer.h:5:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:
-oIn file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:
-oIn file included from /usr/local/include/bullet/btBulletCollisionCommon.h:26:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h:19:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h:20:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h:19:
-o/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h:55:15: note: hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)
-o        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& min, btScalar& max) const;
-o                     ^
-o1 warning generated.
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection93"Compile /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp188"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Renderer.o src/Renderer.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler5a7f2b0e07d6b841^59dedd0f07d6b841^-2051"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp:1:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Renderer.h:5:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h:76:15: warning: 'btConvexHullShape::project' hides overloaded virtual function [-Woverloaded-virtual]        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& minProj, btScalar& maxProj, btVector3& witnesPtMin,btVector3& witnesPtMax) const;                     ^In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp:1:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Renderer.h:5:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:26:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h:19:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h:20:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h:19:/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h:55:15: note: hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& min, btScalar& max) const;                     ^1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@62"'btConvexHullShape::project' hides overloaded virtual function-416679695#18446744073709551615#0#6(2@110"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp:1:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@92"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp0000000000000000^0#9#0#9#9#0#21"Apple LLVM 5.0 Notice--2@116"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Renderer.h:5:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@98"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Renderer.h0000000000000000^4#9#4#9#85#0#21"Apple LLVM 5.0 Notice--2@118"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@100"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h0000000000000000^3#9#3#9#52#0#21"Apple LLVM 5.0 Notice--2@76"In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@57"file:///usr/local/include/bullet/btBulletDynamicsCommon.h0000000000000000^19#9#19#9#1106#0#21"Apple LLVM 5.0 Notice--2@77"In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@58"file:///usr/local/include/bullet/btBulletCollisionCommon.h0000000000000000^31#9#31#9#1659#0#21"Apple LLVM 5.0 Notice--2@114"Hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)-416679695#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@80"file:///usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h0000000000000000^54#14#54#14#2228#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@84"file:///usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h0000000000000000^75#14#75#14#2899#0#14"Semantic Issue--0#0#1#-19%DVTDocumentLocation4@92"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp0000000000000000^2831"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Renderer.o src/Renderer.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -Wno-sign-conversion -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/include -I/usr/local/include/bullet -I/usr/local/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources/x86_64 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks -F/Library/Frameworks -std=c++11 -MMD -MT dependencies -MF /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Renderer.d --serialize-diagnostics /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Renderer.dia -c /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Renderer.cpp -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Renderer.o36"A8492ABC-F679-4CC1-A649-41875704443F-
-b5E69A7CA-3BBE-44CE-A96A-BD1B3B6DB712
-
-CCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Shader.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Shader.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s416679694.184900
-e416679695.298941
-r1
-xCompileC
-xbuild/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Shader.o
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Shader.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Shader.cpp
-d/usr/local/include/GL/glew.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Shader.hpp
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection91"Compile /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Shader.cpp184"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Shader.o src/Shader.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler7a702f0e07d6b841^d2894c0f07d6b841^---0#0#1#-19%DVTDocumentLocation2@90"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Shader.cpp0000000000000000^2819"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Shader.o src/Shader.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -Wno-sign-conversion -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/include -I/usr/local/include/bullet -I/usr/local/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources/x86_64 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks -F/Library/Frameworks -std=c++11 -MMD -MT dependencies -MF /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Shader.d --serialize-diagnostics /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Shader.dia -c /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Shader.cpp -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Shader.o36"27907BDB-D58D-4931-9C97-03D215466301-
-b5E69A7CA-3BBE-44CE-A96A-BD1B3B6DB712
-
-CCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Simulation.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s416679695.034499
-e416679696.479631
-r1
-xCompileC
-xbuild/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Simulation.o
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h
-d/usr/local/include/bullet/btBulletDynamicsCommon.h
-d/usr/local/include/bullet/btBulletCollisionCommon.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionWorld.h
-d/usr/local/include/bullet/LinearMath/btVector3.h
-d/usr/local/include/bullet/LinearMath/btScalar.h
-d/usr/local/include/bullet/LinearMath/btMinMax.h
-d/usr/local/include/bullet/LinearMath/btAlignedAllocator.h
-d/usr/local/include/bullet/LinearMath/btTransform.h
-d/usr/local/include/bullet/LinearMath/btMatrix3x3.h
-d/usr/local/include/bullet/LinearMath/btQuaternion.h
-d/usr/local/include/bullet/LinearMath/btQuadWord.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionObject.h
-d/usr/local/include/bullet/LinearMath/btMotionState.h
-d/usr/local/include/bullet/LinearMath/btAlignedObjectArray.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionDispatcher.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDispatcher.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h
-d/usr/local/include/bullet/LinearMath/btTransformUtil.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btManifoldResult.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCollisionShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCollisionMargin.h
-d/usr/local/include/bullet/LinearMath/btAabbUtil2.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btSphereShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCapsuleShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCylinderShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConeShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btStaticPlaneShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConcaveShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleCallback.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleMesh.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btStridingMeshInterface.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btOptimizedBvh.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btQuantizedBvh.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleInfoMap.h
-d/usr/local/include/bullet/LinearMath/btHashMap.h
-d/usr/local/include/bullet/LinearMath/btSerializer.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCompoundShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTetrahedronShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btEmptyShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btMultiSphereShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btUniformScalingShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionConfiguration.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDbvt.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btMultiSapBroadphase.h
-d/usr/local/include/bullet/LinearMath/btDefaultMotionState.h
-d/usr/local/include/bullet/LinearMath/btQuickprof.h
-d/usr/local/include/bullet/LinearMath/btIDebugDraw.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btContactSolverInfo.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btSimpleDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btRigidBody.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btJacobianEntry.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btTypedConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSolverConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSolverBody.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btHingeConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btConeTwistConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSliderConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btUniversalConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btHinge2Constraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGearConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btFixedConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btConstraintSolver.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btRaycastVehicle.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btVehicleRaycaster.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btWheelInfo.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btActionInterface.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/DebugDraw.h
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp:1:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:
-oIn file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:
-oIn file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:
-o/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h:76:15: warning: 'btConvexHullShape::project' hides overloaded virtual function [-Woverloaded-virtual]
-o        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& minProj, btScalar& maxProj, btVector3& witnesPtMin,btVector3& witnesPtMax) const;
-o                     ^
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp:1:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:
-oIn file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:
-oIn file included from /usr/local/include/bullet/btBulletCollisionCommon.h:26:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h:19:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h:20:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h:19:
-o/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h:55:15: note: hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)
-o        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& min, btScalar& max) const;
-o                     ^
-o1 warning generated.
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection95"Compile /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp192"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Simulation.o src/Simulation.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler89ef080f07d6b841^4bc97a1007d6b841^-1821"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp:1:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h:76:15: warning: 'btConvexHullShape::project' hides overloaded virtual function [-Woverloaded-virtual]        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& minProj, btScalar& maxProj, btVector3& witnesPtMin,btVector3& witnesPtMax) const;                     ^In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp:1:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:26:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h:19:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h:20:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h:19:/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h:55:15: note: hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& min, btScalar& max) const;                     ^1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@62"'btConvexHullShape::project' hides overloaded virtual function-416679696#18446744073709551615#0#5(2@112"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp:1:-416679696#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@94"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp0000000000000000^0#9#0#9#9#0#21"Apple LLVM 5.0 Notice--2@118"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h:4:-416679696#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@100"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/Simulation.h0000000000000000^3#9#3#9#52#0#21"Apple LLVM 5.0 Notice--2@76"In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:-416679696#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@57"file:///usr/local/include/bullet/btBulletDynamicsCommon.h0000000000000000^19#9#19#9#1106#0#21"Apple LLVM 5.0 Notice--2@77"In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:-416679696#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@58"file:///usr/local/include/bullet/btBulletCollisionCommon.h0000000000000000^31#9#31#9#1659#0#21"Apple LLVM 5.0 Notice--2@114"Hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)-416679696#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@80"file:///usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h0000000000000000^54#14#54#14#2228#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@84"file:///usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h0000000000000000^75#14#75#14#2899#0#14"Semantic Issue--0#0#1#-19%DVTDocumentLocation4@94"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp0000000000000000^2843"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Simulation.o src/Simulation.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -Wno-sign-conversion -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/include -I/usr/local/include/bullet -I/usr/local/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources/x86_64 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks -F/Library/Frameworks -std=c++11 -MMD -MT dependencies -MF /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Simulation.d --serialize-diagnostics /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Simulation.dia -c /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/Simulation.cpp -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Simulation.o36"67B3ACBE-C270-49F9-BD15-F073ED97DD11-
-b5E69A7CA-3BBE-44CE-A96A-BD1B3B6DB712
-
-CCompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/WormBulletCreature.o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s416679695.299187
-e416679696.586893
-r1
-xCompileC
-xbuild/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/WormBulletCreature.o
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp
-d/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h
-d/usr/local/include/bullet/btBulletDynamicsCommon.h
-d/usr/local/include/bullet/btBulletCollisionCommon.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionWorld.h
-d/usr/local/include/bullet/LinearMath/btVector3.h
-d/usr/local/include/bullet/LinearMath/btScalar.h
-d/usr/local/include/bullet/LinearMath/btMinMax.h
-d/usr/local/include/bullet/LinearMath/btAlignedAllocator.h
-d/usr/local/include/bullet/LinearMath/btTransform.h
-d/usr/local/include/bullet/LinearMath/btMatrix3x3.h
-d/usr/local/include/bullet/LinearMath/btQuaternion.h
-d/usr/local/include/bullet/LinearMath/btQuadWord.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionObject.h
-d/usr/local/include/bullet/LinearMath/btMotionState.h
-d/usr/local/include/bullet/LinearMath/btAlignedObjectArray.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionDispatcher.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDispatcher.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h
-d/usr/local/include/bullet/LinearMath/btTransformUtil.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btManifoldResult.h
-d/usr/local/include/bullet/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCollisionShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCollisionMargin.h
-d/usr/local/include/bullet/LinearMath/btAabbUtil2.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btSphereShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCapsuleShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCylinderShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConeShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btStaticPlaneShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConcaveShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleCallback.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleMesh.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btStridingMeshInterface.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btOptimizedBvh.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btQuantizedBvh.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTriangleInfoMap.h
-d/usr/local/include/bullet/LinearMath/btHashMap.h
-d/usr/local/include/bullet/LinearMath/btSerializer.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btCompoundShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btTetrahedronShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btEmptyShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btMultiSphereShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionShapes/btUniformScalingShape.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h
-d/usr/local/include/bullet/BulletCollision/CollisionDispatch/btCollisionConfiguration.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btDbvt.h
-d/usr/local/include/bullet/BulletCollision/BroadphaseCollision/btMultiSapBroadphase.h
-d/usr/local/include/bullet/LinearMath/btDefaultMotionState.h
-d/usr/local/include/bullet/LinearMath/btQuickprof.h
-d/usr/local/include/bullet/LinearMath/btIDebugDraw.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btContactSolverInfo.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btSimpleDynamicsWorld.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btRigidBody.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btJacobianEntry.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btTypedConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSolverConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSolverBody.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btHingeConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btConeTwistConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSliderConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btUniversalConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btHinge2Constraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btGearConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btFixedConstraint.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h
-d/usr/local/include/bullet/BulletDynamics/ConstraintSolver/btConstraintSolver.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btRaycastVehicle.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btVehicleRaycaster.h
-d/usr/local/include/bullet/BulletDynamics/Vehicle/btWheelInfo.h
-d/usr/local/include/bullet/BulletDynamics/Dynamics/btActionInterface.h
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp:1:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h:7:
-oIn file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:
-oIn file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:
-o/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h:76:15: warning: 'btConvexHullShape::project' hides overloaded virtual function [-Woverloaded-virtual]
-o        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& minProj, btScalar& maxProj, btVector3& witnesPtMin,btVector3& witnesPtMax) const;
-o                     ^
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp:1:
-oIn file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h:7:
-oIn file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:
-oIn file included from /usr/local/include/bullet/btBulletCollisionCommon.h:26:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h:19:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h:20:
-oIn file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h:19:
-o/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h:55:15: note: hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)
-o        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& min, btScalar& max) const;
-o                     ^
-o1 warning generated.
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection103"Compile /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp208"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/WormBulletCreature.o src/WormBulletCreature.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler97ae4c0f07d6b841^8e3e961007d6b841^-1853"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp:1:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h:7:In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h:76:15: warning: 'btConvexHullShape::project' hides overloaded virtual function [-Woverloaded-virtual]        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& minProj, btScalar& maxProj, btVector3& witnesPtMin,btVector3& witnesPtMax) const;                     ^In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp:1:In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h:7:In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:26:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btBoxShape.h:19:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h:20:In file included from /usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexInternalShape.h:19:/usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h:55:15: note: hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)        virtual void project(const btTransform& trans, const btVector3& dir, btScalar& min, btScalar& max) const;                     ^1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@62"'btConvexHullShape::project' hides overloaded virtual function-416679696#18446744073709551615#0#5(2@120"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp:1:-416679696#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@102"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp0000000000000000^0#9#0#9#9#0#21"Apple LLVM 5.0 Notice--2@126"In file included from /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h:7:-416679696#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@108"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include/WormBulletCreature.h0000000000000000^6#9#6#9#123#0#21"Apple LLVM 5.0 Notice--2@76"In file included from /usr/local/include/bullet/btBulletDynamicsCommon.h:20:-416679696#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@57"file:///usr/local/include/bullet/btBulletDynamicsCommon.h0000000000000000^19#9#19#9#1106#0#21"Apple LLVM 5.0 Notice--2@77"In file included from /usr/local/include/bullet/btBulletCollisionCommon.h:32:-416679696#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@58"file:///usr/local/include/bullet/btBulletCollisionCommon.h0000000000000000^31#9#31#9#1659#0#21"Apple LLVM 5.0 Notice--2@114"Hidden overloaded virtual function 'btConvexShape::project' declared here: different number of parameters (4 vs 6)-416679696#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@80"file:///usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexShape.h0000000000000000^54#14#54#14#2228#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@84"file:///usr/local/include/bullet/BulletCollision/CollisionShapes/btConvexHullShape.h0000000000000000^75#14#75#14#2899#0#14"Semantic Issue--0#0#1#-19%DVTDocumentLocation4@102"file:///Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp0000000000000000^2891"CompileC build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/WormBulletCreature.o src/WormBulletCreature.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export LANG=en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-shorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DCMAKE_INTDIR=\"Debug\" -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.9 -g -Wno-sign-conversion -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/include -I/usr/local/include/bullet -I/usr/local/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/include -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources/x86_64 -I/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/DerivedSources -Wmost -Wno-four-char-constants -Wno-unknown-pragmas -F/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks -F/Library/Frameworks -std=c++11 -MMD -MT dependencies -MF /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/WormBulletCreature.d --serialize-diagnostics /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/WormBulletCreature.dia -c /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/src/WormBulletCreature.cpp -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/WormBulletCreature.o36"2F252D84-04A1-4CC1-848F-FDF7FD316FC9-
-b5E69A7CA-3BBE-44CE-A96A-BD1B3B6DB712
-
-CLibtool /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/libCreatureEvolution_lib.a normal x86_64
-s416679696.587948
-e416679696.603369
-r1
-xLibtool
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/libCreatureEvolution_lib.a
-xnormal
-xx86_64
-o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/CreatureEvolution.o has no symbols
-o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Population.o has no symbols
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection64"Libtool build/src/Debug/libCreatureEvolution_lib.a normal x86_6464"Libtool build/src/Debug/libCreatureEvolution_lib.a normal x86_64da91961007d6b841^cd759a1007d6b841^-585"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/CreatureEvolution.o has no symbols/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/Population.o has no symbols-0#0#1#--824"Libtool build/src/Debug/libCreatureEvolution_lib.a normal x86_64    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    export MACOSX_DEPLOYMENT_TARGET=10.9    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only x86_64 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -L/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug -filelist /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/CreatureEvolution.build/Debug/CreatureEvolution_lib.build/Objects-normal/x86_64/CreatureEvolution_lib.LinkFileList -o /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/src/Debug/libCreatureEvolution_lib.a36"EEB40F01-B62F-4E41-B18E-AC55AC66C4C4-
-b5E69A7CA-3BBE-44CE-A96A-BD1B3B6DB712
-

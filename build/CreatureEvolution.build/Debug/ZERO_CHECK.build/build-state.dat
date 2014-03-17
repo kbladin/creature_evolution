@@ -1,29 +1,0 @@
-TZERO_CHECK
-v6
-r1
-cCheck dependencies
-cPhaseScriptExecution CMake\ Rules /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/ZERO_CHECK.build/Script-31E2692046D04C539071A44E.sh
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/ZERO_CHECK.build/Script-31E2692046D04C539071A44E.sh
-c000000005325CF8E00000000000000EF
-t1394986894
-s239
-
-CCheck dependencies
-r0
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependenciescfbb411807d6b841^b403421807d6b841^---0#1#1#--18"Check dependencies36"03C0E6C8-B44D-4678-AF82-0139FF1CEADE-
-
-CPhaseScriptExecution CMake\ Rules /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/ZERO_CHECK.build/Script-31E2692046D04C539071A44E.sh
-s416679704.257602
-e416679704.296380
-r1
-xPhaseScriptExecution
-xCMake Rules
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/ZERO_CHECK.build/Script-31E2692046D04C539071A44E.sh
-oecho ""
-o
-omake -f /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CMakeScripts/ReRunCMake.make
-omake[1]: `/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CMakeFiles/cmake.check_cache' is up to date.
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Run custom shell script 'CMake Rules'121"PhaseScriptExecution CMake\ Rules build/CreatureEvolution.build/Debug/ZERO_CHECK.build/Script-31E2692046D04C539071A44E.sh0f63421807d6b841^c2df4b1807d6b841^-251"echo ""make -f /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CMakeScripts/ReRunCMake.makemake[1]: `/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CMakeFiles/cmake.check_cache' is up to date.3(21%IDEActivityLogMessage2@8"echo ""-416679704#0#8#-0#-----2@112"make -f /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CMakeScripts/ReRunCMake.make-416679704#9#112#-0#-----2@130"make[1]: `/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CMakeFiles/cmake.check_cache' is up to date.-416679704#121#130#-0#-----0#0#1#--370"PhaseScriptExecution CMake\ Rules build/CreatureEvolution.build/Debug/ZERO_CHECK.build/Script-31E2692046D04C539071A44E.sh    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    /bin/sh -c /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/ZERO_CHECK.build/Script-31E2692046D04C539071A44E.sh36"C7DEA047-98BF-4E28-8435-1EC6EC374F5A-
-bA1C5ADA5-D0F4-46EC-9A24-35BF58E0FC1D
-

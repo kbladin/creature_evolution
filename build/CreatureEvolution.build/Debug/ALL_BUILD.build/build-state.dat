@@ -1,29 +1,0 @@
-TALL_BUILD
-v6
-r1
-cCheck dependencies
-cPhaseScriptExecution CMake\ Rules /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/ALL_BUILD.build/Script-176B1FF15389446892D9800E.sh
-
-N/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/ALL_BUILD.build/Script-176B1FF15389446892D9800E.sh
-c000000005325CF9300000000000000EE
-t1394986899
-s238
-
-CCheck dependencies
-r0
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies9605471307d6b841^643b471307d6b841^---0#1#1#--18"Check dependencies36"4532EA3E-7212-4A7F-B95E-1264F94D440E-
-
-CPhaseScriptExecution CMake\ Rules /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/ALL_BUILD.build/Script-176B1FF15389446892D9800E.sh
-s416679699.278981
-e416679699.295132
-r1
-xPhaseScriptExecution
-xCMake Rules
-x/Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/ALL_BUILD.build/Script-176B1FF15389446892D9800E.sh
-oecho ""
-o
-oecho Build\ all\ projects
-oBuild all projects
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Run custom shell script 'CMake Rules'120"PhaseScriptExecution CMake\ Rules build/CreatureEvolution.build/Debug/ALL_BUILD.build/Script-176B1FF15389446892D9800E.sh44c2471307d6b841^c18e4b1307d6b841^-54"echo ""echo Build\ all\ projectsBuild all projects3(21%IDEActivityLogMessage2@8"echo ""-416679699#0#8#-0#-----2@26"echo Build\ all\ projects-416679699#9#26#-0#-----2@19"Build all projects-416679699#35#19#-0#-----0#0#1#--368"PhaseScriptExecution CMake\ Rules build/CreatureEvolution.build/Debug/ALL_BUILD.build/Script-176B1FF15389446892D9800E.sh    cd /Users/kbladin/Documents/C++projects/git_projects/creature_evolution    /bin/sh -c /Users/kbladin/Documents/C++projects/git_projects/creature_evolution/build/CreatureEvolution.build/Debug/ALL_BUILD.build/Script-176B1FF15389446892D9800E.sh36"4727CF06-1013-497B-9F27-96B97EFDA889-
-bF1ADFD41-45F5-4939-8295-79E6288BDF03
-
