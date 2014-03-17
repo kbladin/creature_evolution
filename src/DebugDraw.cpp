@@ -45,7 +45,7 @@ void DebugDraw::BufferSetup() {
 
 void DebugDraw::DrawBuffers() {
 	glBindVertexArray (vao_);
-	glDrawArrays (GL_LINES, 0, lines_.size());
+	glDrawArrays(GL_LINES, 0, lines_.size());
 
 	glDisableVertexAttribArray(0);
 	lines_.clear();

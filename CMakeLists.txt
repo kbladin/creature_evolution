@@ -28,7 +28,7 @@ find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(GLFW3 REQUIRED)
 
-include_directories(${OPENGL_INCLUDE_DIR})
+include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(${BULLET_INCLUDE_DIR})
 include_directories(${GLEW_INCLUDE_DIR})
 include_directories(${GLFW3_INCLUDE_DIR})
@@ -52,7 +52,7 @@ set_target_properties(${ctEvo} PROPERTIES COMPILE_FLAGS "-std=c++11")
 
 
 # Linking OpenGL, SFML, SFGui
-target_link_libraries(${ctEvo} ${GLEW_LIBRARY} ${OPENGL_LIBRARIES} ${GL_LIBRARY} ${GLFW3_LIBRARY} ${X11_LIBRARIES})
+target_link_libraries(${ctEvo} ${OPENGL_LIBRARIES} ${OPENGL_glu_LIBRARY} ${GLEW_LIBRARY} ${GLFW_LIBRARIES})
 
 
 # this is defined in the sub directory src/
