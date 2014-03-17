@@ -31,7 +31,21 @@ find_package(GLFW3 REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(${BULLET_INCLUDE_DIR})
 include_directories(${GLEW_INCLUDE_DIR})
-include_directories(${GLFW3_INCLUDE_DIR})
+include_directories(${GLFW_INCLUDE_DIRS})
+if(UNIX)
+  find_package(X11 REQUIRED)
+  include_directories(${X11_INCLUDE_DIR})
+  # Set additional libs for GLFW on Linux
+  #set( ADDITIONAL_LIBS 
+  #     -pthread
+  #     -lrt
+  #     -lXinerama
+  #     -lXrandr
+  #     -lXxf86vm
+  #     -lXi
+  #     -lX11
+  #    )
+endif(UNIX)
 
 # If you want your own include/ directory, set this, and then you can do
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/src/include)
@@ -50,10 +64,12 @@ add_executable(${ctEvo} ${MAIN})
 set_target_properties(CreatureEvolution_lib PROPERTIES COMPILE_FLAGS "-std=c++11")
 set_target_properties(${ctEvo} PROPERTIES COMPILE_FLAGS "-std=c++11")
 
+# Linking OpenGL etc
+if(UNIX)
+  target_link_libraries(${ctEvo} ${X11_LIBRARIES} ${ADDITIONAL_LIBS})
+endif(UNIX)
 
-# Linking OpenGL, SFML, SFGui
-target_link_libraries(${ctEvo} ${OPENGL_LIBRARIES} ${OPENGL_glu_LIBRARY} ${GLEW_LIBRARY} ${GLFW_LIBRARIES})
-
+target_link_libraries(${ctEvo} ${OPENGL_LIBRARIES}  ${OPENGL_glu_LIBRARY}  ${GLEW_LIBRARY} ${GLFW_LIBRARIES})
 
 # this is defined in the sub directory src/
 target_link_libraries(${ctEvo} CreatureEvolution_lib)

@@ -19,6 +19,7 @@ Renderer* render_engine;
 int width, height;
 
 int main(){
+
 	const int population_size = 20;
 	const int max_generations = 2;
 
