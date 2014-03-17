@@ -1,11 +1,17 @@
 #include "DebugDraw.h"
-#include "Simulation.h"
-#include <GL/glew.h>
 
 DebugDraw::DebugDraw(btDiscreteDynamicsWorld* world)
 {
 	dynamicsWorld = world;
 	dynamicsWorld->setDebugDrawer(this);
+
+    glGenVertexArrays(1, &VertexArrayID);
+    glBindVertexArray(VertexArrayID);
+    // An array of 3 vectors which represents 3 vertices
+    // Generate 1 buffer, put the resulting identifier in vertexbuffer
+    
+    glGenBuffers(1, &vertexbuffer);
+
 }
 
 
@@ -27,27 +33,48 @@ void DebugDraw::drawLine(const btVector3& from,const btVector3& to,const btVecto
 void DebugDraw::drawWorld()
 {
 	dynamicsWorld->debugDrawWorld();
+    
+    
+    btCollisionObjectArray& collisionObjects = dynamicsWorld->getCollisionObjectArray();
+    //for loop
+    for (int i=0; i<collisionObjects.size(); ++i) {
+        btCollisionObject* colObj = collisionObjects[i];
+        btTransform trans = colObj->getWorldTransform();
+        btVector3 position_origin = trans.getOrigin();
+        
+        lines_.push_back(position_origin.x());
+        lines_.push_back(position_origin.y());
+        lines_.push_back(position_origin.z());
+    }
 }
 
 void DebugDraw::BufferSetup() {
-	vbo_ = 0;
-	glGenBuffers (1, &vbo_);
-	glBindBuffer (GL_ARRAY_BUFFER, vbo_);
-	glBufferData (GL_ARRAY_BUFFER, lines_.size() * sizeof (float), &lines_[0], GL_STATIC_DRAW);
-
-	vao_ = 0;
-	glGenVertexArrays (1, &vao_);
-	glBindVertexArray (vao_);
-	glEnableVertexAttribArray (0);
-	glBindBuffer (GL_ARRAY_BUFFER, vbo_);
-	glVertexAttribPointer (0, 2, GL_FLOAT, GL_FALSE, 0, NULL);
 }
 
 void DebugDraw::DrawBuffers() {
-	glBindVertexArray (vao_);
-	glDrawArrays(GL_LINES, 0, lines_.size());
+    
+    // The following commands will talk about our 'vertexbuffer' buffer
+    glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 
-	glDisableVertexAttribArray(0);
+    // Give our vertices to OpenGL.
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * lines_.size(), &lines_[0], GL_STATIC_DRAW);
+    
+    // 1rst attribute buffer : vertices
+    glEnableVertexAttribArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
+    glVertexAttribPointer(
+                          0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
+                          3,                  // size
+                          GL_FLOAT,           // type
+                          GL_FALSE,           // normalized?
+                          0,                  // stride
+                          (void*)0            // array buffer offset
+                          );
+    // Draw the triangle !
+    glDrawArrays(GL_POINTS, 0, lines_.size()); // Starting from vertex 0; 3 vertices total -> 1 triangle
+    
+    glDisableVertexAttribArray(0);
+    
 	lines_.clear();
 	lines_.resize(0);
 }

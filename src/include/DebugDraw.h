@@ -3,6 +3,9 @@
 
 #include <LinearMath/btIDebugDraw.h>
 #include "Simulation.h"
+#include <GL/glew.h>
+#include <GL/glfw3.h>
+
 
 class DebugDraw :
 	public btIDebugDraw
@@ -35,8 +38,12 @@ public:
 
 private:
 	btDiscreteDynamicsWorld* dynamicsWorld;
-	unsigned int vbo_;
-	unsigned int vao_;
+    
+    GLuint VertexArrayID;
+    GLuint vertexbuffer;
+
+	//unsigned int vbo_;
+	//unsigned int vao_;
 
 	std::vector<float> lines_;
 };
