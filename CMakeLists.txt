@@ -26,14 +26,12 @@ endif(MSVC)
 find_package(BULLET REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
-find_package(SFML 2 REQUIRED system window graphics network audio)
-find_package(SFGUI REQUIRED)
+find_package(GLFW3 REQUIRED)
 
 include_directories(${OPENGL_INCLUDE_DIR})
 include_directories(${BULLET_INCLUDE_DIR})
 include_directories(${GLEW_INCLUDE_DIR})
-include_directories(${SFML_INCLUDE_DIR})
-include_directories(${SFGUI_INCLUDE_DIR})
+include_directories(${GLFW3_INCLUDE_DIR})
 
 # If you want your own include/ directory, set this, and then you can do
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/src/include)
@@ -52,14 +50,18 @@ add_executable(${ctEvo} ${MAIN})
 set_target_properties(CreatureEvolution_lib PROPERTIES COMPILE_FLAGS "-std=c++11")
 set_target_properties(${ctEvo} PROPERTIES COMPILE_FLAGS "-std=c++11")
 
+
+# Linking OpenGL, SFML, SFGui
+target_link_libraries(${ctEvo} ${GLEW_LIBRARY} ${OPENGL_LIBRARIES} ${GL_LIBRARY} ${GLFW3_LIBRARY} ${X11_LIBRARIES})
+
+
 # this is defined in the sub directory src/
 target_link_libraries(${ctEvo} CreatureEvolution_lib)
+
 
 # Linking Bullet. NOTE: For now, no debug libraries
 target_link_libraries(${ctEvo} ${BULLET_DYNAMICS_LIBRARY} ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
 
-# Linking OpenGL, SFML, SFGui
-target_link_libraries(${ctEvo} ${GLEW_LIBRARY} ${SFML_LIBRARIES} ${SFGUI_LIBRARY} ${OPENGL_LIBRARIES})
 
 ######### OPENGL LIBRARY (ONLY FOR OSX) #############
 if(APPLE)

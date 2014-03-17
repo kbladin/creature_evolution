@@ -1,7 +1,6 @@
 #include "DebugDraw.h"
 #include "Simulation.h"
 #include <GL/glew.h>
-#include <SFML/OpenGL.hpp>
 
 DebugDraw::DebugDraw(btDiscreteDynamicsWorld* world)
 {
@@ -16,7 +15,6 @@ DebugDraw::~DebugDraw(void)
 
 void DebugDraw::drawLine(const btVector3& from,const btVector3& to,const btVector3& color)
 {
-/*
 	lines_.push_back(from.getX());
 	lines_.push_back(from.getY());
 	lines_.push_back(from.getZ());
@@ -24,12 +22,6 @@ void DebugDraw::drawLine(const btVector3& from,const btVector3& to,const btVecto
 	lines_.push_back(to.getX());
 	lines_.push_back(to.getY());
 	lines_.push_back(to.getZ());
-*/
-    glBegin(GL_LINES);
-        glColor3f(color.getX(), color.getY(), color.getZ());
-        glVertex3d(from.getX(), from.getY(), from.getZ());
-        glVertex3d(to.getX(), to.getY(), to.getZ());
-    glEnd();
 }
 
 void DebugDraw::drawWorld()
