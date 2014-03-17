@@ -20,6 +20,8 @@ int width, height;
 int main(){
 
 	GLFWwindow* window;
+    
+
 
     /* Initialize the library */
     if (!glfwInit())
@@ -33,15 +35,14 @@ int main(){
         return -1;
     }
 
+	/* Make the window's context current */
+    glfwMakeContextCurrent(window);
+    
     glewExperimental = true; // Needed for core profile
 	if (glewInit() != GLEW_OK) {
 		fprintf(stderr, "Failed to initialize GLEW\n");
 		return -1;
 	}
-
-	/* Make the window's context current */
-    glfwMakeContextCurrent(window);
-
 
 	const int population_size = 20;
 	const int max_generations = 2;
@@ -103,6 +104,7 @@ int main(){
 
     while (!glfwWindowShouldClose(window))
     {
+        glClear(GL_COLOR_BUFFER_BIT);
 /*
 		helloWorld->Step(1/60.0f);
 
