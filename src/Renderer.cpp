@@ -14,12 +14,18 @@ Renderer::~Renderer(void)
 	delete debugDrawer;
 }
 
-void Renderer::render()
+void calcMatrices(){
+    
+}
+
+void Renderer::render(GLuint shader_id)
 {
+    glUseProgram(shader_id);
 	if(debug)
 	{
 		debugDrawer->drawWorld();
 		debugDrawer->BufferSetup();
 		debugDrawer->DrawBuffers();
 	}
+    glUseProgram(0);
 }

@@ -11,13 +11,13 @@ class Renderer
 public:
 	Renderer(Simulation* sim, bool debug_mode);
 	~Renderer(void);
-	void render();
+    
+	void render(GLuint shader_id);
 
 private:
 	bool debug;
 	btDiscreteDynamicsWorld* dynamicsWorld;
 	DebugDraw* debugDrawer;
-
 };
 
 #endif // RENDERER_H
