@@ -1,6 +1,5 @@
 
 // 🐢
-#include <ctime>
 #include "SettingsManager.h"
 #include "Evolution.h"
 #include "Creature.h"
@@ -14,6 +13,7 @@
 #include "Simulation.h"
 #include "Renderer.h"
 #include "WindowsManager.h"
+#include "EvolutionManager.h"
 
 
 void render();
@@ -30,53 +30,12 @@ int main(){
 	WindowsManager* wm = new WindowsManager();
 	wm->setVariables(); // get info from window, write to settingsmanager
 
-	std::clock_t start_time;
-	start_time = std::clock();
+	EvolutionManager* em = new EvolutionManager();
+	em->startEvolutionProcess(); // start the whole evolution process! 
+	em->printBestFitnessValues();
 
-	//Evolution ev(crossover_ratio, elitism_ratio, mutation_ratio);
-	Evolution *ev = new Evolution();
+	Creature best = em->getBestCreatureFromLastGeneration(); // get the best generation
 
-	// get the max and poulation size from the settingsmanager class
-	int population_size = SettingsManager::Instance()->getPopulationSize();
-	int max_generations = SettingsManager::Instance()->getMaxGenerations();
-
-	// creates the population!
-	std::vector<Creature> population;
-	population.resize(population_size);
-
-	for (int i=0; i<population_size; ++i){
-		population[i] = Creature(Chromosome::random());//Creature::random();
-	}
-
-	// sortera Creature
-	std::sort(population.begin(), population.end(), CreatureLargerThan());
-
-	int i=0;
-	Creature best = population[0]; // den bästa tas fram
-
-	while( (++i < max_generations) && (best.GetFitness() < 30) ) {
-
-		population = ev->nextGeneration(population);
-
-		std::sort(population.begin(), population.end(), CreatureLargerThan());
-		best = population[0];
-
-		//std:: cout << "Generation " << i << ": " << best << std::endl;
-		// Trying some other mating and mutating with nextGenerationMixedMating.
-		std::cout << "🐛" << "Generation : " << i << std::endl;
-		std::cout << "Best fitness : " << best.GetFitness() << std::endl;
-	}
-
-	std::cout << "Generation " << i << ": "<< best << std::endl;
-
-	std::cout << "Total time: " << double( (std::clock() - start_time) / CLOCKS_PER_SEC ) << 
-			" s" << std::endl;
-
-
-
-
-
-	
     sf::ContextSettings settings(24,8,4,3,3);
     
     /*settings.depthBits = 24;
@@ -90,8 +49,6 @@ int main(){
 	// Create the main SFML window
 	sf::RenderWindow app_window( sf::VideoMode( 800, 600 ), "SFGUI Canvas Example", sf::Style::Titlebar | sf::Style::Close, settings );
     
-    std::cout << "OpenGL version: " << glGetString(GL_VERSION) << std::endl;
-
 	// We have to do this because we don't use SFML to draw.
 	app_window.resetGLStates();
 
