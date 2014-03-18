@@ -1,31 +1,17 @@
 #include "Renderer.h"
 #include <GL/glew.h>
-
-Renderer::Renderer(Simulation* sim, bool debug_mode)
+#include <iostream>
+Renderer::Renderer(SceneManager* scene)
 {
-	dynamicsWorld = sim->GetDynamicsWorld();
-	debugDrawer = new DebugDraw(dynamicsWorld);
-	debug = debug_mode;
+	scene_manager_ = scene;
 }
 
 
 Renderer::~Renderer(void)
 {
-	delete debugDrawer;
 }
 
-void calcMatrices(){
-    
-}
-
-void Renderer::render(GLuint shader_id)
+void Renderer::render()
 {
-    glUseProgram(shader_id);
-	if(debug)
-	{
-		debugDrawer->drawWorld();
-		debugDrawer->BufferSetup();
-		debugDrawer->DrawBuffers();
-	}
-    glUseProgram(0);
+	std::cout << "I'M INSIDE THE RENDERER!" << std::endl;
 }

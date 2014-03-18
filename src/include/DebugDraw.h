@@ -4,7 +4,7 @@
 #include <LinearMath/btIDebugDraw.h>
 #include "Simulation.h"
 #include <GL/glew.h>
-#include <GL/glfw3.h>
+#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 

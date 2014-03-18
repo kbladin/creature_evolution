@@ -27,11 +27,13 @@ find_package(BULLET REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(GLFW3 REQUIRED)
+find_package(GLM REQUIRED)
 
 include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(${BULLET_INCLUDE_DIR})
 include_directories(${GLEW_INCLUDE_DIR})
 include_directories(${GLFW_INCLUDE_DIRS})
+include_directories(${GLM_INCLUDE_DIRS})
 
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
   find_package(X11 REQUIRED)
@@ -49,8 +51,10 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 # If you want your own include/ directory, set this, and then you can do
-set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/src/include)
+set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/src/include )
 include_directories(${COMMON_INCLUDES})
+set(GLM ${PROJECT_SOURCE_DIR}/external_libs/glm/)
+include_directories(GLM)
 
 # source code is here
 add_subdirectory(src)
@@ -67,7 +71,6 @@ set_target_properties(${ctEvo} PROPERTIES COMPILE_FLAGS "-std=c++11")
 
 # Linking OpenGL etc
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-
   target_link_libraries(${ctEvo} ${X11_LIBRARIES} ${ADDITIONAL_LIBS})
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 

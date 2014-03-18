@@ -1,23 +1,18 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include <LinearMath/btIDebugDraw.h>
-#include "Simulation.h"
-#include "DebugDraw.h"
+#include <SceneManager.h>
 
 class Renderer
 {
 
 public:
-	Renderer(Simulation* sim, bool debug_mode);
+	Renderer(SceneManager* scene);
 	~Renderer(void);
     
-	void render(GLuint shader_id);
-
+	void render();
 private:
-	bool debug;
-	btDiscreteDynamicsWorld* dynamicsWorld;
-	DebugDraw* debugDrawer;
+	SceneManager* scene_manager_;
 };
 
 #endif // RENDERER_H

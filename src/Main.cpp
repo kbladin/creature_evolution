@@ -11,11 +11,12 @@
 
 #include "Simulation.h"
 #include "Renderer.h"
-#include <shader.hpp>
+#include <Shader.hpp>
+#include <SceneManager.h>
 
 Simulation* helloWorld;
 Renderer* render_engine;
-
+SceneManager* scene;
 int width, height;
 
 int main(){
@@ -73,6 +74,7 @@ int main(){
 	helloWorld = new Simulation(); 
 	helloWorld->AddCreatureToWorld(worm);
    
+	scene = new SceneManager(helloWorld->GetDynamicsWorld());
 
 
     //The rendering stuff
@@ -105,34 +107,26 @@ int main(){
 	}
     // Print current OpenGL version
     std::cout << "OpenGL version: " << glGetString(GL_VERSION) << std::endl;
-    glPointSize(10.0f);
-    // Create and compile the shader
-    GLuint programID = LoadShaders( "../../data/shaders/simple.vert", "../../data/shaders/simple.frag" );
 
-	//initialize debugDrawer for simulation (Needs to be done after context created)
-	render_engine = new Renderer(helloWorld, true);
+	render_engine = new Renderer(scene);
 
     while (!glfwWindowShouldClose(window))
     {
 		helloWorld->Step(1/60.0f);
         
         glClear(GL_COLOR_BUFFER_BIT);
-		render_engine->render(programID);
-		/* Swap front and back buffers */
+		render_engine->render();
         glfwSwapBuffers(window);
 
-        /* Poll for and process events */
         glfwPollEvents();
-
 	}
-
 
 	helloWorld->RemoveCreatureFromWorld(worm);
 	delete worm; 
 
 	delete helloWorld;
 	delete render_engine;
-
+	delete scene;
 	glfwTerminate();
 
 	return 0;
