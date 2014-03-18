@@ -32,20 +32,21 @@ include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(${BULLET_INCLUDE_DIR})
 include_directories(${GLEW_INCLUDE_DIR})
 include_directories(${GLFW_INCLUDE_DIRS})
-if(UNIX)
+
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
   find_package(X11 REQUIRED)
   include_directories(${X11_INCLUDE_DIR})
-  # Set additional libs for GLFW on Linux
-  #set( ADDITIONAL_LIBS 
-  #     -pthread
-  #     -lrt
-  #     -lXinerama
-  #     -lXrandr
-  #     -lXxf86vm
-  #     -lXi
-  #     -lX11
-  #    )
-endif(UNIX)
+  #Set additional libs for GLFW on Linux
+  set( ADDITIONAL_LIBS 
+      -pthread
+      -lrt
+      -lXinerama
+      -lXrandr
+      -lXxf86vm
+      -lXi
+      -lX11
+     )
+ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 # If you want your own include/ directory, set this, and then you can do
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/src/include)
@@ -65,9 +66,11 @@ set_target_properties(CreatureEvolution_lib PROPERTIES COMPILE_FLAGS "-std=c++11
 set_target_properties(${ctEvo} PROPERTIES COMPILE_FLAGS "-std=c++11")
 
 # Linking OpenGL etc
-if(UNIX)
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+
   target_link_libraries(${ctEvo} ${X11_LIBRARIES} ${ADDITIONAL_LIBS})
-endif(UNIX)
+ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+
 
 target_link_libraries(${ctEvo} ${OPENGL_LIBRARIES}  ${OPENGL_glu_LIBRARY}  ${GLEW_LIBRARY} ${GLFW_LIBRARIES})
 
