@@ -19,6 +19,17 @@ Evolution::Evolution(float crossover_ratio, float elitism_ratio,
 	mutation_ = mutation_ratio;
 }
 
+//! Constructor that reads from the SettingsManager class. 
+Evolution::Evolution(){ 
+
+    SettingsManager *sm; 
+    sm = SettingsManager::Instance();
+
+	crossover_ = sm->getCrossover();
+	elitism_ = sm->getElitism();
+	mutation_ = sm->getMutation();
+}
+
 //! A destructor
 Evolution::~Evolution(void){
 }

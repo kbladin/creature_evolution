@@ -1,6 +1,7 @@
 
 // 🐢
 #include <ctime>
+#include "SettingsManager.h"
 #include "Evolution.h"
 #include "Creature.h"
 #include <iostream>
@@ -12,6 +13,8 @@
 
 #include "Simulation.h"
 #include "Renderer.h"
+#include "WindowsManager.h"
+
 
 void render();
 void update();
@@ -19,22 +22,23 @@ void update();
 Simulation* helloWorld;
 Renderer* render_engine;
 
+
 int width, height;
 
 int main(){
 
-
-	const int population_size = 20;
-	const int max_generations = 2;
-
-	const float crossover_ratio = 0.8f;
-	const float elitism_ratio = 0.2f;
-	const float mutation_ratio = 0.8f;
+	WindowsManager* wm = new WindowsManager();
+	wm->setVariables(); // get info from window, write to settingsmanager
 
 	std::clock_t start_time;
 	start_time = std::clock();
 
-	Evolution ev(crossover_ratio, elitism_ratio, mutation_ratio);
+	//Evolution ev(crossover_ratio, elitism_ratio, mutation_ratio);
+	Evolution *ev = new Evolution();
+
+	// get the max and poulation size from the settingsmanager class
+	int population_size = SettingsManager::Instance()->getPopulationSize();
+	int max_generations = SettingsManager::Instance()->getMaxGenerations();
 
 	// creates the population!
 	std::vector<Creature> population;
@@ -52,7 +56,7 @@ int main(){
 
 	while( (++i < max_generations) && (best.GetFitness() < 30) ) {
 
-		population = ev.nextGeneration(population);
+		population = ev->nextGeneration(population);
 
 		std::sort(population.begin(), population.end(), CreatureLargerThan());
 		best = population[0];

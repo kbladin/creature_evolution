@@ -5,6 +5,7 @@
 #include "Creature.h"
 #include <vector>
 #include <cassert>
+#include "SettingsManager.h"
 
 typedef std::vector<Creature> Population;
 
@@ -27,6 +28,7 @@ private:
 public:
 	Evolution(float crossover_ratio, float elitism_ratio, 
 		float mutation_ratio);
+	Evolution(); 
 	~Evolution(void); 
 
 	Population nextGeneration(const Population &population); // uppdatera den nuvarande populationen sen kanske ist?
