@@ -109,17 +109,15 @@ int main(){
     // Create and compile the shader
     GLuint programID = LoadShaders( "../../data/shaders/simple.vert", "../../data/shaders/simple.frag" );
 
-	//initialize debugDrawer for simulation (Needs to be done when context created)
+	//initialize debugDrawer for simulation (Needs to be done after context created)
 	render_engine = new Renderer(helloWorld, true);
-    
+
     while (!glfwWindowShouldClose(window))
     {
 		helloWorld->Step(1/60.0f);
         
         glClear(GL_COLOR_BUFFER_BIT);
-        glUseProgram(programID);
-		render_engine->render();
-        glUseProgram(0);
+		render_engine->render(programID);
 		/* Swap front and back buffers */
         glfwSwapBuffers(window);
 
