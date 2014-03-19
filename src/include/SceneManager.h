@@ -4,6 +4,7 @@
 #include <vector>
 #include <Node.h>
 #include <Camera.h>
+#include <memory>
 #include <btBulletDynamicsCommon.h>
 
 class SceneManager {
@@ -11,14 +12,17 @@ class SceneManager {
   public:
     // SceneManager();
     SceneManager(btDiscreteDynamicsWorld* dynamicsWorld);
-    
+    ~SceneManager() {};
     void SetCamera(Camera cam);
     void UpdateSceneNodes();
-
+    btDiscreteDynamicsWorld* GetPhysicsWorld();
+    void AddNode(std::shared_ptr<Node> node);
+    void SetSceneNodes();
+    void PrintPhysicsNodes();
   private:
     btDiscreteDynamicsWorld* physics_world_;
 
-    std::vector<Node> nodelist_;
+    std::vector<std::shared_ptr<Node> > nodelist_;
     Camera cam_;
     
 };

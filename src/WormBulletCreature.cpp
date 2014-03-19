@@ -1,5 +1,6 @@
 #include "WormBulletCreature.h"
-
+#include <memory>
+#include <Node.h>
 WormBulletCreature::WormBulletCreature(const std::vector<float> genes, const btVector3& position) {
 	genes_ = genes;
 	int segment_count = genes_.size()/4;
@@ -74,6 +75,7 @@ void WormBulletCreature::AddToDynamicsWorld(btDiscreteDynamicsWorld* world){
 	//Add bodies
 	for(int i=0; i < m_bodies_.size(); i++){
 		world->addRigidBody(m_bodies_[i]);
+
 	}
 	//Add joints
 	btTransform localA, localB;
@@ -122,3 +124,4 @@ btVector3 WormBulletCreature::GetCenterOfMass(){
 
 	return center_of_mass;
 }
+

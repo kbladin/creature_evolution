@@ -75,7 +75,7 @@ int main(){
 	helloWorld->AddCreatureToWorld(worm);
    
 	scene = new SceneManager(helloWorld->GetDynamicsWorld());
-
+	scene->SetSceneNodes();
 
     //The rendering stuff
 	GLFWwindow* window;
@@ -115,6 +115,8 @@ int main(){
 		helloWorld->Step(1/60.0f);
         
         glClear(GL_COLOR_BUFFER_BIT);
+        scene->UpdateSceneNodes();
+        scene->PrintPhysicsNodes();
 		render_engine->render();
         glfwSwapBuffers(window);
 

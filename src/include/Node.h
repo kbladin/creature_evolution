@@ -2,14 +2,22 @@
 #define NODE_H
 
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/transform.hpp>
+#include <glm/gtx/string_cast.hpp>
+#include <glm/ext.hpp>
+
 #include <Shape.h>
 class Node {
   public:
-    Node(glm::mat4 transform);
+    Node();
     void SetShape(Shape shape);
     void Render(glm::mat4 view, glm::mat4 projection);
     void SetTransform(glm::mat4 trans);
+    void SetPosition(glm::vec3 pos);
     glm::mat4 GetTransform();
+    void DebugPrint();
+  
   private:
     glm::mat4 transform_;
     Shape shape_;

@@ -13,5 +13,5 @@ Renderer::~Renderer(void)
 
 void Renderer::render()
 {
-	std::cout << "I'M INSIDE THE RENDERER!" << std::endl;
+	//std::cout << "I'M INSIDE THE RENDERER!" << std::endl;
 }

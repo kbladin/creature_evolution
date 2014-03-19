@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <btBulletDynamicsCommon.h>
+#include <SceneManager.h>
 
 class WormBulletCreature {
 public:

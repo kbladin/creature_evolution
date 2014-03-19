@@ -16,7 +16,6 @@ public:
 	void AddCreatureToWorld(WormBulletCreature* worm);
 	void RemoveCreatureFromWorld(WormBulletCreature* worm);
 	void Step(float dt);
-	void DebugDraw();
 	btDiscreteDynamicsWorld* GetDynamicsWorld();
 
 private:
