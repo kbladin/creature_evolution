@@ -31,10 +31,17 @@ int main(){
 	wm.setVariables(); // get info from window, write to settingsmanager
 
 	EvolutionManager em;// = new EvolutionManager();
+	std::cout << "Started the simulation process..." << std::endl;
 	em.startEvolutionProcess(); // start the whole evolution process! 
 	em.printBestFitnessValues();
 
-	Creature best = em.getBestCreatureFromLastGeneration(); // get the best generation
+	//Creature best = em.getBestCreatureFromLastGeneration(); // get the best generation
+
+	int generation; 
+	std::cout << "Which generation would you like to show? ";
+	std::cin >> generation; 
+
+	Creature best = em.getBestCreatureFromGeneration(generation);
 
     sf::ContextSettings settings(24,8,4,3,3);
     

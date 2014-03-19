@@ -65,6 +65,14 @@ void EvolutionManager::printBestFitnessValues(){
 
 }
 
+Creature EvolutionManager::getBestCreatureFromGeneration(int generation){
+	// must check if the value is smaller than max_generations, if over return the creature from last generation?
+	if (generation<=max_generations_ && generation>0)
+		return bestCreatures_[generation-1];
+
+	return bestCreatures_.back(); 
+}
+
 // bara för test! för att det ska funka nu helt enkelt. 
 Creature EvolutionManager::getBestCreatureFromLastGeneration(){
 	return bestCreatures_.back(); // inte säker metod då den kan vara tom.. 

@@ -25,6 +25,7 @@ public:
 	void startEvolutionProcess();
 
 	Creature getBestCreatureFromLastGeneration();
+	Creature getBestCreatureFromGeneration(int generation);
 	void printBestFitnessValues();
 };
 
