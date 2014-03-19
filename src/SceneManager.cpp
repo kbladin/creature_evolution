@@ -3,6 +3,7 @@
 #include <iterator>
 #include <vector>
 #include <iostream>
+#include <Box.h>
 
 SceneManager::SceneManager(btDiscreteDynamicsWorld* dynamics_world) {
 	physics_world_ = dynamics_world;
@@ -62,8 +63,21 @@ void SceneManager::SetSceneNodes() {
 
         if(body && body->getMotionState()) {
 	        std::shared_ptr<Node> node_to_add(new Node());
-	        AddNode(node_to_add);
-	        
+        	btTransform transform;
+     		body->getMotionState()->getWorldTransform(transform);
+     		glm::mat4 full_transform(1.0f);
+     		transform.getOpenGLMatrix(glm::value_ptr(full_transform));
+	        node_to_add->SetTransform(full_transform);
+            //TODO: check and create appropriate Shape
+            btBoxShape* btshape = (btBoxShape*) body->getCollisionShape();
+            btVector3 scale = btshape->getHalfExtentsWithoutMargin();
+
+            Box shape_to_add(glm::vec3(scale.getX(), scale.getY(),
+                 scale.getZ()));
+            shape_to_add.SetupBuffers();
+            node_to_add->SetShape(shape_to_add);
+
+	        AddNode(node_to_add);	        
 	        body->setUserPointer(node_to_add.get());	
         	//std::cout << "Added node!" << std::endl;
         }
@@ -75,4 +89,10 @@ void SceneManager::PrintPhysicsNodes() {
 	for(int i = 0; i < nodelist_.size(); ++i) {
 		nodelist_[i]->DebugPrint();
 	}
+}
+
+void SceneManager::RenderNodes() {
+    for(int i = 0; i  < nodelist_.size(); ++i) {
+        nodelist_[i]->Render();
+    }
 }

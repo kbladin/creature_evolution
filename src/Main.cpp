@@ -21,8 +21,38 @@ int width, height;
 
 int main(){
 
+	//The rendering stuff
+	GLFWwindow* window;
+    /* Initialize the library */
+    if (!glfwInit())
+        return -1;
+    
+    // We want the newest version of OpenGL
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    
+    /* Create a windowed mode window and its OpenGL context */
+    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    if (!window)
+    {
+        glfwTerminate();
+        return -1;
+    }
+    
+	/* Make the window's context current */
+    glfwMakeContextCurrent(window);
+    
+    glewExperimental = true; // Needed for core profile
+	if (glewInit() != GLEW_OK) {
+		fprintf(stderr, "Failed to initialize GLEW\n");
+		return -1;
+	}
+
+
 	const int population_size = 20;
-	const int max_generations = 2;
+	const int max_generations = 100;
 
 	const float crossover_ratio = 0.8f;
 	const float elitism_ratio = 0.2f;
@@ -77,46 +107,20 @@ int main(){
 	scene = new SceneManager(helloWorld->GetDynamicsWorld());
 	scene->SetSceneNodes();
 
-    //The rendering stuff
-	GLFWwindow* window;
-    /* Initialize the library */
-    if (!glfwInit())
-        return -1;
     
-    // We want the newest version of OpenGL
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    
-    /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-    if (!window)
-    {
-        glfwTerminate();
-        return -1;
-    }
-    
-	/* Make the window's context current */
-    glfwMakeContextCurrent(window);
-    
-    glewExperimental = true; // Needed for core profile
-	if (glewInit() != GLEW_OK) {
-		fprintf(stderr, "Failed to initialize GLEW\n");
-		return -1;
-	}
     // Print current OpenGL version
     std::cout << "OpenGL version: " << glGetString(GL_VERSION) << std::endl;
 
 	render_engine = new Renderer(scene);
-
+	glEnable(GL_DEPTH_TEST);
+	// Accept fragment if it closer to the camera than the former one
+	glDepthFunc(GL_LESS);
     while (!glfwWindowShouldClose(window))
     {
 		helloWorld->Step(1/60.0f);
         
-        glClear(GL_COLOR_BUFFER_BIT);
         scene->UpdateSceneNodes();
-        scene->PrintPhysicsNodes();
+        //scene->PrintPhysicsNodes();
 		render_engine->render();
         glfwSwapBuffers(window);
 

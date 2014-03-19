@@ -19,6 +19,7 @@ class SceneManager {
     void AddNode(std::shared_ptr<Node> node);
     void SetSceneNodes();
     void PrintPhysicsNodes();
+    void RenderNodes();
   private:
     btDiscreteDynamicsWorld* physics_world_;
 

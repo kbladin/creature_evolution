@@ -12,7 +12,7 @@ class Node {
   public:
     Node();
     void SetShape(Shape shape);
-    void Render(glm::mat4 view, glm::mat4 projection);
+    void Render();
     void SetTransform(glm::mat4 trans);
     void SetPosition(glm::vec3 pos);
     glm::mat4 GetTransform();

@@ -23,3 +23,6 @@ void Node::SetPosition(glm::vec3 pos) {
 
 }
 
+void Node::Render() {
+	shape_.Render(transform_);
+}

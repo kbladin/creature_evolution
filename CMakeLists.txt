@@ -113,7 +113,9 @@ if (test)
   ##############
   # Unit Tests
   ##############
-  add_executable(runUnitTests test/CreatureTest.cpp test/ChromosomeTest.cpp test/SceneManagerTest.cpp)
+  add_executable(runUnitTests test/CreatureTest.cpp 
+    test/ChromosomeTest.cpp test/SceneManagerTest.cpp test/ShapeTest.cpp
+    test/NodeTest.cpp)
   set_target_properties(runUnitTests PROPERTIES COMPILE_FLAGS "-std=gnu++11")
 
   # Standard linking to gtest stuff.
@@ -121,7 +123,9 @@ if (test)
 
   # Extra linking for the project.
   target_link_libraries(runUnitTests CreatureEvolution_lib)
-  target_link_libraries(runUnitTests ${BULLET_DYNAMICS_LIBRARY} ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
+  target_link_libraries(runUnitTests ${OPENGL_LIBRARIES}  ${OPENGL_glu_LIBRARY}  
+    ${GLEW_LIBRARY} ${GLFW_LIBRARIES} ${BULLET_DYNAMICS_LIBRARY} 
+    ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
 
   # This is so you can do 'make test' to see all your tests run, instead of
   # manually running the executable runUnitTests to see those specific tests.

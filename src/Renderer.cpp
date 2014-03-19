@@ -13,5 +13,7 @@ Renderer::~Renderer(void)
 
 void Renderer::render()
 {
-	//std::cout << "I'M INSIDE THE RENDERER!" << std::endl;
+	
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	scene_manager_->RenderNodes();
 }
