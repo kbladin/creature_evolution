@@ -11,7 +11,7 @@ typedef std::vector<Creature> Population;
 
 class EvolutionManager {
 private:
-	Evolution *ev; // holds the variables for the evolution. 
+	Evolution *ev_; // holds the variables for the evolution. 
 	int max_generations_;
 	int population_size_;
 

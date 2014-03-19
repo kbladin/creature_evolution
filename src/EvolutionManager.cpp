@@ -11,11 +11,12 @@ EvolutionManager::EvolutionManager(){
 	max_generations_ = sm->getMaxGenerations();
 	population_size_ = sm->getPopulationSize();
 
-	ev = new Evolution(); //hmm, kommer göra så att all evolution kommer alltid att utgå från settingsklassen.
+	ev_ = new Evolution(); //hmm, kommer göra så att all evolution kommer alltid att utgå från settingsklassen.
 }
 
 //! Destructor
 EvolutionManager::~EvolutionManager(void){
+	delete ev_;
 }
 
 // an evoultion until max generation or if fitness goes above 30! (change later)
@@ -44,7 +45,7 @@ void EvolutionManager::startEvolutionProcess() {
 
 	while( (++i < max_generations_) && (best.GetFitness() < 30) ) {
 
-		population = ev->nextGeneration(population);
+		population = ev_->nextGeneration(population);
 		std::sort(population.begin(), population.end(), CreatureLargerThan());
 		best = population[0];
 
@@ -64,6 +65,7 @@ void EvolutionManager::printBestFitnessValues(){
 
 }
 
+// bara för test! för att det ska funka nu helt enkelt. 
 Creature EvolutionManager::getBestCreatureFromLastGeneration(){
 	return bestCreatures_.back(); // inte säker metod då den kan vara tom.. 
 }

@@ -27,14 +27,14 @@ int width, height;
 
 int main(){
 
-	WindowsManager* wm = new WindowsManager();
-	wm->setVariables(); // get info from window, write to settingsmanager
+	WindowsManager wm; // = new WindowsManager();
+	wm.setVariables(); // get info from window, write to settingsmanager
 
-	EvolutionManager* em = new EvolutionManager();
-	em->startEvolutionProcess(); // start the whole evolution process! 
-	em->printBestFitnessValues();
+	EvolutionManager em;// = new EvolutionManager();
+	em.startEvolutionProcess(); // start the whole evolution process! 
+	em.printBestFitnessValues();
 
-	Creature best = em->getBestCreatureFromLastGeneration(); // get the best generation
+	Creature best = em.getBestCreatureFromLastGeneration(); // get the best generation
 
     sf::ContextSettings settings(24,8,4,3,3);
     

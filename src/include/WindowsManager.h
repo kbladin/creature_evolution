@@ -7,6 +7,8 @@
 class WindowsManager {
 private:
 
+	// storlek och upplösning sparas hör
+
 public:
 	WindowsManager();
 	~WindowsManager(void); 
