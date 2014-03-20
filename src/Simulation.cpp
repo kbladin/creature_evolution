@@ -1,10 +1,4 @@
 #include "Simulation.h"
-#include "DebugDraw.h"
-
-#include <btBulletDynamicsCommon.h>
-#include <iostream>
-#include <vector>
-
 
 Simulation::Simulation()
 {

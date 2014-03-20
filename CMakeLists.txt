@@ -26,18 +26,35 @@ endif(MSVC)
 find_package(BULLET REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
-find_package(SFML 2 REQUIRED system window graphics network audio)
-find_package(SFGUI REQUIRED)
+find_package(GLFW3 REQUIRED)
+find_package(GLM REQUIRED)
 
-include_directories(${OPENGL_INCLUDE_DIR})
+include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(${BULLET_INCLUDE_DIR})
 include_directories(${GLEW_INCLUDE_DIR})
-include_directories(${SFML_INCLUDE_DIR})
-include_directories(${SFGUI_INCLUDE_DIR})
+include_directories(${GLFW_INCLUDE_DIRS})
+include_directories(${GLM_INCLUDE_DIRS})
+
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+  find_package(X11 REQUIRED)
+  include_directories(${X11_INCLUDE_DIR})
+  #Set additional libs for GLFW on Linux
+  set( ADDITIONAL_LIBS 
+      -pthread
+      -lrt
+      -lXinerama
+      -lXrandr
+      -lXxf86vm
+      -lXi
+      -lX11
+     )
+ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 # If you want your own include/ directory, set this, and then you can do
-set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/src/include)
+set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/src/include )
 include_directories(${COMMON_INCLUDES})
+set(GLM ${PROJECT_SOURCE_DIR}/external_libs/glm/)
+include_directories(GLM)
 
 # source code is here
 add_subdirectory(src)
@@ -52,14 +69,21 @@ add_executable(${ctEvo} ${MAIN})
 set_target_properties(CreatureEvolution_lib PROPERTIES COMPILE_FLAGS "-std=c++11")
 set_target_properties(${ctEvo} PROPERTIES COMPILE_FLAGS "-std=c++11")
 
+# Linking OpenGL etc
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+  target_link_libraries(${ctEvo} ${X11_LIBRARIES} ${ADDITIONAL_LIBS})
+ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+
+
+target_link_libraries(${ctEvo} ${OPENGL_LIBRARIES}  ${OPENGL_glu_LIBRARY}  ${GLEW_LIBRARY} ${GLFW_LIBRARIES})
+
 # this is defined in the sub directory src/
 target_link_libraries(${ctEvo} CreatureEvolution_lib)
+
 
 # Linking Bullet. NOTE: For now, no debug libraries
 target_link_libraries(${ctEvo} ${BULLET_DYNAMICS_LIBRARY} ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
 
-# Linking OpenGL, SFML, SFGui
-target_link_libraries(${ctEvo} ${GLEW_LIBRARY} ${SFML_LIBRARIES} ${SFGUI_LIBRARY} ${OPENGL_LIBRARIES})
 
 ######### OPENGL LIBRARY (ONLY FOR OSX) #############
 if(APPLE)
@@ -89,7 +113,9 @@ if (test)
   ##############
   # Unit Tests
   ##############
-  add_executable(runUnitTests test/CreatureTest.cpp test/ChromosomeTest.cpp)
+  add_executable(runUnitTests test/CreatureTest.cpp 
+    test/ChromosomeTest.cpp test/SceneManagerTest.cpp test/ShapeTest.cpp
+    test/NodeTest.cpp)
   set_target_properties(runUnitTests PROPERTIES COMPILE_FLAGS "-std=gnu++11")
 
   # Standard linking to gtest stuff.
@@ -97,7 +123,9 @@ if (test)
 
   # Extra linking for the project.
   target_link_libraries(runUnitTests CreatureEvolution_lib)
-  target_link_libraries(runUnitTests ${BULLET_DYNAMICS_LIBRARY} ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
+  target_link_libraries(runUnitTests ${OPENGL_LIBRARIES}  ${OPENGL_glu_LIBRARY}  
+    ${GLEW_LIBRARY} ${GLFW_LIBRARIES} ${BULLET_DYNAMICS_LIBRARY} 
+    ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
 
   # This is so you can do 'make test' to see all your tests run, instead of
   # manually running the executable runUnitTests to see those specific tests.

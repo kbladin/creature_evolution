@@ -25,7 +25,7 @@ WormBulletCreature::WormBulletCreature(const std::vector<float> genes, const btV
 	btTransform transform;
 	for(int i=0; i < m_bodies_.size(); i++) {
 		transform.setIdentity();
-		transform.setOrigin(btVector3(btScalar(0.), btScalar(0.), btScalar(i*shape_radius*2)));
+		transform.setOrigin(btVector3(btScalar(0.), btScalar(0.0), btScalar(i*shape_radius*2)));
 
 		motion_state = new btDefaultMotionState(offset*transform);
 		btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass_,motion_state,m_shape_,fallInertia);
@@ -74,6 +74,7 @@ void WormBulletCreature::AddToDynamicsWorld(btDiscreteDynamicsWorld* world){
 	//Add bodies
 	for(int i=0; i < m_bodies_.size(); i++){
 		world->addRigidBody(m_bodies_[i]);
+
 	}
 	//Add joints
 	btTransform localA, localB;
@@ -121,4 +122,8 @@ btVector3 WormBulletCreature::GetCenterOfMass(){
 	center_of_mass /= m_bodies_.size();
 
 	return center_of_mass;
+}
+
+std::vector<btRigidBody*> WormBulletCreature::GetRigidBodies() {
+	return m_bodies_;
 }

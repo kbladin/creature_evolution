@@ -1,12 +1,14 @@
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
-#include <btBulletDynamicsCommon.h>
+// C++
+#include <iostream>
+#include <vector>
 #include <algorithm>
-
+// External
+#include <btBulletDynamicsCommon.h>
+// Internal
 #include "WormBulletCreature.h"
-
-
 
 class Simulation
 {
@@ -16,7 +18,6 @@ public:
 	void AddCreatureToWorld(WormBulletCreature* worm);
 	void RemoveCreatureFromWorld(WormBulletCreature* worm);
 	void Step(float dt);
-	void DebugDraw();
 	btDiscreteDynamicsWorld* GetDynamicsWorld();
 
 private:

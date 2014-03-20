@@ -1,10 +1,13 @@
 #ifndef CHROMOSOME_H
 #define CHROMOSOME_H
 
-#include "AutoInitRNG.h"
+// C++
 #include <iostream>
 #include <iomanip>
 #include <string>
+// Internal
+#include "AutoInitRNG.h"
+
 
 //! A chromosome that a creature contains of. 
 
@@ -19,7 +22,7 @@ public:
 
 	static Chromosome random();
 
-	static const int GENE_LENGTH = 12; //Worm length * 4 - 1
+	static const int GENE_LENGTH = 16; //Worm length * 4 - 1
 
 private:
 	std::vector<float> gene_code_;

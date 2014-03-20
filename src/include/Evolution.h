@@ -1,8 +1,7 @@
 #ifndef EVOLUTION_H
 #define EVOLUTION_H
 
-#include "AutoInitRNG.h"
-#include "Creature.h"
+// C++
 #include <vector>
 #include <cassert>
 #include "SettingsManager.h"

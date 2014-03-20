@@ -1,25 +1,17 @@
 #include "Renderer.h"
-#include <GL/glew.h>
 
-Renderer::Renderer(Simulation* sim, bool debug_mode)
+Renderer::Renderer(SceneManager* scene)
 {
-	dynamicsWorld = sim->GetDynamicsWorld();
-	debugDrawer = new DebugDraw(dynamicsWorld);
-	debug = debug_mode;
+	scene_manager_ = scene;
 }
 
 
 Renderer::~Renderer(void)
 {
-	delete debugDrawer;
 }
 
 void Renderer::render()
 {
-	if(debug)
-	{
-		debugDrawer->drawWorld();
-		debugDrawer->BufferSetup();
-		debugDrawer->DrawBuffers();
-	}
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	scene_manager_->RenderNodes();
 }
