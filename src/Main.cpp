@@ -28,7 +28,7 @@ int main(){
 	em.printBestFitnessValues();
 
 	//Creature best = em.getBestCreatureFromLastGeneration(); // get the best generation
-
+	//
 	int generation; 
 	std::cout << "Which generation would you like to show? ";
 	std::cin >> generation; 
