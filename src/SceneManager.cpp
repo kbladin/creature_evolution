@@ -104,6 +104,6 @@ void SceneManager::PrintPhysicsNodes() {
 
 void SceneManager::RenderNodes() {
     for(int i = 0; i  < nodelist_.size(); ++i) {
-        nodelist_[i]->Render();
+        nodelist_[i]->Render(cam_);
     }
 }
