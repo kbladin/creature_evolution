@@ -52,7 +52,7 @@ int main(){
 
 
 	const int population_size = 20;
-	const int max_generations = 100;
+	const int max_generations = 2;
 
 	const float crossover_ratio = 0.8f;
 	const float elitism_ratio = 0.2f;
