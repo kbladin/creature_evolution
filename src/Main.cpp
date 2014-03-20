@@ -107,7 +107,7 @@ int main(){
 	helloWorld = new Simulation(); 
 	helloWorld->AddCreatureToWorld(worm);
    
-	scene = new SceneManager(helloWorld->GetDynamicsWorld());
+	scene = new SceneManager();
 	scene->CreateNodesFromBulletCreature(worm);
 
     
