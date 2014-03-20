@@ -1,10 +1,13 @@
 #ifndef CHROMOSOME_H
 #define CHROMOSOME_H
 
-#include "AutoInitRNG.h"
+// C++
 #include <iostream>
 #include <iomanip>
 #include <string>
+// Internal
+#include "AutoInitRNG.h"
+
 
 //! A chromosome that a creature contains of. 
 

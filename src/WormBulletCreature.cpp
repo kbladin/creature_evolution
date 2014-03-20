@@ -1,6 +1,5 @@
 #include "WormBulletCreature.h"
-#include <memory>
-#include <Node.h>
+
 WormBulletCreature::WormBulletCreature(const std::vector<float> genes, const btVector3& position) {
 	genes_ = genes;
 	int segment_count = genes_.size()/4;

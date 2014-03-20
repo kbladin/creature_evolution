@@ -1,10 +1,18 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
+// C++
 #include <vector>
-#include <glm/glm.hpp>
+#include <iostream>
+// External
 #include <GL/glew.h>
-#include <Camera.h>
+#include <glm/glm.hpp>
+#include <glm/gtx/string_cast.hpp>
+#include <glm/ext.hpp>
+// Internal
+#include "Shader.hpp"
+#include "Camera.h"
+
 
 class Shape {
 public:

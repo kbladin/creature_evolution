@@ -1,5 +1,4 @@
-#include <Box.h>
-#include <iostream>
+#include "Box.h"
 
 Box::Box() {
 	/*	Setting up vertex data

@@ -1,7 +1,12 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include <SceneManager.h>
+// C++
+#include <iostream>
+// External
+#include <GL/glew.h>
+// Internal
+#include "SceneManager.h"
 
 class Renderer
 {

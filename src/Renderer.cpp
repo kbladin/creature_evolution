@@ -1,6 +1,5 @@
 #include "Renderer.h"
-#include <GL/glew.h>
-#include <iostream>
+
 Renderer::Renderer(SceneManager* scene)
 {
 	scene_manager_ = scene;

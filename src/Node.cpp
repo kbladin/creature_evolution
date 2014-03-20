@@ -1,5 +1,4 @@
-#include <Node.h>
-#include <iostream>
+#include "Node.h"
 
 Node::Node() {
 	transform_ = glm::mat4(1.0f);

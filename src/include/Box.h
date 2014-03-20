@@ -1,7 +1,10 @@
 #ifndef BOX_H
 #define BOX_H
 
-#include <Shape.h>
+// C++
+#include <iostream>
+// Internal
+#include "Shape.h"
 
 class Box : public Shape {
 public:

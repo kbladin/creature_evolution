@@ -1,9 +1,4 @@
-#include <GL/glew.h>
-#include <Shape.h>
-#include <glm/gtx/string_cast.hpp>
-#include <glm/ext.hpp>
-#include <iostream>
-#include <Shader.hpp>
+#include "Shape.h"
 
 void Shape::DebugPrint() {
 	for(int i = 0; i < vertex_data_.size(); ++i) {

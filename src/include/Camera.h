@@ -1,6 +1,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
+// External
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 

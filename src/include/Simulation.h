@@ -1,12 +1,14 @@
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
-#include <btBulletDynamicsCommon.h>
+// C++
+#include <iostream>
+#include <vector>
 #include <algorithm>
-
+// External
+#include <btBulletDynamicsCommon.h>
+// Internal
 #include "WormBulletCreature.h"
-
-
 
 class Simulation
 {

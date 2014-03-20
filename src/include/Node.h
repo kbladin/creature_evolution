@@ -1,14 +1,18 @@
 #ifndef NODE_H
 #define NODE_H
 
+// C++
+#include <iostream>
+// External
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/transform.hpp>
 #include <glm/gtx/string_cast.hpp>
 #include <glm/ext.hpp>
 #include <btBulletDynamicsCommon.h>
+// Internal
+#include "Shape.h"
 
-#include <Shape.h>
 class Node {
   public:
     Node();

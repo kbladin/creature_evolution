@@ -1,12 +1,13 @@
 #ifndef CREATURE_H
 #define CREATURE_H
 
+// C++
 #include <cmath>
 #include <ctime>
 #include <iostream>
 #include <iomanip>
 #include <string>
-
+// Internal
 #include "Simulation.h"
 #include "Chromosome.h"
 #include "AutoInitRNG.h"

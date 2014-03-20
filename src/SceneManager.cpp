@@ -1,11 +1,4 @@
-#include <SceneManager.h>
-#include <btBulletDynamicsCommon.h>
-#include <iterator>
-#include <vector>
-#include <iostream>
-#include <Box.h>
-#include <WormBulletCreature.h>
-
+#include "SceneManager.h"
 
 void SceneManager::SetCamera(Camera cam) {
 	cam_ = cam;

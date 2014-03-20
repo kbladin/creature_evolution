@@ -1,12 +1,18 @@
 #ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
 
+// C++
+#include <iterator>
 #include <vector>
-#include <Node.h>
-#include <Camera.h>
+#include <iostream>
 #include <memory>
+// External
 #include <btBulletDynamicsCommon.h>
-#include <WormBulletCreature.h>
+// Internal
+#include "Camera.h"
+#include "Node.h"
+#include "Box.h"
+#include "WormBulletCreature.h"
 
 class WormBulletCreature;
 

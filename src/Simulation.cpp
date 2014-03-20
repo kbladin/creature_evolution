@@ -1,10 +1,5 @@
 #include "Simulation.h"
 
-#include <btBulletDynamicsCommon.h>
-#include <iostream>
-#include <vector>
-
-
 Simulation::Simulation()
 {
 	counter_ = 0;

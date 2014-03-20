@@ -1,11 +1,16 @@
 #ifndef WORMBULLETCREATURE_H
 #define WORMBULLETCREATURE_H
 
+// C++
 #include <cmath>
 #include <iostream>
 #include <vector>
+#include <memory>
+// External
 #include <btBulletDynamicsCommon.h>
-#include <SceneManager.h>
+// Internal
+#include "SceneManager.h"
+#include "Node.h"
 
 class WormBulletCreature {
 public:

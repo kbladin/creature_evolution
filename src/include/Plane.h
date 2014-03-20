@@ -1,8 +1,10 @@
 #ifndef PLANE_H
 #define PLANE_H
 
-#include <Shape.h>
+// External
 #include <glm/glm.hpp>
+// Internal
+#include "Shape.h"
 
 class Plane : public Shape {
 public:
