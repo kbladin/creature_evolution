@@ -13,11 +13,8 @@ class WormBulletCreature;
 class SceneManager {
   
   public:
-    // SceneManager();
-    SceneManager(btDiscreteDynamicsWorld* dynamicsWorld);
     ~SceneManager() {};
     void SetCamera(Camera cam);
-    btDiscreteDynamicsWorld* GetPhysicsWorld();
     void AddNode(std::shared_ptr<Node> node);
     void PrintPhysicsNodes();
     void RenderNodes();

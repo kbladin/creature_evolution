@@ -6,13 +6,6 @@
 #include <Box.h>
 #include <WormBulletCreature.h>
 
-SceneManager::SceneManager(btDiscreteDynamicsWorld* dynamics_world) {
-	physics_world_ = dynamics_world;
-}
-
-btDiscreteDynamicsWorld* SceneManager::GetPhysicsWorld() {
-	return physics_world_;
-}
 
 void SceneManager::SetCamera(Camera cam) {
 	cam_ = cam;
