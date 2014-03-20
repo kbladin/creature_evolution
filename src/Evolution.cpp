@@ -46,15 +46,14 @@ Population Evolution::nextGeneration(const Population &population ) {
 
 	int top_candidates_pivot = (int) (population.size() * elitism_);
 
-	Population buffer (&population[0], 
-		&population[top_candidates_pivot]);
-	buffer.resize(population.size());
+	// Copy over the top candidates to the new population
+	Population buffer(top_candidates_pivot, population);
 
 	int count_new_population = top_candidates_pivot;
 
 	while(count_new_population < population.size()-1){
 
-		Population parents = TournamentSelection(population);
+		std::vector<Creature> parents = TournamentSelection(population);
 
 		std::vector<Chromosome> children_chromosome = parents[0].Crossover(parents[1], crossover_);
 
@@ -64,8 +63,8 @@ Population Evolution::nextGeneration(const Population &population ) {
 		Creature child_1(children_chromosome[0]);
 		Creature child_2(children_chromosome[1]);
 
-		buffer[count_new_population++] = child_1;
-		buffer[count_new_population++] = child_2;
+		buffer.Add(count_new_population++, child_1);
+		buffer.Add(count_new_population++, child_2);
 	}
 	return buffer; 
 }
@@ -81,19 +80,19 @@ by changing the TOURNAMENT_SIZE_.
 \param population The population that we pick random creatures from to compete in the tournament. 
 \return A new population with the two parents.
 */
-Population Evolution::TournamentSelection(const Population &population) {
-	Population parents;
+std::vector<Creature> Evolution::TournamentSelection(const Population &population) {
+	std::vector<Creature> parents;
 	parents.resize(2);
 	std::uniform_int_distribution<int> int_dist_index_(0,
 						population.size()-1);
 
 	for (int i = 0; i < 2; ++i) {
-		parents[i] = population[int_dist_index_(rng_.mt_rng_)];
+		parents[i] = population.Get(int_dist_index_(rng_.mt_rng_));
 		for (int j = 0; j < TOURNAMENT_SIZE_; ++j) {
 			int idx = int_dist_index_(rng_.mt_rng_);
-			if(population[idx].GetFitness() > 
+			if(population.Get(idx).GetFitness() > 
 										parents[i].GetFitness()) {
-				parents[i] = population[idx];
+				parents[i] = population.Get(idx);
 			}
 		}
 	}
@@ -120,15 +119,15 @@ Creature Evolution::Roulette(float total_fitness, const Population &population){
 	float fitness_so_far = 0.0f;
 
 	for (int i=0; i<population.size(); ++i){
-		if (population[i].GetFitness() != 0)
-			fitness_so_far += 1/population[i].GetFitness();
+		if (population.Get(i).GetFitness() != 0)
+			fitness_so_far += 1/population.Get(i).GetFitness();
 
 		if (fitness_so_far >= slice)
-			return population[i]; 
+			return population.Get(i); 
 	}
 
 	// should have gone trought the whole list, but if not the first object is returned
-	return population[0]; 
+	return population.Get(0); 
 }
 
 //! Help to the Roulette function
@@ -142,7 +141,7 @@ float Evolution::CalculateTotalFitness(const Population &population){
 	float total_fitness = 0.0f;
 
 	for (int i=0; i<population.size(); ++i) {
-		total_fitness += population[i].GetFitness();
+		total_fitness += population.Get(i).GetFitness();
 	}
 
 	return total_fitness; 

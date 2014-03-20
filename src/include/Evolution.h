@@ -6,8 +6,8 @@
 #include <vector>
 #include <cassert>
 #include "SettingsManager.h"
-
-typedef std::vector<Creature> Population;
+#include "Population.h"
+//typedef std::vector<Creature> Population;
 
 //! Evolves a population based on elitism, mutation and crossover ratio.
 
@@ -19,7 +19,7 @@ private:
 	float mutation_;
 	float crossover_;
 
-	Population TournamentSelection(const Population &population);
+	std::vector<Creature> TournamentSelection(const Population &population);
 	Creature Roulette(float total_fitness, const Population &population);
 	float CalculateTotalFitness(const Population &population);
 

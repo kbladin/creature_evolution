@@ -9,7 +9,7 @@ EvolutionManager::EvolutionManager(){
     sm = SettingsManager::Instance();
 
 	max_generations_ = sm->getMaxGenerations();
-	population_size_ = sm->getPopulationSize();
+	//population_size_ = sm->getPopulationSize();
 
 	ev_ = new Evolution(); //hmm, kommer göra så att all evolution kommer alltid att utgå från settingsklassen.
 }
@@ -24,21 +24,12 @@ void EvolutionManager::startEvolutionProcess() {
 	std::clock_t start_time;
 	start_time = std::clock();
 
-	// creates the population!
-	std::vector<Creature> population;
-	population.resize(population_size_);
-
-	// creates a random new population
-	for (int i=0; i<population_size_; ++i){
-		population[i] = Creature(Chromosome::random());
-	}
-
-	// sortera Creature
-	std::sort(population.begin(), population.end(), CreatureLargerThan());
+	// Creates a new random population
+	Population population; 
 
 	int i=0;
-	Creature best = population[0]; // the best creature from the population
-	
+	Creature best = population.GetBest(); 
+
 	// stores the first generation 
 	allPopulations_.push_back(population);
 	bestCreatures_.push_back(best); 
@@ -46,8 +37,8 @@ void EvolutionManager::startEvolutionProcess() {
 	while( (++i < max_generations_) && (best.GetFitness() < 30) ) {
 
 		population = ev_->nextGeneration(population);
-		std::sort(population.begin(), population.end(), CreatureLargerThan());
-		best = population[0];
+		population.Sort();
+		best = population.GetBest();
 
 		// save the population and the best creatures
 		allPopulations_.push_back(population);
