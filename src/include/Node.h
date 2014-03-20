@@ -6,6 +6,7 @@
 #include <glm/gtx/transform.hpp>
 #include <glm/gtx/string_cast.hpp>
 #include <glm/ext.hpp>
+#include <btBulletDynamicsCommon.h>
 
 #include <Shape.h>
 class Node {
@@ -22,5 +23,13 @@ class Node {
     glm::mat4 transform_;
     Shape shape_;
 };
+
+class PhysicsNode : public Node {
+public:
+    void UpdateNodeFromBullet();
+private:
+    btRigidBody* rigid_body_;
+};
+
 
 #endif //NODE_H

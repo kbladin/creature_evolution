@@ -54,6 +54,8 @@ void SceneManager::AddNode(std::shared_ptr<Node> node_ptr) {
 	nodelist_.push_back(node_ptr);
 }
 
+
+
 void SceneManager::SetSceneNodes() {
     btCollisionObjectArray& collisionObjects = 
     	physics_world_->getCollisionObjectArray();
@@ -64,22 +66,31 @@ void SceneManager::SetSceneNodes() {
         if(body && body->getMotionState()) {
 	        std::shared_ptr<Node> node_to_add(new Node());
         	btTransform transform;
+
      		body->getMotionState()->getWorldTransform(transform);
      		glm::mat4 full_transform(1.0f);
      		transform.getOpenGLMatrix(glm::value_ptr(full_transform));
 	        node_to_add->SetTransform(full_transform);
+            
             //TODO: check and create appropriate Shape
-            btBoxShape* btshape = (btBoxShape*) body->getCollisionShape();
-            btVector3 scale = btshape->getHalfExtentsWithoutMargin();
+            
+                btBoxShape* btshape = (btBoxShape*) body->getCollisionShape();
+                
+                btVector3 scale = btshape->getHalfExtentsWithoutMargin();
+                
+                std::cout << scale.getX() << " " << scale.getY() << " " << scale.getZ() << std::endl;
+                
+                Box shape_to_add(glm::vec3(scale.getX(), scale.getY(),
+                     scale.getZ()));
 
-            Box shape_to_add(glm::vec3(scale.getX(), scale.getY(),
-                 scale.getZ()));
-            shape_to_add.SetupBuffers();
-            node_to_add->SetShape(shape_to_add);
+                shape_to_add.SetupBuffers();
+                node_to_add->SetShape(shape_to_add);
 
-	        AddNode(node_to_add);	        
-	        body->setUserPointer(node_to_add.get());	
-        	//std::cout << "Added node!" << std::endl;
+    	        AddNode(node_to_add);
+
+    	        body->setUserPointer(node_to_add.get());	
+            	//std::cout << "Added node!" << std::endl;
+            
         }
         
     }
