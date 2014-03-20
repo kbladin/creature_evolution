@@ -42,8 +42,8 @@ void Shape::Render(Camera camera, glm::mat4 model_transform) {
 	//std::cout << "Rendering shape.." << std::endl;
 	glUseProgram(shader_id_);
 	glm::mat4 model_scaled = glm::scale(glm::mat4(1.0f), scale_);
-	glm::mat4 Projection = camera.getProjectionMatrix();
-	glm::mat4 View       = camera.getViewMatrix();
+	glm::mat4 Projection = camera.GetProjectionMatrix();
+	glm::mat4 View       = camera.GetViewMatrix();
 	glm::mat4 rotate_view = glm::rotate(90.0f, glm::vec3(0,1,0));
 	glm::mat4 MVP        = Projection * View * rotate_view * model_transform * model_scaled;
 

@@ -15,10 +15,10 @@ Camera::Camera(glm::mat4 view, glm::mat4 projection) {
 	projection_ = projection;
 }
 
-glm::mat4 Camera::getViewMatrix(){
+glm::mat4 Camera::GetViewMatrix(){
   return view_;
 }
 
-glm::mat4 Camera::getProjectionMatrix(){
+glm::mat4 Camera::GetProjectionMatrix(){
   return projection_;
 }

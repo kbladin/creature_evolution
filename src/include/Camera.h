@@ -9,8 +9,8 @@ class Camera {
 public:
   Camera();
   Camera(glm::mat4 view, glm::mat4 projection);
-  glm::mat4 getViewMatrix();
-  glm::mat4 getProjectionMatrix();
+  glm::mat4 GetViewMatrix();
+  glm::mat4 GetProjectionMatrix();
 private:
   glm::mat4 projection_;
   glm::mat4 view_;
