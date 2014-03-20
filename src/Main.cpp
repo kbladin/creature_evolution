@@ -13,6 +13,7 @@
 #include "Renderer.h"
 #include <Shader.hpp>
 #include <SceneManager.h>
+#include <WormBulletCreature.h>
 
 Simulation* helloWorld;
 Renderer* render_engine;
@@ -77,6 +78,8 @@ int main(){
 	int i=0;
 	Creature best = population[0]; // den bästa tas fram
 
+
+
 	while( (++i < max_generations) && (best.GetFitness() < 30) ) {
 
 		population = ev.nextGeneration(population);
@@ -105,7 +108,7 @@ int main(){
 	helloWorld->AddCreatureToWorld(worm);
    
 	scene = new SceneManager(helloWorld->GetDynamicsWorld());
-	scene->SetSceneNodes();
+	scene->CreateNodesFromBulletCreature(worm);
 
     
     // Print current OpenGL version
@@ -115,11 +118,12 @@ int main(){
 	glEnable(GL_DEPTH_TEST);
 	// Accept fragment if it closer to the camera than the former one
 	glDepthFunc(GL_LESS);
+	
     while (!glfwWindowShouldClose(window))
     {
 		helloWorld->Step(1/60.0f);
         
-        scene->UpdateSceneNodes();
+        scene->UpdateNodes();
         //scene->PrintPhysicsNodes();
 		render_engine->render();
         glfwSwapBuffers(window);

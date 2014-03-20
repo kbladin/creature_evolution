@@ -18,15 +18,17 @@ class Node {
     void SetPosition(glm::vec3 pos);
     glm::mat4 GetTransform();
     void DebugPrint();
-  
-  private:
+    virtual void UpdateNode() { };
+  protected:
     glm::mat4 transform_;
     Shape shape_;
 };
 
 class PhysicsNode : public Node {
 public:
-    void UpdateNodeFromBullet();
+    PhysicsNode();
+    PhysicsNode(btRigidBody* rigid_body);
+    void UpdateNode();
 private:
     btRigidBody* rigid_body_;
 };

@@ -5,7 +5,8 @@
 
 class Box : public Shape {
 public:
-  Box(glm::vec3 scale);
+  Box();
+  Box(float scale_x, float scale_y, float scale_z);
 };
 
 #endif //BOX_H

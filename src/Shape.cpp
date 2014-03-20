@@ -29,7 +29,6 @@ void Shape::SetupBuffers() {
 void Shape::Render(glm::mat4 model_transform) {
 	//std::cout << "Rendering shape.." << std::endl;
 	glUseProgram(shader_id_);
-	glm::mat4 model_scaled = glm::scale(glm::mat4(1.0f), scale_);
 	glm::mat4 Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
 	glm::mat4 View       = glm::lookAt(
 								glm::vec3(0,3,-5), // Camera is at (4,3,-3), in World Space
@@ -38,7 +37,7 @@ void Shape::Render(glm::mat4 model_transform) {
 						   );
 	glm::mat4 rotate_view = glm::rotate(90.0f, glm::vec3(0,1,0));
 	//glm::mat4 Model      = glm::mat4(1.0f);
-	glm::mat4 MVP        = Projection * View * rotate_view * model_transform * model_scaled; // Remember, matrix multiplication is the other way around
+	glm::mat4 MVP        = Projection * View * rotate_view * model_transform; // Remember, matrix multiplication is the other way around
 
 	glUniformMatrix4fv(mvp_id_, 1, GL_FALSE, &MVP[0][0]);
 

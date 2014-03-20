@@ -26,3 +26,17 @@ void Node::SetPosition(glm::vec3 pos) {
 void Node::Render() {
 	shape_.Render(transform_);
 }
+
+PhysicsNode::PhysicsNode(btRigidBody* body) {
+	rigid_body_ = body;
+}
+
+void PhysicsNode::UpdateNode() {
+	btTransform transform;
+
+	rigid_body_->getMotionState()->getWorldTransform(transform);
+	glm::mat4 full_transform(1.0f);
+	transform.getOpenGLMatrix(glm::value_ptr(full_transform));
+	
+	SetTransform(full_transform);
+}

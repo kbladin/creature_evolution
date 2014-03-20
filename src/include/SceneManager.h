@@ -6,6 +6,9 @@
 #include <Camera.h>
 #include <memory>
 #include <btBulletDynamicsCommon.h>
+#include <WormBulletCreature.h>
+
+class WormBulletCreature;
 
 class SceneManager {
   
@@ -14,12 +17,12 @@ class SceneManager {
     SceneManager(btDiscreteDynamicsWorld* dynamicsWorld);
     ~SceneManager() {};
     void SetCamera(Camera cam);
-    void UpdateSceneNodes();
     btDiscreteDynamicsWorld* GetPhysicsWorld();
     void AddNode(std::shared_ptr<Node> node);
-    void SetSceneNodes();
     void PrintPhysicsNodes();
     void RenderNodes();
+    void CreateNodesFromBulletCreature(WormBulletCreature* worm);
+    void UpdateNodes();
   private:
     btDiscreteDynamicsWorld* physics_world_;
 

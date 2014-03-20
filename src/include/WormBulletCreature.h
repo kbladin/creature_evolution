@@ -15,6 +15,8 @@ public:
 	void RemoveFromDynamicsWorld(btDiscreteDynamicsWorld* world);
 	void UpdateMovement(float time);
 	btVector3 GetCenterOfMass();
+	std::vector<btRigidBody*> GetRigidBodies();
+	
 private:
 	btCollisionShape* m_shape_;
 	btScalar mass_;
