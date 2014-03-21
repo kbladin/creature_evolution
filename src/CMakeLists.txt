@@ -4,9 +4,17 @@ file(GLOB to_remove Main.cpp)
 
 list(REMOVE_ITEM SOURCES ${to_remove})
 
-# if( MSVC )
-# 	set(CMAKE_CXX_FLAGS_RELEASE "/MT")
-# 	set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
-# endif( MSVC )
+
+# Find includes in corresponding build directories
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+# Instruct CMake to run moc automatically when needed.
+set(CMAKE_AUTOMOC ON)
+
+# Find the QtWidgets library
+find_package(Qt5Core)
+find_package(Qt5Quick)
+find_package(Qt5Gui)
 
 add_library(CreatureEvolution_lib ${SOURCES} ${HEADERS})
+
+qt5_use_modules(CreatureEvolution_lib Core Gui Quick)

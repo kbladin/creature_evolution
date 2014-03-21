@@ -5,6 +5,16 @@ project(CreatureEvolution)
 # Options. Turn on with 'cmake -Dmyvarname=ON'.
 option(test "Build all tests." OFF) # Makes boolean 'test' available.
 
+# Find includes in corresponding build directories
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+# Instruct CMake to run moc automatically when needed.
+set(CMAKE_AUTOMOC ON)
+
+# Find the QtWidgets library
+find_package(Qt5Core)
+find_package(Qt5Quick)
+find_package(Qt5Gui)
+
 set(ctEvo CreatureEvolution)
 # set path to custom find modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/Modules)
@@ -90,6 +100,9 @@ if(APPLE)
   target_link_libraries(${ctEvo} ${OPENGL_FRAMEWORK} ${COCOA_FRAMEWORK})
 endif(APPLE)
 ####################################
+
+qt5_use_modules(${ctEvo} Core Gui Quick)
+
 
 ################################
 # Testing
