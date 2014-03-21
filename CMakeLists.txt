@@ -12,7 +12,6 @@ set(CMAKE_AUTOMOC ON)
 
 # Find the QtWidgets library
 find_package(Qt5Core)
-find_package(Qt5Quick)
 find_package(Qt5Gui)
 
 set(ctEvo CreatureEvolution)
@@ -101,7 +100,7 @@ if(APPLE)
 endif(APPLE)
 ####################################
 
-qt5_use_modules(${ctEvo} Core Gui Quick)
+qt5_use_modules(${ctEvo} Core Gui)
 
 
 ################################

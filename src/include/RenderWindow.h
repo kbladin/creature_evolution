@@ -5,7 +5,7 @@ class RenderWindow : public OpenGLWindow
 {
 public:
     RenderWindow(CreatureEvolution* CE);
-
+    ~RenderWindow();
     void initialize();
     void render();
 

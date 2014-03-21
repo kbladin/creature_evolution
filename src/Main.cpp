@@ -1,52 +1,30 @@
 
 // 🐢
 
-#include <QGuiApplication>
-#include <QtQuick/QQuickView>
+#include <QtGui/QGuiApplication>
+#include <QtGui/QScreen>
 
-#include "WindowsManager.h"
+#include <QtCore/qmath.h>
 #include "SettingsManager.h"
-#include "Evolution.h"
-#include "Creature.h"
-#include <iostream>
-#include <algorithm>
-
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
-#include "QtWindowManager.h"
-#include "WindowsManager.h"
 #include "CreatureEvolution.h"
 
-
+#include "RenderWindow.h"
 
 int main(int argc, char **argv) {
-
-	CreatureEvolution* CE = new CreatureEvolution();
 	QGuiApplication app(argc, argv);
 
-	qmlRegisterType<QtWindowManager>("CreatureEvolution",1,0,"QtWindowManager");
+	CreatureEvolution* CE = new CreatureEvolution();
+	CE.Run();
+	QSurfaceFormat format;
+    format.setSamples(16);
 
-	QQuickView view;
-	view.setResizeMode(QQuickView::SizeRootObjectToView);
-	view.setSource(QUrl::fromLocalFile("ui.qml"));
+    RenderWindow window(CE);
+    window.setFormat(format);
+    window.resize(640, 480);
+    window.show();
 
-	QtWindowManager* qtwm = rootQml->findChild<QtWindowManager *>("qtwindowmanager");
-	qtwm->Init(CE);
+    window.setAnimating(true);
 
-	view.show();
+    return app.exec();
 
-	return app.exec();
-
-	/*CreatureEvolution* CE = new CreatureEvolution();
-	WindowsManager* WM = new WindowsManager(640,480, CE);
-	QtWindowManager
-	WM->setVariables();
-	CE->Run();
-	WM->DisplayAndRender();
-
-	delete CE;
-	delete WM;
-
-	return 0;*/
 }
