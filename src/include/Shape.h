@@ -12,6 +12,7 @@
 // Internal
 #include "Shader.hpp"
 #include "Camera.h"
+#include "ShaderManager.h"
 
 
 class Shape {

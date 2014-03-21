@@ -16,12 +16,15 @@ class SimpleMvpShaderProgram;
 
 class ShaderManager{
 public:
-	ShaderManager();
-	~ShaderManager();
+	static ShaderManager* Instance();
+  ShaderProgram* GetShaderFromName(const char* name);
 private:
+  ShaderManager();
+	~ShaderManager();
   void AddAllShaders();
   void AddSimpleMvpShaderProgram();
   
+  static ShaderManager* m_p_instance_;
   std::map<std::string, Shader*> shaders_;
   std::map<std::string, ShaderProgram*> shader_programs_;
 };
@@ -33,6 +36,8 @@ public:
                 Shader* geometry_shader = NULL,
                 Shader* tesselation_shader = NULL);
 	~ShaderProgram();
+  
+  GLuint getID();
   
   GLint GetAttribLocation(const char* name);
   GLint GetUniformLocation(const char* name);

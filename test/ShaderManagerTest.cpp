@@ -54,6 +54,6 @@ TEST_F(ShaderManagerTest, shader_manager_test) {
     std::cout << "could not init glew" << std::endl;
 	}
 
-  ShaderManager manager;
+  ShaderManager::Instance();
   
 }

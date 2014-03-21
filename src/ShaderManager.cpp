@@ -3,6 +3,14 @@
 ///////////////////
 // ShaderManager //
 ///////////////////
+ShaderManager* ShaderManager::m_p_instance_ = NULL;
+
+ShaderManager* ShaderManager::Instance() {
+	if (!m_p_instance_) // only allow one instance of class to be generated
+		m_p_instance_ = new ShaderManager();
+	return m_p_instance_;
+}
+
 ShaderManager::ShaderManager(){
   AddAllShaders();
   AddSimpleMvpShaderProgram();
@@ -45,6 +53,10 @@ void ShaderManager::AddSimpleMvpShaderProgram(){
   // Get all locations
   shader_programs_[shader_program_name]->mvp_loc_ =
     shader_programs_[shader_program_name]->GetUniformLocation("MVP");
+}
+
+ShaderProgram* ShaderManager::GetShaderFromName(const char* name){
+  return shader_programs_[name];
 }
 
 ///////////////////
@@ -106,6 +118,10 @@ GLint ShaderProgram::GetUniformLocation(const char* name){
     std::cout << "Unknown Uniform name: " << name << std::endl;
   }
   return loc;
+}
+
+GLuint ShaderProgram::getID(){
+  return program_id_;
 }
 
 ////////////
