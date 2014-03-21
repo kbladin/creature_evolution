@@ -5,6 +5,8 @@
 #include <Creature.h>
 #include "SettingsManager.h"
 
+//! Hold an population, a vector of creatures. 
+
 class Population {
 private:
 	std::vector<Creature> pop_; 

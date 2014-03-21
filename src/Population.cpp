@@ -1,6 +1,11 @@
 #include "Population.h"
 
-// konstruktor
+//! A constructor that creates a whole new random population
+/*! Gets the population size from the SettingsManager. 
+	Creates a random population filled with creatures as 
+	many as population size. Then sorts the vector depending
+	on the fitness value of each creature. 
+*/
 Population::Population() {
 	//get the populationsize from settingsmanager
 	population_size_ = SettingsManager::Instance()->getPopulationSize();
@@ -14,8 +19,12 @@ Population::Population() {
 	Sort();
 }
 
-// copy over the population based on the pivot
+//! A constructor that will copy over some creatures from the oldPopulation
+/*! Copy over the population based on the pivot from the oldPopulation. 
+*/
 Population::Population(int pivot, const Population &oldPopulation){
+	oldPopulation.Sort(); 
+
 	population_size_ = SettingsManager::Instance()->getPopulationSize();
 	pop_.resize(population_size_);
 
@@ -27,18 +36,22 @@ Population::Population(int pivot, const Population &oldPopulation){
 
 }
 
-// add a creature if index is less than population size
+//! Adds a creature to the population on the index that is specified. 
+/*! \param index Where the creature should be added.
+	\c The creature that should be added to the population. 
+*/
 void Population::Add(int index, Creature c){
 	if (index < population_size_){
 		pop_[index] = c; 
 	}
 }
 
+//! Sort the population based on the creatures fitness value.
 void Population::Sort() {
 	std::sort(pop_.begin(), pop_.end(), CreatureLargerThan() );
 }
 
-
+//! Returns the creature at the position index. 
 Creature Population::Get(int index) const{
 	// TODO: check if valid index!
 	return pop_[index]; 

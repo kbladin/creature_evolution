@@ -6,6 +6,7 @@
 // Internal
 #include "Shape.h"
 
+//! Used in the render process. A box to render. 
 class Box : public Shape {
 public:
   Box();

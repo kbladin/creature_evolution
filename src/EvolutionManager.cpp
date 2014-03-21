@@ -1,15 +1,15 @@
 #include "EvolutionManager.h"
 
 
-//! Constructor
+//! Constructor that get the setting from SettingsManager
+/*! Creates a new evolution object and get the max generations
+	from SettingsManager. 
+*/
 EvolutionManager::EvolutionManager(){
-	std::cout << "Created EvolutionManager." << std::endl;
-
 	SettingsManager *sm; 
     sm = SettingsManager::Instance();
 
 	max_generations_ = sm->getMaxGenerations();
-	//population_size_ = sm->getPopulationSize();
 
 	ev_ = new Evolution(); //hmm, kommer göra så att all evolution kommer alltid att utgå från settingsklassen.
 }
@@ -19,7 +19,10 @@ EvolutionManager::~EvolutionManager(void){
 	delete ev_;
 }
 
-// an evoultion until max generation
+//! Start the whole evolutionprocess until max generations
+/*! Creates a random population and then starts to evolve
+	the population to a new generation until max generation.
+*/
 void EvolutionManager::startEvolutionProcess() {
 	std::clock_t start_time, time2; 
 	start_time = std::clock();
@@ -54,6 +57,7 @@ void EvolutionManager::startEvolutionProcess() {
 
 }
 
+//! Prints the fitness value for the best creature in all different generations. 
 void EvolutionManager::printBestFitnessValues(){
 	for(int i=0; i<bestCreatures_.size(); i++){
 		std::cout << "🐛" << "Generation " << i+1 << ". Best fitness: " << bestCreatures_[i].GetFitness() << std::endl; 
@@ -61,6 +65,9 @@ void EvolutionManager::printBestFitnessValues(){
 
 }
 
+//! Returns the best creature from the specified generation
+/*! \param generation From which generation the best creature should be returned.
+*/
 Creature EvolutionManager::getBestCreatureFromGeneration(int generation){
 	// must check if the value is smaller than max_generations, if over return the creature from last generation?
 	if (generation<=max_generations_ && generation>0)
@@ -69,7 +76,7 @@ Creature EvolutionManager::getBestCreatureFromGeneration(int generation){
 	return bestCreatures_.back(); 
 }
 
-// bara för test! för att det ska funka nu helt enkelt. 
+//! Returns the best creature from the last generation. 
 Creature EvolutionManager::getBestCreatureFromLastGeneration(){
 	return bestCreatures_.back(); // inte säker metod då den kan vara tom.. 
 }
