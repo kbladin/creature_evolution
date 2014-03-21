@@ -113,9 +113,8 @@ if (test)
   ##############
   # Unit Tests
   ##############
-  add_executable(runUnitTests test/CreatureTest.cpp 
-    test/ChromosomeTest.cpp test/SceneManagerTest.cpp test/ShapeTest.cpp
-    test/NodeTest.cpp)
+  file(GLOB TEST_FILES test/*.cpp)
+  add_executable(runUnitTests ${TEST_FILES})
   set_target_properties(runUnitTests PROPERTIES COMPILE_FLAGS "-std=gnu++11")
 
   # Standard linking to gtest stuff.
