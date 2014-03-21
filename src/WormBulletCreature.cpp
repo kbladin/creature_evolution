@@ -51,7 +51,7 @@ WormBulletCreature::WormBulletCreature(const std::vector<float> genes, const btV
 		localB.setOrigin(btVector3(btScalar(0.), btScalar(0.), btScalar(-shape_radius*2)));
 		
 		m_joints_[i] = new btHingeConstraint(*(m_bodies_[i]), *(m_bodies_[i+1]), localA, localB);
-		m_joints_[i]->setLimit(btScalar(-SIMD_PI*0.39), btScalar(SIMD_PI*0.39));
+		m_joints_[i]->setLimit(btScalar(-SIMD_PI*0.2), btScalar(SIMD_PI*0.2));
 	}
 }
 

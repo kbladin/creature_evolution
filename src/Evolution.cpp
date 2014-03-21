@@ -49,10 +49,6 @@ Population Evolution::nextGeneration(const Population &population ) {
 	// Copy over the top candidates to the new population
 	Population buffer(top_candidates_pivot, population);
 
-	//int count_new_population = top_candidates_pivot;
-
-	//while(count_new_population < population.size()-1){
-
 	for(int index = top_candidates_pivot; index < population.size() - 1; ++index){
 
 		std::vector<Creature> parents = TournamentSelection(population);

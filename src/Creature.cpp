@@ -50,9 +50,10 @@ float Creature::CalculateFitness(Chromosome chromosome){
 	sim.AddCreatureToWorld(worm);
 
 	int fps = 60;
-	int n_seconds = 10;
+	int n_seconds = 50;
 	for (int i = 0; i < fps*n_seconds; ++i){
 		sim.Step(1/float(fps));
+
 	}
 	float fitness = worm->GetCenterOfMass().getZ();
 
