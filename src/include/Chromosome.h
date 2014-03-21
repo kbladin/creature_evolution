@@ -22,7 +22,7 @@ public:
 
 	static Chromosome random();
 
-	static const int GENE_LENGTH = 16; //Worm length * 4 - 1
+	static const int GENE_LENGTH = 30; //måste vara delbart med parameters i wormbullet
 
 private:
 	std::vector<float> gene_code_;

@@ -2,7 +2,7 @@
 
 WormBulletCreature::WormBulletCreature(const std::vector<float> genes, const btVector3& position) {
 	genes_ = genes;
-	int segment_count = genes_.size()/4;
+	int segment_count = genes_.size()/parameters_;
 
 	m_bodies_.resize(segment_count+1);
 	m_joints_.resize(segment_count);
@@ -51,7 +51,7 @@ WormBulletCreature::WormBulletCreature(const std::vector<float> genes, const btV
 		localB.setOrigin(btVector3(btScalar(0.), btScalar(0.), btScalar(-shape_radius*2)));
 		
 		m_joints_[i] = new btHingeConstraint(*(m_bodies_[i]), *(m_bodies_[i+1]), localA, localB);
-		m_joints_[i]->setLimit(btScalar(-SIMD_PI*0.15), btScalar(SIMD_PI*0.15));
+		m_joints_[i]->setLimit(btScalar(-SIMD_PI*0.39), btScalar(SIMD_PI*0.39));
 	}
 }
 
@@ -101,10 +101,10 @@ void WormBulletCreature::UpdateMovement(float time)
 	float max_a_phase = 2*SIMD_PI;
 
 	for(int i=0; i < m_joints_.size(); i++){
-		float velocity = max_velocity*genes_[i*4];
-		float a_velocity = max_a_velocity*genes_[i*4 + 1];
-		float a_phase = max_a_phase*genes_[i*4 + 2];
-		float impulse = max_impulse*genes_[i*4 + 3];
+		float velocity = max_velocity*genes_[i*parameters_];
+		float a_velocity = max_a_velocity*genes_[i*parameters_ + 1];
+		float a_phase = max_a_phase*genes_[i*parameters_ + 2];
+		float impulse = max_impulse*genes_[i*parameters_ + 3];
 
 		m_joints_[i]->enableAngularMotor(true, velocity*sin(a_velocity*time + a_phase) , impulse);
 	}

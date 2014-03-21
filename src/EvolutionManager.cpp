@@ -19,9 +19,9 @@ EvolutionManager::~EvolutionManager(void){
 	delete ev_;
 }
 
-// an evoultion until max generation or if fitness goes above 30! (change later)
+// an evoultion until max generation
 void EvolutionManager::startEvolutionProcess() {
-	std::clock_t start_time;
+	std::clock_t start_time, time2; 
 	start_time = std::clock();
 
 	// Creates a new random population
@@ -34,7 +34,8 @@ void EvolutionManager::startEvolutionProcess() {
 	allPopulations_.push_back(population);
 	bestCreatures_.push_back(best); 
 
-	while( (++i < max_generations_) && (best.GetFitness() < 30) ) {
+	while( (++i < max_generations_) ) {
+		time2 = std::clock();
 
 		population = ev_->nextGeneration(population);
 		population.Sort();
@@ -43,9 +44,13 @@ void EvolutionManager::startEvolutionProcess() {
 		// save the population and the best creatures
 		allPopulations_.push_back(population);
 		bestCreatures_.push_back(best); 
+
+		std::cout << "Generation " << i << std::endl;
+
+		//std::cout << "Simulation for an evolution:" << float(std::clock() - time2) / CLOCKS_PER_SEC << " s" << std::endl;  
 	}
 
-	std::cout << "Simulation time: " << double( (std::clock() - start_time) / CLOCKS_PER_SEC ) << " s" << std::endl;
+	std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
 
 }
 

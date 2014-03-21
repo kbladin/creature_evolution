@@ -1,4 +1,5 @@
 #include "Creature.h"
+#include <ctime>
 
 AutoInitRNG Creature::rng_;
 
@@ -41,13 +42,15 @@ std::vector<Chromosome> Creature::Crossover(Creature mate, float crossover){
 
 // är beroeden på vad vi vill ha för fitnesscriteria, vår simulering. 
 float Creature::CalculateFitness(Chromosome chromosome){
+	std::clock_t start_time;
+	start_time = std::clock();
 
 	WormBulletCreature* worm = new WormBulletCreature(chromosome.GetGene(), btVector3(0.0, 1.0, 0.0));
 	Simulation sim;
 	sim.AddCreatureToWorld(worm);
 
 	int fps = 60;
-	int n_seconds = 40;
+	int n_seconds = 10;
 	for (int i = 0; i < fps*n_seconds; ++i){
 		sim.Step(1/float(fps));
 	}
@@ -55,6 +58,8 @@ float Creature::CalculateFitness(Chromosome chromosome){
 
 	sim.RemoveCreatureFromWorld(worm);
 	delete worm;
+
+	//std::cout << "Simulation time: " << float (std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
 
 	return fitness;
 }

@@ -28,6 +28,8 @@ private:
 	std::vector<btRigidBody*> m_bodies_;
 	std::vector<btHingeConstraint*> m_joints_;
 	std::vector<float> genes_;
+
+	const int parameters_ = 4; 
 };
 
 #endif // WORMBULLETCREATURE_H
