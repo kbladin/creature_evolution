@@ -1,7 +1,10 @@
 #include "WindowsManager.h"
 
 //! Constructor
-WindowsManager::WindowsManager(int window_width, int window_height) {
+WindowsManager::WindowsManager(int window_width, int window_height,
+		CreatureEvolution* ce) {
+
+	ce_ = ce;
 
 	if(!glfwInit()) {
 		std::cout << "GLFW FAIL" << std::endl;
@@ -47,17 +50,16 @@ void WindowsManager::GLEWInit() {
 	}
 }
 
-void WindowsManager::DisplayAndRender(Simulation* sim_world, SceneManager* scene,
-					 Renderer* renderer) {
+void WindowsManager::DisplayAndRender() {
 
 	glEnable(GL_DEPTH_TEST);
 	// Accept fragment if it closer to the camera than the former one
 	glDepthFunc(GL_LESS);
 
 	while(!glfwWindowShouldClose(glfw_window_)) {
-		sim_world->Step(1/60.0f);
-		scene->UpdateNodes();
-		renderer->render();
+		ce_->StepTheWorld();
+		ce_->UpdateTheWorld();
+		ce_->RenderTheWorld();
 
 		glfwSwapBuffers(glfw_window_);
 		glfwPollEvents();

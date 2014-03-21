@@ -4,26 +4,22 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "SettingsManager.h"
-#include "Simulation.h"
-#include "Renderer.h"
-#include "SceneManager.h"
+#include "CreatureEvolution.h"
 
 class WindowsManager {
 private:
-
-	// storlek och upplösning sparas hör
+	
+	GLFWwindow* glfw_window_;
+	CreatureEvolution* ce_;
 
 public:
-	WindowsManager(int width, int height);
+	WindowsManager(int width, int height, CreatureEvolution* ce);
 	~WindowsManager(void); 
 
 	void setVariables();
 	void GLEWInit();
-	void DisplayAndRender(Simulation* sim_world,
-			SceneManager* scene, Renderer* renderer);
+	void DisplayAndRender();
 
-	GLFWwindow* glfw_window_;
 
 };
 
