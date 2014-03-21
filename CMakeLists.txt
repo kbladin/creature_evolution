@@ -50,12 +50,6 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
      )
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
-find_package(OpenMP)
-if (OPENMP_FOUND)
-    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
-    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
-endif()
-
 # If you want your own include/ directory, set this, and then you can do
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/src/include )
 include_directories(${COMMON_INCLUDES})
@@ -75,10 +69,6 @@ add_executable(${ctEvo} ${MAIN})
 set_target_properties(CreatureEvolution_lib PROPERTIES COMPILE_FLAGS "-std=c++11")
 set_target_properties(${ctEvo} PROPERTIES COMPILE_FLAGS "-std=c++11")
 
-# Linking OpenGL etc
-IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-  target_link_libraries(${ctEvo} ${X11_LIBRARIES} ${ADDITIONAL_LIBS})
-ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 
 target_link_libraries(${ctEvo} ${OPENGL_LIBRARIES}  ${OPENGL_glu_LIBRARY}  ${GLEW_LIBRARY} ${GLFW_LIBRARIES})
@@ -86,6 +76,10 @@ target_link_libraries(${ctEvo} ${OPENGL_LIBRARIES}  ${OPENGL_glu_LIBRARY}  ${GLE
 # this is defined in the sub directory src/
 target_link_libraries(${ctEvo} CreatureEvolution_lib)
 
+# Linking OpenGL etc
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+  target_link_libraries(${ctEvo} ${X11_LIBRARIES} ${ADDITIONAL_LIBS})
+ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 # Linking Bullet. NOTE: For now, no debug libraries
 target_link_libraries(${ctEvo} ${BULLET_DYNAMICS_LIBRARY} ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
