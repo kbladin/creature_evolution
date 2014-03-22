@@ -40,7 +40,7 @@ find_package(GLM REQUIRED)
 
 include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(${BULLET_INCLUDE_DIR})
-include_directories(${GLEW_INCLUDE_DIR})
+include_directories(${GLEW_INCLUDE_DIRS})
 include_directories(${GLFW_INCLUDE_DIRS})
 include_directories(${GLM_INCLUDE_DIRS})
 
@@ -80,7 +80,7 @@ set_target_properties(${ctEvo} PROPERTIES COMPILE_FLAGS "-std=c++11")
 
 
 
-target_link_libraries(${ctEvo} ${OPENGL_LIBRARIES}  ${OPENGL_glu_LIBRARY}  ${GLEW_LIBRARY} ${GLFW_LIBRARIES})
+target_link_libraries(${ctEvo} ${OPENGL_LIBRARIES}  ${OPENGL_glu_LIBRARY} ${GLEW_LIBRARY} ${GLFW_LIBRARIES})
 
 # this is defined in the sub directory src/
 target_link_libraries(${ctEvo} CreatureEvolution_lib)

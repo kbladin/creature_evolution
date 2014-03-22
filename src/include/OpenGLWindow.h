@@ -1,6 +1,6 @@
 
 #include <QtGui/QWindow>
-#include <QtGui/QOpenGLFunctions>
+#include <GL/glew.h>
 
 QT_BEGIN_NAMESPACE
 class QPainter;
@@ -9,7 +9,7 @@ class QOpenGLPaintDevice;
 QT_END_NAMESPACE
 
 //! [1]
-class OpenGLWindow : public QWindow, protected QOpenGLFunctions
+class OpenGLWindow : public QWindow
 {
     Q_OBJECT
 public:

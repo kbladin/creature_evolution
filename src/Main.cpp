@@ -11,20 +11,28 @@
 #include "RenderWindow.h"
 
 int main(int argc, char **argv) {
-	QGuiApplication app(argc, argv);
+    //QGuiApplication app(argc, argv);
+
+
+	SettingsManager::Instance()->setMaxGenerations(5);
+	SettingsManager::Instance()->setPopulationSize(5);
+	SettingsManager::Instance()->setCrossover(0.8);
+	SettingsManager::Instance()->setElitism(0.2);
+	SettingsManager::Instance()->setMutation(0.8);
 
 	CreatureEvolution* CE = new CreatureEvolution();
-	CE.Run();
-	QSurfaceFormat format;
-    format.setSamples(16);
+	CE->Run();
 
-    RenderWindow window(CE);
-    window.setFormat(format);
-    window.resize(640, 480);
-    window.show();
+    //QWindow window;
+    //QSurfaceFormat format;
+    //format.setSamples(16);
 
-    window.setAnimating(true);
+//    RenderWindow window(CE);
+    //window.setVisible(true);
 
-    return app.exec();
+//    window.setAnimating(true);
 
+    //return app.exec();
+    delete CE;
+    return 0;
 }

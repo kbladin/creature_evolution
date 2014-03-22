@@ -3,7 +3,6 @@
 
 // C++
 #include <iostream>
-// External
 #include <GL/glew.h>
 // Internal
 #include "SceneManager.h"
