@@ -18,9 +18,6 @@ int main() {
 
 	CreatureEvolution* CE = new CreatureEvolution();
 	WindowsManager* WM = new WindowsManager(640,480, CE);
-	
-  //Compile Shaders
-  ShaderManager::Instance();
   
 	WM->setVariables();
 	CE->Run();

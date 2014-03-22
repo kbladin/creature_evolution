@@ -8,6 +8,7 @@ ShaderManager* ShaderManager::m_p_instance_ = NULL;
 ShaderManager* ShaderManager::Instance() {
 	if (!m_p_instance_) // only allow one instance of class to be generated
 		m_p_instance_ = new ShaderManager();
+    
 	return m_p_instance_;
 }
 
@@ -53,6 +54,9 @@ void ShaderManager::AddSimpleMvpShaderProgram(){
   // Get all locations
   shader_programs_[shader_program_name]->mvp_loc_ =
     shader_programs_[shader_program_name]->GetUniformLocation("MVP");
+
+  std::cout << "HOHOOHO = " << shader_programs_[shader_program_name]->mvp_loc_ << std::endl;
+
 }
 
 ShaderProgram* ShaderManager::GetShaderFromName(const char* name){

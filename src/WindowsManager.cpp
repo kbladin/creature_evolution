@@ -26,13 +26,16 @@ WindowsManager::WindowsManager(int window_width, int window_height,
 
     /* Make the window's context current */
     glfwMakeContextCurrent(glfw_window_);
+
     
     GLEWInit();
 
     // Print current OpenGL version
     std::cout << "OpenGL version: " << glGetString(GL_VERSION) << std::endl;
-
-
+  
+  //Compile shaders
+  ShaderManager::Instance();
+  
 	std::cout << "Created WindowsManager." << std::endl;
 
 }

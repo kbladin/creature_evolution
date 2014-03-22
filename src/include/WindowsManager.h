@@ -5,6 +5,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "CreatureEvolution.h"
+#include "ShaderManager.h"
 
 class WindowsManager {
 private:

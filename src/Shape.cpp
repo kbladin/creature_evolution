@@ -7,13 +7,6 @@ void Shape::DebugPrint() {
 }
 
 void Shape::SetupBuffers() {
-	
-	shader_id_ = LoadShaders( "mvp.vert",
-		"simple.frag" );
-	mvp_id_ = glGetUniformLocation(shader_id_, "MVP");
-	
-  
-  
 	glGenVertexArrays(1, &vertex_array_id_);
 	glBindVertexArray(vertex_array_id_);
 
@@ -37,9 +30,10 @@ void Shape::SetupBuffers() {
 
 void Shape::Render(Camera camera, glm::mat4 model_transform) {
 	//std::cout << "Rendering shape.." << std::endl;
-	//glUseProgram(ShaderManager::Instance()->GetShaderFromName("Simple_MVP")->getID());
   
-  glUseProgram(shader_id_);
+  const char* shader_name = "Simple_MVP";
+  
+	glUseProgram(ShaderManager::Instance()->GetShaderFromName(shader_name)->getID());
   
 	glm::mat4 Projection = camera.GetProjectionMatrix();
 	glm::mat4 View       = camera.GetViewMatrix();
@@ -47,12 +41,11 @@ void Shape::Render(Camera camera, glm::mat4 model_transform) {
 	glm::mat4 MVP        = Projection * View * rotate_view * model_transform;
 
   // Upload data to the GPU
-	//glUniformMatrix4fv(ShaderManager::Instance()->GetShaderFromName("Simple_MVP")->m_loc_, 1, GL_FALSE, &MVP[0][0]);
-  glUniformMatrix4fv(mvp_id_,1, GL_FALSE, &MVP[0][0]);
+	glUniformMatrix4fv(ShaderManager::Instance()->GetShaderFromName(shader_name)->mvp_loc_, 1, GL_FALSE, &MVP[0][0]);
   
 	glBindVertexArray(vertex_array_id_);
-	glDrawArrays(GL_TRIANGLES, 0, vertex_data_.size()); // 12*3 indices starting at 0 -> 12 triangles
-    glBindVertexArray(0);
+	glDrawArrays(GL_TRIANGLES, 0, vertex_data_.size());
+  glBindVertexArray(0);
 
 	glUseProgram(0);
 }

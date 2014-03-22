@@ -18,6 +18,8 @@ class ShaderManager{
 public:
 	static ShaderManager* Instance();
   ShaderProgram* GetShaderFromName(const char* name);
+  
+
 private:
   ShaderManager();
 	~ShaderManager();
