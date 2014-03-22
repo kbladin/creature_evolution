@@ -15,6 +15,12 @@
 
 int main() {
 
+	// SettingsManager::Instance()->setMaxGenerations(2);
+	// SettingsManager::Instance()->setPopulationSize(2);
+	// SettingsManager::Instance()->setCrossover(0.8f);
+	// SettingsManager::Instance()->setElitism(0.2f);
+	// SettingsManager::Instance()->setMutation(0.8f);
+
 	CreatureEvolution* CE = new CreatureEvolution();
 	WindowsManager* WM = new WindowsManager(640,480, CE);
 	
@@ -24,6 +30,7 @@ int main() {
 
 	delete CE;
 	delete WM;
+
 
 	return 0;
 }

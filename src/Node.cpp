@@ -26,6 +26,11 @@ void Node::Render(Camera camera) {
 	shape_.Render(camera, transform_);
 }
 
+
+void Node::InitShape() {
+	shape_.SetupBuffers();
+}
+
 PhysicsNode::PhysicsNode(btRigidBody* body) {
 	rigid_body_ = body;
 }
@@ -39,3 +44,4 @@ void PhysicsNode::UpdateNode() {
 	
 	SetTransform(full_transform);
 }
+

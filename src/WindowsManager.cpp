@@ -55,6 +55,8 @@ void WindowsManager::DisplayAndRender() {
 	glEnable(GL_DEPTH_TEST);
 	// Accept fragment if it closer to the camera than the former one
 	glDepthFunc(GL_LESS);
+	
+	ce_->InitWorld();
 
 	while(!glfwWindowShouldClose(glfw_window_)) {
 		ce_->StepTheWorld();
