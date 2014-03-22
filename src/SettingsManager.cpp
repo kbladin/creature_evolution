@@ -21,6 +21,7 @@ SettingsManager::SettingsManager(){
 
 //! Destructor
 SettingsManager::~SettingsManager(void){
+	delete m_pInstance;
 }
 
 // where should the control of all the variables lie? 

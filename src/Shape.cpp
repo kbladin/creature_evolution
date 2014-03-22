@@ -12,6 +12,9 @@ void Shape::SetupBuffers() {
 		"simple.frag" );
 	mvp_id_ = glGetUniformLocation(shader_id_, "MVP");
 	
+    std::cout << "Loaded shaders on Shape" << std::endl;
+
+
 	glGenVertexArrays(1, &vertex_array_id_);
 	glBindVertexArray(vertex_array_id_);
 

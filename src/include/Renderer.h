@@ -14,7 +14,7 @@ public:
 	Renderer() { };
 	Renderer(SceneManager* scene);
 	~Renderer(void);
-    
+    void Init();
 	void render();
 private:
 	SceneManager* scene_manager_;

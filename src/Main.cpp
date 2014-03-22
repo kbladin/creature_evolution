@@ -11,7 +11,7 @@
 #include "RenderWindow.h"
 
 int main(int argc, char **argv) {
-    //QGuiApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
 
 
 	SettingsManager::Instance()->setMaxGenerations(5);
@@ -23,16 +23,21 @@ int main(int argc, char **argv) {
 	CreatureEvolution* CE = new CreatureEvolution();
 	CE->Run();
 
-    //QWindow window;
-    //QSurfaceFormat format;
-    //format.setSamples(16);
+    QSurfaceFormat format;
+    format.setDepthBufferSize( 24 );
+    format.setMajorVersion( 3 );
+    format.setMinorVersion( 2 );
+    format.setSamples( 4 );
+    format.setRenderableType(QSurfaceFormat::OpenGL);
+    format.setProfile( QSurfaceFormat::CoreProfile );
 
-//    RenderWindow window(CE);
-    //window.setVisible(true);
+    RenderWindow window(CE);
+    window.setFormat(format);
+    window.resize(640, 480);
+    window.show();
+    window.setAnimating(true);
 
-//    window.setAnimating(true);
-
-    //return app.exec();
-    delete CE;
-    return 0;
+    return app.exec();
+    
+	return 0;
 }

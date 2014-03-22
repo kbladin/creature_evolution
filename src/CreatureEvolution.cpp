@@ -8,10 +8,11 @@ CreatureEvolution::CreatureEvolution() {
 }
 
 CreatureEvolution::~CreatureEvolution() {
-	delete sim_world_;
+	delete evolution_manager_;
 	delete renderer_;
 	delete scene_;
-	delete evolution_manager_;
+	delete sim_world_;
+	//delete debug_worm_;
 }
 
 void CreatureEvolution::StartEvolution() {
@@ -22,10 +23,11 @@ void CreatureEvolution::StartEvolution() {
 
 void CreatureEvolution::LoadBestCreature() {
 	Creature best = evolution_manager_->getBestCreatureFromLastGeneration();
-	WormBulletCreature *worm = new WormBulletCreature(best.GetChromosome().GetGene(), btVector3(0,0,0));
-	sim_world_->AddCreatureToWorld(worm);
-	scene_->CreateNodesFromBulletCreature(worm);
-
+	debug_worm_ = new WormBulletCreature(best.GetChromosome().GetGene(), btVector3(0,0,0));
+    //std::shared_ptr<WormBulletCreature> worm_ptr(new WormBulletCreature(best.GetChromosome().GetGene(), btVector3(0,0,0)));
+	sim_world_->AddCreatureToWorld(debug_worm_);
+	scene_->CreateNodesFromBulletCreature(debug_worm_);
+	std::cout << "Hello from LoadBestCreature?" << std::endl;
 }
 
 void CreatureEvolution::Run() {
@@ -42,4 +44,8 @@ void CreatureEvolution::UpdateTheWorld() {
 
 void CreatureEvolution::RenderTheWorld() {
 	renderer_->render();
+}
+
+void CreatureEvolution::InitWorld() {
+	renderer_->Init();
 }
