@@ -5,6 +5,10 @@ project(CreatureEvolution)
 # Options. Turn on with 'cmake -Dmyvarname=ON'.
 option(test "Build all tests." OFF) # Makes boolean 'test' available.
 
+if(APPLE)
+    set(CMAKE_PREFIX_PATH "Applications/Qt/5.2.1/clang_64/")
+endif(APPLE)
+
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed.
