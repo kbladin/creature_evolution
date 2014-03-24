@@ -1,9 +1,10 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
+#include <GL/glew.h>
 // C++
 #include <iostream>
-#include <GL/glew.h>
+
 // Internal
 #include "SceneManager.h"
 

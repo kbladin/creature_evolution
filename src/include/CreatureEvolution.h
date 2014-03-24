@@ -26,7 +26,6 @@ public:
 	void Run();
 
 
-
 private:
 	Simulation* sim_world_;
 	Renderer* renderer_;

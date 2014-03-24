@@ -1,3 +1,4 @@
+#include <GL/glew.h>
 #include "Renderer.h"
 
 Renderer::Renderer(SceneManager* scene)
@@ -17,5 +18,9 @@ void Renderer::render()
 }
 
 void Renderer::Init() {
+
+	glEnable(GL_DEPTH_TEST);
+    // Accept fragment if it closer to the camera than the former one
+    glDepthFunc(GL_LESS);
 	scene_manager_->InitShapes();
 }

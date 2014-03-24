@@ -11,8 +11,10 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 
 # Find the QtWidgets library
+find_package(Qt5Widgets)
 find_package(Qt5Core)
 find_package(Qt5Gui)
+find_package(Qt5OpenGL)
 
 set(ctEvo CreatureEvolution)
 # set path to custom find modules
@@ -100,7 +102,7 @@ if(APPLE)
 endif(APPLE)
 ####################################
 
-qt5_use_modules(${ctEvo} Core Gui)
+qt5_use_modules(${ctEvo} Widgets Core Gui OpenGL)
 
 
 ################################

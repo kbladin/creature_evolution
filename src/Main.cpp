@@ -1,18 +1,13 @@
+#include <QApplication>
+#include <QDesktopWidget>
 
-// 🐢
-
-#include <QtGui/QGuiApplication>
-#include <QtGui/QScreen>
-
-#include <QtCore/qmath.h>
 #include "SettingsManager.h"
 #include "CreatureEvolution.h"
 
-#include "RenderWindow.h"
+#include "MainCEWindow.h"
 
 int main(int argc, char **argv) {
-    QGuiApplication app(argc, argv);
-
+    QApplication app(argc, argv);
 
 	SettingsManager::Instance()->setMaxGenerations(5);
 	SettingsManager::Instance()->setPopulationSize(5);
@@ -21,23 +16,19 @@ int main(int argc, char **argv) {
 	SettingsManager::Instance()->setMutation(0.8);
 
 	CreatureEvolution* CE = new CreatureEvolution();
-	CE->Run();
+    //CE->Run();
 
-    QSurfaceFormat format;
-    format.setDepthBufferSize( 24 );
-    format.setMajorVersion( 3 );
-    format.setMinorVersion( 2 );
-    format.setSamples( 4 );
-    format.setRenderableType(QSurfaceFormat::OpenGL);
-    format.setProfile( QSurfaceFormat::CoreProfile );
+    MainCEWindow window(CE);
+    window.resize(window.sizeHint());
 
-    RenderWindow window(CE);
-    window.setFormat(format);
-    window.resize(640, 480);
-    window.show();
-    window.setAnimating(true);
+    int desktopArea = QApplication::desktop()->width() *
+                     QApplication::desktop()->height();
+
+    int widgetArea = window.width() * window.height();
+    if (((float)widgetArea / (float)desktopArea) < 0.75f)
+        window.show();
+    else
+        window.showMaximized();
 
     return app.exec();
-    
-	return 0;
 }
