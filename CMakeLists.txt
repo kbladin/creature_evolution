@@ -37,13 +37,11 @@ endif(MSVC)
 find_package(BULLET REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
-find_package(GLFW3 REQUIRED)
 find_package(GLM REQUIRED)
 
 include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(${BULLET_INCLUDE_DIR})
 include_directories(${GLEW_INCLUDE_DIRS})
-include_directories(${GLFW_INCLUDE_DIRS})
 include_directories(${GLM_INCLUDE_DIRS})
 
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
@@ -82,7 +80,7 @@ set_target_properties(${ctEvo} PROPERTIES COMPILE_FLAGS "-std=c++11")
 
 
 
-target_link_libraries(${ctEvo} ${OPENGL_LIBRARIES}  ${OPENGL_glu_LIBRARY} ${GLEW_LIBRARY} ${GLFW_LIBRARIES})
+target_link_libraries(${ctEvo} ${OPENGL_LIBRARIES}  ${OPENGL_glu_LIBRARY} ${GLEW_LIBRARY})
 
 # this is defined in the sub directory src/
 target_link_libraries(${ctEvo} CreatureEvolution_lib)
@@ -138,7 +136,7 @@ if (test)
   # Extra linking for the project.
   target_link_libraries(runUnitTests CreatureEvolution_lib)
   target_link_libraries(runUnitTests ${OPENGL_LIBRARIES}  ${OPENGL_glu_LIBRARY}  
-    ${GLEW_LIBRARY} ${GLFW_LIBRARIES} ${BULLET_DYNAMICS_LIBRARY} 
+    ${GLEW_LIBRARY} ${BULLET_DYNAMICS_LIBRARY} 
     ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
 
   # This is so you can do 'make test' to see all your tests run, instead of

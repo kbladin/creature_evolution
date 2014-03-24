@@ -16,7 +16,6 @@ int main(int argc, char **argv) {
 	SettingsManager::Instance()->setMutation(0.8);
 
 	CreatureEvolution* CE = new CreatureEvolution();
-    //CE->Run();
 
     MainCEWindow window(CE);
     window.resize(window.sizeHint());
