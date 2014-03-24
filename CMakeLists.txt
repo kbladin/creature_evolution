@@ -6,7 +6,7 @@ project(CreatureEvolution)
 option(test "Build all tests." OFF) # Makes boolean 'test' available.
 
 if(APPLE)
-    set(CMAKE_PREFIX_PATH "Applications/Qt/5.2.1/clang_64/lib/cmake")
+    set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "Applications/Qt/5.2.1/clang_64")
 endif(APPLE)
 
 # Find includes in corresponding build directories
