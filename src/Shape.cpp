@@ -8,8 +8,8 @@ void Shape::DebugPrint() {
 
 void Shape::SetupBuffers() {
 	
-	shader_id_ = LoadShaders( "mvp.vert",
-		"simple.frag" );
+    shader_id_ = LoadShaders( "data/shaders/mvp.vert",
+        "data/shaders/simple.frag" );
 	mvp_id_ = glGetUniformLocation(shader_id_, "MVP");
 	
     std::cout << "Loaded shaders on Shape" << std::endl;

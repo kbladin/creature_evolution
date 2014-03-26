@@ -18,7 +18,7 @@ find_path(GLEW_INCLUDE_DIR
 		${GLEW_ROOT}/include
 )
 find_library(GLEW_LIBRARY
-	GLEW glew32s glew32sd
+	GLEW glew32 glew32s glew32d glew32sd
 	HINTS
 		${PC_GLEW_LIBDIR}
 		${PC_GLEW_LIBRARY_DIRS}
