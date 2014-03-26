@@ -5,23 +5,32 @@ project(CreatureEvolution)
 # Options. Turn on with 'cmake -Dmyvarname=ON'.
 option(test "Build all tests." OFF) # Makes boolean 'test' available.
 
+set(ctEvo CreatureEvolution)
+# set path to custom find modules
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/Modules)
+
+
 if(WIN32)
 	set(CMAKE_PREFIX_PATH $ENV{WINSDK} ${CMAKE_PREFIX_PATH})
 endif(WIN32)
 
-
+# define Qt path for Windows and OS
 if(WIN32 OR APPLE)
-if (DEFINED ENV{QTDIR})
-    set(CMAKE_PREFIX_PATH $ENV{QTDIR} ${CMAKE_PREFIX_PATH})
-else ()
-    message (FATAL_ERROR "ERROR: Environment variable QTDIR is not set. Please locate your Qt folder MY_QT5_DIR.")
-endif()
+	if (DEFINED ENV{QTDIR})
+	    set(CMAKE_PREFIX_PATH $ENV{QTDIR} ${CMAKE_PREFIX_PATH})
+	else ()
+	    message (FATAL_ERROR "ERROR: Environment variable QTDIR is not set. Please locate your Qt folder MY_QT5_DIR.")
+	endif()
 endif(WIN32 OR APPLE)
 
 #NOTE: this is probably stupid (non-general)
 if(MSVC)
-  set(BULLET_ROOT $ENV{BULLET_ROOT})
+  set(BULLET_ROOT ${CMAKE_SOURCE_DIR}/external_libs/bullet)
+  set(GLEW_ROOT ${CMAKE_SOURCE_DIR}/external_libs/glew)
 endif(MSVC)
+
+MESSAGE( STATUS "Bullet dir: " ${BULLET_ROOT} )
+
 
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -30,16 +39,10 @@ set(CMAKE_AUTOMOC ON)
 
 
 
-set(ctEvo CreatureEvolution)
-# set path to custom find modules
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/Modules)
-
 # find FreeGLUT, BULLET, GLEW for OSX and Windows
 find_package(BULLET REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
-find_package(GLM REQUIRED)
-
 
 # Find the QtWidgets library
 find_package(Qt5Widgets)
@@ -48,9 +51,7 @@ find_package(Qt5Gui)
 find_package(Qt5OpenGL)
 
 
-# Bullet is a completely external library, not included in the source control
-# (because of size) this is generally only required for Windows, OSX finds it automagically
-
+#static please!
 if(MSVC)
   set(CMAKE_CXX_FLAGS_RELEASE "/MT")
   set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
@@ -60,8 +61,12 @@ endif(MSVC)
 include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(${BULLET_INCLUDE_DIR})
 include_directories(${GLEW_INCLUDE_DIRS})
-include_directories(${GLM_INCLUDE_DIRS})
+include_directories(${CMAKE_SOURCE_DIR}/external_libs/glm)
 
+
+
+
+#Linux magic
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
   find_package(X11 REQUIRED)
   include_directories(${X11_INCLUDE_DIR})
@@ -77,11 +82,16 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
      )
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
+
+
+
+
+
+
+
 # If you want your own include/ directory, set this, and then you can do
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/src/include )
 include_directories(${COMMON_INCLUDES})
-set(GLM ${PROJECT_SOURCE_DIR}/external_libs/glm/)
-include_directories(GLM)
 
 # source code is here
 add_subdirectory(src)
@@ -93,10 +103,11 @@ set(MAIN "src/Main.cpp")
 # link main file to executable
 add_executable(${ctEvo} ${MAIN})
 
-set_target_properties(CreatureEvolution_lib PROPERTIES COMPILE_FLAGS "-std=c++11")
-set_target_properties(${ctEvo} PROPERTIES COMPILE_FLAGS "-std=c++11")
-
-
+#for osx and linux
+if(UNIX)
+  set_target_properties(CreatureEvolution_lib PROPERTIES COMPILE_FLAGS "-std=c++11")
+  set_target_properties(${ctEvo} PROPERTIES COMPILE_FLAGS "-std=c++11")
+endif(UNIX)
 
 target_link_libraries(${ctEvo} ${OPENGL_LIBRARIES}  ${OPENGL_glu_LIBRARY} ${GLEW_LIBRARY})
 
@@ -119,6 +130,8 @@ endif(APPLE)
 ####################################
 
 qt5_use_modules(${ctEvo} Widgets Core Gui OpenGL)
+
+
 
 
 ################################
