@@ -29,7 +29,7 @@ private:
 	std::vector<btHingeConstraint*> m_joints_;
 	std::vector<float> genes_;
 
-	const int parameters_ = 4; 
+	static const int parameters_ = 4; 
 };
 
 #endif // WORMBULLETCREATURE_H

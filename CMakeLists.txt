@@ -1,18 +1,45 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.12)
 include(FindPackageHandleStandardArgs)
 project(CreatureEvolution)
 
 # Options. Turn on with 'cmake -Dmyvarname=ON'.
 option(test "Build all tests." OFF) # Makes boolean 'test' available.
 
-if(APPLE)
-    set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "Applications/Qt/5.2.1/clang_64")
-endif(APPLE)
+if(WIN32)
+	set(CMAKE_PREFIX_PATH $ENV{WINSDK} ${CMAKE_PREFIX_PATH})
+endif(WIN32)
+
+
+if(WIN32 OR APPLE)
+if (DEFINED ENV{QTDIR})
+    set(CMAKE_PREFIX_PATH $ENV{QTDIR} ${CMAKE_PREFIX_PATH})
+else ()
+    message (FATAL_ERROR "ERROR: Environment variable QTDIR is not set. Please locate your Qt folder MY_QT5_DIR.")
+endif()
+endif(WIN32 OR APPLE)
+
+#NOTE: this is probably stupid (non-general)
+if(MSVC)
+  set(BULLET_ROOT $ENV{BULLET_ROOT})
+endif(MSVC)
 
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed.
 set(CMAKE_AUTOMOC ON)
+
+
+
+set(ctEvo CreatureEvolution)
+# set path to custom find modules
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/Modules)
+
+# find FreeGLUT, BULLET, GLEW for OSX and Windows
+find_package(BULLET REQUIRED)
+find_package(OpenGL REQUIRED)
+find_package(GLEW REQUIRED)
+find_package(GLM REQUIRED)
+
 
 # Find the QtWidgets library
 find_package(Qt5Widgets)
@@ -20,28 +47,15 @@ find_package(Qt5Core)
 find_package(Qt5Gui)
 find_package(Qt5OpenGL)
 
-set(ctEvo CreatureEvolution)
-# set path to custom find modules
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/Modules)
 
 # Bullet is a completely external library, not included in the source control
 # (because of size) this is generally only required for Windows, OSX finds it automagically
-
-#NOTE: this is probably stupid (non-general)
-if(MSVC)
-  set(BULLET_ROOT $ENV{BULLET_ROOT})
-endif(MSVC)
 
 if(MSVC)
   set(CMAKE_CXX_FLAGS_RELEASE "/MT")
   set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
 endif(MSVC)
 
-# find FreeGLUT, BULLET, GLEW for OSX and Windows
-find_package(BULLET REQUIRED)
-find_package(OpenGL REQUIRED)
-find_package(GLEW REQUIRED)
-find_package(GLM REQUIRED)
 
 include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(${BULLET_INCLUDE_DIR})
