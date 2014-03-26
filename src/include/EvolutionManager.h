@@ -13,7 +13,6 @@
 class EvolutionManager {
 private:
 	Evolution *ev_; // holds the variables for the evolution. 
-	int max_generations_;
 
 	std::vector<Creature> bestCreatures_; // holds alla the best creatures from the populations
 	std::vector<Population> allPopulations_; // if we want to store alla the populations! 

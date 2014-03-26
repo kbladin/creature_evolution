@@ -20,6 +20,7 @@ class SceneManager {
   
   public:
     ~SceneManager() {};
+    void InitShapes();
     void SetCamera(Camera cam);
     void AddNode(std::shared_ptr<Node> node);
     void PrintPhysicsNodes();

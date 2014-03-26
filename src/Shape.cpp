@@ -7,6 +7,7 @@ void Shape::DebugPrint() {
 }
 
 void Shape::SetupBuffers() {
+
 	glGenVertexArrays(1, &vertex_array_id_);
 	glBindVertexArray(vertex_array_id_);
 

@@ -1,30 +1,34 @@
+#include <QApplication>
+#include <QDesktopWidget>
 
-// 🐢
-#include "WindowsManager.h"
 #include "SettingsManager.h"
-#include "Evolution.h"
-#include "Creature.h"
-#include <iostream>
-#include <algorithm>
-
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
-#include "WindowsManager.h"
 #include "CreatureEvolution.h"
-#include "ShaderManager.cpp"
 
-int main() {
+#include "MainCEWindow.h"
+
+
+int main(int argc, char **argv) {
+    QApplication app(argc, argv);
+
+	SettingsManager::Instance()->setMaxGenerations(5);
+	SettingsManager::Instance()->setPopulationSize(5);
+	SettingsManager::Instance()->setCrossover(0.8);
+	SettingsManager::Instance()->setElitism(0.2);
+	SettingsManager::Instance()->setMutation(0.8);
 
 	CreatureEvolution* CE = new CreatureEvolution();
-	WindowsManager* WM = new WindowsManager(640,480, CE);
-  
-	WM->setVariables();
-	CE->Run();
-	WM->DisplayAndRender();
 
-	delete CE;
-	delete WM;
+    MainCEWindow window(CE);
+    window.resize(window.sizeHint());
 
-	return 0;
+    int desktopArea = QApplication::desktop()->width() *
+                     QApplication::desktop()->height();
+
+    int widgetArea = window.width() * window.height();
+    if (((float)widgetArea / (float)desktopArea) < 0.75f)
+        window.show();
+    else
+        window.showMaximized();
+
+    return app.exec();
 }

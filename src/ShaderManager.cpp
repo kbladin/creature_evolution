@@ -55,10 +55,10 @@ ShaderManager::~ShaderManager(){
 
 void ShaderManager::AddAllShaders(){
   // Create shaders
-  Shader* simple_mvp_vert = new Shader("mvp.vert",GL_VERTEX_SHADER);
-  Shader* simple_mvp_frag = new Shader("simple.frag",GL_FRAGMENT_SHADER);
-  Shader* basic_vert = new Shader("basic.vert",GL_VERTEX_SHADER);
-  Shader* basic_frag = new Shader("basic.frag",GL_FRAGMENT_SHADER);
+  Shader* simple_mvp_vert = new Shader("data/shaders/mvp.vert",GL_VERTEX_SHADER);
+  Shader* simple_mvp_frag = new Shader("data/shaders/simple.frag",GL_FRAGMENT_SHADER);
+  Shader* basic_vert = new Shader("data/shaders/basic.vert",GL_VERTEX_SHADER);
+  Shader* basic_frag = new Shader("data/shaders/basic.frag",GL_FRAGMENT_SHADER);
   // Put shaders in the map
   shaders_.insert(StringShaderPair("Simple_MVP_Vert", simple_mvp_vert));
   shaders_.insert(StringShaderPair("Simple_MVP_Frag", simple_mvp_frag));

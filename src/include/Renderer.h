@@ -1,10 +1,10 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
+#include <GL/glew.h>
 // C++
 #include <iostream>
-// External
-#include <GL/glew.h>
+
 // Internal
 #include "SceneManager.h"
 
@@ -15,7 +15,7 @@ public:
 	Renderer() { };
 	Renderer(SceneManager* scene);
 	~Renderer(void);
-    
+    void Init();
 	void render();
 private:
 	SceneManager* scene_manager_;

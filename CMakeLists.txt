@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.12)
 include(FindPackageHandleStandardArgs)
 project(CreatureEvolution)
 
@@ -9,32 +9,64 @@ set(ctEvo CreatureEvolution)
 # set path to custom find modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/Modules)
 
-# Bullet is a completely external library, not included in the source control
-# (because of size) this is generally only required for Windows, OSX finds it automagically
+
+if(WIN32)
+	set(CMAKE_PREFIX_PATH $ENV{WINSDK} ${CMAKE_PREFIX_PATH})
+endif(WIN32)
+
+# define Qt path for Windows and OS
+if(WIN32 OR APPLE)
+	if (DEFINED ENV{QTDIR})
+	    set(CMAKE_PREFIX_PATH $ENV{QTDIR} ${CMAKE_PREFIX_PATH})
+	else ()
+	    message (FATAL_ERROR "ERROR: Environment variable QTDIR is not set. Please locate your Qt folder MY_QT5_DIR.")
+	endif()
+endif(WIN32 OR APPLE)
 
 #NOTE: this is probably stupid (non-general)
 if(MSVC)
-  set(BULLET_ROOT $ENV{BULLET_ROOT})
+  set(BULLET_ROOT ${CMAKE_SOURCE_DIR}/external_libs/bullet)
+  set(GLEW_ROOT ${CMAKE_SOURCE_DIR}/external_libs/glew)
 endif(MSVC)
 
-if(MSVC)
-  set(CMAKE_CXX_FLAGS_RELEASE "/MT")
-  set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
-endif(MSVC)
+MESSAGE( STATUS "Bullet dir: " ${BULLET_ROOT} )
+
+
+# Find includes in corresponding build directories
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+# Instruct CMake to run moc automatically when needed.
+set(CMAKE_AUTOMOC ON)
+
+
 
 # find FreeGLUT, BULLET, GLEW for OSX and Windows
 find_package(BULLET REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
-find_package(GLFW3 REQUIRED)
-find_package(GLM REQUIRED)
+
+# Find the QtWidgets library
+find_package(Qt5Widgets)
+find_package(Qt5Core)
+find_package(Qt5Gui)
+find_package(Qt5OpenGL)
+
+
+#static please!
+if(MSVC)
+  set(CMAKE_CXX_FLAGS_RELEASE "/MT")
+  set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
+endif(MSVC)
+
 
 include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(${BULLET_INCLUDE_DIR})
-include_directories(${GLEW_INCLUDE_DIR})
-include_directories(${GLFW_INCLUDE_DIRS})
-include_directories(${GLM_INCLUDE_DIRS})
+include_directories(${GLEW_INCLUDE_DIRS})
+include_directories(${CMAKE_SOURCE_DIR}/external_libs/glm)
 
+
+
+
+#Linux magic
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
   find_package(X11 REQUIRED)
   include_directories(${X11_INCLUDE_DIR})
@@ -50,11 +82,16 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
      )
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
+
+
+
+
+
+
+
 # If you want your own include/ directory, set this, and then you can do
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/src/include )
 include_directories(${COMMON_INCLUDES})
-set(GLM ${PROJECT_SOURCE_DIR}/external_libs/glm/)
-include_directories(GLM)
 
 # source code is here
 add_subdirectory(src)
@@ -66,12 +103,13 @@ set(MAIN "src/Main.cpp")
 # link main file to executable
 add_executable(${ctEvo} ${MAIN})
 
-set_target_properties(CreatureEvolution_lib PROPERTIES COMPILE_FLAGS "-std=c++11")
-set_target_properties(${ctEvo} PROPERTIES COMPILE_FLAGS "-std=c++11")
+#for osx and linux
+if(UNIX)
+  set_target_properties(CreatureEvolution_lib PROPERTIES COMPILE_FLAGS "-std=c++11")
+  set_target_properties(${ctEvo} PROPERTIES COMPILE_FLAGS "-std=c++11")
+endif(UNIX)
 
-
-
-target_link_libraries(${ctEvo} ${OPENGL_LIBRARIES}  ${OPENGL_glu_LIBRARY}  ${GLEW_LIBRARY} ${GLFW_LIBRARIES})
+target_link_libraries(${ctEvo} ${OPENGL_LIBRARIES}  ${OPENGL_glu_LIBRARY} ${GLEW_LIBRARY})
 
 # this is defined in the sub directory src/
 target_link_libraries(${ctEvo} CreatureEvolution_lib)
@@ -82,14 +120,22 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 # Linking Bullet. NOTE: For now, no debug libraries
-target_link_libraries(${ctEvo} ${BULLET_DYNAMICS_LIBRARY} ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
+if(WIN32)
+  target_link_libraries(${ctEvo} debug ${BULLET_DYNAMICS_LIBRARY_DEBUG} ${BULLET_COLLISION_LIBRARY_DEBUG} ${BULLET_MATH_LIBRARY_DEBUG})
+endif(WIN32)
 
+target_link_libraries(${ctEvo} optimized ${BULLET_DYNAMICS_LIBRARY} ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
 
 ######### OPENGL LIBRARY (ONLY FOR OSX) #############
 if(APPLE)
   target_link_libraries(${ctEvo} ${OPENGL_FRAMEWORK} ${COCOA_FRAMEWORK})
 endif(APPLE)
 ####################################
+
+qt5_use_modules(${ctEvo} Widgets Core Gui OpenGL)
+
+
+
 
 ################################
 # Testing
@@ -123,7 +169,7 @@ if (test)
   # Extra linking for the project.
   target_link_libraries(runUnitTests CreatureEvolution_lib)
   target_link_libraries(runUnitTests ${OPENGL_LIBRARIES}  ${OPENGL_glu_LIBRARY}  
-    ${GLEW_LIBRARY} ${GLFW_LIBRARIES} ${BULLET_DYNAMICS_LIBRARY} 
+    ${GLEW_LIBRARY} ${BULLET_DYNAMICS_LIBRARY} 
     ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
 
   # This is so you can do 'make test' to see all your tests run, instead of

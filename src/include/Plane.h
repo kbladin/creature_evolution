@@ -9,6 +9,7 @@
 class Plane : public Shape {
 public:
 	Plane();
+	Plane(glm::vec3 scale);
 };
 
 #endif // PLANE_H

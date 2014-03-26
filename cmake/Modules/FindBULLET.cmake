@@ -33,6 +33,8 @@ macro(_FIND_BULLET_LIBRARY _var)
         ${ARGN}
      HINTS
         ${BULLET_ROOT}
+        ${BULLET_ROOT}/lib/msvc64/Release
+        ${BULLET_ROOT}/lib/msvc64/Debug
         ${BULLET_ROOT}/lib/Release
         ${BULLET_ROOT}/lib/Debug
         ${BULLET_ROOT}/out/release8/libs

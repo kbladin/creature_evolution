@@ -6,6 +6,9 @@
 #include "SceneManager.h"
 #include "EvolutionManager.h"
 #include "WormBulletCreature.h"
+#include "Creature.h"
+
+#include <memory>
 
 class CreatureEvolution {
 
@@ -16,11 +19,11 @@ public:
 	void StepTheWorld();
 	void UpdateTheWorld();
 	void RenderTheWorld();
+	void InitWorld();
 
 	void StartEvolution();
 	void LoadBestCreature();
 	void Run();
-
 
 
 private:
@@ -28,6 +31,7 @@ private:
 	Renderer* renderer_;
 	SceneManager* scene_;
 	EvolutionManager* evolution_manager_;
+	WormBulletCreature* debug_worm_;
 };
 
 
