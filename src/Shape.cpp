@@ -30,13 +30,10 @@ void Shape::SetupBuffers() {
 
 void Shape::Render(Camera camera, glm::mat4 model_transform) {
   // Matrix data
-  glm::mat4 P = camera.GetProjectionMatrix();
-	glm::mat4 View       = camera.GetViewMatrix();
-	glm::mat4 rotate_view = glm::rotate(90.0f, glm::vec3(0,1,0));
-  
-  glm::mat4 V = View * rotate_view;
+  glm::mat4 V = camera.GetViewMatrix();
   glm::mat4 MV = V * model_transform;
-	glm::mat4 MVP        = P * MV;
+	glm::mat4 P = camera.GetProjectionMatrix();
+  glm::mat4 MVP = P * MV;
   
   // To make sure we use the same name
   const char* shader_name = "Basic";
