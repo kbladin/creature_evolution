@@ -12,6 +12,7 @@ class Renderer
 {
 
 public:
+	Renderer() { };
 	Renderer(SceneManager* scene);
 	~Renderer(void);
     

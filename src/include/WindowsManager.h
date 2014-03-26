@@ -2,18 +2,25 @@
 #define WINDOWSMANAGER_H
 #include <iostream>
 
-#include "SettingsManager.h"
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include "CreatureEvolution.h"
+#include "ShaderManager.h"
 
 class WindowsManager {
 private:
-
-	// storlek och upplösning sparas hör
+	
+	GLFWwindow* glfw_window_;
+	CreatureEvolution* ce_;
 
 public:
-	WindowsManager();
+	WindowsManager(int width, int height, CreatureEvolution* ce);
 	~WindowsManager(void); 
 
 	void setVariables();
+	void GLEWInit();
+	void DisplayAndRender();
+
 
 };
 

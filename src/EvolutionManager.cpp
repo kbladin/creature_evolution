@@ -27,6 +27,8 @@ void EvolutionManager::startEvolutionProcess() {
 	std::clock_t start_time, time2; 
 	start_time = std::clock();
 
+	int max_gen = SettingsManager::Instance()->getMaxGenerations();
+
 	// Creates a new random population
 	Population population; 
 
@@ -37,7 +39,7 @@ void EvolutionManager::startEvolutionProcess() {
 	allPopulations_.push_back(population);
 	bestCreatures_.push_back(best); 
 
-	while( (++i < max_generations_) ) {
+	while( (++i < max_gen) ) {
 		time2 = std::clock();
 
 		population = ev_->nextGeneration(population);

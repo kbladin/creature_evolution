@@ -7,11 +7,6 @@ void Shape::DebugPrint() {
 }
 
 void Shape::SetupBuffers() {
-	
-	shader_id_ = LoadShaders( "mvp.vert",
-		"simple.frag" );
-	mvp_id_ = glGetUniformLocation(shader_id_, "MVP");
-	
 	glGenVertexArrays(1, &vertex_array_id_);
 	glBindVertexArray(vertex_array_id_);
 
@@ -34,19 +29,23 @@ void Shape::SetupBuffers() {
 }
 
 void Shape::Render(Camera camera, glm::mat4 model_transform) {
-	//std::cout << "Rendering shape.." << std::endl;
-	glUseProgram(shader_id_);
-	glm::mat4 Projection = camera.GetProjectionMatrix();
-	glm::mat4 View       = camera.GetViewMatrix();
-	glm::mat4 rotate_view = glm::rotate(90.0f, glm::vec3(0,1,0));
-	glm::mat4 MVP        = Projection * View * rotate_view * model_transform;
-
-  // Upload data to the GPU
-	glUniformMatrix4fv(mvp_id_, 1, GL_FALSE, &MVP[0][0]);
-
+  // Matrix data
+  glm::mat4 V = camera.GetViewMatrix();
+  glm::mat4 MV = V * model_transform;
+	glm::mat4 P = camera.GetProjectionMatrix();
+  glm::mat4 MVP = P * MV;
+  
+  // To make sure we use the same name
+  const char* shader_name = "Basic";
+  ShaderManager::Instance()->UseProgram(shader_name);
+  ShaderManager::Instance()->GetShaderProgramFromName(shader_name)->UniformMatrix4fv("MVP", 1, false, &MVP[0][0]);
+  ShaderManager::Instance()->GetShaderProgramFromName(shader_name)->UniformMatrix4fv("M", 1, false, &model_transform[0][0]);
+  ShaderManager::Instance()->GetShaderProgramFromName(shader_name)->UniformMatrix4fv("V", 1, false, &V[0][0]);
+  ShaderManager::Instance()->GetShaderProgramFromName(shader_name)->UniformMatrix4fv("MV", 1, false, &MV[0][0]);
+  
 	glBindVertexArray(vertex_array_id_);
-	glDrawArrays(GL_TRIANGLES, 0, vertex_data_.size()); // 12*3 indices starting at 0 -> 12 triangles
-    glBindVertexArray(0);
+	glDrawArrays(GL_TRIANGLES, 0, vertex_data_.size());
+  glBindVertexArray(0);
 
 	glUseProgram(0);
 }

@@ -10,8 +10,8 @@
 #include <glm/gtx/string_cast.hpp>
 #include <glm/ext.hpp>
 // Internal
-#include "Shader.hpp"
 #include "Camera.h"
+#include "ShaderManager.h"
 
 
 class Shape {

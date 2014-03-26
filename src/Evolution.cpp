@@ -2,33 +2,6 @@
 
 AutoInitRNG Evolution::rng_;
 
-//! Creates a evolution and stores the arguments.
-/*!
-	Stores the arguments for a evolution so that every generation 
-	will get the same constants.
-
-\param crossover_ratio How likely the creatures will crossover (mate)
-\param elitism_ratio How many creatures that will be transfered to the new generation.
-\param mutation_ratio The odds of the mutation of the genes.
-*/
-Evolution::Evolution(float crossover_ratio, float elitism_ratio, 
-		float mutation_ratio){
-	
-	crossover_ = crossover_ratio;
-	elitism_ = elitism_ratio;
-	mutation_ = mutation_ratio;
-}
-
-//! Constructor that reads from the SettingsManager class. 
-Evolution::Evolution(){ 
-
-    SettingsManager *sm; 
-    sm = SettingsManager::Instance();
-
-	crossover_ = sm->getCrossover();
-	elitism_ = sm->getElitism();
-	mutation_ = sm->getMutation();
-}
 
 //! A destructor
 Evolution::~Evolution(void){
@@ -44,7 +17,14 @@ Evolution::~Evolution(void){
 */
 Population Evolution::nextGeneration(const Population &population ) {
 
-	int top_candidates_pivot = (int) (population.size() * elitism_);
+	SettingsManager *sm; 
+    sm = SettingsManager::Instance();
+
+	float crossover = sm->getCrossover();
+	float elitism = sm->getElitism();
+	float mutation = sm->getMutation();
+
+	int top_candidates_pivot = (int) (population.size() * elitism);
 
 	// Copy over the top candidates to the new population
 	Population buffer(top_candidates_pivot, population);
@@ -53,10 +33,10 @@ Population Evolution::nextGeneration(const Population &population ) {
 
 		std::vector<Creature> parents = TournamentSelection(population);
 
-		std::vector<Chromosome> children_chromosome = parents[0].Crossover(parents[1], crossover_);
+		std::vector<Chromosome> children_chromosome = parents[0].Crossover(parents[1], crossover);
 
-		children_chromosome[0].Mutate(mutation_);
-		children_chromosome[1].Mutate(mutation_); 
+		children_chromosome[0].Mutate(mutation);
+		children_chromosome[1].Mutate(mutation); 
 
 		Creature child_1(children_chromosome[0]);
 		Creature child_2(children_chromosome[1]);
