@@ -23,8 +23,6 @@ Population::Population() {
 /*! Copy over the population based on the pivot from the oldPopulation. 
 */
 Population::Population(int pivot, const Population &oldPopulation){
-	oldPopulation.Sort(); 
-
 	population_size_ = SettingsManager::Instance()->getPopulationSize();
 	pop_.resize(population_size_);
 
