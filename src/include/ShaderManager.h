@@ -6,6 +6,7 @@
 #include <fstream>
 #include <vector>
 #include <map>
+#include <string>
 
 // External
 #include <GL/glew.h>

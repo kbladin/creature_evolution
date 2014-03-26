@@ -11,10 +11,10 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 
     creature_evo_ = ce;
     QGLFormat glFormat;
-    glFormat.setVersion( 3, 3 );
+    glFormat.setVersion( 3, 2 );
     glFormat.setProfile( QGLFormat::CoreProfile ); // Requires >=Qt-4.8.0
     glFormat.setSampleBuffers( true );
-    QGLFormat::setDefaultFormat(glFormat);
+    //QGLFormat::setDefaultFormat(glFormat);
     glWidget = new GLWidget(glFormat,0,creature_evo_);
 
     QHBoxLayout *mainLayout = new QHBoxLayout;

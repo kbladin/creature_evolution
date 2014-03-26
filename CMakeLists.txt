@@ -120,9 +120,6 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 # Linking Bullet. NOTE: For now, no debug libraries
-if(WIN32)
-  target_link_libraries(${ctEvo} debug ${BULLET_DYNAMICS_LIBRARY_DEBUG} ${BULLET_COLLISION_LIBRARY_DEBUG} ${BULLET_MATH_LIBRARY_DEBUG})
-endif(WIN32)
 
 target_link_libraries(${ctEvo} optimized ${BULLET_DYNAMICS_LIBRARY} ${BULLET_COLLISION_LIBRARY} ${BULLET_MATH_LIBRARY})
 
