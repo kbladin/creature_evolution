@@ -43,7 +43,6 @@ set(CMAKE_AUTOMOC ON)
 find_package(BULLET REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
-find_package(GLM REQUIRED)
 
 # linux is not playing along nicely, so fuck it, just include the system default
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
