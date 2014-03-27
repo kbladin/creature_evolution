@@ -11,10 +11,12 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 
 # Find the QtWidgets library
+find_package(Qt5Widgets)
 find_package(Qt5Core)
-find_package(Qt5Quick)
 find_package(Qt5Gui)
+find_package(Qt5OpenGL)
+
 
 add_library(CreatureEvolution_lib ${SOURCES} ${HEADERS})
-
 qt5_use_modules(CreatureEvolution_lib Core Gui Quick)
+
