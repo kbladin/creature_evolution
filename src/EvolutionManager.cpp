@@ -23,7 +23,7 @@ void EvolutionManager::startEvolutionProcess() {
 	std::clock_t start_time, time2; 
 	start_time = std::clock();
 
-	int max_gen = SettingsManager::Instance()->getMaxGenerations();
+	int max_gen = SettingsManager::Instance()->GetMaxGenerations();
 
 	// Creates a new random population
 	Population population; 
@@ -68,7 +68,7 @@ void EvolutionManager::printBestFitnessValues(){
 */
 Creature EvolutionManager::getBestCreatureFromGeneration(int generation){
 	// must check if the value is smaller than max_generations, if over return the creature from last generation?
-	if (generation<=SettingsManager::Instance()->getMaxGenerations() && generation>0)
+	if (generation<=SettingsManager::Instance()->GetMaxGenerations() && generation>0)
 		return bestCreatures_[generation-1];
 
 	return bestCreatures_.back(); 

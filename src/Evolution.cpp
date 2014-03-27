@@ -20,9 +20,9 @@ Population Evolution::nextGeneration(const Population &population ) {
 	SettingsManager *sm; 
     sm = SettingsManager::Instance();
 
-	float crossover = sm->getCrossover();
-	float elitism = sm->getElitism();
-	float mutation = sm->getMutation();
+	float crossover = sm->GetCrossover();
+	float elitism = sm->GetElitism();
+	float mutation = sm->GetMutation();
 
 	int top_candidates_pivot = (int) (population.size() * elitism);
 
