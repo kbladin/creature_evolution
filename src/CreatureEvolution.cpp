@@ -1,10 +1,12 @@
 #include "CreatureEvolution.h"
 
 CreatureEvolution::CreatureEvolution() {
+	std::cout << "Creating creature evolution." << std::endl;
 	evolution_manager_ = new EvolutionManager();
 	sim_world_ = new Simulation();
 	scene_ = new SceneManager();
 	renderer_ = new Renderer(scene_);
+	std::cout << "Done!" << std::endl;
 }
 
 CreatureEvolution::~CreatureEvolution() {
@@ -17,7 +19,7 @@ CreatureEvolution::~CreatureEvolution() {
 
 void CreatureEvolution::StartEvolution() {
 	evolution_manager_->startEvolutionProcess(); // start the whole evolution process! 
-	evolution_manager_->printBestFitnessValues();
+	//evolution_manager_->printBestFitnessValues();
 }
 
 

@@ -7,12 +7,11 @@ void Shape::DebugPrint() {
 }
 
 void Shape::SetupBuffers() {
-
 	glGenVertexArrays(1, &vertex_array_id_);
 	glBindVertexArray(vertex_array_id_);
 
 	glGenBuffers(1, &vertex_buffer_position_id_);
-    glEnableVertexAttribArray(0);
+  glEnableVertexAttribArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer_position_id_);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3)*3* vertex_data_.size(), 
 			&vertex_data_[0], GL_STATIC_DRAW);
@@ -26,7 +25,7 @@ void Shape::SetupBuffers() {
                           );
     
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
+  glBindVertexArray(0);
 }
 
 void Shape::Render(Camera camera, glm::mat4 model_transform) {

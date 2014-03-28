@@ -8,7 +8,7 @@
 
 MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 {
-
+    std::cout << "Setting up window." << std::endl;
     creature_evo_ = ce;
     QGLFormat glFormat;
     glFormat.setVersion( 3, 2 );
@@ -33,6 +33,7 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     //connect(dummyButton,SIGNAL(clicked()), this, SLOT(testPrint()));
     connect(dummyButton,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
     connect(simButton, SIGNAL(clicked()), this, SLOT(startEvolution()));
+    std::cout << "Done!" << std::endl;
 }
 
 QSlider *MainCEWindow::createSlider()

@@ -14,29 +14,28 @@
 #include "Shape.h"
 
 class Node {
-  public:
-    Node();
-    void InitShape();
-    void SetShape(Shape shape);
-    void Render(Camera camera);
-    void SetTransform(glm::mat4 trans);
-    void SetPosition(glm::vec3 pos);
-    glm::mat4 GetTransform();
-    void DebugPrint();
-    virtual void UpdateNode() { };
-  protected:
-    glm::mat4 transform_;
-    Shape shape_;
+public:
+  Node();
+  void InitShape();
+  void SetShape(Shape shape);
+  void Render(Camera camera);
+  void SetTransform(glm::mat4 trans);
+  void SetPosition(glm::vec3 pos);
+  glm::mat4 GetTransform();
+  void DebugPrint();
+  virtual void UpdateNode() { };
+protected:
+  glm::mat4 transform_;
+  Shape shape_;
 };
 
 class PhysicsNode : public Node {
 public:
-    PhysicsNode();
-    PhysicsNode(btRigidBody* rigid_body);
-    void UpdateNode();
+  PhysicsNode();
+  PhysicsNode(btRigidBody* rigid_body);
+  void UpdateNode();
 private:
-    btRigidBody* rigid_body_;
+  btRigidBody* rigid_body_;
 };
-
 
 #endif //NODE_H

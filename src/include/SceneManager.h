@@ -19,22 +19,20 @@ class WormBulletCreature;
 
 //! 
 class SceneManager {
-  
-  public:
-    ~SceneManager() {};
-    void InitShapes();
-    void SetCamera(Camera cam);
-    void AddNode(std::shared_ptr<Node> node);
-    void PrintPhysicsNodes();
-    void RenderNodes();
-    void CreateNodesFromBulletCreature(WormBulletCreature* worm);
-    void UpdateNodes();
-  private:
-    btDiscreteDynamicsWorld* physics_world_;
+public:
+  ~SceneManager() {};
+  void InitShapes();
+  void SetCamera(Camera cam);
+  void AddNode(std::shared_ptr<Node> node);
+  void PrintPhysicsNodes();
+  void RenderNodes();
+  void CreateNodesFromBulletCreature(WormBulletCreature* worm);
+  void UpdateNodes();
+private:
+  btDiscreteDynamicsWorld* physics_world_;
 
-    std::vector<std::shared_ptr<Node> > nodelist_;
-    Camera cam_;
-    
+  std::vector<std::shared_ptr<Node> > nodelist_;
+  Camera cam_;
 };
 
 #endif //SCENEMANAGER_H

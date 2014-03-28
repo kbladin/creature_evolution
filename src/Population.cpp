@@ -8,7 +8,7 @@
 */
 Population::Population() {
 	//get the populationsize from settingsmanager
-	population_size_ = SettingsManager::Instance()->getPopulationSize();
+	population_size_ = SettingsManager::Instance()->GetPopulationSize();
 	pop_.resize(population_size_);
 
 	// fill with random creatures
@@ -23,7 +23,7 @@ Population::Population() {
 /*! Copy over the population based on the pivot from the oldPopulation. 
 */
 Population::Population(int pivot, const Population &oldPopulation){
-	population_size_ = SettingsManager::Instance()->getPopulationSize();
+	population_size_ = SettingsManager::Instance()->GetPopulationSize();
 	pop_.resize(population_size_);
 
 	for (int i=0; i<pivot; i++) {
