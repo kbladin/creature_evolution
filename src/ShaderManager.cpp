@@ -164,12 +164,9 @@ ShaderProgram::ShaderProgram(Shader* vertex_shader,
 	
   if (vertex_shader) {
     glAttachShader(program_id_, vertex_shader->GetShaderId());
-    std::cout << "Program_id: " << program_id_ << std::endl;
-    std::cout << "Shader_id: " << vertex_shader->GetShaderId() << std::endl;
   }
   if (fragment_shader) {
     glAttachShader(program_id_, fragment_shader->GetShaderId());
-    std::cout << "Shader_id: " << fragment_shader->GetShaderId() << std::endl;
   }
   if (geometry_shader) {
     glAttachShader(program_id_, geometry_shader->GetShaderId());
@@ -183,12 +180,12 @@ ShaderProgram::ShaderProgram(Shader* vertex_shader,
 	glGetProgramiv(program_id_, GL_LINK_STATUS, &result);
 	glGetProgramiv(program_id_, GL_INFO_LOG_LENGTH, &info_log_length);
 	if ( info_log_length > 0 ){
-        std::cout << "Error in linker?" << std::endl;
 		std::vector<char> program_error_message(info_log_length+1);
 		glGetProgramInfoLog(program_id_, info_log_length, NULL, &program_error_message[0]);
 		printf("%s\n", &program_error_message[0]);
-    
-    //program_id_ = 0;
+    //if linking the shaders failed, set to 0
+    if(result == GL_FALSE)
+      program_id_ = 0;
     return;
 	}
 }
@@ -669,8 +666,9 @@ Shader::Shader(const char* file_path, int type){
 		std::vector<char> error_message(info_log_length+1);
 		glGetShaderInfoLog(shader_id_, info_log_length, NULL, &error_message[0]);
 		printf("%s\n", &error_message[0]);
-    //shader_id_ = 0;
-    std::cout << "shader id in Shader-class: " << shader_id_ << std::endl;
+    //if compiling the shader failed, set to 0
+    if(result == GL_FALSE)
+      shader_id_ = 0;
     return;
 	}
 

@@ -14,8 +14,10 @@
 #include "Box.h"
 #include "WormBulletCreature.h"
 
+//forward declaration
 class WormBulletCreature;
 
+//! 
 class SceneManager {
   
   public:
