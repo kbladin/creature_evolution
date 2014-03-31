@@ -11,18 +11,18 @@
 // Internal
 #include "Camera.h"
 #include "Node.h"
+#include "Plane.h"
 #include "Box.h"
 #include "WormBulletCreature.h"
-
-//forward declaration
-class WormBulletCreature;
 
 //! 
 class SceneManager {
 public:
+  SceneManager();
   ~SceneManager() {};
   void InitShapes();
   void SetCamera(Camera cam);
+  Camera* GetCamera();
   void AddNode(std::shared_ptr<Node> node);
   void PrintPhysicsNodes();
   void RenderNodes();

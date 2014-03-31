@@ -1,17 +1,16 @@
 #include "Camera.h"
 
 Camera::Camera() {
-	//create default camera
   projection_ = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
-	view_       = glm::lookAt(glm::vec3(-10,3,0),
-                              glm::vec3(0,0,0),
-                              glm::vec3(0,1,0)
-                            );
+  //create default camera
+  view_ = glm::lookAt(glm::vec3(-10,3,0),
+                      glm::vec3(0,0,0),
+                      glm::vec3(0,1,0));	
 }
 
 Camera::Camera(glm::mat4 view, glm::mat4 projection) {
-	view_ = view;
-	projection_ = projection;
+  view_ = view;
+  projection_ = projection;
 }
 
 glm::mat4 Camera::GetViewMatrix(){
@@ -19,5 +18,25 @@ glm::mat4 Camera::GetViewMatrix(){
 }
 
 glm::mat4 Camera::GetProjectionMatrix(){
+
   return projection_;
+}
+
+void Camera::SetTarget(WormBulletCreature* target){
+  target_ = target;
+}
+
+void Camera::UpdateMatrices(){
+  if (target_){
+    view_ = glm::lookAt(glm::vec3(-10,3,0),
+                        glm::vec3(
+                          target_->GetCenterOfMass().x(),
+                          target_->GetCenterOfMass().y(),
+                          target_->GetCenterOfMass().z()),
+                        glm::vec3(0,1,0));   
+  }
+  int width = SettingsManager::Instance()->GetFrameWidth();
+  int height = SettingsManager::Instance()->GetFrameHeight();
+  float aspect = width/(float)height;
+  projection_ = glm::perspective(45.0f, aspect, 0.1f, 100.0f);
 }

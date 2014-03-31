@@ -23,7 +23,7 @@ public:
   void SetPosition(glm::vec3 pos);
   glm::mat4 GetTransform();
   void DebugPrint();
-  virtual void UpdateNode() { };
+  virtual void UpdateNode();
 protected:
   glm::mat4 transform_;
   Shape shape_;

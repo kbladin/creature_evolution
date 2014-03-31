@@ -38,6 +38,12 @@ float SettingsManager::GetElitism(){
 float SettingsManager::GetMutation(){
   return mutation_ratio_;
 }
+int SettingsManager::GetFrameWidth(){
+  return frame_width_;
+}
+int SettingsManager::GetFrameHeight(){
+  return frame_height_;
+}
 
 // where should the control of all the variables lie?
 // ex not smaller than 0 and some variables must med 0->1.
@@ -83,4 +89,10 @@ void SettingsManager::SetMutation(float mutation_ratio){
   }
   else
     mutation_ratio_ = mutation_ratio;
+}
+void SettingsManager::SetFrameWidth(int frame_width){
+  frame_width_ = frame_width;
+}
+void SettingsManager::SetFrameHeight(int frame_height){
+  frame_height_ = frame_height;
 }

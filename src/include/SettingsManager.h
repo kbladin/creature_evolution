@@ -17,20 +17,29 @@ public:
   float GetElitism();
   float GetMutation();
 
+  int GetFrameWidth();
+  int GetFrameHeight();
+
   void SetPopulationSize(int population_size);
   void SetMaxGenerations(int max_generations);
   void SetCrossover(float crossover_ratio);
   void SetElitism(float elitism_ratio);
   void SetMutation(float mutation_ratio);
+
+  void SetFrameWidth(int frame_width);
+  void SetFrameHeight(int frame_height);  
 private:
+  SettingsManager();
+  ~SettingsManager(void); 
+  // Evolution settings
   int population_size_;
   int max_generations_;
   float crossover_ratio_;
   float elitism_ratio_;
   float mutation_ratio_;
-
-  SettingsManager();
-  ~SettingsManager(void); 
+  // Render settings
+  int frame_width_;
+  int frame_height_;
 
   static SettingsManager* instance_;
 };

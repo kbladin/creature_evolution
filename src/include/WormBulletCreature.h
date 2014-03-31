@@ -9,8 +9,6 @@
 // External
 #include <btBulletDynamicsCommon.h>
 // Internal
-#include "SceneManager.h"
-#include "Node.h"
 
 class WormBulletCreature {
 public:
@@ -32,4 +30,4 @@ private:
 	static const int parameters_ = 4; 
 };
 
-#endif // WORMBULLETCREATURE_H
+#endif //WORMBULLETCREATURE_H

@@ -22,14 +22,13 @@ void CreatureEvolution::StartEvolution() {
 	//evolution_manager_->printBestFitnessValues();
 }
 
-
 void CreatureEvolution::LoadBestCreature() {
 	Creature best = evolution_manager_->getBestCreatureFromLastGeneration();
 	debug_worm_ = new WormBulletCreature(best.GetChromosome().GetGene(), btVector3(0,0,0));
     //std::shared_ptr<WormBulletCreature> worm_ptr(new WormBulletCreature(best.GetChromosome().GetGene(), btVector3(0,0,0)));
 	sim_world_->AddCreatureToWorld(debug_worm_);
 	scene_->CreateNodesFromBulletCreature(debug_worm_);
-	std::cout << "Hello from LoadBestCreature?" << std::endl;
+	scene_->GetCamera()->SetTarget(debug_worm_);
 }
 
 void CreatureEvolution::Run() {
