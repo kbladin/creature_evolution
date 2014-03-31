@@ -3,7 +3,7 @@
 
 //! Constructor that get the setting from SettingsManager
 /*! Creates a new evolution object and get the max generations
-	from SettingsManager. 
+	from SettingsManager.
 */
 EvolutionManager::EvolutionManager(){
 	ev_ = new Evolution(); //hmm, kommer göra så att all evolution kommer alltid att utgå från settingsklassen.
@@ -19,23 +19,29 @@ EvolutionManager::~EvolutionManager(void){
 	the population to a new generation until max generation.
 */
 void EvolutionManager::startEvolutionProcess() {
-	std::clock_t start_time, time2; 
+	std::clock_t start_time, time2;
 	start_time = std::clock();
 
 	int max_gen = SettingsManager::Instance()->GetMaxGenerations();
 
+	std::cout << "🐛 Generation: " << 0 << std::endl <<
+	"Simulating..." << std::endl;
+
 	// Creates a new random population
-	Population population; 
+	Population population;
 
-	Creature best = population.GetBest(); 
+	Creature best = population.GetBest();
 
-	// stores the first generation 
+	// stores the first generation
 	allPopulations_.push_back(population);
 	bestCreatures_.push_back(best);
 
-	std::cout << "🐛 Generation: " << 0 << ". Best fitness: " << bestCreatures_[0].GetFitness() << std::endl;
+	std::cout << "Done! Best fitness: " << bestCreatures_[0].GetFitness() << std::endl;
 
 	for (int i = 1; i < max_gen; ++i){
+		std::cout << "🐛 Generation: " << i << std::endl <<
+		"Simulating..." << std::endl;
+
 		time2 = std::clock();
 
 		population = ev_->nextGeneration(population);
@@ -44,17 +50,17 @@ void EvolutionManager::startEvolutionProcess() {
 
 		// save the population and the best creatures
 		allPopulations_.push_back(population);
-		bestCreatures_.push_back(best); 
+		bestCreatures_.push_back(best);
 
-		std::cout << "🐛 Generation: " << i << ". Best fitness: " << bestCreatures_[i].GetFitness() << std::endl;
+		std::cout << "Done! Best fitness: " << bestCreatures_[i].GetFitness() << std::endl;
 	}
 	std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
 }
 
-//! Prints the fitness value for the best creature in all different generations. 
+//! Prints the fitness value for the best creature in all different generations.
 void EvolutionManager::printBestFitnessValues(){
 	for(int i=0; i<bestCreatures_.size(); i++){
-		std::cout << "🐛" << "Generation " << i+1 << ". Best fitness: " << bestCreatures_[i].GetFitness() << std::endl; 
+		std::cout << "🐛" << "Generation " << i+1 << ". Best fitness: " << bestCreatures_[i].GetFitness() << std::endl;
 	}
 
 }
@@ -67,10 +73,10 @@ Creature EvolutionManager::getBestCreatureFromGeneration(int generation){
 	if (generation<=SettingsManager::Instance()->GetMaxGenerations() && generation>0)
 		return bestCreatures_[generation-1];
 
-	return bestCreatures_.back(); 
+	return bestCreatures_.back();
 }
 
-//! Returns the best creature from the last generation. 
+//! Returns the best creature from the last generation.
 Creature EvolutionManager::getBestCreatureFromLastGeneration(){
-	return bestCreatures_.back(); // inte säker metod då den kan vara tom.. 
+	return bestCreatures_.back(); // inte säker metod då den kan vara tom..
 }
