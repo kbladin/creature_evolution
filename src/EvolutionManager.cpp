@@ -1,17 +1,16 @@
 #include "EvolutionManager.h"
 
+AutoInitRNG EvolutionManager::rng_;
 
 //! Constructor that get the setting from SettingsManager
 /*! Creates a new evolution object and get the max generations
 	from SettingsManager.
 */
 EvolutionManager::EvolutionManager(){
-	ev_ = new Evolution(); //hmm, kommer göra så att all evolution kommer alltid att utgå från settingsklassen.
 }
 
 //! Destructor
 EvolutionManager::~EvolutionManager(void){
-	delete ev_;
 }
 
 //! Start the whole evolutionprocess until max generations
@@ -24,35 +23,37 @@ void EvolutionManager::startEvolutionProcess() {
 
 	int max_gen = SettingsManager::Instance()->GetMaxGenerations();
 
-	std::cout << "🐛 Generation: " << 0 << std::endl <<
+	std::cout << "Generation: " << 0 << std::endl <<
 	"Simulating..." << std::endl;
 
 	// Creates a new random population
-	Population population;
+	current_population_ = CreateRandomPopulation();
+	SimulatePopulation();
+	CalculateFitnessOnPopulation();
+	SortPopulation();
 
-	Creature best = population.GetBest();
+	Creature best = GetBestCreature();
 
 	// stores the first generation
-	allPopulations_.push_back(population);
-	bestCreatures_.push_back(best);
+	best_creatures_.push_back(best);
 
 	std::cout << "Done! Best fitness: " << bestCreatures_[0].GetFitness() << std::endl;
 
 	for (int i = 1; i < max_gen; ++i){
-		std::cout << "🐛 Generation: " << i << std::endl <<
+		std::cout << "Generation: " << i << std::endl <<
 		"Simulating..." << std::endl;
 
 		time2 = std::clock();
 
-		population = ev_->nextGeneration(population);
-		population.Sort();
-		best = population.GetBest();
+		current_population_ = NextGeneration();
+		SimulatePopulation();
+		CalculateFitnessOnPopulation();
+		SortPopulation();
+		best = GetBestCreature();
 
 		// save the population and the best creatures
-		allPopulations_.push_back(population);
-		bestCreatures_.push_back(best);
+		best_creatures_.push_back(best);
 
-		std::cout << "Done! Best fitness: " << bestCreatures_[i].GetFitness() << std::endl;
 	}
 	std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
 }
@@ -79,4 +80,66 @@ Creature EvolutionManager::getBestCreatureFromGeneration(int generation){
 //! Returns the best creature from the last generation.
 Creature EvolutionManager::getBestCreatureFromLastGeneration(){
 	return bestCreatures_.back(); // inte säker metod då den kan vara tom..
+}
+
+
+void EvolutionManager::SimulatePopulation() {
+	Simulation sim_world;
+	for(int i = 0; i < current_population_.size(); ++i) {
+		world.AddCreature(current_population_[i]);
+		world.Simulate();
+		world.RemoveCreature(current_population_[i]);
+	}
+}
+
+CalculateFitnessOnGeneration() {
+	float max_pos;
+	float max_speed;
+	for creature in population
+		if(creature.GetPos() > max_pos)
+			max_pos = creature.GetPos();
+		if(creature.GetSpeed() > max_speed)
+			max_pos = creature.GetSpeed();
+	.
+	.
+	.
+
+	//normalize all creatures
+	for creature in population
+		float fitness = w1*creature.GetPos()/max_pos + w2*creature.GetSpeed()/max_speed;
+		creature.SetFitness(fitness);
+
+
+}
+
+void EvolutionManager::SortPopulation() {
+	std::sort(current_population_.begin(), current_population_.end(), CreatureLarger());
+}
+
+void EvolutionManager::NextGeneration() {
+	float elitism = SettingsManager::Instance()->GetElitism();
+	float mutation = SettingsManager::Instance()->GetMutation();
+
+	int elitism_pivot = (int) (current_population_.size() * elitism);
+
+	Population new_population (&current_population_[0],
+		 &current_population_[elitism_pivot]);
+
+	new_population.resize(current_population_.size());
+	std::uniform_int_distribution<int> int_elitism_index(0, elitism_pivot);
+
+	for(int i = elitism_pivot; i < new_population.size(); ++i) {
+
+
+		Creature new_creature = current_population_[int_elitism_index(rng_.mt_rng_)];
+		new_creature.Mutate();
+
+		new_population.push_back(new_creature);		
+	}
+	
+	current_population_ = new_population;
+}
+
+Creature TournamentSelection() {
+	//return random creature based on tournament selection
 }

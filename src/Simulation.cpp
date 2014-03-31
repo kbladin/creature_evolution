@@ -57,12 +57,22 @@ void Simulation::Step(float dt)
 {
 	for (int i = 0; i < creatures_.size(); ++i){
 		creatures_[i]->UpdateMovement(counter_);
+
 	}
 	dynamics_world_->stepSimulation(dt,1000);
 	counter_ += dt;
+	
 }
 
 btDiscreteDynamicsWorld* Simulation::GetDynamicsWorld()
 {
 	return dynamics_world_;
+}
+
+void Simulation::Simulate() {
+	int fps = 30;
+	int n_seconds = 60;
+	for (int i = 0; i < fps*n_seconds; ++i){
+		sim.Step(1/float(fps));
+	}
 }
