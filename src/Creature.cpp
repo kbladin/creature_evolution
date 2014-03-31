@@ -64,8 +64,8 @@ float Creature::CalculateFitness(Chromosome chromosome){
 	Simulation sim;
 	sim.AddCreatureToWorld(worm);
 
-	int fps = 60;
-	int n_seconds = 50;
+	int fps = 30;
+	int n_seconds = 60;
 	for (int i = 0; i < fps*n_seconds; ++i){
 		sim.Step(1/float(fps));
 

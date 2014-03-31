@@ -17,7 +17,7 @@
 //forward declaration
 class WormBulletCreature;
 
-//! 
+//! Handles all the scene nodes. Makes sure the Bullet world is tied to the Nodes.
 class SceneManager {
 public:
   ~SceneManager() {};
