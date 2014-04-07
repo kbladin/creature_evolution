@@ -95,19 +95,18 @@ void EvolutionManager::SimulatePopulation() {
 CalculateFitnessOnGeneration() {
 	float max_pos;
 	float max_speed;
-	for creature in population
+    for(Creature& creature in population){
 		if(creature.GetPos() > max_pos)
 			max_pos = creature.GetPos();
 		if(creature.GetSpeed() > max_speed)
 			max_pos = creature.GetSpeed();
-	.
-	.
-	.
+    }
 
 	//normalize all creatures
-	for creature in population
+    for(Creature& creature in population){
 		float fitness = w1*creature.GetPos()/max_pos + w2*creature.GetSpeed()/max_speed;
 		creature.SetFitness(fitness);
+    }
 
 
 }

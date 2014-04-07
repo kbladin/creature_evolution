@@ -4,7 +4,6 @@
 
 #include "Evolution.h"
 #include "Creature.h"
-#include "Population.h"
 #include <vector>
 #include <ctime>
 #include "AutoInitRNG.h"
