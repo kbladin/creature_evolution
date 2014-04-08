@@ -15,25 +15,30 @@
 /*!
 A creature contains a brain and a body.
 */
-
 class Creature {
-private:
+public:
+    Creature();
+    ~Creature();
 
+
+    void UpdateMovement(float time);
+    std::vector<btRigidBody*> GetRigidBodies();
+    std::vector<btHingeConstraint*> GetJoints();
+
+    void SetFitness(float);
+    float GetFitness() const;
+    void Mutate();
+
+private:
     float fitness_;
     Brain brain;
     Body body;
 
     void CalculateFitness();
 
-public:
-    Creature();
-    ~Creature();
-
-    void setFitness(float);
-    float GetFitness() const;
-    void Mutate();
 };
 
+//! Simple struct for creature comparison
 struct CreatureLargerThan
 {
     bool operator()(const Creature& c1,const Creature& c2) const {

@@ -1,7 +1,7 @@
 #include "CreatureEvolution.h"
 
 CreatureEvolution::CreatureEvolution() {
-	std::cout << "Creating creature evolution." << std::endl;
+	std::cout << "Creating creature evolution..." << std::endl;
 	evolution_manager_ = new EvolutionManager();
 	sim_world_ = new Simulation();
 	scene_ = new SceneManager();

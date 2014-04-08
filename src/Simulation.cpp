@@ -1,5 +1,7 @@
 #include "Simulation.h"
 
+
+//! Setup a default physics world with an infinite ground plane.
 Simulation::Simulation()
 {
 	counter_ = 0;
@@ -21,6 +23,7 @@ Simulation::Simulation()
 	dynamics_world_->addRigidBody(ground_rigid_body_);
 }
 
+//! Destructor. Delete all dynamic allocated things for Bullet.
 Simulation::~Simulation(void)
 {
 	dynamics_world_->removeRigidBody(ground_rigid_body_);
@@ -37,6 +40,7 @@ Simulation::~Simulation(void)
 	delete broad_phase_;	
 }
 
+//! Adds a creature from the Evolution process to the physical world.
 void Simulation::AddCreature(Creature creature){
 
 	creature_ = &creature;
@@ -55,6 +59,8 @@ void Simulation::AddCreature(Creature creature){
 	}
 }
 
+/*! Removes the creature's rigid bodies and joints.
+ Can only be called if a creature has been added.*/
 void Simulation::RemoveCreature() {
 	std::vector<btRigidBody*> rigid_bodies = creature_.GetRigidBodies();
 	std::vector<btHingeConstraint*> joints = creature_.GetJoints();
@@ -72,20 +78,23 @@ void Simulation::RemoveCreature() {
 
 }
 
+//! Update the 'motors' on the creature and step the physical world.
 void Simulation::Step(float dt)
 {
 
-	creatures_.UpdateMovement(counter_);
+	creature_.UpdateMovement(counter_);
 	dynamics_world_->stepSimulation(dt,1000);
 	counter_ += dt;
 	
 }
 
+//! Returns the current btDiscreteDynamicsWorld pointer
 btDiscreteDynamicsWorld* Simulation::GetDynamicsWorld()
 {
 	return dynamics_world_;
 }
 
+//! Starts the simulation process with a predetermined fps and time.
 void Simulation::Simulate() {
 	int fps = 30;
 	int n_seconds = 60;
