@@ -13,9 +13,8 @@
 //forward declaration
 class Creature;
 
-/*! Handles the simulation of the Bullet physics world.
-	This is used both for the evolution process and the rendering process.
- */
+//! Handles the simulation of the Bullet physics world.
+/*	This is used both for the evolution process and the rendering process.*/
 class Simulation
 {
 public:
