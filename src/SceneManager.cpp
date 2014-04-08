@@ -8,8 +8,8 @@ void SceneManager::AddNode(std::shared_ptr<Node> node_ptr) {
   nodelist_.push_back(node_ptr);
 }
 
-void SceneManager::CreateNodesFromBulletCreature(WormBulletCreature* worm) {  
-  std::vector<btRigidBody*> rigid_bodies_to_add = worm->GetRigidBodies();
+void SceneManager::CreateNodesFromBulletCreature(Creature creature) {  
+  std::vector<btRigidBody*> rigid_bodies_to_add = creature.GetRigidBodies();
 
   for(int i = 0; i < rigid_bodies_to_add.size(); ++i) {
     std::shared_ptr<PhysicsNode> node_to_add(

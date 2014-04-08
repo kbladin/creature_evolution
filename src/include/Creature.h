@@ -37,8 +37,8 @@ public:
 struct CreatureLargerThan
 {
     bool operator()(const Creature& c1,const Creature& c2) const {
-        float c1_fitness = c1.getFitness();
-        float c2_fitness = c2.getFitness();
+        float c1_fitness = c1.GetFitness();
+        float c2_fitness = c2.GetFitness();
 
         return (c1_fitness > c2_fitness);
     }

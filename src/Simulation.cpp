@@ -37,28 +37,45 @@ Simulation::~Simulation(void)
 	delete broad_phase_;	
 }
 
-void Simulation::AddCreatureToWorld(WormBulletCreature* worm){
-	creatures_.push_back(worm);
-	worm->AddToDynamicsWorld(GetDynamicsWorld());
+void Simulation::AddCreature(Creature creature){
+
+	creature_ = &creature;
+
+	std::vector<btRigidBody*> rigid_bodies = creature.GetRigidBodies();
+	std::vector<btHingeConstraint*> joints = creature.GetJoints();
+	
+	//Add bodies
+	for(int i=0; i < rigid_bodies.size(); i++){
+		dynamics_world_->addRigidBody(rigid_bodies[i]);
+
+	}
+	//Add joints
+	for(int i=0; i < joints.size(); i++){
+		dynamics_world_->addConstraint(joints[i], true);
+	}
 }
 
-void Simulation::RemoveCreatureFromWorld(WormBulletCreature* worm){
-	for( std::vector<WormBulletCreature*>::iterator iter = creatures_.begin(); iter != creatures_.end(); ++iter ) {
-	    if( *iter == worm ){
-			creatures_[iter - creatures_.begin()]->RemoveFromDynamicsWorld(GetDynamicsWorld());
-	        creatures_.erase(iter);
-	        return;
-	    }
+void Simulation::RemoveCreature() {
+	std::vector<btRigidBody*> rigid_bodies = creature_.GetRigidBodies();
+	std::vector<btHingeConstraint*> joints = creature_.GetJoints();
+
+	//Add bodies
+	for(int i=0; i < rigid_bodies.size(); i++){
+		dynamics_world_->removeRigidBody(rigid_bodies[i]);
+
 	}
-	std::cout << "Warning! Could not remove creature from the list of creatures!" << std::endl;
+	//Add joints
+	for(int i=0; i < joints.size(); i++){
+		dynamics_world_->removeConstraint(joints[i], true);
+	}
+	
+
 }
 
 void Simulation::Step(float dt)
 {
-	for (int i = 0; i < creatures_.size(); ++i){
-		creatures_[i]->UpdateMovement(counter_);
 
-	}
+	creatures_.UpdateMovement(counter_);
 	dynamics_world_->stepSimulation(dt,1000);
 	counter_ += dt;
 	
@@ -73,6 +90,6 @@ void Simulation::Simulate() {
 	int fps = 30;
 	int n_seconds = 60;
 	for (int i = 0; i < fps*n_seconds; ++i){
-		sim.Step(1/float(fps));
+		Step(1/float(fps));
 	}
 }

@@ -37,7 +37,7 @@ void EvolutionManager::startEvolutionProcess() {
 	// stores the first generation
 	best_creatures_.push_back(best);
 
-	std::cout << "Done! Best fitness: " << bestCreatures_[0].GetFitness() << std::endl;
+	std::cout << "Done! Best fitness: " << best.GetFitness() << std::endl;
 
 	for (int i = 1; i < max_gen; ++i){
 		std::cout << "Generation: " << i << std::endl <<
@@ -69,17 +69,21 @@ void EvolutionManager::printBestFitnessValues(){
 //! Returns the best creature from the specified generation
 /*! \param generation From which generation the best creature should be returned.
 */
-Creature EvolutionManager::getBestCreatureFromGeneration(int generation){
-	// must check if the value is smaller than max_generations, if over return the creature from last generation?
-	if (generation<=SettingsManager::Instance()->GetMaxGenerations() && generation>0)
-		return bestCreatures_[generation-1];
+// Creature EvolutionManager::getBestCreatureFromGeneration(int generation){
+// 	// must check if the value is smaller than max_generations, if over return the creature from last generation?
+// 	if (generation<=SettingsManager::Instance()->GetMaxGenerations() && generation>0)
+// 		return bestCreatures_[generation-1];
 
-	return bestCreatures_.back();
-}
+// 	return bestCreatures_.back();
+// }
 
 //! Returns the best creature from the last generation.
-Creature EvolutionManager::getBestCreatureFromLastGeneration(){
+Creature EvolutionManager::GetBestCreatureFromLastGeneration(){
 	return bestCreatures_.back(); // inte säker metod då den kan vara tom..
+}
+
+Creature EvolutionManager::GetBestCreature() {
+	return current_population_[0];
 }
 
 
@@ -88,23 +92,21 @@ void EvolutionManager::SimulatePopulation() {
 	for(int i = 0; i < current_population_.size(); ++i) {
 		world.AddCreature(current_population_[i]);
 		world.Simulate();
-		world.RemoveCreature(current_population_[i]);
+		world.RemoveCreature();
 	}
 }
 
-CalculateFitnessOnGeneration() {
+void EvolutionManager::CalculateFitnessOnGeneration() {
 	float max_pos;
 	float max_speed;
-    for(Creature& creature in population){
+    for(Creature& creature in current_population_) {
 		if(creature.GetPos() > max_pos)
 			max_pos = creature.GetPos();
-		if(creature.GetSpeed() > max_speed)
-			max_pos = creature.GetSpeed();
     }
 
 	//normalize all creatures
-    for(Creature& creature in population){
-		float fitness = w1*creature.GetPos()/max_pos + w2*creature.GetSpeed()/max_speed;
+    for(Creature& creature in current_population_) {
+		float fitness = creature.GetPos()/max_pos;// + w2*creature.GetSpeed()/max_speed;
 		creature.SetFitness(fitness);
     }
 
@@ -137,8 +139,4 @@ void EvolutionManager::NextGeneration() {
 	}
 	
 	current_population_ = new_population;
-}
-
-Creature TournamentSelection() {
-	//return random creature based on tournament selection
 }

@@ -5,7 +5,6 @@
 #include "Renderer.h"
 #include "SceneManager.h"
 #include "EvolutionManager.h"
-#include "WormBulletCreature.h"
 #include "Creature.h"
 
 #include <memory>
@@ -31,7 +30,6 @@ private:
 	Renderer* renderer_;
 	SceneManager* scene_;
 	EvolutionManager* evolution_manager_;
-	WormBulletCreature* debug_worm_;
 };
 
 

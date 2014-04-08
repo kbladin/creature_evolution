@@ -2,7 +2,6 @@
 #define EVOLUTIONMANAGER_H
 #include <iostream>
 
-#include "Evolution.h"
 #include "Creature.h"
 #include <vector>
 #include <ctime>

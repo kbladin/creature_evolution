@@ -8,21 +8,24 @@
 // External
 #include <btBulletDynamicsCommon.h>
 // Internal
-#include "WormBulletCreature.h"
+#include "Creature.h"
+
+//forward declaration
+class Creature;
 
 class Simulation
 {
 public:
 	Simulation();
 	~Simulation(void);
-	void AddCreatureToWorld(WormBulletCreature* worm);
-	void RemoveCreatureFromWorld(WormBulletCreature* worm);
+	void AddCreature(Creature creature);
+	void RemoveCreature();
 	void Step(float dt);
 	void Simulate();
 	btDiscreteDynamicsWorld* GetDynamicsWorld();
 
 private:
-	std::vector<WormBulletCreature*> creatures_;
+	Creature* creature_;
 
 	btBroadphaseInterface* broad_phase_;
 	btDefaultCollisionConfiguration* collision_configuration_;
