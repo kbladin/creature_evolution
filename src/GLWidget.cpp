@@ -63,11 +63,24 @@ void GLWidget::mousePressEvent(QMouseEvent *event){
 }
 
 void GLWidget::mouseMoveEvent(QMouseEvent *event){
+  // dx and dy returns difference in pixels. This will be double for retina
+  // screens. Frame width and height however returns the retina pixels.
+  // Therefore the sensitivity is dependent on the screen. Maybe not that good
+  // but strange that it is different.
   int dx = event->x() - lastPos.x();
   int dy = event->y() - lastPos.y();
 
   if (event->buttons() & Qt::LeftButton) {
-
+    Camera* current_cam = SceneManager::Instance()->GetCamera();
+    if (current_cam){
+      float width = SettingsManager::Instance()->GetFrameWidth();
+      float height = SettingsManager::Instance()->GetFrameHeight();
+      float sense = SettingsManager::Instance()->GetRotationSensitivity();
+      // X-position handles the rotation around the y-axis and vice versa.
+      // The rotation should not be dependent on the size of the window.
+      current_cam->IncrementYrotation(sense * (dx / width));
+      current_cam->IncrementXrotation(sense * (dy / height));
+    }
   }
   else if (event->buttons() & Qt::RightButton) {
 

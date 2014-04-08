@@ -19,6 +19,7 @@ public:
 
   int GetFrameWidth();
   int GetFrameHeight();
+  float GetRotationSensitivity();
 
   void SetPopulationSize(int population_size);
   void SetMaxGenerations(int max_generations);
@@ -27,7 +28,8 @@ public:
   void SetMutation(float mutation_ratio);
 
   void SetFrameWidth(int frame_width);
-  void SetFrameHeight(int frame_height);  
+  void SetFrameHeight(int frame_height);
+  void SetRotationSensitivity(float sense);
 private:
   SettingsManager();
   ~SettingsManager(void); 
@@ -40,6 +42,9 @@ private:
   // Render settings
   int frame_width_;
   int frame_height_;
+  float rotation_sensitivity_ = 360.0f; //will result in half a round on a
+  // retina sceen and one round on a normal screen when moving mouse from one
+  // side to the other.
 
   static SettingsManager* instance_;
 };
