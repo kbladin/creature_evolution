@@ -18,7 +18,6 @@ glm::mat4 Camera::GetViewMatrix(){
 }
 
 glm::mat4 Camera::GetProjectionMatrix(){
-
   return projection_;
 }
 
@@ -27,13 +26,28 @@ void Camera::SetTarget(WormBulletCreature* target){
 }
 
 void Camera::UpdateMatrices(){
+  time_t timer;
   if (target_){
-    view_ = glm::lookAt(glm::vec3(-10,3,0),
-                        glm::vec3(
-                          target_->GetCenterOfMass().x(),
-                          target_->GetCenterOfMass().y(),
-                          target_->GetCenterOfMass().z()),
-                        glm::vec3(0,1,0));   
+    glm::mat4 local_translate = glm::translate(glm::vec3(0.0f, 0.0f, -10.0f));
+    glm::mat4 rotate_y = glm::rotate(
+            glm::mat4(1.0f),
+            45.0f,
+            glm::vec3(0.0f, 1.0f, 0.0f));
+    glm::mat4 rotate_x = glm::rotate(
+            glm::mat4(1.0f),
+            45.0f,
+            glm::vec3(1.0f, 0.0f, 0.0f));
+    glm::mat4 global_translate = glm::translate(glm::vec3(
+            -target_->GetCenterOfMass().x(),
+            -target_->GetCenterOfMass().y(),
+            -target_->GetCenterOfMass().z()));
+    view_ = local_translate * rotate_x * rotate_y * global_translate; 
+    /*view_ = glm::lookAt(glm::vec3(-10,3,0),
+                      glm::vec3(
+                        target_->GetCenterOfMass().x(),
+                        target_->GetCenterOfMass().y(),
+                        target_->GetCenterOfMass().z()),
+                      glm::vec3(0,1,0));*/
   }
   int width = SettingsManager::Instance()->GetFrameWidth();
   int height = SettingsManager::Instance()->GetFrameHeight();

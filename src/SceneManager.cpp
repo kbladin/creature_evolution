@@ -1,11 +1,20 @@
 #include "SceneManager.h"
 
+SceneManager* SceneManager::instance_ = NULL;
+
 SceneManager::SceneManager(){
   //Fulplan!!!
   Plane plane_shape(glm::vec3(1.0f) * 50.0f);
   std::shared_ptr<Node> node_to_add(new Node());
   node_to_add->SetShape(plane_shape);
   AddNode(node_to_add);
+}
+
+SceneManager* SceneManager::Instance(){
+  if (!instance_){
+    instance_ = new SceneManager();
+  }
+  return instance_;
 }
 
 void SceneManager::SetCamera(Camera cam) {

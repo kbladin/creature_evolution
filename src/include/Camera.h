@@ -1,6 +1,8 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
+//C++
+#include <time.h>
 // External
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>

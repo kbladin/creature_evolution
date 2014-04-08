@@ -18,8 +18,7 @@
 //! 
 class SceneManager {
 public:
-  SceneManager();
-  ~SceneManager() {};
+  static SceneManager* Instance();
   void InitShapes();
   void SetCamera(Camera cam);
   Camera* GetCamera();
@@ -29,6 +28,11 @@ public:
   void CreateNodesFromBulletCreature(WormBulletCreature* worm);
   void UpdateNodes();
 private:
+  SceneManager();
+  ~SceneManager() {};
+
+  static SceneManager* instance_;
+
   btDiscreteDynamicsWorld* physics_world_;
 
   std::vector<std::shared_ptr<Node> > nodelist_;

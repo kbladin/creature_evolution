@@ -4,15 +4,15 @@ CreatureEvolution::CreatureEvolution() {
 	std::cout << "Creating creature evolution." << std::endl;
 	evolution_manager_ = new EvolutionManager();
 	sim_world_ = new Simulation();
-	scene_ = new SceneManager();
-	renderer_ = new Renderer(scene_);
+	//scene_ = new SceneManager();
+	renderer_ = new Renderer(SceneManager::Instance());
 	std::cout << "Done!" << std::endl;
 }
 
 CreatureEvolution::~CreatureEvolution() {
 	delete evolution_manager_;
 	delete renderer_;
-	delete scene_;
+	//delete scene_;
 	delete sim_world_;
 	//delete debug_worm_;
 }
@@ -27,8 +27,8 @@ void CreatureEvolution::LoadBestCreature() {
 	debug_worm_ = new WormBulletCreature(best.GetChromosome().GetGene(), btVector3(0,0,0));
     //std::shared_ptr<WormBulletCreature> worm_ptr(new WormBulletCreature(best.GetChromosome().GetGene(), btVector3(0,0,0)));
 	sim_world_->AddCreatureToWorld(debug_worm_);
-	scene_->CreateNodesFromBulletCreature(debug_worm_);
-	scene_->GetCamera()->SetTarget(debug_worm_);
+	SceneManager::Instance()->CreateNodesFromBulletCreature(debug_worm_);
+	SceneManager::Instance()->GetCamera()->SetTarget(debug_worm_);
 }
 
 void CreatureEvolution::Run() {
@@ -40,7 +40,7 @@ void CreatureEvolution::StepTheWorld() {
 	sim_world_->Step(1/60.0f);
 }
 void CreatureEvolution::UpdateTheWorld() {
-	scene_->UpdateNodes();
+	SceneManager::Instance()->UpdateNodes();
 }
 
 void CreatureEvolution::RenderTheWorld() {
