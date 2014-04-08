@@ -40,3 +40,23 @@ float Creature::GetPos() {
 float Creature::GetSpeed() {
 	return 0.0f;
 }
+
+//! PLACEHOLDER
+void Creature::UpdateMovement(float time) {
+
+}
+
+//! PLACEHOLDER
+std::vector<btRigidBody*> Creature::GetRigidBodies() {
+	std::vector<btRigidBody*> placeholder;
+	btRigidBody* dummy_body = new btRigidBody(1.0f,NULL, NULL,btVector3(0, 0, 0));
+	placeholder.push_back(dummy_body);
+	return placeholder;
+}
+
+//! PLACEHOLDER
+std::vector<btHingeConstraint*> Creature::GetJoints() {
+	std::vector<btHingeConstraint*> placeholder;
+	return placeholder;
+}
+
