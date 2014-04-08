@@ -1,14 +1,20 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-//C++
-#include <time.h>
 // External
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 // Internal
 #include "WormBulletCreature.h"
 #include "SettingsManager.h"
+
+//! The camera class is used to obtain the view and projection matrices.
+/*!
+  For rendering the view and projection matries are used. These matrices
+  needs to be updated. The camera has a target to look at which is
+  currently a WormBulletCreature. The camera can also be rotated around the
+  target.
+*/
 
 class Camera {
 public:
@@ -23,8 +29,7 @@ public:
 private:
   template <class T>
   void Delay(T& input, T end_val, float speed);
-  //float rotation_x_ = 0.0f;
-  //float rotation_y_ = 0.0f;
+
   glm::mat4 projection_;
   glm::mat4 view_;
   WormBulletCreature* target_;

@@ -1,5 +1,9 @@
 #include "Camera.h"
 
+//! Constructor, creates a default camera
+/*!
+  The default camera is located at (-10,3,0) and looks at (0,1,0).
+*/
 Camera::Camera() {
   projection_ = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
   //create default camera
@@ -7,7 +11,12 @@ Camera::Camera() {
                       glm::vec3(0,0,0),
                       glm::vec3(0,1,0));	
 }
-
+//! Constructor that creates a camera from input matrices
+/*!
+  Sets the cameras view matrix and projection matrix as specified
+  \param view matrix
+  \param projection matrix
+*/
 Camera::Camera(glm::mat4 view, glm::mat4 projection) {
   view_ = view;
   projection_ = projection;
@@ -24,7 +33,13 @@ glm::mat4 Camera::GetProjectionMatrix(){
 void Camera::SetTarget(WormBulletCreature* target){
   target_ = target;
 }
-
+//! Updates the internal matrices of the camera
+/*!
+  First the signals from input are delayed. This is for the camera to get a
+  more smoother movement. Then the results are used to create the matrices that
+  build up the view matrix. The projection matrix is default but uses the
+  aspect ratio of the frame.
+*/
 void Camera::UpdateMatrices(){
   time_t timer;
   if (target_){
@@ -63,14 +78,25 @@ void Camera::UpdateMatrices(){
   // Update the projection matrix
   projection_ = glm::perspective(45.0f, aspect, 0.1f, 100.0f);
 }
-
+//! Increment the x-rotation angle of the camera
 void Camera::IncrementXrotation(float h){
   rotate_x_goal_ += h;
 }
+//! Increment the y-rotation angle of the camera
 void Camera::IncrementYrotation(float h){
   rotate_y_goal_ += h;
 }
-
+//! Helper function for the camera
+/*!
+  This function takes class like float or glm::vec3. What it does is to delay
+  a signal as if it was to follow y=1 as y=(1-e^(a*t)). The rise time depend
+  on the speed parameter.
+  \param input is the signal that will be changed to output
+  (passed by reference)
+  \param end_val is the value that the function should tend toward.
+  \param speed determines the rise time. The higher, the faster.
+  Speed should be between 0 and 1 and is otherwise clamped.
+*/
 template <class T>
 void Camera::Delay(T& input, T end_val, float speed){
   if (speed < 0.0f && speed > 1.0f){
