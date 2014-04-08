@@ -19,7 +19,7 @@ public:
 	~EvolutionManager(void); 
 
 	void startEvolutionProcess();
-
+	Creature GetBestCreatureFromLastGeneration();
 	void PrintBestFitnessValues();
 	Creature GetBestCreature();
 
@@ -33,7 +33,7 @@ private:
 	void CalculateFitnessOnPopulation();
 	void SortPopulation();
 
-	Population NextGeneration(const Population& prev_pop);
+	void NextGeneration();
 
 };
 

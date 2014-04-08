@@ -30,3 +30,13 @@ void Creature::CalculateFitness(){
 void Creature::Mutate() {
 
 }
+
+//! PLACEHOLDER
+float Creature::GetPos() {
+	return 0.0f;
+}
+
+//! PLACEHOLDER
+float Creature::GetSpeed() {
+	return 0.0f;
+}

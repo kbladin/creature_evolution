@@ -45,8 +45,8 @@ void Simulation::AddCreature(Creature creature){
 
 	creature_ = &creature;
 
-	std::vector<btRigidBody*> rigid_bodies = creature.GetRigidBodies();
-	std::vector<btHingeConstraint*> joints = creature.GetJoints();
+	std::vector<btRigidBody*> rigid_bodies = creature_->GetRigidBodies();
+	std::vector<btHingeConstraint*> joints = creature_->GetJoints();
 	
 	//Add bodies
 	for(int i=0; i < rigid_bodies.size(); i++){
@@ -62,8 +62,8 @@ void Simulation::AddCreature(Creature creature){
 /*! Removes the creature's rigid bodies and joints.
  Can only be called if a creature has been added.*/
 void Simulation::RemoveCreature() {
-	std::vector<btRigidBody*> rigid_bodies = creature_.GetRigidBodies();
-	std::vector<btHingeConstraint*> joints = creature_.GetJoints();
+	std::vector<btRigidBody*> rigid_bodies = creature_->GetRigidBodies();
+	std::vector<btHingeConstraint*> joints = creature_->GetJoints();
 
 	//Add bodies
 	for(int i=0; i < rigid_bodies.size(); i++){
@@ -72,7 +72,7 @@ void Simulation::RemoveCreature() {
 	}
 	//Add joints
 	for(int i=0; i < joints.size(); i++){
-		dynamics_world_->removeConstraint(joints[i], true);
+		dynamics_world_->removeConstraint(joints[i]);
 	}
 	
 
@@ -82,7 +82,7 @@ void Simulation::RemoveCreature() {
 void Simulation::Step(float dt)
 {
 
-	creature_.UpdateMovement(counter_);
+	creature_->UpdateMovement(counter_);
 	dynamics_world_->stepSimulation(dt,1000);
 	counter_ += dt;
 	

@@ -20,19 +20,21 @@ public:
     Creature();
     ~Creature();
 
-
     void UpdateMovement(float time);
     std::vector<btRigidBody*> GetRigidBodies();
     std::vector<btHingeConstraint*> GetJoints();
 
-    void SetFitness(float);
+    void SetFitness(float fitness);
     float GetFitness() const;
     void Mutate();
 
+    float GetPos();
+    float GetSpeed();
+
 private:
     float fitness_;
-    Brain brain;
-    Body body;
+    // Brain brain;
+    // Body body;
 
     void CalculateFitness();
 
