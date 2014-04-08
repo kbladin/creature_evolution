@@ -2,7 +2,8 @@
 
 //! Default constructor creates a random creature.
 Creature::Creature() {
-
+	CreateDebugCreature();
+	fitness_ = -1.0f;
 }
 
 //! Destructor. Deletes all rigid bodies etc
@@ -60,3 +61,10 @@ std::vector<btHingeConstraint*> Creature::GetJoints() {
 	return placeholder;
 }
 
+void Creature::CreateDebugCreature() {
+
+}
+
+void Creature::ResetBodies() {
+	//reset all rigid bodies to zero
+}

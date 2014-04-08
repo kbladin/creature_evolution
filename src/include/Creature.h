@@ -20,7 +20,8 @@ public:
     Creature();
     ~Creature();
 
-    void UpdateMovement(float time);
+    void GetBrainData(float time);
+    void ResetBodies();
     std::vector<btRigidBody*> GetRigidBodies();
     std::vector<btHingeConstraint*> GetJoints();
 
@@ -37,6 +38,16 @@ private:
     // Body body;
 
     void CalculateFitness();
+    void CreateDebugCreature();
+
+    // Shit things from WormBulletCreature, will be moved later
+    btCollisionShape* m_shape_;
+    btScalar mass_;
+    std::vector<btRigidBody*> m_bodies_;
+    std::vector<btHingeConstraint*> m_joints_;
+    std::vector<float> genes_;
+
+    static const int parameters_ = 4;
 
 };
 

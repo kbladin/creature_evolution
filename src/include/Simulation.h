@@ -47,5 +47,8 @@ private:
 	float counter_;
 };
 
+struct SimData {
+	float distance;
+};
 
 #endif // SIMULATION_H

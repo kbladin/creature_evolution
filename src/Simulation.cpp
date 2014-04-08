@@ -100,5 +100,10 @@ void Simulation::Simulate() {
 	int n_seconds = 60;
 	for (int i = 0; i < fps*n_seconds; ++i){
 		Step(1/float(fps));
+
 	}
+	sim_data.distance = creature_->GetDistance();
+	creature_->ResetBodies();
+	return sim_data;
 }
+

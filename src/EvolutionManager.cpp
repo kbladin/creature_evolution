@@ -141,7 +141,6 @@ void EvolutionManager::NextGeneration() {
 //! Create a population with random creatures
 Population EvolutionManager::CreateRandomPopulation(int pop_size) {
 	Population random_pop;
-	random_pop.resize(pop_size);
 	for(int i = 0; i < pop_size; ++i) {
 		Creature random_creature;
 		random_pop.push_back(random_creature);
