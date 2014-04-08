@@ -1,12 +1,3 @@
-#include <GL/glew.h>
-#include <QtWidgets/qwidget.h>
-#include <QtCore/QTimer>
-#include <QDebug>
-//#include <QtOpenGL>
-
-#include <math.h>
-#include <iostream>
-
 #include "GLWidget.h"
 
 #ifndef GL_MULTISAMPLE
@@ -87,6 +78,13 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event){
   }
   lastPos = event->pos();
 }
+
+void GLWidget::wheelEvent(QWheelEvent* event){
+  Camera* current_cam = SceneManager::Instance()->GetCamera();
+  if (current_cam){
+    current_cam->IncrementZposition(event->delta() / 100.0f);
+  }
+};
 
 void GLWidget::enableRendering() {
   enable_render_ = true;

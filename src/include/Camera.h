@@ -26,6 +26,7 @@ public:
   void UpdateMatrices();
   void IncrementXrotation(float h);
   void IncrementYrotation(float h);
+  void IncrementZposition(float h);
 private:
   template <class T>
   void Delay(T& input, T end_val, float speed);
@@ -39,6 +40,7 @@ private:
   glm::vec3 global_translate_goal_;
   float rotate_x_goal_ = 0.0f;
   float rotate_y_goal_ = 0.0f;
+  //float translate_z_goal_ = -10.0f;
 
   glm::vec3 local_translate_ = glm::vec3(0.0f, 0.0f, 0.0f);
   glm::vec3 global_translate_ = glm::vec3(0.0f, 0.0f, 0.0f);;

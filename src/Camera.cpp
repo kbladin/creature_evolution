@@ -86,6 +86,12 @@ void Camera::IncrementXrotation(float h){
 void Camera::IncrementYrotation(float h){
   rotate_y_goal_ += h;
 }
+//! Increment the z-position of the camera
+void Camera::IncrementZposition(float h){
+  local_translate_goal_ += glm::vec3(0.0f, 0.0f, h);
+  local_translate_goal_.z = glm::clamp(local_translate_goal_.z, -100.0f, 0.0f);
+}
+
 //! Helper function for the camera
 /*!
   This function takes class like float or glm::vec3. What it does is to delay
