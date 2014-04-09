@@ -30,6 +30,7 @@ void GLWidget::initializeGL(){
   if (glewInit() != GLEW_OK) {
     fprintf(stderr, "Failed to initialize GLEW\n");
   }
+  glClearColor(0.8f, 0.8f, 1.0f, 1.0f);
 }
 
 void GLWidget::paintGL(){

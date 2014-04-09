@@ -4,7 +4,7 @@ SceneManager* SceneManager::instance_ = NULL;
 
 SceneManager::SceneManager(){
   //Fulplan!!!
-  Plane plane_shape(glm::vec3(1.0f) * 50.0f);
+  Plane plane_shape(glm::vec3(1.0f) * 100.0f);
   std::shared_ptr<Node> node_to_add(new Node());
   node_to_add->SetShape(plane_shape);
   AddNode(node_to_add);
