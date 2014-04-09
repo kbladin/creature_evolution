@@ -9,6 +9,8 @@
 #include <string>
 // Internal
 #include "Simulation.h"
+#include "Brain.h"
+#include "Body.h"
 
 //! A definition of a creature.
 
@@ -24,31 +26,21 @@ public:
     void ResetBodies();
     std::vector<btRigidBody*> GetRigidBodies();
     std::vector<btHingeConstraint*> GetJoints();
-
+    void UpdateMovement(float time);
     void SetFitness(float fitness);
     float GetFitness() const;
     void Mutate();
 
     float GetPos();
-    float GetSpeed();
 
 private:
     float fitness_;
-    // Brain brain;
-    // Body body;
-
-    void CalculateFitness();
-    void CreateDebugCreature();
+    Brain brain_;
+    Body body_;
 
     // Shit things from WormBulletCreature, will be moved later
-    btCollisionShape* m_shape_;
-    btScalar mass_;
     std::vector<btRigidBody*> m_bodies_;
     std::vector<btHingeConstraint*> m_joints_;
-    std::vector<float> genes_;
-
-    static const int parameters_ = 4;
-
 };
 
 //! Simple struct for creature comparison

@@ -48,7 +48,7 @@ void EvolutionManager::startEvolutionProcess() {
 
 		time2 = std::clock();
 
-		NextGeneration();
+        NextGeneration();
 		SimulatePopulation();
 		CalculateFitnessOnPopulation();
 		SortPopulation();
@@ -101,7 +101,7 @@ void EvolutionManager::CalculateFitnessOnPopulation() {
 
 	//normalize all creatures
     for(Creature& creature : current_population_) {
-		float fitness = creature.GetPos()/max_pos;
+        float fitness = creature.GetPos()/max_pos;
 		creature.SetFitness(fitness);
     }
 }
@@ -132,9 +132,9 @@ void EvolutionManager::NextGeneration() {
 		Creature new_creature = current_population_[int_elitism_index(rng_.mt_rng_)];
 		new_creature.Mutate();
 
-		new_population.push_back(new_creature);		
+        new_population.push_back(new_creature);
 	}
-	
+
 	current_population_ = new_population;
 }
 
