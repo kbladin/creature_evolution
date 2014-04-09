@@ -81,6 +81,7 @@ void Camera::UpdateMatrices(){
 //! Increment the x-rotation angle of the camera
 void Camera::IncrementXrotation(float h){
   rotate_x_goal_ += h;
+  rotate_x_goal_ = glm::clamp(rotate_x_goal_, 0.0f, 90.0f);
 }
 //! Increment the y-rotation angle of the camera
 void Camera::IncrementYrotation(float h){
@@ -89,7 +90,7 @@ void Camera::IncrementYrotation(float h){
 //! Increment the z-position of the camera
 void Camera::IncrementZposition(float h){
   local_translate_goal_ += glm::vec3(0.0f, 0.0f, h);
-  local_translate_goal_.z = glm::clamp(local_translate_goal_.z, -100.0f, 0.0f);
+  local_translate_goal_.z = glm::clamp(local_translate_goal_.z, -100.0f, -1.0f);
 }
 
 //! Helper function for the camera
