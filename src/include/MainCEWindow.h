@@ -1,13 +1,17 @@
 #ifndef MAINCEWINDOW_H
 #define MAINCEWINDOW_H
 
-#include <QtWidgets/QWidget>
 #include <CreatureEvolution.h>
 
 QT_BEGIN_NAMESPACE
 class QSlider;
+class QCheckBox;
+class QComboBox;
+class QGroupBox;
+class QLabel;
+class QSpinBox;
+class QStackedWidget;
 QT_END_NAMESPACE
-
 
 class GLWidget;
 
@@ -22,6 +26,8 @@ public slots:
     void testPrint();
     void startEvolution();
     void renderWorm();
+    void testChangeFun1();
+    void testChangeFun2();
 protected:
     void keyPressEvent(QKeyEvent *event);
 

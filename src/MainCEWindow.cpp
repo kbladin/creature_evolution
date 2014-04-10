@@ -2,6 +2,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
+#include <QtWidgets/QStackedWidget>
 
 #include "GLWidget.h"
 #include "MainCEWindow.h"
@@ -21,8 +22,11 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     QVBoxLayout* controlLayout = new QVBoxLayout;
     QPushButton *dummyButton = new QPushButton("Push for pleasure!");
     QPushButton *simButton = new QPushButton("Start simulation.");
+    QPushButton *testButton = new QPushButton("Change Color");
+
     controlLayout->addWidget(dummyButton);
     controlLayout->addWidget(simButton);
+    controlLayout->addWidget(testButton);
 
     mainLayout->addWidget(glWidget);
     mainLayout->addLayout(controlLayout);
@@ -33,6 +37,9 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     //connect(dummyButton,SIGNAL(clicked()), this, SLOT(testPrint()));
     connect(dummyButton,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
     connect(simButton, SIGNAL(clicked()), this, SLOT(startEvolution()));
+    connect(testButton, SIGNAL(pressed()), this, SLOT(testChangeFun1()));
+    connect(testButton, SIGNAL(released()), this, SLOT(testChangeFun2()));
+
     std::cout << "Done!" << std::endl;
 }
 
@@ -66,3 +73,12 @@ void MainCEWindow::startEvolution() {
 void MainCEWindow::renderWorm() {
 
 }
+
+void MainCEWindow::testChangeFun1() {
+    std::cout << "Hello!" << std::endl;
+}
+
+void MainCEWindow::testChangeFun2() {
+    std::cout << "Bye!" << std::endl;
+}
+
