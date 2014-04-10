@@ -18,7 +18,11 @@ class SimpleMvpShaderProgram;
 typedef std::pair<std::string, Shader*> StringShaderPair;
 typedef std::pair<std::string, ShaderProgram*> StringShaderProgPair;
 
-//! The Shader manager handles all the shaders and shader programs. This class uses the singleton pattern which makes it accessable from all around the program.
+//! The ShaderManager handles all the Shaders and ShaderPrograms.
+/*!
+  This class uses the singleton pattern which makes it accessable from all
+  around the program.
+*/
 
 class ShaderManager{
 public:
@@ -38,7 +42,7 @@ private:
   std::map<std::string, ShaderProgram*> shader_programs_;
 };
 
-//! A shader program is the result of linked shaders.
+//! A ShaderProgram is the result of linked Shaders.
 
 class ShaderProgram{
 public:
@@ -93,8 +97,11 @@ private:
   std::map<std::string, GLint> attribute_locations_;
 };
 
-//! A shader is compiled from source code in a shader file. A shader does not work by itself. They need to be compiled in to a shader program.
-
+//! A Shader is compiled from source code in a shader file.
+/*!
+ A Shader does not work by itself. They need to be compiled in to a
+ ShaderProgram.
+*/
 class Shader{
 public:
 	Shader(const char* file_path, int type);

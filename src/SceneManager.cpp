@@ -1,7 +1,28 @@
 #include "SceneManager.h"
 
+SceneManager* SceneManager::instance_ = NULL;
+
+SceneManager::SceneManager(){
+  //Fulplan!!!
+  Plane plane_shape(glm::vec3(1.0f) * 100.0f);
+  std::shared_ptr<Node> node_to_add(new Node());
+  node_to_add->SetShape(plane_shape);
+  AddNode(node_to_add);
+}
+
+SceneManager* SceneManager::Instance(){
+  if (!instance_){
+    instance_ = new SceneManager();
+  }
+  return instance_;
+}
+
 void SceneManager::SetCamera(Camera cam) {
   cam_ = cam;
+}
+
+Camera* SceneManager::GetCamera(){
+  return &cam_;
 }
 
 void SceneManager::AddNode(std::shared_ptr<Node> node_ptr) {
@@ -42,6 +63,7 @@ void SceneManager::PrintPhysicsNodes() {
 }
 
 void SceneManager::RenderNodes() {
+  cam_.UpdateMatrices();
   for(int i = 0; i  < nodelist_.size(); ++i) {
     nodelist_[i]->Render(cam_);
   }

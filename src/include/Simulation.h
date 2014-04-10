@@ -27,6 +27,7 @@ public:
 	void Simulate();
 	btDiscreteDynamicsWorld* GetDynamicsWorld();
     std::vector<btRigidBody*> GetRigidBodies();
+	BulletCreature* GetCurrentBulletCreature();
 
 private:
     Creature* creature_;

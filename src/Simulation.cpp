@@ -115,3 +115,7 @@ void Simulation::Simulate() {
 std::vector<btRigidBody*> Simulation::GetRigidBodies() {
     return bullet_creature_->GetRigidBodies();
 }
+
+BulletCreature* Simulation::GetCurrentBulletCreature() {
+	return bullet_creature_;
+}

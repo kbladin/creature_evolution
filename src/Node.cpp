@@ -34,6 +34,10 @@ PhysicsNode::PhysicsNode(btRigidBody* body) {
   rigid_body_ = body;
 }
 
+void Node::UpdateNode(){
+  SetTransform(glm::mat4(1.0f));
+}
+
 void PhysicsNode::UpdateNode() {
   btTransform transform;
 

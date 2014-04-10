@@ -8,8 +8,12 @@
 
 class Plane : public Shape {
 public:
-	Plane();
-	Plane(glm::vec3 scale);
+  Plane();
+  Plane(glm::vec3 scale);
+private:
+  void SetupVertexPositionData();
+  void SetupVertexNormalData();
+  void SetupElementData();
 };
 
 #endif // PLANE_H
