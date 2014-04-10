@@ -10,7 +10,7 @@
 int main(int argc, char **argv) {
     QApplication app(argc, argv);
 
-	SettingsManager::Instance()->setMaxGenerations(5);
+    SettingsManager::Instance()->setMaxGenerations(5);
 	SettingsManager::Instance()->setPopulationSize(5);
 	SettingsManager::Instance()->setCrossover(0.8);
 	SettingsManager::Instance()->setElitism(0.2);
