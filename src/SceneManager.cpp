@@ -63,8 +63,22 @@ void SceneManager::PrintPhysicsNodes() {
 }
 
 void SceneManager::RenderNodes() {
+  // To make sure we use the same name
+  const char* shader_name = "Basic";
+  ShaderManager::Instance()->UseProgram(shader_name);
+  ShaderManager::Instance()->GetShaderProgramFromName(
+          shader_name)->Uniform1f("light_intensity", light_.intensity);
+  ShaderManager::Instance()->GetShaderProgramFromName(
+          shader_name)->Uniform3fv("light_color", 1, &light_.color.x);
+  ShaderManager::Instance()->GetShaderProgramFromName(
+          shader_name)->Uniform3fv(
+                  "light_position_worldspace",
+                  1,
+                  &light_.position.x);
+  glUseProgram(0);
+
   cam_.UpdateMatrices();
-  for(int i = 0; i  < nodelist_.size(); ++i) {
+  for (int i = 0; i  < nodelist_.size(); ++i) {
     nodelist_[i]->Render(cam_);
   }
 }

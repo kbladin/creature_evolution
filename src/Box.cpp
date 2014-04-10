@@ -3,23 +3,25 @@
 Box::Box() {
   SetupVertexPositionData();
   SetupVertexNormalData();
+  SetupVertexUVData();
   SetupElementData();
 }
 
 Box::Box(float scale_x, float scale_y, float scale_z) {
   SetupVertexPositionData();
   SetupVertexNormalData();
+  SetupVertexUVData();
   SetupElementData();
-  for(int i = 0; i < vertex_position_data_.size(); ++i){
+  for (int i = 0; i < vertex_position_data_.size(); ++i) {
     vertex_position_data_[i].x = vertex_position_data_[i].x*scale_x;
     vertex_position_data_[i].y = vertex_position_data_[i].y*scale_y;
     vertex_position_data_[i].z = vertex_position_data_[i].z*scale_z;
   }
 }
 
-void Box::SetupVertexPositionData(){
+void Box::SetupVertexPositionData() {
   vertex_position_data_.resize(24);
-  
+
   vertex_position_data_[0] = glm::vec3(-1.0f, -1.0f, -1.0f);
   vertex_position_data_[1] = glm::vec3(1.0f, -1.0f, -1.0f);
   vertex_position_data_[2] = glm::vec3(-1.0f, 1.0f, -1.0f);
@@ -48,10 +50,10 @@ void Box::SetupVertexPositionData(){
   vertex_position_data_[20] = glm::vec3(-1.0f, 1.0f, -1.0f);
   vertex_position_data_[21] = glm::vec3(1.0f, 1.0f, -1.0f);
   vertex_position_data_[22] = glm::vec3(-1.0f, 1.0f, 1.0f);
-  vertex_position_data_[23] = glm::vec3(1.0f, 1.0f, 1.0f); 
+  vertex_position_data_[23] = glm::vec3(1.0f, 1.0f, 1.0f);
 }
 
-void Box::SetupVertexNormalData(){
+void Box::SetupVertexNormalData() {
   vertex_normal_data_.resize(24);
 
   vertex_normal_data_[0] = glm::vec3(0.0f, 0.0f, -1.0f);
@@ -85,11 +87,41 @@ void Box::SetupVertexNormalData(){
   vertex_normal_data_[23] = glm::vec3(0.0f, 1.0f, 0.0f);
 }
 
-void Box::SetupVertexUVData(){
+void Box::SetupVertexUVData() {
   vertex_uv_data_.resize(24);
+
+  vertex_uv_data_[0] = glm::vec2(1.0f, 1.0f);
+  vertex_uv_data_[1] = glm::vec2(1.0f, 2/3.0f);
+  vertex_uv_data_[2] = glm::vec2(2/3.0f, 1.0f);
+  vertex_uv_data_[3] = glm::vec2(2/3.0f, 2/3.0f);
+
+  vertex_uv_data_[4] = glm::vec2(0.0f, 1.0f);
+  vertex_uv_data_[5] = glm::vec2(0.0f, 2/3.0f);
+  vertex_uv_data_[6] = glm::vec2(1/3.0f, 1.0f);
+  vertex_uv_data_[7] = glm::vec2(1/3.0f, 2/3.0f);
+
+  vertex_uv_data_[8] = glm::vec2(1/3.0f, 1/3.0f);
+  vertex_uv_data_[9] = glm::vec2(1/3.0f, 2/3.0f);
+  vertex_uv_data_[10] = glm::vec2(0.0f, 1/3.0f);
+  vertex_uv_data_[11] = glm::vec2(0.0f, 2/3.0f);
+
+  vertex_uv_data_[12] = glm::vec2(2/3.0f, 1/3.0f);
+  vertex_uv_data_[13] = glm::vec2(2/3.0f, 2/3.0f);
+  vertex_uv_data_[14] = glm::vec2(1.0f, 1/3.0f);
+  vertex_uv_data_[15] = glm::vec2(1.0f, 2/3.0f);
+
+  vertex_uv_data_[16] = glm::vec2(1/3.0f, 1/3.0f);
+  vertex_uv_data_[17] = glm::vec2(2/3.0f, 1/3.0f);
+  vertex_uv_data_[18] = glm::vec2(1/3.0f, 2/3.0f);
+  vertex_uv_data_[19] = glm::vec2(2/3.0f, 2/3.0f);
+
+  vertex_uv_data_[20] = glm::vec2(2/3.0f, 1.0f);
+  vertex_uv_data_[21] = glm::vec2(2/3.0f, 2/3.0f);
+  vertex_uv_data_[22] = glm::vec2(1/3.0f, 1.0f);
+  vertex_uv_data_[23] = glm::vec2(1/3.0f, 2/3.0f);
 }
 
-void Box::SetupElementData(){
+void Box::SetupElementData() {
   element_data_.resize(36);
 
   element_data_[0] = 0;

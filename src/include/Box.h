@@ -6,7 +6,7 @@
 // Internal
 #include "Shape.h"
 
-//! Used in the render process. A box to render. 
+//! Used in the render process. A box to render.
 class Box : public Shape {
 public:
   Box();
@@ -18,4 +18,4 @@ private:
   void SetupElementData();
 };
 
-#endif //BOX_H
+#endif  // BOX_H

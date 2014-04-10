@@ -13,6 +13,7 @@ public:
 private:
   void SetupVertexPositionData();
   void SetupVertexNormalData();
+  void SetupVertexUVData();
   void SetupElementData();
 };
 
