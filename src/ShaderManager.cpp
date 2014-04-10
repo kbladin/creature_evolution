@@ -132,6 +132,11 @@ void ShaderManager::AddBasicShaderProgram(){
   shader_programs_[shader_program_name]->CreateUniformLocation("M");
   shader_programs_[shader_program_name]->CreateUniformLocation("V");
   shader_programs_[shader_program_name]->CreateUniformLocation("far_clipping");
+  shader_programs_[shader_program_name]->CreateUniformLocation(
+          "light_intensity");
+  shader_programs_[shader_program_name]->CreateUniformLocation("light_color");
+  shader_programs_[shader_program_name]->CreateUniformLocation(
+          "light_position_worldspace");
 }
 
 //! Used for accessing the ShaderPrograms.

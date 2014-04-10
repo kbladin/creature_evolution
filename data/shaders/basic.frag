@@ -9,15 +9,24 @@ in vec3 normal_viewspace;
 in vec3 view_direction_to_fragment_viewspace;
 in vec3 light_direction_to_fragment_viewspace;
 
+in vec2 uv;
+
+// Uniforms
+uniform float far_clipping;
+
+uniform float light_intensity;
+uniform vec3 light_color;
+uniform vec3 light_position_worldspace;
+
 // Ouput data
 out vec3 color;
 
 void main()
 {
   // Lightsource
-  vec3 light_position_worldspace = vec3(0,50,0);
-  vec3 light_color = vec3(1,1,1);
-  float light_intensity = 5000;
+  //vec3 light_position_worldspace = vec3(0,50,0);
+  //vec3 light_color = vec3(1,1,1);
+  //float light_intensity = 5000;
   
   float ambient_brightness = 0.1;
   vec3 ambient_color = vec3(1,1,1);
@@ -27,7 +36,7 @@ void main()
   float specularity = 0.5;
   float shinyness = 32;
 
-  vec3 material_diffuse_color = vec3(1,0.5,0.5);
+  vec3 material_diffuse_color = vec3(uv.x, uv.y, 0.5);
 
   // Vectors
   vec3 n = normalize(normal_viewspace);
@@ -63,7 +72,7 @@ void main()
           specularity;
 
   // Fog
-  float thickness = 0.01;
+  float thickness = 1/far_clipping;
   float invisibility = clamp(-position_viewspace.z * thickness, 0, 1);
   vec3 fog_color = vec3(0.8, 0.8, 1.0);
   vec3 fog = fog_color * invisibility;
