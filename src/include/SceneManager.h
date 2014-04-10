@@ -13,6 +13,7 @@
 #include "Node.h"
 #include "Box.h"
 #include "Creature.h"
+#include "Simulation.h"
 
 //! Handles all the scene nodes. Makes sure the Bullet world is tied to the Nodes.
 class SceneManager {
@@ -23,7 +24,7 @@ public:
   void AddNode(std::shared_ptr<Node> node);
   void PrintPhysicsNodes();
   void RenderNodes();
-  void CreateNodesFromBulletCreature(Creature creature);
+  void CreateNodesFromSimulation(Simulation* sim);
   void UpdateNodes();
 private:
   btDiscreteDynamicsWorld* physics_world_;

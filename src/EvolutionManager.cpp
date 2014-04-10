@@ -25,38 +25,26 @@ void EvolutionManager::startEvolutionProcess() {
 
 	int max_gen = SettingsManager::Instance()->GetMaxGenerations();
 	int pop_size = SettingsManager::Instance()->GetPopulationSize();
-
-	std::cout << "Generation: " << 0 << std::endl <<
-	"Simulating..." << std::endl;
+    Creature best;
 
 	// Creates a new random population
 	current_population_ = CreateRandomPopulation(pop_size);
-	SimulatePopulation();
-	CalculateFitnessOnPopulation();
-	SortPopulation();
 
-	Creature best = GetBestCreature();
-
-	// stores the first generation
-	best_creatures_.push_back(best);
-
-	std::cout << "Done! Best fitness: " << best.GetFitness() << std::endl;
-
-	for (int i = 1; i < max_gen; ++i){
+    for (int i = 0; i < max_gen; ++i){
 		std::cout << "Generation: " << i << std::endl <<
 		"Simulating..." << std::endl;
 
 		time2 = std::clock();
 
-        NextGeneration();
 		SimulatePopulation();
 		CalculateFitnessOnPopulation();
 		SortPopulation();
-		best = GetBestCreature();
 
 		// save the population and the best creatures
+        best = GetBestCreature();
 		best_creatures_.push_back(best);
-
+        std::cout << "pop " << current_population_.size() << std::endl;
+        NextGeneration();
 	}
 	std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
 }
@@ -72,7 +60,7 @@ void EvolutionManager::PrintBestFitnessValues(){
 
 //! Returns the best creature as of when this method is called
 Creature EvolutionManager::GetBestCreature() {
-	return current_population_[0];
+    return current_population_[0];
 }
 
 Creature EvolutionManager::GetBestCreatureFromLastGeneration() {
@@ -81,28 +69,20 @@ Creature EvolutionManager::GetBestCreatureFromLastGeneration() {
 
 //! Simulates all creatures in population
 void EvolutionManager::SimulatePopulation() {
-	Simulation sim_world;
+    Simulation sim_world;
 	for(int i = 0; i < current_population_.size(); ++i) {
-		sim_world.AddCreature(current_population_[i]);
-		sim_world.Simulate();
-		sim_world.RemoveCreature();
+        sim_world.AddCreature((current_population_[i]));
+        sim_world.Simulate();
+        sim_world.RemoveCreature();
 	}
 }
 
 //! Calculates fitness values for all creatures in population by 
 // looking at values stored during simulation
 void EvolutionManager::CalculateFitnessOnPopulation() {
-	float max_pos = 0.0f;
-	float max_speed = 0.0f;
-    for(Creature& creature : current_population_) {
-		if(creature.GetPos() > max_pos)
-			max_pos = creature.GetPos();
-    }
-
-	//normalize all creatures
-    for(Creature& creature : current_population_) {
-        float fitness = creature.GetPos()/max_pos;
-		creature.SetFitness(fitness);
+    for(int i = 0; i < current_population_.size(); ++i) {
+        float dist = current_population_[i].GetSimData().distance;
+        current_population_[i].SetFitness(dist);
     }
 }
 
@@ -123,7 +103,6 @@ void EvolutionManager::NextGeneration() {
 	Population new_population (&current_population_[0],
 		 &current_population_[elitism_pivot]);
 
-	new_population.resize(current_population_.size());
 	std::uniform_int_distribution<int> int_elitism_index(0, elitism_pivot);
 
 	for(int i = elitism_pivot; i < new_population.size(); ++i) {

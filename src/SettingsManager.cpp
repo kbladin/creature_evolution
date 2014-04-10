@@ -12,7 +12,7 @@ SettingsManager* SettingsManager::Instance() {
 SettingsManager::SettingsManager(){
   // set default values
   population_size_ = 10;
-  max_generations_ = 5;
+  max_generations_ = 20;
   crossover_ratio_ = 0.8;
   elitism_ratio_ = 0.2;
   mutation_ratio_ = 0.8;

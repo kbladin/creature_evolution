@@ -9,9 +9,10 @@
 #include <btBulletDynamicsCommon.h>
 // Internal
 #include "Creature.h"
+#include "BulletCreature.h"
 
 //forward declaration
-class Creature;
+//class Creature;
 
 //! Handles the simulation of the Bullet physics world.
 /*	This is used both for the evolution process and the rendering process.*/
@@ -20,14 +21,16 @@ class Simulation
 public:
 	Simulation();
 	~Simulation(void);
-	void AddCreature(Creature creature);
+    void AddCreature(Creature& creature);
 	void RemoveCreature();
 	void Step(float dt);
 	void Simulate();
 	btDiscreteDynamicsWorld* GetDynamicsWorld();
+    std::vector<btRigidBody*> GetRigidBodies();
 
 private:
-	Creature* creature_;
+    Creature* creature_;
+    BulletCreature* bullet_creature_;
 
 	btBroadphaseInterface* broad_phase_;
 	btDefaultCollisionConfiguration* collision_configuration_;
@@ -41,14 +44,9 @@ private:
 	btRigidBody* ground_rigid_body_;
 
 
-	btDefaultMotionState* fall_motion_state_;
 	btScalar mass_;
 
 	float counter_;
-};
-
-struct SimData {
-	float distance;
 };
 
 #endif // SIMULATION_H

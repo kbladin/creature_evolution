@@ -12,9 +12,13 @@
 class BulletCreature {
 public:
     BulletCreature(Creature*);
-    void UpdateMotors(const vector<float>& input);
+    ~BulletCreature(void);
+    void UpdateMotors(std::vector<float> input);
+    btVector3 GetCenterOfMass();
 
 private:
+    btCollisionShape* m_shape_;
+    btScalar mass_;
     std::vector<btRigidBody*> m_bodies_;
     std::vector<btHingeConstraint*> m_joints_;
     Creature* blueprint_;

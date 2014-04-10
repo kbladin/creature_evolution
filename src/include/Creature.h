@@ -7,10 +7,14 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <vector>
 // Internal
-#include "Simulation.h"
 #include "Brain.h"
 #include "Body.h"
+
+struct SimData {
+    float distance;
+};
 
 //! A definition of a creature.
 
@@ -22,30 +26,23 @@ public:
     Creature();
     ~Creature();
 
-    void GetBrainData(float time);
-    void ResetBodies();
-    std::vector<btRigidBody*> GetRigidBodies();
-    std::vector<btHingeConstraint*> GetJoints();
-    void UpdateMovement(float time);
+    std::vector<float> CalculateBrainOutput(std::vector<float>);
     void SetFitness(float fitness);
     float GetFitness() const;
     void Mutate();
 
-    float GetPos();
+    SimData GetSimData();
+    void SetSimdata(SimData);
 
 private:
     float fitness_;
     Brain brain_;
-    Body body_;
+    SimData simdata_;
 
-    // Shit things from WormBulletCreature, will be moved later
-    std::vector<btRigidBody*> m_bodies_;
-    std::vector<btHingeConstraint*> m_joints_;
 };
 
 //! Simple struct for creature comparison
-struct CreatureLargerThan
-{
+struct CreatureLargerThan {
     bool operator()(const Creature& c1,const Creature& c2) const {
         float c1_fitness = c1.GetFitness();
         float c2_fitness = c2.GetFitness();

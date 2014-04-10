@@ -22,9 +22,9 @@ void CreatureEvolution::StartEvolution() {
 
 
 void CreatureEvolution::LoadBestCreature() {
-	Creature best = evolution_manager_->GetBestCreatureFromLastGeneration();
-	sim_world_->AddCreature(best);
-	scene_->CreateNodesFromBulletCreature(best);
+    Creature best = evolution_manager_->GetBestCreatureFromLastGeneration();
+    sim_world_->AddCreature(best);
+    scene_->CreateNodesFromSimulation(sim_world_);
 }
 
 void CreatureEvolution::Run() {

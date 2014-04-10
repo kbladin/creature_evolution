@@ -2,9 +2,11 @@
 #define EVOLUTIONMANAGER_H
 #include <iostream>
 
-#include "Creature.h"
 #include <vector>
 #include <ctime>
+
+#include "Creature.h"
+#include "Simulation.h"
 #include "AutoInitRNG.h"
 
 
@@ -26,7 +28,7 @@ public:
 private:
 	std::vector<Creature> best_creatures_; // holds alla the best creatures from the populations
 	Population current_population_;
-	static AutoInitRNG rng_;
+    static AutoInitRNG rng_;
 	
 	Population CreateRandomPopulation(int pop_size);
 	void SimulatePopulation();

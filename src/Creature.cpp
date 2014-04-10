@@ -10,6 +10,10 @@ Creature::~Creature() {
 
 }
 
+std::vector<float> Creature::CalculateBrainOutput(std::vector<float> input) {
+    return brain_.CalculateOutput(input);
+}
+
 //! Set given fitness value on creature
 void Creature::SetFitness(float fitness) {
 	fitness_ = fitness;
@@ -26,40 +30,10 @@ void Creature::Mutate() {
 
 }
 
-//! PLACEHOLDER
-float Creature::GetPos() {
-	return 0.0f;
+SimData Creature::GetSimData() {
+    return simdata_;
 }
 
-//! PLACEHOLDER
-float Creature::GetSpeed() {
-	return 0.0f;
-}
-
-//! PLACEHOLDER
-void Creature::UpdateMovement(float time) {
-    std::vector<float> input;
-    input.push_back(time);
-    std::vector<float> signal = brain.CalculateOutput(input);
-    for(int i=0; i < m_joints_.size(); i++) {
-        m_joints_[i]->enableAngularMotor(true, 20.0*signal[i], 10.0);
-    }
-}
-
-//! PLACEHOLDER
-std::vector<btRigidBody*> Creature::GetRigidBodies() {
-	std::vector<btRigidBody*> placeholder;
-	btRigidBody* dummy_body = new btRigidBody(1.0f,NULL, NULL,btVector3(0, 0, 0));
-	placeholder.push_back(dummy_body);
-	return placeholder;
-}
-
-//! PLACEHOLDER
-std::vector<btHingeConstraint*> Creature::GetJoints() {
-	std::vector<btHingeConstraint*> placeholder;
-	return placeholder;
-}
-
-void Creature::ResetBodies() {
-	//reset all rigid bodies to zero
+void Creature::SetSimdata(SimData d) {
+    simdata_ = d;
 }
