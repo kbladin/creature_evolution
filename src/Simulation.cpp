@@ -81,6 +81,7 @@ void Simulation::RemoveCreature() {
     delete bullet_creature_;
     bullet_creature_ = NULL;
     creature_ = NULL;
+    counter_ = 0.0f;
 }
 
 //! Update the 'motors' on the creature and step the physical world.

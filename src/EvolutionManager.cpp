@@ -119,8 +119,6 @@ void EvolutionManager::NextGeneration() {
 
 	new_population.resize(current_population_.size());
 
-	int i = 0;
-
 	std::uniform_int_distribution<int> int_elitism_index(0, elitism_pivot);
 
 	Creature new_creature;
