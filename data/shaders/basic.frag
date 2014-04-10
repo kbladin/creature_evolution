@@ -22,12 +22,7 @@ uniform vec3 light_position_worldspace;
 out vec3 color;
 
 void main()
-{
-  // Lightsource
-  //vec3 light_position_worldspace = vec3(0,50,0);
-  //vec3 light_color = vec3(1,1,1);
-  //float light_intensity = 5000;
-  
+{ 
   float ambient_brightness = 0.1;
   vec3 ambient_color = vec3(1,1,1);
 

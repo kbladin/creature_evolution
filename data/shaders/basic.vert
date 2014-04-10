@@ -12,6 +12,8 @@ uniform mat4 MV;
 uniform mat4 M;
 uniform mat4 V;
 
+uniform vec3 light_position_worldspace;
+
 // Output data
 out vec3 position_worldspace;
 out vec3 position_viewspace;
@@ -37,7 +39,6 @@ void main(){
 
   position_viewspace = vec3(MV * vec4(vertexPosition_modelspace,1));
 
-  vec3 light_position_worldspace = vec3(0,50,0);
   vec3 light_position_viewspace = vec3( V * vec4(light_position_worldspace,1));
   light_direction_to_fragment_viewspace =
           view_direction_to_fragment_viewspace - light_position_viewspace;
