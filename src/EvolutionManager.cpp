@@ -78,9 +78,11 @@ Creature EvolutionManager::GetBestCreatureFromLastGeneration() {
 
 //! Simulates all creatures in population
 void EvolutionManager::SimulatePopulation() {
-    Simulation sim_world;
 	for(int i = 0; i < current_population_.size(); ++i) {
-        sim_world.AddCreature((current_population_[i]));
+    	//NOTE: Something is not being reset in the Simulation,
+    	// so just create a new world for every Creature
+    	Simulation sim_world;
+        sim_world.AddCreature(current_population_.at(i));
         sim_world.Simulate();
         sim_world.RemoveCreature();
 	}
@@ -125,9 +127,9 @@ void EvolutionManager::NextGeneration() {
     for(int i = elitism_pivot; i < current_population_.size(); i++) {
 		int random_index = int_elitism_index(rng_.mt_rng_);
 
-		new_creature = current_population_[0];
+		new_creature = current_population_[random_index];
 		
-		//new_creature.Mutate();
+		new_creature.Mutate();
 
         new_population[i] = new_creature;
 

@@ -42,6 +42,7 @@ Simulation::~Simulation(void)
 //! Adds a creature from the Evolution process to the physical world.
 void Simulation::AddCreature(Creature& creature){
     creature_ = &creature;
+    
     bullet_creature_ = new BulletCreature(creature_);
 
     std::vector<btRigidBody*> rigid_bodies = bullet_creature_->GetRigidBodies();
@@ -79,6 +80,7 @@ void Simulation::RemoveCreature() {
 
     delete bullet_creature_;
     bullet_creature_ = NULL;
+    creature_ = NULL;
 }
 
 //! Update the 'motors' on the creature and step the physical world.
