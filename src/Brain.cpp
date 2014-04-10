@@ -26,6 +26,14 @@ std::vector<float> Brain::CalculateOutput(std::vector<float> input){
 }
 
 void Brain::Mutate() {
+    std::uniform_real_distribution<float> float_mutate(0.0f, 1.0f);
+    std::uniform_int_distribution<int> weight_index(0, weights.size()-1);
     float mutation = ( ( (float)rng_.mt_rng_()/rng_.mt_rng_.max() ) - 0.5 ) * 0.6;
     weights[rng_.mt_rng_()%weights.size()] += mutation;
+
+    // for(int i = 0; i < weights.size(); ++i) {
+    //     float mutation = (float_mutate(rng_.mt_rng_) - 0.5f) * 0.6f;
+    //     weights[i] += mutation;
+    // }
+
 }

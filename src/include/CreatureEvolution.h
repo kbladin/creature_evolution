@@ -30,6 +30,7 @@ private:
 	Renderer* renderer_;
 	SceneManager* scene_;
 	EvolutionManager* evolution_manager_;
+	Creature draw_creature;
 };
 
 

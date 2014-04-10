@@ -56,5 +56,7 @@ void SceneManager::UpdateNodes() {
 void SceneManager::InitShapes() {
   for(int i = 0; i < nodelist_.size(); ++i) {
     nodelist_[i]->InitShape();
-  }   
+  }
+
+  std::cout << "Init'ed all the shapes" << std::endl;
 }

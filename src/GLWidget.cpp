@@ -83,9 +83,10 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
 }
 
 void GLWidget::enableRendering() {
-    enable_render_ = true;
     qDebug("render enabled");
     ShaderManager::Instance();
     ce_handle_->InitWorld();
+    std::cout << "GLWIDGET: Init'ed the world" << std::endl;
+    enable_render_ = true;
     
 }

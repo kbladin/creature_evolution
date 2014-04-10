@@ -25,6 +25,9 @@ public:
 	void PrintBestFitnessValues();
 	Creature GetBestCreature();
 
+    void PrintPopulation();
+
+
 private:
 	std::vector<Creature> best_creatures_; // holds alla the best creatures from the populations
 	Population current_population_;

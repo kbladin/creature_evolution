@@ -16,7 +16,7 @@ public:
     void UpdateMotors(std::vector<float> input);
     btVector3 GetCenterOfMass();
     std::vector<btRigidBody*> GetRigidBodies();
-
+    std::vector<btHingeConstraint*> GetJoints();
 private:
     btCollisionShape* m_shape_;
     btScalar mass_;

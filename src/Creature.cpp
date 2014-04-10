@@ -27,7 +27,7 @@ float Creature::GetFitness() const {
 /*! Simple mutation algorithm on creature.
  This should be extended to try more cases. */
 void Creature::Mutate() {
-
+	brain_.Mutate();
 }
 
 SimData Creature::GetSimData() {

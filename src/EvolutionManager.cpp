@@ -34,16 +34,20 @@ void EvolutionManager::startEvolutionProcess() {
     for (int i = 0; i < max_gen; ++i){
 		std::cout << "Generation: " << i << std::endl <<
         "Simulating..." << std::endl;
-
+        //PrintPopulation();
         SimulatePopulation();
         CalculateFitnessOnPopulation();
+        std::cout << "Calculated fitness on pop" << std::endl;
         SortPopulation();
+        PrintPopulation();
 
 		// save the population and the best creatures
         best = GetBestCreature();
+
         std::cout << "Best fitness: " <<best.GetFitness() << std::endl;
         best_creatures_.push_back(best);
         NextGeneration();
+
 	}
 	std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
 }
@@ -55,6 +59,12 @@ void EvolutionManager::PrintBestFitnessValues(){
 		<< best_creatures_[i].GetFitness() << std::endl;
 	}
 
+}
+
+void EvolutionManager::PrintPopulation() {
+	for(int i = 0; i < current_population_.size(); ++i) {
+		std::cout << "Creature " << i << " " << current_population_[i].GetFitness() << std::endl;
+	}
 }
 
 //! Returns the best creature as of when this method is called
@@ -74,11 +84,13 @@ void EvolutionManager::SimulatePopulation() {
         sim_world.Simulate();
         sim_world.RemoveCreature();
 	}
+
 }
 
 //! Calculates fitness values for all creatures in population by 
 // looking at values stored during simulation
 void EvolutionManager::CalculateFitnessOnPopulation() {
+
     for(int i = 0; i < current_population_.size(); ++i) {
         float dist = current_population_[i].GetSimData().distance;
         current_population_[i].SetFitness(dist);
@@ -97,23 +109,34 @@ void EvolutionManager::NextGeneration() {
 	float elitism = SettingsManager::Instance()->GetElitism();
 	float mutation = SettingsManager::Instance()->GetMutation();
 
-	int elitism_pivot = (int) (current_population_.size() * elitism);
+	int elitism_pivot = static_cast<int>(current_population_.size() * elitism);
+
 
 	Population new_population (&current_population_[0],
 		 &current_population_[elitism_pivot]);
 
+	new_population.resize(current_population_.size());
+
+	int i = 0;
+
 	std::uniform_int_distribution<int> int_elitism_index(0, elitism_pivot);
 
-    for(int i = elitism_pivot; i < current_population_.size(); ++i) {
+	Creature new_creature;
+    for(int i = elitism_pivot; i < current_population_.size(); i++) {
+		int random_index = int_elitism_index(rng_.mt_rng_);
 
+		new_creature = current_population_[0];
+		
+		//new_creature.Mutate();
 
-		Creature new_creature = current_population_[int_elitism_index(rng_.mt_rng_)];
-		new_creature.Mutate();
+        new_population[i] = new_creature;
 
-        new_population.push_back(new_creature);
 	}
 
-	current_population_ = new_population;
+	// current_population_ = new_population;
+	for(int i = 0; i < current_population_.size(); ++i) {
+		current_population_[i] = new_population[i];
+	}
 }
 
 //! Create a population with random creatures

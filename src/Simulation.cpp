@@ -37,20 +37,48 @@ Simulation::~Simulation(void)
 	delete collision_configuration_;
 	delete dispatcher_;
     delete broad_phase_;
-    RemoveCreature();
 }
 
 //! Adds a creature from the Evolution process to the physical world.
 void Simulation::AddCreature(Creature& creature){
     creature_ = &creature;
     bullet_creature_ = new BulletCreature(creature_);
+
+    std::vector<btRigidBody*> rigid_bodies = bullet_creature_->GetRigidBodies();
+	std::vector<btHingeConstraint*> joints = bullet_creature_->GetJoints();
+	
+
+	//Add bodies
+	for(int i=0; i < rigid_bodies.size(); i++){
+		dynamics_world_->addRigidBody(rigid_bodies[i]);
+
+	}
+	//Add joints
+	for(int i=0; i < joints.size(); i++){
+		dynamics_world_->addConstraint(joints[i], true);
+	}
+
 }
 
 /*! Removes the creature's rigid bodies and joints.
  Can only be called if a creature has been added.*/
 void Simulation::RemoveCreature() {
-        delete bullet_creature_;
-        bullet_creature_ = NULL;
+
+	std::vector<btRigidBody*> rigid_bodies = bullet_creature_->GetRigidBodies();
+	std::vector<btHingeConstraint*> joints = bullet_creature_->GetJoints();
+	
+
+	for(int i=0; i < rigid_bodies.size(); i++){
+		dynamics_world_->removeRigidBody(rigid_bodies[i]);
+
+	}
+	//Add joints
+	for(int i=0; i < joints.size(); i++){
+		dynamics_world_->removeConstraint(joints[i]);
+	}
+
+    delete bullet_creature_;
+    bullet_creature_ = NULL;
 }
 
 //! Update the 'motors' on the creature and step the physical world.
@@ -60,9 +88,6 @@ void Simulation::Step(float dt)
     bullet_creature_->UpdateMotors(input);
     dynamics_world_->stepSimulation(dt,1000);
     counter_ += dt;
-	dynamics_world_->stepSimulation(dt,1000);
-	counter_ += dt;
-	
 }
 
 //! Returns the current btDiscreteDynamicsWorld pointer
@@ -80,7 +105,7 @@ void Simulation::Simulate() {
 
 	}
     SimData d;
-    d.distance = bullet_creature_->GetCenterOfMass().getX();
+    d.distance = bullet_creature_->GetCenterOfMass().getZ();
     creature_->SetSimData(d);
 }
 

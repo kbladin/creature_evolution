@@ -22,9 +22,11 @@ void CreatureEvolution::StartEvolution() {
 
 
 void CreatureEvolution::LoadBestCreature() {
-    Creature best = evolution_manager_->GetBestCreatureFromLastGeneration();
-    sim_world_->AddCreature(best);
+    draw_creature = evolution_manager_->GetBestCreatureFromLastGeneration();
+    std::cout << "Best Creature: " << draw_creature.GetFitness() << std::endl;
+    sim_world_->AddCreature(draw_creature);
     scene_->CreateNodesFromSimulation(sim_world_);
+    std::cout << "Created nodes from creature" << std::endl;
 }
 
 void CreatureEvolution::Run() {
