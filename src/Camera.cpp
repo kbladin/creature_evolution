@@ -5,11 +5,15 @@
   The default camera is located at (-10,3,0) and looks at (0,1,0).
 */
 Camera::Camera() {
-  projection_ = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
-  //create default camera
-  view_ = glm::lookAt(glm::vec3(-10,3,0),
-                      glm::vec3(0,0,0),
-                      glm::vec3(0,1,0));	
+  projection_ = glm::perspective(
+          45.0f,
+          4.0f / 3.0f,
+          near_clipping_,
+          far_clipping_);
+  // create default camera
+  view_ = glm::lookAt(glm::vec3(-10 , 3, 0),
+                      glm::vec3(0, 0, 0),
+                      glm::vec3(0, 1, 0));
 }
 //! Constructor that creates a camera from input matrices
 /*!
@@ -30,6 +34,10 @@ glm::mat4 Camera::GetProjectionMatrix(){
   return projection_;
 }
 
+float Camera::GetFarClipping() {
+  return far_clipping_;
+}
+
 void Camera::SetTarget(WormBulletCreature* target){
   target_ = target;
 }
@@ -45,14 +53,14 @@ void Camera::UpdateMatrices(){
   if (target_){
     // Delay the signals
     float camera_speed = 0.1f;
-    Delay(local_translate_, local_translate_goal_, camera_speed);
-    Delay(rotate_x_, rotate_x_goal_, camera_speed);
-    Delay(rotate_y_, rotate_y_goal_, camera_speed);
+    Delay(&local_translate_, local_translate_goal_, camera_speed);
+    Delay(&rotate_x_, rotate_x_goal_, camera_speed);
+    Delay(&rotate_y_, rotate_y_goal_, camera_speed);
     global_translate_goal_ = glm::vec3(
             -target_->GetCenterOfMass().x(),
             -target_->GetCenterOfMass().y(),
             -target_->GetCenterOfMass().z());
-    Delay(global_translate_, global_translate_goal_, camera_speed);
+    Delay(&global_translate_, global_translate_goal_, camera_speed);
 
     // Create the matrices
     glm::mat4 local_translate_mat = glm::translate(local_translate_);
@@ -70,27 +78,30 @@ void Camera::UpdateMatrices(){
             local_translate_mat *
             rotate_x_mat *
             rotate_y_mat *
-            global_translate_mat; 
+            global_translate_mat;
   }
   int width = SettingsManager::Instance()->GetFrameWidth();
   int height = SettingsManager::Instance()->GetFrameHeight();
-  float aspect = width/(float)height;
+  float aspect = width / static_cast<float>(height);
   // Update the projection matrix
-  projection_ = glm::perspective(45.0f, aspect, 0.1f, 100.0f);
+  projection_ = glm::perspective(45.0f, aspect, near_clipping_, far_clipping_);
 }
 //! Increment the x-rotation angle of the camera
-void Camera::IncrementXrotation(float h){
+void Camera::IncrementXrotation(float h) {
   rotate_x_goal_ += h;
   rotate_x_goal_ = glm::clamp(rotate_x_goal_, 0.0f, 90.0f);
 }
 //! Increment the y-rotation angle of the camera
-void Camera::IncrementYrotation(float h){
+void Camera::IncrementYrotation(float h) {
   rotate_y_goal_ += h;
 }
 //! Increment the z-position of the camera
-void Camera::IncrementZposition(float h){
+void Camera::IncrementZposition(float h) {
   local_translate_goal_ += glm::vec3(0.0f, 0.0f, h);
-  local_translate_goal_.z = glm::clamp(local_translate_goal_.z, -100.0f, -1.0f);
+  local_translate_goal_.z = glm::clamp(
+          local_translate_goal_.z,
+          -far_clipping_,
+          -near_clipping_);
 }
 
 //! Helper function for the camera
@@ -105,10 +116,10 @@ void Camera::IncrementZposition(float h){
   Speed should be between 0 and 1 and is otherwise clamped.
 */
 template <class T>
-void Camera::Delay(T& input, T end_val, float speed){
-  if (speed < 0.0f && speed > 1.0f){
+void Camera::Delay(T* input, T end_val, float speed) {
+  if (speed < 0.0f && speed > 1.0f) {
     speed = glm::clamp(speed, 0.0f, 1.0f);
     std::cout << "WARNING: clamping speed between 0.0 and 1.0" << std::endl;
   }
-  input = (end_val - input) * speed + input;
+  *input = (end_val - *input) * speed + *input;
 }

@@ -15,6 +15,12 @@
 #include "Box.h"
 #include "WormBulletCreature.h"
 
+struct LightSource {
+  float intensity = 5000.0f;
+  glm::vec3 position = glm::vec3(0.0f, 40.0f, 0.0f);
+  glm::vec3 direction = glm::vec3(0.0f, -1.0f, 0.0f);
+};
+
 //! 
 class SceneManager {
 public:

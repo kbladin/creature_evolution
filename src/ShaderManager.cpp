@@ -13,9 +13,9 @@ ShaderManager* ShaderManager::instance_ = NULL;
  \return The one instance of the ShaderManager
  */
 ShaderManager* ShaderManager::Instance() {
-	if (!instance_) // only allow one instance of class to be generated
-		instance_ = new ShaderManager();
-	return instance_;
+  if (!instance_)  // only allow one instance of class to be generated
+    instance_ = new ShaderManager();
+  return instance_;
 }
 
 //! ShaderManager constructor.
@@ -25,7 +25,7 @@ ShaderManager* ShaderManager::Instance() {
  These use the shaders added in the previous call.
 */
 
-ShaderManager::ShaderManager(){
+ShaderManager::ShaderManager() {
   AddAllShaders();
   AddSimpleMvpShaderProgram();
   AddBasicShaderProgram();
@@ -36,7 +36,7 @@ ShaderManager::ShaderManager(){
  First, all Shaders are deleted, then all ShaderPrograms.
 */
 
-ShaderManager::~ShaderManager(){
+ShaderManager::~ShaderManager() {
   //Delete shaders
   std::map<std::string, Shader*>::iterator shader_iter = shaders_.begin();
   while (shader_iter != shaders_.end()) {
@@ -58,7 +58,7 @@ ShaderManager::~ShaderManager(){
  created (compiled) and then they are put in the std::map of Shaders.
 */
 
-void ShaderManager::AddAllShaders(){
+void ShaderManager::AddAllShaders() {
   // Create shaders
   Shader* simple_mvp_vert = new Shader(
       "data/shaders/mvp.vert",
@@ -131,6 +131,7 @@ void ShaderManager::AddBasicShaderProgram(){
   shader_programs_[shader_program_name]->CreateUniformLocation("MV");
   shader_programs_[shader_program_name]->CreateUniformLocation("M");
   shader_programs_[shader_program_name]->CreateUniformLocation("V");
+  shader_programs_[shader_program_name]->CreateUniformLocation("far_clipping");
 }
 
 //! Used for accessing the ShaderPrograms.
@@ -140,7 +141,7 @@ void ShaderManager::AddBasicShaderProgram(){
 \return A pointer to the corresponding ShaderProgram
 */
 
-ShaderProgram* ShaderManager::GetShaderProgramFromName(const char* name){
+ShaderProgram* ShaderManager::GetShaderProgramFromName(const char* name) {
   return shader_programs_[name];
 }
 
@@ -151,7 +152,7 @@ ShaderProgram* ShaderManager::GetShaderProgramFromName(const char* name){
  \param The name key of the ShaderProgram to bind.
  */
 
-void ShaderManager::UseProgram(const char* name){
+void ShaderManager::UseProgram(const char* name) {
   glUseProgram(shader_programs_[name]->getID());
 }
 
@@ -161,7 +162,7 @@ void ShaderManager::UseProgram(const char* name){
  program (0)
 */
 
-void ShaderManager::UnbindCurrentShader(){
+void ShaderManager::UnbindCurrentShader() {
   glUseProgram(0);
 }
 
@@ -180,8 +181,8 @@ void ShaderManager::UnbindCurrentShader(){
 ShaderProgram::ShaderProgram(Shader* vertex_shader,
                              Shader* fragment_shader,
                              Shader* geometry_shader,
-                             Shader* tesselation_shader){
-  if(vertex_shader == NULL || fragment_shader == NULL){
+                             Shader* tesselation_shader) {
+  if (vertex_shader == NULL || fragment_shader == NULL) {
     program_id_ = 0;
     std::cout << "ERROR: ShaderProgram could not be created. " <<
         "Vertex shader and fragment shader are required!" << std::endl;
@@ -189,11 +190,11 @@ ShaderProgram::ShaderProgram(Shader* vertex_shader,
   }
 
   // Link the program
-	printf("Linking ShaderProgram\n");
-	program_id_ = glCreateProgram();
+  printf("Linking ShaderProgram\n");
+  program_id_ = glCreateProgram();
 
   GLint result = GL_FALSE;
-	int info_log_length;
+  int info_log_length;
 
   if (vertex_shader) {
     glAttachShader(program_id_, vertex_shader->GetShaderId());
