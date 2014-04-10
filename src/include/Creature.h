@@ -32,7 +32,7 @@ public:
     void Mutate();
 
     SimData GetSimData();
-    void SetSimdata(SimData);
+    void SetSimData(SimData);
 
 private:
     float fitness_;

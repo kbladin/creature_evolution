@@ -17,7 +17,7 @@ CreatureEvolution::~CreatureEvolution() {
 }
 
 void CreatureEvolution::StartEvolution() {
-	evolution_manager_->startEvolutionProcess(); // start the whole evolution process! 
+    evolution_manager_->startEvolutionProcess(); // start the whole evolution process!
 }
 
 

@@ -17,6 +17,9 @@ BulletCreature::BulletCreature(Creature* blueprint) {
 
     btDefaultMotionState* motion_state;
     btTransform transform;
+
+    m_bodies_.resize(6);
+    m_joints_.resize(5);
     for(int i=0; i < m_bodies_.size(); i++) {
         transform.setIdentity();
         transform.setOrigin(btVector3(btScalar(0.), btScalar(0.0), btScalar(i*scale*2)));
@@ -66,14 +69,16 @@ void BulletCreature::UpdateMotors(std::vector<float> input) {
 
 btVector3 BulletCreature::GetCenterOfMass(){
     btVector3 center_of_mass = btVector3(0.0,0.0,0.0);
-    for(int i=0; i < m_bodies_.size(); i++)
-    {
+    for(int i=0; i < m_bodies_.size(); i++) {
         btTransform trans;
         m_bodies_[i]->getMotionState()->getWorldTransform(trans);
-
         center_of_mass += trans.getOrigin();
     }
     center_of_mass /= m_bodies_.size();
 
     return center_of_mass;
+}
+
+std::vector<btRigidBody*> BulletCreature::GetRigidBodies() {
+    return m_bodies_;
 }

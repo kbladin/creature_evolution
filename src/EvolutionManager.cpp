@@ -20,11 +20,12 @@ EvolutionManager::~EvolutionManager(void){
 	the population to a new generation until max generation.
 */
 void EvolutionManager::startEvolutionProcess() {
-	std::clock_t start_time, time2;
+    std::clock_t start_time;
 	start_time = std::clock();
 
 	int max_gen = SettingsManager::Instance()->GetMaxGenerations();
 	int pop_size = SettingsManager::Instance()->GetPopulationSize();
+    std::cout << "max_gen" << max_gen << std::endl;
     Creature best;
 
 	// Creates a new random population
@@ -32,18 +33,16 @@ void EvolutionManager::startEvolutionProcess() {
 
     for (int i = 0; i < max_gen; ++i){
 		std::cout << "Generation: " << i << std::endl <<
-		"Simulating..." << std::endl;
+        "Simulating..." << std::endl;
 
-		time2 = std::clock();
-
-		SimulatePopulation();
-		CalculateFitnessOnPopulation();
-		SortPopulation();
+        SimulatePopulation();
+        CalculateFitnessOnPopulation();
+        SortPopulation();
 
 		// save the population and the best creatures
         best = GetBestCreature();
-		best_creatures_.push_back(best);
-        std::cout << "pop " << current_population_.size() << std::endl;
+        std::cout << "Best fitness: " <<best.GetFitness() << std::endl;
+        best_creatures_.push_back(best);
         NextGeneration();
 	}
 	std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
@@ -105,7 +104,7 @@ void EvolutionManager::NextGeneration() {
 
 	std::uniform_int_distribution<int> int_elitism_index(0, elitism_pivot);
 
-	for(int i = elitism_pivot; i < new_population.size(); ++i) {
+    for(int i = elitism_pivot; i < current_population_.size(); ++i) {
 
 
 		Creature new_creature = current_population_[int_elitism_index(rng_.mt_rng_)];

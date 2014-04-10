@@ -34,6 +34,6 @@ SimData Creature::GetSimData() {
     return simdata_;
 }
 
-void Creature::SetSimdata(SimData d) {
+void Creature::SetSimData(SimData d) {
     simdata_ = d;
 }

@@ -15,6 +15,7 @@ public:
     ~BulletCreature(void);
     void UpdateMotors(std::vector<float> input);
     btVector3 GetCenterOfMass();
+    std::vector<btRigidBody*> GetRigidBodies();
 
 private:
     btCollisionShape* m_shape_;

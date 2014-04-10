@@ -1,6 +1,5 @@
 #include "Simulation.h"
 
-
 //! Setup a default physics world with an infinite ground plane.
 Simulation::Simulation()
 {
@@ -80,11 +79,11 @@ void Simulation::Simulate() {
         Step(1/float(fps));
 
 	}
+    SimData d;
+    d.distance = bullet_creature_->GetCenterOfMass().getX();
+    creature_->SetSimData(d);
 }
 
 std::vector<btRigidBody*> Simulation::GetRigidBodies() {
-    std::vector<btRigidBody*> placeholder;
-    btRigidBody* dummy_body = new btRigidBody(1.0f,NULL, NULL,btVector3(0, 0, 0));
-    placeholder.push_back(dummy_body);
-    return placeholder;
+    return bullet_creature_->GetRigidBodies();
 }
