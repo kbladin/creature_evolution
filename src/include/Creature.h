@@ -11,6 +11,9 @@
 // Internal
 #include "Brain.h"
 #include "Body.h"
+#include "AutoInitRNG.h"
+#include "SettingsManager.h"
+
 
 struct SimData {
     float distance;
@@ -29,15 +32,20 @@ public:
     std::vector<float> CalculateBrainOutput(std::vector<float>);
     void SetFitness(float fitness);
     float GetFitness() const;
+    Brain GetBrain();
     void Mutate();
 
     SimData GetSimData();
     void SetSimData(SimData);
 
+    std::vector<Creature> Crossover(Creature mate);
+
 private:
     float fitness_;
     Brain brain_;
     SimData simdata_;
+
+    static AutoInitRNG rng_;
 
 };
 
