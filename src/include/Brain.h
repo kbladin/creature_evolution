@@ -20,7 +20,7 @@ public:
 
 private:
   std::vector<float> weights;
-  AutoInitRNG rng_;
+  static AutoInitRNG rng_;
 };
 
 #endif //BRAIN_H
