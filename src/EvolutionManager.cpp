@@ -123,14 +123,18 @@ void EvolutionManager::NextGeneration() {
 	std::uniform_int_distribution<int> int_elitism_index(0, elitism_pivot);
 
 	Creature new_creature;
-    for(int i = elitism_pivot; i < current_population_.size(); i++) {
+    for(int i = elitism_pivot; i < current_population_.size() - 1; i++) {
 		int random_index = int_elitism_index(rng_.mt_rng_);
 
-		new_creature = current_population_[random_index];
-		
-		new_creature.Mutate();
+		std::vector<Creature> parents = TournamentSelection();
+		std::vector<Creature> new_creatures = parents[0].Crossover(parents[1]);
 
-        new_population[i] = new_creature;
+		new_creatures[0].Mutate();
+		new_creatures[1].Mutate();
+
+        new_population[i] = new_creatures[0];
+        new_population[i+1] = new_creatures[1];
+        // TODO: kan bara ha jämnt antal creatures i en population nu
 
 	}
 
@@ -138,6 +142,28 @@ void EvolutionManager::NextGeneration() {
 	for(int i = 0; i < current_population_.size(); ++i) {
 		current_population_[i] = new_population[i];
 	}
+}
+
+
+std::vector<Creature> EvolutionManager::TournamentSelection() {
+	int TOURNAMENT_SIZE = 3;
+	std::vector<Creature> parents;
+	parents.resize(2);
+	std::uniform_int_distribution<int> int_dist_index_(0,
+						current_population_.size()-1);
+
+	for (int i = 0; i < 2; ++i) {
+		parents[i] = current_population_[int_dist_index_(rng_.mt_rng_)];
+		for (int j = 0; j < TOURNAMENT_SIZE; ++j) {
+			int idx = int_dist_index_(rng_.mt_rng_);
+			if(current_population_[idx].GetFitness() > 
+										parents[i].GetFitness()) {
+				parents[i] = current_population_[idx];
+			}
+		}
+	}
+
+	return parents;
 }
 
 //! Create a population with random creatures

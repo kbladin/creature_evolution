@@ -42,3 +42,35 @@ void Brain::Mutate() {
     }
 
 }
+
+std::vector<float> Brain::GetWeights(){
+    return weights;
+}
+
+std::vector<Brain> Brain::Crossover(Brain mate){
+    std::vector<Brain> children;
+    children.resize(2);
+
+    // get two pivot points
+    std::uniform_int_distribution<int> dist_index_first(0,weights.size()-1);
+    //std::uniform_int_distribution<int> dist_index_second(0,mate.GetWeights().size()-1);
+    int pivot_point_first = dist_index_first(rng_.mt_rng_);
+    //int pivot_point_second = dist_index_second(rng_.mt_rng_);
+
+    // TODO: change so not use for-loops!!
+    for(int i=0; i<pivot_point_first; i++)
+        children[0].weights[i] = weights[i];
+    for(int j=pivot_point_first; j<weights.size(); j++)
+        children[0].weights[j] = mate.GetWeights()[j];
+    for(int i=0; i<pivot_point_first; i++)
+        children[1].weights[i] = mate.GetWeights()[i];
+    for(int j=pivot_point_first; j<weights.size(); j++)
+        children[1].weights[j] = weights[j];
+
+
+    // TODO: use crossover-ratio. if should be done or not.
+
+
+    return children;
+}
+

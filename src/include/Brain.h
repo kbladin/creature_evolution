@@ -15,6 +15,9 @@ public:
   virtual std::vector<float> CalculateOutput(std::vector<float> input);
   virtual void Mutate();
 
+  std::vector<float> GetWeights();
+  std::vector<Brain> Crossover(Brain mate);
+
 private:
   std::vector<float> weights;
   AutoInitRNG rng_;
