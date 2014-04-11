@@ -89,7 +89,9 @@ void Camera::UpdateMatrices(){
 //! Increment the x-rotation angle of the camera
 void Camera::IncrementXrotation(float h) {
   rotate_x_goal_ += h;
-  rotate_x_goal_ = glm::clamp(rotate_x_goal_, 0.0f, 90.0f);
+  rotate_x_goal_ = glm::clamp(
+          rotate_x_goal_,
+          0.0f, static_cast<float>(M_PI) / 2.0f);
 }
 //! Increment the y-rotation angle of the camera
 void Camera::IncrementYrotation(float h) {

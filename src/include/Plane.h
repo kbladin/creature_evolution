@@ -2,6 +2,7 @@
 #define PLANE_H
 
 // External
+#define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 // Internal
 #include "Shape.h"

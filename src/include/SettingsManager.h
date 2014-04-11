@@ -4,6 +4,7 @@
 //C++
 #include <iostream>
 // External
+#define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 
 //! Class to handle all the settings in the program. Can only instance one SettingsManager-class in the whole program. 
@@ -42,7 +43,7 @@ private:
   // Render settings
   int frame_width_;
   int frame_height_;
-  float rotation_sensitivity_ = 360.0f; //will result in half a round on a
+  float rotation_sensitivity_ = M_PI * 2.0f; //will result in half a round on a
   // retina sceen and one round on a normal screen when moving mouse from one
   // side to the other.
 
