@@ -35,7 +35,7 @@ void main(){
   view_direction_to_fragment_viewspace =
           vec3(0,0,0) + vertex_position_viewspace;
 
-  //position_modelspace = vertexPosition_modelspace;
+  position_modelspace = vertexPosition_modelspace;
 
   position_viewspace = vec3(MV * vec4(vertexPosition_modelspace,1));
 

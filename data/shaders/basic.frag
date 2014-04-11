@@ -31,7 +31,7 @@ void main()
   float specularity = 0.5;
   float shinyness = 32;
 
-  vec3 material_diffuse_color = vec3(uv.x, uv.y, 0.5);
+  vec3 material_diffuse_color = vec3(int(position_modelspace.x)%2 / 4.0 + 0.5, int(position_modelspace.z)%2 / 4.0 + 0.5, 1.0); // vec3(uv.x, uv.y, 0.5);
 
   // Vectors
   vec3 n = normalize(normal_viewspace);
