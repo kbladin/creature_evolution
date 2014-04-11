@@ -36,8 +36,7 @@ void Creature::Mutate() {
 	//TODO: if the mutation should be done or not depending on the ratio
 	std::uniform_real_distribution<float> int_dist(0.0f,1.0f);
 	double should_mutate = int_dist(rng_.mt_rng_);
-	if( SettingsManager::Instance()->GetMutation() <= should_mutate) {
-		std::cout << "muterar" << std::endl;
+	if( SettingsManager::Instance()->GetMutation() >= should_mutate) {
 		brain_.Mutate();
 	}
 }
@@ -61,7 +60,7 @@ std::vector<Creature> Creature::Crossover(Creature mate){
 	double should_crossover = int_dist(rng_.mt_rng_);
 	SettingsManager::Instance()->GetCrossover();
 
-	if(SettingsManager::Instance()->GetCrossover() <= should_crossover) {
+	if(SettingsManager::Instance()->GetCrossover() >= should_crossover) {
 	// TODO: if crossover should be done, else return the incomming creatures
 		childrens_brain = brain_.Crossover(mate.GetBrain());
 		children[0].brain_ = childrens_brain[0];

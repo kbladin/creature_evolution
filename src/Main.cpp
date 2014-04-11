@@ -10,8 +10,8 @@
 int main(int argc, char **argv) {
     QApplication app(argc, argv);
 
-    SettingsManager::Instance()->SetMaxGenerations(10);
-    SettingsManager::Instance()->SetPopulationSize(20);
+    SettingsManager::Instance()->SetMaxGenerations(30);
+    SettingsManager::Instance()->SetPopulationSize(30);
 	SettingsManager::Instance()->SetCrossover(0.8f);
 	SettingsManager::Instance()->SetElitism(0.2f);
 	SettingsManager::Instance()->SetMutation(0.8f);
