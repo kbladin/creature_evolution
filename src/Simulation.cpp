@@ -87,7 +87,7 @@ void Simulation::RemoveCreature() {
 //! Update the 'motors' on the creature and step the physical world.
 void Simulation::Step(float dt)
 {
-    std::vector<float> input(1,counter_);
+    std::vector<float> input(1,counter_*5);
     bullet_creature_->UpdateMotors(input);
     dynamics_world_->stepSimulation(dt,1000);
     counter_ += dt;
@@ -101,13 +101,19 @@ btDiscreteDynamicsWorld* Simulation::GetDynamicsWorld()
 
 //! Starts the simulation process with a predetermined fps and time.
 void Simulation::Simulate() {
+	float height = 0.0f;
     int fps = 30;
     int n_seconds = 60;
     for (int i = 0; i < fps*n_seconds; ++i){
         Step(1/float(fps));
-
+        
 	}
     SimData d;
+    // btTransform trans;
+    // bullet_creature_->GetHead()->getMotionState()->getWorldTransform(trans);
+    // height = trans.getOrigin().getY();
+    // d.distance = height;
+
     d.distance = bullet_creature_->GetCenterOfMass().getZ();
     creature_->SetSimData(d);
 }

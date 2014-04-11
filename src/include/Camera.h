@@ -2,9 +2,11 @@
 #define CAMERA_H
 
 // External
+#ifndef Q_MOC_RUN
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
+#endif
 // Internal
 #include "BulletCreature.h"
 #include "SettingsManager.h"

@@ -17,6 +17,8 @@ public:
     btVector3 GetCenterOfMass();
     std::vector<btRigidBody*> GetRigidBodies();
     std::vector<btHingeConstraint*> GetJoints();
+    btRigidBody* GetHead();
+
 private:
     btCollisionShape* m_shape_;
     btScalar mass_;

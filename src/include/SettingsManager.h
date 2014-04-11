@@ -4,8 +4,10 @@
 //C++
 #include <iostream>
 // External
+#ifndef Q_MOC_RUN
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
+#endif
 
 //! Class to handle all the settings in the program. Can only instance one SettingsManager-class in the whole program. 
 class SettingsManager {

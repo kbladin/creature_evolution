@@ -6,10 +6,12 @@
 #include <iostream>
 // External
 #include <GL/glew.h>
+#ifndef Q_MOC_RUN
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #include <glm/gtx/string_cast.hpp>
 #include <glm/ext.hpp>
+#endif
 // Internal
 #include "Camera.h"
 #include "ShaderManager.h"

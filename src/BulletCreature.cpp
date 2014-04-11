@@ -64,7 +64,7 @@ void BulletCreature::UpdateMotors(std::vector<float> input) {
     std::vector<float> signal = blueprint_->CalculateBrainOutput(input);
 
     for(int i=0; i < m_joints_.size(); i++) {
-        m_joints_[i]->enableAngularMotor(true, 20.0*signal[i], 10.0);
+        m_joints_[i]->enableAngularMotor(true, 20.0*signal[i], 5.0);
     }
 }
 
@@ -86,4 +86,8 @@ std::vector<btRigidBody*> BulletCreature::GetRigidBodies() {
 
 std::vector<btHingeConstraint*> BulletCreature::GetJoints() {
     return m_joints_;
+}
+
+btRigidBody* BulletCreature::GetHead() {
+    return m_bodies_[0];
 }
