@@ -1,5 +1,7 @@
 #include "Brain.h"
 
+AutoInitRNG Brain::rng_;
+
 Brain::Brain() {
     std::uniform_real_distribution<float> float_mutate(-1.0f, 1.0f);
 
