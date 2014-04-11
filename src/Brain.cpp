@@ -5,7 +5,7 @@ AutoInitRNG Brain::rng_;
 Brain::Brain() {
     std::uniform_real_distribution<float> float_mutate(-1.0f, 1.0f);
 
-    for(int i=0; i<5; i++) {
+    for(int i=0; i<(5*3); i++) {
         float w = (float_mutate(rng_.mt_rng_));
         weights.push_back(w);
     }
@@ -22,8 +22,11 @@ void Brain::ResizeOutput(int n){
 std::vector<float> Brain::CalculateOutput(std::vector<float> input){
     float in = input.front();
     std::vector<float> output;
-    for(int i=0; i<weights.size(); i++) {
-        float out = sin(in+weights[i]*6.3);
+    for(int i=0; i<(weights.size() / 3); i++) {
+        float freq = pow(2, ceil(log(abs(1 / weights[i*3]) + 0.001f)/log(2)));  // 1,2,4,8...
+        float amp = weights[i*3+1];
+        float phase = weights[i*3+2]*M_PI*2;
+        float out = amp * sin(freq*in + phase);
         output.push_back(out);
     }
     return output;
@@ -41,6 +44,7 @@ void Brain::Mutate() {
 
     for(int i = 0; i < weights.size(); ++i) {
         weights[i] += mutation;
+        weights[i] = (weights[i] < -1.0f) ? -1.0f : ((weights[i] > 1.0f) ? 1.0f : weights[i]);
     }
 
 }
