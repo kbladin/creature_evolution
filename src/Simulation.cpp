@@ -1,4 +1,6 @@
 #include "Simulation.h"
+#include <chrono>
+#include <ctime>
 
 //! Setup a default physics world with an infinite ground plane.
 Simulation::Simulation()
@@ -89,7 +91,7 @@ void Simulation::Step(float dt)
 {
     std::vector<float> input(1,counter_*5);
     bullet_creature_->UpdateMotors(input);
-    dynamics_world_->stepSimulation(dt,1000);
+    dynamics_world_->stepSimulation(dt,1);
     counter_ += dt;
 }
 
@@ -104,16 +106,13 @@ void Simulation::Simulate() {
 	float height = 0.0f;
     int fps = 30;
     int n_seconds = 60;
-    for (int i = 0; i < fps*n_seconds; ++i){
-        Step(1/float(fps));
-        
-	}
-    SimData d;
-    // btTransform trans;
-    // bullet_creature_->GetHead()->getMotionState()->getWorldTransform(trans);
-    // height = trans.getOrigin().getY();
-    // d.distance = height;
 
+    for (int i = 0; i < fps*n_seconds; ++i){
+        Step(1.0f/(float) fps);
+	}
+
+    SimData d;
+    
     d.distance = bullet_creature_->GetCenterOfMass().getZ();
     creature_->SetSimData(d);
 }
