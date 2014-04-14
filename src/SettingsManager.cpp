@@ -10,9 +10,11 @@ SettingsManager* SettingsManager::Instance() {
 
 //! Constructor
 SettingsManager::SettingsManager(){
+
+    rotation_sensitivity_ = M_PI * 2.0f;
   // set default values
   population_size_ = 10;
-  max_generations_ = 5;
+  max_generations_ = 20;
   crossover_ratio_ = 0.8;
   elitism_ratio_ = 0.2;
   mutation_ratio_ = 0.8;
@@ -38,7 +40,15 @@ float SettingsManager::GetElitism(){
 float SettingsManager::GetMutation(){
   return mutation_ratio_;
 }
-
+int SettingsManager::GetFrameWidth(){
+  return frame_width_;
+}
+int SettingsManager::GetFrameHeight(){
+  return frame_height_;
+}
+float SettingsManager::GetRotationSensitivity(){
+  return rotation_sensitivity_;
+}
 // where should the control of all the variables lie?
 // ex not smaller than 0 and some variables must med 0->1.
 void SettingsManager::SetPopulationSize(int population_size){
@@ -83,4 +93,13 @@ void SettingsManager::SetMutation(float mutation_ratio){
   }
   else
     mutation_ratio_ = mutation_ratio;
+}
+void SettingsManager::SetFrameWidth(int frame_width){
+  frame_width_ = frame_width;
+}
+void SettingsManager::SetFrameHeight(int frame_height){
+  frame_height_ = frame_height;
+}
+void SettingsManager::SetRotationSensitivity(float sense){
+  rotation_sensitivity_ = sense;
 }

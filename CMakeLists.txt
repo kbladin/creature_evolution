@@ -46,7 +46,7 @@ find_package(GLEW REQUIRED)
 
 # linux is not playing along nicely, so fuck it, just include the system default
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-  find_package(GLM REQUIRED)
+#  find_package(GLM REQUIRED)
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 
@@ -69,10 +69,10 @@ include_directories(${BULLET_INCLUDE_DIR})
 include_directories(${GLEW_INCLUDE_DIRS})
 # fuck it, just include default glm for linux
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-  include_directories(${GLM_INCLUDE_DIRS})
+#  include_directories(${GLM_INCLUDE_DIRS})
 ELSE(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-  include_directories(${CMAKE_SOURCE_DIR}/external_libs/glm)
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+include_directories(${CMAKE_SOURCE_DIR}/external_libs/glm)
 
 
 #Linux magic

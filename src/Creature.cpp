@@ -1,81 +1,80 @@
 #include "Creature.h"
-#include <ctime>
 
 AutoInitRNG Creature::rng_;
 
-//! Constructor that creates a Creature based on the chromosome input.
-/*! Calculates the fitness value that the creature has.
-	\param chromosome The creature that will be created. 
-*/
-Creature::Creature(Chromosome chromosome) : 
-	chromosome_(chromosome) ,
-	fitness_(CalculateFitness(chromosome_)){}
+//! Default constructor creates a random creature.
+Creature::Creature() {
+	fitness_ = -1.0f;
+}
 
-//! A constructor that creates a random creature. 
-Creature::Creature() : 
-	chromosome_(Chromosome()) ,
-	fitness_(CalculateFitness(chromosome_)) {}
+//! Destructor. Deletes all rigid bodies etc
+Creature::~Creature() {
 
-//! Return the chromosome
-Chromosome Creature::GetChromosome() const{
-	return chromosome_;
+}
+
+std::vector<float> Creature::CalculateBrainOutput(std::vector<float> input) {
+    return brain_.CalculateOutput(input);
+}
+
+//! Set given fitness value on creature
+void Creature::SetFitness(float fitness) {
+	fitness_ = fitness;
 }
 
 //! Return the fitnessvalue for the creature
-float Creature::GetFitness() const{
-	return fitness_;
+float Creature::GetFitness() const {
+    return fitness_;
 }
 
-//! A function to get children. 
-/*!
-	Get one creature and try to mate with the current creature.
-	If they will not mate due to the crossover rate, the parents itself
-	will returned as the children.
-	\param mate The other creature to mate with
-	\param crossover How the odds are if they should mate or not.
-	\return children The two new children from the two parents.
-*/
-std::vector<Chromosome> Creature::Crossover(Creature mate, float crossover){
-
-	// generate a random number between 0 and 1
-	std::uniform_real_distribution<float> crossover_decider(0,1);
-
-	std::vector<Chromosome> children;
-	
-	// depends on the crossover rate, should we mate or not
-	if (crossover_decider(rng_.mt_rng_) <= crossover) {
-		children = chromosome_.CrossOverMate(mate.GetChromosome());
-		return children;
-	}
-
-	children.push_back(chromosome_);
-	children.push_back(mate.GetChromosome());
-
-	// should return the parents if not mated
-	return children; 
+Brain Creature::GetBrain(){
+	return brain_;
 }
 
-//! The fitness function that will deside how good our creature are. 
-float Creature::CalculateFitness(Chromosome chromosome){
-	std::clock_t start_time;
-	start_time = std::clock();
+Body Creature::GetBody(){
+    return body_;
+}
 
-	WormBulletCreature* worm = new WormBulletCreature(chromosome.GetGene(), btVector3(0.0, 1.0, 0.0));
-	Simulation sim;
-	sim.AddCreatureToWorld(worm);
-
-	int fps = 60;
-	int n_seconds = 50;
-	for (int i = 0; i < fps*n_seconds; ++i){
-		sim.Step(1/float(fps));
-
+/*! Simple mutation algorithm on creature.
+ This should be extended to try more cases. */
+void Creature::Mutate() {
+	//TODO: if the mutation should be done or not depending on the ratio
+	std::uniform_real_distribution<float> int_dist(0.0f,1.0f);
+	double should_mutate = int_dist(rng_.mt_rng_);
+	if( SettingsManager::Instance()->GetMutation() >= should_mutate) {
+		brain_.Mutate();
 	}
-	float fitness = worm->GetCenterOfMass().getZ();
+}
 
-	sim.RemoveCreatureFromWorld(worm);
-	delete worm;
+SimData Creature::GetSimData() {
+    return simdata_;
+}
 
-	//std::cout << "Simulation time: " << float (std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
+void Creature::SetSimData(SimData d) {
+    simdata_ = d;
+}
 
-	return fitness;
+std::vector<Creature> Creature::Crossover(Creature mate){
+	std::vector<Creature> children;
+	std::vector<Brain> childrens_brain;
+	children.resize(2);
+	childrens_brain.resize(2);
+
+	std::uniform_real_distribution<float> int_dist(0.0f,1.0f);
+
+	double should_crossover = int_dist(rng_.mt_rng_);
+	SettingsManager::Instance()->GetCrossover();
+
+	if(SettingsManager::Instance()->GetCrossover() >= should_crossover) {
+	// TODO: if crossover should be done, else return the incomming creatures
+		childrens_brain = brain_.Crossover(mate.GetBrain());
+		children[0].brain_ = childrens_brain[0];
+		children[1].brain_ = childrens_brain[1];
+	}
+	else {
+		children[0].brain_ = brain_;
+		children[1].brain_ = mate.GetBrain();
+	}
+
+	return children;
+
 }

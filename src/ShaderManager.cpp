@@ -13,19 +13,19 @@ ShaderManager* ShaderManager::instance_ = NULL;
  \return The one instance of the ShaderManager
  */
 ShaderManager* ShaderManager::Instance() {
-	if (!instance_) // only allow one instance of class to be generated
-		instance_ = new ShaderManager();
-	return instance_;
+  if (!instance_)  // only allow one instance of class to be generated
+    instance_ = new ShaderManager();
+  return instance_;
 }
 
 //! ShaderManager constructor.
 /*!
- First all shaders are added and compiled by calling the function
- AddAllShaders(). Then all the individual shader programs are linked.
+ First all Shaders are added and compiled by calling the function
+ AddAllShaders(). Then all the individual ShaderPrograms are linked.
  These use the shaders added in the previous call.
 */
 
-ShaderManager::ShaderManager(){
+ShaderManager::ShaderManager() {
   AddAllShaders();
   AddSimpleMvpShaderProgram();
   AddBasicShaderProgram();
@@ -33,17 +33,17 @@ ShaderManager::ShaderManager(){
 
 //! ShaderManager destructor
 /*!
- First, all shaders are deleted, then all shader programs.
+ First, all Shaders are deleted, then all ShaderPrograms.
 */
 
-ShaderManager::~ShaderManager(){
+ShaderManager::~ShaderManager() {
   //Delete shaders
   std::map<std::string, Shader*>::iterator shader_iter = shaders_.begin();
   while (shader_iter != shaders_.end()) {
     delete shader_iter->second;
     shader_iter++;
   }
-  //Delete shader programs
+  //Delete ShaderPrograms
   std::map<std::string, ShaderProgram*>::iterator shader_program_iter =
       shader_programs_.begin();
   while (shader_program_iter != shader_programs_.end()) {
@@ -54,11 +54,11 @@ ShaderManager::~ShaderManager(){
 
 //! Add all shaders specified
 /*!
- All the shaders used by the program shall be added. First all shaders are
- created (compiled) and then they are put in the std::map of shaders.
+ All the Shaders used by the program shall be added. First all Shaders are
+ created (compiled) and then they are put in the std::map of Shaders.
 */
 
-void ShaderManager::AddAllShaders(){
+void ShaderManager::AddAllShaders() {
   // Create shaders
   Shader* simple_mvp_vert = new Shader(
       "data/shaders/mvp.vert",
@@ -79,24 +79,24 @@ void ShaderManager::AddAllShaders(){
   shaders_.insert(StringShaderPair("Basic_Frag", basic_frag));
 }
 
-//! Add the specific shader program Simple_MVP
+//! Add the specific ShaderProgram Simple_MVP
 /*!
  This is a specific creator function for the shader Simple_MVP. This function
- relies on that the specific shaders used are already compiled. Therefore they
- can be picked from the std::map of shaders and then put in the constructor of
- the new shader program. The shader program is then inserted in the shader
- manager. All the specific locations also needs to be added, these are then
- called by name instead of GLuint.
+ relies on that the specific Shaders used are already compiled. Therefore they
+ can be picked from the std::map of Shaders and then put in the constructor of
+ the new ShaderProgram. The ShaderProgram is then inserted in the
+ ShaderManager. All the specific locations also needs to be added, these are
+ then called by name instead of GLuint.
 */
 
 void ShaderManager::AddSimpleMvpShaderProgram(){
-  // Create shader program
+  // Create ShaderProgram
   ShaderProgram* simple_mvp_shader_program =
     new ShaderProgram(shaders_["Simple_MVP_Vert"],
                       shaders_["Simple_MVP_Frag"]);
-  // The name with which to refer to the shader program
+  // The name with which to refer to the ShaderProgram
   const char* shader_program_name = "Simple_MVP";
-  // Put shader program in the map
+  // Put ShaderProgram in the map
   shader_programs_.insert(StringShaderProgPair(
       shader_program_name,
       simple_mvp_shader_program) );
@@ -104,24 +104,25 @@ void ShaderManager::AddSimpleMvpShaderProgram(){
   shader_programs_[shader_program_name]->CreateUniformLocation("MVP");
 }
 
-//! Add the specific shader program Basic
+//! Add the specific ShaderProgram Basic
 /*!
- This is a specific creator function for the shader Basic. This function relies
- on that the specific shaders used are already compiled. Therefore they can be
+ This is a specific creator function for the Shader "Basic". This function
+ relies
+ on that the specific Shaders used are already compiled. Therefore they can be
  picked from the std::map of shaders and then put in the constructor of the new
- shader program. The shader program is then inserted in the shader manager. All
+ ShaderProgram. The ShaderProgram is then inserted in the ShaderManager. All
  the specific locations also needs to be added, these are then called by name
  instead of GLuint.
  */
 
 void ShaderManager::AddBasicShaderProgram(){
-  // Create shader program
+  // Create ShaderProgram
   ShaderProgram* simple_mvp_shader_program =
   new ShaderProgram(shaders_["Basic_Vert"],
                     shaders_["Basic_Frag"]);
-  // The name with which to refer to the shader program
+  // The name with which to refer to the ShaderProgram
   const char* shader_program_name = "Basic";
-  // Put shader program in the map
+  // Put ShaderProgram in the map
   shader_programs_.insert(StringShaderProgPair(
       shader_program_name,
       simple_mvp_shader_program) );
@@ -130,37 +131,43 @@ void ShaderManager::AddBasicShaderProgram(){
   shader_programs_[shader_program_name]->CreateUniformLocation("MV");
   shader_programs_[shader_program_name]->CreateUniformLocation("M");
   shader_programs_[shader_program_name]->CreateUniformLocation("V");
+  shader_programs_[shader_program_name]->CreateUniformLocation("far_clipping");
+  shader_programs_[shader_program_name]->CreateUniformLocation(
+          "light_intensity");
+  shader_programs_[shader_program_name]->CreateUniformLocation("light_color");
+  shader_programs_[shader_program_name]->CreateUniformLocation(
+          "light_position_worldspace");
 }
 
-//! Used for accessing the shader programs.
+//! Used for accessing the ShaderPrograms.
 /*!
- Instead of relying on GLints, names are used for getting shader programs.
-\param The name key of the wanted shader program
-\return A pointer to the corresponding shader program
+ Instead of relying on GLints, names are used for getting ShaderPrograms.
+\param name is the name key of the wanted ShaderProgram
+\return A pointer to the corresponding ShaderProgram
 */
 
-ShaderProgram* ShaderManager::GetShaderProgramFromName(const char* name){
+ShaderProgram* ShaderManager::GetShaderProgramFromName(const char* name) {
   return shader_programs_[name];
 }
 
-//! Used for binding shader programs.
+//! Used for binding ShaderPrograms.
 /*!
- Bind the shader program specified by the name key. If the shader program is
- not found, the default shader program is bound.
- \param The name key of the shader program to bind.
+ Bind the ShaderProgram specified by the name key. If the ShaderProgram is
+ not found, the default ShaderProgram is bound.
+ \param The name key of the ShaderProgram to bind.
  */
 
-void ShaderManager::UseProgram(const char* name){
+void ShaderManager::UseProgram(const char* name) {
   glUseProgram(shader_programs_[name]->getID());
 }
 
-//! Used for unbinding shader programs.
+//! Used for unbinding ShaderPrograms.
 /*!
- Unbind the current shader program. The same as binding the default shader
+ Unbind the current ShaderProgram. The same as binding the default shader
  program (0)
 */
 
-void ShaderManager::UnbindCurrentShader(){
+void ShaderManager::UnbindCurrentShader() {
   glUseProgram(0);
 }
 
@@ -170,7 +177,7 @@ void ShaderManager::UnbindCurrentShader(){
 
 //! Constructor for the ShaderProgram class
 /*!
- All the shaders passed in the arguments gets linked in to a shader program.
+ All the shaders passed in the arguments gets linked in to a ShaderProgram.
  \param Pointers to the shaders to be linked in the order vertex, fragment,
  geometry and tesselation shader. Vertex and fragment shaders are the only
  ones that are needed.
@@ -179,20 +186,20 @@ void ShaderManager::UnbindCurrentShader(){
 ShaderProgram::ShaderProgram(Shader* vertex_shader,
                              Shader* fragment_shader,
                              Shader* geometry_shader,
-                             Shader* tesselation_shader){
-  if(vertex_shader == NULL || fragment_shader == NULL){
+                             Shader* tesselation_shader) {
+  if (vertex_shader == NULL || fragment_shader == NULL) {
     program_id_ = 0;
-    std::cout << "ERROR: Shader program could not be created. " <<
+    std::cout << "ERROR: ShaderProgram could not be created. " <<
         "Vertex shader and fragment shader are required!" << std::endl;
     return;
   }
 
   // Link the program
-	printf("Linking Shader program\n");
-	program_id_ = glCreateProgram();
+  printf("Linking ShaderProgram\n");
+  program_id_ = glCreateProgram();
 
   GLint result = GL_FALSE;
-	int info_log_length;
+  int info_log_length;
 
   if (vertex_shader) {
     glAttachShader(program_id_, vertex_shader->GetShaderId());
@@ -226,19 +233,19 @@ ShaderProgram::ShaderProgram(Shader* vertex_shader,
 	}
 }
 
-//! Delete the shader program.
+//! Delete the ShaderProgram.
 
 ShaderProgram::~ShaderProgram(){
   glDeleteProgram(program_id_);
 }
 
-//! Create a location for an attribute in the shader program.
+//! Create a location for an attribute in the ShaderProgram.
 /*!
  The name of the attribute needs to be specified in the source code of the
  shader. If it is not found it can not be created and an error message is
  printed. If it is found, the location is added to the std::map of attributes.
  Then they can be accessed via name instead of GLint.
- \param The name of the attribute for which to create the location.
+ \param name is the name of the attribute for which to create the location.
 */
 
 void ShaderProgram::CreateAttribLocation(const char* name){
@@ -251,13 +258,13 @@ void ShaderProgram::CreateAttribLocation(const char* name){
   }
 }
 
-//! Create a location for a uniform in the shader program.
+//! Create a location for a uniform in the ShaderProgram.
 /*!
  The name of the uniform needs to be specified in the source code of the
  shader. If it is not found it can not be created and an error message is
  printed. If it is found, the location is added to the std::map of uniforms.
  Then they can be accessed via name instead of GLint.
- \param The name of the uniform for which to create the location.
+ \param name is the name of the uniform for which to create the location.
  */
 
 void ShaderProgram::CreateUniformLocation(const char* name){
@@ -274,8 +281,8 @@ void ShaderProgram::CreateUniformLocation(const char* name){
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param value
+ \param name is the key of the uniform.
+ \param v0 is the value to set.
 */
 
 // Uniforms
@@ -286,9 +293,9 @@ void ShaderProgram::Uniform1f(const char* name, GLfloat v0){
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param value
- \param value
+ \param name is the key of the uniform
+ \param v0 is the value to set.
+ \param v1 is the value to set.
 */
 
 void ShaderProgram::Uniform2f(const char* name, GLfloat v0, GLfloat v1){
@@ -298,10 +305,10 @@ void ShaderProgram::Uniform2f(const char* name, GLfloat v0, GLfloat v1){
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param value
- \param value
- \param value
+ \param name is the key of the uniform
+ \param v0 is the value to set.
+ \param v1 is the value to set.
+ \param v2 is the value to set.
 */
 
 void ShaderProgram::Uniform3f(
@@ -315,10 +322,10 @@ void ShaderProgram::Uniform3f(
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param value
- \param value
- \param value
+ \param name is the key of the uniform
+ \param v0 is the value to set.
+ \param v1 is the value to set.
+ \param v2 is the value to set.
 */
 
 void ShaderProgram::Uniform4f(
@@ -333,8 +340,8 @@ void ShaderProgram::Uniform4f(
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param value
+ \param name is the key of the uniform
+ \param v0 is the value to set.
 */
 
 void ShaderProgram::Uniform1i(const char* name, GLint v0){
@@ -344,9 +351,9 @@ void ShaderProgram::Uniform1i(const char* name, GLint v0){
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param value
- \param value
+ \param name is the key of the uniform
+ \param v0 is the value to set.
+ \param v1 is the value to set.
  */
 
 void ShaderProgram::Uniform2i(const char* name, GLint v0, GLint v1){
@@ -356,10 +363,10 @@ void ShaderProgram::Uniform2i(const char* name, GLint v0, GLint v1){
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param value
- \param value
- \param value
+ \param name is the key of the uniform
+ \param v0 is the value to set.
+ \param v1 is the value to set.
+ \param v2 is the value to set.
  */
 
 void ShaderProgram::Uniform3i(const char* name, GLint v0, GLint v1, GLint v2){
@@ -369,10 +376,10 @@ void ShaderProgram::Uniform3i(const char* name, GLint v0, GLint v1, GLint v2){
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param value
- \param value
- \param value
+ \param name is the key of the uniform
+ \param v0 is the value to set.
+ \param v1 is the value to set.
+ \param v2 is the value to set.
  */
 
 void ShaderProgram::Uniform4i(
@@ -387,8 +394,9 @@ void ShaderProgram::Uniform4i(
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param value
+ \param name is the key of the uniform
+ \param count is the number of vectors following.
+ \param value is the value to set.
  */
 
 void ShaderProgram::Uniform1fv(
@@ -401,8 +409,9 @@ void ShaderProgram::Uniform1fv(
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param count
- \param value
+ \param name is the key of the uniform
+ \param count is the number of vectors following.
+ \param value is the value to set.
  */
 
 void ShaderProgram::Uniform2fv(
@@ -415,9 +424,9 @@ void ShaderProgram::Uniform2fv(
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param count
- \param value
+ \param name is the key of the uniform
+ \param count is the number of vectors following.
+ \param value is the value to set.
  */
 
 void ShaderProgram::Uniform3fv(
@@ -430,9 +439,9 @@ void ShaderProgram::Uniform3fv(
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param count
- \param value
+ \param name is the key of the uniform
+ \param count is the number of vectors following.
+ \param value is the value to set.
  */
 
 void ShaderProgram::Uniform4fv(
@@ -445,9 +454,9 @@ void ShaderProgram::Uniform4fv(
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param count
- \param value
+ \param name is the key of the uniform
+ \param count is the number of vectors following.
+ \param value is the value to set.
  */
 
 void ShaderProgram::Uniform1iv(
@@ -460,9 +469,9 @@ void ShaderProgram::Uniform1iv(
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param count
- \param value
+ \param name is the key of the uniform
+ \param count is the number of vectors following.
+ \param value is the value to set.
  */
 
 void ShaderProgram::Uniform2iv(
@@ -475,9 +484,9 @@ void ShaderProgram::Uniform2iv(
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param count
- \param value
+ \param name is the key of the uniform
+ \param count is the number of vectors following.
+ \param value is the value to set.
  */
 
 void ShaderProgram::Uniform3iv(
@@ -490,9 +499,9 @@ void ShaderProgram::Uniform3iv(
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param count
- \param value
+ \param name is the key of the uniform
+ \param count is the number of vectors following.
+ \param value is the value to set.
  */
 
 void ShaderProgram::Uniform4iv(
@@ -505,10 +514,10 @@ void ShaderProgram::Uniform4iv(
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param count
- \param transpose
- \param value
+ \param name is the key of the uniform
+ \param count is the number of matrices following.
+ \param transpose is true if the matrix is transposed
+ \param value is the value to set.
  */
 
 void ShaderProgram::UniformMatrix2fv(
@@ -522,10 +531,10 @@ void ShaderProgram::UniformMatrix2fv(
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param count
- \param transpose
- \param value
+ \param name is the key of the uniform
+ \param count is the number of matrices following.
+ \param transpose is true if the matrix is transposed
+ \param value is the value to set.
  */
 
 void ShaderProgram::UniformMatrix3fv(
@@ -539,10 +548,10 @@ void ShaderProgram::UniformMatrix3fv(
 //! Wrapper for OpenGL's function for uniform data.
 /*!
  Set data for the specific uniform.
- \param Name key of the uniform
- \param count
- \param transpose
- \param value
+ \param name is the key of the uniform
+ \param count is the number of matrices following.
+ \param transpose is true if the matrix is transposed
+ \param value is the value to set.
  */
 
 void ShaderProgram::UniformMatrix4fv(
@@ -556,8 +565,8 @@ void ShaderProgram::UniformMatrix4fv(
 //! Wrapper for OpenGL's function for attribute data.
 /*!
  Set data for the specific attribute.
- \param Name key of the uniform
- \param value
+ \param name is the key of the attribute.
+ \param v0 is the value to set.
  */
 
 // Attributes
@@ -568,9 +577,9 @@ void ShaderProgram::VertexAttrib1f(const char* name, GLfloat v0){
 //! Wrapper for OpenGL's function for attribute data.
 /*!
  Set data for the specific attribute.
- \param Name key of the attribute
- \param value
- \param value
+ \param name is the key of the attribute
+ \param v0 is the value to set.
+ \param v1 is the value to set.
  */
 
 void ShaderProgram::VertexAttrib2f(const char* name, GLfloat v0, GLfloat v1){
@@ -580,10 +589,10 @@ void ShaderProgram::VertexAttrib2f(const char* name, GLfloat v0, GLfloat v1){
 //! Wrapper for OpenGL's function for attribute data.
 /*!
  Set data for the specific attribute.
- \param Name key of the attribute
- \param value
- \param value
- \param value
+ \param name is the key of the attribute
+ \param v0 is the value to set.
+ \param v1 is the value to set.
+ \param v2 is the value to set.
  */
 
 void ShaderProgram::VertexAttrib3f(
@@ -597,11 +606,11 @@ void ShaderProgram::VertexAttrib3f(
 //! Wrapper for OpenGL's function for attribute data.
 /*!
  Set data for the specific attribute.
- \param Name key of the attribute
- \param value
- \param value
- \param value
- \param value
+ \param name is the key of the attribute
+ \param v0 is the value to set.
+ \param v1 is the value to set.
+ \param v2 is the value to set.
+ \param v3 is the value to set.
  */
 
 void ShaderProgram::VertexAttrib4f(
@@ -616,11 +625,11 @@ void ShaderProgram::VertexAttrib4f(
 //! Wrapper for OpenGL's function for attribute data.
 /*!
  Set data for the specific attribute.
- \param Name key of the attribute
- \param value
- \param value
- \param value
- \param value
+ \param name is the key of the attribute
+ \param v0 is the value to set.
+ \param v1 is the value to set.
+ \param v2 is the value to set.
+ \param v3 is the value to set.
  */
 
 void ShaderProgram::VertexAttribI4i(
@@ -635,11 +644,11 @@ void ShaderProgram::VertexAttribI4i(
 //! Wrapper for OpenGL's function for attribute data.
 /*!
  Set data for the specific attribute.
- \param Name key of the attribute
- \param value
- \param value
- \param value
- \param value
+ \param name is the key of the attribute
+ \param v0 is the value to set.
+ \param v1 is the value to set.
+ \param v2 is the value to set.
+ \param v3 is the value to set.
  */
 
 void ShaderProgram::VertexAttribI4ui(
@@ -654,8 +663,8 @@ void ShaderProgram::VertexAttribI4ui(
 //! Wrapper for OpenGL's function for attribute data.
 /*!
  Set data for the specific attribute.
- \param Name key of the attribute
- \param value
+ \param name is the key of the attribute
+ \param v is the value to set.
 */
 
 void ShaderProgram::VertexAttrib1fv(const char* name, const GLfloat *v){
@@ -665,9 +674,9 @@ void ShaderProgram::VertexAttrib1fv(const char* name, const GLfloat *v){
 //! Wrapper for OpenGL's function for attribute data.
 /*!
  Set data for the specific attribute.
- \param Name key of the attribute
- \param value
- */
+ \param name is the key of the attribute
+ \param v is the value to set.
+*/
 
 void ShaderProgram::VertexAttrib2fv(const char* name, const GLfloat *v){
   glVertexAttrib2fv(attribute_locations_[name], v);
@@ -676,8 +685,8 @@ void ShaderProgram::VertexAttrib2fv(const char* name, const GLfloat *v){
 //! Wrapper for OpenGL's function for attribute data.
 /*!
  Set data for the specific attribute.
- \param Name key of the attribute
- \param value
+ \param name is the key of the attribute
+ \param v is the value to set.
  */
 
 void ShaderProgram::VertexAttrib3fv(const char* name, const GLfloat *v){
@@ -687,9 +696,9 @@ void ShaderProgram::VertexAttrib3fv(const char* name, const GLfloat *v){
 //! Wrapper for OpenGL's function for attribute data.
 /*!
  Set data for the specific attribute.
- \param Name key of the attribute
- \param value
- */
+ \param name is the key of the attribute
+ \param v is the value to set.
+*/
 
 void ShaderProgram::VertexAttrib4fv(const char* name, const GLfloat *v){
   glVertexAttrib4fv(attribute_locations_[name], v);
@@ -698,8 +707,8 @@ void ShaderProgram::VertexAttrib4fv(const char* name, const GLfloat *v){
 //! Wrapper for OpenGL's function for attribute data.
 /*!
  Set data for the specific attribute.
- \param Name key of the attribute
- \param value
+ \param name is the key of the attribute
+ \param v is the value to set.
  */
 
 void ShaderProgram::VertexAttribI4iv(const char* name, const GLint *v){
@@ -709,15 +718,15 @@ void ShaderProgram::VertexAttribI4iv(const char* name, const GLint *v){
 //! Wrapper for OpenGL's function for attribute data.
 /*!
  Set data for the specific attribute.
- \param Name key of the attribute
- \param value
- */
+ \param name is the key of the attribute
+ \param v is the value to set.
+*/
 
 void ShaderProgram::VertexAttribI4uiv(const char* name, const GLuint *v){
   glVertexAttribI4uiv(attribute_locations_[name], v);
 }
 
-//! Get the id for the shader program
+//! Get the id for the ShaderProgram
 /*!
  \return The id for the program
 */
@@ -732,9 +741,10 @@ GLuint ShaderProgram::getID(){
 
 //! Constructor for the shader
 /*!
- Compiles the shader from the file path.
- \param File path for where the shader source is to be found.
- \param Type of the shader. Can be GL_VERTEX_SHADER or GL_FRAGMENT_SHADER.
+ Compiles the Shader from the file path.
+ \param file_path is the path for where the Shader source is to be found.
+ \param type is the type of the Shader. Can be GL_VERTEX_SHADER or
+ GL_FRAGMENT_SHADER.
  */
 
 Shader::Shader(const char* file_path, int type){
@@ -788,13 +798,13 @@ Shader::Shader(const char* file_path, int type){
 //! Destructor for the shader
 /*!
  Releases memory on the GPU.
- */
+*/
 
 Shader::~Shader(){
   glDeleteShader(shader_id_);
 }
 
-//! Get the id of the shader.
+//! Get the id of the Shader.
 
 GLuint Shader::GetShaderId(){
   return shader_id_;

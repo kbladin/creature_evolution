@@ -7,51 +7,57 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <vector>
 // Internal
-#include "Simulation.h"
-#include "Chromosome.h"
+#include "Brain.h"
+#include "Body.h"
 #include "AutoInitRNG.h"
+#include "SettingsManager.h"
+
+struct SimData {
+    float distance;
+};
 
 //! A definition of a creature.
 
 /*!
-A creature contains of a chromosome and a fitness value. 
+A creature contains a brain and a body.
 */
-
 class Creature {
-private:
-	Chromosome chromosome_;
-
-	float fitness_; 
-	static float CalculateFitness(Chromosome chromsome);
-	static AutoInitRNG rng_;
-
 public:
-	// Constructor, one that will define the gene_code and one random
-	Creature(Chromosome cromosome);
-	Creature();
+    Creature();
+    ~Creature();
 
-	Chromosome GetChromosome() const;
-	float GetFitness() const;
+    std::vector<float> CalculateBrainOutput(std::vector<float>);
+    void SetFitness(float fitness);
+    float GetFitness() const;
+    Brain GetBrain();
+    Body GetBody();
+    void Mutate();
 
-	std::vector<Chromosome> Crossover(Creature mate,float crossover);
+    SimData GetSimData();
+    void SetSimData(SimData);
+
+    std::vector<Creature> Crossover(Creature mate);
+
+private:
+    float fitness_;
+    Brain brain_;
+    Body body_;
+    SimData simdata_;
+
+    static AutoInitRNG rng_;
+
 };
 
-struct CreatureLargerThan
-{
-	bool operator()(const Creature& c1,const Creature& c2) const {
-		float c1_fitness = c1.GetFitness();
-		float c2_fitness = c2.GetFitness();
+//! Simple struct for creature comparison
+struct CreatureLargerThan {
+    bool operator()(const Creature& c1,const Creature& c2) const {
+        float c1_fitness = c1.GetFitness();
+        float c2_fitness = c2.GetFitness();
 
-		return (c1_fitness > c2_fitness);
-	}
+        return (c1_fitness > c2_fitness);
+    }
 };
-
-static std::ostream& operator<<(std::ostream& os, const Creature c){
-	for (int i = 0; i < c.GetChromosome().GetGene().size(); ++i){
-		os << std::setprecision(3) << c.GetChromosome().GetGene()[i] << " ";  
-	}
-    return os;
-}
 
 #endif // CREATURE_H

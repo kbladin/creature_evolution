@@ -4,11 +4,14 @@
 // C++
 #include <iostream>
 // External
+#ifndef Q_MOC_RUN
+#define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/transform.hpp>
 #include <glm/gtx/string_cast.hpp>
 #include <glm/ext.hpp>
+#endif
 #include <btBulletDynamicsCommon.h>
 // Internal
 #include "Shape.h"
@@ -23,7 +26,7 @@ public:
   void SetPosition(glm::vec3 pos);
   glm::mat4 GetTransform();
   void DebugPrint();
-  virtual void UpdateNode() { };
+  virtual void UpdateNode();
 protected:
   glm::mat4 transform_;
   Shape shape_;

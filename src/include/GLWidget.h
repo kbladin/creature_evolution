@@ -1,10 +1,18 @@
 #ifndef GLWIDGET_H
 #define GLWIDGET_H
 
+// External
 #include <GL/glew.h>
 #include <QtOpenGL/QGLWidget>
-#include "CreatureEvolution.h"
 #include <QtGui/QMouseEvent>
+#include <QtGui/QWheelEvent>
+#include <QDebug>
+#include <QtCore/QTimer>
+#include <QtWidgets/qwidget.h>
+// Internal
+#include "CreatureEvolution.h"
+
+
 
 class GLWidget : public QGLWidget
 {
@@ -26,6 +34,7 @@ protected:
     void resizeGL(int width, int height);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
+    void wheelEvent(QWheelEvent* event);
 
 private:
     QPoint lastPos;
