@@ -1,11 +1,32 @@
 #include "Body.h"
 
 #ifdef _WIN32
-#define M_PI 3.14159265359
+    #define M_PI 3.14159265359
 #endif
+
 
 BodyTree Body::GetBodyRoot() {
     //simple legged creature for testing
+    int creature_type = SettingsManager::Instance()->GetCreatureType();
+
+    // TODO: add switch
+    switch(creature_type){
+        case PONY:
+            return CreatePony();
+            break;
+        case WORM:
+            return CreateWorm();
+            break;
+        default:
+            std::cout << "not valid creature.. uses Pony!";
+            return CreatePony();
+            break;
+    }
+
+}
+
+
+BodyTree Body::CreatePony(){
 
     //Make head
     BodyTree head;
@@ -61,27 +82,53 @@ BodyTree Body::GetBodyRoot() {
     main_body.joint_list.push_back(right_back_joint);
     main_body.joint_list.push_back(head_joint);
 
-/*
-    BodyTree b;
-    b.box_dim = Vec3(0.1,0.1,0.2);
-    b.mass = 2.0;
-    b.friction = 1.0;
+    return main_body;
 
-    BodyTree b1, b2, b3;
-    b1 = b2 = b3 = b;
+}
 
+BodyTree Body::CreateWorm(){
+
+    int worm_length = 5;
+
+    // varje segment på masken
+    BodyTree body_segment;
+    body_segment.box_dim = Vec3(0.1,0.05,0.1);
+    body_segment.mass = 0.25;
+    body_segment.friction = 1.0;
+
+    BodyTree current_segment = body_segment;
+    BodyTree previous_segment = body_segment;
+
+    // joints
     Joint joint;
-    joint.connection_root = Vec3(0.0,0.0,b.box_dim.z);
-    joint.connection_branch = Vec3(0.0,0.0,-b.box_dim.z);
+    joint.connection_root = Vec3(0.0f,0.0f,body_segment.box_dim.z);
+    joint.connection_branch = Vec3(0.0f,0.0f,-body_segment.box_dim.z);
     joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
     joint.upper_limit = M_PI*0.2;
     joint.lower_limit = -M_PI*0.2;
 
-    b2.joint_list.push_back(joint);
-    b2.body_list.push_back(b1);
-    b3.joint_list.push_back(joint);
-    b3.body_list.push_back(b2);*/
+    BodyTree b1,b2,b3;
 
-    return main_body;
+    b1 = b2 = b3 = body_segment;
+    b2.body_list.push_back(b1);
+    b2.joint_list.push_back(joint);
+    b3.body_list.push_back(b2);
+    b3.joint_list.push_back(joint);
+
+
+
+    for(int i=0; i<worm_length-1; i++){
+        current_segment.body_list.push_back(previous_segment);
+        current_segment.joint_list.push_back(joint); 
+        previous_segment = current_segment;
+        current_segment = body_segment;
+        current_segment.body_list.clear();
+        current_segment.joint_list.clear();
+    }
+
+    return b3;
+
 }
+
+
 

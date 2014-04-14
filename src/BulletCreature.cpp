@@ -6,7 +6,7 @@ BulletCreature::BulletCreature(Creature blueprint) {
     blueprint_ = blueprint;
 
     //create body
-    AddBody(blueprint_.GetBody().GetBodyRoot(), btVector3(0.0,1.0,0.0));
+    AddBody(blueprint_.GetBody().GetBodyRoot(), btVector3(0.0,0.6,0.0));
 
 }
 
