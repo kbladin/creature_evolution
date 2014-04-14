@@ -1,6 +1,8 @@
 #include "Body.h"
 
+#ifdef _WIN32
 #define M_PI 3.14159265359
+#endif
 
 BodyTree Body::GetBodyRoot() {
     //simple legged creature for testing
