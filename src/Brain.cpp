@@ -24,7 +24,9 @@ std::vector<float> Brain::CalculateOutput(std::vector<float> input){
     float in = input.front();
     std::vector<float> output;
     for(int i=0; i<(weights.size() / 3); i++) {
-        float freq = pow(2, ceil(log(abs(1 / weights[i*3]) + 0.001f)/log(2)));  // 1,2,4,8...
+        int n_freqs = 10;
+        float max_freq = 2/3.0f;
+        float freq = floor(weights[i*3] * n_freqs) * max_freq; //pow(2, ceil(log(abs(1 / weights[i*3]) + 0.001f)/log(2)));  // 1,2,4,8...
         float amp = weights[i*3+1];
         float phase = weights[i*3+2]*M_PI*2;
         float out = amp * sin(freq*in + phase);
