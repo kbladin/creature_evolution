@@ -15,12 +15,20 @@
 #include "SettingsManager.h"
 
 struct SimData {
-    float distance = 0.0f;
-    float velocity = 0.0f;
-    float old_pos = 0.0f;
-    float deviation_x = 0.0f;
-    float deviation_y = 0.0f;
-    float deviation_z = 0.0f;
+    float distance;
+    float velocity;
+    float old_pos;
+    float deviation_x;
+    float deviation_y;
+    float deviation_z;
+    SimData() {
+        distance = 0.0f;
+        velocity = 0.0f;
+        old_pos = 0.0f;
+        deviation_x = 0.0f;
+        deviation_y = 0.0f;
+        deviation_z = 0.0f;
+    }
 };
 
 //! A definition of a creature.
