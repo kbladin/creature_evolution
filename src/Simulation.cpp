@@ -113,7 +113,7 @@ void Simulation::Simulate() {
 
     SimData d;
     
-    d.distance = bullet_creature_->GetCenterOfMass().getZ();
+    d.distance = bullet_creature_->GetCenterOfMass().distance(btVector3(0.0,0.0,0.0));
     creature_->SetSimData(d);
 }
 

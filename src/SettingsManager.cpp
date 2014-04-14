@@ -10,6 +10,8 @@ SettingsManager* SettingsManager::Instance() {
 
 //! Constructor
 SettingsManager::SettingsManager(){
+
+    rotation_sensitivity_ = M_PI * 2.0f;
   // set default values
   population_size_ = 10;
   max_generations_ = 20;

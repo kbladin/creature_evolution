@@ -18,16 +18,16 @@
 
 class Shape {
 public:
-  Shape() { };
+  Shape();
   void SetupBuffers();
   void DebugPrint();
   void Render(Camera camera, glm::mat4 model_transform);
 protected:
-  GLuint vertex_array_id_ = GL_FALSE;
-  GLuint element_buffer_id_ = GL_FALSE;
-  GLuint vertex_position_buffer_id_ = GL_FALSE;
-  GLuint vertex_normal_buffer_id_ = GL_FALSE;
-  GLuint vertex_uv_buffer_id_ = GL_FALSE;
+  GLuint vertex_array_id_;
+  GLuint element_buffer_id_;
+  GLuint vertex_position_buffer_id_;
+  GLuint vertex_normal_buffer_id_;
+  GLuint vertex_uv_buffer_id_;
 
   std::vector<glm::vec3> vertex_position_data_;
   std::vector<glm::vec3> vertex_normal_data_;

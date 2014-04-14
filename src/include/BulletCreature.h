@@ -20,11 +20,14 @@ public:
     btRigidBody* GetHead();
 
 private:
-    btCollisionShape* m_shape_;
-    btScalar mass_;
+    std::vector<btScalar> mass_;
+    std::vector<btCollisionShape*> m_shapes_;
     std::vector<btRigidBody*> m_bodies_;
     std::vector<btHingeConstraint*> m_joints_;
     Creature* blueprint_;
+
+    void AddBody(BodyTree body, btVector3 position);
+
 };
 
 

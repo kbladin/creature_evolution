@@ -10,12 +10,12 @@
 int main(int argc, char **argv) {
     QApplication app(argc, argv);
 
-    SettingsManager::Instance()->SetMaxGenerations(15);
-    SettingsManager::Instance()->SetPopulationSize(15);
+    SettingsManager::Instance()->SetMaxGenerations(50);
+    SettingsManager::Instance()->SetPopulationSize(50);
 
 	SettingsManager::Instance()->SetCrossover(0.8f);
-	SettingsManager::Instance()->SetElitism(0.2f);
-	SettingsManager::Instance()->SetMutation(0.8f);
+    SettingsManager::Instance()->SetElitism(0.2f);
+    SettingsManager::Instance()->SetMutation(0.8f);
 
 	CreatureEvolution* CE = new CreatureEvolution();
 

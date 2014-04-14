@@ -17,15 +17,25 @@
 #include "Simulation.h"
 
 struct PointLight {
-  float intensity = 5000.0f;
-  glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f);
-  glm::vec3 position = glm::vec3(0.0f, 50.0f, 0.0f);
+  float intensity;
+  glm::vec3 color;
+  glm::vec3 position;
+  PointLight() {
+      intensity = 5000.0f;
+      color = glm::vec3(1.0f, 1.0f, 1.0f);
+      position = glm::vec3(0.0f, 50.0f, 0.0f);
+  }
 };
 
 struct DirectionalLight {
-  float intensity = 5000.0f;
-  glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f);
-  glm::vec3 direction = glm::vec3(0.0f, -1.0f, 0.0f);
+  float intensity;
+  glm::vec3 color;
+  glm::vec3 direction;
+  DirectionalLight() {
+      intensity = 5000.0f;
+      color = glm::vec3(1.0f, 1.0f, 1.0f);
+      direction = glm::vec3(0.0f, -1.0f, 0.0f);
+  }
 };
 
 //! Handles all the scene nodes. Makes sure the Bullet world is tied to the Nodes.
