@@ -11,7 +11,7 @@ SettingsManager* SettingsManager::Instance() {
 //! Constructor
 SettingsManager::SettingsManager(){
 
-    rotation_sensitivity_ = M_PI * 2.0f;
+  rotation_sensitivity_ = M_PI * 2.0f;
   // set default values
   population_size_ = 10;
   max_generations_ = 20;
@@ -102,4 +102,12 @@ void SettingsManager::SetFrameHeight(int frame_height){
 }
 void SettingsManager::SetRotationSensitivity(float sense){
   rotation_sensitivity_ = sense;
+}
+
+void SettingsManager::SetCreatureType(int creature){
+  creature_type_ = creature; 
+
+}
+int SettingsManager::GetCreatureType(){
+  return creature_type_; 
 }

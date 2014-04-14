@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "vec3.h"
+#include "SettingsManager.h"
 
 
 struct Joint {
@@ -30,6 +31,9 @@ class Body {
 public:
   Body(){};
   BodyTree GetBodyRoot();
+private:
+  BodyTree CreatePony();
+  BodyTree CreateWorm();
 };
 
 #endif //BODY_H

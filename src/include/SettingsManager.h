@@ -11,6 +11,11 @@
 #include <glm/glm.hpp>
 #endif
 
+enum CreatureType{
+  PONY, WORM
+};
+
+
 //! Class to handle all the settings in the program. Can only instance one SettingsManager-class in the whole program. 
 class SettingsManager {
 public:
@@ -35,6 +40,10 @@ public:
   void SetFrameWidth(int frame_width);
   void SetFrameHeight(int frame_height);
   void SetRotationSensitivity(float sense);
+
+  void SetCreatureType(int creature);
+  int GetCreatureType();
+
 private:
   SettingsManager();
   ~SettingsManager(void); 
@@ -50,6 +59,8 @@ private:
   float rotation_sensitivity_; //will result in half a round on a
   // retina sceen and one round on a normal screen when moving mouse from one
   // side to the other.
+
+  int creature_type_; 
 
   static SettingsManager* instance_;
 };
