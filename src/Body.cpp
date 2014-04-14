@@ -107,26 +107,15 @@ BodyTree Body::CreateWorm(){
     joint.upper_limit = M_PI*0.2;
     joint.lower_limit = -M_PI*0.2;
 
-    BodyTree b1,b2,b3;
-
-    b1 = b2 = b3 = body_segment;
-    b2.body_list.push_back(b1);
-    b2.joint_list.push_back(joint);
-    b3.body_list.push_back(b2);
-    b3.joint_list.push_back(joint);
-
-
 
     for(int i=0; i<worm_length-1; i++){
         current_segment.body_list.push_back(previous_segment);
         current_segment.joint_list.push_back(joint); 
         previous_segment = current_segment;
         current_segment = body_segment;
-        current_segment.body_list.clear();
-        current_segment.joint_list.clear();
     }
 
-    return b3;
+    return previous_segment;
 
 }
 
