@@ -30,7 +30,7 @@ BulletCreature::~BulletCreature(void) {
 
 
 
-void BulletCreature::AddBody(BodyTree body, btVector3 position) {
+btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
     //shape
     btVector3 dim = btVector3(body.box_dim.x,body.box_dim.y,body.box_dim.z);
     m_shapes_.push_back(new btBoxShape(dim));
@@ -59,7 +59,7 @@ void BulletCreature::AddBody(BodyTree body, btVector3 position) {
         Vec3 c = joint.connection_root - joint.connection_branch;
         btVector3 child_offset(c.x,c.y,c.z);
         //body
-        AddBody(body.body_list[i],position+child_offset);
+        btRigidBody* child_body = AddBody(body.body_list[i],position+child_offset);
         //joint
         localA.setIdentity();
         localB.setIdentity();
@@ -70,10 +70,11 @@ void BulletCreature::AddBody(BodyTree body, btVector3 position) {
         Vec3 b = joint.connection_branch;
         localA.setOrigin(btVector3(a.x,a.y,a.z));
         localB.setOrigin(btVector3(b.x,b.y,b.z));
-        m_joints_.push_back(new btHingeConstraint(*current_body, *(m_bodies_.back()), localA, localB));
+        m_joints_.push_back(new btHingeConstraint(*(current_body), *(child_body), localA, localB));
         m_joints_.back()->setLimit(btScalar(joint.lower_limit), btScalar(joint.upper_limit));
 
     }
+    return current_body;
 }
 
 

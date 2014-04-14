@@ -26,7 +26,7 @@ private:
     std::vector<btHingeConstraint*> m_joints_;
     Creature blueprint_;
 
-    void AddBody(BodyTree body, btVector3 position);
+    btRigidBody* AddBody(BodyTree body, btVector3 position);
 
 };
 

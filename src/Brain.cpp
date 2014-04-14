@@ -6,7 +6,7 @@ AutoInitRNG Brain::rng_;
 Brain::Brain() {
     std::uniform_real_distribution<float> float_mutate(-1.0f, 1.0f);
 
-    for(int i=0; i<(5*3); i++) {
+    for(int i=0; i<(9*3); i++) {
         float w = (float_mutate(rng_.mt_rng_));
         weights.push_back(w);
     }

@@ -15,7 +15,7 @@ BodyTree Body::GetBodyRoot() {
 
     //Make legs
     BodyTree leg;
-    leg.box_dim = Vec3(0.2,0.65,0.2);
+    leg.box_dim = Vec3(0.2,0.4,0.2);
     leg.mass = 15.0;
     leg.friction = 0.5;
 
@@ -24,11 +24,15 @@ BodyTree Body::GetBodyRoot() {
     //Upper legs
     BodyTree upper_leg = leg;
     Joint joint;
-    joint.connection_root = Vec3(0.0,-leg.box_dim.y/2.0,0.0);
+    joint.connection_root = Vec3(0.0,-leg.box_dim.y,0.0);
     joint.connection_branch = Vec3(0.0,leg.box_dim.y/2.0,0.0);
     joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
     joint.upper_limit = M_PI*0.2;
     joint.lower_limit = -M_PI*0.2;
+
+    //connect lower legs
+    upper_leg.body_list.push_back(lower_leg);
+    upper_leg.joint_list.push_back(joint);
 
     //Define the main body and connect everything to it
     BodyTree main_body;
@@ -57,21 +61,27 @@ BodyTree Body::GetBodyRoot() {
     main_body.joint_list.push_back(right_back_joint);
     main_body.joint_list.push_back(head_joint);
 
-    /*
-    BodyTree main_body;
-    main_body.box_dim = Vec3(0.1,0.1,0.2);
-    main_body.mass = 2.0;
-    main_body.friction = 1.0;
-    main_body.body_list = std::vector<BodyTree>(1,main_body);
+/*
+    BodyTree b;
+    b.box_dim = Vec3(0.1,0.1,0.2);
+    b.mass = 2.0;
+    b.friction = 1.0;
+
+    BodyTree b1, b2, b3;
+    b1 = b2 = b3 = b;
 
     Joint joint;
-    joint.connection_root = Vec3(0.0,main_body.box_dim.y/2.0,0.0);
-    joint.connection_branch = Vec3(0.0,-main_body.box_dim.y/2.0,0.0);
+    joint.connection_root = Vec3(0.0,0.0,b.box_dim.z);
+    joint.connection_branch = Vec3(0.0,0.0,-b.box_dim.z);
     joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
     joint.upper_limit = M_PI*0.2;
     joint.lower_limit = -M_PI*0.2;
 
-    main_body.joint_list.push_back(joint);*/
+    b2.joint_list.push_back(joint);
+    b2.body_list.push_back(b1);
+    b3.joint_list.push_back(joint);
+    b3.body_list.push_back(b2);*/
+
     return main_body;
 }
 
