@@ -11,7 +11,7 @@
 
 class BulletCreature {
 public:
-    BulletCreature(Creature*);
+    BulletCreature(Creature);
     ~BulletCreature(void);
     void UpdateMotors(std::vector<float> input);
     btVector3 GetCenterOfMass();
@@ -24,7 +24,7 @@ private:
     btScalar mass_;
     std::vector<btRigidBody*> m_bodies_;
     std::vector<btHingeConstraint*> m_joints_;
-    Creature* blueprint_;
+    Creature blueprint_;
 };
 
 

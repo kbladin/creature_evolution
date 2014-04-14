@@ -1,6 +1,6 @@
 #include "BulletCreature.h"
 
-BulletCreature::BulletCreature(Creature* blueprint) {
+BulletCreature::BulletCreature(Creature blueprint) {
     blueprint_ = blueprint;
     //init body, this should either use data from Creature->Body or be done in Body
     //world position
@@ -61,7 +61,7 @@ BulletCreature::~BulletCreature(void) {
 }
 
 void BulletCreature::UpdateMotors(std::vector<float> input) {
-    std::vector<float> signal = blueprint_->CalculateBrainOutput(input);
+    std::vector<float> signal = blueprint_.CalculateBrainOutput(input);
 
     for(int i=0; i < m_joints_.size(); i++) {
         m_joints_[i]->enableAngularMotor(true, 20.0*signal[i], 5.0);

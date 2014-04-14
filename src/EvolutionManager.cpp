@@ -80,14 +80,16 @@ Creature EvolutionManager::GetBestCreatureFromLastGeneration() {
 void EvolutionManager::SimulatePopulation() {
     Simulation sim_world;
 
-	for(int i = 0; i < current_population_.size(); ++i) {
+	/*for(int i = 0; i < current_population_.size(); ++i) {
     	//NOTE: Something is not being reset in the Simulation,
     	// so just create a new world for every Creature
-        sim_world.AddCreature(current_population_.at(i));
-        sim_world.Simulate();
+        sim_world.AddCreature(current_population_[i]);
+        current_population_[i] = sim_world.Simulate();
         sim_world.RemoveCreature();
-	}
+	}*/
 
+    sim_world.AddPopulation(current_population_);
+    current_population_ = sim_world.SimulatePopulation();
 }
 
 //! Calculates fitness values for all creatures in population by 
