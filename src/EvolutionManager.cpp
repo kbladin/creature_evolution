@@ -1,6 +1,6 @@
 #include "EvolutionManager.h"
 #include "SettingsManager.h"
-
+#include <chrono>
 AutoInitRNG EvolutionManager::rng_;
 
 //! Constructor that get the setting from SettingsManager
@@ -30,12 +30,13 @@ void EvolutionManager::startEvolutionProcess() {
 
 	// Creates a new random population
 	current_population_ = CreateRandomPopulation(pop_size);
-
+	std::chrono::time_point<std::chrono::system_clock> start, end;
     for (int i = 0; i < max_gen; ++i){
 		std::cout << "Generation: " << i << std::endl <<
         "Simulating..." << std::endl;
         //PrintPopulation();
         SimulatePopulation();
+
         CalculateFitnessOnPopulation();
         std::cout << "Calculated fitness on pop" << std::endl;
         SortPopulation();
@@ -46,6 +47,7 @@ void EvolutionManager::startEvolutionProcess() {
         std::cout << "Best fitness: " <<best.GetFitness() << std::endl;
         best_creatures_.push_back(best);
         NextGeneration();
+
 
 	}
 	std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
@@ -96,8 +98,15 @@ void EvolutionManager::SimulatePopulation() {
 void EvolutionManager::CalculateFitnessOnPopulation() {
 
     for(int i = 0; i < current_population_.size(); ++i) {
-        float dist = current_population_[i].GetSimData().distance;
-        current_population_[i].SetFitness(dist);
+        
+    	SimData data = current_population_[i].GetSimData();
+        float dist = data.distance;
+        float velocity = data.velocity;
+        float dev_x = data.deviation_x;
+        float dev_y = data.deviation_y;
+
+       	float fitness = velocity;// - dev_x - dev_y;
+        current_population_[i].SetFitness(fitness);
     }
 }
 
@@ -145,7 +154,7 @@ void EvolutionManager::NextGeneration() {
 	}
 }
 
-
+//! Select parents for crossover and mutation
 std::vector<Creature> EvolutionManager::TournamentSelection() {
 	int TOURNAMENT_SIZE = 3;
 	std::vector<Creature> parents;

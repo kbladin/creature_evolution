@@ -1,8 +1,8 @@
 #ifndef SETTINGSMANAGER
 #define SETTINGSMANAGER
-
-#define M_PI 3.14159265359
-
+#ifdef _WIN32
+  #define M_PI 3.14159265359
+#endif
 //C++
 #include <iostream>
 // External

@@ -123,7 +123,7 @@ void Simulation::RemoveCreature() {
     counter_ = 0.0f;
 }
 
-
+//! Adds a population and creates BulletCreatures
 void Simulation::AddPopulation(std::vector<Creature> population) {
     population_ = population;
 
@@ -163,6 +163,7 @@ void Simulation::Step(float dt)
     counter_ += dt;
 }
 
+//! Steps the dynamic world for a population and updates motors etc
 void Simulation::StepPopulation(float dt) {
     //TODO: grab output from creature Brain? Just current time now.
     std::vector<float> input(1,counter_*5);
@@ -170,6 +171,9 @@ void Simulation::StepPopulation(float dt) {
     //TODO: loop over all creatures and update their motors
     for(int i = 0; i < bt_population_.size(); ++i) {
         bt_population_[i]->UpdateMotors(input);
+        population_[i].UpdateVelocity(bt_population_[i]->GetCenterOfMass().getZ());
+        // population_[i].UpdateDeviationX(bt_population_[i]->GetCenterOfMass().getX());
+        // population_[i].UpdateDeviationY(bt_population_[i]->GetCenterOfMass().getY());
     }
 
     //This should in theory work the same way, i.e just step the simulation
@@ -202,8 +206,10 @@ Creature Simulation::Simulate() {
     return creature_;
 }
 
+
+//! Simulates a population
 std::vector<Creature> Simulation::SimulatePopulation() {
-    int fps = 10;
+    int fps = 60;
     int n_seconds = 30;
 
     for (int i = 0; i < fps*n_seconds; ++i){
@@ -213,6 +219,7 @@ std::vector<Creature> Simulation::SimulatePopulation() {
     //TODO: this has to be done for all creatures
     for(int i = 0; i < population_.size(); ++i) {
         SimData d;
+        d = population_[i].GetSimData();
         d.distance = bt_population_[i]->GetCenterOfMass().getZ();
         population_[i].SetSimData(d);
     }
@@ -220,6 +227,7 @@ std::vector<Creature> Simulation::SimulatePopulation() {
     return population_;
 }
 
+//! Get rigid bodies from current BulletCreature
 /*
 This is only being used for rendering purposes.
 */

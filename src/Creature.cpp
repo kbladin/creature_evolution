@@ -53,6 +53,19 @@ void Creature::SetSimData(SimData d) {
     simdata_ = d;
 }
 
+void Creature::UpdateDeviationX(float deviationx) {
+	simdata_.deviation_x += deviationx;
+}
+
+void Creature::UpdateDeviationY(float deviationy) {
+	simdata_.deviation_y += deviationy;
+}
+
+void Creature::UpdateVelocity(float pos) {
+	simdata_.velocity += pos - simdata_.old_pos;
+	simdata_.old_pos = pos;
+}
+
 std::vector<Creature> Creature::Crossover(Creature mate){
 	std::vector<Creature> children;
 	std::vector<Brain> childrens_brain;

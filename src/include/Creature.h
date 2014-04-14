@@ -15,7 +15,12 @@
 #include "SettingsManager.h"
 
 struct SimData {
-    float distance;
+    float distance = 0.0f;
+    float velocity = 0.0f;
+    float old_pos = 0.0f;
+    float deviation_x = 0.0f;
+    float deviation_y = 0.0f;
+    float deviation_z = 0.0f;
 };
 
 //! A definition of a creature.
@@ -37,6 +42,9 @@ public:
 
     SimData GetSimData();
     void SetSimData(SimData);
+    void UpdateDeviationX(float deviationx);
+    void UpdateDeviationY(float deviationy);
+    void UpdateVelocity(float pos);
 
     std::vector<Creature> Crossover(Creature mate);
 
