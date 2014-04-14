@@ -39,7 +39,6 @@ void EvolutionManager::startEvolutionProcess() {
         CalculateFitnessOnPopulation();
         std::cout << "Calculated fitness on pop" << std::endl;
         SortPopulation();
-        PrintPopulation();
 
 		// save the population and the best creatures
         best = GetBestCreature();

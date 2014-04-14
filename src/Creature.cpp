@@ -30,6 +30,10 @@ Brain Creature::GetBrain(){
 	return brain_;
 }
 
+Body Creature::GetBody(){
+    return body_;
+}
+
 /*! Simple mutation algorithm on creature.
  This should be extended to try more cases. */
 void Creature::Mutate() {

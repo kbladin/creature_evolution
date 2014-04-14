@@ -14,7 +14,6 @@
 #include "AutoInitRNG.h"
 #include "SettingsManager.h"
 
-
 struct SimData {
     float distance;
 };
@@ -33,6 +32,7 @@ public:
     void SetFitness(float fitness);
     float GetFitness() const;
     Brain GetBrain();
+    Body GetBody();
     void Mutate();
 
     SimData GetSimData();
@@ -43,6 +43,7 @@ public:
 private:
     float fitness_;
     Brain brain_;
+    Body body_;
     SimData simdata_;
 
     static AutoInitRNG rng_;

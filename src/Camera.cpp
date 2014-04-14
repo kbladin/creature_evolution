@@ -5,6 +5,22 @@
   The default camera is located at (-10,3,0) and looks at (0,1,0).
 */
 Camera::Camera() {
+
+    far_clipping_ = 100.0f;
+    near_clipping_ = 0.1f;
+
+    // Values used to delay the camera
+    local_translate_goal_ = glm::vec3(0.0f, 0.0f, -10.0f);
+
+    rotate_x_goal_ = M_PI / 10.0f;
+    rotate_y_goal_ = M_PI / 2.0f;
+    //float translate_z_goal_ = -10.0f;
+
+    local_translate_ = glm::vec3(0.0f, 0.0f, -100.0f);
+    global_translate_ = glm::vec3(0.0f, 0.0f, 0.0f);;
+    rotate_x_ = M_PI / 2.0f;
+    rotate_y_ = 0.0f;
+
   projection_ = glm::perspective(
           45.0f,
           4.0f / 3.0f,

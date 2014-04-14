@@ -204,7 +204,7 @@ Creature Simulation::Simulate() {
 
 std::vector<Creature> Simulation::SimulatePopulation() {
     int fps = 10;
-    int n_seconds = 20;
+    int n_seconds = 30;
 
     for (int i = 0; i < fps*n_seconds; ++i){
         StepPopulation(1.0f/(float) fps);

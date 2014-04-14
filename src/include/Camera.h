@@ -40,20 +40,20 @@ private:
   glm::mat4 view_;
   BulletCreature* target_;
 
-  float far_clipping_ = 100.0f;
-  float near_clipping_ = 0.1f;
+  float far_clipping_;
+  float near_clipping_;
 
   // Values used to delay the camera
-  glm::vec3 local_translate_goal_ = glm::vec3(0.0f, 0.0f, -10.0f);
+  glm::vec3 local_translate_goal_;
   glm::vec3 global_translate_goal_;
-  float rotate_x_goal_ = M_PI / 10.0f;
-  float rotate_y_goal_ = M_PI / 2.0f;
+  float rotate_x_goal_;
+  float rotate_y_goal_;
   //float translate_z_goal_ = -10.0f;
 
-  glm::vec3 local_translate_ = glm::vec3(0.0f, 0.0f, -100.0f);
-  glm::vec3 global_translate_ = glm::vec3(0.0f, 0.0f, 0.0f);;
-  float rotate_x_ = M_PI / 2.0f;
-  float rotate_y_ = 0.0f;
+  glm::vec3 local_translate_;
+  glm::vec3 global_translate_;
+  float rotate_x_;
+  float rotate_y_;
 };
 
 #endif // CAMERA_H

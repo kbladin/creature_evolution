@@ -1,5 +1,13 @@
 #include "Shape.h"
 
+Shape::Shape() {
+    vertex_array_id_ = GL_FALSE;
+    element_buffer_id_ = GL_FALSE;
+    vertex_position_buffer_id_ = GL_FALSE;
+    vertex_normal_buffer_id_ = GL_FALSE;
+    vertex_uv_buffer_id_ = GL_FALSE;
+}
+
 void Shape::DebugPrint() {
   for (int i = 0; i < vertex_position_data_.size(); ++i) {
     std::cout << glm::to_string(vertex_position_data_[i]) << std::endl;
