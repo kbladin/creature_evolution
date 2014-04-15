@@ -166,7 +166,7 @@ void Simulation::Step(float dt)
 //! Steps the dynamic world for a population and updates motors etc
 void Simulation::StepPopulation(float dt) {
     //TODO: grab output from creature Brain? Just current time now.
-    std::vector<float> input(1,counter_*5);
+    std::vector<float> input(1,counter_);
     
     //TODO: loop over all creatures and update their motors
     for(int i = 0; i < bt_population_.size(); ++i) {
