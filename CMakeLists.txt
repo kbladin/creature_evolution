@@ -23,6 +23,10 @@ if(WIN32 OR APPLE)
 	endif()
 endif(WIN32 OR APPLE)
 
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+	set(CMAKE_PREFIX_PATH "/opt/Qt/5.2.1/gcc_64" ${CMAKE_PREFIX_PATH})
+endif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+
 #NOTE: this is probably stupid (non-general)
 if(MSVC)
   set(BULLET_ROOT ${CMAKE_SOURCE_DIR}/external_libs/bullet)
@@ -76,20 +80,20 @@ include_directories(${CMAKE_SOURCE_DIR}/external_libs/glm)
 
 
 #Linux magic
-IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-  find_package(X11 REQUIRED)
-  include_directories(${X11_INCLUDE_DIR})
-  #Set additional libs for GLFW on Linux
-  set( ADDITIONAL_LIBS 
-      -pthread
-      -lrt
-      -lXinerama
-      -lXrandr
-      -lXxf86vm
-      -lXi
-      -lX11
-     )
-ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+#IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+#  find_package(X11 REQUIRED)
+#  include_directories(${X11_INCLUDE_DIR})
+#  #Set additional libs for GLFW on Linux
+#  set( ADDITIONAL_LIBS 
+#      -pthread
+#      -lrt
+#      -lXinerama
+#      -lXrandr
+#      -lXxf86vm
+#      -lXi
+#      -lX11
+#     )
+#ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 
 
