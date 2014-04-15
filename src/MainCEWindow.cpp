@@ -2,6 +2,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
+#include <QtWidgets/QApplication>
 
 #include "GLWidget.h"
 #include "MainCEWindow.h"
@@ -16,6 +17,9 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     glFormat.setSampleBuffers( true );
     //QGLFormat::setDefaultFormat(glFormat);
     glWidget = new GLWidget(glFormat,0,creature_evo_);
+
+
+
 
     QHBoxLayout *mainLayout = new QHBoxLayout;
     QVBoxLayout* controlLayout = new QVBoxLayout;
@@ -33,6 +37,10 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     //connect(dummyButton,SIGNAL(clicked()), this, SLOT(testPrint()));
     connect(dummyButton,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
     connect(simButton, SIGNAL(clicked()), this, SLOT(startEvolution()));
+    
+    connect(&evolution_thread_starter_, SIGNAL(finished()), this, SLOT(evoDone()));
+
+
     std::cout << "Done!" << std::endl;
 }
 
@@ -59,8 +67,18 @@ void MainCEWindow::testPrint() {
     qDebug("Button works!");
 }
 
+static void startEvo(CreatureEvolution* CE) {
+    CE->Run();
+}
+
 void MainCEWindow::startEvolution() {
-    creature_evo_->Run();
+    QApplication::setOverrideCursor(Qt::BusyCursor);
+    evolution_thread_starter_.setFuture(QtConcurrent::run(::startEvo, creature_evo_));
+    evoDone();
+}
+
+void MainCEWindow::evoDone() {
+    QApplication::restoreOverrideCursor();
 }
 
 void MainCEWindow::renderWorm() {
