@@ -6,10 +6,12 @@
 //C++
 #include <iostream>
 // External
+#include "vec3.h"
 #ifndef Q_MOC_RUN
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #endif
+
 
 //! Class to handle all the settings in the program. Can only instance one SettingsManager-class in the whole program. 
 class SettingsManager {
@@ -26,6 +28,8 @@ public:
   int GetFrameHeight();
   float GetRotationSensitivity();
 
+  Vec3 GetMainBodyDimension();
+
   void SetPopulationSize(int population_size);
   void SetMaxGenerations(int max_generations);
   void SetCrossover(float crossover_ratio);
@@ -35,6 +39,8 @@ public:
   void SetFrameWidth(int frame_width);
   void SetFrameHeight(int frame_height);
   void SetRotationSensitivity(float sense);
+
+  void SetMainBodyDimension(Vec3 dimension);
 private:
   SettingsManager();
   ~SettingsManager(void); 
@@ -50,7 +56,7 @@ private:
   float rotation_sensitivity_; //will result in half a round on a
   // retina sceen and one round on a normal screen when moving mouse from one
   // side to the other.
-
+  Vec3 main_body_dim_;
   static SettingsManager* instance_;
 };
 

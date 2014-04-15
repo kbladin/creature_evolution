@@ -28,7 +28,7 @@ struct BodyTree {
 
 class Body {
 public:
-  Body(){};
+  Body(){}
   BodyTree GetBodyRoot();
 };
 

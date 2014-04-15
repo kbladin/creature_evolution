@@ -5,7 +5,6 @@
 #include <QSignalMapper>
 #include "GLWidget.h"
 #include "MainCEWindow.h"
-#include "SettingsManager.h"
 
 MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 {
@@ -27,21 +26,14 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
         connect(slide[i], SIGNAL(valueChanged(int)), signalMapper, SLOT(map()));
     }*/
     //connect(signalMapper, SIGNAL(mapped(int)), this, SIGNAL(setValue(int)));
-
     //connect(signalMapper, SIGNAL(mapped(int)), this, SIGNAL(digitClicked(int)));
-
-    /*SettingsManager::()->setPopulationSize(5);
-    SettingsManager::Instance()->setCrossover(0.8);
-    SettingsManager::Instance()->setElitism(0.2);
-    SettingsManager::Instance()->setMutation(0.8);
-    */
 
     QHBoxLayout *mainLayout = new QHBoxLayout;
     QHBoxLayout *controlLayout = new QHBoxLayout;
     QVBoxLayout *buttonLayout = new QVBoxLayout;
-    QPushButton *dummyButton = new QPushButton("Push for pleasure!");
     QPushButton *simButton = new QPushButton("Start simulation.");
-    QPushButton *testButton = new QPushButton("Change color");
+    QPushButton *dummyButton = new QPushButton("Push for pleasure!");
+    QPushButton *testButton = new QPushButton("Set body dimension");
 
     QSignalMapper *signalMapper = new QSignalMapper(this);
 
@@ -50,12 +42,14 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     slide_CO = createSlider(100, 1, 10, 10);
     slide_elit = createSlider(100, 1, 10, 10);
     slide_mut = createSlider(100, 1, 10, 10);
+    slide_change_dim = createSlider(100, 1, 10, 10);
 
     controlLayout->addWidget(slide[0]);
     controlLayout->addWidget(slide_pop);
     controlLayout->addWidget(slide_CO);
     controlLayout->addWidget(slide_elit);
     controlLayout->addWidget(slide_mut);
+    controlLayout->addWidget(slide_change_dim);
 
     buttonLayout->addWidget(dummyButton);
     buttonLayout->addWidget(simButton);
@@ -67,22 +61,22 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     setWindowTitle(tr("Creature Evolution"));
 
     // ----- Connect buttons -----
-    connect(dummyButton,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
     connect(simButton, SIGNAL(clicked()), this, SLOT(startEvolution()));
-    connect(testButton, SIGNAL(pressed()), this, SLOT(changePressed()));
-    connect(testButton, SIGNAL(released()), this, SLOT(changeReleased()));
+    connect(simButton, SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
+    connect(testButton, SIGNAL(pressed()), this, SLOT(changePressed()));      // Should this do something?
+    //connect(testButton, SIGNAL(released()), this, SLOT(changeReleased()));    // Should this do something?
+
     // ----- Connect sliders -----
     connect(slide[0], SIGNAL(valueChanged(int)), this, SLOT(setValueGen(int)));
     connect(slide_pop, SIGNAL(valueChanged(int)), this, SLOT(setValuePop(int)));
     connect(slide_CO, SIGNAL(valueChanged(int)), this, SLOT(setValueCO(int)));
     connect(slide_elit, SIGNAL(valueChanged(int)), this, SLOT(setValueElit(int)));
+    connect(slide_mut, SIGNAL(valueChanged(int)), this, SLOT(setValueMut(int)));
+    connect(slide_change_dim, SIGNAL(valueChanged(int)), this, SLOT(setBodyDimension(int)));
 
-
-    //createLayout();
 }
 
-QSlider *MainCEWindow::createSlider(int range, int step, int page, int tick)
-{
+QSlider *MainCEWindow::createSlider(int range, int step, int page, int tick){
     QSlider *slider = new QSlider(Qt::Vertical);
     slider->setRange(0, range); // 10
     slider->setSingleStep(step); // 1
@@ -92,51 +86,39 @@ QSlider *MainCEWindow::createSlider(int range, int step, int page, int tick)
     return slider;
 }
 
-/*SettingsManager::()->setPopulationSize(5);
-SettingsManager::Instance()->setCrossover(0.8);
-SettingsManager::Instance()->setElitism(0.2);
-SettingsManager::Instance()->setMutation(0.8);*/
-void MainCEWindow::setValueGen(int value)
-{
-    SettingsManager::Instance()->setMaxGenerations(value);
-    qDebug()<<value;
+void MainCEWindow::setValueGen(int value) {
+    SettingsManager::Instance()->SetMaxGenerations(value);
 }
 
-void MainCEWindow::setValuePop(int value)
-{
-    SettingsManager::Instance()->setPopulationSize(value);
-    qDebug()<<value;
+void MainCEWindow::setValuePop(int value) {
+    SettingsManager::Instance()->SetPopulationSize(value);
 }
 
-void MainCEWindow::setValueCO(int value)
-{
-    SettingsManager::Instance()->setCrossover(float(value/normalize));
-    qDebug()<<(float)value/normalize;
+void MainCEWindow::setValueCO(int value) {
+    SettingsManager::Instance()->SetCrossover((float)(value)/(float)(normalize));
 }
 
-void MainCEWindow::setValueElit(int value)
-{
-    SettingsManager::Instance()->setElitism(float(value/normalize));
-    qDebug()<<(float)value/normalize;
+void MainCEWindow::setValueElit(int value) {
+    SettingsManager::Instance()->SetElitism((float)(value)/(float)(normalize));
 }
-void MainCEWindow::setValueMut(int value)
-{
-    SettingsManager::Instance()->setMutation(float(value/normalize));
-    qDebug()<<(float)value/normalize;
+void MainCEWindow::setValueMut(int value) {
+    SettingsManager::Instance()->SetMutation((float)(value)/(float)(normalize));
+    qDebug()<<(float)(value)/(float)(normalize);
+}
+void MainCEWindow::setBodyDimension(int value) {
+    float dim = (float)(value)/(float)(normalize);
+    SettingsManager::Instance()->SetMainBodyDimension(Vec3(dim/2, dim/2, dim));
 }
 
-void MainCEWindow::changePressed()
-{
+void MainCEWindow::changePressed() {
+    qDebug()<<"hej";
+}
+
+void MainCEWindow::changeReleased() {
 
 }
 
-void MainCEWindow::changeReleased()
-{
-
-}
-
-void MainCEWindow::keyPressEvent(QKeyEvent *e)
-{
+void MainCEWindow::keyPressEvent(QKeyEvent *e) {
     if (e->key() == Qt::Key_Escape)
         close();
     else
