@@ -17,6 +17,9 @@ BodyTree Body::GetBodyRoot() {
         case WORM:
             return CreateWorm();
             break;
+        case TURTLE:
+            return CreateTurtle();
+            break;
         default:
             std::cout << "not valid creature.. uses Pony!";
             return CreatePony();
@@ -95,6 +98,46 @@ BodyTree Body::CreatePony(){
     main_body.joint_list.push_back(tail_joint);
 
     return main_body;
+
+}
+
+BodyTree Body::CreateTurtle(){
+
+    BodyTree leg;
+    leg.box_dim = Vec3(0.4,0.1,0.2);
+    leg.mass = 5;
+    leg.friction = 1;
+
+    BodyTree body; 
+    body.box_dim = Vec3(0.5,0.2,1);
+    body.mass = 30;
+    body.friction = 0.6;
+    body.body_list = std::vector<BodyTree>(4, leg);
+
+    Joint joint; 
+    joint.connection_root = Vec3(0.0,-leg.box_dim.y,0.0);
+    joint.connection_branch = Vec3(0.0,leg.box_dim.y/2.0,0.0);
+    joint.hinge_orientation = Vec3(0.0,M_PI/2,M_PI/4);
+    joint.upper_limit = M_PI*0.2;
+    joint.lower_limit = -M_PI*0.2;
+
+    Joint left_front_joint = joint;
+    left_front_joint.connection_root = Vec3(body.box_dim.x,-body.box_dim.y/1.0,body.box_dim.z/2.0);
+    Joint right_front_joint = joint;
+    right_front_joint.connection_root = Vec3(-body.box_dim.x,-body.box_dim.y/1.0,body.box_dim.z/2.0);
+    Joint left_back_joint = joint;
+    left_back_joint.connection_root = Vec3(body.box_dim.x,-body.box_dim.y/1.0,-body.box_dim.z/1.65);
+    Joint right_back_joint = joint;
+    right_back_joint.connection_root = Vec3(-body.box_dim.x,-body.box_dim.y/1.0,-body.box_dim.z/1.65);
+
+    body.joint_list.push_back(left_front_joint);
+    body.joint_list.push_back(right_front_joint);
+    body.joint_list.push_back(left_back_joint);
+    body.joint_list.push_back(right_back_joint);
+
+    return body; 
+
+
 
 }
 

@@ -75,18 +75,26 @@ std::vector<Brain> Brain::Crossover(Brain mate){
     //int pivot_point_second = dist_index_second(rng_.mt_rng_);
 
     // TODO: change so not use for-loops!!
-    for(int i=0; i<pivot_point_first; i++)
-        children[0].weights[i] = weights[i];
-    for(int j=pivot_point_first; j<weights.size(); j++)
-        children[0].weights[j] = mate.GetWeights()[j];
-    for(int i=0; i<pivot_point_first; i++)
-        children[1].weights[i] = mate.GetWeights()[i];
-    for(int j=pivot_point_first; j<weights.size(); j++)
-        children[1].weights[j] = weights[j];
+    
+    // if we should use crossover or not. 
+    std::uniform_real_distribution<float> float_dist(0.0f,1.0f);
+    double should_crossover = float_dist(rng_.mt_rng_);
+    if( SettingsManager::Instance()->GetCrossover() >= should_crossover) {
 
 
-    // TODO: use crossover-ratio. if should be done or not.
-
+        for(int i=0; i<pivot_point_first; i++)
+            children[0].weights[i] = weights[i];
+        for(int j=pivot_point_first; j<weights.size(); j++)
+            children[0].weights[j] = mate.GetWeights()[j];
+        for(int i=0; i<pivot_point_first; i++)
+            children[1].weights[i] = mate.GetWeights()[i];
+        for(int j=pivot_point_first; j<weights.size(); j++)
+            children[1].weights[j] = weights[j];
+    }
+    else { 
+        children[0].weights = weights;
+        children[1].weights = mate.GetWeights(); 
+    }
 
     return children;
 }

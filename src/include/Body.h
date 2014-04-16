@@ -34,6 +34,7 @@ public:
 private:
   BodyTree CreatePony();
   BodyTree CreateWorm();
+  BodyTree CreateTurtle();
 };
 
 #endif //BODY_H

@@ -6,6 +6,7 @@
 #include <cmath>
 //Internal
 #include "AutoInitRNG.h"
+#include "SettingsManager.h"
 
 class Brain {
 public:

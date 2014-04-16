@@ -93,8 +93,16 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
 void BulletCreature::UpdateMotors(std::vector<float> input) {
     std::vector<float> signal = blueprint_.CalculateBrainOutput(input);
 
+    int sign = 1;
+
     for(int i=0; i < m_joints_.size(); i++) {
-        m_joints_[i]->enableAngularMotor(true, 20.0*signal[i], 20.0);
+
+        if(signal[i]>=0)
+            sign=1;
+        else
+            sign=-1;
+
+        m_joints_[i]->enableAngularMotor(true, 80.0*sign, 10.0*sign*signal[i]); // apply force
     }
 }
 

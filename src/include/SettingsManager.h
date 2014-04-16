@@ -18,7 +18,7 @@
 // class Brain;
 
 enum CreatureType{
-  PONY, WORM
+  PONY, WORM, TURTLE
 };
 
 
