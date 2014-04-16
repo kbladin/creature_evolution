@@ -6,7 +6,7 @@ BulletCreature::BulletCreature(Creature blueprint) {
     blueprint_ = blueprint;
 
     //create body
-    AddBody(blueprint_.GetBody().GetBodyRoot(), btVector3(0.0,0.6,0.0));
+    AddBody(blueprint_.GetBody().GetBodyRoot(), btVector3(0.0,1.5,0.0));
 
 }
 
@@ -92,10 +92,10 @@ btVector3 BulletCreature::GetCenterOfMass(){
     for(int i=0; i < m_bodies_.size(); i++) {
         btTransform trans;
         m_bodies_[i]->getMotionState()->getWorldTransform(trans);
-        center_of_mass += trans.getOrigin();//*mass_[i];
-        //mass_sum += mass_[i];
+        center_of_mass += trans.getOrigin()*mass_[i];
+        mass_sum += mass_[i];
     }
-    center_of_mass /= m_bodies_.size();//*mass_sum;
+    center_of_mass /= mass_sum;
 
     return center_of_mass;
 }

@@ -39,7 +39,7 @@ BodyTree Body::CreatePony(){
 
     //Make legs
     BodyTree leg;
-    leg.box_dim = Vec3(0.2,0.4,0.2);
+    leg.box_dim = Vec3(0.2,0.6,0.2);
     leg.mass = 15.0;
     leg.friction = 0.5;
 
@@ -51,12 +51,12 @@ BodyTree Body::CreatePony(){
     joint.connection_root = Vec3(0.0,-leg.box_dim.y,0.0);
     joint.connection_branch = Vec3(0.0,leg.box_dim.y/2.0,0.0);
     joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
-    joint.upper_limit = M_PI*0.2;
-    joint.lower_limit = -M_PI*0.2;
+    joint.upper_limit = M_PI*0.25;
+    joint.lower_limit = -M_PI*0.25;
 
     //connect lower legs
-    upper_leg.body_list.push_back(lower_leg);
-    upper_leg.joint_list.push_back(joint);
+    // upper_leg.body_list.push_back(lower_leg);
+    // upper_leg.joint_list.push_back(joint);
 
     //Define the main body and connect everything to it
     BodyTree main_body;
@@ -136,8 +136,8 @@ BodyTree Body::CreateWorm(){
     // varje segment på masken
     BodyTree body_segment;
     body_segment.box_dim = Vec3(0.1,0.05,0.1);
-    body_segment.mass = 0.25;
-    body_segment.friction = 1.0;
+    body_segment.mass = 2.5;
+    body_segment.friction = 0.5;
 
     BodyTree current_segment = body_segment;
     BodyTree previous_segment = body_segment;
@@ -149,7 +149,6 @@ BodyTree Body::CreateWorm(){
     joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
     joint.upper_limit = M_PI*0.2;
     joint.lower_limit = -M_PI*0.2;
-
 
     for(int i=0; i<worm_length-1; i++){
         current_segment.body_list.push_back(previous_segment);

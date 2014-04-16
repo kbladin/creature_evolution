@@ -24,7 +24,7 @@ if(WIN32 OR APPLE)
 endif(WIN32 OR APPLE)
 
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-	set(CMAKE_PREFIX_PATH "/opt/Qt/5.2.1/gcc_64" ${CMAKE_PREFIX_PATH})
+	set(CMAKE_PREFIX_PATH $ENV{QTDIR} ${CMAKE_PREFIX_PATH})
 endif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 #NOTE: this is probably stupid (non-general)
