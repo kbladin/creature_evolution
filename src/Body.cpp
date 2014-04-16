@@ -52,8 +52,8 @@ BodyTree Body::CreatePony(){
     joint.lower_limit = -M_PI*0.2;
 
     //connect lower legs
-    upper_leg.body_list.push_back(lower_leg);
-    upper_leg.joint_list.push_back(joint);
+    // upper_leg.body_list.push_back(lower_leg);
+    // upper_leg.joint_list.push_back(joint);
 
     //Define the main body and connect everything to it
     BodyTree main_body;

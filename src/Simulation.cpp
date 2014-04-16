@@ -159,7 +159,7 @@ void Simulation::Step(float dt)
     std::vector<float> input(1,counter_*5);
     bullet_creature_->UpdateMotors(input);
 
-    dynamics_world_->stepSimulation(dt,1);
+    dynamics_world_->stepSimulation(dt,1000);
     counter_ += dt;
 }
 
@@ -177,7 +177,7 @@ void Simulation::StepPopulation(float dt) {
     }
 
     //This should in theory work the same way, i.e just step the simulation
-    dynamics_world_->stepSimulation(dt,1);
+    dynamics_world_->stepSimulation(dt,1000);
     counter_ += dt;   
 }
 
