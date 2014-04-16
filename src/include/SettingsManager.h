@@ -12,7 +12,7 @@
 #endif
 
 enum CreatureType{
-  PONY, WORM
+  PONY, WORM, TURTLE
 };
 
 

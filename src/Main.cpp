@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
 	SettingsManager::Instance()->SetElitism(0.2f);
 	SettingsManager::Instance()->SetMutation(0.8f);
 
-    SettingsManager::Instance()->SetCreatureType(CreatureType::PONY);
+    SettingsManager::Instance()->SetCreatureType(CreatureType::TURTLE);
 
 	CreatureEvolution* CE = new CreatureEvolution();
 
