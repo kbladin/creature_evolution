@@ -11,6 +11,44 @@
 // External
 #include <GL/glew.h>
 
+enum TextureType{
+  STANDARD = 0, // Not procedural
+  CHECKERBOARD = 1 // Procedural
+};
+
+//! This class defines the material properties used for shading.
+/*!
+  The material has a diffuse texture which can be set to one of the textures
+  created in the TextureManager. The name have to match. The material also
+  has other properties like reflectance, specularity and shinyness,
+  which can be set to make the appearance different when shading.
+  The value of texture_diffuse_type tells whether the texture is of STANDARD=0
+  type  which means it is read from an image file. Other types are
+  CHECKERBOARD=1 which is a procedural texture.
+*/
+
+class Material {
+public:
+  Material();
+  GLuint GetDiffuseTextureID();
+  void SetDiffuseTexture(const char* texturename);
+  
+  float reflectance;
+  float specularity;
+  float shinyness;
+  int texture_diffuse_type;
+private:
+  GLuint texture_diffuse_id_;
+};
+
+//! TextureManager is a singleton class which means it can be accessed from all around the application.
+/*!
+  Using this class, all textures can be loaded (providing an opengl context
+  is created) in to graphics memory and then be reused for different
+  objects in the scene. Currently there is only diffuse textures but this
+  can be extended for use of normal-maps for example.
+*/
+
 class TextureManager {
 public:
   static TextureManager* Instance();
@@ -33,44 +71,6 @@ private:
 
   std::map<std::string, GLuint> textures_;
   static TextureManager *instance_;
-/*
-  // Usage
-  int LoadTexture(const char* szFilœename, int nTextureID = -1);
-  int LoadTextureFromMemory(
-    GLubyte* pData,
-    int nWidth,
-    int nHeight,
-    int nBPP,
-    int nTextureID = -1);
-  void FreeTexture(int nID);
-  void FreeAll(void);
-
-  // Debug
-  char* GetErrorMessage(void);
-  int GetNumTextures(void);
-  int GetAvailableSpace(void);
-  int GetTexID(int nIndex);
-
-  private:
-  static TextureManager *instance_;
-  char szErrorMessage[80];  // they arn't bugs, their features!
-  int nNumTextures;
-  int nAvailable;         // available space in the nTexID array
-  int* nTexIDs;
-
-  TextureManager();
-  ~TextureManager();
-  GLubyte* LoadBitmapFile(
-    const char* filename,
-    int& nWidth,
-    int& nHeight,
-    int& nBPP);
-  GLubyte* LoadTargaFile(
-    const char* filename,
-    int& nWidth,
-    int& nHeight,
-    int& nBPP);
-    */
 };
 
 #endif // TEXTUREMANAGER_H

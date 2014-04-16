@@ -1,5 +1,12 @@
 #version 330 core
 
+struct Material {
+  float reflectance;
+  float specularity;
+  float shinyness;
+  int texture_type;
+};
+
 // Input data
 in vec3 position_worldspace;
 in vec3 position_modelspace;
@@ -19,21 +26,43 @@ uniform vec3 light_color;
 uniform vec3 light_position_worldspace;
 uniform sampler2D texture_sampler2D;
 
+uniform Material material;
+
 // Ouput data
 out vec3 color;
+
+vec3 diffuseCheckerboard(float x, float y, float z) {
+  int ix = int((x < 0) ? -x+1 : x);
+  int iy = int((y < 0) ? -y+1 : y);
+  int iz = int((z < 0) ? -z+1 : z);
+  float val = (ix%2 + iy%2 + iz%2)%2;
+  return vec3(val, val, val);
+}
 
 void main()
 { 
   float ambient_brightness = 0.1;
   vec3 ambient_color = vec3(1,1,1);
+  vec3 material_diffuse_color;
 
-  // Material
-  float reflectance = 0.5;
-  float specularity = 0.5;
-  float shinyness = 32;
-
-  //vec3 material_diffuse_color = vec3(int(position_modelspace.x)%2 / 4.0 + 0.5, int(position_modelspace.z)%2 / 4.0 + 0.5, 1.0); // vec3(uv.x, uv.y, 0.5);
-  vec3 material_diffuse_color = texture2D(texture_sampler2D, uv ).rgb;
+  switch(material.texture_type) {
+    case 0: // Texture from file
+      material_diffuse_color = texture(texture_sampler2D, uv ).rgb;
+      break;
+    case 1: // Checkerboard
+      material_diffuse_color =
+            diffuseCheckerboard(
+                  position_modelspace.x,
+                  position_modelspace.y,
+                  position_modelspace.z);
+      break;
+    default: // Checkerboard
+      material_diffuse_color =
+        diffuseCheckerboard(
+              position_modelspace.x,
+              position_modelspace.y,
+              position_modelspace.z);
+  }
 
   // Vectors
   vec3 n = normalize(normal_viewspace);
@@ -63,10 +92,10 @@ void main()
   float cos_alpha = clamp( dot( e,-r ), 0,1 );
   vec3 specular =
           light_color *
-          clamp(pow(cos_alpha, shinyness),0,1) *
+          clamp(pow(cos_alpha, material.shinyness),0,1) *
           inv_distance_square *
           light_intensity *
-          specularity;
+          material.specularity;
 
   // Fog
   float thickness = 1/far_clipping;
@@ -75,6 +104,6 @@ void main()
   vec3 fog = fog_color * invisibility;
 
   // Total light
-  color = (reflectance * (ambient + diffuse + specular)) * (1-invisibility) + 
+  color = (material.reflectance * (ambient + diffuse + specular)) * (1-invisibility) + 
           fog;
 }

@@ -1,8 +1,52 @@
-#include "include/TextureManager.h"
-//#include "TextureManager.h"
+#include "TextureManager.h"
+
+//////////////
+// Material //
+//////////////
+
+//! Creates a Material with standard values, and no texture
+Material::Material() {
+  reflectance = 0.5f;
+  specularity = 0.5f;
+  shinyness = 32;
+  texture_diffuse_id_ = GL_FALSE;
+  texture_diffuse_type = TextureType::STANDARD;
+}
+
+//! Returns the texture id of the diffuse texture of the Material.
+/*!
+  This function should be used when binding the diffuse texture for the
+  Material. 
+ \return The texture id of the diffuse texture of the Material.
+*/
+GLuint Material::GetDiffuseTextureID() {
+  return texture_diffuse_id_;
+}
+
+//! Sets the diffuse texture.
+/*!
+  The texture provided must have been loaded in to the TextureManager before
+  this function can be called. Otherwise an invalid texture id will be set.
+ \param texturename is the name of the texture as it was defined when loaded
+ in the TextureManager.
+*/
+void Material::SetDiffuseTexture(const char* texturename) {
+  texture_diffuse_id_ =
+          TextureManager::Instance()->GetIDFromName(texturename);
+}
+
+////////////////////
+// TextureManager //
+////////////////////
 
 TextureManager* TextureManager::instance_ = NULL;
 
+//! A part of the singleton pattern
+/*!
+ If this function is called for the first time, the constructor is called and
+ the singleton is created.
+ \return The one instance of the TextureManager
+ */
 TextureManager* TextureManager::Instance() {
   if (!instance_) {
     instance_ = new TextureManager();
@@ -20,16 +64,15 @@ TextureManager::TextureManager(){
 }
 
 TextureManager::~TextureManager(){
-  //Delete Textures
-  std::map<std::string, GLuint>::iterator texture_iter =
-      textures_.begin();
-  while (texture_iter != textures_.end()) {
-    //glDeleteTexture(texture_iter);
-    // TODO : DELETE TEXTURE
-    texture_iter++;
-  }
+  FreeAll();
 }
 
+//! Load a texture from file and give it a name.
+/*!
+  Currently only bmp and dds files are supported.
+  \param filename is the path to the image file
+  \texturename is the name which the texture will be referred to when used.
+ */
 void TextureManager::LoadTexture(
   const char* filename,
   const char* texturename) {
@@ -60,18 +103,62 @@ void TextureManager::LoadTexture(
   printf("Loaded : %s\n", filename);
 }
 
+//! Releases the given texture from graphics memory.
+/*!
+  \param texturename is the name of the texture.
+*/
+void TextureManager::FreeTexture(const char* texturename){
+  glDeleteTextures(1, &textures_[texturename]);
+}
+
+//! Releases all textures from graphics memory.
+/*!
+  \param texturename is the name of the texture.
+*/
+void TextureManager::FreeAll(){
+  std::map<std::string, GLuint>::iterator texture_iter =
+      textures_.begin();
+  while (texture_iter != textures_.end()) {
+    glDeleteTextures(1, &texture_iter->second);
+    texture_iter++;
+  }
+}
+
+//! Binds the given texture provided the name exists.
+/*!
+  This shall be done when rendering a shape to give it the specified texture.
+  This function is currently only for diffuse texture but similar functions
+  can be used for other types as well (normal maps or reflection maps). This
+  function is possibly a little bit slower than the one that takes a GLuint
+  directly since the texture needs to be found in a std::map before it can
+  be bound.
+  \param texturename is the name of the texture.
+ */
 void TextureManager::BindTexture(const char* texturename) {
   // Bind our texture in Texture Unit 0
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, textures_[texturename]);
 }
 
+//! Binds the given texture provided it is created.
+/*!
+  This shall be done when rendering a shape to give it the specified texture.
+  This function is currently only for diffuse texture but similar functions
+  can be used for other types as well (normal maps or reflection maps).
+  \param texture_id is the id of the texture.
+ */
 void TextureManager::BindTexture(GLuint texture_id) {
   // Bind our texture in Texture Unit 0
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, texture_id);
 }
 
+//! Returns the id of the texture given its name.
+/*!
+  Returns 0 if the texture does not exist.
+  \param texturename is the name of the texture.
+  \return the id of the given texture.
+ */
 GLuint TextureManager::GetIDFromName(const char* texturename) {
   return textures_[texturename];
 }
