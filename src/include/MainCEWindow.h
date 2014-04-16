@@ -4,6 +4,12 @@
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QGroupBox>
 #include <CreatureEvolution.h>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
+#include <QtWidgets/QLabel>
+#include <QtDebug>
+#include <QSignalMapper>
 
 QT_BEGIN_NAMESPACE
 class QSlider;
@@ -35,13 +41,18 @@ public slots:
 protected:
     void keyPressEvent(QKeyEvent *event);
 private:
-    QSlider *createSlider(int range, int step, int page, int tick);
+    QVBoxLayout *createSliderLayout(QSlider *slider, int range, int step, int page, int tick, std::string label);
     QSlider *slide[4];
     QSlider *slide_gen;
     QSlider *slide_pop;
     QSlider *slide_CO;
     QSlider *slide_elit;
     QSlider *slide_mut;
+    QBoxLayout *box_gen;
+    QBoxLayout *box_pop;
+    QBoxLayout *box_CO;
+    QBoxLayout *box_elit;
+    QBoxLayout *box_mut;
     GLWidget *glWidget;
     CreatureEvolution* creature_evo_;
     static const int normalize = 100;

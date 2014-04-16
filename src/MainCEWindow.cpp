@@ -1,8 +1,3 @@
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QSlider>
-#include <QtDebug>
-#include <QSignalMapper>
 #include "GLWidget.h"
 #include "MainCEWindow.h"
 #include "SettingsManager.h"
@@ -36,60 +31,69 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     SettingsManager::Instance()->setMutation(0.8);
     */
 
-    QHBoxLayout *mainLayout = new QHBoxLayout;
-    QHBoxLayout *controlLayout = new QHBoxLayout;
-    QVBoxLayout *buttonLayout = new QVBoxLayout;
-    QPushButton *dummyButton = new QPushButton("Push for pleasure!");
-    QPushButton *simButton = new QPushButton("Start simulation.");
-    QPushButton *testButton = new QPushButton("Change color");
+    QHBoxLayout *layout_main = new QHBoxLayout;
+    QVBoxLayout *layout_controll = new QVBoxLayout;
+    QVBoxLayout *layout_button = new QVBoxLayout;
+    QPushButton *button_dummy = new QPushButton("Push for pleasure!");
+    QPushButton *button_sim = new QPushButton("Start simulation.");
+    QPushButton *button_test = new QPushButton("Change color");
 
     QSignalMapper *signalMapper = new QSignalMapper(this);
 
-    slide[0] = createSlider(100, 1, 10, 10);
-    slide_pop = createSlider(100, 1, 10, 10);
-    slide_CO = createSlider(100, 1, 10, 10);
-    slide_elit = createSlider(100, 1, 10, 10);
-    slide_mut = createSlider(100, 1, 10, 10);
+    box_gen = createSliderLayout(slide_gen, 100, 1, 10, 10, "Generation:");
+    box_pop = createSliderLayout(slide_pop, 100, 1, 10, 10, "Population:");
+    box_CO = createSliderLayout(slide_CO, 100, 1, 10, 10, "Cross-over(%):");
+    box_elit = createSliderLayout(slide_elit, 100, 1, 10, 10, "Elitism(%):");
+    box_mut = createSliderLayout(slide_mut, 100, 1, 10, 10, "Mutation(%):");
 
-    controlLayout->addWidget(slide[0]);
-    controlLayout->addWidget(slide_pop);
-    controlLayout->addWidget(slide_CO);
-    controlLayout->addWidget(slide_elit);
-    controlLayout->addWidget(slide_mut);
+    //controlLayout->addWidget(slide[0]);
+    layout_controll->addLayout(box_gen);
+    layout_controll->addLayout(box_pop);
+    layout_controll->addLayout(box_CO);
+    layout_controll->addLayout(box_elit);
+    layout_controll->addLayout(box_mut);
 
-    buttonLayout->addWidget(dummyButton);
-    buttonLayout->addWidget(simButton);
-    buttonLayout->addWidget(testButton);
-    mainLayout->addWidget(glWidget);
-    mainLayout->addLayout(controlLayout);
-    mainLayout->addLayout(buttonLayout);
-    setLayout(mainLayout);
+    layout_button->addWidget(button_dummy);
+    layout_button->addWidget(button_sim);
+    layout_button->addWidget(button_test);
+
+    layout_main->addWidget(glWidget);
+    layout_main->addLayout(layout_controll);
+    layout_main->addLayout(layout_button);
+
+    setLayout(layout_main);
     setWindowTitle(tr("Creature Evolution"));
 
     // ----- Connect buttons -----
-    connect(dummyButton,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
-    connect(simButton, SIGNAL(clicked()), this, SLOT(startEvolution()));
-    connect(testButton, SIGNAL(pressed()), this, SLOT(changePressed()));
-    connect(testButton, SIGNAL(released()), this, SLOT(changeReleased()));
+    connect(button_dummy,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
+    connect(button_sim, SIGNAL(clicked()), this, SLOT(startEvolution()));
+    connect(button_test, SIGNAL(pressed()), this, SLOT(changePressed()));
+    connect(button_test, SIGNAL(released()), this, SLOT(changeReleased()));
     // ----- Connect sliders -----
-    connect(slide[0], SIGNAL(valueChanged(int)), this, SLOT(setValueGen(int)));
-    connect(slide_pop, SIGNAL(valueChanged(int)), this, SLOT(setValuePop(int)));
-    connect(slide_CO, SIGNAL(valueChanged(int)), this, SLOT(setValueCO(int)));
-    connect(slide_elit, SIGNAL(valueChanged(int)), this, SLOT(setValueElit(int)));
-
-
-    //createLayout();
+    //connect(slide[0], SIGNAL(valueChanged(int)), this, SLOT(setValueGen(int)));
+    //connect(slide_gen, SIGNAL(valueChanged(int)), this, SLOT(setValueGen(int)));
+    //connect(slide_pop, SIGNAL(valueChanged(int)), this, SLOT(setValuePop(int)));
+    //connect(slide_CO, SIGNAL(valueChanged(int)), this, SLOT(setValueCO(int)));
+    //connect(slide_elit, SIGNAL(valueChanged(int)), this, SLOT(setValueElit(int)));
 }
 
-QSlider *MainCEWindow::createSlider(int range, int step, int page, int tick)
+QVBoxLayout *MainCEWindow::createSliderLayout(QSlider *slider, int range, int step,
+                                          int page, int tick, std::string label)
 {
-    QSlider *slider = new QSlider(Qt::Vertical);
-    slider->setRange(0, range); // 10
-    slider->setSingleStep(step); // 1
-    slider->setPageStep(page); // 10
-    slider->setTickInterval(tick); // 10
+    QVBoxLayout *boxLayout = new QVBoxLayout;
+    QLabel *label_text = new QLabel(tr(label.c_str()));
+
+    slider = new QSlider(Qt::Horizontal);
+    slider->setRange(0, range);
+    slider->setSingleStep(step);
+    slider->setPageStep(page);
+    slider->setTickInterval(tick);
     slider->setTickPosition(QSlider::TicksRight);
-    return slider;
+
+    boxLayout->addWidget(label_text);
+    boxLayout->addWidget(slider);
+
+    return boxLayout;
 }
 
 /*SettingsManager::()->setPopulationSize(5);
@@ -98,30 +102,30 @@ SettingsManager::Instance()->setElitism(0.2);
 SettingsManager::Instance()->setMutation(0.8);*/
 void MainCEWindow::setValueGen(int value)
 {
-    SettingsManager::Instance()->setMaxGenerations(value);
+    SettingsManager::Instance()->SetMaxGenerations(value);
     qDebug()<<value;
 }
 
 void MainCEWindow::setValuePop(int value)
 {
-    SettingsManager::Instance()->setPopulationSize(value);
+    SettingsManager::Instance()->SetPopulationSize(value);
     qDebug()<<value;
 }
 
 void MainCEWindow::setValueCO(int value)
 {
-    SettingsManager::Instance()->setCrossover(float(value/normalize));
+    SettingsManager::Instance()->SetCrossover(float(value/normalize));
     qDebug()<<(float)value/normalize;
 }
 
 void MainCEWindow::setValueElit(int value)
 {
-    SettingsManager::Instance()->setElitism(float(value/normalize));
+    SettingsManager::Instance()->SetElitism(float(value/normalize));
     qDebug()<<(float)value/normalize;
 }
 void MainCEWindow::setValueMut(int value)
 {
-    SettingsManager::Instance()->setMutation(float(value/normalize));
+    SettingsManager::Instance()->SetMutation(float(value/normalize));
     qDebug()<<(float)value/normalize;
 }
 
