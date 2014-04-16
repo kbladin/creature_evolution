@@ -10,14 +10,14 @@
 int main(int argc, char **argv) {
     QApplication app(argc, argv);
 
-    SettingsManager::Instance()->SetMaxGenerations(30);
-    SettingsManager::Instance()->SetPopulationSize(30);
+    SettingsManager::Instance()->SetMaxGenerations(10);
+    SettingsManager::Instance()->SetPopulationSize(10);
 
 	SettingsManager::Instance()->SetCrossover(0.8f);
 	SettingsManager::Instance()->SetElitism(0.2f);
 	SettingsManager::Instance()->SetMutation(0.8f);
 
-    SettingsManager::Instance()->SetCreatureType(CreatureType::WORM);
+    SettingsManager::Instance()->SetCreatureType(CreatureType::PONY);
 
 	CreatureEvolution* CE = new CreatureEvolution();
 

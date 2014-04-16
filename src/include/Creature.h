@@ -14,6 +14,7 @@
 #include "AutoInitRNG.h"
 #include "SettingsManager.h"
 
+
 struct SimData {
     float distance;
     float velocity;

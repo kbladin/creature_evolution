@@ -3,11 +3,18 @@
 #include <ctime>
 
 //! Setup a default physics world with an infinite ground plane.
-Simulation::Simulation()
+Simulation::Simulation(bool self_collide)
 {
     counter_ = 0;
+    self_collide_ = self_collide;
 
-    bt_creature_collidies_with = collisiontypes::COL_GROUND;
+    if(self_collide) {
+        bt_creature_collidies_with = 
+        collisiontypes::COL_GROUND |  collisiontypes::COL_CREATURE;
+    }
+    else {
+        bt_creature_collidies_with = collisiontypes::COL_GROUND;
+    }
     ground_collidies_with = collisiontypes::COL_CREATURE;
 
 
@@ -126,10 +133,15 @@ void Simulation::RemoveCreature() {
 //! Adds a population and creates BulletCreatures
 void Simulation::AddPopulation(std::vector<Creature> population) {
     population_ = population;
-
-    for (int i = 0; i < population_.size(); ++i) {
-        BulletCreature* bt_creature = new BulletCreature(population_[i]);
+    float creature_displacement = 0.0f;
+    for (int i  = 0; i < population_.size(); ++i) {
+        BulletCreature* bt_creature;
+        if(self_collide_)
+            bt_creature = new BulletCreature(population_[i], creature_displacement);
+        else
+            bt_creature = new BulletCreature(population_[i]);
         bt_population_.push_back(bt_creature);
+        creature_displacement += 1.0f;
     }
 
 
@@ -182,8 +194,7 @@ void Simulation::StepPopulation(float dt) {
 }
 
 //! Returns the current btDiscreteDynamicsWorld pointer
-btDiscreteDynamicsWorld* Simulation::GetDynamicsWorld()
-{
+btDiscreteDynamicsWorld* Simulation::GetDynamicsWorld() {
     return dynamics_world_;
 }
 
@@ -209,8 +220,8 @@ Creature Simulation::Simulate() {
 
 //! Simulates a population
 std::vector<Creature> Simulation::SimulatePopulation() {
-    int fps = 60;
-    int n_seconds = 30;
+    int fps = 30;
+    int n_seconds = 60;
 
     for (int i = 0; i < fps*n_seconds; ++i){
         StepPopulation(1.0f/(float) fps);
@@ -233,7 +244,16 @@ This is only being used for rendering purposes.
 */
 std::vector<btRigidBody*> Simulation::GetRigidBodies() {
     //TODO: this has to be done for all creatures
-    return bullet_creature_->GetRigidBodies();
+    
+    std::vector<btRigidBody*> bodies_from_creatures;
+    for(int i = 0; i < bt_population_.size(); ++i) {
+        std::vector<btRigidBody*> bodies = bt_population_[i]->GetRigidBodies();
+        bodies_from_creatures.insert(bodies_from_creatures.end(), bodies.begin(), bodies.end());
+    }
+
+    return bodies_from_creatures;
+    //return bullet_creature_->GetRigidBodies();
+
 }
 
 /*
@@ -244,5 +264,7 @@ for viewing several creatures at once?
 For now it stays since we currently only render one creature.
 */
 BulletCreature* Simulation::GetCurrentBulletCreature() {
-    return bullet_creature_;
+    //return bullet_creature_;
+    int middle = bt_population_.size()/2;
+    return bt_population_[middle];
 }

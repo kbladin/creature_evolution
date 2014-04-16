@@ -24,7 +24,7 @@ public:
 	Creature GetBestCreatureFromLastGeneration();
 	void PrintBestFitnessValues();
 	Creature GetBestCreature();
-
+	Population GetAllBestCreatures();
     void PrintPopulation();
 
 

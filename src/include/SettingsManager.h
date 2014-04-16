@@ -3,13 +3,19 @@
 #ifdef _WIN32
   #define M_PI 3.14159265359
 #endif
+
 //C++
 #include <iostream>
+#include <vector>
 // External
 #ifndef Q_MOC_RUN
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #endif
+
+// class Creature;
+// class Body;
+// class Brain;
 
 enum CreatureType{
   PONY, WORM
@@ -44,6 +50,13 @@ public:
   void SetCreatureType(int creature);
   int GetCreatureType();
 
+  // void AddBestCreature(Creature creature);
+  // Creature GetBestCreature();
+  // std::vector<Creature> GetAllBestCreatures();
+
+
+
+
 private:
   SettingsManager();
   ~SettingsManager(void); 
@@ -61,6 +74,8 @@ private:
   // side to the other.
 
   int creature_type_; 
+
+  //std::vector<Creature> best_creatures_;
 
   static SettingsManager* instance_;
 };

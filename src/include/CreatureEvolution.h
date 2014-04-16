@@ -22,6 +22,7 @@ public:
 
 	void StartEvolution();
 	void LoadBestCreature();
+	void LoadAllBestCreatures();
 	void Run();
 
 

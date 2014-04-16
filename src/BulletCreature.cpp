@@ -10,6 +10,18 @@ BulletCreature::BulletCreature(Creature blueprint) {
 
 }
 
+
+BulletCreature::BulletCreature(Creature blueprint, float x_displacement) {
+
+    //connect brain
+    blueprint_ = blueprint;
+
+    //create body
+    AddBody(blueprint_.GetBody().GetBodyRoot(), btVector3(x_displacement,1.5,0.0));
+
+}
+
+
 BulletCreature::~BulletCreature(void) {
     for(int i=0; i < m_joints_.size(); i++){
         delete m_joints_[i];

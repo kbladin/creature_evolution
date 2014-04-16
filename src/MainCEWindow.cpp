@@ -23,10 +23,20 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 
     QHBoxLayout *mainLayout = new QHBoxLayout;
     QVBoxLayout* controlLayout = new QVBoxLayout;
-    QPushButton *dummyButton = new QPushButton("Push for pleasure!");
-    QPushButton *simButton = new QPushButton("Start simulation.");
-    controlLayout->addWidget(dummyButton);
+    QHBoxLayout* renderLayout = new QHBoxLayout;
+    QPushButton *renderOneButton = new QPushButton("Render best creature! (not working)");
+    QPushButton *renderAllButton = new QPushButton("3. Render all generations!");
+    QPushButton *simButton = new QPushButton("1. Start simulation.");
+    QPushButton *loadButton = new QPushButton("2. Load creatures.");
+    
+
     controlLayout->addWidget(simButton);
+    controlLayout->addWidget(loadButton);
+
+    renderLayout->addWidget(renderOneButton);
+    renderLayout->addWidget(renderAllButton);
+
+    controlLayout->addLayout(renderLayout);
 
     mainLayout->addWidget(glWidget);
     mainLayout->addLayout(controlLayout);
@@ -35,9 +45,9 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 
     setWindowTitle(tr("Creature Evolution"));
     //connect(dummyButton,SIGNAL(clicked()), this, SLOT(testPrint()));
-    connect(dummyButton,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
+    connect(renderAllButton,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
     connect(simButton, SIGNAL(clicked()), this, SLOT(startEvolution()));
-    
+    connect(loadButton, SIGNAL(clicked()), this, SLOT(loadCreature()));
     connect(&evolution_thread_starter_, SIGNAL(finished()), this, SLOT(evoDone()));
 
 
@@ -75,6 +85,10 @@ void MainCEWindow::startEvolution() {
     QApplication::setOverrideCursor(Qt::BusyCursor);
     evolution_thread_starter_.setFuture(QtConcurrent::run(::startEvo, creature_evo_));
     evoDone();
+}
+
+void MainCEWindow::loadCreature() {
+    creature_evo_->LoadAllBestCreatures();
 }
 
 void MainCEWindow::evoDone() {

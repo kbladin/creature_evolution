@@ -24,6 +24,7 @@ public:
 public slots:
     void testPrint();
     void startEvolution();
+    void loadCreature();
     void renderWorm();
     void evoDone();
 protected:

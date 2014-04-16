@@ -111,3 +111,15 @@ void SettingsManager::SetCreatureType(int creature){
 int SettingsManager::GetCreatureType(){
   return creature_type_; 
 }
+
+// void SettingsManager::AddBestCreature(Creature creature) {
+//   best_creatures_.push_back(creature);
+// }
+
+// Creature SettingsManager::GetBestCreature() {
+//   return best_creatures_.back();
+// }
+
+// std::vector<Creature> SettingsManager::GetAllBestCreatures() {
+//   return best_creatures_;
+// }

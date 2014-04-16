@@ -12,6 +12,8 @@
 class BulletCreature {
 public:
     BulletCreature(Creature);
+    BulletCreature(Creature blueprint, float x_displacement);
+    
     ~BulletCreature(void);
     void UpdateMotors(std::vector<float> input);
     btVector3 GetCenterOfMass();

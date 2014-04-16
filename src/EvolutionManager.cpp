@@ -42,8 +42,8 @@ void EvolutionManager::startEvolutionProcess() {
         SortPopulation();
 
 		// save the population and the best creatures
+        // SettingsManager::Instance()->AddBestCreature(GetBestCreature());
         best = GetBestCreature();
-
         std::cout << "Best fitness: " <<best.GetFitness() << std::endl;
         best_creatures_.push_back(best);
         NextGeneration();
@@ -77,9 +77,13 @@ Creature EvolutionManager::GetBestCreatureFromLastGeneration() {
 	return best_creatures_.back();
 }
 
+Population EvolutionManager::GetAllBestCreatures() {
+	return best_creatures_;
+}
+
 //! Simulates all creatures in population
 void EvolutionManager::SimulatePopulation() {
-    Simulation sim_world;
+    Simulation sim_world(false);
 
 	/*for(int i = 0; i < current_population_.size(); ++i) {
     	//NOTE: Something is not being reset in the Simulation,

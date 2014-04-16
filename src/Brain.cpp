@@ -1,4 +1,5 @@
 #include "Brain.h"
+#include "SettingsManager.h"
 #define M_PI 3.14159265359
 
 AutoInitRNG Brain::rng_;
@@ -6,7 +7,13 @@ AutoInitRNG Brain::rng_;
 Brain::Brain() {
     std::uniform_real_distribution<float> float_mutate(-1.0f, 1.0f);
 
-    for(int i=0; i<(9*3); i++) {
+    int joints = 0;
+    if(SettingsManager::Instance()->GetCreatureType() == CreatureType::WORM)
+        joints = 4;
+    else
+        joints = 10;
+
+    for(int i=0; i<(joints*3); i++) {
         float w = (float_mutate(rng_.mt_rng_));
         weights.push_back(w);
     }

@@ -30,7 +30,7 @@ class Simulation
 {
 
 public:
-	Simulation();
+	Simulation(bool self_collide);
 	~Simulation(void);
     void AddCreature(Creature creature);
     void AddPopulation(std::vector<Creature> population);
@@ -69,6 +69,7 @@ private:
 
 
 	btScalar mass_;
+	bool self_collide_;
 
 	float counter_;
 };
