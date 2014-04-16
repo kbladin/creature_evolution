@@ -137,6 +137,16 @@ void ShaderManager::AddBasicShaderProgram(){
   shader_programs_[shader_program_name]->CreateUniformLocation("light_color");
   shader_programs_[shader_program_name]->CreateUniformLocation(
           "light_position_worldspace");
+  shader_programs_[shader_program_name]->CreateUniformLocation(
+          "texture_sampler2D");
+  shader_programs_[shader_program_name]->CreateUniformLocation(
+          "material.reflectance");
+  shader_programs_[shader_program_name]->CreateUniformLocation(
+          "material.specularity");
+  shader_programs_[shader_program_name]->CreateUniformLocation(
+          "material.shinyness");
+    shader_programs_[shader_program_name]->CreateUniformLocation(
+          "material.texture_type");
 }
 
 //! Used for accessing the ShaderPrograms.

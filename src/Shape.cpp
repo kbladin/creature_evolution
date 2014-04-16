@@ -1,4 +1,4 @@
-#include "Shape.h"
+#include "include/Shape.h"
 
 Shape::Shape() {
     vertex_array_id_ = GL_FALSE;
@@ -105,6 +105,17 @@ void Shape::Render(Camera camera, glm::mat4 model_transform) {
           shader_name)->UniformMatrix4fv("MV", 1, false, &MV[0][0]);
   ShaderManager::Instance()->GetShaderProgramFromName(
           shader_name)->Uniform1f("far_clipping", camera.GetFarClipping());
+
+  ShaderManager::Instance()->GetShaderProgramFromName(
+          shader_name)->Uniform1f("material.reflectance", material_.reflectance);
+  ShaderManager::Instance()->GetShaderProgramFromName(
+          shader_name)->Uniform1f("material.specularity", material_.specularity);
+  ShaderManager::Instance()->GetShaderProgramFromName(
+          shader_name)->Uniform1f("material.shinyness", material_.shinyness);
+  ShaderManager::Instance()->GetShaderProgramFromName(
+          shader_name)->Uniform1i("material.texture_type", material_.texture_type);
+  
+  TextureManager::Instance()->BindTexture(material_.texture_diffuse_id);
 
   glBindVertexArray(vertex_array_id_);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer_id_);

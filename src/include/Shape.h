@@ -15,6 +15,28 @@
 // Internal
 #include "Camera.h"
 #include "ShaderManager.h"
+#include "TextureManager.h"
+
+enum TextureType{
+  STANDARD = 0, // Not procedural
+  CHECKERBOARD = 1
+};
+
+struct Material {
+  float reflectance;
+  float specularity;
+  float shinyness;
+  GLuint texture_diffuse_id;
+  int texture_type;
+
+  Material() {
+    reflectance = 0.5f;
+    specularity = 0.5f;
+    shinyness = 32;
+    texture_diffuse_id = GL_FALSE;
+    texture_type = TextureType::STANDARD;
+  }
+};
 
 class Shape {
 public:
@@ -33,6 +55,8 @@ protected:
   std::vector<glm::vec3> vertex_normal_data_;
   std::vector<glm::vec2> vertex_uv_data_;
   std::vector<GLushort> element_data_;
+
+  Material material_;
 };
 
 #endif // SHAPE_H

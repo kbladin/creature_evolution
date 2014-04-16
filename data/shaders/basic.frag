@@ -17,6 +17,7 @@ uniform float far_clipping;
 uniform float light_intensity;
 uniform vec3 light_color;
 uniform vec3 light_position_worldspace;
+uniform sampler2D texture_sampler2D;
 
 // Ouput data
 out vec3 color;
@@ -31,7 +32,8 @@ void main()
   float specularity = 0.5;
   float shinyness = 32;
 
-  vec3 material_diffuse_color = vec3(int(position_modelspace.x)%2 / 4.0 + 0.5, int(position_modelspace.z)%2 / 4.0 + 0.5, 1.0); // vec3(uv.x, uv.y, 0.5);
+  //vec3 material_diffuse_color = vec3(int(position_modelspace.x)%2 / 4.0 + 0.5, int(position_modelspace.z)%2 / 4.0 + 0.5, 1.0); // vec3(uv.x, uv.y, 0.5);
+  vec3 material_diffuse_color = texture2D(texture_sampler2D, uv ).rgb;
 
   // Vectors
   vec3 n = normalize(normal_viewspace);

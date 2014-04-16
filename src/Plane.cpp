@@ -5,6 +5,8 @@ Plane::Plane() {
   SetupVertexNormalData();
   SetupVertexUVData();
   SetupElementData();
+  TextureManager::Instance();
+  material_.texture_type = TextureType::CHECKERBOARD;
 }
 
 Plane::Plane(glm::vec3 scale) {
@@ -17,6 +19,7 @@ Plane::Plane(glm::vec3 scale) {
     vertex_position_data_[i].y = vertex_position_data_[i].y*scale.y;
     vertex_position_data_[i].z = vertex_position_data_[i].z*scale.z;
   }
+  material_.texture_type = TextureType::CHECKERBOARD;
 }
 
 void Plane::SetupVertexPositionData() {

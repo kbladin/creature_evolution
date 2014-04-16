@@ -90,6 +90,7 @@ void GLWidget::wheelEvent(QWheelEvent* event){
 void GLWidget::enableRendering() {
     qDebug("render enabled");
     ShaderManager::Instance();
+    TextureManager::Instance();
     ce_handle_->InitWorld();
     std::cout << "GLWIDGET: Init'ed the world" << std::endl;
     enable_render_ = true;

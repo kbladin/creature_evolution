@@ -11,7 +11,7 @@
 #include <QtWidgets/qwidget.h>
 // Internal
 #include "CreatureEvolution.h"
-
+#include "TextureManager.h"
 
 
 class GLWidget : public QGLWidget

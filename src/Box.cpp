@@ -5,6 +5,9 @@ Box::Box() {
   SetupVertexNormalData();
   SetupVertexUVData();
   SetupElementData();
+
+  material_.texture_diffuse_id =
+          TextureManager::Instance()->GetIDFromName("test_texture");
 }
 
 Box::Box(float scale_x, float scale_y, float scale_z) {
@@ -17,6 +20,8 @@ Box::Box(float scale_x, float scale_y, float scale_z) {
     vertex_position_data_[i].y = vertex_position_data_[i].y*scale_y;
     vertex_position_data_[i].z = vertex_position_data_[i].z*scale_z;
   }
+  material_.texture_diffuse_id =
+          TextureManager::Instance()->GetIDFromName("test_texture2");
 }
 
 void Box::SetupVertexPositionData() {
