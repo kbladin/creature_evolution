@@ -17,6 +17,8 @@ int main(int argc, char **argv) {
 	SettingsManager::Instance()->SetElitism(0.2f);
 	SettingsManager::Instance()->SetMutation(0.8f);
 
+    SettingsManager::Instance()->SetMainBodyDimension(Vec3(0.1,0.1,0.2));
+
 	CreatureEvolution* CE = new CreatureEvolution();
 
     MainCEWindow window(CE);

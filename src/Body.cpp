@@ -1,9 +1,9 @@
+#include "SettingsManager.h"
 #include "Body.h"
 
 #ifdef _WIN32
     #define M_PI 3.14159265359
 #endif
-
 BodyTree Body::GetBodyRoot() {
     //simple legged creature for testing
 
@@ -32,7 +32,7 @@ BodyTree Body::GetBodyRoot() {
 
     //Define the main body and connect everything to it
     BodyTree main_body;
-    main_body.box_dim = Vec3(0.1,0.1,0.2);
+    main_body.box_dim = SettingsManager::Instance()->GetMainBodyDimension();
     main_body.mass = 2.0;
     main_body.friction = 1.0;
     main_body.body_list = std::vector<BodyTree>(4,upper_leg);
@@ -74,4 +74,3 @@ BodyTree Body::GetBodyRoot() {
     main_body.joint_list.push_back(joint);*/
     return main_body;
 }
-

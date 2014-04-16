@@ -23,6 +23,7 @@ class MainCEWindow : public QWidget
 
 public:
     MainCEWindow(CreatureEvolution* ce);
+
 signals:
     void valueChanged(int value);
 
@@ -31,11 +32,13 @@ public slots:
     void startEvolution();
     void renderWorm();
 
+    void setValueMut(int value);
     void setValueGen(int value);
     void setValuePop(int value);
     void setValueCO(int value);
     void setValueElit(int value);
-    void setValueMut(int value);
+    void setBodyDimension(int value);
+
     void changePressed();
     void changeReleased();
 protected:
@@ -48,6 +51,7 @@ private:
     QSlider *slide_CO;
     QSlider *slide_elit;
     QSlider *slide_mut;
+    QSlider *slide_change_dim;
     QBoxLayout *box_gen;
     QBoxLayout *box_pop;
     QBoxLayout *box_CO;
@@ -56,7 +60,6 @@ private:
     GLWidget *glWidget;
     CreatureEvolution* creature_evo_;
     static const int normalize = 100;
-    int val;
 };
 
 #endif // MAINCEWINDOW_H

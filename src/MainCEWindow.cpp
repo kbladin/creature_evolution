@@ -1,6 +1,5 @@
 #include "GLWidget.h"
 #include "MainCEWindow.h"
-#include "SettingsManager.h"
 
 MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 {
@@ -22,14 +21,7 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
         connect(slide[i], SIGNAL(valueChanged(int)), signalMapper, SLOT(map()));
     }*/
     //connect(signalMapper, SIGNAL(mapped(int)), this, SIGNAL(setValue(int)));
-
     //connect(signalMapper, SIGNAL(mapped(int)), this, SIGNAL(digitClicked(int)));
-
-    /*SettingsManager::()->setPopulationSize(5);
-    SettingsManager::Instance()->setCrossover(0.8);
-    SettingsManager::Instance()->setElitism(0.2);
-    SettingsManager::Instance()->setMutation(0.8);
-    */
 
     QHBoxLayout *layout_main = new QHBoxLayout;
     QVBoxLayout *layout_controll = new QVBoxLayout;
@@ -45,6 +37,7 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     box_CO = createSliderLayout(slide_CO, 100, 1, 10, 10, "Cross-over(%):");
     box_elit = createSliderLayout(slide_elit, 100, 1, 10, 10, "Elitism(%):");
     box_mut = createSliderLayout(slide_mut, 100, 1, 10, 10, "Mutation(%):");
+    slide_change_dim = createSlider(100, 1, 10, 10);
 
     //controlLayout->addWidget(slide[0]);
     layout_controll->addLayout(box_gen);
@@ -52,6 +45,7 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     layout_controll->addLayout(box_CO);
     layout_controll->addLayout(box_elit);
     layout_controll->addLayout(box_mut);
+    controlLayout->addWidget(slide_change_dim);
 
     layout_button->addWidget(button_dummy);
     layout_button->addWidget(button_sim);
@@ -75,6 +69,9 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     //connect(slide_pop, SIGNAL(valueChanged(int)), this, SLOT(setValuePop(int)));
     //connect(slide_CO, SIGNAL(valueChanged(int)), this, SLOT(setValueCO(int)));
     //connect(slide_elit, SIGNAL(valueChanged(int)), this, SLOT(setValueElit(int)));
+    //connect(slide_mut, SIGNAL(valueChanged(int)), this, SLOT(setValueMut(int)));
+    //connect(slide_change_dim, SIGNAL(valueChanged(int)), this, SLOT(setBodyDimension(int)));
+
 }
 
 QVBoxLayout *MainCEWindow::createSliderLayout(QSlider *slider, int range, int step,
@@ -96,51 +93,41 @@ QVBoxLayout *MainCEWindow::createSliderLayout(QSlider *slider, int range, int st
     return boxLayout;
 }
 
-/*SettingsManager::()->setPopulationSize(5);
-SettingsManager::Instance()->setCrossover(0.8);
-SettingsManager::Instance()->setElitism(0.2);
-SettingsManager::Instance()->setMutation(0.8);*/
-void MainCEWindow::setValueGen(int value)
-{
+void MainCEWindow::setValueGen(int value) {
     SettingsManager::Instance()->SetMaxGenerations(value);
-    qDebug()<<value;
+
 }
 
-void MainCEWindow::setValuePop(int value)
-{
+void MainCEWindow::setValuePop(int value) {
     SettingsManager::Instance()->SetPopulationSize(value);
-    qDebug()<<value;
 }
 
-void MainCEWindow::setValueCO(int value)
-{
-    SettingsManager::Instance()->SetCrossover(float(value/normalize));
-    qDebug()<<(float)value/normalize;
+void MainCEWindow::setValueCO(int value) {
+    SettingsManager::Instance()->SetCrossover((float)(value)/(float)(normalize));
 }
 
-void MainCEWindow::setValueElit(int value)
-{
-    SettingsManager::Instance()->SetElitism(float(value/normalize));
-    qDebug()<<(float)value/normalize;
-}
-void MainCEWindow::setValueMut(int value)
-{
-    SettingsManager::Instance()->SetMutation(float(value/normalize));
-    qDebug()<<(float)value/normalize;
-}
-
-void MainCEWindow::changePressed()
-{
+void MainCEWindow::setValueElit(int value) {
+    SettingsManager::Instance()->SetElitism((float)(value)/(float)(normalize));
 
 }
+void MainCEWindow::setValueMut(int value) {
+    SettingsManager::Instance()->SetMutation((float)(value)/(float)(normalize));
+    qDebug()<<(float)(value)/(float)(normalize);
+}
+void MainCEWindow::setBodyDimension(int value) {
+    float dim = (float)(value)/(float)(normalize);
+    SettingsManager::Instance()->SetMainBodyDimension(Vec3(dim/2, dim/2, dim));
+}
 
-void MainCEWindow::changeReleased()
-{
+void MainCEWindow::changePressed() {
+    qDebug()<<"hej";
+}
+
+void MainCEWindow::changeReleased() {
 
 }
 
-void MainCEWindow::keyPressEvent(QKeyEvent *e)
-{
+void MainCEWindow::keyPressEvent(QKeyEvent *e) {
     if (e->key() == Qt::Key_Escape)
         close();
     else

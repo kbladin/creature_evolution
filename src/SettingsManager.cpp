@@ -11,7 +11,7 @@ SettingsManager* SettingsManager::Instance() {
 //! Constructor
 SettingsManager::SettingsManager(){
 
-    rotation_sensitivity_ = M_PI * 2.0f;
+  rotation_sensitivity_ = M_PI * 2.0f;
   // set default values
   population_size_ = 10;
   max_generations_ = 20;
@@ -49,6 +49,10 @@ int SettingsManager::GetFrameHeight(){
 float SettingsManager::GetRotationSensitivity(){
   return rotation_sensitivity_;
 }
+Vec3 SettingsManager::GetMainBodyDimension(){
+  return main_body_dim_;
+}
+
 // where should the control of all the variables lie?
 // ex not smaller than 0 and some variables must med 0->1.
 void SettingsManager::SetPopulationSize(int population_size){
@@ -102,4 +106,8 @@ void SettingsManager::SetFrameHeight(int frame_height){
 }
 void SettingsManager::SetRotationSensitivity(float sense){
   rotation_sensitivity_ = sense;
+}
+
+void SettingsManager::SetMainBodyDimension(Vec3 vec){
+  main_body_dim_ = vec;
 }
