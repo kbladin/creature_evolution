@@ -156,10 +156,10 @@ void Simulation::AddPopulation(std::vector<Creature> population) {
 //! Update the 'motors' on the creature and step the physical world.
 void Simulation::Step(float dt)
 {
-    std::vector<float> input(1,counter_*5);
+    std::vector<float> input(1,counter_);
     bullet_creature_->UpdateMotors(input);
 
-    dynamics_world_->stepSimulation(dt,1000);
+    dynamics_world_->stepSimulation(dt,1);
     counter_ += dt;
 }
 
@@ -177,7 +177,7 @@ void Simulation::StepPopulation(float dt) {
     }
 
     //This should in theory work the same way, i.e just step the simulation
-    dynamics_world_->stepSimulation(dt,1000);
+    dynamics_world_->stepSimulation(dt,1);
     counter_ += dt;   
 }
 
