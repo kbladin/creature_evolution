@@ -33,7 +33,7 @@ public slots:
     void renderWorm();
 
     void setValueMut(int value);
-    void setValueGen(int value);
+    static void setValueGen(int value);
     void setValuePop(int value);
     void setValueCO(int value);
     void setValueElit(int value);
@@ -44,8 +44,7 @@ public slots:
 protected:
     void keyPressEvent(QKeyEvent *event);
 private:
-    QVBoxLayout *createSliderLayout(QSlider *slider, int range, int step, int page, int tick, std::string label);
-    QSlider *slide[4];
+    QVBoxLayout *createSliderLayout(QSlider *slider, int range, int step, int page, int tick, std::string label, void (*function)(int));
 
     QSlider *slide_gen;
     QSlider *slide_pop;
@@ -63,6 +62,7 @@ private:
     GLWidget *glWidget;
     CreatureEvolution* creature_evo_;
     static const int normalize = 100;
+    static const int number_of_sliders = 6;
 };
 
 #endif // MAINCEWINDOW_H

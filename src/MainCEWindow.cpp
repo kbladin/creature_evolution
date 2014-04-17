@@ -11,6 +11,13 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     //QGLFormat::setDefaultFormat(glFormat);
     glWidget = new GLWidget(glFormat,0,creature_evo_);
 
+    QHBoxLayout *layout_main = new QHBoxLayout;
+    QVBoxLayout *layout_control = new QVBoxLayout;
+    QVBoxLayout *layout_button = new QVBoxLayout;
+    QPushButton *button_dummy = new QPushButton("Push for pleasure!");
+    QPushButton *button_sim = new QPushButton("Start simulation.");
+    QPushButton *button_test = new QPushButton("Change color");
+
     //QSignalMapper *signalMapper = new QSignalMapper(this);
 
       /* for (int i = 0; i < 4; ++i) {
@@ -23,29 +30,46 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     //connect(signalMapper, SIGNAL(mapped(int)), this, SIGNAL(setValue(int)));
     //connect(signalMapper, SIGNAL(mapped(int)), this, SIGNAL(digitClicked(int)));
 
-    QHBoxLayout *layout_main = new QHBoxLayout;
-    QVBoxLayout *layout_control = new QVBoxLayout;
-    QVBoxLayout *layout_button = new QVBoxLayout;
-    QPushButton *button_dummy = new QPushButton("Push for pleasure!");
-    QPushButton *button_sim = new QPushButton("Start simulation.");
-    QPushButton *button_test = new QPushButton("Change color");
+    QSlider *slide[number_of_sliders];
+    QVBoxLayout *boxLayout[number_of_sliders];
+    QLabel *label_text[number_of_sliders];
+    const std::string label_strings[number_of_sliders] = {"Generations:", "Population:", "Cross-over (%) :", "Elitism (%) :", "Mutation (%) :", "Body size:"};
+
+
+    for(int i = 0; i < number_of_sliders; i++)
+    {
+        boxLayout[i] = new QVBoxLayout;
+        label_text[i] = new QLabel(tr(label_strings[i].c_str()));
+
+        slide[i] = new QSlider(Qt::Horizontal);
+        slide[i]->setRange(0, 100);
+        slide[i]->setSingleStep(1);
+        slide[i]->setPageStep(10);
+        slide[i]->setTickInterval(10);
+        slide[i]->setTickPosition(QSlider::TicksRight);
+
+        boxLayout[i]->addWidget(label_text[i]);
+        boxLayout[i]->addWidget(slide[i]);
+        layout_control->addLayout(boxLayout[i]);
+    }
+    //connect(slider, SIGNAL(valueChanged(int)), this, SLOT(setValueGen(int)));
 
     //QSignalMapper *signalMapper = new QSignalMapper(this);
 
-    box_gen = createSliderLayout(slide_gen, 100, 1, 10, 10, "Generation:");
+    /*box_gen = createSliderLayout(slide_gen, 100, 1, 10, 10, "Generation:", &setValueGen);
     box_pop = createSliderLayout(slide_pop, 100, 1, 10, 10, "Population:");
     box_CO = createSliderLayout(slide_CO, 100, 1, 10, 10, "Cross-over(%):");
     box_elit = createSliderLayout(slide_elit, 100, 1, 10, 10, "Elitism(%):");
     box_mut = createSliderLayout(slide_mut, 100, 1, 10, 10, "Mutation(%):");
-    box_change_dim = createSliderLayout(slide_change_dim, 100, 1, 10, 10, "Change body dimension");
+    box_change_dim = createSliderLayout(slide_change_dim, 100, 1, 10, 10, "Change body dimension");*/
 
     //controlLayout->addWidget(slide[0]);
-    layout_control->addLayout(box_gen);
+    /*layout_control->addLayout(box_gen);
     layout_control->addLayout(box_pop);
     layout_control->addLayout(box_CO);
     layout_control->addLayout(box_elit);
     layout_control->addLayout(box_mut);
-    layout_control->addLayout(box_change_dim);
+    layout_control->addLayout(box_change_dim);*/
 
     layout_button->addWidget(button_dummy);
     layout_button->addWidget(button_sim);
@@ -64,7 +88,13 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     connect(button_test, SIGNAL(pressed()), this, SLOT(changePressed()));
     connect(button_test, SIGNAL(released()), this, SLOT(changeReleased()));
     // ----- Connect sliders -----
-    //connect(slide[0], SIGNAL(valueChanged(int)), this, SLOT(setValueGen(int)));
+    connect(slide[0], SIGNAL(valueChanged(int)), this, SLOT(setValueGen(int)));
+    connect(slide[1], SIGNAL(valueChanged(int)), this, SLOT(setValuePop(int)));
+    connect(slide[2], SIGNAL(valueChanged(int)), this, SLOT(setValueCO(int)));
+    connect(slide[3], SIGNAL(valueChanged(int)), this, SLOT(setValueElit(int)));
+    connect(slide[4], SIGNAL(valueChanged(int)), this, SLOT(setValueMut(int)));
+    connect(slide[5], SIGNAL(valueChanged(int)), this, SLOT(setBodyDimension(int)));
+
     /*connect(slide_gen, SIGNAL(valueChanged(int)), this, SLOT(setValueGen(int)));
     connect(slide_pop, SIGNAL(valueChanged(int)), this, SLOT(setValuePop(int)));
     connect(slide_CO, SIGNAL(valueChanged(int)), this, SLOT(setValueCO(int)));
@@ -73,9 +103,9 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     connect(slide_change_dim, SIGNAL(valueChanged(int)), this, SLOT(setBodyDimension(int)));*/
 
 }
-
+/*
 QVBoxLayout *MainCEWindow::createSliderLayout(QSlider *slider, int range, int step,
-                                              int page, int tick, std::string label)
+                                              int page, int tick, std::string label, void (*function)(int))
 {
     QVBoxLayout *boxLayout = new QVBoxLayout;
     QLabel *label_text = new QLabel(tr(label.c_str()));
@@ -86,16 +116,15 @@ QVBoxLayout *MainCEWindow::createSliderLayout(QSlider *slider, int range, int st
     slider->setPageStep(page);
     slider->setTickInterval(tick);
     slider->setTickPosition(QSlider::TicksRight);
-
+    //connect(slider, SIGNAL(valueChanged(int)), this, SLOT(function(int)));
     boxLayout->addWidget(label_text);
     boxLayout->addWidget(slider);
 
     return boxLayout;
 }
-
+*/
 void MainCEWindow::setValueGen(int value) {
     SettingsManager::Instance()->SetMaxGenerations(value);
-    qDebug()<<value;
 }
 
 void MainCEWindow::setValuePop(int value) {
@@ -120,11 +149,9 @@ void MainCEWindow::setBodyDimension(int value) {
 }
 
 void MainCEWindow::changePressed() {
-    qDebug()<<"hej";
 }
 
 void MainCEWindow::changeReleased() {
-
 }
 
 void MainCEWindow::keyPressEvent(QKeyEvent *e) {
@@ -143,5 +170,4 @@ void MainCEWindow::startEvolution() {
 }
 
 void MainCEWindow::renderWorm() {
-
 }
