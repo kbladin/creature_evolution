@@ -108,7 +108,6 @@ void SettingsManager::SetRotationSensitivity(float sense){
   rotation_sensitivity_ = sense;
 }
 
-<<<<<<< HEAD
 void SettingsManager::SetCreatureType(int creature){
   creature_type_ = creature; 
 
@@ -128,8 +127,8 @@ int SettingsManager::GetCreatureType(){
 // std::vector<Creature> SettingsManager::GetAllBestCreatures() {
 //   return best_creatures_;
 // }
-=======
+
 void SettingsManager::SetMainBodyDimension(Vec3 vec){
   main_body_dim_ = vec;
 }
->>>>>>> QtGUI
+

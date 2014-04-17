@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QSlider>
-#include <QtWidgets/QApplication>
-
-=======
->>>>>>> QtGUI
 #include "GLWidget.h"
 #include "MainCEWindow.h"
 
@@ -20,33 +11,13 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     //QGLFormat::setDefaultFormat(glFormat);
     glWidget = new GLWidget(glFormat,0,creature_evo_);
 
-<<<<<<< HEAD
-
-
-
-    QHBoxLayout *mainLayout = new QHBoxLayout;
-    QVBoxLayout* controlLayout = new QVBoxLayout;
-    QHBoxLayout* renderLayout = new QHBoxLayout;
+    QHBoxLayout *layout_main = new QHBoxLayout;
+    QVBoxLayout *layout_control = new QVBoxLayout;
+    QVBoxLayout *layout_button = new QVBoxLayout;
     QPushButton *renderOneButton = new QPushButton("Render best creature! (not working)");
     QPushButton *renderAllButton = new QPushButton("3. Render all generations!");
     QPushButton *simButton = new QPushButton("1. Start simulation.");
     QPushButton *loadButton = new QPushButton("2. Load creatures.");
-    
-
-    controlLayout->addWidget(simButton);
-    controlLayout->addWidget(loadButton);
-
-    renderLayout->addWidget(renderOneButton);
-    renderLayout->addWidget(renderAllButton);
-
-    controlLayout->addLayout(renderLayout);
-=======
-    QHBoxLayout *layout_main = new QHBoxLayout;
-    QVBoxLayout *layout_control = new QVBoxLayout;
-    QVBoxLayout *layout_button = new QVBoxLayout;
-    QPushButton *button_dummy = new QPushButton("Push for pleasure!");
-    QPushButton *button_sim = new QPushButton("Start simulation.");
-    QPushButton *button_test = new QPushButton("Change color");
 
     //QSignalMapper *signalMapper = new QSignalMapper(this);
 
@@ -83,7 +54,6 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
         layout_control->addLayout(boxLayout[i]);
     }
     //connect(slider, SIGNAL(valueChanged(int)), this, SLOT(setValueGen(int)));
->>>>>>> QtGUI
 
     //QSignalMapper *signalMapper = new QSignalMapper(this);
 
@@ -102,9 +72,10 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     layout_control->addLayout(box_mut);
     layout_control->addLayout(box_change_dim);*/
 
-    layout_button->addWidget(button_dummy);
-    layout_button->addWidget(button_sim);
-    layout_button->addWidget(button_test);
+    layout_button->addWidget(simButton);
+    layout_button->addWidget(loadButton);
+    layout_button->addWidget(renderOneButton);
+    layout_button->addWidget(renderAllButton);
 
     layout_main->addWidget(glWidget);
     layout_main->addLayout(layout_control);
@@ -112,24 +83,13 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 
     setLayout(layout_main);
     setWindowTitle(tr("Creature Evolution"));
-<<<<<<< HEAD
+
+    // ----- Connect buttons -----
     //connect(dummyButton,SIGNAL(clicked()), this, SLOT(testPrint()));
     connect(renderAllButton,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
     connect(simButton, SIGNAL(clicked()), this, SLOT(startEvolution()));
     connect(loadButton, SIGNAL(clicked()), this, SLOT(loadCreature()));
     connect(&evolution_thread_starter_, SIGNAL(finished()), this, SLOT(evoDone()));
-
-
-    std::cout << "Done!" << std::endl;
-}
-=======
->>>>>>> QtGUI
-
-    // ----- Connect buttons -----
-    connect(button_dummy,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
-    connect(button_sim, SIGNAL(clicked()), this, SLOT(startEvolution()));
-    connect(button_test, SIGNAL(pressed()), this, SLOT(changePressed()));
-    connect(button_test, SIGNAL(released()), this, SLOT(changeReleased()));
     // ----- Connect sliders -----
     connect(slide[0], SIGNAL(valueChanged(int)), this, SLOT(setValueGen(int)));
     connect(slide[1], SIGNAL(valueChanged(int)), this, SLOT(setValuePop(int)));
@@ -146,6 +106,7 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     connect(slide_change_dim, SIGNAL(valueChanged(int)), this, SLOT(setBodyDimension(int)));*/
 
 }
+
 /*
 QVBoxLayout *MainCEWindow::createSliderLayout(QSlider *slider, int range, int step,
                                               int page, int tick, std::string label, void (*function)(int))
@@ -166,6 +127,7 @@ QVBoxLayout *MainCEWindow::createSliderLayout(QSlider *slider, int range, int st
     return boxLayout;
 }
 */
+
 void MainCEWindow::setValueGen(int value) {
     SettingsManager::Instance()->SetMaxGenerations(value);
 }
