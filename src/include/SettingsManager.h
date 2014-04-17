@@ -8,11 +8,13 @@
 #include <iostream>
 #include <vector>
 // External
+#include "vec3.h"
 #ifndef Q_MOC_RUN
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #endif
 
+<<<<<<< HEAD
 // class Creature;
 // class Body;
 // class Brain;
@@ -21,6 +23,8 @@ enum CreatureType{
   PONY, WORM, TURTLE
 };
 
+=======
+>>>>>>> QtGUI
 
 //! Class to handle all the settings in the program. Can only instance one SettingsManager-class in the whole program. 
 class SettingsManager {
@@ -37,6 +41,8 @@ public:
   int GetFrameHeight();
   float GetRotationSensitivity();
 
+  Vec3 GetMainBodyDimension();
+
   void SetPopulationSize(int population_size);
   void SetMaxGenerations(int max_generations);
   void SetCrossover(float crossover_ratio);
@@ -47,6 +53,7 @@ public:
   void SetFrameHeight(int frame_height);
   void SetRotationSensitivity(float sense);
 
+<<<<<<< HEAD
   void SetCreatureType(int creature);
   int GetCreatureType();
 
@@ -57,6 +64,9 @@ public:
 
 
 
+=======
+  void SetMainBodyDimension(Vec3 dimension);
+>>>>>>> QtGUI
 private:
   SettingsManager();
   ~SettingsManager(void); 
@@ -72,11 +82,15 @@ private:
   float rotation_sensitivity_; //will result in half a round on a
   // retina sceen and one round on a normal screen when moving mouse from one
   // side to the other.
+<<<<<<< HEAD
 
   int creature_type_; 
 
   //std::vector<Creature> best_creatures_;
 
+=======
+  Vec3 main_body_dim_;
+>>>>>>> QtGUI
   static SettingsManager* instance_;
 };
 
