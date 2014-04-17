@@ -39,6 +39,22 @@ vec3 diffuseCheckerboard(float x, float y, float z) {
   return vec3(val, val, val);
 }
 
+vec3 diffuseCircles(float x, float y, float z, float scale) {
+  x *= 1/scale;
+  y *= 1/scale;
+  z *= 1/scale;
+
+  x = (x < 0) ? -x+1 : x;
+  y = (y < 0) ? -y+1 : y;
+  z = (z < 0) ? -z+1 : z;
+
+  x = abs(((x - int(x)) - 0.5) * 2) - 1;
+  y = abs(((y - int(y)) - 0.5) * 2) - 1;
+  z = abs(((z - int(z)) - 0.5) * 2) - 1;
+  float val = round(length(vec3(x,y,z)));
+  return vec3(val, val, val);
+}
+
 void main()
 { 
   float ambient_brightness = 0.1;
@@ -55,6 +71,14 @@ void main()
                   position_modelspace.x,
                   position_modelspace.y,
                   position_modelspace.z);
+      break;
+    case 2: // Checkerboard
+      vec3 circles = diffuseCircles(
+                  position_modelspace.x,
+                  position_modelspace.y,
+                  position_modelspace.z,
+                  1.0);
+      material_diffuse_color = (vec3(1,1,1) - circles) * vec3(1,0,0) + circles;
       break;
     default: // Checkerboard
       material_diffuse_color =

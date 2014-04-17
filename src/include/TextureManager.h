@@ -13,7 +13,8 @@
 
 enum TextureType{
   STANDARD = 0, // Not procedural
-  CHECKERBOARD = 1 // Procedural
+  CHECKERBOARD = 1, // Procedural
+  CIRCLES = 2 // Procedural
 };
 
 //! This class defines the material properties used for shading.

@@ -6,7 +6,7 @@ Plane::Plane() {
   SetupVertexUVData();
   SetupElementData();
   TextureManager::Instance();
-  material_.texture_diffuse_type = TextureType::CHECKERBOARD;
+  material_.texture_diffuse_type = TextureType::CIRCLES;
 }
 
 Plane::Plane(glm::vec3 scale) {
@@ -19,7 +19,7 @@ Plane::Plane(glm::vec3 scale) {
     vertex_position_data_[i].y = vertex_position_data_[i].y*scale.y;
     vertex_position_data_[i].z = vertex_position_data_[i].z*scale.z;
   }
-  material_.texture_diffuse_type = TextureType::CHECKERBOARD;
+  material_.texture_diffuse_type = TextureType::CIRCLES;
 }
 
 void Plane::SetupVertexPositionData() {
