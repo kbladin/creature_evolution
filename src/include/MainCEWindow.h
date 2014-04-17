@@ -46,17 +46,20 @@ protected:
 private:
     QVBoxLayout *createSliderLayout(QSlider *slider, int range, int step, int page, int tick, std::string label);
     QSlider *slide[4];
+
     QSlider *slide_gen;
     QSlider *slide_pop;
     QSlider *slide_CO;
     QSlider *slide_elit;
     QSlider *slide_mut;
     QSlider *slide_change_dim;
+
     QBoxLayout *box_gen;
     QBoxLayout *box_pop;
     QBoxLayout *box_CO;
     QBoxLayout *box_elit;
     QBoxLayout *box_mut;
+    QBoxLayout *box_change_dim;
     GLWidget *glWidget;
     CreatureEvolution* creature_evo_;
     static const int normalize = 100;
