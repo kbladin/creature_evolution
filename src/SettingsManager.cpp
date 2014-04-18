@@ -49,6 +49,10 @@ int SettingsManager::GetFrameHeight(){
 float SettingsManager::GetRotationSensitivity(){
   return rotation_sensitivity_;
 }
+Vec3 SettingsManager::GetMainBodyDimension(){
+  return main_body_dim_;
+}
+
 // where should the control of all the variables lie?
 // ex not smaller than 0 and some variables must med 0->1.
 void SettingsManager::SetPopulationSize(int population_size){
@@ -123,3 +127,8 @@ int SettingsManager::GetCreatureType(){
 // std::vector<Creature> SettingsManager::GetAllBestCreatures() {
 //   return best_creatures_;
 // }
+
+void SettingsManager::SetMainBodyDimension(Vec3 vec){
+  main_body_dim_ = vec;
+}
+

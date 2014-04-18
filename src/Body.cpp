@@ -4,7 +4,6 @@
     #define M_PI 3.14159265359
 #endif
 
-
 BodyTree Body::GetBodyRoot() {
     //simple legged creature for testing
     int creature_type = SettingsManager::Instance()->GetCreatureType();
@@ -66,8 +65,12 @@ BodyTree Body::CreatePony(){
 
     //Define the main body and connect everything to it
     BodyTree main_body;
-    main_body.box_dim = Vec3(0.8,0.5,1.5);
+
+    //main_body.box_dim = Vec3(0.8,0.5,1.5);
+
+    main_body.box_dim = Vec3(0.5,0.5,1.8);//SettingsManager::Instance()->GetMainBodyDimension();
     main_body.mass = 180.0;
+
     main_body.friction = 1.0;
     main_body.body_list = std::vector<BodyTree>(4,upper_leg);
     main_body.body_list.push_back(head);
@@ -172,6 +175,3 @@ BodyTree Body::CreateWorm(){
     return previous_segment;
 
 }
-
-
-

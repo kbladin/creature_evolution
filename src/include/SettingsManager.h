@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 // External
+#include "vec3.h"
 #ifndef Q_MOC_RUN
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
@@ -20,7 +21,6 @@
 enum CreatureType{
   PONY, WORM, TURTLE
 };
-
 
 //! Class to handle all the settings in the program. Can only instance one SettingsManager-class in the whole program. 
 class SettingsManager {
@@ -36,6 +36,8 @@ public:
   int GetFrameWidth();
   int GetFrameHeight();
   float GetRotationSensitivity();
+
+  Vec3 GetMainBodyDimension();
 
   void SetPopulationSize(int population_size);
   void SetMaxGenerations(int max_generations);
@@ -54,8 +56,7 @@ public:
   // Creature GetBestCreature();
   // std::vector<Creature> GetAllBestCreatures();
 
-
-
+  void SetMainBodyDimension(Vec3 dimension);
 
 private:
   SettingsManager();
@@ -76,6 +77,7 @@ private:
   int creature_type_; 
 
   //std::vector<Creature> best_creatures_;
+  Vec3 main_body_dim_;
 
   static SettingsManager* instance_;
 };
