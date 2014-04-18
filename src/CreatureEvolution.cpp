@@ -4,7 +4,6 @@ CreatureEvolution::CreatureEvolution() {
 	std::cout << "Creating creature evolution..." << std::endl;
 	evolution_manager_ = new EvolutionManager();
 	sim_world_ = new Simulation(true);
-	//scene_ = new SceneManager();
 	renderer_ = new Renderer(SceneManager::Instance());
 	std::cout << "Done!" << std::endl;
 }
@@ -12,7 +11,6 @@ CreatureEvolution::CreatureEvolution() {
 CreatureEvolution::~CreatureEvolution() {
 	delete evolution_manager_;
 	delete renderer_;
-	//delete scene_;
 	delete sim_world_;
 }
 
@@ -26,8 +24,6 @@ void CreatureEvolution::LoadBestCreature() {
     sim_world_->AddCreature(draw_creature);
 
 	SceneManager::Instance()->CreateNodesFromSimulation(sim_world_);
-  	//ShaderManager::Instance();
-	//should be able to InitWorld here
 	InitWorld();
 	SceneManager::Instance()->GetCamera()->SetTarget(sim_world_->GetCurrentBulletCreature());
 }

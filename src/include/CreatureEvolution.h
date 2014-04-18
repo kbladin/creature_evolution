@@ -29,7 +29,6 @@ public:
 private:
 	Simulation* sim_world_;
 	Renderer* renderer_;
-	//SceneManager* scene_;
 	EvolutionManager* evolution_manager_;
 	Creature draw_creature;
 };
