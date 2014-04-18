@@ -8,6 +8,7 @@
 #include <fstream>
 #include <map>
 #include <stdio.h>
+#include <cstring>
 // External
 #include <GL/glew.h>
 
