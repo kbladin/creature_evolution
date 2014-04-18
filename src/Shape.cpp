@@ -106,6 +106,17 @@ void Shape::Render(Camera camera, glm::mat4 model_transform) {
   ShaderManager::Instance()->GetShaderProgramFromName(
           shader_name)->Uniform1f("far_clipping", camera.GetFarClipping());
 
+  ShaderManager::Instance()->GetShaderProgramFromName(
+          shader_name)->Uniform1f("material.reflectance", material_.reflectance);
+  ShaderManager::Instance()->GetShaderProgramFromName(
+          shader_name)->Uniform1f("material.specularity", material_.specularity);
+  ShaderManager::Instance()->GetShaderProgramFromName(
+          shader_name)->Uniform1f("material.shinyness", material_.shinyness);
+  ShaderManager::Instance()->GetShaderProgramFromName(
+          shader_name)->Uniform1i("material.texture_type", material_.texture_diffuse_type);
+  
+  TextureManager::Instance()->BindTexture(material_.GetDiffuseTextureID());
+
   glBindVertexArray(vertex_array_id_);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer_id_);
 
