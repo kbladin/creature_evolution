@@ -31,6 +31,10 @@ void GLWidget::initializeGL(){
     fprintf(stderr, "Failed to initialize GLEW\n");
   }
   glClearColor(0.8f, 0.8f, 1.0f, 1.0f);
+
+  ShaderManager::Instance();
+
+  TextureManager::Instance();
 }
 
 void GLWidget::paintGL(){
@@ -89,9 +93,7 @@ void GLWidget::wheelEvent(QWheelEvent* event){
 
 void GLWidget::enableRendering() {
     qDebug("render enabled");
-    ShaderManager::Instance();
 
-    TextureManager::Instance();
     //ce_handle_->InitWorld();
 
     std::cout << "GLWIDGET: Init'ed the world" << std::endl;
