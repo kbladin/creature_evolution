@@ -43,6 +43,7 @@ void Creature::Mutate() {
 	if( SettingsManager::Instance()->GetMutation() >= should_mutate) {
 		brain_.Mutate();
 	}
+	//brain_.Mutate();
 }
 
 SimData Creature::GetSimData() {
