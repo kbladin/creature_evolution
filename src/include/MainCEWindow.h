@@ -17,6 +17,8 @@
 #include <QtDebug>
 #include <QSignalMapper>
 
+#include "SliderWidget.h"
+
 QT_BEGIN_NAMESPACE
 class QSlider;
 QT_END_NAMESPACE

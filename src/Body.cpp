@@ -68,7 +68,7 @@ BodyTree Body::CreatePony(){
 
     //main_body.box_dim = Vec3(0.8,0.5,1.5);
 
-    main_body.box_dim = SettingsManager::Instance()->GetMainBodyDimension();
+    main_body.box_dim = Vec3(0.5,0.5,1.8);//SettingsManager::Instance()->GetMainBodyDimension();
     main_body.mass = 180.0;
 
     main_body.friction = 1.0;
