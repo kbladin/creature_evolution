@@ -12,13 +12,13 @@ SliderWidget::SliderWidget(QString label_text,int default_value, int range, int 
 	label_layout_->addWidget(label_text_);
 	label_layout_->addWidget(label_value_);
 
-
 	slider_ = new QSlider(Qt::Horizontal);
 	slider_->setRange(0, range);
   slider_->setSingleStep(step);
   slider_->setPageStep(page);
   slider_->setTickInterval(tick);
   slider_->setTickPosition(QSlider::TicksRight);
+  slider_->setSliderPosition(default_value);
 
   vbox_->addLayout(label_layout_);
   vbox_->addWidget(slider_);

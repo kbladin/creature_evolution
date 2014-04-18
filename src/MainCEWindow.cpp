@@ -8,7 +8,6 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     glFormat.setVersion( 3, 2 );
     glFormat.setProfile( QGLFormat::CoreProfile ); // Requires >=Qt-4.8.0
     glFormat.setSampleBuffers( true );
-    //QGLFormat::setDefaultFormat(glFormat);
     glWidget = new GLWidget(glFormat,0,creature_evo_);
 
     QHBoxLayout *layout_main = new QHBoxLayout;
@@ -22,12 +21,22 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 
 
     int max_gen = SettingsManager::Instance()->GetMaxGenerations();
+    int pop_size = SettingsManager::Instance()->GetPopulationSize();
+    int crossover = 100 * SettingsManager::Instance()->GetCrossover();
+    int elitism = 100 * SettingsManager::Instance()->GetElitism();
+    int mutation = 100 * SettingsManager::Instance()->GetMutation();
+
     SliderWidget* generation_slider = new SliderWidget("Number of generations: ", max_gen, 100, 1, 10, 10);
-    SliderWidget* generation_slider1 = new SliderWidget("Number of generations: ", max_gen, 100, 1, 10, 10);
-    SliderWidget* generation_slider2 = new SliderWidget("Number of generations: ", max_gen, 100, 1, 10, 10);
-    SliderWidget* generation_slider3 = new SliderWidget("Number of generations: ", max_gen, 100, 1, 10, 10);
+    SliderWidget* generation_size_slider = new SliderWidget("Generation size: ", pop_size, 100, 1, 10, 10);
+    SliderWidget* crossover_slider = new SliderWidget("Crossover ratio (%): ", crossover, 100, 1, 10, 10);
+    SliderWidget* elitism_slider = new SliderWidget("Elitism ratio (%): ", elitism, 100, 1, 10, 10);
+    SliderWidget* mutation_slider = new SliderWidget("Mutation ratio (%): ", mutation, 100, 1, 10, 10);
 
     connect(generation_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueGen(int)));
+    connect(generation_size_slider, SIGNAL(valueChanged(int)), this, SLOT(setValuePop(int)));
+    connect(crossover_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueCO(int)));
+    connect(elitism_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueElit(int)));
+    connect(mutation_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueMut(int)));
 
     layout_button->addWidget(simButton);
     layout_button->addWidget(loadButton);
@@ -35,9 +44,11 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     layout_button->addWidget(renderAllButton);
 
     layout_control->addWidget(generation_slider);
-    layout_control->addWidget(generation_slider1);
-    layout_control->addWidget(generation_slider2);
-    layout_control->addWidget(generation_slider3);
+    layout_control->addWidget(generation_size_slider);
+    layout_control->addWidget(crossover_slider);
+    layout_control->addWidget(elitism_slider);
+    layout_control->addWidget(mutation_slider);
+
     layout_main->addWidget(glWidget);
     layout_main->addLayout(layout_control);
     layout_main->addLayout(layout_button);
@@ -53,27 +64,6 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     connect(&evolution_thread_starter_, SIGNAL(finished()), this, SLOT(evoDone()));
 
 }
-
-
-/*QVBoxLayout *MainCEWindow::createSliderLayout(QSlider *slider, int range, int step,
-                                              int page, int tick, std::string label, void (*function)(int))
-{
-    QVBoxLayout *boxLayout = new QVBoxLayout;
-    QLabel *label_text = new QLabel(tr(label.c_str()));
-
-    slider = new QSlider(Qt::Horizontal);
-    slider->setRange(0, range);
-    slider->setSingleStep(step);
-    slider->setPageStep(page);
-    slider->setTickInterval(tick);
-    slider->setTickPosition(QSlider::TicksRight);
-    //connect(slider, SIGNAL(valueChanged(int)), this, SLOT(function(int)));
-    boxLayout->addWidget(label_text);
-    boxLayout->addWidget(slider);
-
-    return boxLayout;
-}*/
-
 
 void MainCEWindow::setValueGen(int value) {
     SettingsManager::Instance()->SetMaxGenerations(value);
@@ -93,7 +83,7 @@ void MainCEWindow::setValueElit(int value) {
 }
 void MainCEWindow::setValueMut(int value) {
     SettingsManager::Instance()->SetMutation((float)(value)/(float)(normalize));
-    qDebug()<<(float)(value)/(float)(normalize);
+    qDebug()<<SettingsManager::Instance()->GetMutation();
 }
 void MainCEWindow::setBodyDimension(int value) {
     float dim = (float)(value)/(float)(normalize);

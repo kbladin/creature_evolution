@@ -9,7 +9,6 @@
 #include <QString>
 
 
-
 class SliderWidget : public QWidget {
 	Q_OBJECT
 
