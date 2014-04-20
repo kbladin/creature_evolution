@@ -45,7 +45,8 @@ BulletCreature::~BulletCreature(void) {
 btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
     //shape
     btVector3 dim = btVector3(body.box_dim.x,body.box_dim.y,body.box_dim.z);
-    m_shapes_.push_back(new btBoxShape(dim));
+    btCollisionShape* shape = new btBoxShape(dim);
+    m_shapes_.push_back(shape);
 
     //mass
     btVector3 fallInertia(0,0,0);

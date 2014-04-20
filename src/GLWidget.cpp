@@ -33,7 +33,6 @@ void GLWidget::initializeGL(){
   glClearColor(0.8f, 0.8f, 1.0f, 1.0f);
 
   ShaderManager::Instance();
-
   TextureManager::Instance();
 }
 
