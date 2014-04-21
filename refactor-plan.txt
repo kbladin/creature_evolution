@@ -1,14 +1,13 @@
-Simulation:
+Simulation (abstract):
 	contains:
-		timer (counter of accumelated timesteps)
+		timer (counter of accumulated time steps)
 	
-
 	does:
 		virtual void Step(float dt) = 0;
 
 
 VizSimulation : public Simulation:
-	self collision is switchable
+	self collision is switch-able
 	Only handles updating of rigid bodies
 	Does not construct BulletCreatures (Scene can construct BulletCreatures and add them to its VizSim)
 		(BulletCreature can call UpdateMotors in Draw() during rendering)
@@ -26,3 +25,23 @@ EvoSimulation : public Simulation:
 		updates BulletCreature motors, collects performance data in Creature
 
 		returns a full population
+
+Scene:
+	contains:
+		list of Entity
+		VizSimulation
+		Camera
+
+	does:
+		tells its VizSim to step
+		tells Entities to render
+
+
+EvolutionManager : public QObject
+	does:
+		evolution (lol)
+		returns a new Creature after each generation
+
+	contains:
+		current generation of creatures
+		

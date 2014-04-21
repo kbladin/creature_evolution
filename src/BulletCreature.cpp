@@ -132,3 +132,11 @@ std::vector<btHingeConstraint*> BulletCreature::GetJoints() {
 btRigidBody* BulletCreature::GetHead() {
     return m_bodies_[0];
 }
+
+Creature BulletCreature::GetCreature() {
+    return blueprint_;
+}
+
+void BulletCreature::CollectData() {
+    
+}

@@ -21,6 +21,10 @@ public:
     std::vector<btHingeConstraint*> GetJoints();
     btRigidBody* GetHead();
 
+    Creature GetCreature();
+
+    void CollectData();
+
 private:
     std::vector<btScalar> mass_;
     std::vector<btCollisionShape*> m_shapes_;

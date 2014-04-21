@@ -3,7 +3,7 @@
 #include <vector>
 #include "Entity.h"
 #include "Camera.h"
-#include "Simulation.h"
+#include "VizSimulation.h"
 
 class Scene {
   public:
@@ -23,7 +23,7 @@ class Scene {
     void UpdatePhysics();
 
     static Scene* instance_;
-    Simulation sim_;
+    VizSimulation sim_;
     Camera cam_;
 
     std::vector<Entity*> entities;
