@@ -20,6 +20,8 @@ class Scene {
     Camera* GetCamera();
 
   private:
+    void UpdatePhysics();
+
     static Scene* instance_;
     Simulation sim_;
     Camera cam_;

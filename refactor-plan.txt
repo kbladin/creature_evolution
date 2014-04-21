@@ -1,0 +1,28 @@
+Simulation:
+	contains:
+		timer (counter of accumelated timesteps)
+	
+
+	does:
+		virtual void Step(float dt) = 0;
+
+
+VizSimulation : public Simulation:
+	self collision is switchable
+	Only handles updating of rigid bodies
+	Does not construct BulletCreatures (Scene can construct BulletCreatures and add them to its VizSim)
+		(BulletCreature can call UpdateMotors in Draw() during rendering)
+
+
+EvoSimulation : public Simulation:
+
+	contains:
+		list of Creatures
+		list of BulletCreatures
+
+	does:
+		no self collision
+		constructs BulletCreatures from Creatures
+		updates BulletCreature motors, collects performance data in Creature
+
+		returns a full population
