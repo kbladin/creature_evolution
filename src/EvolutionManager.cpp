@@ -44,6 +44,8 @@ void EvolutionManager::startEvolutionProcess() {
 		// save the population and the best creatures
         // SettingsManager::Instance()->AddBestCreature(GetBestCreature());
         best = GetBestCreature();
+        //TODO: send Creature via signal
+        emit NewCreature(best);
         std::cout << "Best fitness: " <<best.GetFitness() << std::endl;
         best_creatures_.push_back(best);
         NextGeneration();
@@ -189,3 +191,7 @@ Population EvolutionManager::CreateRandomPopulation(int pop_size) {
 	}
 	return random_pop;
 }
+
+// void EvolutionManager::GenerationDone(Creature new_creature) {
+//   emit NewCreature(new_creature);
+// }

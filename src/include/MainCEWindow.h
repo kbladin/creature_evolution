@@ -18,6 +18,7 @@
 #include <QSignalMapper>
 
 #include "SliderWidget.h"
+#include "Creature.h"
 
 QT_BEGIN_NAMESPACE
 class QSlider;
@@ -42,6 +43,8 @@ public slots:
     void renderWorm();
 
     void evoDone();
+
+    void GotNewCreature(const Creature &new_creature);
 
     void setValueMut(int value);
     static void setValueGen(int value);
@@ -78,6 +81,10 @@ private:
     CreatureEvolution* creature_evo_;
     static const int normalize = 100;
     static const int number_of_sliders = 6;
+
+    std::vector<Creature> creatures_;
+
+    EvolutionManager EM_;
 };
 
 #endif // MAINCEWINDOW_H

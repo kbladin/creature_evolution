@@ -1,5 +1,6 @@
 #include "GLWidget.h"
 #include "MainCEWindow.h"
+#include "EvolutionManager.h"
 
 MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 {
@@ -62,6 +63,7 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     connect(simButton, SIGNAL(clicked()), this, SLOT(startEvolution()));
     connect(loadButton, SIGNAL(clicked()), this, SLOT(loadCreature()));
     connect(&evolution_thread_starter_, SIGNAL(finished()), this, SLOT(evoDone()));
+    connect(&EM_, SIGNAL(NewCreature(const Creature &)), this, SLOT(GotNewCreature(const Creature &)));
 
 }
 
@@ -108,7 +110,8 @@ void MainCEWindow::testPrint() {
 }
 
 static void startEvo(CreatureEvolution* CE) {
-    CE->Run();
+    //CE->Run();
+    EM_.startEvolutionProcess();
 }
 
 void MainCEWindow::startEvolution() {
@@ -126,4 +129,9 @@ void MainCEWindow::evoDone() {
 }
 
 void MainCEWindow::renderWorm() {
+}
+
+void MainCEWindow::GotNewCreature(const Creature &new_creature) {
+    qDebug("Got creature! Fitness:");
+    creatures_.push_back(new_creature);
 }
