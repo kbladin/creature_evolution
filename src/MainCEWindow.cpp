@@ -1,6 +1,7 @@
 #include "GLWidget.h"
 #include "MainCEWindow.h"
 #include "EvolutionManager.h"
+#include "Scene.h"
 
 MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 {
@@ -125,6 +126,8 @@ void MainCEWindow::startEvolution() {
 
 void MainCEWindow::loadCreature() {
     //EM_->LoadAllBestCreatures();
+    BulletCreature number_1(creatures_.front());
+    Scene::Instance();
 }
 
 void MainCEWindow::evoDone() {

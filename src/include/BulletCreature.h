@@ -11,8 +11,6 @@
 #include "Creature.h"
 #include "Node.h"
 #include "Shape.h"
-#include "CEMotionState.h"
-#include "Box.h"
 
 class BulletCreature : public Entity {
 public:
@@ -38,7 +36,7 @@ private:
     Creature blueprint_;
 
     bool construct_nodes_;
-    std::vector<Node> nodes_;
+    std::vector<Node*> nodes_;
 
 
     btRigidBody* AddBody(BodyTree body, btVector3 position);

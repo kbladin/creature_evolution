@@ -2,7 +2,6 @@
 #define CEMOTIONSTATE_H
 
 #include <btBulletDynamicsCommon.h>
-#include "Node.h"
 
 class Node;
 

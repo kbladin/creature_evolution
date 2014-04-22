@@ -1,4 +1,5 @@
 #include "Shape.h"
+#include "Camera.h"
 
 Shape::Shape() {
     vertex_array_id_ = GL_FALSE;

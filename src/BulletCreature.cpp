@@ -1,4 +1,7 @@
 #include "BulletCreature.h"
+#include "Box.h"
+#include "CEMotionState.h"
+
 
 BulletCreature::BulletCreature(Creature blueprint) {
 
@@ -61,10 +64,12 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
 
     btMotionState* motion_state;
     if(construct_nodes_) {
-        Node body_node;
+        Node* body_node = new Node();
         Box box_shape(body.box_dim.x, body.box_dim.y, body.box_dim.z);
-        body_node.SetShape(box_shape);
-        motion_state = new CEMotionState(offset, &body_node);
+        body_node->SetShape(box_shape);
+        //CEMotionState cms(offset, body_node);
+        //motion_state = &cms;
+        motion_state = new CEMotionState(offset, body_node);
         nodes_.push_back(body_node);
     }
     else {

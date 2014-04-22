@@ -1,4 +1,5 @@
 #include "CEMotionState.h"
+#include "Node.h"
 
 CEMotionState::CEMotionState(const btTransform &initpos, Node* node) {
 	node_ = node;

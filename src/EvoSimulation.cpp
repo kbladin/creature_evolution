@@ -55,7 +55,7 @@ void EvoSimulation::SetupEnvironment() {
 void EvoSimulation::AddPopulation(Population population) {
   for (int i = 0; i < population.size(); ++i) {
     // no displacement, don't construct Nodes
-    BulletCreature btc(population[i], 0);
+    BulletCreature btc(population[i], 0.0f, false);
     bt_population_.push_back(btc);
   }
 

@@ -1,4 +1,5 @@
 #include "Node.h"
+#include "Camera.h"
 
 Node::Node() {
   transform_ = glm::mat4(1.0f);

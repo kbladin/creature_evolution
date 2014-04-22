@@ -13,11 +13,11 @@
 #include <glm/ext.hpp>
 #endif
 // Internal
-#include "Camera.h"
+//#include "Camera.h"
 #include "ShaderManager.h"
 #include "TextureManager.h"
 
-//class Camera;
+class Camera;
 
 class Shape {
 public:

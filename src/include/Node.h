@@ -16,6 +16,8 @@
 // Internal
 #include "Shape.h"
 
+class Camera;
+
 class Node {
 public:
   Node();
