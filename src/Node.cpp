@@ -23,7 +23,7 @@ void Node::SetPosition(glm::vec3 pos) {
 
 }
 
-void Node::Render(Camera camera) {
+void Node::Render(Camera* camera) {
   shape_.Render(camera, transform_);
 }
 

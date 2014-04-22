@@ -14,8 +14,8 @@ EvoSimulation::~EvoSimulation()  {
   std::vector<btHingeConstraint*> joints;
 
   for (int i = 0; i < bt_population_.size(); ++i) {
-    rigid_bodies = bt_population_[i].GetRigidBodies();
-    joints = bt_population_[i].GetJoints();
+    rigid_bodies = bt_population_[i]->GetRigidBodies();
+    joints = bt_population_[i]->GetJoints();
 
     // Remove bodies
     for (int i = 0; i < rigid_bodies.size(); i++) {
@@ -26,6 +26,10 @@ EvoSimulation::~EvoSimulation()  {
     for (int i = 0; i < joints.size(); i++) {
         dynamics_world_->removeConstraint(joints[i]);
     }
+  }
+
+  for (int i = 0; i < bt_population_.size(); ++i) {
+    delete bt_population_[i];
   }
 
   dynamics_world_->removeRigidBody(ground_rigid_body_);
@@ -55,7 +59,7 @@ void EvoSimulation::SetupEnvironment() {
 void EvoSimulation::AddPopulation(Population population) {
   for (int i = 0; i < population.size(); ++i) {
     // no displacement, don't construct Nodes
-    BulletCreature btc(population[i], 0.0f, false);
+    BulletCreature* btc = new BulletCreature(population[i], 0.0f, false);
     bt_population_.push_back(btc);
   }
 
@@ -63,8 +67,8 @@ void EvoSimulation::AddPopulation(Population population) {
   std::vector<btHingeConstraint*> joints;
 
   for (int i = 0; i < bt_population_.size(); ++i) {
-    rigid_bodies = bt_population_[i].GetRigidBodies();
-    joints = bt_population_[i].GetJoints();
+    rigid_bodies = bt_population_[i]->GetRigidBodies();
+    joints = bt_population_[i]->GetJoints();
 
     // Add bodies
     for (int i = 0; i < rigid_bodies.size(); i++) {
@@ -86,8 +90,8 @@ void EvoSimulation::Step(float dt) {
 
   std::vector<float> input(1,counter_);
   for (int i = 0; i < bt_population_.size(); ++i) {
-    bt_population_[i].UpdateMotors(input);
-    bt_population_[i].CollectData();
+    bt_population_[i]->UpdateMotors(input);
+    bt_population_[i]->CollectData();
   }
   dynamics_world_->stepSimulation(dt, 1);
   counter_ += dt;
@@ -102,7 +106,7 @@ Population EvoSimulation::SimulatePopulation() {
 
   Population creatures_with_data;
   for (int i = 0; i < bt_population_.size(); ++i) {
-    creatures_with_data.push_back(bt_population_[i].GetCreature());
+    creatures_with_data.push_back(bt_population_[i]->GetCreature());
   }
 
   return creatures_with_data;

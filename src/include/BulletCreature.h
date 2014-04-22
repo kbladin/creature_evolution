@@ -24,6 +24,7 @@ public:
     std::vector<btHingeConstraint*> GetJoints();
     btRigidBody* GetHead();
     virtual void Draw();
+    virtual void Update();
     Creature GetCreature();
 
     void CollectData();

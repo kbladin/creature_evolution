@@ -2,7 +2,6 @@
 #include <QDesktopWidget>
 
 #include "SettingsManager.h"
-#include "CreatureEvolution.h"
 
 #include "MainCEWindow.h"
 
@@ -21,9 +20,7 @@ int main(int argc, char **argv) {
     SettingsManager::Instance()->SetMainBodyDimension(Vec3(0.1,0.1,0.2));
     qRegisterMetaType<Creature>();
     
-	CreatureEvolution* CE = new CreatureEvolution();
-
-    MainCEWindow window(CE);
+    MainCEWindow window;
     window.resize(window.sizeHint());
 
     int desktopArea = QApplication::desktop()->width() *

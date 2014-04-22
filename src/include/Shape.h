@@ -24,7 +24,7 @@ public:
   Shape();
   void SetupBuffers();
   void DebugPrint();
-  void Render(Camera camera, glm::mat4 model_transform);
+  void Render(Camera* camera, glm::mat4 model_transform);
 protected:
   GLuint vertex_array_id_;
   GLuint element_buffer_id_;

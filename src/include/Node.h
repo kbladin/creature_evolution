@@ -23,7 +23,7 @@ public:
   Node();
   void InitShape();
   void SetShape(Shape shape);
-  void Render(Camera camera);
+  void Render(Camera* camera);
   void SetTransform(glm::mat4 trans);
   void SetPosition(glm::vec3 pos);
   glm::mat4 GetTransform();

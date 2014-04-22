@@ -24,7 +24,7 @@ class EvoSimulation : public Simulation {
     btDefaultMotionState* ground_motion_state_;
     btRigidBody* ground_rigid_body_;
 
-    std::vector<BulletCreature> bt_population_;
+    std::vector<BulletCreature*> bt_population_;
 
     int bt_creature_collidies_with_;
     int ground_collidies_with_;

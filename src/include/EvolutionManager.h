@@ -6,7 +6,6 @@
 #include <ctime>
 #include <QObject>
 #include "Creature.h"
-#include "Simulation.h"
 #include "AutoInitRNG.h"
 
 

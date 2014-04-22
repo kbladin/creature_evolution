@@ -21,6 +21,8 @@ class Simulation {
     btDiscreteDynamicsWorld* GetDynamicsWorld();
     void SetFps(int fps);
     int GetFps();
+    float GetCounterTime();
+    void ResetTime();
   protected:
     btBroadphaseInterface* broad_phase_;
     btDefaultCollisionConfiguration* collision_configuration_;

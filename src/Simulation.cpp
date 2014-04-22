@@ -1,6 +1,6 @@
-#include "SimulationV2.h"
+#include "Simulation.h"
 
-SimulationV2::SimulationV2() {
+Simulation::Simulation() {
   counter_ = 0;
   fps_ = 60;
   broad_phase_ = new btDbvtBroadphase();
@@ -12,7 +12,7 @@ SimulationV2::SimulationV2() {
     broad_phase_, solver_, collision_configuration_);
 }
 
-SimulationV2::~SimulationV2() {
+Simulation::~Simulation() {
   delete dynamics_world_;
   delete solver_;
   delete collision_configuration_;
@@ -20,14 +20,22 @@ SimulationV2::~SimulationV2() {
   delete broad_phase_;
 }
 
-void SimulationV2::SetFps(int fps) {
+void Simulation::SetFps(int fps) {
   fps_ = fps;
 }
 
-int SimulationV2::GetFps() {
+int Simulation::GetFps() {
   return fps_;
 }
 
-btDiscreteDynamicsWorld* SimulationV2::GetDynamicsWorld() {
+btDiscreteDynamicsWorld* Simulation::GetDynamicsWorld() {
   return dynamics_world_;
+}
+
+float Simulation::GetCounterTime() {
+  return counter_;
+}
+
+void Simulation::ResetTime() {
+  counter_ = 0.0f;
 }

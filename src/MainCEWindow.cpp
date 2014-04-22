@@ -3,22 +3,21 @@
 #include "EvolutionManager.h"
 #include "Scene.h"
 
-MainCEWindow::MainCEWindow(CreatureEvolution* ce)
+MainCEWindow::MainCEWindow()
 {
     EM_ = new EvolutionManager();
-    creature_evo_ = ce;
     QGLFormat glFormat;
     glFormat.setVersion( 3, 2 );
     glFormat.setProfile( QGLFormat::CoreProfile ); // Requires >=Qt-4.8.0
     glFormat.setSampleBuffers( true );
-    glWidget = new GLWidget(glFormat,0,creature_evo_);
+    glWidget = new GLWidget(glFormat,0);
 
     QHBoxLayout *layout_main = new QHBoxLayout;
     QVBoxLayout *layout_control = new QVBoxLayout;
     QVBoxLayout *layout_button = new QVBoxLayout;
 
-    QPushButton *renderOneButton = new QPushButton("Render best creature! (not working)");
-    QPushButton *renderAllButton = new QPushButton("3. Render all generations!");
+    //QPushButton *renderOneButton = new QPushButton("Render best creature! (not working)");
+    //QPushButton *renderAllButton = new QPushButton("3. Render all generations!");
     QPushButton *simButton = new QPushButton("1. Start simulation.");
     QPushButton *loadButton = new QPushButton("2. Load creatures.");
 
@@ -43,8 +42,6 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 
     layout_button->addWidget(simButton);
     layout_button->addWidget(loadButton);
-    layout_button->addWidget(renderOneButton);
-    layout_button->addWidget(renderAllButton);
 
     layout_control->addWidget(generation_slider);
     layout_control->addWidget(generation_size_slider);
@@ -61,7 +58,7 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 
     // ----- Connect buttons -----
     //connect(dummyButton,SIGNAL(clicked()), this, SLOT(testPrint()));
-    connect(renderAllButton,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
+    //connect(renderAllButton,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
     connect(simButton, SIGNAL(clicked()), this, SLOT(startEvolution()));
     connect(loadButton, SIGNAL(clicked()), this, SLOT(loadCreature()));
 
@@ -125,9 +122,8 @@ void MainCEWindow::startEvolution() {
 }
 
 void MainCEWindow::loadCreature() {
-    //EM_->LoadAllBestCreatures();
-    BulletCreature number_1(creatures_.front());
-    Scene::Instance();
+    Scene::Instance()->Clean();
+    Scene::Instance()->AddCreature(creatures_.back());
 }
 
 void MainCEWindow::evoDone() {
@@ -138,7 +134,7 @@ void MainCEWindow::renderWorm() {
 }
 
 void MainCEWindow::GotNewCreature(const Creature &new_creature) {
-    std::cout << "Got creature! Fitness: " << new_creature.GetFitness() << endl;
+    std::cout << "Got creature! Fitness: " << new_creature.GetFitness() << std::endl;
     Creature add = new_creature;
     creatures_.push_back(add);
 }

@@ -1,7 +1,7 @@
 #include "BulletCreature.h"
 #include "Box.h"
 #include "CEMotionState.h"
-
+#include "Scene.h"
 
 BulletCreature::BulletCreature(Creature blueprint) {
 
@@ -66,6 +66,7 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
     if(construct_nodes_) {
         Node* body_node = new Node();
         Box box_shape(body.box_dim.x, body.box_dim.y, body.box_dim.z);
+        box_shape.SetupBuffers();
         body_node->SetShape(box_shape);
         //CEMotionState cms(offset, body_node);
         //motion_state = &cms;
@@ -156,9 +157,18 @@ Creature BulletCreature::GetCreature() {
 }
 
 void BulletCreature::CollectData() {
-    
+    blueprint_.UpdateVelocity(GetCenterOfMass().getZ());
 }
 
 void BulletCreature::Draw() {
     //RENDER MA NODES BRO!
+    for (int i = 0; i < nodes_.size(); ++i) {
+        nodes_[i]->Render(Scene::Instance()->GetCamera());
+    }
+}
+
+void BulletCreature::Update() {
+    float time = Scene::Instance()->GetCurrentSimTime();
+    std::vector<float> input(1,time);
+    UpdateMotors(input);
 }

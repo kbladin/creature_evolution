@@ -86,11 +86,11 @@ void Shape::SetupBuffers() {
   glBindVertexArray(0);
 }
 
-void Shape::Render(Camera camera, glm::mat4 model_transform) {
+void Shape::Render(Camera* camera, glm::mat4 model_transform) {
   // Matrix data
-  glm::mat4 V = camera.GetViewMatrix();
+  glm::mat4 V = camera->GetViewMatrix();
   glm::mat4 MV = V * model_transform;
-  glm::mat4 P = camera.GetProjectionMatrix();
+  glm::mat4 P = camera->GetProjectionMatrix();
   glm::mat4 MVP = P * MV;
 
   // To make sure we use the same name
@@ -105,7 +105,7 @@ void Shape::Render(Camera camera, glm::mat4 model_transform) {
   ShaderManager::Instance()->GetShaderProgramFromName(
           shader_name)->UniformMatrix4fv("MV", 1, false, &MV[0][0]);
   ShaderManager::Instance()->GetShaderProgramFromName(
-          shader_name)->Uniform1f("far_clipping", camera.GetFarClipping());
+          shader_name)->Uniform1f("far_clipping", camera->GetFarClipping());
 
   ShaderManager::Instance()->GetShaderProgramFromName(
           shader_name)->Uniform1f("material.reflectance", material_.reflectance);

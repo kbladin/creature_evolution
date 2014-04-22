@@ -1,5 +1,6 @@
 #include "EvolutionManager.h"
 #include "SettingsManager.h"
+#include "EvoSimulation.h"
 #include <chrono>
 AutoInitRNG EvolutionManager::rng_;
 
@@ -25,8 +26,7 @@ void EvolutionManager::startEvolutionProcess() {
 
 	int max_gen = SettingsManager::Instance()->GetMaxGenerations();
 	int pop_size = SettingsManager::Instance()->GetPopulationSize();
-    std::cout << "max_gen" << max_gen << std::endl;
-    Creature best;
+  Creature best;
 
 	// Creates a new random population
 	current_population_ = CreateRandomPopulation(pop_size);
@@ -34,7 +34,6 @@ void EvolutionManager::startEvolutionProcess() {
     for (int i = 0; i < max_gen; ++i){
 		std::cout << "Generation: " << i << std::endl <<
         "Simulating..." << std::endl;
-        //PrintPopulation();
         SimulatePopulation();
 
         CalculateFitnessOnPopulation();
@@ -81,16 +80,8 @@ Population EvolutionManager::GetAllBestCreatures() {
 
 //! Simulates all creatures in population
 void EvolutionManager::SimulatePopulation() {
-    Simulation sim_world(false);
-
-	/*for(int i = 0; i < current_population_.size(); ++i) {
-    	//NOTE: Something is not being reset in the Simulation,
-    	// so just create a new world for every Creature
-        sim_world.AddCreature(current_population_[i]);
-        current_population_[i] = sim_world.Simulate();
-        sim_world.RemoveCreature();
-	}*/
-
+    EvoSimulation sim_world;
+    
     sim_world.AddPopulation(current_population_);
     current_population_ = sim_world.SimulatePopulation();
 }
