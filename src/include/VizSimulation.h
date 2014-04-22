@@ -1,9 +1,9 @@
 #ifndef VIZSIMULATION_H
 #define VIZSIMULATION_H
 
-#include "SimulationV2.h"
+#include "Simulation.h"
 
-class VizSimulation : public SimulationV2 {
+class VizSimulation : public Simulation {
   public:
     VizSimulation();
     ~VizSimulation();

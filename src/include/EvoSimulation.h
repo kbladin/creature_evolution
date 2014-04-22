@@ -2,13 +2,13 @@
 #define EVOSIMULATION_H
 
 #include <vector>
-#include "SimulationV2.h"
+#include "Simulation.h"
 #include "Creature.h"
 #include "BulletCreature.h"
 
 typedef std::vector<Creature> Population;
 
-class EvoSimulation : public SimulationV2 {
+class EvoSimulation : public Simulation {
   public:
     EvoSimulation();
     ~EvoSimulation();

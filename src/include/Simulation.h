@@ -1,5 +1,5 @@
-#ifndef SIMULATIONV2_H
-#define SIMULATIONV2_H
+#ifndef SIMULATION_H
+#define SIMULATION_H
 
 #include <btBulletDynamicsCommon.h>
 
@@ -10,10 +10,10 @@ enum collisiontypes {
     COL_GROUND = BIT(1)
 };
 
-class SimulationV2 {
+class Simulation {
   public:
-    SimulationV2();
-    virtual ~SimulationV2();
+    Simulation();
+    virtual ~Simulation();
 
     virtual void Step(float dt) = 0;
     virtual void SetupEnvironment() = 0;
@@ -32,4 +32,4 @@ class SimulationV2 {
     int fps_;
 };
 
-#endif	// SIMULATIONV2_H
+#endif	// SIMULATION_H
