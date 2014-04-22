@@ -16,6 +16,8 @@
 #include "Creature.h"
 #include "Simulation.h"
 
+class Camera;
+
 struct PointLight {
   float intensity;
   glm::vec3 color;

@@ -84,7 +84,7 @@ private:
 
     std::vector<Creature> creatures_;
 
-    EvolutionManager EM_;
+    EvolutionManager* EM_;
 };
 
 #endif // MAINCEWINDOW_H

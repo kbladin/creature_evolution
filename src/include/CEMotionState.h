@@ -4,6 +4,8 @@
 #include <btBulletDynamicsCommon.h>
 #include "Node.h"
 
+class Node;
+
 class CEMotionState : public btMotionState {
 
 public:

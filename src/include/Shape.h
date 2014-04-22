@@ -17,6 +17,8 @@
 #include "ShaderManager.h"
 #include "TextureManager.h"
 
+//class Camera;
+
 class Shape {
 public:
   Shape();

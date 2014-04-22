@@ -8,8 +8,11 @@
 #include <glm/ext.hpp>
 #endif
 // Internal
+#include "Entity.h"
 #include "BulletCreature.h"
 #include "SettingsManager.h"
+
+class BulletCreature;
 
 //! The camera class is used to obtain the view and projection matrices.
 /*!

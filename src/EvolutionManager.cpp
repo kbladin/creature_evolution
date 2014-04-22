@@ -38,7 +38,6 @@ void EvolutionManager::startEvolutionProcess() {
         SimulatePopulation();
 
         CalculateFitnessOnPopulation();
-        std::cout << "Calculated fitness on pop" << std::endl;
         SortPopulation();
 
 		// save the population and the best creatures
@@ -46,11 +45,8 @@ void EvolutionManager::startEvolutionProcess() {
         best = GetBestCreature();
         //TODO: send Creature via signal
         emit NewCreature(best);
-        std::cout << "Best fitness: " <<best.GetFitness() << std::endl;
         best_creatures_.push_back(best);
         NextGeneration();
-
-
 	}
 	std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
 }

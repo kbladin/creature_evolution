@@ -4,6 +4,7 @@
 
 MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 {
+    EM_ = new EvolutionManager();
     creature_evo_ = ce;
     QGLFormat glFormat;
     glFormat.setVersion( 3, 2 );
@@ -62,8 +63,10 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     connect(renderAllButton,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
     connect(simButton, SIGNAL(clicked()), this, SLOT(startEvolution()));
     connect(loadButton, SIGNAL(clicked()), this, SLOT(loadCreature()));
+
+    connect(EM_, SIGNAL(NewCreature(const Creature &)), this, SLOT(GotNewCreature(const Creature &)));
+
     connect(&evolution_thread_starter_, SIGNAL(finished()), this, SLOT(evoDone()));
-    connect(&EM_, SIGNAL(NewCreature(const Creature &)), this, SLOT(GotNewCreature(const Creature &)));
 
 }
 
@@ -109,19 +112,19 @@ void MainCEWindow::testPrint() {
     qDebug("Button works!");
 }
 
-static void startEvo(CreatureEvolution* CE) {
+static void startEvo(EvolutionManager* EM) {
     //CE->Run();
-    EM_.startEvolutionProcess();
+    EM->startEvolutionProcess();
 }
 
 void MainCEWindow::startEvolution() {
     QApplication::setOverrideCursor(Qt::BusyCursor);
-    evolution_thread_starter_.setFuture(QtConcurrent::run(::startEvo, creature_evo_));
+    evolution_thread_starter_.setFuture(QtConcurrent::run(::startEvo, EM_));
     evoDone();
 }
 
 void MainCEWindow::loadCreature() {
-    creature_evo_->LoadAllBestCreatures();
+    //EM_->LoadAllBestCreatures();
 }
 
 void MainCEWindow::evoDone() {
@@ -132,6 +135,7 @@ void MainCEWindow::renderWorm() {
 }
 
 void MainCEWindow::GotNewCreature(const Creature &new_creature) {
-    qDebug("Got creature! Fitness:");
-    creatures_.push_back(new_creature);
+    std::cout << "Got creature! Fitness: " << new_creature.GetFitness() << endl;
+    Creature add = new_creature;
+    creatures_.push_back(add);
 }

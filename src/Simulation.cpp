@@ -137,7 +137,7 @@ void Simulation::AddPopulation(std::vector<Creature> population) {
     for (int i  = 0; i < population_.size(); ++i) {
         BulletCreature* bt_creature;
         if(self_collide_)
-            bt_creature = new BulletCreature(population_[i], creature_displacement);
+            bt_creature = new BulletCreature(population_[i], creature_displacement, false);
         else
             bt_creature = new BulletCreature(population_[i]);
         bt_population_.push_back(bt_creature);

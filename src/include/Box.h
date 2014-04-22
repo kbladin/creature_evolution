@@ -4,8 +4,9 @@
 // C++
 #include <iostream>
 // Internal
-#include "Shape.h"
 #include "TextureManager.h"
+#include "Shape.h"
+
 
 //! Used in the render process. A box to render.
 class Box : public Shape {

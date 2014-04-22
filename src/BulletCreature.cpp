@@ -11,10 +11,11 @@ BulletCreature::BulletCreature(Creature blueprint) {
 }
 
 
-BulletCreature::BulletCreature(Creature blueprint, float x_displacement) {
+BulletCreature::BulletCreature(Creature blueprint, float x_displacement, bool construct_nodes) {
 
     //connect brain
     blueprint_ = blueprint;
+    construct_nodes_ = construct_nodes;
 
     //create body
     AddBody(blueprint_.GetBody().GetBodyRoot(), btVector3(x_displacement,1.5,0.0));
@@ -57,7 +58,19 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
     btTransform offset;
     offset.setIdentity();
     offset.setOrigin(position);
-    btDefaultMotionState* motion_state = new btDefaultMotionState(offset);
+
+    btMotionState* motion_state;
+    if(construct_nodes_) {
+        Node body_node;
+        Box box_shape(body.box_dim.x, body.box_dim.y, body.box_dim.z);
+        body_node.SetShape(box_shape);
+        motion_state = new CEMotionState(offset, &body_node);
+        nodes_.push_back(body_node);
+    }
+    else {
+        motion_state = new btDefaultMotionState(offset);
+    }
+
     btRigidBody::btRigidBodyConstructionInfo rigid_body(mass_.back(),motion_state,m_shapes_.back(),fallInertia);
     btRigidBody* current_body = new btRigidBody(rigid_body);
     m_bodies_.push_back(current_body);
@@ -139,4 +152,8 @@ Creature BulletCreature::GetCreature() {
 
 void BulletCreature::CollectData() {
     
+}
+
+void BulletCreature::Draw() {
+    //RENDER MA NODES BRO!
 }
