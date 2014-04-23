@@ -33,6 +33,7 @@ public:
   BodyTree GetBodyRoot();
 private:
   BodyTree CreatePony();
+  BodyTree CreateSheep();
   BodyTree CreateWorm();
   BodyTree CreateTurtle();
 };

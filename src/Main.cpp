@@ -17,8 +17,8 @@ int main(int argc, char **argv) {
 	SettingsManager::Instance()->SetElitism(0.2f);
 	SettingsManager::Instance()->SetMutation(0.8f);
 
-    SettingsManager::Instance()->SetCreatureType(CreatureType::WORM);
-    SettingsManager::Instance()->SetMainBodyDimension(Vec3(0.1,0.1,0.2));
+    SettingsManager::Instance()->SetCreatureType(CreatureType::SHEEP);
+    SettingsManager::Instance()->SetMainBodyDimension(Vec3(1,1,1));
 
 	CreatureEvolution* CE = new CreatureEvolution();
 

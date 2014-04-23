@@ -32,10 +32,11 @@ std::vector<float> Brain::CalculateOutput(std::vector<float> input){
     std::vector<float> output;
     for(int i=0; i<(weights.size() / 3); i++) {
         int n_freqs = 10;
-        float max_freq = 2/3.0f;
+        float max_freq = 20.0f;
 
-        //float freq = floor(weights[i*3] * n_freqs) * max_freq; 
-        float freq = pow(2, ceil(log(abs(1 / weights[i*3]) + 0.001f)/log(2)));  // 1,2,4,8...
+        //float freq = 10;
+        float freq = floor(weights[i*3] * n_freqs) / float(n_freqs) * max_freq;
+        //float freq = pow(2, ceil(log(abs(1 / weights[i*3]) + 0.001f)/log(2)));  // 1,2,4,8...
 
         float amp = weights[i*3+1];
         float phase = weights[i*3+2]*M_PI*2;
@@ -46,31 +47,38 @@ std::vector<float> Brain::CalculateOutput(std::vector<float> input){
 }
 
 void Brain::Mutate() {
-    std::uniform_real_distribution<float> float_mutate(-0.3f, 0.3f);
-    std::uniform_int_distribution<int> weight_index(0, weights.size()-1);
 
-    float mutation = (float_mutate(rng_.mt_rng_));
-    int random_index = weight_index(rng_.mt_rng_);
+    std::normal_distribution<float> normal_dist(
+                0.0f,
+                SettingsManager::Instance()->mutation_sigma_);
 
-    //float mutation = ( ( (float)rng_.mt_rng_()/rng_.mt_rng_.max() ) - 0.5 ) * 0.6;
-//    weights[random_index] += mutation;
+    std::uniform_int_distribution<int> int_dist(0, weights.size()-1);
+    int index_to_mutate = int_dist(rng_.mt_rng_);
 
-    for(int i = 0; i < weights.size(); ++i) {
-        weights[i] += mutation;
-        weights[i] = (weights[i] < -1.0f) ? -1.0f : ((weights[i] > 1.0f) ? 1.0f : weights[i]);
-    }
+    weights[index_to_mutate] += normal_dist(rng_.mt_rng_);
+    weights[index_to_mutate] = glm::clamp(weights[index_to_mutate], -1.0f, 1.0f);
+
 
 /*
-    std::uniform_real_distribution<float> float_mutate(-0.1f, 0.1f);
-    std::uniform_real_distribution<float> mutate(0.0f, 1.0f);
-    
+    std::uniform_real_distribution<float> float_dist(0.0f,1.0f);
+    std::normal_distribution<float> normal_dist(
+                0.0f,
+                SettingsManager::Instance()->mutation_sigma_);
+    float should_mutate;
     for (int i = 0; i < weights.size(); ++i){
-        if (mutate(rng_.mt_rng_) < SettingsManager::Instance()->GetMutation()) {
-            float mutation = (float_mutate(rng_.mt_rng_));
-            weights[i] += mutation;
-            weights[i] = (weights[i] < -1.0f) ? -1.0f : ((weights[i] > 1.0f) ? 1.0f : weights[i]);
+        should_mutate = float_dist(rng_.mt_rng_);
+        if( SettingsManager::Instance()->mutation_ratio_internal_ >= should_mutate) {
+            
+            //std::cout << "Previous weight = " << weights[i] << std::endl;
+            weights[i] += normal_dist(rng_.mt_rng_);
+            //std::cout << normal_dist(rng_.mt_rng_) << std::endl;
+            weights[i] = glm::clamp(weights[i], -1.0f, 1.0f);
+
+            //std::cout << "New weight = " << weights[i] << std::endl;
+
         }
     }*/
+
 
 }
 

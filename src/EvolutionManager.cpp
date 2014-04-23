@@ -128,7 +128,6 @@ void EvolutionManager::NextGeneration() {
 
 	int elitism_pivot = static_cast<int>(current_population_.size() * elitism);
 
-
 	Population new_population (&current_population_[0],
 		 &current_population_[elitism_pivot]);
 
@@ -136,11 +135,13 @@ void EvolutionManager::NextGeneration() {
 
 	std::uniform_int_distribution<int> int_elitism_index(0, elitism_pivot);
 
-	Creature new_creature;
+	//Creature new_creature;
     for(int i = elitism_pivot; i < current_population_.size() - 1; i++) {
 		int random_index = int_elitism_index(rng_.mt_rng_);
 
 		std::vector<Creature> parents = TournamentSelection();
+		//parents.push_back(current_population_[random_index]);
+		//parents.push_back(current_population_[random_index]);
 		std::vector<Creature> new_creatures = parents[0].Crossover(parents[1]);
 
 		new_creatures[0].Mutate();

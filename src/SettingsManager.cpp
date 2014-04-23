@@ -17,7 +17,10 @@ SettingsManager::SettingsManager(){
   max_generations_ = 20;
   crossover_ratio_ = 0.8;
   elitism_ratio_ = 0.2;
+
   mutation_ratio_ = 0.8;
+  mutation_ratio_internal_ = 0.2;
+  mutation_sigma_ = 0.1;
 }
 
 //! Destructor
