@@ -184,7 +184,7 @@ void BulletCreature::Update() {
     //std::vector<float> input(1,time);
 
     std::vector<float> input;
-    input.push_back(time);
+    input.push_back(1.0);
     std::vector<btHingeConstraint*> joints = GetJoints();
     for(int i=0; i < joints.size(); i++) {
         input.push_back(joints[i]->getHingeAngle());
