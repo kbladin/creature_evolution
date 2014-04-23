@@ -13,6 +13,7 @@ class VizSimulation : public Simulation {
     void ClearForces();
 
     float GetCounter();
+    int GetCollisionType();
   private:
     btCollisionShape* ground_shape_;
     btDefaultMotionState* ground_motion_state_;

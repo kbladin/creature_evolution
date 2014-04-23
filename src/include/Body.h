@@ -25,16 +25,25 @@ struct BodyTree {
 
     std::vector<Joint> joint_list;
     std::vector<BodyTree> body_list;
+
+    int GetNumberOfLeaves();
+};
+
+enum CreatureType{
+  PONY, WORM, TURTLE, SHEEP
 };
 
 class Body {
 public:
-  Body(){}
+  Body();
   BodyTree GetBodyRoot();
+  int GetTotalNumberOfJoints();
 private:
   BodyTree CreatePony();
+  BodyTree CreateSheep();
   BodyTree CreateWorm();
   BodyTree CreateTurtle();
+  BodyTree body_root_;
 };
 
 #endif //BODY_H

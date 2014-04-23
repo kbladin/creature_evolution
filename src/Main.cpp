@@ -21,6 +21,7 @@ int main(int argc, char **argv) {
     qRegisterMetaType<Creature>();
     
     MainCEWindow window;
+
     window.resize(window.sizeHint());
 
     int desktopArea = QApplication::desktop()->width() *

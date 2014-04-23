@@ -50,7 +50,10 @@ void Scene::AddCreature(Creature creature, float disp) {
   std::vector<btHingeConstraint*> joints = btc->GetJoints();
 
   for (int i = 0; i < bodies.size(); ++i) {
-    bt_world->addRigidBody(bodies[i]);
+    bt_world->addRigidBody(
+            bodies[i],
+            collisiontypes::COL_CREATURE,
+            sim_.GetCollisionType());
   }
   for (int i = 0; i < joints.size(); ++i) {
     bt_world->addConstraint(joints[i]);

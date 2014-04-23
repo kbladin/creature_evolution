@@ -4,29 +4,50 @@
     #define M_PI 3.14159265359
 #endif
 
-BodyTree Body::GetBodyRoot() {
+int BodyTree::GetNumberOfLeaves(){
+    int result = 0;
+    if (body_list.size() == 0)
+        result = 0; // Itself
+    else {
+        for (int i = 0; i < body_list.size(); ++i){
+            result += body_list[i].GetNumberOfLeaves();
+        }
+    }
+    return result + 1; // Children + itself
+}
+
+Body::Body(){
     //simple legged creature for testing
     int creature_type = SettingsManager::Instance()->GetCreatureType();
 
     // TODO: add switch
     switch(creature_type){
         case PONY:
-            return CreatePony();
+            body_root_ = CreatePony();
             break;
         case WORM:
-            return CreateWorm();
+            body_root_ = CreateWorm();
             break;
         case TURTLE:
-            return CreateTurtle();
+            body_root_ = CreateTurtle();
+            break;
+        case SHEEP:
+            body_root_ = CreateSheep();
             break;
         default:
             std::cout << "not valid creature.. uses Pony!";
-            return CreatePony();
+            body_root_ = CreatePony();
             break;
     }
-
 }
 
+BodyTree Body::GetBodyRoot() {
+    return body_root_;
+}
+
+int Body::GetTotalNumberOfJoints(){
+    return body_root_.GetNumberOfLeaves() - 1; // Do not count itself
+}
 
 BodyTree Body::CreatePony(){
 
@@ -72,6 +93,86 @@ BodyTree Body::CreatePony(){
     main_body.mass = 180.0;
 
     main_body.friction = 1.0;
+    main_body.body_list = std::vector<BodyTree>(4,upper_leg);
+    main_body.body_list.push_back(head);
+    main_body.body_list.push_back(tail);
+
+    Joint left_front_joint = joint;
+    left_front_joint.connection_root = Vec3(main_body.box_dim.x/2.0,-main_body.box_dim.y/1.0,main_body.box_dim.z/2.0);
+    Joint right_front_joint = joint;
+    right_front_joint.connection_root = Vec3(-main_body.box_dim.x/2.0,-main_body.box_dim.y/1.0,main_body.box_dim.z/2.0);
+    Joint left_back_joint = joint;
+    left_back_joint.connection_root = Vec3(main_body.box_dim.x/2.0,-main_body.box_dim.y/1.0,-main_body.box_dim.z/1.65);
+    Joint right_back_joint = joint;
+    right_back_joint.connection_root = Vec3(-main_body.box_dim.x/2.0,-main_body.box_dim.y/1.0,-main_body.box_dim.z/1.65);
+
+    Joint head_joint = joint;
+    head_joint.connection_root = Vec3(0.0,main_body.box_dim.y/2.0,main_body.box_dim.z*0.75);
+    head_joint.connection_branch = Vec3(0.0,-head.box_dim.y/2.0,-head.box_dim.z*0.75);
+
+    Joint tail_joint = joint;
+    tail_joint.connection_root = Vec3(0.0,main_body.box_dim.y/2.0,-main_body.box_dim.z*0.75);
+    tail_joint.connection_branch = Vec3(0.0,-tail.box_dim.y/2.0,tail.box_dim.z*0.75);
+
+    main_body.joint_list.push_back(left_front_joint);
+    main_body.joint_list.push_back(right_front_joint);
+    main_body.joint_list.push_back(left_back_joint);
+    main_body.joint_list.push_back(right_back_joint);
+    main_body.joint_list.push_back(head_joint);
+    main_body.joint_list.push_back(tail_joint);
+
+    return main_body;
+
+}
+
+BodyTree Body::CreateSheep(){
+
+    float density = 1000;
+    float friction = 0.7;
+
+    //Make head
+    BodyTree head;
+    head.box_dim = Vec3(0.15,0.15,0.25);
+    head.mass = head.box_dim.x * head.box_dim.y * head.box_dim.z * density;
+    head.friction = friction;
+
+    std::cout << "head.mass = " << head.mass << std::endl;
+
+    BodyTree tail;
+    tail.box_dim = Vec3(0.05,0.05,0.15);
+    tail.mass = tail.box_dim.x * tail.box_dim.y * tail.box_dim.z * density;
+    tail.friction = friction;
+
+
+    //Make legs
+    BodyTree leg;
+    leg.box_dim = Vec3(0.1,0.15,0.1);
+    leg.mass = leg.box_dim.x * leg.box_dim.y * leg.box_dim.z * density;
+    leg.friction = friction;
+
+    BodyTree lower_leg = leg;
+    BodyTree upper_leg = leg;
+    
+    Joint joint;
+    joint.connection_root = Vec3(0.0,-leg.box_dim.y,0.0);
+    joint.connection_branch = Vec3(0.0,leg.box_dim.y/2.0,0.0);
+    joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
+    joint.upper_limit = M_PI*0.3;
+    joint.lower_limit = -M_PI*0.3;
+
+    //connect lower legs
+    // upper_leg.body_list.push_back(lower_leg);
+    // upper_leg.joint_list.push_back(joint);
+
+    //Define the main body and connect everything to it
+    BodyTree main_body;
+
+    //main_body.box_dim = Vec3(0.8,0.5,1.5);
+
+    main_body.box_dim = Vec3(0.3,0.2,0.6);//SettingsManager::Instance()->GetMainBodyDimension();
+    main_body.mass = main_body.box_dim.x * main_body.box_dim.y * main_body.box_dim.z * density;
+
+    main_body.friction = friction;
     main_body.body_list = std::vector<BodyTree>(4,upper_leg);
     main_body.body_list.push_back(head);
     main_body.body_list.push_back(tail);

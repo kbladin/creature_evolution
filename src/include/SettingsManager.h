@@ -18,10 +18,6 @@
 // class Body;
 // class Brain;
 
-enum CreatureType{
-  PONY, WORM, TURTLE
-};
-
 //! Class to handle all the settings in the program. Can only instance one SettingsManager-class in the whole program. 
 class SettingsManager {
 public:
@@ -58,6 +54,9 @@ public:
 
   void SetMainBodyDimension(Vec3 dimension);
 
+    float mutation_ratio_internal_;
+  float mutation_sigma_;
+
 private:
   SettingsManager();
   ~SettingsManager(void); 
@@ -66,7 +65,10 @@ private:
   int max_generations_;
   float crossover_ratio_;
   float elitism_ratio_;
+
   float mutation_ratio_;
+
+
   // Render settings
   int frame_width_;
   int frame_height_;

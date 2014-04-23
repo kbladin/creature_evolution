@@ -47,6 +47,10 @@ float VizSimulation::GetCounter() {
   return counter_;
 }
 
+int VizSimulation::GetCollisionType(){
+  return bt_creature_collidies_with_;
+}
+
 void VizSimulation::ClearForces() {
   dynamics_world_->clearForces();
 }

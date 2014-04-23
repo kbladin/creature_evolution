@@ -45,7 +45,31 @@ std::vector<float> Brain::CalculateOutput(const f_vec& input){
 }
 
 void Brain::Mutate() {
-    std::uniform_real_distribution<float> r_w(-0.3f, 0.3f);
+
+    std::normal_distribution<float> normal_dist(
+                0.0f,
+                SettingsManager::Instance()->mutation_sigma_);
+
+    std::uniform_int_distribution<int> int_dist_hidden(0, hidden_nodes_[0].size()-1);
+    std::uniform_int_distribution<int> int_dist_output(0, hidden_nodes_.size()-1);
+
+
+    //mutate
+    for(f_vec& v : hidden_nodes_) {
+        int index_to_mutate = int_dist_hidden(rng_.mt_rng_);
+        v[index_to_mutate] += normal_dist(rng_.mt_rng_);
+        //v[index_to_mutate] = glm::clamp(v[index_to_mutate], -1.0f, 1.0f);
+    }
+    for(f_vec& v : output_nodes_) {
+        int index_to_mutate = int_dist_output(rng_.mt_rng_);
+        v[index_to_mutate] += normal_dist(rng_.mt_rng_);
+        //v[index_to_mutate] = glm::clamp(v[index_to_mutate], -1.0f, 1.0f);
+    }
+
+
+
+
+/*    std::uniform_real_distribution<float> r_w(-0.3f, 0.3f);
 
     //mutate
     for(f_vec& v : hidden_nodes_) {
@@ -58,7 +82,8 @@ void Brain::Mutate() {
         for(float& w : v) {
             w += r_w(rng_.mt_rng_);
         }
-    }
+    }*/
+
 }
 
 std::vector<Brain> Brain::Crossover(Brain mate){
