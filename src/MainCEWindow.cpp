@@ -20,6 +20,7 @@ MainCEWindow::MainCEWindow()
     //QPushButton *renderAllButton = new QPushButton("3. Render all generations!");
     QPushButton *simButton = new QPushButton("1. Start simulation.");
     QPushButton *loadButton = new QPushButton("2. Load creatures.");
+    QPushButton *gameofwormsbtn = new QPushButton("Game of Worms");
 
 
     int max_gen = SettingsManager::Instance()->GetMaxGenerations();
@@ -42,6 +43,7 @@ MainCEWindow::MainCEWindow()
 
     layout_button->addWidget(simButton);
     layout_button->addWidget(loadButton);
+    layout_button->addWidget(gameofwormsbtn);
 
     layout_control->addWidget(generation_slider);
     layout_control->addWidget(generation_size_slider);
@@ -61,6 +63,7 @@ MainCEWindow::MainCEWindow()
     //connect(renderAllButton,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
     connect(simButton, SIGNAL(clicked()), this, SLOT(startEvolution()));
     connect(loadButton, SIGNAL(clicked()), this, SLOT(loadCreature()));
+    connect(gameofwormsbtn, SIGNAL(clicked()), this, SLOT(GameOfWorms()));
 
     connect(EM_, SIGNAL(NewCreature(const Creature &)), this, SLOT(GotNewCreature(const Creature &)));
 
@@ -123,7 +126,19 @@ void MainCEWindow::startEvolution() {
 
 void MainCEWindow::loadCreature() {
     Scene::Instance()->Clean();
-    Scene::Instance()->AddCreature(creatures_.back());
+    Scene::Instance()->AddCreature(creatures_.back(), 0.0f);
+}
+
+void MainCEWindow::GameOfWorms() {
+    Scene::Instance()->Clean();
+    float displacement = 0.0f;
+
+    float num_of_creatures = (float) creatures_.size() / 10.0f;
+
+    for (float i = 0; i < creatures_.size(); i += num_of_creatures) {
+        Scene::Instance()->AddCreature(creatures_[floor(i)+0.01f], displacement);
+        displacement += 1.0f;
+    }
 }
 
 void MainCEWindow::evoDone() {

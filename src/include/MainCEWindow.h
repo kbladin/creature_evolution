@@ -53,6 +53,7 @@ public slots:
     void setBodyDimension(int value);
     void changePressed();
     void changeReleased();
+    void GameOfWorms();
 
 protected:
     void keyPressEvent(QKeyEvent *event);

@@ -41,10 +41,10 @@ void EvolutionManager::startEvolutionProcess() {
 
 		// save the population and the best creatures
         // SettingsManager::Instance()->AddBestCreature(GetBestCreature());
-        best = GetBestCreature();
+        //best = GetBestCreature();
         //TODO: send Creature via signal
-        emit NewCreature(best);
-        best_creatures_.push_back(best);
+        emit NewCreature(GetBestCreature());
+        //best_creatures_.push_back(best);
         NextGeneration();
 	}
 	std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;

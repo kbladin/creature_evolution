@@ -3,7 +3,7 @@
 VizSimulation::VizSimulation() {
   // self collision
   bt_creature_collidies_with_ =
-    collisiontypes::COL_GROUND | collisiontypes::COL_CREATURE;
+    collisiontypes::COL_GROUND;// | collisiontypes::COL_CREATURE;
 
   ground_collidies_with_ = collisiontypes::COL_CREATURE;
 

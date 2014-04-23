@@ -42,8 +42,8 @@ Camera* Scene::GetCamera() {
   return &cam_;
 }
 
-void Scene::AddCreature(Creature creature) {
-  BulletCreature* btc = new BulletCreature(creature,0.0f,true);
+void Scene::AddCreature(Creature creature, float disp) {
+  BulletCreature* btc = new BulletCreature(creature,disp,true);
   bt_creatures_.push_back(btc);
   btDiscreteDynamicsWorld* bt_world = sim_.GetDynamicsWorld();
   std::vector<btRigidBody*> bodies = btc->GetRigidBodies();
@@ -143,7 +143,7 @@ void Scene::Clean() {
   }
 
   bt_creatures_.clear();
-
+  bt_creatures_.shrink_to_fit();
   sim_.ClearForces();
   sim_.ResetTime();
 

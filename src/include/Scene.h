@@ -35,7 +35,7 @@ class Scene {
     ~Scene();
 
     void AddEntity(Entity* entity);
-    void AddCreature(Creature creature);
+    void AddCreature(Creature creature, float disp);
     void RemoveEntity();
     void Clean();
     void Render();
