@@ -11,6 +11,9 @@ VizSimulation::VizSimulation() {
 }
 
 VizSimulation::~VizSimulation() {
+
+  
+
   dynamics_world_->removeRigidBody(ground_rigid_body_);
   delete ground_rigid_body_->getMotionState();
   delete ground_rigid_body_;
@@ -42,4 +45,8 @@ void VizSimulation::Step(float dt) {
 
 float VizSimulation::GetCounter() {
   return counter_;
+}
+
+void VizSimulation::ClearForces() {
+  dynamics_world_->clearForces();
 }

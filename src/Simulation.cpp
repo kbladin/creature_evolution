@@ -1,4 +1,5 @@
 #include "Simulation.h"
+#include <iostream>
 
 Simulation::Simulation() {
   counter_ = 0;
@@ -13,6 +14,8 @@ Simulation::Simulation() {
 }
 
 Simulation::~Simulation() {
+  std::cout << "DESTROY DA BASE SIMULATION!!!" << std::endl;
+
   delete dynamics_world_;
   delete solver_;
   delete collision_configuration_;

@@ -27,21 +27,26 @@ BulletCreature::BulletCreature(Creature blueprint, float x_displacement, bool co
 
 
 BulletCreature::~BulletCreature(void) {
-    for(int i=0; i < m_joints_.size(); i++){
-        delete m_joints_[i];
-        m_joints_[i] = 0;
+    std::cout << "DESTORYING A FUCKIN' BULLET CREATURE BITCH!" << std::endl;
+    
+    while(!m_joints_.empty()) {
+      delete m_joints_.back();
+      m_joints_.pop_back();
     }
 
-    for(int i=0; i < m_bodies_.size(); i++){
-        delete m_bodies_[i]->getMotionState();
-        delete m_bodies_[i];
-        m_bodies_[i] = 0;
+    while(!m_bodies_.empty()) {
+      delete m_bodies_.back();
+      m_bodies_.pop_back();
     }
 
-    for(int i=0; i < m_shapes_.size(); i++){
-        delete m_shapes_[i];
-        m_shapes_[i] = 0;
+    while(!m_shapes_.empty()) {
+      delete m_shapes_.back();
+      m_shapes_.pop_back();
     }
+
+    m_joints_.clear();
+    m_bodies_.clear();
+    m_shapes_.clear();
 }
 
 
@@ -122,7 +127,7 @@ void BulletCreature::UpdateMotors(std::vector<float> input) {
         else
             sign=-1;
 
-        m_joints_[i]->enableAngularMotor(true, 80.0*sign, 10.0*sign*signal[i]); // apply force
+        m_joints_[i]->enableAngularMotor(true, 1000000.0*sign, 20.0*sign*signal[i]); // apply force
     }
 }
 

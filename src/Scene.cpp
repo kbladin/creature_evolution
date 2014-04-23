@@ -106,6 +106,8 @@ void Scene::Update() {
   }
 
   sim_.Step(1.0f/60.0f);
+  sim_.ClearForces();
+
 }
 
 float Scene::GetCurrentSimTime() {
@@ -124,21 +126,25 @@ void Scene::Clean() {
     rigid_bodies = bt_creatures_[i]->GetRigidBodies();
     joints = bt_creatures_[i]->GetJoints();
 
-    for(int i=0; i < rigid_bodies.size(); i++){
+    for (int i = 0; i < rigid_bodies.size(); i++) {
         world->removeRigidBody(rigid_bodies[i]);
-
     }
+
     //Add joints
     for(int i=0; i < joints.size(); i++){
         world->removeConstraint(joints[i]);
     }
 
   }
-  
-  for(int i = 0; i < bt_creatures_.size(); ++i) {
-    delete bt_creatures_[i];
-  }   
+
+  while(!bt_creatures_.empty()) {
+    delete bt_creatures_.back();
+    bt_creatures_.pop_back();
+  }
 
   bt_creatures_.clear();
+
+  sim_.ClearForces();
   sim_.ResetTime();
+
 }

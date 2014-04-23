@@ -10,6 +10,7 @@ class VizSimulation : public Simulation {
 
     virtual void Step(float dt);
     virtual void SetupEnvironment();
+    void ClearForces();
 
     float GetCounter();
   private:
