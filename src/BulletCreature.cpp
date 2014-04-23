@@ -44,9 +44,16 @@ BulletCreature::~BulletCreature(void) {
       m_shapes_.pop_back();
     }
 
+    while(!nodes_.empty()) {
+      delete nodes_.back();
+      nodes_.pop_back();
+    }
+
+
     m_joints_.clear();
     m_bodies_.clear();
     m_shapes_.clear();
+    nodes_.clear();
 }
 
 
