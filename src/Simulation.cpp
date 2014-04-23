@@ -9,7 +9,7 @@ Simulation::Simulation(bool self_collide)
     self_collide_ = self_collide;
 
     if(self_collide) {
-        bt_creature_collidies_with = 
+        bt_creature_collidies_with =
         collisiontypes::COL_GROUND |  collisiontypes::COL_CREATURE;
     }
     else {
@@ -42,12 +42,12 @@ Simulation::~Simulation(void)
 
     std::vector<btRigidBody*> rigid_bodies;
     std::vector<btHingeConstraint*> joints;
-    
+
     for(int i = 0; i < bt_population_.size(); ++i) {
 
         rigid_bodies = bt_population_[i]->GetRigidBodies();
         joints = bt_population_[i]->GetJoints();
-    
+
         for(int i=0; i < rigid_bodies.size(); i++){
             dynamics_world_->removeRigidBody(rigid_bodies[i]);
 
@@ -82,12 +82,12 @@ Simulation::~Simulation(void)
 //! Adds a creature from the Evolution process to the physical world.
 void Simulation::AddCreature(Creature creature) {
     creature_ = creature;
-    
+
     bullet_creature_ = new BulletCreature(creature_);
 
     std::vector<btRigidBody*> rigid_bodies = bullet_creature_->GetRigidBodies();
     std::vector<btHingeConstraint*> joints = bullet_creature_->GetJoints();
-    
+
 
     //Add bodies
     for(int i=0; i < rigid_bodies.size(); i++){
@@ -113,7 +113,7 @@ void Simulation::RemoveCreature() {
 
     std::vector<btRigidBody*> rigid_bodies = bullet_creature_->GetRigidBodies();
     std::vector<btHingeConstraint*> joints = bullet_creature_->GetJoints();
-    
+
 
     for(int i=0; i < rigid_bodies.size(); i++){
         dynamics_world_->removeRigidBody(rigid_bodies[i]);
@@ -169,6 +169,7 @@ void Simulation::AddPopulation(std::vector<Creature> population) {
 void Simulation::Step(float dt)
 {
     std::vector<float> input(1,counter_);
+    input.push_back(1.0);
     bullet_creature_->UpdateMotors(input);
 
     dynamics_world_->stepSimulation(dt,1);
@@ -178,10 +179,17 @@ void Simulation::Step(float dt)
 //! Steps the dynamic world for a population and updates motors etc
 void Simulation::StepPopulation(float dt) {
     //TODO: grab output from creature Brain? Just current time now.
-    std::vector<float> input(1,counter_);
-    
+
     //TODO: loop over all creatures and update their motors
     for(int i = 0; i < bt_population_.size(); ++i) {
+        std::vector<float> input;
+        input.push_back(counter_);
+
+        std::vector<btHingeConstraint*> joints = bt_population_[i]->GetJoints();
+        for(int i=0; i < joints.size(); i++) {
+            input.push_back(joints[i]->getHingeAngle());
+        }
+
         bt_population_[i]->UpdateMotors(input);
         population_[i].UpdateVelocity(bt_population_[i]->GetCenterOfMass().getZ());
         // population_[i].UpdateDeviationX(bt_population_[i]->GetCenterOfMass().getX());
@@ -190,7 +198,7 @@ void Simulation::StepPopulation(float dt) {
 
     //This should in theory work the same way, i.e just step the simulation
     dynamics_world_->stepSimulation(dt,1);
-    counter_ += dt;   
+    counter_ += dt;
 }
 
 //! Returns the current btDiscreteDynamicsWorld pointer
@@ -244,7 +252,7 @@ This is only being used for rendering purposes.
 */
 std::vector<btRigidBody*> Simulation::GetRigidBodies() {
     //TODO: this has to be done for all creatures
-    
+
     std::vector<btRigidBody*> bodies_from_creatures;
     for(int i = 0; i < bt_population_.size(); ++i) {
         std::vector<btRigidBody*> bodies = bt_population_[i]->GetRigidBodies();

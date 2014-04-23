@@ -4,112 +4,83 @@
 
 AutoInitRNG Brain::rng_;
 
-Brain::Brain() {
-    std::uniform_real_distribution<float> float_mutate(-1.0f, 1.0f);
+Brain::Brain(int n_input, int n_output) {
+    std::uniform_real_distribution<float> r_w(-1.0f, 1.0f);
 
-    int joints = 0;
-    if(SettingsManager::Instance()->GetCreatureType() == CreatureType::WORM)
-        joints = 4;
-    else
-        joints = 10;
+    int n_hidden = 4;
+    hidden_nodes_ = std::vector<f_vec>(n_hidden, f_vec(n_input));
+    output_nodes_ = std::vector<f_vec>(n_output, f_vec(n_hidden));
 
-    for(int i=0; i<(joints*3); i++) {
-        float w = (float_mutate(rng_.mt_rng_));
-        weights.push_back(w);
+    //init random weights
+    for(f_vec& v : hidden_nodes_) {
+        for(float& w : v) {
+            w = r_w(rng_.mt_rng_);
+        }
+    }
+
+    for(f_vec& v : output_nodes_) {
+        for(float& w : v) {
+            w = r_w(rng_.mt_rng_);
+        }
     }
 }
 
-void Brain::ResizeInput(int n){
-    //only one input allowed for this brain
-}
+std::vector<float> Brain::CalculateOutput(const f_vec& input){
+    f_vec output(output_nodes_.size());
+    std::vector<float> hidden_output(hidden_nodes_.size());
 
-void Brain::ResizeOutput(int n){
-    weights.resize(n);
-}
-
-std::vector<float> Brain::CalculateOutput(std::vector<float> input){
-    float in = input.front();
-    std::vector<float> output;
-    for(int i=0; i<(weights.size() / 3); i++) {
-        int n_freqs = 10;
-        float max_freq = 2/3.0f;
-
-        //float freq = floor(weights[i*3] * n_freqs) * max_freq; 
-        float freq = pow(2, ceil(log(abs(1 / weights[i*3]) + 0.001f)/log(2)));  // 1,2,4,8...
-
-        float amp = weights[i*3+1];
-        float phase = weights[i*3+2]*M_PI*2;
-        float out = amp * sin(freq*in + phase);
-        output.push_back(out);
+    std::vector<f_vec>::const_iterator h_node_iter = hidden_nodes_.begin();
+    for(float& out : hidden_output) {
+        out = transfer(dot(input,(*h_node_iter)));
+        ++h_node_iter;
     }
+
+    std::vector<f_vec>::const_iterator n_node_iter = output_nodes_.begin();
+    for(float& out : output) {
+        out = transfer(dot(hidden_output,(*n_node_iter)));
+        ++h_node_iter;
+    }
+
     return output;
 }
 
 void Brain::Mutate() {
-    std::uniform_real_distribution<float> float_mutate(-0.3f, 0.3f);
-    std::uniform_int_distribution<int> weight_index(0, weights.size()-1);
+    std::uniform_real_distribution<float> r_w(-0.3f, 0.3f);
 
-    float mutation = (float_mutate(rng_.mt_rng_));
-    int random_index = weight_index(rng_.mt_rng_);
-
-    //float mutation = ( ( (float)rng_.mt_rng_()/rng_.mt_rng_.max() ) - 0.5 ) * 0.6;
-//    weights[random_index] += mutation;
-
-    for(int i = 0; i < weights.size(); ++i) {
-        weights[i] += mutation;
-        weights[i] = (weights[i] < -1.0f) ? -1.0f : ((weights[i] > 1.0f) ? 1.0f : weights[i]);
+    //mutate
+    for(f_vec& v : hidden_nodes_) {
+        for(float& w : v) {
+            w += r_w(rng_.mt_rng_);
+        }
     }
 
-/*
-    std::uniform_real_distribution<float> float_mutate(-0.1f, 0.1f);
-    std::uniform_real_distribution<float> mutate(0.0f, 1.0f);
-    
-    for (int i = 0; i < weights.size(); ++i){
-        if (mutate(rng_.mt_rng_) < SettingsManager::Instance()->GetMutation()) {
-            float mutation = (float_mutate(rng_.mt_rng_));
-            weights[i] += mutation;
-            weights[i] = (weights[i] < -1.0f) ? -1.0f : ((weights[i] > 1.0f) ? 1.0f : weights[i]);
+    for(f_vec& v : output_nodes_) {
+        for(float& w : v) {
+            w += r_w(rng_.mt_rng_);
         }
-    }*/
-
-}
-
-std::vector<float> Brain::GetWeights(){
-    return weights;
+    }
 }
 
 std::vector<Brain> Brain::Crossover(Brain mate){
     std::vector<Brain> children;
     children.resize(2);
-
-    // get two pivot points
-    std::uniform_int_distribution<int> dist_index_first(0,weights.size()-1);
-    //std::uniform_int_distribution<int> dist_index_second(0,mate.GetWeights().size()-1);
-    int pivot_point_first = dist_index_first(rng_.mt_rng_);
-    //int pivot_point_second = dist_index_second(rng_.mt_rng_);
-
-    // TODO: change so not use for-loops!!
-    
-    // if we should use crossover or not. 
-    std::uniform_real_distribution<float> float_dist(0.0f,1.0f);
-    double should_crossover = float_dist(rng_.mt_rng_);
-    if( SettingsManager::Instance()->GetCrossover() >= should_crossover) {
-
-
-        for(int i=0; i<pivot_point_first; i++)
-            children[0].weights[i] = weights[i];
-        for(int j=pivot_point_first; j<weights.size(); j++)
-            children[0].weights[j] = mate.GetWeights()[j];
-        for(int i=0; i<pivot_point_first; i++)
-            children[1].weights[i] = mate.GetWeights()[i];
-        for(int j=pivot_point_first; j<weights.size(); j++)
-            children[1].weights[j] = weights[j];
-    }
-    else { 
-        children[0].weights = weights;
-        children[1].weights = mate.GetWeights(); 
-    }
-
+    children[0] = *this;
+    children[1] = mate;
     return children;
 }
 
+float Brain::dot(const f_vec& x, const f_vec& y) {
+    float dot_product = 0;
+    f_vec::const_iterator x_iter = x.begin();
+    for(float y_el : y) {
+        dot_product += y_el*(*x_iter);
+        ++x_iter;
+    }
+    return dot_product;
+}
+
+float Brain::transfer(float x) {
+    float e_px = exp(x);
+    float e_mx = exp(-x);
+    return (e_px - e_mx)/(e_px + e_mx);
+}
