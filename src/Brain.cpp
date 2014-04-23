@@ -2,12 +2,14 @@
 #include "SettingsManager.h"
 #define M_PI 3.14159265359
 
+#include <iostream>
+
 AutoInitRNG Brain::rng_;
 
 Brain::Brain(int n_input, int n_output) {
     std::uniform_real_distribution<float> r_w(-1.0f, 1.0f);
 
-    int n_hidden = 4;
+    int n_hidden = 20;
     hidden_nodes_ = std::vector<f_vec>(n_hidden, f_vec(n_input));
     output_nodes_ = std::vector<f_vec>(n_output, f_vec(n_hidden));
 
@@ -35,10 +37,10 @@ std::vector<float> Brain::CalculateOutput(const f_vec& input){
         ++h_node_iter;
     }
 
-    std::vector<f_vec>::const_iterator n_node_iter = output_nodes_.begin();
+    std::vector<f_vec>::const_iterator o_node_iter = output_nodes_.begin();
     for(float& out : output) {
-        out = transfer(dot(hidden_output,(*n_node_iter)));
-        ++h_node_iter;
+        out = transfer(dot(hidden_output,(*o_node_iter)));
+        ++o_node_iter;
     }
 
     return output;
@@ -46,7 +48,7 @@ std::vector<float> Brain::CalculateOutput(const f_vec& input){
 
 void Brain::Mutate() {
 
-    std::normal_distribution<float> normal_dist(
+/*    std::normal_distribution<float> normal_dist(
                 0.0f,
                 SettingsManager::Instance()->mutation_sigma_);
 
@@ -64,13 +66,12 @@ void Brain::Mutate() {
         int index_to_mutate = int_dist_output(rng_.mt_rng_);
         v[index_to_mutate] += normal_dist(rng_.mt_rng_);
         //v[index_to_mutate] = glm::clamp(v[index_to_mutate], -1.0f, 1.0f);
-    }
+    }*/
 
 
 
 
-/*    std::uniform_real_distribution<float> r_w(-0.3f, 0.3f);
-
+    std::uniform_real_distribution<float> r_w(-0.3f, 0.3f);
     //mutate
     for(f_vec& v : hidden_nodes_) {
         for(float& w : v) {
@@ -82,7 +83,7 @@ void Brain::Mutate() {
         for(float& w : v) {
             w += r_w(rng_.mt_rng_);
         }
-    }*/
+    }
 
 }
 

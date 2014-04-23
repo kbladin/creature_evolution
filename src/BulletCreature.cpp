@@ -135,6 +135,7 @@ void BulletCreature::UpdateMotors(std::vector<float> input) {
             sign=-1;
 
         m_joints_[i]->enableAngularMotor(true, 1000000.0*sign, 20.0*sign*signal[i]); // apply force
+
     }
 }
 
