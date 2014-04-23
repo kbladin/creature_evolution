@@ -181,6 +181,13 @@ void BulletCreature::Draw() {
 
 void BulletCreature::Update() {
     float time = Scene::Instance()->GetCurrentSimTime();
-    std::vector<float> input(1,time);
+    //std::vector<float> input(1,time);
+
+    std::vector<float> input;
+    input.push_back(time);
+    std::vector<btHingeConstraint*> joints = GetJoints();
+    for(int i=0; i < joints.size(); i++) {
+        input.push_back(joints[i]->getHingeAngle());
+    }
     UpdateMotors(input);
 }

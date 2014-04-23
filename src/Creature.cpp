@@ -5,6 +5,7 @@ AutoInitRNG Creature::rng_;
 //! Default constructor creates a random creature.
 Creature::Creature() {
 	fitness_ = -1.0f;
+    brain_ = Brain(5,4);
 }
 
 //! Destructor. Deletes all rigid bodies etc

@@ -104,6 +104,14 @@ void EvoSimulation::Step(float dt) {
 
   std::vector<float> input(1,counter_);
   for (int i = 0; i < bt_population_.size(); ++i) {
+    std::vector<float> input;
+    input.push_back(counter_);
+
+    std::vector<btHingeConstraint*> joints = bt_population_[i]->GetJoints();
+    for(int i=0; i < joints.size(); i++) {
+      input.push_back(joints[i]->getHingeAngle());
+    }
+
     bt_population_[i]->UpdateMotors(input);
     bt_population_[i]->CollectData();
   }
