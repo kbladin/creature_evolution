@@ -129,13 +129,13 @@ void Scene::Clean() {
     rigid_bodies = bt_creatures_[i]->GetRigidBodies();
     joints = bt_creatures_[i]->GetJoints();
 
-    for (int i = 0; i < rigid_bodies.size(); i++) {
-        world->removeRigidBody(rigid_bodies[i]);
-    }
-
     //Add joints
     for(int i=0; i < joints.size(); i++){
         world->removeConstraint(joints[i]);
+    }
+
+    for (int i = 0; i < rigid_bodies.size(); i++) {
+        world->removeRigidBody(rigid_bodies[i]);
     }
 
   }

@@ -14,32 +14,34 @@ EvoSimulation::~EvoSimulation()  {
   std::vector<btRigidBody*> rigid_bodies;
   std::vector<btHingeConstraint*> joints;
 
-  for (int i=dynamics_world_->getNumCollisionObjects() - 1; i >= 0; i--) {
-      btCollisionObject* obj = dynamics_world_->getCollisionObjectArray()[i];
-      btRigidBody* body = btRigidBody::upcast(obj);
-      if (body && body->getMotionState())
-      {
-         // delete body->getMotionState();
-        dynamics_world_->removeRigidBody(body);
-      }
-      dynamics_world_->removeCollisionObject( obj );
-      //delete obj;
-   }
+  // for (int i=dynamics_world_->getNumCollisionObjects() - 1; i >= 0; i--) {
+  //     btCollisionObject* obj = dynamics_world_->getCollisionObjectArray()[i];
+  //     btRigidBody* body = btRigidBody::upcast(obj);
+  //     if (body && body->getMotionState())
+  //     {
+  //        // delete body->getMotionState();
+  //       dynamics_world_->removeRigidBody(body);
+  //     }
+  //     dynamics_world_->removeCollisionObject( obj );
+  //     //delete obj;
+  //  }
 
 
   for (int i = 0; i < bt_population_.size(); ++i) {
     // rigid_bodies = bt_population_[i]->GetRigidBodies();
     joints = bt_population_[i]->GetJoints();
 
-    // // Remove bodies
-    // for (int i = 0; i < rigid_bodies.size(); i++) {
-    //     dynamics_world_->removeRigidBody(rigid_bodies[i]);
-    // }
-
     // Remove joints
     for (int i = 0; i < joints.size(); i++) {
         dynamics_world_->removeConstraint(joints[i]);
     }
+    
+    // Remove bodies
+    for (int i = 0; i < rigid_bodies.size(); i++) {
+        dynamics_world_->removeRigidBody(rigid_bodies[i]);
+    }
+
+
   }
 
   for (int i = 0; i < bt_population_.size(); ++i) {

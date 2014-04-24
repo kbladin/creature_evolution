@@ -12,8 +12,6 @@ VizSimulation::VizSimulation() {
 
 VizSimulation::~VizSimulation() {
 
-  
-
   dynamics_world_->removeRigidBody(ground_rigid_body_);
   delete ground_rigid_body_->getMotionState();
   delete ground_rigid_body_;

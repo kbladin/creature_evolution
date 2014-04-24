@@ -35,6 +35,7 @@ BulletCreature::~BulletCreature(void) {
     }
 
     while(!m_bodies_.empty()) {
+      delete m_bodies_.back()->getMotionState();
       delete m_bodies_.back();
       m_bodies_.pop_back();
     }

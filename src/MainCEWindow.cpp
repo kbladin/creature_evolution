@@ -71,7 +71,7 @@ MainCEWindow::MainCEWindow()
     //connect(renderAllButton,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
     connect(simButton, SIGNAL(clicked()), this, SLOT(startEvolution()));
     connect(loadButton, SIGNAL(clicked()), this, SLOT(loadCreature()));
-    connect(gameofwormsbtn, SIGNAL(clicked()), this, SLOT(GameOfWorms()));
+    connect(gameofwormsbtn, SIGNAL(clicked()), this, SLOT(GameOfWorms()), Qt::DirectConnection);
 
     connect(EM_, SIGNAL(NewCreature(const Creature &)), this, SLOT(GotNewCreature(const Creature &)));
 
