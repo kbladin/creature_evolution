@@ -8,15 +8,16 @@
 
 int main(int argc, char **argv) {
     QApplication app(argc, argv);
-
+/*
     SettingsManager::Instance()->SetMaxGenerations(10);
     SettingsManager::Instance()->SetPopulationSize(10);
 
 	SettingsManager::Instance()->SetCrossover(0.8f);
 	SettingsManager::Instance()->SetElitism(0.2f);
 	SettingsManager::Instance()->SetMutation(0.8f);
+*/
 
-    SettingsManager::Instance()->SetCreatureType(CreatureType::WORM);
+    SettingsManager::Instance()->SetCreatureType(CreatureType::CRAWLER);
     SettingsManager::Instance()->SetMainBodyDimension(Vec3(0.1,0.1,0.2));
     qRegisterMetaType<Creature>();
     

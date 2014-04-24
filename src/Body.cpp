@@ -34,6 +34,9 @@ Body::Body(){
         case SHEEP:
             body_root_ = CreateSheep();
             break;
+        case CRAWLER:
+            body_root_ = CreateCrawler();
+            break;
         default:
             std::cout << "not valid creature.. uses Pony!";
             body_root_ = CreatePony();
@@ -135,8 +138,6 @@ BodyTree Body::CreateSheep(){
     head.box_dim = Vec3(0.15,0.15,0.25);
     head.mass = head.box_dim.x * head.box_dim.y * head.box_dim.z * density;
     head.friction = friction;
-
-    std::cout << "head.mass = " << head.mass << std::endl;
 
     BodyTree tail;
     tail.box_dim = Vec3(0.05,0.05,0.15);
@@ -275,4 +276,65 @@ BodyTree Body::CreateWorm(){
 
     return previous_segment;
 
+}
+
+BodyTree Body::CreateCrawler(){
+
+    float density = 1000;
+    float friction = 0.7;
+
+    // Torso
+    BodyTree body_segment;
+    body_segment.box_dim = Vec3(0.1,0.05,0.2);
+    body_segment.mass = body_segment.box_dim.x * body_segment.box_dim.y * body_segment.box_dim.z * density;
+    body_segment.friction = friction * 0.2;
+
+    BodyTree current_segment = body_segment;
+    BodyTree previous_segment = body_segment;
+
+    // Leg
+    BodyTree leg;
+    leg.box_dim = Vec3(0.1,0.05,0.05);
+    leg.mass = leg.box_dim.x * leg.box_dim.y * leg.box_dim.z * density;
+    leg.friction = friction;
+
+    BodyTree lower_leg = leg;
+    BodyTree upper_leg = leg;
+
+    // joints
+    Joint joint;
+    joint.connection_root = Vec3(0.0f,0.0f,body_segment.box_dim.z);
+    joint.connection_branch = Vec3(0.0f,0.0f,-body_segment.box_dim.z);
+    joint.hinge_orientation = Vec3(M_PI/2,0.0,0.0);
+    joint.upper_limit = M_PI*0.2;
+    joint.lower_limit = -M_PI*0.2;
+
+    Joint left_leg_joint;
+    left_leg_joint.connection_root = Vec3(body_segment.box_dim.x,0.0f,0.0f);
+    left_leg_joint.connection_branch = Vec3(-body_segment.box_dim.x,0.0f,0.0f);
+    left_leg_joint.hinge_orientation = Vec3(0.0,0.0,M_PI/2);
+    left_leg_joint.upper_limit = M_PI*0.2;
+    left_leg_joint.lower_limit = -M_PI*0.2;
+
+    Joint right_leg_joint;
+    right_leg_joint.connection_root = Vec3(-body_segment.box_dim.x,0.0f,0.0f);
+    right_leg_joint.connection_branch = Vec3(body_segment.box_dim.x,0.0f,0.0f);
+    right_leg_joint.hinge_orientation = Vec3(0.0,0.0,M_PI/2);
+    right_leg_joint.upper_limit = M_PI*0.2;
+    right_leg_joint.lower_limit = -M_PI*0.2;
+
+    int n_segs = 3;
+
+    for(int i=0; i<n_segs-1; i++){
+        current_segment.body_list.push_back(previous_segment);
+        current_segment.joint_list.push_back(joint);
+        current_segment.body_list.push_back(leg);
+        current_segment.joint_list.push_back(left_leg_joint);
+        current_segment.body_list.push_back(leg);
+        current_segment.joint_list.push_back(right_leg_joint);
+        previous_segment = current_segment;
+        current_segment = body_segment;
+    }
+
+    return previous_segment;
 }

@@ -30,7 +30,7 @@ struct BodyTree {
 };
 
 enum CreatureType{
-  PONY, WORM, TURTLE, SHEEP
+  PONY, WORM, TURTLE, SHEEP, CRAWLER
 };
 
 class Body {
@@ -43,6 +43,7 @@ private:
   BodyTree CreateSheep();
   BodyTree CreateWorm();
   BodyTree CreateTurtle();
+  BodyTree CreateCrawler();
   BodyTree body_root_;
 };
 

@@ -28,18 +28,24 @@ MainCEWindow::MainCEWindow()
     int crossover = 100 * SettingsManager::Instance()->GetCrossover();
     int elitism = 100 * SettingsManager::Instance()->GetElitism();
     int mutation = 100 * SettingsManager::Instance()->GetMutation();
+    int mutation_internal = 100 * SettingsManager::Instance()->GetMutationInternal();
+    int mutation_sigma = 100 * SettingsManager::Instance()->GetMutationSigma();
 
     SliderWidget* generation_slider = new SliderWidget("Number of generations: ", max_gen, 100, 1, 10, 10);
     SliderWidget* generation_size_slider = new SliderWidget("Generation size: ", pop_size, 100, 1, 10, 10);
     SliderWidget* crossover_slider = new SliderWidget("Crossover ratio (%): ", crossover, 100, 1, 10, 10);
     SliderWidget* elitism_slider = new SliderWidget("Elitism ratio (%): ", elitism, 100, 1, 10, 10);
     SliderWidget* mutation_slider = new SliderWidget("Mutation ratio (%): ", mutation, 100, 1, 10, 10);
+    SliderWidget* mutation_internal_slider = new SliderWidget("Mutation ratio internal (%): ", mutation_internal, 100, 1, 10, 10);
+    SliderWidget* mutation_sigma_slider = new SliderWidget("Mutation sigma : ", mutation_sigma, 100, 1, 10, 10);
 
     connect(generation_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueGen(int)));
     connect(generation_size_slider, SIGNAL(valueChanged(int)), this, SLOT(setValuePop(int)));
     connect(crossover_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueCO(int)));
     connect(elitism_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueElit(int)));
     connect(mutation_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueMut(int)));
+    connect(mutation_internal_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueMutInternal(int)));
+    connect(mutation_sigma_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueMutSigma(int)));
 
     layout_button->addWidget(simButton);
     layout_button->addWidget(loadButton);
@@ -50,6 +56,8 @@ MainCEWindow::MainCEWindow()
     layout_control->addWidget(crossover_slider);
     layout_control->addWidget(elitism_slider);
     layout_control->addWidget(mutation_slider);
+    layout_control->addWidget(mutation_internal_slider);
+    layout_control->addWidget(mutation_sigma_slider);
 
     layout_main->addWidget(glWidget);
     layout_main->addLayout(layout_control);
@@ -89,6 +97,14 @@ void MainCEWindow::setValueElit(int value) {
 }
 void MainCEWindow::setValueMut(int value) {
     SettingsManager::Instance()->SetMutation((float)(value)/(float)(normalize));
+    qDebug()<<SettingsManager::Instance()->GetMutation();
+}
+void MainCEWindow::setValueMutInternal(int value) {
+    SettingsManager::Instance()->SetMutationInternal((float)(value)/(float)(normalize));
+    qDebug()<<SettingsManager::Instance()->GetMutation();
+}
+void MainCEWindow::setValueMutSigma(int value) {
+    SettingsManager::Instance()->SetMutationSigma((float)(value)/(float)(normalize));
     qDebug()<<SettingsManager::Instance()->GetMutation();
 }
 void MainCEWindow::setBodyDimension(int value) {

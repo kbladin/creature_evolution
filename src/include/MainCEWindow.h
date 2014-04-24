@@ -46,6 +46,8 @@ public slots:
     void GotNewCreature(const Creature &new_creature);
 
     void setValueMut(int value);
+    void setValueMutInternal(int value);
+    void setValueMutSigma(int value);
     static void setValueGen(int value);
     void setValuePop(int value);
     void setValueCO(int value);

@@ -43,6 +43,12 @@ float SettingsManager::GetElitism(){
 float SettingsManager::GetMutation(){
   return mutation_ratio_;
 }
+float SettingsManager::GetMutationInternal(){
+  return mutation_ratio_internal_;
+}
+float SettingsManager::GetMutationSigma(){
+  return mutation_sigma_;
+}
 int SettingsManager::GetFrameWidth(){
   return frame_width_;
 }
@@ -100,6 +106,24 @@ void SettingsManager::SetMutation(float mutation_ratio){
   }
   else
     mutation_ratio_ = mutation_ratio;
+}
+void SettingsManager::SetMutationInternal(float mutation_ratio_internal){
+  if(mutation_ratio_internal < 0.0f || mutation_ratio_internal > 1.0f){
+    mutation_ratio_internal_ = glm::clamp(mutation_ratio_internal, 0.0f,1.0f);
+    std::cout << "WARNING: internal mutation ratio clamped to " << mutation_ratio_internal_ <<
+      "!" << std::endl;
+  }
+  else
+    mutation_ratio_internal_ = mutation_ratio_internal;
+}
+void SettingsManager::SetMutationSigma(float mutation_sigma){
+  if(mutation_sigma < 0.0f || mutation_sigma > 1.0f){
+    mutation_sigma_ = glm::clamp(mutation_sigma, 0.0f,1.0f);
+    std::cout << "WARNING: mutation sigma ratio clamped to " << mutation_sigma_ <<
+      "!" << std::endl;
+  }
+  else
+    mutation_sigma_ = mutation_sigma;
 }
 void SettingsManager::SetFrameWidth(int frame_width){
   frame_width_ = frame_width;

@@ -28,6 +28,8 @@ public:
   float GetCrossover();
   float GetElitism();
   float GetMutation();
+  float GetMutationInternal();
+  float GetMutationSigma();
 
   int GetFrameWidth();
   int GetFrameHeight();
@@ -40,6 +42,8 @@ public:
   void SetCrossover(float crossover_ratio);
   void SetElitism(float elitism_ratio);
   void SetMutation(float mutation_ratio);
+  void SetMutationInternal(float mutation_ratio_internal);
+  void SetMutationSigma(float mutation_sigma);
 
   void SetFrameWidth(int frame_width);
   void SetFrameHeight(int frame_height);
@@ -54,9 +58,6 @@ public:
 
   void SetMainBodyDimension(Vec3 dimension);
 
-    float mutation_ratio_internal_;
-  float mutation_sigma_;
-
 private:
   SettingsManager();
   ~SettingsManager(void); 
@@ -67,7 +68,8 @@ private:
   float elitism_ratio_;
 
   float mutation_ratio_;
-
+  float mutation_ratio_internal_;
+  float mutation_sigma_;
 
   // Render settings
   int frame_width_;
