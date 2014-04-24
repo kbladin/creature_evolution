@@ -3,7 +3,29 @@
 
 MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 {
+    ////// Vikans fönster
+    Qt::WindowFlags flags =  Qt::Window;
+    QWidget *transWindow = new QWidget();
+    //transWindow->setParent(this);
+
+    transWindow->setWindowFlags(Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint); 
+    //transWindow->setWindowFlags(Qt::Widget | Qt::WindowStaysOnTopHint);
+    transWindow->setWindowOpacity(0.5);
+    
+    QVBoxLayout *testL = new QVBoxLayout;
+
+    QPushButton *testB = new QPushButton("Test");
+
+    testL->addWidget(testB);
+    
+    transWindow->setLayout(testL);
+    transWindow->resize(300, 300);
+    
+    transWindow->show(); 
+    /////
+    
     creature_evo_ = ce;
+
     QGLFormat glFormat;
     glFormat.setVersion( 3, 2 );
     glFormat.setProfile( QGLFormat::CoreProfile ); // Requires >=Qt-4.8.0
