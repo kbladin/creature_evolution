@@ -10,6 +10,8 @@ Brain::Brain() {
     int joints = 0;
     if(SettingsManager::Instance()->GetCreatureType() == CreatureType::WORM)
         joints = 4;
+    else if(SettingsManager::Instance()->GetCreatureType() == CreatureType::TURTLE)
+        joints = 4;
     else
         joints = 10;
 

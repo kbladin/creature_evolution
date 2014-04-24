@@ -31,10 +31,14 @@ class Body {
 public:
   Body(){}
   BodyTree GetBodyRoot();
+  BodyTree ReflectBodyTree(BodyTree tree);
+
 private:
   BodyTree CreatePony();
   BodyTree CreateWorm();
   BodyTree CreateTurtle();
+  BodyTree Turtle();
+
 };
 
 #endif //BODY_H

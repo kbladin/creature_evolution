@@ -17,7 +17,8 @@ BodyTree Body::GetBodyRoot() {
             return CreateWorm();
             break;
         case TURTLE:
-            return CreateTurtle();
+            return Turtle();
+            //return CreateTurtle();
             break;
         default:
             std::cout << "not valid creature.. uses Pony!";
@@ -101,6 +102,70 @@ BodyTree Body::CreatePony(){
     main_body.joint_list.push_back(tail_joint);
 
     return main_body;
+
+}
+
+BodyTree Body::ReflectBodyTree(BodyTree tree){
+    for(int i=0; i < tree.joint_list.size(); i++){
+        tree.joint_list[i].connection_root = Vec3(-tree.joint_list[i].connection_root.x, tree.joint_list[i].connection_root.y, tree.joint_list[i].connection_root.z);
+        // spegla jointsen, eulerisk rotation.. hmm , switcha contrains osv?
+        float oldUpper = tree.joint_list[i].upper_limit;
+
+        // lower limit måste vara lägre än upper limit
+        tree.joint_list[i].upper_limit = tree.joint_list[i].lower_limit;
+        
+        if(tree.joint_list[i].lower_limit < oldUpper)
+            tree.joint_list[i].lower_limit = -1*oldUpper;
+        else
+            tree.joint_list[i].lower_limit = oldUpper; 
+
+        
+    }
+
+    for(int j=0; j < tree.body_list.size(); j++){
+        tree.body_list[j] = ReflectBodyTree(tree.body_list[j]); 
+    }
+
+    return tree;
+}
+
+
+BodyTree Body::Turtle(){
+    BodyTree leg;
+    leg.box_dim = Vec3(0.4,0.1,0.2);
+    leg.mass = 5;
+    leg.friction = 1;
+
+    BodyTree body; 
+    body.box_dim = Vec3(0.5,0.2,1);
+    body.mass = 30;
+    body.friction = 0.6;
+    body.body_list = std::vector<BodyTree>(2, leg);
+
+    Joint joint; 
+    joint.connection_root = Vec3(0.0,-leg.box_dim.y,0.0);
+    joint.connection_branch = Vec3(0.0,leg.box_dim.y/2.0,0.0);
+    joint.hinge_orientation = Vec3(0.0,M_PI/2,M_PI/4);
+    joint.upper_limit = M_PI*0.5; //0.2
+    joint.lower_limit = 0;//-M_PI*0.2;
+
+    Joint left_front = joint;
+    left_front.connection_root = Vec3(body.box_dim.x,-body.box_dim.y/1.0,body.box_dim.z/2.0);
+    Joint left_back = joint;
+    left_back.connection_root = Vec3(body.box_dim.x,-body.box_dim.y/1.0,-body.box_dim.z/1.65);
+
+    body.joint_list.push_back(left_front);
+    body.joint_list.push_back(left_back);
+
+
+    BodyTree reflect = ReflectBodyTree(body);
+
+    body.joint_list.insert(body.joint_list.end(), reflect.joint_list.begin(), reflect.joint_list.end());
+    body.body_list.insert(body.body_list.end(), reflect.body_list.begin(), reflect.body_list.end());
+
+    return body;
+
+
 
 }
 
