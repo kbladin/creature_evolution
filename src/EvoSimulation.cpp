@@ -28,7 +28,7 @@ EvoSimulation::~EvoSimulation()  {
 
 
   for (int i = 0; i < bt_population_.size(); ++i) {
-    // rigid_bodies = bt_population_[i]->GetRigidBodies();
+    rigid_bodies = bt_population_[i]->GetRigidBodies();
     joints = bt_population_[i]->GetJoints();
 
     // Remove joints

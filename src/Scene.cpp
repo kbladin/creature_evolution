@@ -13,6 +13,8 @@ if (!instance_) {
 }
 
 Scene::Scene() {
+  sim_ = new EvoSimulation();
+
   physics_added = false;
   Plane plane_shape(glm::vec3(1.0f) * 100.0f);
   plane_shape.SetupBuffers();
@@ -24,6 +26,7 @@ Scene::Scene() {
 }
 
 Scene::~Scene() {
+  delete sim_;
   // kill shit
 
   for (int i = 0; i < entities.size(); ++i) {
@@ -42,7 +45,7 @@ Camera* Scene::GetCamera() {
   return &cam_;
 }
 
-void Scene::AddCreature(Creature creature, float disp) {
+void Scene::AddCreature(Creature creature, float disp) {/*
   BulletCreature* btc = new BulletCreature(creature,disp,true);
   bt_creatures_.push_back(btc);
   btDiscreteDynamicsWorld* bt_world = sim_.GetDynamicsWorld();
@@ -61,7 +64,7 @@ void Scene::AddCreature(Creature creature, float disp) {
 
   std::cout << "SCENE: Added creature!" << std::endl; 
   Scene::Instance()->GetCamera()->SetTarget(btc);
-   physics_added = true;
+   physics_added = true;*/
 }
 
 void Scene::AddEntity(Entity* entity) {
@@ -69,9 +72,9 @@ void Scene::AddEntity(Entity* entity) {
 }
 
 void Scene::Render() {
-  // if(entities.empty() || !physics_added)
-  //   return;
-  // To make sure we use the same name
+   //if(entities.empty() || !physics_added)
+   //  return;
+   //To make sure we use the same name
   const char* shader_name = "Basic";
   ShaderManager::Instance()->UseProgram(shader_name);
   ShaderManager::Instance()->GetShaderProgramFromName(
@@ -85,9 +88,9 @@ void Scene::Render() {
                   &light_.position.x);
   glUseProgram(0);
 
-
   for (int i = 0; i < entities.size(); ++i) {
     entities[i]->Draw();
+
   }
 
   if(bt_creatures_.empty())
@@ -104,50 +107,18 @@ void Scene::Update() {
   if(bt_creatures_.empty())
     return;
 
-  for (int i = 0; i < bt_creatures_.size(); ++i) {
-    bt_creatures_[i]->Update();
-  }
-
-  sim_.Step(1.0f/60.0f);
-  sim_.ClearForces();
+  sim_->Step(1.0f/60.0f);
 
 }
 
-float Scene::GetCurrentSimTime() {
-  return sim_.GetCounterTime();
+
+void Scene::RestartSimulation(std::vector<Creature> viz_creatures) {
+    delete sim_;
+    sim_ = new EvoSimulation();
+    sim_->AddPopulation(viz_creatures);
+    bt_creatures_ = sim_->bt_population_;
+
+    if(bt_creatures_.size() > 0)
+        GetCamera()->SetTarget(bt_creatures_[0]);
 }
 
-void Scene::Clean() {
-  if(bt_creatures_.empty())
-    return;
-
-  btDiscreteDynamicsWorld* world = sim_.GetDynamicsWorld();
-  std::vector<btRigidBody*> rigid_bodies;
-  std::vector<btHingeConstraint*> joints;
-
-  for(int i = 0; i < bt_creatures_.size(); ++i) {
-    rigid_bodies = bt_creatures_[i]->GetRigidBodies();
-    joints = bt_creatures_[i]->GetJoints();
-
-    //Add joints
-    for(int i=0; i < joints.size(); i++){
-        world->removeConstraint(joints[i]);
-    }
-
-    for (int i = 0; i < rigid_bodies.size(); i++) {
-        world->removeRigidBody(rigid_bodies[i]);
-    }
-
-  }
-
-  while(!bt_creatures_.empty()) {
-    delete bt_creatures_.back();
-    bt_creatures_.pop_back();
-  }
-
-  bt_creatures_.clear();
-  bt_creatures_.shrink_to_fit();
-  sim_.ClearForces();
-  sim_.ResetTime();
-
-}

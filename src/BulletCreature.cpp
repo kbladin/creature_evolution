@@ -83,7 +83,8 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
         body_node->SetShape(box_shape);
         //CEMotionState cms(offset, body_node);
         //motion_state = &cms;
-        motion_state = new CEMotionState(offset, body_node);
+        //motion_state = new CEMotionState(offset, body_node);
+        motion_state = new btDefaultMotionState(offset);
         nodes_.push_back(body_node);
     }
     else {
@@ -182,14 +183,5 @@ void BulletCreature::Draw() {
 }
 
 void BulletCreature::Update() {
-    float time = Scene::Instance()->GetCurrentSimTime();
-    //std::vector<float> input(1,time);
 
-    std::vector<float> input;
-    input.push_back(1.0);
-    std::vector<btHingeConstraint*> joints = GetJoints();
-    for(int i=0; i < joints.size(); i++) {
-        input.push_back(joints[i]->getHingeAngle());
-    }
-    UpdateMotors(input);
 }

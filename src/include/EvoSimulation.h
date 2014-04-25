@@ -18,13 +18,12 @@ class EvoSimulation : public Simulation {
 
     void AddPopulation(Population population);
     Population SimulatePopulation();
-
+    std::vector<BulletCreature*> bt_population_; //temporarily public
   private:
     btCollisionShape* ground_shape_;
     btDefaultMotionState* ground_motion_state_;
     btRigidBody* ground_rigid_body_;
 
-    std::vector<BulletCreature*> bt_population_;
 
     int bt_creature_collidies_with_;
     int ground_collidies_with_;

@@ -3,7 +3,7 @@
 #include <vector>
 #include "Entity.h"
 #include "Camera.h"
-#include "VizSimulation.h"
+#include "EvoSimulation.h"
 
 struct PointLight {
   float intensity;
@@ -36,20 +36,17 @@ class Scene {
 
     void AddEntity(Entity* entity);
     void AddCreature(Creature creature, float disp);
-    void RemoveEntity();
-    void Clean();
     void Render();
     void Update();
 
     void SetCamera(Camera cam);
     Camera* GetCamera();
-    float GetCurrentSimTime();
+    void RestartSimulation(std::vector<Creature> viz_creatures);
 
   private:
-    void UpdatePhysics();
 
     static Scene* instance_;
-    VizSimulation sim_;
+    EvoSimulation* sim_;
     Camera cam_;
     PointLight light_;
 

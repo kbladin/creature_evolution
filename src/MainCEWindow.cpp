@@ -141,20 +141,22 @@ void MainCEWindow::startEvolution() {
 }
 
 void MainCEWindow::loadCreature() {
-    Scene::Instance()->Clean();
-    Scene::Instance()->AddCreature(creatures_.back(), 0.0f);
+    //Scene::Instance()->Clean();
+    //Scene::Instance()->AddCreature(creatures_.back(), 0.0f);
 }
 
 void MainCEWindow::GameOfWorms() {
-    Scene::Instance()->Clean();
     float displacement = 0.0f;
 
     float num_of_creatures = (float) creatures_.size() / 10.0f;
-
+    std::vector<Creature> viz_creatures;
     for (float i = 0; i < creatures_.size(); i += num_of_creatures) {
-        Scene::Instance()->AddCreature(creatures_[floor(i)+0.01f], displacement);
+        //Scene::Instance()->AddCreature(creatures_[floor(i)+0.01f], displacement);
+        viz_creatures.push_back(creatures_[floor(i)+0.01f]);
         displacement += 1.0f;
     }
+
+    Scene::Instance()->RestartSimulation(viz_creatures);
 }
 
 void MainCEWindow::evoDone() {
