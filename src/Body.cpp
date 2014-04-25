@@ -1,25 +1,31 @@
-#include "Body.h"
+#include "include/Body.h"
 
 #ifdef _WIN32
     #define M_PI 3.14159265359
 #endif
 
-int BodyTree::GetNumberOfLeaves(){
+int BodyTree::GetNumberOfElements(){
     int result = 0;
     if (body_list.size() == 0)
         result = 0; // Itself
     else {
         for (int i = 0; i < body_list.size(); ++i){
-            result += body_list[i].GetNumberOfLeaves();
+            result += body_list[i].GetNumberOfElements();
         }
     }
     return result + 1; // Children + itself
+}
+
+float BodyTree::GetMass(){
+    return box_dim.x * box_dim.y * box_dim.z * density;
 }
 
 Body::Body(){
     //simple legged creature for testing
     int creature_type = SettingsManager::Instance()->GetCreatureType();
 
+    body_root_ = CreateWorm();
+    /*
     // TODO: add switch
     switch(creature_type){
         case PONY:
@@ -41,7 +47,7 @@ Body::Body(){
             std::cout << "not valid creature.. uses Pony!";
             body_root_ = CreatePony();
             break;
-    }
+    }*/
 }
 
 BodyTree Body::GetBodyRoot() {
@@ -49,9 +55,19 @@ BodyTree Body::GetBodyRoot() {
 }
 
 int Body::GetTotalNumberOfJoints(){
-    return body_root_.GetNumberOfLeaves() - 1; // Do not count itself
+    return body_root_.GetNumberOfElements() - 1; // Do not count itself
 }
 
+BodyTree Body::CreateWorm(){
+    BodyTree head;
+    head.box_dim = Vec3(1.0f, 1.0f, 1.0f);
+    head.density = 1000.0f;
+    head.friction = 0.8f;
+
+    return head;
+}
+
+/*
 BodyTree Body::CreatePony(){
 
     //Make head
@@ -338,3 +354,4 @@ BodyTree Body::CreateCrawler(){
 
     return previous_segment;
 }
+*/

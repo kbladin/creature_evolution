@@ -18,15 +18,17 @@ struct Joint {
 struct BodyTree {
     //a shape type should be defined instead of box_dim if we want to use other shapes
     Vec3 box_dim;
-    float mass;
+    float density;
     float friction;
     //skipping orientation for now
     //Vec3 orientation;
 
-    std::vector<Joint> joint_list;
+    //std::vector<Joint> joint_list;
+    Joint root_joint;
     std::vector<BodyTree> body_list;
 
-    int GetNumberOfLeaves();
+    int GetNumberOfElements();
+    float GetMass();
 };
 
 enum CreatureType{
@@ -39,11 +41,14 @@ public:
   BodyTree GetBodyRoot();
   int GetTotalNumberOfJoints();
 private:
+  BodyTree CreateWorm();
+  /*
   BodyTree CreatePony();
   BodyTree CreateSheep();
   BodyTree CreateWorm();
   BodyTree CreateTurtle();
   BodyTree CreateCrawler();
+  */
   BodyTree body_root_;
 };
 

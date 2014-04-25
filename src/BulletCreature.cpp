@@ -67,8 +67,9 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
 
     //mass
     btVector3 fallInertia(0,0,0);
-    m_shapes_.back()->calculateLocalInertia(body.mass,fallInertia);
-    mass_.push_back(body.mass);
+    float mass = body.GetMass();
+    m_shapes_.back()->calculateLocalInertia(mass,fallInertia);
+    mass_.push_back(mass);
 
     //body
     btTransform offset;
@@ -100,7 +101,7 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
     btTransform localA, localB;
     for(int i=0; i<body.body_list.size(); i++) {
         //child position
-        joint = body.joint_list[i];
+        joint = body.body_list[i].root_joint;
         Vec3 c = joint.connection_root - joint.connection_branch;
         btVector3 child_offset(c.x,c.y,c.z);
         //body
