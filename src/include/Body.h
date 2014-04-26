@@ -52,4 +52,14 @@ private:
   BodyTree body_root_;
 };
 
+class CreatureFactory {
+public:
+  static CreatureFactory* Instance();
+  static BodyTree CreateLeg(Vec3 scale);
+  static BodyTree CreateLeggedBox(float scale);
+  static BodyTree CreateHuman();
+
+private:
+};
+
 #endif //BODY_H

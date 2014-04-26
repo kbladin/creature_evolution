@@ -63,13 +63,10 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
     //shape
     btVector3 dim = btVector3(body.box_dim.x,body.box_dim.y,body.box_dim.z);
     btCollisionShape* shape = new btBoxShape(dim);
-    m_shapes_.push_back(shape);
 
-    //mass
     btVector3 fallInertia(0,0,0);
     float mass = body.GetMass();
-    m_shapes_.back()->calculateLocalInertia(mass,fallInertia);
-    mass_.push_back(mass);
+    shape->calculateLocalInertia(mass,fallInertia);
 
     //body
     btTransform offset;
@@ -90,12 +87,20 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
     else {
         motion_state = new btDefaultMotionState(offset);
     }
-
-    btRigidBody::btRigidBodyConstructionInfo rigid_body(mass_.back(),motion_state,m_shapes_.back(),fallInertia);
+    btRigidBody::btRigidBodyConstructionInfo rigid_body(
+                    mass,
+                    motion_state,
+                    shape,
+                    fallInertia);
     btRigidBody* current_body = new btRigidBody(rigid_body);
+    
+    current_body->setFriction(body.friction);
+
+    // Add data
     m_bodies_.push_back(current_body);
-    //friction
-    m_bodies_.back()->setFriction(body.friction);
+    mass_.push_back(mass);
+    m_shapes_.push_back(shape);    
+
     //add children
     Joint joint;
     btTransform localA, localB;
@@ -136,7 +141,7 @@ void BulletCreature::UpdateMotors(std::vector<float> input) {
         else
             sign=-1;
 
-        m_joints_[i]->enableAngularMotor(true, 1000000.0*sign, 0.05*sign*signal[i]); // apply force
+        m_joints_[i]->enableAngularMotor(true, 1000000.0*sign, 10.0*sign*signal[i]); // apply force
 
     }
 }
