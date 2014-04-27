@@ -151,11 +151,9 @@ void MainCEWindow::GameOfWorms() {
     float num_of_creatures = (float) creatures_.size() / 10.0f;
     std::vector<Creature> viz_creatures;
     for (float i = 0; i < creatures_.size(); i += num_of_creatures) {
-        //Scene::Instance()->AddCreature(creatures_[floor(i)+0.01f], displacement);
         viz_creatures.push_back(creatures_[floor(i)+0.01f]);
         displacement += 1.0f;
     }
-
     Scene::Instance()->RestartSimulation(viz_creatures);
 }
 

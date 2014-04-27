@@ -1,9 +1,9 @@
 #ifndef SCENE_H
 #define SCENE_H
 #include <vector>
-#include "Entity.h"
+#include "Node.h"
 #include "Camera.h"
-#include "EvoSimulation.h"
+#include "Simulation.h"
 
 struct PointLight {
   float intensity;
@@ -34,26 +34,23 @@ class Scene {
     Scene();
     ~Scene();
 
-    void AddEntity(Entity* entity);
-    void AddCreature(Creature creature, float disp);
     void Render();
     void Update();
 
     void SetCamera(Camera cam);
     Camera* GetCamera();
+    void StartSimulation(std::vector<Creature> viz_creatures);
+    void EndSimulation();
     void RestartSimulation(std::vector<Creature> viz_creatures);
 
   private:
 
     static Scene* instance_;
-    EvoSimulation* sim_;
+    Simulation* sim_;
     Camera cam_;
     PointLight light_;
 
-    bool physics_added;
-
-    std::vector<Entity*> entities;
-    std::vector<BulletCreature*> bt_creatures_;
+    std::vector<Node> nodes_;
 };
 
 #endif  // SCENE_H

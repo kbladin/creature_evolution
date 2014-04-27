@@ -1,11 +1,13 @@
 #include "Camera.h"
 
+#include <iostream>
+
 //! Constructor, creates a default camera
 /*!
   The default camera is located at (-10,3,0) and looks at (0,1,0).
 */
 Camera::Camera() {
-
+    target_ = glm::vec3(0.0,0.0,0.0);
     far_clipping_ = 100.0f;
     near_clipping_ = 0.1f;
 
@@ -54,7 +56,7 @@ float Camera::GetFarClipping() {
   return far_clipping_;
 }
 
-void Camera::SetTarget(BulletCreature* target){
+void Camera::SetTarget(glm::vec3 target){
   target_ = target;
 }
 //! Updates the internal matrices of the camera
@@ -66,16 +68,13 @@ void Camera::SetTarget(BulletCreature* target){
 */
 void Camera::UpdateMatrices(){
   time_t timer;
-  if (target_){
+
     // Delay the signals
     float camera_speed = 0.1f;
     Delay(&local_translate_, local_translate_goal_, camera_speed);
     Delay(&rotate_x_, rotate_x_goal_, camera_speed);
     Delay(&rotate_y_, rotate_y_goal_, camera_speed);
-    global_translate_goal_ = glm::vec3(
-            -target_->GetCenterOfMass().x(),
-            -target_->GetCenterOfMass().y(),
-            -target_->GetCenterOfMass().z());
+    global_translate_goal_ = target_;
     Delay(&global_translate_, global_translate_goal_, camera_speed);
 
     // Create the matrices
@@ -95,7 +94,7 @@ void Camera::UpdateMatrices(){
             rotate_x_mat *
             rotate_y_mat *
             global_translate_mat;
-  }
+
   int width = SettingsManager::Instance()->GetFrameWidth();
   int height = SettingsManager::Instance()->GetFrameHeight();
   float aspect = width / static_cast<float>(height);

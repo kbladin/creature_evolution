@@ -14,11 +14,10 @@ BulletCreature::BulletCreature(Creature blueprint) {
 }
 
 
-BulletCreature::BulletCreature(Creature blueprint, float x_displacement, bool construct_nodes) {
+BulletCreature::BulletCreature(Creature blueprint, float x_displacement) {
 
     //connect brain
     blueprint_ = blueprint;
-    construct_nodes_ = construct_nodes;
 
     //create body
     AddBody(blueprint_.GetBody().GetBodyRoot(), btVector3(x_displacement,1.5,0.0));
@@ -27,8 +26,6 @@ BulletCreature::BulletCreature(Creature blueprint, float x_displacement, bool co
 
 
 BulletCreature::~BulletCreature(void) {
-    std::cout << "DESTORYING A FUCKIN' BULLET CREATURE BITCH!" << std::endl;
-    
     while(!m_joints_.empty()) {
       delete m_joints_.back();
       m_joints_.pop_back();
@@ -45,16 +42,10 @@ BulletCreature::~BulletCreature(void) {
       m_shapes_.pop_back();
     }
 
-    while(!nodes_.empty()) {
-      delete nodes_.back();
-      nodes_.pop_back();
-    }
-
 
     m_joints_.clear();
     m_bodies_.clear();
     m_shapes_.clear();
-    nodes_.clear();
 }
 
 
@@ -76,20 +67,7 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
     offset.setOrigin(position);
 
     btMotionState* motion_state;
-    if(construct_nodes_) {
-        Node* body_node = new Node();
-        Box box_shape(body.box_dim.x, body.box_dim.y, body.box_dim.z);
-        box_shape.SetupBuffers();
-        body_node->SetShape(box_shape);
-        //CEMotionState cms(offset, body_node);
-        //motion_state = &cms;
-        //motion_state = new CEMotionState(offset, body_node);
-        motion_state = new btDefaultMotionState(offset);
-        nodes_.push_back(body_node);
-    }
-    else {
-        motion_state = new btDefaultMotionState(offset);
-    }
+    motion_state = new btDefaultMotionState(offset);
 
     btRigidBody::btRigidBodyConstructionInfo rigid_body(mass_.back(),motion_state,m_shapes_.back(),fallInertia);
     btRigidBody* current_body = new btRigidBody(rigid_body);
@@ -136,7 +114,7 @@ void BulletCreature::UpdateMotors(std::vector<float> input) {
         else
             sign=-1;
 
-        m_joints_[i]->enableAngularMotor(true, 1000000.0*sign, 0.05*sign*signal[i]); // apply force
+        m_joints_[i]->enableAngularMotor(true, 1000000.0*sign, 20.0*sign*signal[i]); // apply force
 
     }
 }
@@ -173,15 +151,4 @@ Creature BulletCreature::GetCreature() {
 
 void BulletCreature::CollectData() {
     blueprint_.UpdateVelocity(GetCenterOfMass().getZ());
-}
-
-void BulletCreature::Draw() {
-    //RENDER MA NODES BRO!
-    for (int i = 0; i < nodes_.size(); ++i) {
-        nodes_[i]->Render(Scene::Instance()->GetCamera());
-    }
-}
-
-void BulletCreature::Update() {
-
 }

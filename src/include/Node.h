@@ -15,31 +15,27 @@
 #include <btBulletDynamicsCommon.h>
 // Internal
 #include "Shape.h"
+#include "Box.h"
+#include "Plane.h"
 
 class Camera;
 
 class Node {
 public:
-  Node();
-  void InitShape();
-  void SetShape(Shape shape);
+  Node(btRigidBody* body);
   void Render(Camera* camera);
   void SetTransform(glm::mat4 trans);
   void SetPosition(glm::vec3 pos);
   glm::mat4 GetTransform();
   void DebugPrint();
-  virtual void UpdateNode();
-protected:
-  glm::mat4 transform_;
-  Shape shape_;
-};
-
-class PhysicsNode : public Node {
-public:
-  PhysicsNode();
-  PhysicsNode(btRigidBody* rigid_body);
   void UpdateNode();
 private:
+  void InitBoxShape();
+  void InitPlaneShape();
+  void InitSphereShape();
+
+  glm::mat4 transform_;
+  Shape shape_;
   btRigidBody* rigid_body_;
 };
 

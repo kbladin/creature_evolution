@@ -1,12 +1,30 @@
 #include "Node.h"
 #include "Camera.h"
+#include <iostream>
 
-Node::Node() {
-  transform_ = glm::mat4(1.0f);
-}
+Node::Node(btRigidBody* body) {
+  rigid_body_ = body;
+  //init transform
+  UpdateNode();
+  //init shape
+  int shape_type = rigid_body_->getCollisionShape()->getShapeType();
+  switch(shape_type) {
+  case BOX_SHAPE_PROXYTYPE:
+      InitBoxShape();
+      break;
+  case STATIC_PLANE_PROXYTYPE:
+      InitPlaneShape();
+      break;
+  case SPHERE_SHAPE_PROXYTYPE:
+      InitSphereShape();//no sphere implemented yet
+      break;
+  default:
+      shape_ = Box();
+      break;
+  }
 
-void Node::SetShape(Shape shape) {
-  shape_ = shape;
+  shape_.SetupBuffers();
+
 }
 
 void Node::DebugPrint() {
@@ -27,24 +45,27 @@ void Node::Render(Camera* camera) {
   shape_.Render(camera, transform_);
 }
 
-void Node::InitShape() {
-  shape_.SetupBuffers();
-}
-
-PhysicsNode::PhysicsNode(btRigidBody* body) {
-  rigid_body_ = body;
-}
-
 void Node::UpdateNode(){
-  SetTransform(glm::mat4(1.0f));
+
+    btTransform transform;
+    rigid_body_->getMotionState()->getWorldTransform(transform);
+    transform_ = glm::mat4(1.0f);
+    transform.getOpenGLMatrix(glm::value_ptr(transform_));
+
 }
 
-void PhysicsNode::UpdateNode() {
-  btTransform transform;
+void Node::InitBoxShape() {
+    btBoxShape* boxShape = (btBoxShape*)(rigid_body_->getCollisionShape());
+    btVector3 v;
+    boxShape->getVertex(0,v);
 
-  rigid_body_->getMotionState()->getWorldTransform(transform);
-  glm::mat4 full_transform(1.0f);
-  transform.getOpenGLMatrix(glm::value_ptr(full_transform));
-  
-  SetTransform(full_transform);
+    shape_ = Box(v.getX(),v.getY(),v.getZ());
+}
+
+void Node::InitPlaneShape() {
+    shape_ = Plane(glm::vec3(1.0f) * 100.0f);
+}
+
+void Node::InitSphereShape() {
+
 }

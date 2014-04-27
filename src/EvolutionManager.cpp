@@ -1,6 +1,6 @@
 #include "EvolutionManager.h"
 #include "SettingsManager.h"
-#include "EvoSimulation.h"
+#include "Simulation.h"
 #include <chrono>
 AutoInitRNG EvolutionManager::rng_;
 
@@ -80,7 +80,7 @@ Population EvolutionManager::GetAllBestCreatures() {
 
 //! Simulates all creatures in population
 void EvolutionManager::SimulatePopulation() {
-    EvoSimulation sim_world;
+    Simulation sim_world;
     
     sim_world.AddPopulation(current_population_);
     current_population_ = sim_world.SimulatePopulation();
