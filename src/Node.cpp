@@ -41,6 +41,13 @@ void Node::SetPosition(glm::vec3 pos) {
 
 }
 
+glm::vec3 Node::GetPosition() {
+    float x = rigid_body_->getWorldTransform().getOrigin().getX();
+    float y = rigid_body_->getWorldTransform().getOrigin().getY();
+    float z = rigid_body_->getWorldTransform().getOrigin().getZ();
+    return glm::vec3(x,y,z);
+}
+
 void Node::Render(Camera* camera) {
   shape_.Render(camera, transform_);
 }

@@ -44,8 +44,12 @@ void Scene::Render() {
                   &light_.position.x);
   glUseProgram(0);
 
+  //update cam
+  btVector3 target = sim_->GetLastCreatureCoords();
+  cam_.SetTarget(glm::vec3(target.getX(),target.getY(),target.getZ()));
   cam_.UpdateMatrices();
-  GetCamera()->SetTarget(glm::vec3(0.0,0.0,0.0));
+
+  //draw nodes
   for(Node& n : nodes_) {
       n.Render(&cam_);
   }
@@ -74,7 +78,7 @@ void Scene::RestartSimulation(std::vector<Creature> viz_creatures) {
     EndSimulation();
     StartSimulation(viz_creatures);
 
-    GetCamera()->SetTarget(glm::vec3(0.0,0.0,0.0));
+    cam_.SetTarget(glm::vec3(0.0,0.0,0.0));
 
 }
 

@@ -26,7 +26,7 @@ public:
   void Render(Camera* camera);
   void SetTransform(glm::mat4 trans);
   void SetPosition(glm::vec3 pos);
-  glm::mat4 GetTransform();
+  glm::vec3 GetPosition();
   void DebugPrint();
   void UpdateNode();
 private:

@@ -153,3 +153,10 @@ std::vector<Node> Simulation::GetNodes() {
     }
     return nodes;
 }
+
+btVector3 Simulation::GetLastCreatureCoords() {
+   if(bt_population_.size() > 0)
+       return bt_population_.back()->GetCenterOfMass();
+   else
+       return btVector3(0.0,0.0,0.0);
+}

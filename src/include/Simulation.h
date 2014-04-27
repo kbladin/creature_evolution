@@ -26,6 +26,7 @@ class Simulation {
     void AddPopulation(Population population);
     Population SimulatePopulation();
     std::vector<Node> GetNodes();
+    btVector3 GetLastCreatureCoords();
   private:
     btBroadphaseInterface* broad_phase_;
     btDefaultCollisionConfiguration* collision_configuration_;

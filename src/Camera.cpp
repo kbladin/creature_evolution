@@ -57,7 +57,7 @@ float Camera::GetFarClipping() {
 }
 
 void Camera::SetTarget(glm::vec3 target){
-  target_ = target;
+  target_ = -target;
 }
 //! Updates the internal matrices of the camera
 /*!
