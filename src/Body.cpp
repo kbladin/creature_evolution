@@ -380,50 +380,160 @@ BodyTree Body::CreateCrawler(){
 */
 
 BodyTree CreatureFactory::CreateHuman() {
+
+    // Create all body parts and joints
+    BodyTree head;
+    head.box_dim = Vec3(0.07, 0.1, 0.1);
+    head.density = 1000.0f;
+    head.friction = 0.5;
+
+    BodyTree neck;
+    neck.box_dim = Vec3(0.05, 0.07, 0.05);
+    neck.density = 1000.0f;
+    neck.friction = 0.5;
+
+    Joint neck_head_joint;
+    neck_head_joint.connection_root = Vec3(0.0,0.0,0.0f);
+    neck_head_joint.connection_branch = Vec3(0.0f,neck.box_dim.y,0.0f);
+    neck_head_joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
+    neck_head_joint.upper_limit = M_PI * 0.4;
+    neck_head_joint.lower_limit = -M_PI * 0.4;
+
+    BodyTree rib_cage;
+    rib_cage.box_dim = Vec3(0.15, 0.15, 0.1);
+    rib_cage.density = 1000.0f;
+    rib_cage.friction = 0.5;
+
+    Joint neck_rib_cage_joint;
+    neck_rib_cage_joint.connection_root = Vec3(0.0,-neck.box_dim.y,0.0f);
+    neck_rib_cage_joint.connection_branch = Vec3(0.0f,rib_cage.box_dim.y,0.0f);
+    neck_rib_cage_joint.hinge_orientation = Vec3(M_PI/2,0.0,0.0);
+    neck_rib_cage_joint.upper_limit = M_PI * 0.4;
+    neck_rib_cage_joint.lower_limit = -M_PI * 0.4;
+
+    BodyTree left_shoulder;
+    left_shoulder.box_dim = Vec3(0.07, 0.07, 0.07);
+    left_shoulder.density = 1000.0f;
+    left_shoulder.friction = 0.5;
+
+    BodyTree right_shoulder = left_shoulder;
+
+    Joint left_shoulder_rib_cage_joint;
+    left_shoulder_rib_cage_joint.connection_root = Vec3(-rib_cage.box_dim.x,rib_cage.box_dim.y - left_shoulder.box_dim.y,0.0f);
+    left_shoulder_rib_cage_joint.connection_branch = Vec3(left_shoulder.box_dim.x,0.0f,0.0f);
+    left_shoulder_rib_cage_joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
+    left_shoulder_rib_cage_joint.upper_limit = M_PI * 0.7;
+    left_shoulder_rib_cage_joint.lower_limit = -M_PI * 0.3;
+
+    Joint right_shoulder_rib_cage_joint = left_shoulder_rib_cage_joint;
+    right_shoulder_rib_cage_joint.connection_root = Vec3(rib_cage.box_dim.x,rib_cage.box_dim.y - left_shoulder.box_dim.y,0.0f);
+    right_shoulder_rib_cage_joint.connection_branch = Vec3(-right_shoulder.box_dim.x,0.0f,0.0f);
+
+    BodyTree left_arm = CreatureFactory::CreateArm(Vec3(1,1,1));
+    BodyTree right_arm = left_arm;
+
+    Joint left_arm_shoulder_joint;
+    left_arm_shoulder_joint.connection_root = Vec3(0.0,0.0,0.0);
+    left_arm_shoulder_joint.connection_branch = Vec3(0.0,left_arm.box_dim.y,0.0);
+    left_arm_shoulder_joint.hinge_orientation = Vec3(0.0,0.0,0.0); // leaving this for now
+    left_arm_shoulder_joint.upper_limit = M_PI * 0.7;
+    left_arm_shoulder_joint.lower_limit = 0.0;
+
+    Joint right_arm_shoulder_joint = left_arm_shoulder_joint;
+    right_arm_shoulder_joint.hinge_orientation = Vec3(0.0,0.0,0.0); // leaving this for now
+    right_arm_shoulder_joint.upper_limit = M_PI * 0.0;
+    right_arm_shoulder_joint.lower_limit = -M_PI * 0.7;
+
+    BodyTree belly;
+    belly.box_dim = Vec3(0.15, 0.07, 0.1);
+    belly.density = 1000.0f;
+    belly.friction = 0.5;
+
+    Joint spine_joint_upper;
+    spine_joint_upper.connection_root = Vec3(0.0,-rib_cage.box_dim.y,0.0f);
+    spine_joint_upper.connection_branch = Vec3(0.0f,belly.box_dim.y,0.0f);
+    spine_joint_upper.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
+    spine_joint_upper.upper_limit = M_PI * 0.2;
+    spine_joint_upper.lower_limit = -M_PI * 0.2;
+
+    Joint spine_joint_lower = spine_joint_upper;
+    spine_joint_lower.connection_root = Vec3(0.0,-belly.box_dim.y,0.0f);
+
     BodyTree pelvis;
     pelvis.box_dim = Vec3(0.15, 0.1, 0.1);
     pelvis.density = 1000.0f;
     pelvis.friction = 0.5;
 
     BodyTree right_hip_bone;
-    right_hip_bone.box_dim = Vec3(0.05, 0.05, 0.05);
+    right_hip_bone.box_dim = Vec3(0.07, 0.07, 0.07);
     right_hip_bone.density = 1000.0f;
     right_hip_bone.friction = 0.5;
 
     BodyTree left_hip_bone = right_hip_bone;
 
     Joint left_hip;
-    left_hip.connection_root = Vec3(-pelvis.box_dim.x,-pelvis.box_dim.y,0.0f);
+    left_hip.connection_root = Vec3(-pelvis.box_dim.x + left_hip_bone.box_dim.x/2,-pelvis.box_dim.y,0.0f);
     left_hip.connection_branch = Vec3(0.0f,right_hip_bone.box_dim.y,0.0f);
     left_hip.hinge_orientation = Vec3(M_PI/2,0.0,0.0);
-    left_hip.upper_limit = 0.1;
-    left_hip.lower_limit = 0.0;
-
+    left_hip.upper_limit = 0.0;
+    left_hip.lower_limit = -M_PI * 0.4;
 
     Joint right_hip = left_hip;
-    right_hip.connection_root = Vec3(pelvis.box_dim.x,-pelvis.box_dim.y,0.0f);
-    right_hip.upper_limit = 0.1;
+    right_hip.connection_root = Vec3(pelvis.box_dim.x  - right_hip_bone.box_dim.x/2,-pelvis.box_dim.y,0.0f);
+    right_hip.upper_limit = M_PI * 0.4;
     right_hip.lower_limit = 0.0;
 
-    right_hip_bone.root_joint = right_hip;
-    left_hip_bone.root_joint = left_hip;
-
-
-
-    BodyTree right_leg = CreatureFactory::CreateLeg(Vec3(0.15,0.15,0.15));
-    right_leg.root_joint.connection_root = Vec3(0.0, -right_hip_bone.box_dim.y, 0.0);
+    BodyTree right_leg = CreatureFactory::CreateLeg(Vec3(1,1,1));
+    right_leg.root_joint.connection_root = Vec3(0.0, 0.0, 0.0);
     right_leg.root_joint.connection_branch =
                     Vec3(0.0, right_leg.box_dim.y, 0.0);
     right_leg.root_joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
     right_leg.root_joint.upper_limit = M_PI*0.5;
     right_leg.root_joint.lower_limit = 0.0;
 
+    BodyTree left_leg = right_leg;
+
+
+
+    // Connect the joints
+    right_hip_bone.root_joint = right_hip;
+    left_hip_bone.root_joint = left_hip;
+
+    left_arm.root_joint = left_arm_shoulder_joint;
+    right_arm.root_joint = right_arm_shoulder_joint;
+
+    left_shoulder.root_joint = left_shoulder_rib_cage_joint;
+    right_shoulder.root_joint = right_shoulder_rib_cage_joint;
+
+    pelvis.root_joint = spine_joint_lower;
+    belly.root_joint = spine_joint_upper;
+    rib_cage.root_joint = neck_rib_cage_joint;
+    neck.root_joint = neck_head_joint;
+    rib_cage.root_joint = neck_rib_cage_joint;
+
+
+
+
+    // Add all branches
     right_hip_bone.body_list.push_back(right_leg);
+    left_hip_bone.body_list.push_back(left_leg);
 
     pelvis.body_list.push_back(right_hip_bone);
     pelvis.body_list.push_back(left_hip_bone);
 
-    return pelvis;
+    belly.body_list.push_back(pelvis);
+    rib_cage.body_list.push_back(belly);
+    left_shoulder.body_list.push_back(left_arm);
+    right_shoulder.body_list.push_back(right_arm);
+    rib_cage.body_list.push_back(left_shoulder);
+    rib_cage.body_list.push_back(right_shoulder);
+
+    neck.body_list.push_back(rib_cage);
+    head.body_list.push_back(neck);
+
+
+
+    return head;
 }
 
 BodyTree CreatureFactory::CreateLeggedBox(float scale) {
@@ -459,20 +569,22 @@ BodyTree CreatureFactory::CreateLeggedBox(float scale) {
 BodyTree CreatureFactory::CreateLeg(Vec3 scale) {
 
     BodyTree upper_leg;
-    upper_leg.box_dim = Vec3(0.3 * scale.x, 1.0 * scale.y, 0.3 * scale.z);
+    upper_leg.box_dim = Vec3(0.07 * scale.x, 0.17 * scale.y, 0.07 * scale.z);
     upper_leg.density = 1000.0f;
-    upper_leg.friction = 0.5;
+    upper_leg.friction = 0.8;
 
     BodyTree lower_leg = upper_leg;
 
+    lower_leg.box_dim = Vec3(0.05 * scale.x, 0.17 * scale.y, 0.05 * scale.z);
+
     BodyTree foot;
-    foot.box_dim = Vec3(0.3 * scale.x, 0.2 * scale.y, 0.6 * scale.z);
+    foot.box_dim = Vec3(0.07 * scale.x, 0.03 * scale.y, 0.12 * scale.z);
     foot.density = 1000.0f;
-    foot.friction = 0.5;
+    foot.friction = 0.9;
 
     // Joints
     Joint knee;
-    knee.connection_root = Vec3(0.0f,-lower_leg.box_dim.y,0.0f);
+    knee.connection_root = Vec3(0.0f,-upper_leg.box_dim.y,0.0f);
     knee.connection_branch = Vec3(0.0f,lower_leg.box_dim.y,0.0f);
     knee.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
     knee.upper_limit = 0.0;
@@ -480,7 +592,7 @@ BodyTree CreatureFactory::CreateLeg(Vec3 scale) {
 
     Joint ancle;
     ancle.connection_root = Vec3(0.0f,-lower_leg.box_dim.y,0.0);
-    ancle.connection_branch = Vec3(0.0f,0.0f,-foot.box_dim.z + 0.3 * scale.z);
+    ancle.connection_branch = Vec3(0.0f,0.0f,-foot.box_dim.z + lower_leg.box_dim.z);
     ancle.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
     ancle.upper_limit = M_PI*0.1;
     ancle.lower_limit = -M_PI*0.3;
@@ -492,4 +604,42 @@ BodyTree CreatureFactory::CreateLeg(Vec3 scale) {
     upper_leg.body_list.push_back(lower_leg);
 
     return upper_leg;
+}
+
+BodyTree CreatureFactory::CreateArm(Vec3 scale) {
+
+    BodyTree upper_arm;
+    upper_arm.box_dim = Vec3(0.05 * scale.x, 0.15 * scale.y, 0.05 * scale.z);
+    upper_arm.density = 1000.0f;
+    upper_arm.friction = 0.8;
+
+    BodyTree lower_arm = upper_arm;
+
+    BodyTree hand;
+    hand.box_dim = Vec3(0.025 * scale.x, 0.07 * scale.y, 0.05 * scale.z);
+    hand.density = 1000.0f;
+    hand.friction = 0.9;
+
+    // Joints
+    Joint elbow;
+    elbow.connection_root = Vec3(0.0f,-upper_arm.box_dim.y,0.0f);
+    elbow.connection_branch = Vec3(0.0f,lower_arm.box_dim.y,0.0f);
+    elbow.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
+    elbow.upper_limit = M_PI*0.9;
+    elbow.lower_limit = 0.0;
+
+    Joint wrist;
+    wrist.connection_root = Vec3(0.0f,-lower_arm.box_dim.y,0.0);
+    wrist.connection_branch = Vec3(0.0f,hand.box_dim.y, 0.0);
+    wrist.hinge_orientation = Vec3(M_PI/2,0.0,0.0);
+    wrist.upper_limit = M_PI*0.1;
+    wrist.lower_limit = -M_PI*0.3;
+
+    hand.root_joint = wrist; 
+    lower_arm.root_joint = elbow;
+
+    lower_arm.body_list.push_back(hand);
+    upper_arm.body_list.push_back(lower_arm);
+
+    return upper_arm;
 }

@@ -54,8 +54,8 @@ private:
 
 class CreatureFactory {
 public:
-  static CreatureFactory* Instance();
   static BodyTree CreateLeg(Vec3 scale);
+  static BodyTree CreateArm(Vec3 scale);
   static BodyTree CreateLeggedBox(float scale);
   static BodyTree CreateHuman();
 
