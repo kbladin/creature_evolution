@@ -27,6 +27,7 @@ struct BodyTree {
     std::vector<BodyTree> body_list;
 
     int GetNumberOfLeaves();
+    float GetLowestPoint(float start);
 };
 
 enum CreatureType{

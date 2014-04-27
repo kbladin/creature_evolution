@@ -16,6 +16,19 @@ int BodyTree::GetNumberOfLeaves(){
     return result + 1; // Children + itself
 }
 
+float BodyTree::GetLowestPoint(float start) {
+    float lowest = start-box_dim.y;
+
+    for (int i = 0; i < body_list.size(); ++i){
+        float child_offset = joint_list[i].connection_root.y - joint_list[i].connection_branch.y;
+        float low_child = body_list[i].GetLowestPoint(child_offset);
+        if(lowest > low_child)
+            lowest = low_child;
+    }
+
+    return lowest;
+}
+
 Body::Body(){
     //simple legged creature for testing
     int creature_type = SettingsManager::Instance()->GetCreatureType();

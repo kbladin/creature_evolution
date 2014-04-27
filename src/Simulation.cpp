@@ -11,7 +11,7 @@ Simulation::Simulation() {
 
   time_to_simulate_ = 30;
   counter_ = 0.0;
-  fps_ = 60;
+  fps_ = 30;
   // no self collision
   bt_creature_collidies_with_ = collisiontypes::COL_GROUND;
   ground_collidies_with_ = collisiontypes::COL_CREATURE;

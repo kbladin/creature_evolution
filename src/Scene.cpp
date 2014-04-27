@@ -58,7 +58,7 @@ void Scene::Update() {
   for(Node& n : nodes_) {
       n.UpdateNode();
   }
-  sim_->Step(1.0f/60.0f);
+  sim_->Step(1.0f/30.0f);
 
 }
 
