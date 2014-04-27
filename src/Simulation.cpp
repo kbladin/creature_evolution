@@ -59,7 +59,7 @@ Simulation::~Simulation()  {
 
 void Simulation::SetupEnvironment() {
   dynamics_world_->setGravity(btVector3(0, -10, 0));
-  ground_shape_ = new btStaticPlaneShape(btVector3(0, 1, 0), 1);
+  ground_shape_ = new btStaticPlaneShape(btVector3(0, 1, 0), 0);
 
   ground_motion_state_ =
     new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1),

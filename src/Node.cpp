@@ -48,7 +48,7 @@ void Node::Render(Camera* camera) {
 void Node::UpdateNode(){
 
     btTransform transform;
-    rigid_body_->getMotionState()->getWorldTransform(transform);
+    transform = rigid_body_->getWorldTransform();
     transform_ = glm::mat4(1.0f);
     transform.getOpenGLMatrix(glm::value_ptr(transform_));
 
