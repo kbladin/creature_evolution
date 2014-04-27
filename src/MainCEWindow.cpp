@@ -5,6 +5,8 @@
 
 MainCEWindow::MainCEWindow()
 {
+    best_fitness_ = 0.0;
+
     EM_ = new EvolutionManager();
     QGLFormat glFormat;
     glFormat.setVersion( 3, 2 );
@@ -141,20 +143,20 @@ void MainCEWindow::startEvolution() {
 }
 
 void MainCEWindow::loadCreature() {
-    Scene::Instance()->Clean();
-    Scene::Instance()->AddCreature(creatures_.back(), 0.0f);
+    //Scene::Instance()->Clean();
+    //Scene::Instance()->AddCreature(creatures_.back(), 0.0f);
 }
 
 void MainCEWindow::GameOfWorms() {
-    Scene::Instance()->Clean();
     float displacement = 0.0f;
 
     float num_of_creatures = (float) creatures_.size() / 10.0f;
-
+    std::vector<Creature> viz_creatures;
     for (float i = 0; i < creatures_.size(); i += num_of_creatures) {
-        Scene::Instance()->AddCreature(creatures_[floor(i)+0.01f], displacement);
+        viz_creatures.push_back(creatures_[floor(i)+0.01f]);
         displacement += 1.0f;
     }
+    Scene::Instance()->RestartSimulation(viz_creatures);
 }
 
 void MainCEWindow::evoDone() {
@@ -168,4 +170,8 @@ void MainCEWindow::GotNewCreature(const Creature &new_creature) {
     std::cout << "Got creature! Fitness: " << new_creature.GetFitness() << std::endl;
     Creature add = new_creature;
     creatures_.push_back(add);
+    if(best_fitness_ < new_creature.GetFitness()) {
+        best_fitness_ = new_creature.GetFitness();
+        Scene::Instance()->RestartSimulation(std::vector<Creature>(1,new_creature));
+    }
 }

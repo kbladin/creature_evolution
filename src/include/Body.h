@@ -29,6 +29,9 @@ struct BodyTree {
 
     int GetNumberOfElements();
     float GetMass();
+
+    int GetNumberOfLeaves();
+    float GetLowestPoint(float start);
 };
 
 enum CreatureType{

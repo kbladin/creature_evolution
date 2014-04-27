@@ -1,7 +1,6 @@
 #include "Scene.h"
 #include <btBulletDynamicsCommon.h>
 #include "Plane.h"
-#include "PassiveObject.h"
 
 Scene* Scene::instance_ = NULL;
 
@@ -13,25 +12,12 @@ if (!instance_) {
 }
 
 Scene::Scene() {
-  physics_added = false;
-  Plane plane_shape(glm::vec3(1.0f) * 100.0f);
-  plane_shape.SetupBuffers();
-  Node* node_to_add = new Node();
-  node_to_add->SetShape(plane_shape);
-  PassiveObject* plane = new PassiveObject();
-  plane->SetNode(node_to_add);
-  AddEntity(plane);
+  std::vector<Creature> start_creature;
+  StartSimulation(start_creature);
 }
 
 Scene::~Scene() {
-  // kill shit
-
-  for (int i = 0; i < entities.size(); ++i) {
-    delete entities[i];
-  }
-  for (int i = 0; i < bt_creatures_.size(); ++i) {
-    delete bt_creatures_[i];
-  }
+  EndSimulation();
 }
 
 void Scene::SetCamera(Camera cam) {
@@ -42,36 +28,8 @@ Camera* Scene::GetCamera() {
   return &cam_;
 }
 
-void Scene::AddCreature(Creature creature, float disp) {
-  BulletCreature* btc = new BulletCreature(creature,disp,true);
-  bt_creatures_.push_back(btc);
-  btDiscreteDynamicsWorld* bt_world = sim_.GetDynamicsWorld();
-  std::vector<btRigidBody*> bodies = btc->GetRigidBodies();
-  std::vector<btHingeConstraint*> joints = btc->GetJoints();
-
-  for (int i = 0; i < bodies.size(); ++i) {
-    bt_world->addRigidBody(
-            bodies[i],
-            collisiontypes::COL_CREATURE,
-            sim_.GetCollisionType());
-  }
-  for (int i = 0; i < joints.size(); ++i) {
-    bt_world->addConstraint(joints[i]);
-  }
-
-  std::cout << "SCENE: Added creature!" << std::endl; 
-  Scene::Instance()->GetCamera()->SetTarget(btc);
-   physics_added = true;
-}
-
-void Scene::AddEntity(Entity* entity) {
-  entities.push_back(entity);
-}
-
 void Scene::Render() {
-  // if(entities.empty() || !physics_added)
-  //   return;
-  // To make sure we use the same name
+   //To make sure we use the same name
   const char* shader_name = "Basic";
   ShaderManager::Instance()->UseProgram(shader_name);
   ShaderManager::Instance()->GetShaderProgramFromName(
@@ -85,69 +43,44 @@ void Scene::Render() {
                   &light_.position.x);
   glUseProgram(0);
 
-
-  for (int i = 0; i < entities.size(); ++i) {
-    entities[i]->Draw();
-  }
-
-  if(bt_creatures_.empty())
-    return;
-  
+  //update cam
+  btVector3 target = sim_->GetLastCreatureCoords();
+  cam_.SetTarget(glm::vec3(target.getX(),target.getY(),target.getZ()));
   cam_.UpdateMatrices();
 
-  for (int i = 0; i < bt_creatures_.size(); ++i) {
-    bt_creatures_[i]->Draw();
+  //draw nodes
+  for(Node& n : nodes_) {
+      n.Render(&cam_);
   }
 }
 
 void Scene::Update() {
-  if(bt_creatures_.empty())
-    return;
-
-  for (int i = 0; i < bt_creatures_.size(); ++i) {
-    bt_creatures_[i]->Update();
+  for(Node& n : nodes_) {
+      n.UpdateNode();
   }
-
-  sim_.Step(1.0f/60.0f);
-  sim_.ClearForces();
+  sim_->Step(1.0f/30.0f);
 
 }
 
-float Scene::GetCurrentSimTime() {
-  return sim_.GetCounterTime();
+void Scene::StartSimulation(std::vector<Creature> viz_creatures) {
+    sim_ = new Simulation();
+    sim_->AddPopulation(viz_creatures);
+    nodes_ = sim_->GetNodes();
 }
 
-void Scene::Clean() {
-  if(bt_creatures_.empty())
-    return;
-
-  btDiscreteDynamicsWorld* world = sim_.GetDynamicsWorld();
-  std::vector<btRigidBody*> rigid_bodies;
-  std::vector<btHingeConstraint*> joints;
-
-  for(int i = 0; i < bt_creatures_.size(); ++i) {
-    rigid_bodies = bt_creatures_[i]->GetRigidBodies();
-    joints = bt_creatures_[i]->GetJoints();
-
-    //Add joints
-    for(int i=0; i < joints.size(); i++){
-        world->removeConstraint(joints[i]);
+void Scene::EndSimulation() {
+    delete sim_;
+    //nodes_.clear();
+    for (Node& node : nodes_) {
+      node.DeleteBuffers();
     }
+}
 
-    for (int i = 0; i < rigid_bodies.size(); i++) {
-        world->removeRigidBody(rigid_bodies[i]);
-    }
+void Scene::RestartSimulation(std::vector<Creature> viz_creatures) {
+    EndSimulation();
+    StartSimulation(viz_creatures);
 
-  }
-
-  while(!bt_creatures_.empty()) {
-    delete bt_creatures_.back();
-    bt_creatures_.pop_back();
-  }
-
-  bt_creatures_.clear();
-  bt_creatures_.shrink_to_fit();
-  sim_.ClearForces();
-  sim_.ResetTime();
+    cam_.SetTarget(glm::vec3(0.0,0.0,0.0));
 
 }
+

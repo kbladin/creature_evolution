@@ -1,7 +1,10 @@
-#ifndef SIMULATION_H
-#define SIMULATION_H
+#ifndef Simulation_H
+#define Simulation_H
 
-#include <btBulletDynamicsCommon.h>
+#include <vector>
+#include "Creature.h"
+#include "BulletCreature.h"
+#include "Node.h"
 
 #define BIT(x) (1<<(x))
 enum collisiontypes {
@@ -10,28 +13,40 @@ enum collisiontypes {
     COL_GROUND = BIT(1)
 };
 
+typedef std::vector<Creature> Population;
+
 class Simulation {
   public:
     Simulation();
-    virtual ~Simulation();
+    ~Simulation();
 
-    virtual void Step(float dt) = 0;
-    virtual void SetupEnvironment() = 0;
+    virtual void Step(float dt);
+    virtual void SetupEnvironment();
 
-    btDiscreteDynamicsWorld* GetDynamicsWorld();
-    void SetFps(int fps);
-    int GetFps();
-    float GetCounterTime();
-    void ResetTime();
-  protected:
+    void AddPopulation(Population population);
+    Population SimulatePopulation();
+    std::vector<Node> GetNodes();
+    btVector3 GetLastCreatureCoords();
+  private:
     btBroadphaseInterface* broad_phase_;
     btDefaultCollisionConfiguration* collision_configuration_;
     btCollisionDispatcher* dispatcher_;
     btSequentialImpulseConstraintSolver* solver_;
     btDiscreteDynamicsWorld* dynamics_world_;
 
-    float counter_;
+
+    std::vector<BulletCreature*> bt_population_;
+    btCollisionShape* ground_shape_;
+    btDefaultMotionState* ground_motion_state_;
+    btRigidBody* ground_rigid_body_;
+
+
+    int bt_creature_collidies_with_;
+    int ground_collidies_with_;
+
+    int time_to_simulate_;
     int fps_;
+    float counter_;
 };
 
-#endif	// SIMULATION_H
+#endif  // Simulation_H

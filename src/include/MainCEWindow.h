@@ -83,6 +83,7 @@ private:
     static const int number_of_sliders = 6;
 
     std::vector<Creature> creatures_;
+    float best_fitness_;
 
     EvolutionManager* EM_;
 };
