@@ -82,7 +82,7 @@ Population EvolutionManager::GetAllBestCreatures() {
 void EvolutionManager::SimulatePopulation() {
     Simulation sim_world;
     
-    sim_world.AddPopulation(current_population_);
+    sim_world.AddPopulation(current_population_, false);
     current_population_ = sim_world.SimulatePopulation();
 }
 

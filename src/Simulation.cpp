@@ -75,11 +75,16 @@ void Simulation::SetupEnvironment() {
     collisiontypes::COL_GROUND, ground_collidies_with_);
 }
 
-void Simulation::AddPopulation(Population population) {
+void Simulation::AddPopulation(Population population, bool disp) {
+  float displacement = 0.0f;
   for (int i = 0; i < population.size(); ++i) {
-    // no displacement, don't construct Nodes
-    BulletCreature* btc = new BulletCreature(population[i], 0.0f);
+    BulletCreature* btc;
+    if(disp)
+      btc = new BulletCreature(population[i], displacement);
+    else
+      btc = new BulletCreature(population[i], 0.0f);
     bt_population_.push_back(btc);
+    displacement += 1.0f;
   }
 
   std::vector<btRigidBody*> rigid_bodies;
