@@ -1,6 +1,5 @@
 #include "BulletCreature.h"
 #include "Box.h"
-#include "CEMotionState.h"
 #include "Scene.h"
 
 BulletCreature::BulletCreature(Creature blueprint) {
