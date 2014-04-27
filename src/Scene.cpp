@@ -1,7 +1,6 @@
 #include "Scene.h"
 #include <btBulletDynamicsCommon.h>
 #include "Plane.h"
-#include "PassiveObject.h"
 
 Scene* Scene::instance_ = NULL;
 
@@ -18,7 +17,7 @@ Scene::Scene() {
 }
 
 Scene::~Scene() {
-  delete sim_;
+  EndSimulation();
 }
 
 void Scene::SetCamera(Camera cam) {
@@ -59,7 +58,7 @@ void Scene::Update() {
   for(Node& n : nodes_) {
       n.UpdateNode();
   }
-  sim_->Step(1.0f/60.0f);
+  sim_->Step(1.0f/30.0f);
 
 }
 
