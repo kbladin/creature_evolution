@@ -56,8 +56,9 @@ void Node::UpdateNode(){
 
     btTransform transform;
     transform = rigid_body_->getWorldTransform();
-    transform_ = glm::mat4(1.0f);
-    transform.getOpenGLMatrix(glm::value_ptr(transform_));
+    glm::mat4 tmp_matrix;
+    transform.getOpenGLMatrix(glm::value_ptr(tmp_matrix));
+    transform_ = tmp_matrix;
 
 }
 
