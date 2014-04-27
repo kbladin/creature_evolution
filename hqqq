@@ -1,0 +1,91 @@
+[1mdiff --git a/src/Node.cpp b/src/Node.cpp[m
+[1mindex 294edab..5d7a0d3 100644[m
+[1m--- a/src/Node.cpp[m
+[1m+++ b/src/Node.cpp[m
+[36m@@ -76,3 +76,7 @@[m [mvoid Node::InitPlaneShape() {[m
+ void Node::InitSphereShape() {[m
+ [m
+ }[m
+[32m+[m
+[32m+[m[32mvoid Node::DeleteBuffers() {[m
+[32m+[m[32m  shape_.DeleteBuffers();[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/Scene.cpp b/src/Scene.cpp[m
+[1mindex 0adadeb..e39dc7c 100644[m
+[1m--- a/src/Scene.cpp[m
+[1m+++ b/src/Scene.cpp[m
+[36m@@ -71,7 +71,10 @@[m [mvoid Scene::StartSimulation(std::vector<Creature> viz_creatures) {[m
+ [m
+ void Scene::EndSimulation() {[m
+     delete sim_;[m
+[31m-    nodes_.clear();[m
+[32m+[m[32m    //nodes_.clear();[m
+[32m+[m[32m    for (Node& node : nodes_) {[m
+[32m+[m[32m      node.DeleteBuffers();[m
+[32m+[m[32m    }[m
+ }[m
+ [m
+ void Scene::RestartSimulation(std::vector<Creature> viz_creatures) {[m
+[1mdiff --git a/src/Shape.cpp b/src/Shape.cpp[m
+[1mindex cf1f2b3..80ce4ba 100644[m
+[1m--- a/src/Shape.cpp[m
+[1m+++ b/src/Shape.cpp[m
+[36m@@ -86,6 +86,29 @@[m [mvoid Shape::SetupBuffers() {[m
+   glBindVertexArray(0);[m
+ }[m
+ [m
+[32m+[m
+[32m+[m[32mShape::~Shape() {[m
+[32m+[m[41m  [m
+[32m+[m
+[32m+[m[41m  [m
+[32m+[m
+[32m+[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mvoid Shape::DeleteBuffers() {[m
+[32m+[m[32m    glDeleteBuffers(1, &vertex_uv_buffer_id_);[m
+[32m+[m[32m  glDeleteBuffers(1, &vertex_normal_buffer_id_);[m
+[32m+[m[32m  glDeleteBuffers(1, &vertex_position_buffer_id_);[m
+[32m+[m[41m  [m
+[32m+[m
+[32m+[m[41m  [m
+[32m+[m[32m  glDeleteBuffers(1, &element_buffer_id_);[m
+[32m+[m
+[32m+[m[32m  glDeleteVertexArrays(1, &vertex_array_id_);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m
+ void Shape::Render(Camera* camera, glm::mat4 model_transform) {[m
+   // Matrix data[m
+   glm::mat4 V = camera->GetViewMatrix();[m
+[1mdiff --git a/src/include/Node.h b/src/include/Node.h[m
+[1mindex ff9b76e..213f4a4 100644[m
+[1m--- a/src/include/Node.h[m
+[1m+++ b/src/include/Node.h[m
+[36m@@ -29,6 +29,7 @@[m [mpublic:[m
+   glm::vec3 GetPosition();[m
+   void DebugPrint();[m
+   void UpdateNode();[m
+[32m+[m[32m  void DeleteBuffers();[m
+ private:[m
+   void InitBoxShape();[m
+   void InitPlaneShape();[m
+[1mdiff --git a/src/include/Shape.h b/src/include/Shape.h[m
+[1mindex bfdf63d..25c558d 100644[m
+[1m--- a/src/include/Shape.h[m
+[1m+++ b/src/include/Shape.h[m
+[36m@@ -22,9 +22,11 @@[m [mclass Camera;[m
+ class Shape {[m
+ public:[m
+   Shape();[m
+[32m+[m[32m  ~Shape();[m
+   void SetupBuffers();[m
+   void DebugPrint();[m
+   void Render(Camera* camera, glm::mat4 model_transform);[m
+[32m+[m[32m  void DeleteBuffers();[m
+ protected:[m
+   GLuint vertex_array_id_;[m
+   GLuint element_buffer_id_;[m

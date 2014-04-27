@@ -76,3 +76,7 @@ void Node::InitPlaneShape() {
 void Node::InitSphereShape() {
 
 }
+
+void Node::DeleteBuffers() {
+  shape_.DeleteBuffers();
+}

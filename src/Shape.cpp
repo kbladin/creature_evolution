@@ -86,6 +86,29 @@ void Shape::SetupBuffers() {
   glBindVertexArray(0);
 }
 
+
+Shape::~Shape() {
+  
+
+  
+
+
+}
+
+void Shape::DeleteBuffers() {
+    glDeleteBuffers(1, &vertex_uv_buffer_id_);
+  glDeleteBuffers(1, &vertex_normal_buffer_id_);
+  glDeleteBuffers(1, &vertex_position_buffer_id_);
+  
+
+  
+  glDeleteBuffers(1, &element_buffer_id_);
+
+  glDeleteVertexArrays(1, &vertex_array_id_);
+}
+
+
+
 void Shape::Render(Camera* camera, glm::mat4 model_transform) {
   // Matrix data
   glm::mat4 V = camera->GetViewMatrix();

@@ -29,6 +29,7 @@ public:
   glm::vec3 GetPosition();
   void DebugPrint();
   void UpdateNode();
+  void DeleteBuffers();
 private:
   void InitBoxShape();
   void InitPlaneShape();

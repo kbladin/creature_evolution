@@ -71,7 +71,10 @@ void Scene::StartSimulation(std::vector<Creature> viz_creatures) {
 
 void Scene::EndSimulation() {
     delete sim_;
-    nodes_.clear();
+    //nodes_.clear();
+    for (Node& node : nodes_) {
+      node.DeleteBuffers();
+    }
 }
 
 void Scene::RestartSimulation(std::vector<Creature> viz_creatures) {
