@@ -31,11 +31,11 @@ struct BodyTree {
     float GetMass();
 
     int GetNumberOfLeaves();
-    float GetLowestPoint(float start);
+    float GetLowestPoint();
 };
 
 enum CreatureType{
-  PONY, WORM, TURTLE, SHEEP, CRAWLER
+  PONY, WORM, TURTLE, SHEEP, CRAWLER, HUMAN
 };
 
 class Body {
@@ -44,7 +44,20 @@ public:
   BodyTree GetBodyRoot();
   int GetTotalNumberOfJoints();
 private:
-  BodyTree CreateWorm();
+  BodyTree body_root_;
+};
+
+class BodyFactory {
+public:
+  // Body parts
+  static BodyTree CreateLeg(Vec3 scale);
+  static BodyTree CreateArm(Vec3 scale);
+
+  // Creatures
+  static BodyTree CreateLeggedBox(float scale);
+  static BodyTree CreateHuman();
+  static BodyTree CreateWorm();
+
   /*
   BodyTree CreatePony();
   BodyTree CreateSheep();
@@ -52,15 +65,6 @@ private:
   BodyTree CreateTurtle();
   BodyTree CreateCrawler();
   */
-  BodyTree body_root_;
-};
-
-class CreatureFactory {
-public:
-  static BodyTree CreateLeg(Vec3 scale);
-  static BodyTree CreateArm(Vec3 scale);
-  static BodyTree CreateLeggedBox(float scale);
-  static BodyTree CreateHuman();
 
 private:
 };

@@ -9,8 +9,7 @@ BulletCreature::BulletCreature(Creature blueprint) {
 
     //create body
     BodyTree body_root = blueprint_.GetBody().GetBodyRoot();
-    AddBody(body_root, btVector3(0.0,-1.0-body_root.GetLowestPoint(0.0),0.0));
-
+    AddBody(body_root, btVector3(0.0,-1.0-body_root.GetLowestPoint(),0.0));
 }
 
 
@@ -21,7 +20,7 @@ BulletCreature::BulletCreature(Creature blueprint, float x_displacement) {
 
     //create body
     BodyTree body_root = blueprint_.GetBody().GetBodyRoot();
-    AddBody(body_root, btVector3(x_displacement,-1.0-body_root.GetLowestPoint(0.0),0.0));
+    AddBody(body_root, btVector3(x_displacement,-1.0-body_root.GetLowestPoint(),0.0));
 
 }
 

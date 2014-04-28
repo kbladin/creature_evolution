@@ -20,27 +20,27 @@ float BodyTree::GetMass(){
     return box_dim.x * box_dim.y * box_dim.z * density;
 }
 
-float BodyTree::GetLowestPoint(float start) {
-    /*
-    float lowest = start-box_dim.y;
-
-    for (int i = 0; i < body_list.size(); ++i){
-        float child_offset = joint_list[i].connection_root.y - joint_list[i].connection_branch.y;
-        float low_child = body_list[i].GetLowestPoint(child_offset);
-        if(lowest > low_child)
-            lowest = low_child;
+float BodyTree::GetLowestPoint() {
+    // Base case
+    if (body_list.size() == 0) {
+        return -box_dim.y;
+    } else { // Recursion
+        float lowest_child = 0;
+        for (int i = 0; i < body_list.size(); ++i){
+            if (body_list[i].GetLowestPoint() < lowest_child)
+                lowest_child = body_list[i].GetLowestPoint() +
+                            root_joint.connection_root.y -
+                            root_joint.connection_branch.y;
+        }
+        return lowest_child;
     }
-
-    return lowest;
-    */
-    return -1.5;
 }
 
 Body::Body(){
     //simple legged creature for testing
     int creature_type = SettingsManager::Instance()->GetCreatureType();
 
-    body_root_ = CreateWorm();
+    body_root_ = BodyFactory::CreateHuman();
     /*
     // TODO: add switch
     switch(creature_type){
@@ -73,7 +73,7 @@ BodyTree Body::GetBodyRoot() {
 int Body::GetTotalNumberOfJoints(){
     return body_root_.GetNumberOfElements() - 1; // Do not count itself
 }
-
+/*
 BodyTree Body::CreateWorm(){
 
     int worm_length = 5;
@@ -103,9 +103,9 @@ BodyTree Body::CreateWorm(){
         current_segment = body_segment;
     }
 
-    return CreatureFactory::CreateHuman();
+    return BodyFactory::CreateHuman();
 }
-
+*/
 /*
 BodyTree Body::CreatePony(){
 
@@ -395,7 +395,7 @@ BodyTree Body::CreateCrawler(){
 }
 */
 
-BodyTree CreatureFactory::CreateHuman() {
+BodyTree BodyFactory::CreateHuman() {
 
     // Create all body parts and joints
     BodyTree head;
@@ -445,7 +445,7 @@ BodyTree CreatureFactory::CreateHuman() {
     right_shoulder_rib_cage_joint.connection_root = Vec3(rib_cage.box_dim.x,rib_cage.box_dim.y - left_shoulder.box_dim.y,0.0f);
     right_shoulder_rib_cage_joint.connection_branch = Vec3(-right_shoulder.box_dim.x,0.0f,0.0f);
 
-    BodyTree left_arm = CreatureFactory::CreateArm(Vec3(1,1,1));
+    BodyTree left_arm = BodyFactory::CreateArm(Vec3(1,1,1));
     BodyTree right_arm = left_arm;
 
     Joint left_arm_shoulder_joint;
@@ -499,7 +499,7 @@ BodyTree CreatureFactory::CreateHuman() {
     right_hip.upper_limit = M_PI * 0.4;
     right_hip.lower_limit = 0.0;
 
-    BodyTree right_leg = CreatureFactory::CreateLeg(Vec3(1,1,1));
+    BodyTree right_leg = BodyFactory::CreateLeg(Vec3(1,1,1));
     right_leg.root_joint.connection_root = Vec3(0.0, 0.0, 0.0);
     right_leg.root_joint.connection_branch =
                     Vec3(0.0, right_leg.box_dim.y, 0.0);
@@ -552,14 +552,14 @@ BodyTree CreatureFactory::CreateHuman() {
     return head;
 }
 
-BodyTree CreatureFactory::CreateLeggedBox(float scale) {
+BodyTree BodyFactory::CreateLeggedBox(float scale) {
 
     BodyTree torso;
     torso.box_dim = Vec3(0.6 * scale, 0.2 * scale, 1.0 * scale);
     torso.density = 1000.0f;
     torso.friction = 0.5;
 
-    BodyTree right_front_leg = CreatureFactory::CreateLeg(Vec3(0.5*scale,0.3*scale,0.5*scale));
+    BodyTree right_front_leg = BodyFactory::CreateLeg(Vec3(0.5*scale,0.3*scale,0.5*scale));
     right_front_leg.root_joint.connection_root = Vec3(torso.box_dim.x, -torso.box_dim.y, -torso.box_dim.z);
     right_front_leg.root_joint.connection_branch =
                     Vec3(0.0, right_front_leg.box_dim.y, 0.0);
@@ -582,7 +582,7 @@ BodyTree CreatureFactory::CreateLeggedBox(float scale) {
     return torso;
 }
 
-BodyTree CreatureFactory::CreateLeg(Vec3 scale) {
+BodyTree BodyFactory::CreateLeg(Vec3 scale) {
 
     BodyTree upper_leg;
     upper_leg.box_dim = Vec3(0.07 * scale.x, 0.17 * scale.y, 0.07 * scale.z);
@@ -622,7 +622,7 @@ BodyTree CreatureFactory::CreateLeg(Vec3 scale) {
     return upper_leg;
 }
 
-BodyTree CreatureFactory::CreateArm(Vec3 scale) {
+BodyTree BodyFactory::CreateArm(Vec3 scale) {
 
     BodyTree upper_arm;
     upper_arm.box_dim = Vec3(0.05 * scale.x, 0.15 * scale.y, 0.05 * scale.z);
