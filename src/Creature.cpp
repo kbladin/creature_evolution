@@ -5,6 +5,8 @@ AutoInitRNG Creature::rng_;
 //! Default constructor creates a random creature.
 Creature::Creature() {
 	fitness_ = -1.0f;
+	int n_joints = body_.GetTotalNumberOfJoints(); 
+	brain_ = Brain(n_joints + 1, n_joints);
 }
 
 //! Destructor. Deletes all rigid bodies etc

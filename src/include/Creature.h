@@ -1,6 +1,7 @@
 #ifndef CREATURE_H
 #define CREATURE_H
 
+#include <QObject>
 // C++
 #include <cmath>
 #include <ctime>
@@ -33,13 +34,13 @@ struct SimData {
 };
 
 //! A definition of a creature.
-
 /*!
 A creature contains a brain and a body.
 */
 class Creature {
+
 public:
-    Creature();
+    Creature();    
     ~Creature();
 
     std::vector<float> CalculateBrainOutput(std::vector<float>);
@@ -66,6 +67,7 @@ private:
     static AutoInitRNG rng_;
 
 };
+Q_DECLARE_METATYPE(Creature);
 
 //! Simple struct for creature comparison
 struct CreatureLargerThan {

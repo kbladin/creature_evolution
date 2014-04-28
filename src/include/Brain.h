@@ -8,20 +8,25 @@
 #include "AutoInitRNG.h"
 #include "SettingsManager.h"
 
-class Brain {
-public:
-  Brain();
-  virtual void ResizeInput(int);
-  virtual void ResizeOutput(int);
-  virtual std::vector<float> CalculateOutput(std::vector<float> input);
-  virtual void Mutate();
+typedef std::vector<float> f_vec;
 
-  std::vector<float> GetWeights();
+class Brain {
+
+public:
+  Brain(){}
+  Brain(int n_input, int n_output);
+  f_vec CalculateOutput(const f_vec& input);
+
+  void Mutate();
   std::vector<Brain> Crossover(Brain mate);
 
 private:
-  std::vector<float> weights;
+  std::vector<f_vec> hidden_nodes_;
+  std::vector<f_vec> output_nodes_;
   static AutoInitRNG rng_;
+
+  float dot(const f_vec& x, const f_vec& y);
+  float transfer(float x);
 };
 
 #endif //BRAIN_H

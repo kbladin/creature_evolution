@@ -8,7 +8,6 @@
 #include <glm/ext.hpp>
 #endif
 // Internal
-#include "BulletCreature.h"
 #include "SettingsManager.h"
 
 //! The camera class is used to obtain the view and projection matrices.
@@ -25,7 +24,7 @@ public:
   Camera(glm::mat4 view, glm::mat4 projection);
   glm::mat4 GetViewMatrix();
   glm::mat4 GetProjectionMatrix();
-  void SetTarget(BulletCreature* target);
+  void SetTarget(glm::vec3 target);
   float GetFarClipping();
 
   void UpdateMatrices();
@@ -38,7 +37,7 @@ private:
 
   glm::mat4 projection_;
   glm::mat4 view_;
-  BulletCreature* target_;
+  glm::vec3 target_;
 
   float far_clipping_;
   float near_clipping_;

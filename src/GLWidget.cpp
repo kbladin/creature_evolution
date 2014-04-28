@@ -1,13 +1,16 @@
 #include "GLWidget.h"
+#include "ShaderManager.h"
+#include "TextureManager.h"
+#include "SettingsManager.h"
+#include "Scene.h"
 
 #ifndef GL_MULTISAMPLE
 #define GL_MULTISAMPLE  0x809D
 #endif
 
-GLWidget::GLWidget(QGLFormat format, QWidget *parent, CreatureEvolution* ce)
+GLWidget::GLWidget(QGLFormat format, QWidget *parent)
   : QGLWidget(format, parent)
 {
-  ce_handle_ = ce;
   enable_render_ = false;
   QTimer *timer = new QTimer(this);
   connect(timer, SIGNAL(timeout()), this, SLOT(update()));
@@ -33,17 +36,19 @@ void GLWidget::initializeGL(){
   glClearColor(0.8f, 0.8f, 1.0f, 1.0f);
 
   ShaderManager::Instance();
-
   TextureManager::Instance();
 }
 
 void GLWidget::paintGL(){
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  if(enable_render_) {
-    ce_handle_->StepTheWorld();
-    ce_handle_->UpdateTheWorld();
-    ce_handle_->RenderTheWorld();
-  }
+  glEnable(GL_DEPTH_TEST);
+  // Accept fragment if it closer to the camera than the former one
+  glDepthFunc(GL_LESS);
+
+  //if(enable_render_) {
+    Scene::Instance()->Update();
+    Scene::Instance()->Render();
+  //}
 }
 
 void GLWidget::resizeGL(int width, int height){
@@ -65,9 +70,9 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event){
   // but strange that it is different.
   int dx = event->x() - lastPos.x();
   int dy = event->y() - lastPos.y();
-
+  
   if (event->buttons() & Qt::LeftButton) {
-    Camera* current_cam = SceneManager::Instance()->GetCamera();
+    Camera* current_cam = Scene::Instance()->GetCamera();
     if (current_cam){
       float width = SettingsManager::Instance()->GetFrameWidth();
       float height = SettingsManager::Instance()->GetFrameHeight();
@@ -81,20 +86,21 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event){
   else if (event->buttons() & Qt::RightButton) {
 
   }
+  
   lastPos = event->pos();
 }
 
 void GLWidget::wheelEvent(QWheelEvent* event){
-  Camera* current_cam = SceneManager::Instance()->GetCamera();
+  
+  Camera* current_cam = Scene::Instance()->GetCamera();
   if (current_cam){
     current_cam->IncrementZposition(event->delta() / 100.0f);
   }
+  
 };
 
 void GLWidget::enableRendering() {
     qDebug("render enabled");
-
-    //ce_handle_->InitWorld();
 
     std::cout << "GLWIDGET: Init'ed the world" << std::endl;
     enable_render_ = true;

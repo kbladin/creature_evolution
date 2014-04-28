@@ -10,8 +10,6 @@
 #include <QtCore/QTimer>
 #include <QtWidgets/qwidget.h>
 // Internal
-#include "CreatureEvolution.h"
-#include "TextureManager.h"
 
 
 class GLWidget : public QGLWidget
@@ -19,7 +17,7 @@ class GLWidget : public QGLWidget
     Q_OBJECT
 
 public:
-    GLWidget(QGLFormat format, QWidget *parent = 0, CreatureEvolution* ce = NULL);
+    GLWidget(QGLFormat format, QWidget *parent = 0);
     ~GLWidget();
 
     QSize minimumSizeHint() const;
@@ -38,9 +36,7 @@ protected:
 
 private:
     QPoint lastPos;
-
     bool enable_render_;
-    CreatureEvolution* ce_handle_;
 };
 
 #endif // GLWIDGET_H

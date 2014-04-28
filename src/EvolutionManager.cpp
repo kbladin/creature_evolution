@@ -1,5 +1,6 @@
 #include "EvolutionManager.h"
 #include "SettingsManager.h"
+#include "Simulation.h"
 #include <chrono>
 AutoInitRNG EvolutionManager::rng_;
 
@@ -25,8 +26,7 @@ void EvolutionManager::startEvolutionProcess() {
 
 	int max_gen = SettingsManager::Instance()->GetMaxGenerations();
 	int pop_size = SettingsManager::Instance()->GetPopulationSize();
-    std::cout << "max_gen" << max_gen << std::endl;
-    Creature best;
+  Creature best;
 
 	// Creates a new random population
 	current_population_ = CreateRandomPopulation(pop_size);
@@ -34,21 +34,18 @@ void EvolutionManager::startEvolutionProcess() {
     for (int i = 0; i < max_gen; ++i){
 		std::cout << "Generation: " << i << std::endl <<
         "Simulating..." << std::endl;
-        //PrintPopulation();
         SimulatePopulation();
 
         CalculateFitnessOnPopulation();
-        std::cout << "Calculated fitness on pop" << std::endl;
         SortPopulation();
 
 		// save the population and the best creatures
         // SettingsManager::Instance()->AddBestCreature(GetBestCreature());
-        best = GetBestCreature();
-        std::cout << "Best fitness: " <<best.GetFitness() << std::endl;
-        best_creatures_.push_back(best);
+        //best = GetBestCreature();
+        //TODO: send Creature via signal
+        emit NewCreature(GetBestCreature());
+        //best_creatures_.push_back(best);
         NextGeneration();
-
-
 	}
 	std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
 }
@@ -83,17 +80,9 @@ Population EvolutionManager::GetAllBestCreatures() {
 
 //! Simulates all creatures in population
 void EvolutionManager::SimulatePopulation() {
-    Simulation sim_world(false);
-
-	/*for(int i = 0; i < current_population_.size(); ++i) {
-    	//NOTE: Something is not being reset in the Simulation,
-    	// so just create a new world for every Creature
-        sim_world.AddCreature(current_population_[i]);
-        current_population_[i] = sim_world.Simulate();
-        sim_world.RemoveCreature();
-	}*/
-
-    sim_world.AddPopulation(current_population_);
+    Simulation sim_world;
+    
+    sim_world.AddPopulation(current_population_, false);
     current_population_ = sim_world.SimulatePopulation();
 }
 
@@ -128,7 +117,6 @@ void EvolutionManager::NextGeneration() {
 
 	int elitism_pivot = static_cast<int>(current_population_.size() * elitism);
 
-
 	Population new_population (&current_population_[0],
 		 &current_population_[elitism_pivot]);
 
@@ -136,11 +124,13 @@ void EvolutionManager::NextGeneration() {
 
 	std::uniform_int_distribution<int> int_elitism_index(0, elitism_pivot);
 
-	Creature new_creature;
-    for(int i = elitism_pivot; i < current_population_.size(); i++) {
+	//Creature new_creature;
+    for(int i = elitism_pivot; i < current_population_.size() - 1; i++) {
 		int random_index = int_elitism_index(rng_.mt_rng_);
 
 		std::vector<Creature> parents = TournamentSelection();
+		//parents.push_back(current_population_[random_index]);
+		//parents.push_back(current_population_[random_index]);
 		std::vector<Creature> new_creatures = parents[0].Crossover(parents[1]);
 
 		new_creatures[0].Mutate();
@@ -190,3 +180,7 @@ Population EvolutionManager::CreateRandomPopulation(int pop_size) {
 	}
 	return random_pop;
 }
+
+// void EvolutionManager::GenerationDone(Creature new_creature) {
+//   emit NewCreature(new_creature);
+// }

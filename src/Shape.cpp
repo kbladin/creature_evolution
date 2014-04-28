@@ -1,4 +1,5 @@
 #include "Shape.h"
+#include "Camera.h"
 
 Shape::Shape() {
     vertex_array_id_ = GL_FALSE;
@@ -85,11 +86,34 @@ void Shape::SetupBuffers() {
   glBindVertexArray(0);
 }
 
-void Shape::Render(Camera camera, glm::mat4 model_transform) {
+
+Shape::~Shape() {
+  
+
+  
+
+
+}
+
+void Shape::DeleteBuffers() {
+    glDeleteBuffers(1, &vertex_uv_buffer_id_);
+  glDeleteBuffers(1, &vertex_normal_buffer_id_);
+  glDeleteBuffers(1, &vertex_position_buffer_id_);
+  
+
+  
+  glDeleteBuffers(1, &element_buffer_id_);
+
+  glDeleteVertexArrays(1, &vertex_array_id_);
+}
+
+
+
+void Shape::Render(Camera* camera, glm::mat4 model_transform) {
   // Matrix data
-  glm::mat4 V = camera.GetViewMatrix();
+  glm::mat4 V = camera->GetViewMatrix();
   glm::mat4 MV = V * model_transform;
-  glm::mat4 P = camera.GetProjectionMatrix();
+  glm::mat4 P = camera->GetProjectionMatrix();
   glm::mat4 MVP = P * MV;
 
   // To make sure we use the same name
@@ -104,7 +128,7 @@ void Shape::Render(Camera camera, glm::mat4 model_transform) {
   ShaderManager::Instance()->GetShaderProgramFromName(
           shader_name)->UniformMatrix4fv("MV", 1, false, &MV[0][0]);
   ShaderManager::Instance()->GetShaderProgramFromName(
-          shader_name)->Uniform1f("far_clipping", camera.GetFarClipping());
+          shader_name)->Uniform1f("far_clipping", camera->GetFarClipping());
 
   ShaderManager::Instance()->GetShaderProgramFromName(
           shader_name)->Uniform1f("material.reflectance", material_.reflectance);

@@ -1,4 +1,6 @@
 #include "BulletCreature.h"
+#include "Box.h"
+#include "Scene.h"
 
 BulletCreature::BulletCreature(Creature blueprint) {
 
@@ -6,7 +8,8 @@ BulletCreature::BulletCreature(Creature blueprint) {
     blueprint_ = blueprint;
 
     //create body
-    AddBody(blueprint_.GetBody().GetBodyRoot(), btVector3(0.0,1.5,0.0));
+    BodyTree body_root = blueprint_.GetBody().GetBodyRoot();
+    AddBody(body_root, btVector3(0.0,-1.0-body_root.GetLowestPoint(0.0),0.0));
 
 }
 
@@ -17,27 +20,33 @@ BulletCreature::BulletCreature(Creature blueprint, float x_displacement) {
     blueprint_ = blueprint;
 
     //create body
-    AddBody(blueprint_.GetBody().GetBodyRoot(), btVector3(x_displacement,1.5,0.0));
+    BodyTree body_root = blueprint_.GetBody().GetBodyRoot();
+    AddBody(body_root, btVector3(x_displacement,-1.0-body_root.GetLowestPoint(0.0),0.0));
 
 }
 
 
 BulletCreature::~BulletCreature(void) {
-    for(int i=0; i < m_joints_.size(); i++){
-        delete m_joints_[i];
-        m_joints_[i] = 0;
+    while(!m_joints_.empty()) {
+      delete m_joints_.back();
+      m_joints_.pop_back();
     }
 
-    for(int i=0; i < m_bodies_.size(); i++){
-        delete m_bodies_[i]->getMotionState();
-        delete m_bodies_[i];
-        m_bodies_[i] = 0;
+    while(!m_bodies_.empty()) {
+      delete m_bodies_.back()->getMotionState();
+      delete m_bodies_.back();
+      m_bodies_.pop_back();
     }
 
-    for(int i=0; i < m_shapes_.size(); i++){
-        delete m_shapes_[i];
-        m_shapes_[i] = 0;
+    while(!m_shapes_.empty()) {
+      delete m_shapes_.back();
+      m_shapes_.pop_back();
     }
+
+
+    m_joints_.clear();
+    m_bodies_.clear();
+    m_shapes_.clear();
 }
 
 
@@ -45,7 +54,8 @@ BulletCreature::~BulletCreature(void) {
 btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
     //shape
     btVector3 dim = btVector3(body.box_dim.x,body.box_dim.y,body.box_dim.z);
-    m_shapes_.push_back(new btBoxShape(dim));
+    btCollisionShape* shape = new btBoxShape(dim);
+    m_shapes_.push_back(shape);
 
     //mass
     btVector3 fallInertia(0,0,0);
@@ -56,7 +66,10 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
     btTransform offset;
     offset.setIdentity();
     offset.setOrigin(position);
-    btDefaultMotionState* motion_state = new btDefaultMotionState(offset);
+
+    btMotionState* motion_state;
+    motion_state = new btDefaultMotionState(offset);
+
     btRigidBody::btRigidBodyConstructionInfo rigid_body(mass_.back(),motion_state,m_shapes_.back(),fallInertia);
     btRigidBody* current_body = new btRigidBody(rigid_body);
     m_bodies_.push_back(current_body);
@@ -102,7 +115,8 @@ void BulletCreature::UpdateMotors(std::vector<float> input) {
         else
             sign=-1;
 
-        m_joints_[i]->enableAngularMotor(true, 80.0*sign, 10.0*sign*signal[i]); // apply force
+        m_joints_[i]->enableAngularMotor(true, 1000000.0*sign, 20.0*sign*signal[i]); // apply force
+
     }
 }
 
@@ -130,4 +144,12 @@ std::vector<btHingeConstraint*> BulletCreature::GetJoints() {
 
 btRigidBody* BulletCreature::GetHead() {
     return m_bodies_[0];
+}
+
+Creature BulletCreature::GetCreature() {
+    return blueprint_;
+}
+
+void BulletCreature::CollectData() {
+    blueprint_.UpdateVelocity(GetCenterOfMass().getZ());
 }

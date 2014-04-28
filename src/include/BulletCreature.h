@@ -20,6 +20,9 @@ public:
     std::vector<btRigidBody*> GetRigidBodies();
     std::vector<btHingeConstraint*> GetJoints();
     btRigidBody* GetHead();
+    Creature GetCreature();
+
+    void CollectData();
 
 private:
     std::vector<btScalar> mass_;
@@ -27,6 +30,7 @@ private:
     std::vector<btRigidBody*> m_bodies_;
     std::vector<btHingeConstraint*> m_joints_;
     Creature blueprint_;
+
 
     btRigidBody* AddBody(BodyTree body, btVector3 position);
 

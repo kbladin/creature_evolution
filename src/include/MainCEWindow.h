@@ -5,11 +5,9 @@
 
 #include <QtWidgets/QWidget>
 #include <QFutureWatcher>
-#include <CreatureEvolution.h>
 #include <QtConcurrent/QtConcurrent>
 
 #include <QtWidgets/QGroupBox>
-#include <CreatureEvolution.h>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
@@ -18,19 +16,21 @@
 #include <QSignalMapper>
 
 #include "SliderWidget.h"
+#include "Creature.h"
 
 QT_BEGIN_NAMESPACE
 class QSlider;
 QT_END_NAMESPACE
 
 class GLWidget;
+class EvolutionManager;
 
 class MainCEWindow : public QWidget
 {
     Q_OBJECT
 
 public:
-    MainCEWindow(CreatureEvolution* ce);
+    MainCEWindow();
 
 signals:
     void valueChanged(int value);
@@ -43,15 +43,19 @@ public slots:
 
     void evoDone();
 
+    void GotNewCreature(const Creature &new_creature);
+
     void setValueMut(int value);
+    void setValueMutInternal(int value);
+    void setValueMutSigma(int value);
     static void setValueGen(int value);
     void setValuePop(int value);
     void setValueCO(int value);
     void setValueElit(int value);
     void setBodyDimension(int value);
-
     void changePressed();
     void changeReleased();
+    void GameOfWorms();
 
 protected:
     void keyPressEvent(QKeyEvent *event);
@@ -75,9 +79,13 @@ private:
     QBoxLayout *box_change_dim;
 
     GLWidget *glWidget;
-    CreatureEvolution* creature_evo_;
     static const int normalize = 100;
     static const int number_of_sliders = 6;
+
+    std::vector<Creature> creatures_;
+    float best_fitness_;
+
+    EvolutionManager* EM_;
 };
 
 #endif // MAINCEWINDOW_H
