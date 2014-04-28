@@ -23,7 +23,7 @@ class Simulation {
     virtual void Step(float dt);
     virtual void SetupEnvironment();
 
-    void AddPopulation(Population population);
+    void AddPopulation(Population population, bool disp);
     Population SimulatePopulation();
     std::vector<Node> GetNodes();
     btVector3 GetLastCreatureCoords();

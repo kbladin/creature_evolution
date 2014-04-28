@@ -64,7 +64,7 @@ void Scene::Update() {
 
 void Scene::StartSimulation(std::vector<Creature> viz_creatures) {
     sim_ = new Simulation();
-    sim_->AddPopulation(viz_creatures);
+    sim_->AddPopulation(viz_creatures, true);
     nodes_ = sim_->GetNodes();
 }
 
