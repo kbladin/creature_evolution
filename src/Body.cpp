@@ -37,33 +37,34 @@ float BodyTree::GetLowestPoint() {
 }
 
 Body::Body(){
-    //simple legged creature for testing
     int creature_type = SettingsManager::Instance()->GetCreatureType();
-
-    body_root_ = BodyFactory::CreateHuman();
-    /*
-    // TODO: add switch
+    
+    body_root_ = BodyFactory::CreateLeggedBox(1);
+    return;
     switch(creature_type){
-        case PONY:
-            body_root_ = CreatePony();
-            break;
+        /*case PONY:
+            body_root_ = BodyFactory::CreatePony();
+            break;*/
         case WORM:
-            body_root_ = CreateWorm();
+            body_root_ = BodyFactory::CreateWorm();
             break;
-        case TURTLE:
-            body_root_ = CreateTurtle();
+        /*case TURTLE:
+            body_root_ = BodyFactory::CreateTurtle();
             break;
         case SHEEP:
-            body_root_ = CreateSheep();
+            body_root_ = BodyFactory::CreateSheep();
             break;
         case CRAWLER:
-            body_root_ = CreateCrawler();
+            body_root_ = BodyFactory::CreateCrawler();
+            break;*/
+        case HUMAN:
+            body_root_ = BodyFactory::CreateHuman();
             break;
         default:
-            std::cout << "not valid creature.. uses Pony!";
-            body_root_ = CreatePony();
+            std::cout << "not valid creature.. creating worm as default!" << std::endl;
+            body_root_ = BodyFactory::CreateWorm();
             break;
-    }*/
+    }
 }
 
 BodyTree Body::GetBodyRoot() {
@@ -73,8 +74,8 @@ BodyTree Body::GetBodyRoot() {
 int Body::GetTotalNumberOfJoints(){
     return body_root_.GetNumberOfElements() - 1; // Do not count itself
 }
-/*
-BodyTree Body::CreateWorm(){
+
+BodyTree BodyFactory::CreateWorm(){
 
     int worm_length = 5;
 
@@ -103,9 +104,9 @@ BodyTree Body::CreateWorm(){
         current_segment = body_segment;
     }
 
-    return BodyFactory::CreateHuman();
+    return previous_segment;
 }
-*/
+
 /*
 BodyTree Body::CreatePony(){
 
@@ -335,13 +336,13 @@ BodyTree Body::CreateWorm(){
 
 BodyTree Body::CreateCrawler(){
 
-    float density = 1000;
     float friction = 0.7;
+    float density = 1000;
 
     // Torso
     BodyTree body_segment;
     body_segment.box_dim = Vec3(0.1,0.05,0.2);
-    body_segment.mass = body_segment.box_dim.x * body_segment.box_dim.y * body_segment.box_dim.z * density;
+    body_segment.density = density;
     body_segment.friction = friction * 0.2;
 
     BodyTree current_segment = body_segment;
@@ -350,7 +351,7 @@ BodyTree Body::CreateCrawler(){
     // Leg
     BodyTree leg;
     leg.box_dim = Vec3(0.1,0.05,0.05);
-    leg.mass = leg.box_dim.x * leg.box_dim.y * leg.box_dim.z * density;
+    leg.density = density;
     leg.friction = friction;
 
     BodyTree lower_leg = leg;
@@ -395,6 +396,7 @@ BodyTree Body::CreateCrawler(){
 }
 */
 
+// Left and right might be swapped in strange ways here
 BodyTree BodyFactory::CreateHuman() {
 
     // Create all body parts and joints
@@ -435,28 +437,43 @@ BodyTree BodyFactory::CreateHuman() {
     BodyTree right_shoulder = left_shoulder;
 
     Joint left_shoulder_rib_cage_joint;
-    left_shoulder_rib_cage_joint.connection_root = Vec3(-rib_cage.box_dim.x,rib_cage.box_dim.y - left_shoulder.box_dim.y,0.0f);
-    left_shoulder_rib_cage_joint.connection_branch = Vec3(left_shoulder.box_dim.x,0.0f,0.0f);
+    left_shoulder_rib_cage_joint.connection_root = Vec3(
+                    -rib_cage.box_dim.x,
+                    rib_cage.box_dim.y - left_shoulder.box_dim.y,
+                    0.0f);
+    left_shoulder_rib_cage_joint.connection_branch = Vec3(
+                    left_shoulder.box_dim.x,
+                    0.0f,
+                    0.0f);
     left_shoulder_rib_cage_joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
     left_shoulder_rib_cage_joint.upper_limit = M_PI * 0.7;
     left_shoulder_rib_cage_joint.lower_limit = -M_PI * 0.3;
 
     Joint right_shoulder_rib_cage_joint = left_shoulder_rib_cage_joint;
-    right_shoulder_rib_cage_joint.connection_root = Vec3(rib_cage.box_dim.x,rib_cage.box_dim.y - left_shoulder.box_dim.y,0.0f);
-    right_shoulder_rib_cage_joint.connection_branch = Vec3(-right_shoulder.box_dim.x,0.0f,0.0f);
+    right_shoulder_rib_cage_joint.connection_root = Vec3(
+                    rib_cage.box_dim.x,
+                    rib_cage.box_dim.y - left_shoulder.box_dim.y,
+                    0.0f);
+    right_shoulder_rib_cage_joint.connection_branch = Vec3(
+                    -right_shoulder.box_dim.x,
+                    0.0f,
+                    0.0f);
 
     BodyTree left_arm = BodyFactory::CreateArm(Vec3(1,1,1));
     BodyTree right_arm = left_arm;
 
     Joint left_arm_shoulder_joint;
     left_arm_shoulder_joint.connection_root = Vec3(0.0,0.0,0.0);
-    left_arm_shoulder_joint.connection_branch = Vec3(0.0,left_arm.box_dim.y,0.0);
-    left_arm_shoulder_joint.hinge_orientation = Vec3(0.0,0.0,0.0); // leaving this for now
+    left_arm_shoulder_joint.connection_branch = Vec3(
+                    0.0,
+                    left_arm.box_dim.y,
+                    0.0);
+    left_arm_shoulder_joint.hinge_orientation = Vec3(0.0,0.0,0.0);
     left_arm_shoulder_joint.upper_limit = M_PI * 0.7;
     left_arm_shoulder_joint.lower_limit = 0.0;
 
     Joint right_arm_shoulder_joint = left_arm_shoulder_joint;
-    right_arm_shoulder_joint.hinge_orientation = Vec3(0.0,0.0,0.0); // leaving this for now
+    right_arm_shoulder_joint.hinge_orientation = Vec3(0.0,0.0,0.0);
     right_arm_shoulder_joint.upper_limit = M_PI * 0.0;
     right_arm_shoulder_joint.lower_limit = -M_PI * 0.7;
 
@@ -488,14 +505,20 @@ BodyTree BodyFactory::CreateHuman() {
     BodyTree left_hip_bone = right_hip_bone;
 
     Joint left_hip;
-    left_hip.connection_root = Vec3(-pelvis.box_dim.x + left_hip_bone.box_dim.x/2,-pelvis.box_dim.y,0.0f);
+    left_hip.connection_root = Vec3(
+                    -pelvis.box_dim.x + left_hip_bone.box_dim.x/2,
+                    -pelvis.box_dim.y,
+                    0.0f);
     left_hip.connection_branch = Vec3(0.0f,right_hip_bone.box_dim.y,0.0f);
     left_hip.hinge_orientation = Vec3(M_PI/2,0.0,0.0);
     left_hip.upper_limit = 0.0;
     left_hip.lower_limit = -M_PI * 0.4;
 
     Joint right_hip = left_hip;
-    right_hip.connection_root = Vec3(pelvis.box_dim.x  - right_hip_bone.box_dim.x/2,-pelvis.box_dim.y,0.0f);
+    right_hip.connection_root = Vec3(
+                    pelvis.box_dim.x  - right_hip_bone.box_dim.x/2,
+                    -pelvis.box_dim.y,
+                    0.0f);
     right_hip.upper_limit = M_PI * 0.4;
     right_hip.lower_limit = 0.0;
 
@@ -508,8 +531,6 @@ BodyTree BodyFactory::CreateHuman() {
     right_leg.root_joint.lower_limit = 0.0;
 
     BodyTree left_leg = right_leg;
-
-
 
     // Connect the joints
     right_hip_bone.root_joint = right_hip;
@@ -526,9 +547,6 @@ BodyTree BodyFactory::CreateHuman() {
     rib_cage.root_joint = neck_rib_cage_joint;
     neck.root_joint = neck_head_joint;
     rib_cage.root_joint = neck_rib_cage_joint;
-
-
-
 
     // Add all branches
     right_hip_bone.body_list.push_back(right_leg);
@@ -547,20 +565,23 @@ BodyTree BodyFactory::CreateHuman() {
     neck.body_list.push_back(rib_cage);
     head.body_list.push_back(neck);
 
-
-
     return head;
 }
 
+// Left and right might be swapped in strange ways here
 BodyTree BodyFactory::CreateLeggedBox(float scale) {
 
     BodyTree torso;
-    torso.box_dim = Vec3(0.6 * scale, 0.2 * scale, 1.0 * scale);
+    torso.box_dim = Vec3(0.3 * scale, 0.1 * scale, 0.5 * scale);
     torso.density = 1000.0f;
     torso.friction = 0.5;
 
-    BodyTree right_front_leg = BodyFactory::CreateLeg(Vec3(0.5*scale,0.3*scale,0.5*scale));
-    right_front_leg.root_joint.connection_root = Vec3(torso.box_dim.x, -torso.box_dim.y, -torso.box_dim.z);
+    BodyTree right_front_leg = BodyFactory::CreateLeg(
+                    Vec3(scale, 0.7*scale, scale));
+    right_front_leg.root_joint.connection_root = Vec3(
+                    torso.box_dim.x - right_front_leg.box_dim.x,
+                    -torso.box_dim.y,
+                    -torso.box_dim.z + right_front_leg.box_dim.z);
     right_front_leg.root_joint.connection_branch =
                     Vec3(0.0, right_front_leg.box_dim.y, 0.0);
     right_front_leg.root_joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
@@ -568,11 +589,20 @@ BodyTree BodyFactory::CreateLeggedBox(float scale) {
     right_front_leg.root_joint.lower_limit = 0.0;
 
     BodyTree left_front_leg = right_front_leg;
-    left_front_leg.root_joint.connection_root = Vec3(-torso.box_dim.x, -torso.box_dim.y, -torso.box_dim.z);
+    left_front_leg.root_joint.connection_root = Vec3(
+                    -torso.box_dim.x + left_front_leg.box_dim.x,
+                    -torso.box_dim.y,
+                    -torso.box_dim.z + left_front_leg.box_dim.z);
     BodyTree right_back_leg = right_front_leg;
-    right_back_leg.root_joint.connection_root = Vec3(torso.box_dim.x, -torso.box_dim.y, torso.box_dim.z);
+    right_back_leg.root_joint.connection_root = Vec3(
+                    torso.box_dim.x - right_back_leg.box_dim.x,
+                    -torso.box_dim.y,
+                    torso.box_dim.z - right_back_leg.box_dim.z);
     BodyTree left_back_leg = right_front_leg;
-    left_back_leg.root_joint.connection_root = Vec3(-torso.box_dim.x, -torso.box_dim.y, torso.box_dim.z);
+    left_back_leg.root_joint.connection_root = Vec3(
+                    -torso.box_dim.x + left_back_leg.box_dim.x,
+                    -torso.box_dim.y,
+                    torso.box_dim.z - left_back_leg.box_dim.z);
 
     torso.body_list.push_back(right_front_leg);
     torso.body_list.push_back(left_front_leg);
@@ -608,7 +638,10 @@ BodyTree BodyFactory::CreateLeg(Vec3 scale) {
 
     Joint ancle;
     ancle.connection_root = Vec3(0.0f,-lower_leg.box_dim.y,0.0);
-    ancle.connection_branch = Vec3(0.0f,0.0f,-foot.box_dim.z + lower_leg.box_dim.z);
+    ancle.connection_branch = Vec3(
+                    0.0f,
+                    0.0f,
+                    -foot.box_dim.z + lower_leg.box_dim.z);
     ancle.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
     ancle.upper_limit = M_PI*0.1;
     ancle.lower_limit = -M_PI*0.3;

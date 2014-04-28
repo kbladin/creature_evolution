@@ -49,24 +49,19 @@ private:
 
 class BodyFactory {
 public:
-  // Body parts
-  static BodyTree CreateLeg(Vec3 scale);
-  static BodyTree CreateArm(Vec3 scale);
-
   // Creatures
   static BodyTree CreateLeggedBox(float scale);
   static BodyTree CreateHuman();
   static BodyTree CreateWorm();
-
-  /*
-  BodyTree CreatePony();
-  BodyTree CreateSheep();
-  BodyTree CreateWorm();
-  BodyTree CreateTurtle();
-  BodyTree CreateCrawler();
+  /*static BodyTree CreateCrawler();
+  static BodyTree CreatePony();
+  static BodyTree CreateSheep();
+  static BodyTree CreateTurtle();
   */
-
 private:
+  // Body parts
+  static BodyTree CreateLeg(Vec3 scale);
+  static BodyTree CreateArm(Vec3 scale);
 };
 
 #endif //BODY_H
