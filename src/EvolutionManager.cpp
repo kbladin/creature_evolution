@@ -137,9 +137,10 @@ void EvolutionManager::NextGeneration() {
 		new_creatures[1].Mutate();
 
         new_population[i] = new_creatures[0];
-        new_population[i+1] = new_creatures[1];
-        // TODO: kan bara ha jämnt antal creatures i en population nu
 
+        // ser till att om pop. size är udda så läggs inte denna till. dock kanske borde skrivas på annat sätt.
+        if(i != current_population_.size() - 1)
+	        new_population[i+1] = new_creatures[1];
 	}
 
 	// current_population_ = new_population;
