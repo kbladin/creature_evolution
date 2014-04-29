@@ -38,9 +38,7 @@ float BodyTree::GetLowestPoint() {
 
 Body::Body(){
     int creature_type = SettingsManager::Instance()->GetCreatureType();
-    
-    body_root_ = BodyFactory::CreateLeggedBox(1);
-    return;
+
     switch(creature_type){
         /*case PONY:
             body_root_ = BodyFactory::CreatePony();

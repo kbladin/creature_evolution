@@ -23,13 +23,20 @@ struct SimData {
     float deviation_x;
     float deviation_y;
     float deviation_z;
+    float accumulated_y;
+    float accumulated_head_y;
     SimData() {
+        ResetData();
+    }
+    void ResetData(){
         distance = 0.0f;
         velocity = 0.0f;
         old_pos = 0.0f;
         deviation_x = 0.0f;
         deviation_y = 0.0f;
         deviation_z = 0.0f;
+        accumulated_y = 0.0f;
+        accumulated_head_y = 0.0f;
     }
 };
 
@@ -50,11 +57,11 @@ public:
     Body GetBody();
     void Mutate();
 
-    SimData GetSimData();
-    void SetSimData(SimData);
-    void UpdateDeviationX(float deviationx);
-    void UpdateDeviationY(float deviationy);
-    void UpdateVelocity(float pos);
+    SimData* GetSimData();
+    //void SetSimData(SimData);
+    //void UpdateDeviationX(float deviationx);
+    //void UpdateDeviationY(float deviationy);
+    //void UpdateVelocity(float pos);
 
     std::vector<Creature> Crossover(Creature mate);
 
@@ -62,7 +69,7 @@ private:
     float fitness_;
     Brain brain_;
     Body body_;
-    SimData simdata_;
+    SimData* simdata_;
 
     static AutoInitRNG rng_;
 

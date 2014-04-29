@@ -7,11 +7,12 @@ Creature::Creature() {
 	fitness_ = -1.0f;
 	int n_joints = body_.GetTotalNumberOfJoints(); 
 	brain_ = Brain(n_joints + 1, n_joints);
+	simdata_ = new SimData;
 }
 
 //! Destructor. Deletes all rigid bodies etc
 Creature::~Creature() {
-
+	//delete simdata_;
 }
 
 std::vector<float> Creature::CalculateBrainOutput(std::vector<float> input) {
@@ -48,10 +49,10 @@ void Creature::Mutate() {
 	//brain_.Mutate();
 }
 
-SimData Creature::GetSimData() {
+SimData* Creature::GetSimData() {
     return simdata_;
 }
-
+/*
 void Creature::SetSimData(SimData d) {
     simdata_ = d;
 }
@@ -68,7 +69,7 @@ void Creature::UpdateVelocity(float pos) {
 	simdata_.velocity += pos - simdata_.old_pos;
 	simdata_.old_pos = pos;
 }
-
+*/
 std::vector<Creature> Creature::Crossover(Creature mate){
 	std::vector<Creature> children;
 	std::vector<Brain> childrens_brain;

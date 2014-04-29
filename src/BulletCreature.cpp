@@ -9,7 +9,7 @@ BulletCreature::BulletCreature(Creature blueprint) {
 
     //create body
     BodyTree body_root = blueprint_.GetBody().GetBodyRoot();
-    AddBody(body_root, btVector3(0.0,-1.0-body_root.GetLowestPoint(),0.0));
+    AddBody(body_root, btVector3(0.0,-body_root.GetLowestPoint(),0.0));
 }
 
 
@@ -20,7 +20,7 @@ BulletCreature::BulletCreature(Creature blueprint, float x_displacement) {
 
     //create body
     BodyTree body_root = blueprint_.GetBody().GetBodyRoot();
-    AddBody(body_root, btVector3(x_displacement,-1.0-body_root.GetLowestPoint(),0.0));
+    AddBody(body_root, btVector3(x_displacement,-body_root.GetLowestPoint(),0.0));
 
 }
 
@@ -99,6 +99,13 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
         localA.setOrigin(btVector3(a.x,a.y,a.z));
         localB.setOrigin(btVector3(b.x,b.y,b.z));
         m_joints_.push_back(new btHingeConstraint(*(current_body), *(child_body), localA, localB));
+
+        // For now just proportional to the mass of the bodies,
+        // seems to be what works best for most creatures.
+        float strength = (body.body_list[i].root_joint.strength < 0) ?
+                    body.GetMass() + body.body_list[i].GetMass() :
+                    body.body_list[i].root_joint.strength;
+        joint_strength_.push_back(strength);
         m_joints_.back()->setLimit(btScalar(joint.lower_limit), btScalar(joint.upper_limit));
 
     }
@@ -118,7 +125,7 @@ void BulletCreature::UpdateMotors(std::vector<float> input) {
         else
             sign=-1;
 
-        m_joints_[i]->enableAngularMotor(true, 1000000.0*sign, 50.0*sign*signal[i]); // apply force
+        m_joints_[i]->enableAngularMotor(true, 1000000.0*sign, joint_strength_[i]*sign*signal[i]); // apply force
     }
 }
 
@@ -153,5 +160,11 @@ Creature BulletCreature::GetCreature() {
 }
 
 void BulletCreature::CollectData() {
-    blueprint_.UpdateVelocity(GetCenterOfMass().getZ());
+    SimData* data = blueprint_.GetSimData();
+    data->velocity = GetCenterOfMass().getZ();
+    data->accumulated_y += GetCenterOfMass().getY();
+    btTransform trans;
+    GetHead()->getMotionState()->getWorldTransform(trans);
+    data->accumulated_head_y += trans.getOrigin().y();
+
 }

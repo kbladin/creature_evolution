@@ -91,14 +91,15 @@ void EvolutionManager::SimulatePopulation() {
 void EvolutionManager::CalculateFitnessOnPopulation() {
 
     for(int i = 0; i < current_population_.size(); ++i) {
-        
+        /*
     	SimData data = current_population_[i].GetSimData();
         float dist = data.distance;
         float velocity = data.velocity;
         float dev_x = data.deviation_x;
         float dev_y = data.deviation_y;
-
-       	float fitness = velocity;// - dev_x - dev_y;
+		*/
+		SimData* data = current_population_[i].GetSimData();
+       	float fitness = data->accumulated_head_y/1000.0f; //velocity;// - dev_x - dev_y;
         current_population_[i].SetFitness(fitness);
     }
 }
@@ -119,6 +120,10 @@ void EvolutionManager::NextGeneration() {
 
 	Population new_population (&current_population_[0],
 		 &current_population_[elitism_pivot]);
+
+	for (int i = 0; i < elitism_pivot; ++i){
+		new_population[i].GetSimData()->ResetData();
+	}
 
 	new_population.resize(current_population_.size());
 

@@ -8,11 +8,15 @@
 
 struct Joint {
     //alternative to connection_root/branch is to give each BodyTree a position in worldspace and each joint a connection point in worldspace, which is better?
+    // strength does not need to be explicitly set.
+    Joint() : strength(-1){}
+
     Vec3 connection_root;
     Vec3 connection_branch;
     Vec3 hinge_orientation;
     float upper_limit;
     float lower_limit;
+    float strength;
 };
 
 struct BodyTree {
