@@ -3,15 +3,17 @@
 
 MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 {
-    ////// Vikans fönster
-    Qt::WindowFlags flags =  Qt::Window;
-    QWidget *transWindow = new QWidget();
-    //transWindow->setParent(this);
+    //Qt::WindowFlags flags =  Qt::Window;
+    _mousePressed = false;
+    /*transWindow = new QWidget();
+    transWindow->setParent(this);
 
-    transWindow->setWindowFlags(Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint); 
+    transWindow->setWindowFlags(Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint|Qt::Window);
     //transWindow->setWindowFlags(Qt::Widget | Qt::WindowStaysOnTopHint);
-    transWindow->setWindowOpacity(0.5);
-    
+    transWindow->setWindowOpacity(1.0);
+    //transWindow->mouseMoveEvent(QMouseEvent *e);
+
+
     QVBoxLayout *testL = new QVBoxLayout;
 
     QPushButton *testB = new QPushButton("Test");
@@ -21,11 +23,17 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     transWindow->setLayout(testL);
     transWindow->resize(300, 300);
     
-    transWindow->show(); 
+    transWindow->show(); */
     /////
     
-    creature_evo_ = ce;
+    W *test = new W();
+    test->setParent(this);
+    test->setWindowFlags(Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint|Qt::Window);
+    test->resize(300,300);
+    test->setWindowOpacity(0.8);
+    test->show();
 
+    creature_evo_ = ce;
     QGLFormat glFormat;
     glFormat.setVersion( 3, 2 );
     glFormat.setProfile( QGLFormat::CoreProfile ); // Requires >=Qt-4.8.0
@@ -85,6 +93,7 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     connect(loadButton, SIGNAL(clicked()), this, SLOT(loadCreature()));
     connect(&evolution_thread_starter_, SIGNAL(finished()), this, SLOT(evoDone()));
 
+    //connect(transWindow, SIGNAL(), this, SLOT(mouseMoveEvent(QMouseEvent*)));
 }
 
 void MainCEWindow::setValueGen(int value) {
@@ -107,7 +116,7 @@ void MainCEWindow::setValueMut(int value) {
     SettingsManager::Instance()->SetMutation((float)(value)/(float)(normalize));
     qDebug()<<SettingsManager::Instance()->GetMutation();
 }
-void MainCEWindow::setBodyDimension(int value) {
+void W::setBodyDimension(int value) {
     float dim = (float)(value)/(float)(normalize);
     SettingsManager::Instance()->SetMainBodyDimension(Vec3(dim/2, dim/2, dim));
 }
@@ -123,6 +132,29 @@ void MainCEWindow::keyPressEvent(QKeyEvent *e) {
         close();
     else
         QWidget::keyPressEvent(e);
+}
+
+void MainCEWindow::mousePressEvent(QMouseEvent *e) {
+    if (e->button() == Qt::LeftButton)
+    {
+        _mousePressed = true;
+        _mousePosition = e->pos();
+    }
+}
+
+void MainCEWindow::mouseReleaseEvent(QMouseEvent *e) {
+    if (e->button() == Qt::LeftButton)
+    {
+        _mousePressed = false;
+        _mousePosition = e->pos();
+    }
+}
+
+void MainCEWindow::mouseMoveEvent( QMouseEvent *e )
+{
+    if ( _mousePressed ) {
+        transWindow->move( ( e->pos() - _mousePosition ) );
+    }
 }
 
 void MainCEWindow::testPrint() {
