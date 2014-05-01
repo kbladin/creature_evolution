@@ -6,6 +6,10 @@
 #include "BulletCreature.h"
 #include "Node.h"
 
+enum WorldType{
+  PLANE, PELLETS
+};
+
 #define BIT(x) (1<<(x))
 enum collisiontypes {
     COL_NOTHING = 0,
@@ -20,14 +24,16 @@ class Simulation {
     Simulation();
     ~Simulation();
 
-    virtual void Step(float dt);
-    virtual void SetupEnvironment();
+    void Step(float dt);
 
     void AddPopulation(Population population);
     Population SimulatePopulation();
     std::vector<Node> GetNodes();
     btVector3 GetLastCreatureCoords();
   private:
+    void SetupPlaneEnvironment();
+    void SetupPelletsEnvironment();
+
     btBroadphaseInterface* broad_phase_;
     btDefaultCollisionConfiguration* collision_configuration_;
     btCollisionDispatcher* dispatcher_;
@@ -36,9 +42,8 @@ class Simulation {
 
 
     std::vector<BulletCreature*> bt_population_;
-    btCollisionShape* ground_shape_;
-    btDefaultMotionState* ground_motion_state_;
-    btRigidBody* ground_rigid_body_;
+    std::vector<btCollisionShape*> enviro_shapes_;
+    std::vector<btRigidBody*> enviro_bodies_;
 
 
     int bt_creature_collidies_with_;

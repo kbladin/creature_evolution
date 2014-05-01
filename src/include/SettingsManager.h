@@ -52,6 +52,9 @@ public:
   void SetCreatureType(int creature);
   int GetCreatureType();
 
+  void SetWorldType(int world);
+  int GetWorldType();
+
   // void AddBestCreature(Creature creature);
   // Creature GetBestCreature();
   // std::vector<Creature> GetAllBestCreatures();
@@ -79,6 +82,7 @@ private:
   // side to the other.
 
   int creature_type_; 
+  int world_type_;
 
   //std::vector<Creature> best_creatures_;
   Vec3 main_body_dim_;

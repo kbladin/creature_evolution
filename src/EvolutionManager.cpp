@@ -55,7 +55,7 @@ void EvolutionManager::PrintBestFitnessValues(){
 	for(int i=0; i<best_creatures_.size(); i++){
 		std::cout << "🐛" << "Generation " << i+1 << ". Best fitness: " 
 		<< best_creatures_[i].GetFitness() << std::endl;
-	}
+    }
 
 }
 
@@ -81,7 +81,7 @@ Population EvolutionManager::GetAllBestCreatures() {
 //! Simulates all creatures in population
 void EvolutionManager::SimulatePopulation() {
     Simulation sim_world;
-    
+
     sim_world.AddPopulation(current_population_);
     current_population_ = sim_world.SimulatePopulation();
 }

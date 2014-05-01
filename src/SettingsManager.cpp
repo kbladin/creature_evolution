@@ -159,3 +159,10 @@ void SettingsManager::SetMainBodyDimension(Vec3 vec){
   main_body_dim_ = vec;
 }
 
+void SettingsManager::SetWorldType(int world) {
+    world_type_ = world;
+}
+
+int SettingsManager::GetWorldType() {
+    return world_type_;
+}

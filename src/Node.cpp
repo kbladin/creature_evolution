@@ -74,7 +74,7 @@ void Node::InitPlaneShape() {
 }
 
 void Node::InitSphereShape() {
-
+    shape_ = Box(0.05,0.05,0.05);
 }
 
 void Node::DeleteBuffers() {

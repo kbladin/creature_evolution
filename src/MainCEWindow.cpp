@@ -169,7 +169,7 @@ void MainCEWindow::renderWorm() {
 void MainCEWindow::GotNewCreature(const Creature &new_creature) {
     std::cout << "Got creature! Fitness: " << new_creature.GetFitness() << std::endl;
     Creature add = new_creature;
-    creatures_.push_back(add);
+    //creatures_.push_back(add);
     if(best_fitness_ < new_creature.GetFitness()) {
         best_fitness_ = new_creature.GetFitness();
         Scene::Instance()->RestartSimulation(std::vector<Creature>(1,new_creature));
