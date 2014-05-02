@@ -20,6 +20,7 @@ public:
     std::vector<btRigidBody*> GetRigidBodies();
     std::vector<btHingeConstraint*> GetJoints();
     btRigidBody* GetHead();
+    btVector3 GetHeadPosition();
     Creature GetCreature();
 
     void CollectData();

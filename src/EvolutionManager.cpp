@@ -94,16 +94,34 @@ void EvolutionManager::CalculateFitnessOnPopulation() {
         Vikta ihop olika sorter. gå längst, vara högst över marken osv.
         Komma ihåg att normalisera värdena när de viktas ihop!
     */
+
+    SimData data = current_population_[0].GetSimData();
+    float norm_dist_z =data.distance_forward;
+    float norm_max_height=data.max_height;
+
+    std::vector<float> weights; 
+
+    weights.push_back(1.0f);
+    weights.push_back(0.5f);
+
+    for(int i = 1; i < current_population_.size(); ++i) {
+    	SimData data = current_population_[i].GetSimData();
+
+    	if(data.distance_forward > norm_dist_z)
+    		norm_dist_z = data.distance_forward;
+
+    	if(data.max_height > norm_max_height)
+    		norm_max_height = data.max_height;
+
+    }
     
     for(int i = 0; i < current_population_.size(); ++i) {
-        
     	SimData data = current_population_[i].GetSimData();
-        float dist = data.distance;
-        float velocity = data.velocity;
-        float dev_x = data.deviation_x;
-        float dev_y = data.deviation_y;
+        float dist_z = data.distance_forward;
+        float max_height = data.max_height; 
 
-       	float fitness = velocity;// - dev_x - dev_y;
+       	float fitness = weights[0]*(dist_z/norm_dist_z) + weights[1]*(max_height/norm_max_height);
+
         current_population_[i].SetFitness(fitness);
     }
 }

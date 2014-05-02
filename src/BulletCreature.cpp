@@ -146,13 +146,19 @@ btRigidBody* BulletCreature::GetHead() {
     return m_bodies_[0];
 }
 
+btVector3 BulletCreature::GetHeadPosition() {
+    btTransform trans;
+    m_bodies_[0]->getMotionState()->getWorldTransform(trans);
+    return trans.getOrigin();
+}
+
 Creature BulletCreature::GetCreature() {
     return blueprint_;
 }
 
 void BulletCreature::CollectData() {
-    blueprint_.UpdateDistanceForward(GetCenterOfMass().getZ());
-    //kanske lägg till huvudet ist. 
+    blueprint_.UpdateDistanceForward(GetHeadPosition().getZ());
+    blueprint_.UpdateMaxHeight(GetHeadPosition().getY()+1); // då planet ligger på -1 just nu... FULT!!!!
 
     // TO DO: Uppdatera info om varelsen. typ högsta höjd osv.. 
 

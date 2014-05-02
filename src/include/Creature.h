@@ -54,6 +54,8 @@ public:
     void SetSimData(SimData);
     void UpdateDeviationX(float deviationx);
     void UpdateDistanceForward(float dist);
+    void UpdateMaxHeight(float height);
+
 
     std::vector<Creature> Crossover(Creature mate);
 

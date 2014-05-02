@@ -25,7 +25,9 @@ void Creature::SetFitness(float fitness) {
 
 //! Return the fitnessvalue for the creature
 float Creature::GetFitness() const {
-    return fitness_;
+	 return fitness_;
+    // nu är fitness normaliserat för varje creature..
+    //return simdata_.distance_forward + simdata_.max_height; 
 }
 
 Brain Creature::GetBrain(){
@@ -66,6 +68,12 @@ void Creature::UpdateDeviationX(float deviationx) {
 */
 void Creature::UpdateDistanceForward(float dist){
 	simdata_.distance_forward += dist;  
+}
+
+//! Set the highest height a creature have had. Only stores that value
+void Creature::UpdateMaxHeight(float height){
+	if (height > simdata_.max_height)
+		simdata_.max_height = height; 
 }
 
 std::vector<Creature> Creature::Crossover(Creature mate){
