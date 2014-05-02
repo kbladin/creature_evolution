@@ -16,12 +16,12 @@ int main(int argc, char **argv) {
 	SettingsManager::Instance()->SetElitism(0.2f);
 	SettingsManager::Instance()->SetMutation(0.8f);
 */
-    SettingsManager::Instance()->SetFitnessDistanceForward(0.5f);
+    SettingsManager::Instance()->SetFitnessDistanceForward(0.2f);
     SettingsManager::Instance()->SetFitnessMaxHeight(1.0f);
-    SettingsManager::Instance()->SetFitnessEnergy(0.45f);
+    SettingsManager::Instance()->SetFitnessEnergy(0.4f);
 
 
-    SettingsManager::Instance()->SetCreatureType(CreatureType::WORM);
+    SettingsManager::Instance()->SetCreatureType(CreatureType::SHEEP);
     SettingsManager::Instance()->SetMainBodyDimension(Vec3(0.1,0.1,0.2));
     qRegisterMetaType<Creature>();
     
