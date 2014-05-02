@@ -4,7 +4,7 @@
 MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 {
     //Qt::WindowFlags flags =  Qt::Window;
-    _mousePressed = false;
+    //_mousePressed = false;
     /*transWindow = new QWidget();
     transWindow->setParent(this);
 
@@ -12,7 +12,6 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     //transWindow->setWindowFlags(Qt::Widget | Qt::WindowStaysOnTopHint);
     transWindow->setWindowOpacity(1.0);
     //transWindow->mouseMoveEvent(QMouseEvent *e);
-
 
     QVBoxLayout *testL = new QVBoxLayout;
 
@@ -25,13 +24,14 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     
     transWindow->show(); */
     /////
-    
-    W *test = new W();
+    /*
+    TransWindow *test = new TransWindow(this); // this för att den tar emot en parent så att det blir parent = MainCEWindow
     test->setParent(this);
     test->setWindowFlags(Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint|Qt::Window);
     test->resize(300,300);
     test->setWindowOpacity(0.8);
-    test->show();
+    test->show();*/
+
 
     creature_evo_ = ce;
     QGLFormat glFormat;
@@ -41,6 +41,7 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     glWidget = new GLWidget(glFormat,0,creature_evo_);
 
     QHBoxLayout *layout_main = new QHBoxLayout;
+/*
     QVBoxLayout *layout_control = new QVBoxLayout;
     QVBoxLayout *layout_button = new QVBoxLayout;
 
@@ -79,21 +80,25 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
     layout_control->addWidget(elitism_slider);
     layout_control->addWidget(mutation_slider);
 
+*/
     layout_main->addWidget(glWidget);
-    layout_main->addLayout(layout_control);
-    layout_main->addLayout(layout_button);
+    //layout_main->addLayout(layout_control);
+    //layout_main->addLayout(layout_button);
 
-    setLayout(layout_main);
-    setWindowTitle(tr("Creature Evolution"));
-
+/*
     // ----- Connect buttons -----
     //connect(dummyButton,SIGNAL(clicked()), this, SLOT(testPrint()));
     connect(renderAllButton,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
     connect(simButton, SIGNAL(clicked()), this, SLOT(startEvolution()));
     connect(loadButton, SIGNAL(clicked()), this, SLOT(loadCreature()));
     connect(&evolution_thread_starter_, SIGNAL(finished()), this, SLOT(evoDone()));
+*/
 
-    //connect(transWindow, SIGNAL(), this, SLOT(mouseMoveEvent(QMouseEvent*)));
+
+    //setLayout(layout_main);
+
+    setWindowTitle(tr("Creature Evolution"));
+    TransWindow *wind = new TransWindow(this);
 }
 
 void MainCEWindow::setValueGen(int value) {
@@ -116,7 +121,7 @@ void MainCEWindow::setValueMut(int value) {
     SettingsManager::Instance()->SetMutation((float)(value)/(float)(normalize));
     qDebug()<<SettingsManager::Instance()->GetMutation();
 }
-void W::setBodyDimension(int value) {
+void MainCEWindow::setBodyDimension(int value) {
     float dim = (float)(value)/(float)(normalize);
     SettingsManager::Instance()->SetMainBodyDimension(Vec3(dim/2, dim/2, dim));
 }
@@ -132,29 +137,6 @@ void MainCEWindow::keyPressEvent(QKeyEvent *e) {
         close();
     else
         QWidget::keyPressEvent(e);
-}
-
-void MainCEWindow::mousePressEvent(QMouseEvent *e) {
-    if (e->button() == Qt::LeftButton)
-    {
-        _mousePressed = true;
-        _mousePosition = e->pos();
-    }
-}
-
-void MainCEWindow::mouseReleaseEvent(QMouseEvent *e) {
-    if (e->button() == Qt::LeftButton)
-    {
-        _mousePressed = false;
-        _mousePosition = e->pos();
-    }
-}
-
-void MainCEWindow::mouseMoveEvent( QMouseEvent *e )
-{
-    if ( _mousePressed ) {
-        transWindow->move( ( e->pos() - _mousePosition ) );
-    }
 }
 
 void MainCEWindow::testPrint() {
