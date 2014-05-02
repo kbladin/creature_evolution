@@ -52,6 +52,11 @@ void GLWidget::paintGL(){
 }
 
 void GLWidget::resizeGL(int width, int height){
+  QDesktopWidget widget;
+  QRect screenDimension = widget.availableGeometry(widget.primaryScreen());
+  //height = screenDimension.height();
+  width = screenDimension.width();
+
   SettingsManager::Instance()->SetFrameWidth(width);
   SettingsManager::Instance()->SetFrameHeight(height);
   int side = qMin(width, height);
