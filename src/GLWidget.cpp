@@ -25,7 +25,7 @@ QSize GLWidget::minimumSizeHint() const{
 }
 
 QSize GLWidget::sizeHint() const{
-  return QSize(400, 400);
+  return QSize(400,400);
 }
 
 void GLWidget::initializeGL(){
@@ -34,6 +34,12 @@ void GLWidget::initializeGL(){
     fprintf(stderr, "Failed to initialize GLEW\n");
   }
   glClearColor(0.8f, 0.8f, 1.0f, 1.0f);
+  glEnable(GL_DEPTH_TEST);
+
+  glEnable(GL_CULL_FACE);
+  glCullFace (GL_BACK);
+  // Accept fragment if it closer to the camera than the former one
+  glDepthFunc(GL_LESS);
 
   ShaderManager::Instance();
   TextureManager::Instance();
@@ -41,9 +47,6 @@ void GLWidget::initializeGL(){
 
 void GLWidget::paintGL(){
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glEnable(GL_DEPTH_TEST);
-  // Accept fragment if it closer to the camera than the former one
-  glDepthFunc(GL_LESS);
 
   //if(enable_render_) {
     Scene::Instance()->Update();
@@ -52,10 +55,16 @@ void GLWidget::paintGL(){
 }
 
 void GLWidget::resizeGL(int width, int height){
+  QDesktopWidget widget;
+  QRect screenDimension = widget.availableGeometry(widget.primaryScreen());
+  //height = screenDimension.height();
+  //width = screenDimension.width();
+
   SettingsManager::Instance()->SetFrameWidth(width);
   SettingsManager::Instance()->SetFrameHeight(height);
   int side = qMin(width, height);
-  glViewport((width - side) / 2, (height - side) / 2, side, side);
+  glViewport(0,0,width,height);
+  //glViewport((width - side) / 2, (height - side) / 2, side, side);
 }
 
 void GLWidget::mousePressEvent(QMouseEvent *event){

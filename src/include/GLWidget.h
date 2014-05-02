@@ -6,6 +6,7 @@
 #include <QtOpenGL/QGLWidget>
 #include <QtGui/QMouseEvent>
 #include <QtGui/QWheelEvent>
+#include <QtWidgets/QDesktopWidget>
 #include <QDebug>
 #include <QtCore/QTimer>
 #include <QtWidgets/qwidget.h>

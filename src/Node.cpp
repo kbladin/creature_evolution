@@ -71,7 +71,11 @@ void Node::InitBoxShape() {
 }
 
 void Node::InitPlaneShape() {
-    shape_ = Plane(glm::vec3(1.0f) * 100.0f);
+    btStaticPlaneShape* planeShape = (btStaticPlaneShape*)(rigid_body_->getCollisionShape());
+    btVector3 normal = planeShape->getPlaneNormal();
+    float constant = planeShape->getPlaneConstant();
+    glm::vec4 plane_equation = glm::vec4(normal.getX(),normal.getY(),normal.getZ(),constant);
+    shape_ = Plane(glm::vec3(1.0f) * 100.0f, plane_equation);
 }
 
 void Node::InitSphereShape() {
