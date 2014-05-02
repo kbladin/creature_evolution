@@ -25,7 +25,7 @@ QSize GLWidget::minimumSizeHint() const{
 }
 
 QSize GLWidget::sizeHint() const{
-  return QSize(400, 400);
+  return QSize(400,400);
 }
 
 void GLWidget::initializeGL(){
@@ -55,7 +55,8 @@ void GLWidget::resizeGL(int width, int height){
   SettingsManager::Instance()->SetFrameWidth(width);
   SettingsManager::Instance()->SetFrameHeight(height);
   int side = qMin(width, height);
-  glViewport((width - side) / 2, (height - side) / 2, side, side);
+  glViewport(0,0,width,height);
+  //glViewport((width - side) / 2, (height - side) / 2, side, side);
 }
 
 void GLWidget::mousePressEvent(QMouseEvent *event){
