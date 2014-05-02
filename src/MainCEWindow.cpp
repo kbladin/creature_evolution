@@ -36,6 +36,7 @@ MainCEWindow::MainCEWindow()
     QDesktopWidget widget;
     QRect screenSize = widget.availableGeometry(widget.primaryScreen());
     dummyButton->setMaximumSize(screenSize.width()/30, screenSize.height());
+
     /*
     simButton->setMaximumSize(screenSize.width()/10, screenSize.height()/20);
     loadButton->setMaximumSize(screenSize.width()/10, screenSize.height()/20);
@@ -68,6 +69,8 @@ MainCEWindow::MainCEWindow()
     mutation_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
     mutation_internal_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
     mutation_sigma_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
+
+    SettingsManager::Instance()->SetPanelWidth(screenSize.width()/30 + screenSize.width()/width);
 
     connect(generation_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueGen(int)));
     connect(generation_size_slider, SIGNAL(valueChanged(int)), this, SLOT(setValuePop(int)));
@@ -136,15 +139,12 @@ void MainCEWindow::setValueElit(int value) {
 }
 void MainCEWindow::setValueMut(int value) {
     SettingsManager::Instance()->SetMutation((float)(value)/(float)(normalize));
-    qDebug()<<SettingsManager::Instance()->GetMutation();
 }
 void MainCEWindow::setValueMutInternal(int value) {
     SettingsManager::Instance()->SetMutationInternal((float)(value)/(float)(normalize));
-    qDebug()<<SettingsManager::Instance()->GetMutation();
 }
 void MainCEWindow::setValueMutSigma(int value) {
     SettingsManager::Instance()->SetMutationSigma((float)(value)/(float)(normalize));
-    qDebug()<<SettingsManager::Instance()->GetMutation();
 }
 void MainCEWindow::setBodyDimension(int value) {
     float dim = (float)(value)/(float)(normalize);
@@ -255,4 +255,14 @@ void MainCEWindow::GotNewCreature(const Creature &new_creature) {
         best_fitness_ = new_creature.GetFitness();
         Scene::Instance()->RestartSimulation(std::vector<Creature>(1,new_creature));
     }
+}
+
+int MainCEWindow::GetMainCEWindowWidth()
+{
+   return this->frameSize().width();
+}
+
+int MainCEWindow::GetMainCEWindowHeight()
+{
+   return this->frameSize().height();
 }

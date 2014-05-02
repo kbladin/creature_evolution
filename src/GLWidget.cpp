@@ -2,6 +2,7 @@
 #include "ShaderManager.h"
 #include "TextureManager.h"
 #include "SettingsManager.h"
+#include "MainCEWindow.h"
 #include "Scene.h"
 
 #ifndef GL_MULTISAMPLE
@@ -52,11 +53,23 @@ void GLWidget::paintGL(){
 }
 
 void GLWidget::resizeGL(int width, int height){
+  /*
   QDesktopWidget widget;
   QRect screenDimension = widget.availableGeometry(widget.primaryScreen());
-  //height = screenDimension.height();
+  height = screenDimension.height();
   width = screenDimension.width();
 
+  QRect prim(QApplication::desktop()->screenGeometry());
+  width = prim.width();
+*/
+
+
+  //width += SettingsManager::Instance()->GetPanelWidth();
+  //width = width + SettingsManager::Instance()->GetPanelWidth();
+
+  width = width + SettingsManager::Instance()->GetPanelWidth();
+
+  //qDebug()<<width;
   SettingsManager::Instance()->SetFrameWidth(width);
   SettingsManager::Instance()->SetFrameHeight(height);
   int side = qMin(width, height);

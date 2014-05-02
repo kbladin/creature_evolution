@@ -159,3 +159,12 @@ void SettingsManager::SetMainBodyDimension(Vec3 vec){
   main_body_dim_ = vec;
 }
 
+void SettingsManager::SetPanelWidth(int width)
+{
+    panel_width_ = width;
+}
+
+int SettingsManager::GetPanelWidth()
+{
+    return panel_width_;
+}

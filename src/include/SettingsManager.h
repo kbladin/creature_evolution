@@ -35,6 +35,8 @@ public:
   int GetFrameHeight();
   float GetRotationSensitivity();
 
+  int GetPanelWidth();
+
   Vec3 GetMainBodyDimension();
 
   void SetPopulationSize(int population_size);
@@ -58,6 +60,8 @@ public:
 
   void SetMainBodyDimension(Vec3 dimension);
 
+  void SetPanelWidth(int width);
+
 private:
   SettingsManager();
   ~SettingsManager(void); 
@@ -77,6 +81,8 @@ private:
   float rotation_sensitivity_; //will result in half a round on a
   // retina sceen and one round on a normal screen when moving mouse from one
   // side to the other.
+
+  int panel_width_;
 
   int creature_type_; 
 

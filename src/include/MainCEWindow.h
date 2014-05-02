@@ -32,7 +32,9 @@ class MainCEWindow : public QWidget
 
 public:
     MainCEWindow();
-
+    int GetMainCEWindowWidth();
+    int GetMainCEWindowHeight();
+    int window_width_;
 signals:
     void valueChanged(int value);
 

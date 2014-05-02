@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
     SettingsManager::Instance()->SetCreatureType(CreatureType::SHEEP);
     SettingsManager::Instance()->SetMainBodyDimension(Vec3(0.1,0.1,0.2));
     qRegisterMetaType<Creature>();
-    
+
     MainCEWindow window;
 
     window.resize(window.sizeHint());
