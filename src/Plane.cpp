@@ -22,6 +22,24 @@ Plane::Plane(glm::vec3 scale) {
   material_.texture_diffuse_type = TextureType::CIRCLES;
 }
 
+Plane::Plane(glm::vec3 scale, glm::vec4 plane_equation) {
+  SetupVertexPositionData();
+  SetupVertexNormalData();
+  SetupVertexUVData();
+  SetupElementData();
+  for (int i = 0; i < vertex_position_data_.size(); ++i) {
+    vertex_position_data_[i].x = vertex_position_data_[i].x*scale.x;
+    vertex_position_data_[i].y = vertex_position_data_[i].y*scale.y;
+    vertex_position_data_[i].z = vertex_position_data_[i].z*scale.z;
+  }
+  material_.texture_diffuse_type = TextureType::CIRCLES;
+
+  //translate plane
+  for(int i=0; i < vertex_position_data_.size(); ++i) {
+      vertex_position_data_[i].y = plane_equation.w;
+  }
+}
+
 void Plane::SetupVertexPositionData() {
   vertex_position_data_.resize(8);
 
