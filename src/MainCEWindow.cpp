@@ -95,7 +95,7 @@ MainCEWindow::MainCEWindow(CreatureEvolution* ce)
 */
 
 
-    //setLayout(layout_main);
+    setLayout(layout_main);
 
     setWindowTitle(tr("Creature Evolution"));
     TransWindow *wind = new TransWindow(this);
