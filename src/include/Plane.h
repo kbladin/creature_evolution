@@ -13,6 +13,7 @@ class Plane : public Shape {
 public:
   Plane();
   Plane(glm::vec3 scale);
+  Plane(glm::vec3 scale, glm::vec4 plane_equation);
 private:
   void SetupVertexPositionData();
   void SetupVertexNormalData();
