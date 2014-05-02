@@ -90,16 +90,57 @@ void EvolutionManager::SimulatePopulation() {
 // looking at values stored during simulation
 void EvolutionManager::CalculateFitnessOnPopulation() {
 
+    //how much each fitness function should contribute to the fitness value
+    float weight1, weight2, weight3, weight4, weight5, weight6;
+    weight1 = SettingsManager::Instance()->GetFitnessDistanceZ();
+    weight2 = SettingsManager::Instance()->GetFitnessMaxY();
+    weight3 = SettingsManager::Instance()->GetFitnessAccumY();
+    weight4 = SettingsManager::Instance()->GetFitnessAccumHeadY();
+    weight5 = SettingsManager::Instance()->GetFitnessDeviationX();
+    weight6 = SettingsManager::Instance()->GetFitnessEnergy();
+
+    // find the max value of each fitness-value to be able to normalize
+    SimData data = current_population_[0].simdata;
+    float norm_dist_z = data.distance_z;
+    float norm_max_y = data.max_y;
+    float norm_accumulated_y = data.accumulated_y;
+    float norm_deviation_x = data.deviation_x;
+    float norm_accumulated_head_y = data.accumulated_head_y;
+    float norm_energy = data.energy_waste;
+
+    for(int i = 1; i < current_population_.size(); ++i) {
+    	data = current_population_[i].simdata;
+
+    	norm_dist_z = (data.distance_z > norm_dist_z) ?
+    					data.distance_z : norm_dist_z;
+    	norm_max_y = (data.max_y > norm_max_y) ?
+    					data.max_y : norm_max_y;
+    	norm_accumulated_y = (data.energy_waste > norm_accumulated_y) ?
+    					data.energy_waste : norm_accumulated_y;
+    	norm_accumulated_head_y = (data.energy_waste > norm_accumulated_head_y) ?
+    					data.energy_waste : norm_accumulated_head_y;
+    	norm_deviation_x = (data.energy_waste > norm_deviation_x) ?
+    					data.energy_waste : norm_deviation_x;
+    	norm_energy = (data.energy_waste > norm_energy) ?
+    					data.energy_waste : norm_energy;
+    }
+	// calculate fitness for each creature    
     for(int i = 0; i < current_population_.size(); ++i) {
-        /*
-    	SimData data = current_population_[i].GetSimData();
-        float dist = data.distance;
-        float velocity = data.velocity;
-        float dev_x = data.deviation_x;
-        float dev_y = data.deviation_y;
-		*/
-		SimData* data = current_population_[i].GetSimData();
-       	float fitness = data->velocity; //velocity;// - dev_x - dev_y;
+    	data = current_population_[i].simdata;
+        float dist_z = data.distance_z;
+        float max_y = data.max_y;
+        float accumulated_y = data.accumulated_y; 
+        float accumulated_head_y = data.accumulated_head_y; 
+        float deviation_x = data.deviation_x; 
+        float energy = data.energy_waste;
+
+       	float fitness =
+       		weight1*(dist_z/norm_dist_z) + 
+       		weight2*(max_y/norm_max_y) +
+       		weight3*(accumulated_y/norm_accumulated_y) +
+       		weight4*(accumulated_head_y/norm_accumulated_head_y) + 
+       		weight5*(deviation_x/norm_deviation_x) +
+       		weight6*(energy/norm_energy);
         current_population_[i].SetFitness(fitness);
     }
 }
@@ -120,10 +161,6 @@ void EvolutionManager::NextGeneration() {
 
 	Population new_population (&current_population_[0],
 		 &current_population_[elitism_pivot]);
-
-	for (int i = 0; i < elitism_pivot; ++i){
-		new_population[i].GetSimData()->ResetData();
-	}
 
 	new_population.resize(current_population_.size());
 

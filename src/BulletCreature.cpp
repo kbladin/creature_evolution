@@ -3,9 +3,9 @@
 #include "Scene.h"
 
 BulletCreature::BulletCreature(Creature blueprint) {
-
     //connect brain
     blueprint_ = blueprint;
+    blueprint_.simdata.ResetData();
 
     //create body
     BodyTree body_root = blueprint_.GetBody().GetBodyRoot();
@@ -118,8 +118,16 @@ void BulletCreature::UpdateMotors(std::vector<float> input) {
     std::vector<float> signal = blueprint_.CalculateBrainOutput(input);
 
     for(int i=0; i < m_joints_.size(); i++) {
+
         int sign = signal[i] < 0 ? -1 : 1;
-        m_joints_[i]->enableAngularMotor(true, 1000000.0*sign, joint_strength_[i]*sign*signal[i]); // apply force
+        float impulse = joint_strength_[i]*sign*signal[i];
+        m_joints_[i]->enableAngularMotor(
+                    true,
+                    1000000.0*sign,
+                    impulse); // apply force
+        
+        //update creatures energy for every joint..
+        blueprint_.simdata.energy_waste += impulse;
     }
 }
 
@@ -127,9 +135,7 @@ btVector3 BulletCreature::GetCenterOfMass(){
     btVector3 center_of_mass = btVector3(0.0,0.0,0.0);
     float mass_sum = 0.0;
     for(int i=0; i < m_bodies_.size(); i++) {
-        btTransform trans;
-        m_bodies_[i]->getMotionState()->getWorldTransform(trans);
-        center_of_mass += trans.getOrigin()*mass_[i];
+        center_of_mass += m_bodies_[i]->getCenterOfMassPosition() * mass_[i];
         mass_sum += mass_[i];
     }
     center_of_mass /= mass_sum;
@@ -149,16 +155,24 @@ btRigidBody* BulletCreature::GetHead() {
     return m_bodies_[0];
 }
 
+btVector3 BulletCreature::GetHeadPosition() {
+    return m_bodies_[0]->getCenterOfMassPosition();
+}
+
 Creature BulletCreature::GetCreature() {
     return blueprint_;
 }
 
 void BulletCreature::CollectData() {
-    SimData* data = blueprint_.GetSimData();
-    data->velocity = GetCenterOfMass().getZ();
-    data->accumulated_y += GetCenterOfMass().getY();
-    btTransform trans;
-    GetHead()->getMotionState()->getWorldTransform(trans);
-    data->accumulated_head_y += trans.getOrigin().y();
+    SimData data = blueprint_.simdata;
 
+    data.distance_z = GetCenterOfMass().getZ();
+    
+    data.max_y = (GetCenterOfMass().getY() > data.max_y) ?
+                    GetCenterOfMass().getY() : data.max_y;
+    data.accumulated_y += GetCenterOfMass().getY();
+    data.deviation_x = abs(GetCenterOfMass().getX());
+    data.accumulated_head_y += GetHeadPosition().getY();
+
+    blueprint_.simdata = data;
 }

@@ -37,6 +37,16 @@ public:
 
   Vec3 GetMainBodyDimension();
 
+  void SetCreatureType(int creature);
+  int GetCreatureType();
+
+  float GetFitnessDistanceZ();
+  float GetFitnessMaxY();
+  float GetFitnessAccumY();
+  float GetFitnessAccumHeadY();
+  float GetFitnessDeviationX();
+  float GetFitnessEnergy();  
+
   void SetPopulationSize(int population_size);
   void SetMaxGenerations(int max_generations);
   void SetCrossover(float crossover_ratio);
@@ -49,8 +59,12 @@ public:
   void SetFrameHeight(int frame_height);
   void SetRotationSensitivity(float sense);
 
-  void SetCreatureType(int creature);
-  int GetCreatureType();
+  void SetFitnessDistanceZ(float val);
+  void SetFitnessMaxY(float val);
+  void SetFitnessAccumY(float val);
+  void SetFitnessAccumHeadY(float val);
+  void SetFitnessDeviationX(float val);
+  void SetFitnessEnergy(float val);
 
   // void AddBestCreature(Creature creature);
   // Creature GetBestCreature();
@@ -79,6 +93,14 @@ private:
   // side to the other.
 
   int creature_type_; 
+
+  float fitness_distance_z_;
+  float fitness_max_y_;
+  float fitness_accumulated_y;
+  float fitness_deviation_x;
+  float fitness_accumulated_head_y;
+  float fitness_energy_;
+
 
   //std::vector<Creature> best_creatures_;
   Vec3 main_body_dim_;

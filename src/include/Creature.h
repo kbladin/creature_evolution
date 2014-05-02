@@ -15,28 +15,26 @@
 #include "AutoInitRNG.h"
 #include "SettingsManager.h"
 
+// TO DO : ändra SimData så den sparar värden som vi vill mäta!
 
 struct SimData {
-    float distance;
-    float velocity;
-    float old_pos;
-    float deviation_x;
-    float deviation_y;
-    float deviation_z;
+    float distance_z;
+    float max_y;
     float accumulated_y;
+    float deviation_x;
     float accumulated_head_y;
+    float energy_waste;
+
     SimData() {
         ResetData();
     }
     void ResetData(){
-        distance = 0.0f;
-        velocity = 0.0f;
-        old_pos = 0.0f;
-        deviation_x = 0.0f;
-        deviation_y = 0.0f;
-        deviation_z = 0.0f;
+        distance_z = 0.0f;
+        max_y = 0.0f;
         accumulated_y = 0.0f;
+        deviation_x = 0.0f;
         accumulated_head_y = 0.0f;
+        energy_waste = 0.0f;
     }
 };
 
@@ -56,20 +54,18 @@ public:
     Brain GetBrain();
     Body GetBody();
     void Mutate();
-
-    SimData* GetSimData();
-    //void SetSimData(SimData);
-    //void UpdateDeviationX(float deviationx);
-    //void UpdateDeviationY(float deviationy);
-    //void UpdateVelocity(float pos);
-
+/*
+    SimData GetSimData();
+    void SetSimData(SimData);
+*/
     std::vector<Creature> Crossover(Creature mate);
+
+    SimData simdata;
 
 private:
     float fitness_;
     Brain brain_;
     Body body_;
-    SimData* simdata_;
 
     static AutoInitRNG rng_;
 

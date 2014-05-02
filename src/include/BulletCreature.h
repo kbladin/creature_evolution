@@ -20,6 +20,7 @@ public:
     std::vector<btRigidBody*> GetRigidBodies();
     std::vector<btHingeConstraint*> GetJoints();
     btRigidBody* GetHead();
+    btVector3 GetHeadPosition();
     Creature GetCreature();
 
     void CollectData();
@@ -30,9 +31,9 @@ private:
     std::vector<btCollisionShape*> m_shapes_;
     std::vector<btRigidBody*> m_bodies_;
     std::vector<btHingeConstraint*> m_joints_;
-    Creature blueprint_;
     std::vector<btScalar> joint_strength_;
 
+    Creature blueprint_;
 
     btRigidBody* AddBody(BodyTree body, btVector3 position);
 

@@ -54,7 +54,7 @@ Body::Body(){
             body_root_ = BodyFactory::CreateSheep();
             break;*/
         case CRAWLER:
-            body_root_ = BodyFactory::CreateLeggedBox(1);
+            body_root_ = BodyFactory::CreateCrawler();
             break;
         case HUMAN:
             body_root_ = BodyFactory::CreateHuman();

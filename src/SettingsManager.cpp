@@ -143,6 +143,45 @@ int SettingsManager::GetCreatureType(){
   return creature_type_; 
 }
 
+
+float SettingsManager::GetFitnessDistanceZ() {
+  return fitness_distance_z_;
+}
+float SettingsManager::GetFitnessMaxY() {
+  return fitness_max_y_;
+}
+float SettingsManager::GetFitnessAccumY() {
+  return fitness_accumulated_y;
+}
+float SettingsManager::GetFitnessAccumHeadY() {
+  return fitness_deviation_x;
+}
+float SettingsManager::GetFitnessDeviationX() {
+  return fitness_accumulated_head_y;
+}
+float SettingsManager::GetFitnessEnergy() {
+  return fitness_energy_;
+}
+
+void SettingsManager::SetFitnessDistanceZ(float val){
+  fitness_distance_z_ = val;
+}
+void SettingsManager::SetFitnessMaxY(float val){
+  fitness_max_y_ = val;
+}
+void SettingsManager::SetFitnessAccumY(float val){
+  fitness_accumulated_y = val;
+}
+void SettingsManager::SetFitnessAccumHeadY(float val){
+  fitness_accumulated_head_y = val;
+}
+void SettingsManager::SetFitnessDeviationX(float val){
+  fitness_deviation_x = val;
+}
+void SettingsManager::SetFitnessEnergy(float val){
+  fitness_energy_ = val;
+}
+
 // void SettingsManager::AddBestCreature(Creature creature) {
 //   best_creatures_.push_back(creature);
 // }
