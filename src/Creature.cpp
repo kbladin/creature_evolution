@@ -60,13 +60,12 @@ void Creature::UpdateDeviationX(float deviationx) {
 	simdata_.deviation_x += deviationx;
 }
 
-void Creature::UpdateDeviationY(float deviationy) {
-	simdata_.deviation_y += deviationy;
-}
-
-void Creature::UpdateVelocity(float pos) {
-	simdata_.velocity += pos - simdata_.old_pos;
-	simdata_.old_pos = pos;
+/*	TO DO: skriva ngn update-funktion som 
+	tar hand om de fitness vi vill räkna ut.
+	tex updateHeight lr liknande...
+*/
+void Creature::UpdateDistanceForward(float dist){
+	simdata_.distance_forward += dist;  
 }
 
 std::vector<Creature> Creature::Crossover(Creature mate){

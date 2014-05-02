@@ -151,5 +151,9 @@ Creature BulletCreature::GetCreature() {
 }
 
 void BulletCreature::CollectData() {
-    blueprint_.UpdateVelocity(GetCenterOfMass().getZ());
+    blueprint_.UpdateDistanceForward(GetCenterOfMass().getZ());
+    //kanske lägg till huvudet ist. 
+
+    // TO DO: Uppdatera info om varelsen. typ högsta höjd osv.. 
+
 }

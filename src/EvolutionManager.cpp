@@ -90,6 +90,11 @@ void EvolutionManager::SimulatePopulation() {
 // looking at values stored during simulation
 void EvolutionManager::CalculateFitnessOnPopulation() {
 
+    /*  TO DO: här ändra om hur fitnessvärden ska räknas ut.
+        Vikta ihop olika sorter. gå längst, vara högst över marken osv.
+        Komma ihåg att normalisera värdena när de viktas ihop!
+    */
+    
     for(int i = 0; i < current_population_.size(); ++i) {
         
     	SimData data = current_population_[i].GetSimData();
