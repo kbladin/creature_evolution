@@ -61,8 +61,6 @@ MainCEWindow::MainCEWindow()
     int width = 6;
     int height = 10;
 
-    //generation_slider->setFixedSize(screenSize.width()/width, screenSize.width()/height);
-
     generation_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
     generation_size_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
     crossover_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
