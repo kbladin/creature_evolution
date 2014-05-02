@@ -61,7 +61,6 @@ public slots:
 protected:
     void keyPressEvent(QKeyEvent *event);
 private:
-    //QVBoxLayout *createSliderLayout(QSlider *slider, int range, int step, int page, int tick, std::string label, void (*function)(int));
 
     QSlider *slide_gen;
     QSlider *slide_pop;
