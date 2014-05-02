@@ -90,19 +90,15 @@ void EvolutionManager::SimulatePopulation() {
 // looking at values stored during simulation
 void EvolutionManager::CalculateFitnessOnPopulation() {
 
-    /*  TO DO: här ändra om hur fitnessvärden ska räknas ut.
-        Vikta ihop olika sorter. gå längst, vara högst över marken osv.
-        Komma ihåg att normalisera värdena när de viktas ihop!
-    */
+    //how much each fitness function should contribute to the fitness value
+    std::vector<float> weights; 
+    weights.push_back(0.6f);
+    weights.push_back(0.4f);
 
+    // find the max value of each fitness-value to be able to normalize
     SimData data = current_population_[0].GetSimData();
     float norm_dist_z =data.distance_forward;
     float norm_max_height=data.max_height;
-
-    std::vector<float> weights; 
-
-    weights.push_back(1.0f);
-    weights.push_back(0.5f);
 
     for(int i = 1; i < current_population_.size(); ++i) {
     	SimData data = current_population_[i].GetSimData();
@@ -114,7 +110,9 @@ void EvolutionManager::CalculateFitnessOnPopulation() {
     		norm_max_height = data.max_height;
 
     }
-    
+	// ---------
+
+	// calculate fitness for each creature    
     for(int i = 0; i < current_population_.size(); ++i) {
     	SimData data = current_population_[i].GetSimData();
         float dist_z = data.distance_forward;

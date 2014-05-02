@@ -157,7 +157,7 @@ Creature BulletCreature::GetCreature() {
 }
 
 void BulletCreature::CollectData() {
-    blueprint_.UpdateDistanceForward(GetHeadPosition().getZ());
+    blueprint_.UpdateDistanceForward(GetCenterOfMass().getZ());
     blueprint_.UpdateMaxHeight(GetHeadPosition().getY()+1); // då planet ligger på -1 just nu... FULT!!!!
 
     // TO DO: Uppdatera info om varelsen. typ högsta höjd osv.. 
