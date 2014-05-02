@@ -13,6 +13,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QDesktopWidget>
+#include <QtWidgets/QStyle>
 #include <QtDebug>
 
 #include "SliderWidget.h"

@@ -6,6 +6,7 @@
 MainCEWindow::MainCEWindow()
 {
     best_fitness_ = 0.0;
+    isVisible = true;
 
     EM_ = new EvolutionManager();
     QGLFormat glFormat;
@@ -22,19 +23,24 @@ MainCEWindow::MainCEWindow()
 
     //QPushButton *renderOneButton = new QPushButton("Render best creature! (not working)");
     //QPushButton *renderAllButton = new QPushButton("3. Render all generations!");
-    simButton = new QPushButton("1. Start simulation.");
-    loadButton = new QPushButton("2. Load creatures.");
+    simButton = new QPushButton("Start simulation.");
+    loadButton = new QPushButton("Load creatures.");
     gameofwormsbtn = new QPushButton("Game of Worms");
-    dummyButton = new QPushButton("hide");
+    dummyButton = new QPushButton("Hide");
+
+    dummyButton->setStyleSheet("* { background-color: rgb(255,125,100) }");
+    simButton->setStyleSheet("* { background-color: rgb(1,200,20) }");
+    loadButton->setStyleSheet("* { background-color: rgb(1,120,20,80) }");
+    gameofwormsbtn->setStyleSheet("* { background-color: rgb(1,120,20,80) }");
 
     QDesktopWidget widget;
     QRect screenSize = widget.availableGeometry(widget.primaryScreen());
-
-    dummyButton->setMaximumSize(screenSize.width()/40, screenSize.height());
-    layout_control->setM
-    simButton->hide();
-    loadButton->hide();
-    gameofwormsbtn->hide();
+    dummyButton->setMaximumSize(screenSize.width()/30, screenSize.height());
+    /*
+    simButton->setMaximumSize(screenSize.width()/10, screenSize.height()/20);
+    loadButton->setMaximumSize(screenSize.width()/10, screenSize.height()/20);
+    gameofwormsbtn->setMaximumSize(screenSize.width()/10, screenSize.height()/20);
+*/
 
     int max_gen = SettingsManager::Instance()->GetMaxGenerations();
     int pop_size = SettingsManager::Instance()->GetPopulationSize();
@@ -52,13 +58,18 @@ MainCEWindow::MainCEWindow()
     mutation_internal_slider = new SliderWidget("Mutation ratio internal (%): ", mutation_internal, 100, 1, 10, 10);
     mutation_sigma_slider = new SliderWidget("Mutation sigma : ", mutation_sigma, 100, 1, 10, 10);
 
-    generation_slider->hide();
-    generation_size_slider->hide();
-    elitism_slider->hide();
-    crossover_slider->hide();
-    mutation_internal_slider->hide();
-    mutation_sigma_slider->hide();
-    mutation_slider->hide();
+    int width = 6;
+    int height = 10;
+
+    //generation_slider->setFixedSize(screenSize.width()/width, screenSize.width()/height);
+
+    generation_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
+    generation_size_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
+    crossover_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
+    elitism_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
+    mutation_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
+    mutation_internal_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
+    mutation_sigma_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
 
     connect(generation_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueGen(int)));
     connect(generation_size_slider, SIGNAL(valueChanged(int)), this, SLOT(setValuePop(int)));
@@ -68,13 +79,11 @@ MainCEWindow::MainCEWindow()
     connect(mutation_internal_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueMutInternal(int)));
     connect(mutation_sigma_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueMutSigma(int)));
 
-
-    // ELLER GRIDLAYOUT http://stackoverflow.com/questions/9532940/how-to-arrange-the-items-in-qgridlayout-as-shown
-
-
+/*
     layout_button->addWidget(simButton);
     layout_button->addWidget(loadButton);
     layout_button->addWidget(gameofwormsbtn);
+*/
     layout_hide->addWidget(dummyButton);
 
     layout_control->addWidget(generation_slider);
@@ -85,12 +94,15 @@ MainCEWindow::MainCEWindow()
     layout_control->addWidget(mutation_internal_slider);
     layout_control->addWidget(mutation_sigma_slider);
 
+    layout_control->addWidget(simButton);
+    layout_control->addWidget(loadButton);
+    layout_control->addWidget(gameofwormsbtn);
+
     layout_main->addWidget(glWidget);
+    //layout_main->addLayout(layout_button);
     layout_main->addLayout(layout_control);
-    layout_main->addLayout(layout_button);
     layout_main->addLayout(layout_hide);
 
-    isVisible = false;
 
     setLayout(layout_main);
     setWindowTitle(tr("Creature Evolution"));
@@ -159,10 +171,11 @@ void MainCEWindow::testPrint() {
     {
         isVisible = false;
 
+        dummyButton->setText("Show");
+
         simButton->hide();
         loadButton->hide();
         gameofwormsbtn->hide();
-
         generation_slider->hide();
         generation_size_slider->hide();
         elitism_slider->hide();
@@ -170,10 +183,13 @@ void MainCEWindow::testPrint() {
         mutation_internal_slider->hide();
         mutation_sigma_slider->hide();
         mutation_slider->hide();
+
     }
     else
     {
         isVisible = true;
+
+        dummyButton->setText("Hide");
 
         simButton->show();
         loadButton->show();
@@ -186,6 +202,7 @@ void MainCEWindow::testPrint() {
         mutation_internal_slider->show();
         mutation_sigma_slider->show();
         mutation_slider->show();
+
     }
 }
 
@@ -195,6 +212,8 @@ static void startEvo(EvolutionManager* EM) {
 }
 
 void MainCEWindow::startEvolution() {
+    simButton->setStyleSheet("* { background-color: rgb(1,120,20,80) }");
+    loadButton->setStyleSheet("* { background-color: rgb(1,200,20) }");
     QApplication::setOverrideCursor(Qt::BusyCursor);
     evolution_thread_starter_.setFuture(QtConcurrent::run(::startEvo, EM_));
     evoDone();
@@ -203,6 +222,9 @@ void MainCEWindow::startEvolution() {
 void MainCEWindow::loadCreature() {
     //Scene::Instance()->Clean();
     //Scene::Instance()->AddCreature(creatures_.back(), 0.0f);
+    loadButton->setStyleSheet("* { background-color: rgb(1,120,20,80) }");
+    gameofwormsbtn->setStyleSheet("* { background-color: rgb(1,200,20) }");
+
 }
 
 void MainCEWindow::GameOfWorms() {
@@ -215,6 +237,9 @@ void MainCEWindow::GameOfWorms() {
         displacement += 1.0f;
     }
     Scene::Instance()->RestartSimulation(viz_creatures);
+    simButton->setStyleSheet("* { background-color: rgb(1,200,20) }");
+    gameofwormsbtn->setStyleSheet("* { background-color: rgb(1,120,20,80) }");
+
 }
 
 void MainCEWindow::evoDone() {

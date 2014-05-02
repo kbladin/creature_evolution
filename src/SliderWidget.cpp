@@ -2,29 +2,33 @@
 
 
 SliderWidget::SliderWidget(QString label_text,int default_value, int range, int step, int page, int tick) {
-	value_ = default_value;
 
-	vbox_ = new QVBoxLayout;
-	label_text_ = new QLabel(label_text);
-	label_value_ = new QLabel(QString::number(value_));
+  value_ = default_value;
 
-	label_layout_ = new QHBoxLayout;
-	label_layout_->addWidget(label_text_);
-	label_layout_->addWidget(label_value_);
+  vbox_ = new QVBoxLayout;
+  label_text_ = new QLabel(label_text);
+  QFont f( "Arial", 10, QFont::Bold);
+  label_text_->setFont( f);
 
-	slider_ = new QSlider(Qt::Horizontal);
-	slider_->setRange(0, range);
+  label_value_ = new QLabel(QString::number(value_));
+  label_value_->setFont(f);
+  label_layout_ = new QHBoxLayout;
+  label_layout_->addWidget(label_text_);
+  label_layout_->addWidget(label_value_);
+
+  slider_ = new QSlider(Qt::Horizontal);
+  slider_->setRange(0, range);
   slider_->setSingleStep(step);
   slider_->setPageStep(page);
-  slider_->setTickInterval(tick);
-  slider_->setTickPosition(QSlider::TicksRight);
+  //slider_->setTickInterval(tick);
+  //slider_->setTickPosition(QSlider::TicksRight);
   slider_->setSliderPosition(default_value);
 
   vbox_->addLayout(label_layout_);
   vbox_->addWidget(slider_);
 
   setLayout(vbox_);
-  adjustSize();
+  //adjustSize();
   connect(slider_, SIGNAL(valueChanged(int)), this, SLOT(setValue(int)));
 }
 
