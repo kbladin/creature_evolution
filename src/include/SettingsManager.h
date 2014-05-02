@@ -56,9 +56,8 @@ public:
   float GetFitnessDistanceForward();
   void SetFitnessMaxHeight(float height);
   float GetFitnessMaxHeight();
-
-
-
+  void SetFitnessEnergy(float energy);
+  float GetFitnessEnergy();
 
   // void AddBestCreature(Creature creature);
   // Creature GetBestCreature();
@@ -90,6 +89,7 @@ private:
 
   float fitness_distance_forward_;
   float fitness_max_height_;
+  float fitness_energy_;
 
   //std::vector<Creature> best_creatures_;
   Vec3 main_body_dim_;

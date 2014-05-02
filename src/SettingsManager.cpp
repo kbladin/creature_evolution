@@ -159,6 +159,14 @@ float SettingsManager::GetFitnessMaxHeight(){
   return fitness_max_height_; 
 }
 
+void SettingsManager::SetFitnessEnergy(float energy){
+  fitness_energy_ = energy;
+}
+
+float SettingsManager::GetFitnessEnergy(){
+  return fitness_energy_; 
+}
+
 // void SettingsManager::AddBestCreature(Creature creature) {
 //   best_creatures_.push_back(creature);
 // }

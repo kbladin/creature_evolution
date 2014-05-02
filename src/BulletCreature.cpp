@@ -117,6 +117,9 @@ void BulletCreature::UpdateMotors(std::vector<float> input) {
 
         m_joints_[i]->enableAngularMotor(true, 1000000.0*sign, 20.0*sign*signal[i]); // apply force
 
+        //update creatures energy for every joint..
+        blueprint_.UpdateEnergy(sign*signal[i]);
+
     }
 }
 
@@ -124,9 +127,7 @@ btVector3 BulletCreature::GetCenterOfMass(){
     btVector3 center_of_mass = btVector3(0.0,0.0,0.0);
     float mass_sum = 0.0;
     for(int i=0; i < m_bodies_.size(); i++) {
-        btTransform trans;
-        m_bodies_[i]->getMotionState()->getWorldTransform(trans);
-        center_of_mass += trans.getOrigin()*mass_[i];
+        center_of_mass += m_bodies_[i]->getCenterOfMassPosition() * mass_[i];
         mass_sum += mass_[i];
     }
     center_of_mass /= mass_sum;
@@ -147,9 +148,7 @@ btRigidBody* BulletCreature::GetHead() {
 }
 
 btVector3 BulletCreature::GetHeadPosition() {
-    btTransform trans;
-    m_bodies_[0]->getMotionState()->getWorldTransform(trans);
-    return trans.getOrigin();
+    return m_bodies_[0]->getCenterOfMassPosition();
 }
 
 Creature BulletCreature::GetCreature() {
@@ -157,9 +156,9 @@ Creature BulletCreature::GetCreature() {
 }
 
 void BulletCreature::CollectData() {
-    
+
     blueprint_.UpdateDistanceForward(GetCenterOfMass().getZ());
-    blueprint_.UpdateMaxHeight(GetHeadPosition().getY()+1); // då planet ligger på -1 just nu... FULT!!!!
+    blueprint_.UpdateMaxHeight(GetCenterOfMass().getY()+1); // då planet ligger på -1 just nu... FULT!!!!
 
     // TO DO: Uppdatera info om varelsen. typ högsta höjd osv.. 
 

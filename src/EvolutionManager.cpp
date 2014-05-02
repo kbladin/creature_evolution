@@ -91,14 +91,16 @@ void EvolutionManager::SimulatePopulation() {
 void EvolutionManager::CalculateFitnessOnPopulation() {
 
     //how much each fitness function should contribute to the fitness value
-    float weight1, weight2;
+    float weight1, weight2, weight3;
     weight1 = SettingsManager::Instance()->GetFitnessDistanceForward();
     weight2 = SettingsManager::Instance()->GetFitnessMaxHeight();
+    weight3 = SettingsManager::Instance()->GetFitnessEnergy();
 
     // find the max value of each fitness-value to be able to normalize
     SimData data = current_population_[0].GetSimData();
     float norm_dist_z =data.distance_forward;
     float norm_max_height=data.max_height;
+    float norm_energy = data.energy_efficiency;
 
     for(int i = 1; i < current_population_.size(); ++i) {
     	SimData data = current_population_[i].GetSimData();
@@ -109,6 +111,9 @@ void EvolutionManager::CalculateFitnessOnPopulation() {
     	if(data.max_height > norm_max_height)
     		norm_max_height = data.max_height;
 
+    	if(data.energy_efficiency > norm_energy)
+    		norm_energy = data.energy_efficiency; 
+
     }
 	// ---------
 
@@ -117,8 +122,11 @@ void EvolutionManager::CalculateFitnessOnPopulation() {
     	SimData data = current_population_[i].GetSimData();
         float dist_z = data.distance_forward;
         float max_height = data.max_height; 
+        float energy = data.energy_efficiency; 
 
-       	float fitness = weight1*(dist_z/norm_dist_z) + weight2*(max_height/norm_max_height);
+       	float fitness = weight1*(dist_z/norm_dist_z) + 
+       		weight2*(max_height/norm_max_height) +
+       		weight3*(energy/norm_energy);
 
         current_population_[i].SetFitness(fitness);
     }

@@ -55,7 +55,7 @@ public:
     void UpdateDeviationX(float deviationx);
     void UpdateDistanceForward(float dist);
     void UpdateMaxHeight(float height);
-
+    void UpdateEnergy(float energy);
 
     std::vector<Creature> Crossover(Creature mate);
 

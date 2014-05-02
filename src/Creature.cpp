@@ -76,6 +76,10 @@ void Creature::UpdateMaxHeight(float height){
 		simdata_.max_height = height; 
 }
 
+void Creature::UpdateEnergy(float energy){
+	simdata_.energy_efficiency += energy; 
+}
+
 std::vector<Creature> Creature::Crossover(Creature mate){
 	std::vector<Creature> children;
 	std::vector<Brain> childrens_brain;
