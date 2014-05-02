@@ -143,6 +143,22 @@ int SettingsManager::GetCreatureType(){
   return creature_type_; 
 }
 
+void SettingsManager::SetFitnessDistanceForward(float dist){
+  fitness_distance_forward_ = dist;
+}
+
+float SettingsManager::GetFitnessDistanceForward(){
+  return fitness_distance_forward_; 
+}
+
+void SettingsManager::SetFitnessMaxHeight(float height){
+  fitness_max_height_ = height;
+}
+
+float SettingsManager::GetFitnessMaxHeight(){
+  return fitness_max_height_; 
+}
+
 // void SettingsManager::AddBestCreature(Creature creature) {
 //   best_creatures_.push_back(creature);
 // }

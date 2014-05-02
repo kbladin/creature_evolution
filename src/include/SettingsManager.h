@@ -52,6 +52,14 @@ public:
   void SetCreatureType(int creature);
   int GetCreatureType();
 
+  void SetFitnessDistanceForward(float dist);
+  float GetFitnessDistanceForward();
+  void SetFitnessMaxHeight(float height);
+  float GetFitnessMaxHeight();
+
+
+
+
   // void AddBestCreature(Creature creature);
   // Creature GetBestCreature();
   // std::vector<Creature> GetAllBestCreatures();
@@ -79,6 +87,9 @@ private:
   // side to the other.
 
   int creature_type_; 
+
+  float fitness_distance_forward_;
+  float fitness_max_height_;
 
   //std::vector<Creature> best_creatures_;
   Vec3 main_body_dim_;

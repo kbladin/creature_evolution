@@ -91,9 +91,9 @@ void EvolutionManager::SimulatePopulation() {
 void EvolutionManager::CalculateFitnessOnPopulation() {
 
     //how much each fitness function should contribute to the fitness value
-    std::vector<float> weights; 
-    weights.push_back(0.6f);
-    weights.push_back(0.4f);
+    float weight1, weight2;
+    weight1 = SettingsManager::Instance()->GetFitnessDistanceForward();
+    weight2 = SettingsManager::Instance()->GetFitnessMaxHeight();
 
     // find the max value of each fitness-value to be able to normalize
     SimData data = current_population_[0].GetSimData();
@@ -118,7 +118,7 @@ void EvolutionManager::CalculateFitnessOnPopulation() {
         float dist_z = data.distance_forward;
         float max_height = data.max_height; 
 
-       	float fitness = weights[0]*(dist_z/norm_dist_z) + weights[1]*(max_height/norm_max_height);
+       	float fitness = weight1*(dist_z/norm_dist_z) + weight2*(max_height/norm_max_height);
 
         current_population_[i].SetFitness(fitness);
     }
