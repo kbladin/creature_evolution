@@ -115,12 +115,12 @@ void EvolutionManager::CalculateFitnessOnPopulation() {
     					data.distance_z : norm_dist_z;
     	norm_max_y = (data.max_y > norm_max_y) ?
     					data.max_y : norm_max_y;
-    	norm_accumulated_y = (data.energy_waste > norm_accumulated_y) ?
-    					data.energy_waste : norm_accumulated_y;
-    	norm_accumulated_head_y = (data.energy_waste > norm_accumulated_head_y) ?
-    					data.energy_waste : norm_accumulated_head_y;
-    	norm_deviation_x = (data.energy_waste > norm_deviation_x) ?
-    					data.energy_waste : norm_deviation_x;
+    	norm_accumulated_y = (data.accumulated_y > norm_accumulated_y) ?
+    					data.accumulated_y : norm_accumulated_y;
+    	norm_accumulated_head_y = (data.accumulated_head_y > norm_accumulated_head_y) ?
+    					data.accumulated_head_y : norm_accumulated_head_y;
+    	norm_deviation_x = (data.deviation_x > norm_deviation_x) ?
+    					data.deviation_x : norm_deviation_x;
     	norm_energy = (data.energy_waste > norm_energy) ?
     					data.energy_waste : norm_energy;
     }

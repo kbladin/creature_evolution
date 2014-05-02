@@ -44,7 +44,6 @@ std::vector<float> Brain::CalculateOutput(const f_vec& input){
         out = transfer(dot(hidden_output,(*o_node_iter)));
         ++o_node_iter;
     }
-
     return output;
 }
 

@@ -98,7 +98,8 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
         Vec3 b = joint.connection_branch;
         localA.setOrigin(btVector3(a.x,a.y,a.z));
         localB.setOrigin(btVector3(b.x,b.y,b.z));
-        m_joints_.push_back(new btHingeConstraint(*(current_body), *(child_body), localA, localB));
+        btHingeConstraint* hinge = new btHingeConstraint(*(current_body), *(child_body), localA, localB);
+        m_joints_.push_back(hinge);
 
         // For now just proportional to the mass of the bodies,
         // seems to be what works best for most creatures.
