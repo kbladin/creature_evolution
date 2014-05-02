@@ -54,11 +54,12 @@ private:
 class BodyFactory {
 public:
   // Creatures
-  static BodyTree CreateLeggedBox(float scale);
+  static BodyTree CreateLeggedBox(float scale = 1);
   static BodyTree CreateHuman();
-  static BodyTree CreateWorm();
-  /*static BodyTree CreateCrawler();
+  static BodyTree CreateWorm(int worm_length = 5);
+  static BodyTree CreateCrawler(int length = 5);
   static BodyTree CreatePony();
+  /*
   static BodyTree CreateSheep();
   static BodyTree CreateTurtle();
   */

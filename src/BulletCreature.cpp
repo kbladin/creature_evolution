@@ -105,6 +105,7 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
         float strength = (body.body_list[i].root_joint.strength < 0) ?
                     body.GetMass() + body.body_list[i].GetMass() :
                     body.body_list[i].root_joint.strength;
+
         joint_strength_.push_back(strength);
         m_joints_.back()->setLimit(btScalar(joint.lower_limit), btScalar(joint.upper_limit));
 
@@ -116,15 +117,8 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
 void BulletCreature::UpdateMotors(std::vector<float> input) {
     std::vector<float> signal = blueprint_.CalculateBrainOutput(input);
 
-    int sign = 1;
-
     for(int i=0; i < m_joints_.size(); i++) {
-
-        if(signal[i]>=0)
-            sign=1;
-        else
-            sign=-1;
-
+        int sign = signal[i] < 0 ? -1 : 1;
         m_joints_[i]->enableAngularMotor(true, 1000000.0*sign, joint_strength_[i]*sign*signal[i]); // apply force
     }
 }

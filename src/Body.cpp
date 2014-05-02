@@ -23,12 +23,13 @@ float BodyTree::GetMass(){
 float BodyTree::GetLowestPoint() {
     // Base case
     if (body_list.size() == 0) {
-        return -box_dim.y;
+        return -box_dim.y + root_joint.connection_root.y - root_joint.connection_branch.y;
     } else { // Recursion
         float lowest_child = 0;
         for (int i = 0; i < body_list.size(); ++i){
-            if (body_list[i].GetLowestPoint() < lowest_child)
-                lowest_child = body_list[i].GetLowestPoint() +
+            float lowest = body_list[i].GetLowestPoint();
+            if (lowest < lowest_child)
+                lowest_child = lowest +
                             root_joint.connection_root.y -
                             root_joint.connection_branch.y;
         }
@@ -40,9 +41,9 @@ Body::Body(){
     int creature_type = SettingsManager::Instance()->GetCreatureType();
 
     switch(creature_type){
-        /*case PONY:
+        case PONY:
             body_root_ = BodyFactory::CreatePony();
-            break;*/
+            break;
         case WORM:
             body_root_ = BodyFactory::CreateWorm();
             break;
@@ -51,10 +52,10 @@ Body::Body(){
             break;
         case SHEEP:
             body_root_ = BodyFactory::CreateSheep();
-            break;
-        case CRAWLER:
-            body_root_ = BodyFactory::CreateCrawler();
             break;*/
+        case CRAWLER:
+            body_root_ = BodyFactory::CreateLeggedBox(1);
+            break;
         case HUMAN:
             body_root_ = BodyFactory::CreateHuman();
             break;
@@ -73,115 +74,175 @@ int Body::GetTotalNumberOfJoints(){
     return body_root_.GetNumberOfElements() - 1; // Do not count itself
 }
 
-BodyTree BodyFactory::CreateWorm(){
-
-    int worm_length = 5;
+BodyTree BodyFactory::CreateWorm(int worm_length){
+    float density = 1000.0f;
+    float friction_body = 0.5f;
 
     // varje segment på masken
     BodyTree body_segment;
     body_segment.box_dim = Vec3(0.1,0.05,0.1);
-    body_segment.density = 1000.0f;
-    body_segment.friction = 0.5;
+    body_segment.density = density;
+    body_segment.friction = friction_body;
 
-    BodyTree current_segment = body_segment;
-    BodyTree previous_segment = body_segment;
-
-    // joints
+    // joint
     Joint joint;
-    joint.connection_root = Vec3(0.0f,0.0f,body_segment.box_dim.z);
-    joint.connection_branch = Vec3(0.0f,0.0f,-body_segment.box_dim.z);
-    joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
+    joint.connection_root = Vec3(0.0f,0.0f,-body_segment.box_dim.z);
+    joint.connection_branch = Vec3(0.0f,0.0f,body_segment.box_dim.z);
+    joint.hinge_orientation = Vec3(0.0, M_PI/2, 0.0);
 
-    joint.upper_limit = M_PI*0.2;
-    joint.lower_limit = -M_PI*0.2;
+    joint.upper_limit = M_PI*0.3;
+    joint.lower_limit = -M_PI*0.3;
+
+    body_segment.root_joint = joint;
+
+    BodyTree parent = body_segment;
+    BodyTree child = body_segment;
 
     for(int i=0; i<worm_length; i++){
-        current_segment.body_list.push_back(previous_segment);
-        current_segment.root_joint = joint; 
-        previous_segment = current_segment;
-        current_segment = body_segment;
+        parent.body_list.push_back(child);
+        parent.root_joint = joint;
+        child = parent;
+        parent = body_segment;
     }
 
-    return previous_segment;
+    return child;
 }
 
-/*
-BodyTree Body::CreatePony(){
+BodyTree BodyFactory::CreateCrawler(int length){
+    float density = 1000.0f;
+    float friction_body = 0.5f;
 
-    //Make head
-    BodyTree head;
-    head.box_dim = Vec3(0.3,0.3,0.65);
-    head.mass = 3.0;
-    head.friction = 1.0;
+    // Body
+    BodyTree body_segment;
+    body_segment.box_dim = Vec3(0.1,0.05,0.15);
+    body_segment.density = density;
+    body_segment.friction = friction_body;
 
-    BodyTree tail;
-    tail.box_dim = Vec3(0.1,0.1,0.9);
-    tail.mass = 1.0;
-    tail.friction = 1.0;
+    // Leg
+    BodyTree left_leg;
+    left_leg.box_dim = Vec3(0.1,0.05,0.05);
+    left_leg.density = density;
+    left_leg.friction = friction_body;
+    BodyTree right_leg = left_leg;
 
-
-    //Make legs
-    BodyTree leg;
-    leg.box_dim = Vec3(0.2,0.4,0.2);
-    leg.mass = 15.0;
-    leg.friction = 0.5;
-
-    BodyTree lower_leg = leg;
-
-    //Upper legs
-    BodyTree upper_leg = leg;
+    // joint
     Joint joint;
-    joint.connection_root = Vec3(0.0,-leg.box_dim.y,0.0);
-    joint.connection_branch = Vec3(0.0,leg.box_dim.y/2.0,0.0);
-    joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
-    joint.upper_limit = M_PI*0.2;
-    joint.lower_limit = -M_PI*0.2;
+    joint.connection_root = Vec3(0.0f,0.0f,-body_segment.box_dim.z);
+    joint.connection_branch = Vec3(0.0f,0.0f,body_segment.box_dim.z);
+    joint.hinge_orientation = Vec3(M_PI/2, 0.0, 0.0);
 
-    //connect lower legs
-    // upper_leg.body_list.push_back(lower_leg);
-    // upper_leg.joint_list.push_back(joint);
+    joint.upper_limit = M_PI*0.3;
+    joint.lower_limit = -M_PI*0.3;
 
-    //Define the main body and connect everything to it
-    BodyTree main_body;
+    // Leg joint
+    Joint left_leg_joint;
+    left_leg_joint.connection_root = Vec3(body_segment.box_dim.x,0.0f,0.0f);
+    left_leg_joint.connection_branch = Vec3(-left_leg.box_dim.x,0.0f,0.0f);
+    left_leg_joint.hinge_orientation = Vec3(0.0, 0.0, 0.0);
+    left_leg_joint.upper_limit = M_PI*0.3;
+    left_leg_joint.lower_limit = -M_PI*0.3;
 
-    //main_body.box_dim = Vec3(0.8,0.5,1.5);
+    Joint right_leg_joint = left_leg_joint;
+    left_leg_joint.connection_root = Vec3(-left_leg.box_dim.x,0.0f,0.0f);
+    left_leg_joint.connection_branch = Vec3(body_segment.box_dim.x,0.0f,0.0f);
 
-    main_body.box_dim = Vec3(0.5,0.5,1.8);//SettingsManager::Instance()->GetMainBodyDimension();
-    main_body.mass = 180.0;
+    body_segment.root_joint = joint;
+    left_leg.root_joint = left_leg_joint;
+    right_leg.root_joint = right_leg_joint;
 
-    main_body.friction = 1.0;
-    main_body.body_list = std::vector<BodyTree>(4,upper_leg);
-    main_body.body_list.push_back(head);
-    main_body.body_list.push_back(tail);
+    BodyTree parent = body_segment;
+    BodyTree child = body_segment;
 
-    Joint left_front_joint = joint;
-    left_front_joint.connection_root = Vec3(main_body.box_dim.x/2.0,-main_body.box_dim.y/1.0,main_body.box_dim.z/2.0);
-    Joint right_front_joint = joint;
-    right_front_joint.connection_root = Vec3(-main_body.box_dim.x/2.0,-main_body.box_dim.y/1.0,main_body.box_dim.z/2.0);
-    Joint left_back_joint = joint;
-    left_back_joint.connection_root = Vec3(main_body.box_dim.x/2.0,-main_body.box_dim.y/1.0,-main_body.box_dim.z/1.65);
-    Joint right_back_joint = joint;
-    right_back_joint.connection_root = Vec3(-main_body.box_dim.x/2.0,-main_body.box_dim.y/1.0,-main_body.box_dim.z/1.65);
+    for(int i=0; i<length - 1; i++){
 
-    Joint head_joint = joint;
-    head_joint.connection_root = Vec3(0.0,main_body.box_dim.y/2.0,main_body.box_dim.z*0.75);
-    head_joint.connection_branch = Vec3(0.0,-head.box_dim.y/2.0,-head.box_dim.z*0.75);
+        child = parent;
+        parent = body_segment;
 
-    Joint tail_joint = joint;
-    tail_joint.connection_root = Vec3(0.0,main_body.box_dim.y/2.0,-main_body.box_dim.z*0.75);
-    tail_joint.connection_branch = Vec3(0.0,-tail.box_dim.y/2.0,tail.box_dim.z*0.75);
+        parent.body_list.push_back(left_leg);
+        parent.body_list.push_back(right_leg);
 
-    main_body.joint_list.push_back(left_front_joint);
-    main_body.joint_list.push_back(right_front_joint);
-    main_body.joint_list.push_back(left_back_joint);
-    main_body.joint_list.push_back(right_back_joint);
-    main_body.joint_list.push_back(head_joint);
-    main_body.joint_list.push_back(tail_joint);
+        parent.body_list.push_back(child);
+        parent.root_joint = joint;
+    }
 
-    return main_body;
+    // Head
+    body_segment.body_list.push_back(child);
 
+    return body_segment;
 }
 
+
+BodyTree BodyFactory::CreatePony(){
+
+    float density = 1000.0f;
+
+    BodyTree torso;
+    torso.box_dim = Vec3(0.25, 0.17, 0.4);
+    torso.density = density;
+    torso.friction = 0.5;
+
+    BodyTree right_front_leg;// = BodyFactory::CreateLeg(Vec3(1,1,1));
+    right_front_leg.box_dim = Vec3(0.07, 0.15, 0.07);
+    right_front_leg.density = density;
+    right_front_leg.friction = 0.8;
+
+    BodyTree head;
+    head.box_dim = Vec3(0.12, 0.12, 0.2);
+    head.density = density;
+    head.friction = 0.5;
+
+    Joint neck_joint;
+    neck_joint.connection_root = Vec3(0.0,0.0f,-head.box_dim.z);
+    neck_joint.connection_branch = Vec3(0.0,torso.box_dim.y,torso.box_dim.z - 0.1);
+    neck_joint.hinge_orientation = Vec3(0.0, M_PI/2, 0.0);
+    neck_joint.upper_limit = M_PI*0.3;
+    neck_joint.lower_limit = -M_PI*0.3;
+
+    right_front_leg.root_joint.connection_root = Vec3(
+                    torso.box_dim.x - right_front_leg.box_dim.x,
+                    -torso.box_dim.y,
+                    -torso.box_dim.z + right_front_leg.box_dim.z);
+    right_front_leg.root_joint.connection_branch =
+                    Vec3(0.0, right_front_leg.box_dim.y, 0.0);
+    right_front_leg.root_joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
+    right_front_leg.root_joint.upper_limit = M_PI*0.3;
+    right_front_leg.root_joint.lower_limit = -M_PI*0.3;
+
+    BodyTree left_front_leg = right_front_leg;
+    left_front_leg.root_joint.connection_root = Vec3(
+                    -torso.box_dim.x + left_front_leg.box_dim.x,
+                    -torso.box_dim.y,
+                    -torso.box_dim.z + left_front_leg.box_dim.z);
+    BodyTree right_back_leg = right_front_leg;
+    right_back_leg.root_joint.connection_root = Vec3(
+                    torso.box_dim.x - right_back_leg.box_dim.x,
+                    -torso.box_dim.y,
+                    torso.box_dim.z - right_back_leg.box_dim.z);
+    BodyTree left_back_leg = right_front_leg;
+    left_back_leg.root_joint.connection_root = Vec3(
+                    -torso.box_dim.x + left_back_leg.box_dim.x,
+                    -torso.box_dim.y,
+                    torso.box_dim.z - left_back_leg.box_dim.z);
+
+    head.root_joint.strength = 10;
+    right_front_leg.root_joint.strength = 10;
+    left_front_leg.root_joint.strength = 10;
+    right_back_leg.root_joint.strength = 10;
+    left_back_leg.root_joint.strength = 10;
+
+    torso.root_joint = neck_joint;
+
+    torso.body_list.push_back(right_front_leg);
+    torso.body_list.push_back(left_front_leg);
+    torso.body_list.push_back(right_back_leg);
+    torso.body_list.push_back(left_back_leg);
+
+    head.body_list.push_back(torso);
+
+    return head;
+
+}
+/*
 BodyTree Body::CreateSheep(){
 
     float density = 1000;

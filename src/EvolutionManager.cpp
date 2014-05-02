@@ -99,7 +99,7 @@ void EvolutionManager::CalculateFitnessOnPopulation() {
         float dev_y = data.deviation_y;
 		*/
 		SimData* data = current_population_[i].GetSimData();
-       	float fitness = data->accumulated_head_y/1000.0f; //velocity;// - dev_x - dev_y;
+       	float fitness = data->velocity; //velocity;// - dev_x - dev_y;
         current_population_[i].SetFitness(fitness);
     }
 }
