@@ -51,7 +51,7 @@ vec3 diffuseCircles(float x, float y, float z, float scale) {
   x = abs(((x - int(x)) - 0.5) * 2) - 1;
   y = abs(((y - int(y)) - 0.5) * 2) - 1;
   z = abs(((z - int(z)) - 0.5) * 2) - 1;
-  float val = round(length(vec3(x,y,z)));
+  float val = clamp(round(length(vec3(x,y,z))),0,1);
   return vec3(val, val, val);
 }
 
@@ -68,16 +68,16 @@ void main()
     case 1: // Checkerboard
       material_diffuse_color =
             diffuseCheckerboard(
-                  position_modelspace.x,
-                  position_modelspace.y,
-                  position_modelspace.z);
+                  position_modelspace.x + 0.001, // Ugly solution
+                  position_modelspace.y + 0.001,
+                  position_modelspace.z + 0.001);
       break;
     case 2: // Checkerboard
       vec3 circles = diffuseCircles(
                   position_modelspace.x,
                   position_modelspace.y,
                   position_modelspace.z,
-                  1.0);
+                  0.7);
       material_diffuse_color = (vec3(1,1,1) - circles) * vec3(1,0,0) + circles;
       break;
     default: // Checkerboard
