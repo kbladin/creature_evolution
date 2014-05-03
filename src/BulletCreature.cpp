@@ -108,8 +108,12 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
                     body.body_list[i].root_joint.strength;
 
         joint_strength_.push_back(strength);
-        m_joints_.back()->setLimit(btScalar(joint.lower_limit), btScalar(joint.upper_limit));
-
+        m_joints_.back()->setLimit(
+                        btScalar(joint.lower_limit),
+                        btScalar(joint.upper_limit),
+                        0.9, // Softness = 0.9 default
+                        0.3, // Bias factor = 0.3 default
+                        1.0); // Relaxation factor = 1.0 default
     }
     return current_body;
 }
@@ -172,7 +176,7 @@ void BulletCreature::CollectData() {
     data.max_y = (GetCenterOfMass().getY() > data.max_y) ?
                     GetCenterOfMass().getY() : data.max_y;
     data.accumulated_y += GetCenterOfMass().getY();
-    data.deviation_x = abs(GetCenterOfMass().getX());
+    data.deviation_x = abs(GetCenterOfMass().getX())+0.0001;
     data.accumulated_head_y += GetHeadPosition().getY();
 
     blueprint_.simdata = data;

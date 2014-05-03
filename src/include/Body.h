@@ -39,7 +39,7 @@ struct BodyTree {
 };
 
 enum CreatureType{
-  PONY, WORM, TURTLE, SHEEP, CRAWLER, HUMAN
+  PONY, WORM, CRAWLER, HUMAN, TABLE
 };
 
 class Body {

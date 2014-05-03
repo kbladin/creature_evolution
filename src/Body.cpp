@@ -47,17 +47,14 @@ Body::Body(){
         case WORM:
             body_root_ = BodyFactory::CreateWorm();
             break;
-        /*case TURTLE:
-            body_root_ = BodyFactory::CreateTurtle();
-            break;
-        case SHEEP:
-            body_root_ = BodyFactory::CreateSheep();
-            break;*/
         case CRAWLER:
             body_root_ = BodyFactory::CreateCrawler();
             break;
         case HUMAN:
             body_root_ = BodyFactory::CreateHuman();
+            break;
+        case TABLE:
+            body_root_ = BodyFactory::CreateLeggedBox();
             break;
         default:
             std::cout << "not valid creature.. creating worm as default!" << std::endl;
@@ -636,7 +633,7 @@ BodyTree BodyFactory::CreateLeggedBox(float scale) {
     torso.friction = 0.5;
 
     BodyTree right_front_leg = BodyFactory::CreateLeg(
-                    Vec3(scale, 0.7*scale, scale));
+                    Vec3(scale, 0.5*scale, scale));
     right_front_leg.root_joint.connection_root = Vec3(
                     torso.box_dim.x - right_front_leg.box_dim.x,
                     -torso.box_dim.y,

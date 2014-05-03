@@ -124,6 +124,7 @@ void EvolutionManager::CalculateFitnessOnPopulation() {
     	norm_energy = (data.energy_waste > norm_energy) ?
     					data.energy_waste : norm_energy;
     }
+
 	// calculate fitness for each creature    
     for(int i = 0; i < current_population_.size(); ++i) {
     	data = current_population_[i].simdata;

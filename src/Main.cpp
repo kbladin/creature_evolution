@@ -17,15 +17,15 @@ int main(int argc, char **argv) {
 	SettingsManager::Instance()->SetMutation(0.8f);
 */
     SettingsManager::Instance()->SetFitnessDistanceZ(0.0f);
-    SettingsManager::Instance()->SetFitnessMaxY(0.0f);
+    SettingsManager::Instance()->SetFitnessMaxY(1.0f);
     SettingsManager::Instance()->SetFitnessAccumY(0.0f);
-    SettingsManager::Instance()->SetFitnessAccumHeadY(1.0f);
+    SettingsManager::Instance()->SetFitnessAccumHeadY(0.0f);
     SettingsManager::Instance()->SetFitnessDeviationX(0.0f);
     SettingsManager::Instance()->SetFitnessEnergy(0.0f);
 
 
 
-    SettingsManager::Instance()->SetCreatureType(CreatureType::CRAWLER);
+    SettingsManager::Instance()->SetCreatureType(CreatureType::WORM);
     SettingsManager::Instance()->SetMainBodyDimension(Vec3(0.1,0.1,0.2));
     qRegisterMetaType<Creature>();
     
