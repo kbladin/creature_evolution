@@ -23,7 +23,7 @@ public:
     btVector3 GetHeadPosition();
     Creature GetCreature();
 
-    void CollectData();
+    void CollectData(std::vector<float> sim_data);
 
 private:
     // Should these be put in a struct?

@@ -143,7 +143,9 @@ int SettingsManager::GetCreatureType(){
   return creature_type_; 
 }
 
-
+float SettingsManager::GetFitnessDistanceLight() {
+  return fitness_distance_light_;
+}
 float SettingsManager::GetFitnessDistanceZ() {
   return fitness_distance_z_;
 }
@@ -163,6 +165,9 @@ float SettingsManager::GetFitnessEnergy() {
   return fitness_energy_;
 }
 
+void SettingsManager::SetFitnessDistanceLight(float val){
+  fitness_distance_light_ = val;
+}
 void SettingsManager::SetFitnessDistanceZ(float val){
   fitness_distance_z_ = val;
 }

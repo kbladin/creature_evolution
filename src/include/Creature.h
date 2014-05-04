@@ -18,6 +18,7 @@
 // TO DO : ändra SimData så den sparar värden som vi vill mäta!
 
 struct SimData {
+    float distance_light;
     float distance_z;
     float max_y;
     float accumulated_y;

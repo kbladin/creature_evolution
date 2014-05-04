@@ -16,8 +16,9 @@ int main(int argc, char **argv) {
 	SettingsManager::Instance()->SetElitism(0.2f);
 	SettingsManager::Instance()->SetMutation(0.8f);
 */
+    SettingsManager::Instance()->SetFitnessDistanceLight(-1.0f);
     SettingsManager::Instance()->SetFitnessDistanceZ(0.0f);
-    SettingsManager::Instance()->SetFitnessMaxY(1.0f);
+    SettingsManager::Instance()->SetFitnessMaxY(0.0f);
     SettingsManager::Instance()->SetFitnessAccumY(0.0f);
     SettingsManager::Instance()->SetFitnessAccumHeadY(0.0f);
     SettingsManager::Instance()->SetFitnessDeviationX(0.0f);
@@ -25,7 +26,7 @@ int main(int argc, char **argv) {
 
 
 
-    SettingsManager::Instance()->SetCreatureType(CreatureType::WORM);
+    SettingsManager::Instance()->SetCreatureType(CreatureType::PONY);
     SettingsManager::Instance()->SetMainBodyDimension(Vec3(0.1,0.1,0.2));
     qRegisterMetaType<Creature>();
     

@@ -36,9 +36,13 @@ class Simulation {
 
 
     std::vector<BulletCreature*> bt_population_;
+
     btCollisionShape* ground_shape_;
     btDefaultMotionState* ground_motion_state_;
     btRigidBody* ground_rigid_body_;
+
+    btCollisionShape* light_shape_;
+    btRigidBody* light_rigid_body_;
 
 
     int bt_creature_collidies_with_;

@@ -168,11 +168,11 @@ Creature BulletCreature::GetCreature() {
     return blueprint_;
 }
 
-void BulletCreature::CollectData() {
+void BulletCreature::CollectData(std::vector<float> sim_data) {
     SimData data = blueprint_.simdata;
 
+    data.distance_light = sim_data.front();
     data.distance_z = GetCenterOfMass().getZ();
-    
     data.max_y = (GetCenterOfMass().getY() > data.max_y) ?
                     GetCenterOfMass().getY() : data.max_y;
     data.accumulated_y += GetCenterOfMass().getY();
