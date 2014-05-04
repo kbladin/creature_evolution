@@ -4,6 +4,8 @@
 #include "SettingsManager.h"
 #include "Scene.h"
 
+#include <iostream>
+
 #ifndef GL_MULTISAMPLE
 #define GL_MULTISAMPLE  0x809D
 #endif
@@ -70,6 +72,11 @@ void GLWidget::resizeGL(int width, int height){
 void GLWidget::mousePressEvent(QMouseEvent *event){
   lastPos = event->pos();
   qDebug() << lastPos;
+  float width = SettingsManager::Instance()->GetFrameWidth();
+  float height = SettingsManager::Instance()->GetFrameHeight();
+  float x = (event->pos().x()/(float)width  - 0.5f) * 2.0f;
+  float y = (event->pos().y()/(float)height  - 0.5f) * 2.0f;
+  Scene::Instance()->SelectObject(x,y);
 }
 
 void GLWidget::mouseMoveEvent(QMouseEvent *event){
@@ -80,11 +87,13 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event){
   int dx = event->x() - lastPos.x();
   int dy = event->y() - lastPos.y();
   
+  float width = SettingsManager::Instance()->GetFrameWidth();
+  float height = SettingsManager::Instance()->GetFrameHeight();
   if (event->buttons() & Qt::LeftButton) {
     Camera* current_cam = Scene::Instance()->GetCamera();
     if (current_cam){
-      float width = SettingsManager::Instance()->GetFrameWidth();
-      float height = SettingsManager::Instance()->GetFrameHeight();
+      //float width = SettingsManager::Instance()->GetFrameWidth();
+      //float height = SettingsManager::Instance()->GetFrameHeight();
       float sense = SettingsManager::Instance()->GetRotationSensitivity();
       // X-position handles the rotation around the y-axis and vice versa.
       // The rotation should not be dependent on the size of the window.
@@ -93,7 +102,9 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event){
     }
   }
   else if (event->buttons() & Qt::RightButton) {
-
+     float x = ((float)event->x()/(float)width  - 0.5f) * 2.0f;
+     float y = ((float)event->y()/(float)height  - 0.5f) * 2.0f;
+     Scene::Instance()->UpdateSelectedObjectPosition(x,y);
   }
   
   lastPos = event->pos();

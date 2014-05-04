@@ -202,3 +202,14 @@ btVector3 Simulation::GetLastCreatureCoords() {
    else
        return btVector3(0.0,0.0,0.0);
 }
+
+void Simulation::CastRay(btVector3 start, btVector3 end) {
+    btCollisionWorld::ClosestRayResultCallback RayCallback(start, end);
+    dynamics_world_->rayTest(start, end, RayCallback);
+    std::cout << "hej";
+    if(RayCallback.hasHit()) {
+        std::cout << "mesh ";// << (int)RayCallback.m_collisionObject->getUserPointer();
+    }else{
+        std::cout << "background";
+    }
+}

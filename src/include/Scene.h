@@ -42,9 +42,9 @@ class Scene {
     void StartSimulation(std::vector<Creature> viz_creatures);
     void EndSimulation();
     void RestartSimulation(std::vector<Creature> viz_creatures);
-
+    void SelectObject(float x, float y);
+    void UpdateSelectedObjectPosition(float x, float y);
   private:
-
     static Scene* instance_;
     Simulation* sim_;
     Camera cam_;

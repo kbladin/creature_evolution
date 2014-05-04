@@ -84,3 +84,24 @@ void Scene::RestartSimulation(std::vector<Creature> viz_creatures) {
 
 }
 
+void Scene::SelectObject(float x, float y) {
+    std::cout << "hej";
+    glm::vec4 lRayStart_NDC(x,y,-1.0,1.0);
+    glm::vec4 lRayEnd_NDC(x,y,0.0,1.0);
+
+    glm::mat4 M = glm::inverse(cam_.GetProjectionMatrix() * cam_.GetViewMatrix());
+    glm::vec4 lRayStart_world = M * lRayStart_NDC; lRayStart_world /= lRayStart_world.w;
+    glm::vec4 lRayEnd_world   = M * lRayEnd_NDC  ; lRayEnd_world  /=lRayEnd_world.w;
+
+    glm::vec3 lRayDir_world(lRayEnd_world - lRayStart_world);
+    lRayDir_world = glm::normalize(lRayDir_world);
+
+    btVector3 start = btVector3(lRayStart_world.x,lRayStart_world.y,lRayStart_world.z);
+    btVector3 end = 100.0*btVector3(lRayDir_world.x,lRayDir_world.y,lRayDir_world.z);
+    sim_->CastRay(start,end);
+}
+
+void Scene::UpdateSelectedObjectPosition(float x, float y) {
+
+}
+

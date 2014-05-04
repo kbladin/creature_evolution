@@ -27,6 +27,7 @@ class Simulation {
     Population SimulatePopulation();
     std::vector<Node> GetNodes();
     btVector3 GetLastCreatureCoords();
+    void CastRay(btVector3 start, btVector3 end);
   private:
     btBroadphaseInterface* broad_phase_;
     btDefaultCollisionConfiguration* collision_configuration_;
