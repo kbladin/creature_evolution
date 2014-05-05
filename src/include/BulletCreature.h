@@ -36,7 +36,7 @@ private:
     Creature blueprint_;
 
     btRigidBody* AddBody(BodyTree body, btVector3 position);
-
+    int brain_counter_;
 };
 
 

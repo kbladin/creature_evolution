@@ -10,6 +10,7 @@ BulletCreature::BulletCreature(Creature blueprint) {
     //create body
     BodyTree body_root = blueprint_.GetBody().GetBodyRoot();
     AddBody(body_root, btVector3(0.0,-body_root.GetLowestPoint(),0.0));
+    brain_counter_ = 1;
 }
 
 
@@ -21,7 +22,7 @@ BulletCreature::BulletCreature(Creature blueprint, float x_displacement) {
     //create body
     BodyTree body_root = blueprint_.GetBody().GetBodyRoot();
     AddBody(body_root, btVector3(x_displacement,-body_root.GetLowestPoint(),0.0));
-
+    brain_counter_ = 1;
 }
 
 
@@ -120,20 +121,31 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
 
 
 void BulletCreature::UpdateMotors(std::vector<float> input) {
-    std::vector<float> signal = blueprint_.CalculateBrainOutput(input);
+    if(brain_counter_ == 6) {
+        std::vector<float> signal = blueprint_.CalculateBrainOutput(input);
 
-    for(int i=0; i < m_joints_.size(); i++) {
+        for(int i=0; i < m_joints_.size(); i++) {
 
-        int sign = signal[i] < 0 ? -1 : 1;
-        float impulse = joint_strength_[i]*sign*signal[i];
-        m_joints_[i]->enableAngularMotor(
-                    true,
-                    1000000.0*sign,
-                    impulse); // apply force
-        
-        //update creatures energy for every joint..
-        blueprint_.simdata.energy_waste += impulse;
-    }
+            int sign = signal[i] < 0 ? -1 : 1;
+            float impulse = joint_strength_[i]*sign*signal[i];
+
+            //dampening
+            float last_impulse = m_joints_[i]->getMaxMotorImpulse();
+            impulse = last_impulse + (impulse-last_impulse)/2.0;
+
+            m_joints_[i]->enableAngularMotor(
+                        true,
+                        1000000.0*sign,
+                        impulse); // apply force
+
+            //update creatures energy for every joint..
+            blueprint_.simdata.energy_waste += impulse;
+        }
+        brain_counter_ = 1;
+   }
+   else {
+       brain_counter_++;
+   }
 }
 
 btVector3 BulletCreature::GetCenterOfMass(){
