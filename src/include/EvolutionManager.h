@@ -39,7 +39,7 @@ private:
 	void SimulatePopulation();
 	void CalculateFitnessOnPopulation();
 	void SortPopulation();
-	std::vector<Creature> TournamentSelection();
+	Creature TournamentSelection();
 
 	void NextGeneration();
 

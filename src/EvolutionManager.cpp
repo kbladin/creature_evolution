@@ -168,22 +168,14 @@ void EvolutionManager::NextGeneration() {
 	std::uniform_int_distribution<int> int_elitism_index(0, elitism_pivot);
 
 	//Creature new_creature;
-    for(int i = elitism_pivot; i < current_population_.size() - 1; i++) {
+    for(int i = elitism_pivot; i < current_population_.size(); i++) {
 		int random_index = int_elitism_index(rng_.mt_rng_);
 
-		std::vector<Creature> parents = TournamentSelection();
-		//parents.push_back(current_population_[random_index]);
-		//parents.push_back(current_population_[random_index]);
-		std::vector<Creature> new_creatures = parents[0].Crossover(parents[1]);
+		Creature c = TournamentSelection();
 
-		new_creatures[0].Mutate();
-		new_creatures[1].Mutate();
-
-        new_population[i] = new_creatures[0];
-
-        // ser till att om pop. size är udda så läggs inte denna till. dock kanske borde skrivas på annat sätt.
-        if(i != current_population_.size() - 1)
-	        new_population[i+1] = new_creatures[1];
+		c.Mutate();
+		
+        new_population[i] = c; 
 	}
 
 	// current_population_ = new_population;
@@ -192,26 +184,26 @@ void EvolutionManager::NextGeneration() {
 	}
 }
 
-//! Select parents for crossover and mutation
-std::vector<Creature> EvolutionManager::TournamentSelection() {
+
+
+//! Select a creature from the population based on tournament selection.
+Creature EvolutionManager::TournamentSelection() {
 	int TOURNAMENT_SIZE = 3;
-	std::vector<Creature> parents;
-	parents.resize(2);
+	Creature c; 
+
 	std::uniform_int_distribution<int> int_dist_index_(0,
 						current_population_.size()-1);
 
-	for (int i = 0; i < 2; ++i) {
-		parents[i] = current_population_[int_dist_index_(rng_.mt_rng_)];
-		for (int j = 0; j < TOURNAMENT_SIZE; ++j) {
-			int idx = int_dist_index_(rng_.mt_rng_);
-			if(current_population_[idx].GetFitness() > 
-										parents[i].GetFitness()) {
-				parents[i] = current_population_[idx];
-			}
+	c = current_population_[int_dist_index_(rng_.mt_rng_)];
+	for (int j = 0; j < TOURNAMENT_SIZE; ++j) {
+		int idx = int_dist_index_(rng_.mt_rng_);
+		if(current_population_[idx].GetFitness() > 
+									c.GetFitness()) {
+			c = current_population_[idx];
 		}
 	}
 
-	return parents;
+	return c;
 }
 
 //! Create a population with random creatures
