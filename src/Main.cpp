@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
 	SettingsManager::Instance()->SetElitism(0.2f);
 	SettingsManager::Instance()->SetMutation(0.8f);
 */
-    SettingsManager::Instance()->SetFitnessDistanceLight(-1.0f);
+    SettingsManager::Instance()->SetFitnessDistanceLight(1.0f);
     SettingsManager::Instance()->SetFitnessDistanceZ(0.0f);
     SettingsManager::Instance()->SetFitnessMaxY(0.0f);
     SettingsManager::Instance()->SetFitnessAccumY(0.0f);

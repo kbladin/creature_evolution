@@ -135,7 +135,7 @@ void BulletCreature::UpdateMotors(std::vector<float> input) {
 
             m_joints_[i]->enableAngularMotor(
                         true,
-                        1000000.0*sign,
+                        20.0*sign,
                         impulse); // apply force
 
             //update creatures energy for every joint..
@@ -183,7 +183,7 @@ Creature BulletCreature::GetCreature() {
 void BulletCreature::CollectData(std::vector<float> sim_data) {
     SimData data = blueprint_.simdata;
 
-    data.distance_light = sim_data.front();
+    data.distance_light = 1.0/sim_data.front();
     data.distance_z = GetCenterOfMass().getZ();
     data.max_y = (GetCenterOfMass().getY() > data.max_y) ?
                     GetCenterOfMass().getY() : data.max_y;
