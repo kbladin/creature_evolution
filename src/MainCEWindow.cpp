@@ -43,7 +43,7 @@ MainCEWindow::MainCEWindow()
 
     int max_gen = SettingsManager::Instance()->GetMaxGenerations();
     int pop_size = SettingsManager::Instance()->GetPopulationSize();
-    int crossover = 100 * SettingsManager::Instance()->GetCrossover();
+    //int crossover = 100 * SettingsManager::Instance()->GetCrossover();
     int elitism = 100 * SettingsManager::Instance()->GetElitism();
     int mutation = 100 * SettingsManager::Instance()->GetMutation();
     int mutation_internal = 100 * SettingsManager::Instance()->GetMutationInternal();
@@ -51,7 +51,7 @@ MainCEWindow::MainCEWindow()
 
     generation_slider = new SliderWidget("Number of generations: ", max_gen, 100, 1, 10, 10);
     generation_size_slider = new SliderWidget("Generation size: ", pop_size, 100, 1, 10, 10);
-    crossover_slider = new SliderWidget("Crossover ratio (%): ", crossover, 100, 1, 10, 10);
+    //crossover_slider = new SliderWidget("Crossover ratio (%): ", crossover, 100, 1, 10, 10);
     elitism_slider = new SliderWidget("Elitism ratio (%): ", elitism, 100, 1, 10, 10);
     mutation_slider = new SliderWidget("Mutation ratio (%): ", mutation, 100, 1, 10, 10);
     mutation_internal_slider = new SliderWidget("Mutation ratio internal (%): ", mutation_internal, 100, 1, 10, 10);
@@ -62,7 +62,7 @@ MainCEWindow::MainCEWindow()
 
     generation_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
     generation_size_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
-    crossover_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
+    //crossover_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
     elitism_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
     mutation_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
     mutation_internal_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
@@ -70,7 +70,7 @@ MainCEWindow::MainCEWindow()
 
     connect(generation_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueGen(int)));
     connect(generation_size_slider, SIGNAL(valueChanged(int)), this, SLOT(setValuePop(int)));
-    connect(crossover_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueCO(int)));
+    //connect(crossover_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueCO(int)));
     connect(elitism_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueElit(int)));
     connect(mutation_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueMut(int)));
     connect(mutation_internal_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueMutInternal(int)));
@@ -85,7 +85,7 @@ MainCEWindow::MainCEWindow()
 
     layout_control->addWidget(generation_slider);
     layout_control->addWidget(generation_size_slider);
-    layout_control->addWidget(crossover_slider);
+    //layout_control->addWidget(crossover_slider);
     layout_control->addWidget(elitism_slider);
     layout_control->addWidget(mutation_slider);
     layout_control->addWidget(mutation_internal_slider);
@@ -176,7 +176,7 @@ void MainCEWindow::testPrint() {
         generation_slider->hide();
         generation_size_slider->hide();
         elitism_slider->hide();
-        crossover_slider->hide();
+        //crossover_slider->hide();
         mutation_internal_slider->hide();
         mutation_sigma_slider->hide();
         mutation_slider->hide();
@@ -195,7 +195,7 @@ void MainCEWindow::testPrint() {
         generation_slider->show();
         generation_size_slider->show();
         elitism_slider->show();
-        crossover_slider->show();
+        //crossover_slider->show();
         mutation_internal_slider->show();
         mutation_sigma_slider->show();
         mutation_slider->show();
