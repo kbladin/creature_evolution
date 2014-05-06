@@ -1,0 +1,168 @@
+%______________________________________________________
+%
+%   Konstruerad av Marcus Bergner, bergner@cs.umu.se
+%
+%   Vid funderingar titta längst ned i denna fil,
+%   eller skicka ett mail
+%______________________________________________________
+%
+
+% lite inställningar
+\documentclass[10pt, titlepage, oneside, a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[english,swedish]{babel}
+\usepackage{amssymb, graphicx, fancyheadings}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+
+\addtolength{\textheight}{20mm}
+\addtolength{\voffset}{-5mm}
+\renewcommand{\sectionmark}[1]{\markleft{#1}}
+
+% \Section ger mindre spillutrymme, använd dem om du vill
+\newcommand{\Section}[1]{\section{#1}\vspace{-8pt}}
+\newcommand{\Subsection}[1]{\vspace{-4pt}\subsection{#1}\vspace{-8pt}}
+\newcommand{\Subsubsection}[1]{\vspace{-4pt}\subsubsection{#1}\vspace{-8pt}}
+	
+% appendices, \appitem och \appsubitem är för bilagor
+\newcounter{appendixpage}
+
+\newenvironment{appendices}{
+	\setcounter{appendixpage}{\arabic{page}}
+	\stepcounter{appendixpage}
+}{
+}
+
+\newcommand{\appitem}[2]{
+	\stepcounter{section}
+	\addtocontents{toc}{\protect\contentsline{section}{\numberline{\Alph{section}}#1}{\arabic{appendixpage}}}
+	\addtocounter{appendixpage}{#2}
+}
+
+\newcommand{\appsubitem}[2]{
+	\stepcounter{subsection}
+	\addtocontents{toc}{\protect\contentsline{subsection}{\numberline{\Alph{section}.\arabic{subsection}}#1}{\arabic{appendixpage}}}
+	\addtocounter{appendixpage}{#2}
+}
+
+% Ändra de rader som behöver ändras
+\def\inst{teknik och naturvetenskap}
+\def\typeofdoc{Projektuppsats}
+\def\course{Projektrapport, TNM094}
+%\def\title{Elements}
+\def\name{\\ Namn, LiU-ID \\ Namn, LiU-ID \\ Creature Evolution}
+\def\username{c00abc}
+%\def\email{\username{}@cs.umu.se}
+%\def\path{edu/KURS/lab1}
+\def\graders{Karljohan Lundin Palmerius}
+
+
+% Här börjar själva dokumentet
+\begin{document}
+	% skapar framsidan (om den inte duger: gör helt enkelt en egen)
+	\begin{titlepage}
+		\thispagestyle{empty}
+		\begin{large}
+			\begin{tabular}{@{}p{\textwidth}@{}}
+				\textbf{LINKÖPINGS UNIVERSITET\hfill \today} \\
+				\textbf{Institutionen för \inst} \\
+				\textbf{\typeofdoc} \\
+			\end{tabular}
+		\end{large}
+		\vspace{10mm}
+		\begin{center}
+			%\LARGE{\pretitle} \\
+			\huge{\textbf{\course}}\\
+			\vspace{10mm}
+%			\LARGE{\title} \\
+			\vspace{15mm}
+			\begin{center}
+				\begin{large}
+					\begin{tabular}{ll}
+						\textbf{} & \name \\
+						%\textbf{E-mail} & \texttt{\email} \\
+						%\textbf{Sökväg} & \texttt{\fullpath} \\
+					\end{tabular}
+				\end{large}
+			\end{center}
+			\vfill
+			\large{\textbf{Handledare}}\\
+			\mbox{\large{\graders}}
+		\end{center}
+	\end{titlepage}
+
+
+	% fixar sidfot
+	%\lfoot{\footnotesize{\name, \email}}
+	\rfoot{\footnotesize{\today}}
+	\lhead{\sc\footnotesize\title}
+	\rhead{\nouppercase{\sc\footnotesize\leftmark}}
+	\pagestyle{fancy}
+	\renewcommand{\headrulewidth}{0.2pt}
+	\renewcommand{\footrulewidth}{0.2pt}
+
+	%Skapa sammanfattning
+	\begin{abstract}
+		Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning Sammanfattning.
+	\end{abstract}
+	
+	% skapar innehållsförteckning.
+	% Tänk på att köra latex 2ggr för att uppdatera allt
+	\pagenumbering{roman}
+	\tableofcontents
+	
+	% och lägger in en sidbrytning
+	\newpage
+
+	\pagenumbering{arabic}
+
+	% i Sverige har vi normalt inget indrag vid nytt stycke
+	\setlength{\parindent}{0pt}
+	% men däremot lite mellanrum
+	\setlength{\parskip}{10pt}
+
+	\Section{Inledning}		
+	  	 
+	  	 Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning Inledning.
+		
+	\Section{Rubrik}
+	
+		Text. Referens \cite[sid. 122]{Ref1}
+
+		\Subsection{Underrubrik}
+				
+			Text.
+
+				\Subsubsection{UnderUnderrubrik}
+				Text.
+				
+				\Subsection{Underrubrik}
+				
+				Text.
+				%\ref{fig:figur1}. //Figurreferens
+				
+				%Figur-mall
+				%\begin{figure}[H]
+					%\centering
+					%\includegraphics[scale=0.37]{Illustration.png}
+					%\caption{\emph{Figurtext}}
+					%\label{fig:figur1}
+				%\end{figure}
+		
+	\newpage
+	
+	\begin{thebibliography}{9}
+		\bibitem{Ref1} Exempelreferens.
+	\end{thebibliography}
+	
+	\newpage
+		\appendix
+	
+		\Section{Bilaga - Exempeltitel}
+
+\end{document}
+
