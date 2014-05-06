@@ -129,9 +129,6 @@ void BulletCreature::UpdateMotors(std::vector<float> input) {
             int sign = signal[i] < 0 ? -1 : 1;
             float impulse = joint_strength_[i]*sign*signal[i];
 
-            //dampening
-            float last_impulse = m_joints_[i]->getMaxMotorImpulse();
-            impulse = last_impulse + (impulse-last_impulse)/2.0;
 
             m_joints_[i]->enableAngularMotor(
                         true,
