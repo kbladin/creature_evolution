@@ -50,6 +50,11 @@ Simulation::~Simulation()  {
   delete ground_rigid_body_;
   delete ground_shape_;
 
+  dynamics_world_->removeRigidBody(light_rigid_body_);
+  delete light_rigid_body_->getMotionState();
+  delete light_rigid_body_;
+  delete light_shape_;
+
   delete dynamics_world_;
   delete solver_;
   delete collision_configuration_;
@@ -59,6 +64,8 @@ Simulation::~Simulation()  {
 
 void Simulation::SetupEnvironment() {
   dynamics_world_->setGravity(btVector3(0, -9.82, 0));
+
+  //add plane
   ground_shape_ = new btStaticPlaneShape(btVector3(0, 1, 0), 1);
 
   ground_motion_state_ =
@@ -73,6 +80,21 @@ void Simulation::SetupEnvironment() {
 
   dynamics_world_->addRigidBody(ground_rigid_body_,
     collisiontypes::COL_GROUND, ground_collidies_with_);
+
+  //add lightsource
+  light_shape_ = new btBoxShape(btVector3(0.2,0.2,0.2));
+  btTransform offset;
+  offset.setIdentity();
+  offset.setOrigin(btVector3(5.0,3.0,5.0));
+  btMotionState* light_motion_state = new btDefaultMotionState(offset);
+
+  btRigidBody::btRigidBodyConstructionInfo light_rigid_bodyCI(0,
+    light_motion_state, light_shape_, btVector3(0, 0, 0));
+
+  light_rigid_body_ = new btRigidBody(light_rigid_bodyCI);
+
+  dynamics_world_->addRigidBody(light_rigid_body_);
+
 }
 
 void Simulation::AddPopulation(Population population, bool disp) {
@@ -115,14 +137,28 @@ void Simulation::Step(float dt) {
   for (int i = 0; i < bt_population_.size(); ++i) {
     std::vector<float> input;
     input.push_back(1.0);
-
     std::vector<btHingeConstraint*> joints = bt_population_[i]->GetJoints();
     for(int i=0; i < joints.size(); i++) {
       input.push_back(joints[i]->getHingeAngle());
     }
 
+    btQuaternion orientation = bt_population_[i]->GetHead()->getOrientation();
+    btTransform orientation_matrix = btTransform(orientation);
+    btVector3 creature_dir = orientation_matrix*btVector3(0.0,0.0,1.0);
+
+    btVector3 head_light_vec = light_rigid_body_->getCenterOfMassPosition() - bt_population_[i]->GetHeadPosition();
+    btVector3 light_dir = head_light_vec.normalized();
+    float distance2_to_light = head_light_vec.length2();
+
+    btVector3 dir_diff = light_dir - creature_dir;
+    input.push_back(dir_diff.getX());
+    input.push_back(dir_diff.getY());
+    input.push_back(dir_diff.getZ());
+
     bt_population_[i]->UpdateMotors(input);
-    bt_population_[i]->CollectData();
+    std::vector<float> sim_data;
+    sim_data.push_back(distance2_to_light);
+    bt_population_[i]->CollectData(sim_data);
   }
   dynamics_world_->stepSimulation(dt, 1);
   counter_ += dt;
@@ -148,6 +184,7 @@ std::vector<Node> Simulation::GetNodes() {
 
     //add terrain
     nodes.push_back(Node(ground_rigid_body_));
+    nodes.push_back(Node(light_rigid_body_));
 
     //add creatures
     for(BulletCreature* bt_creature : bt_population_) {

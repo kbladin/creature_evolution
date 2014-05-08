@@ -40,6 +40,7 @@ public:
   void SetCreatureType(int creature);
   int GetCreatureType();
 
+  float GetFitnessDistanceLight();
   float GetFitnessDistanceZ();
   float GetFitnessMaxY();
   float GetFitnessAccumY();
@@ -59,6 +60,7 @@ public:
   void SetFrameHeight(int frame_height);
   void SetRotationSensitivity(float sense);
 
+  void SetFitnessDistanceLight(float val);
   void SetFitnessDistanceZ(float val);
   void SetFitnessMaxY(float val);
   void SetFitnessAccumY(float val);
@@ -94,6 +96,7 @@ private:
 
   int creature_type_; 
 
+  float fitness_distance_light_;
   float fitness_distance_z_;
   float fitness_max_y_;
   float fitness_accumulated_y;

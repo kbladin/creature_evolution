@@ -91,16 +91,18 @@ void EvolutionManager::SimulatePopulation() {
 void EvolutionManager::CalculateFitnessOnPopulation() {
 
     //how much each fitness function should contribute to the fitness value
-    float weight1, weight2, weight3, weight4, weight5, weight6;
-    weight1 = SettingsManager::Instance()->GetFitnessDistanceZ();
-    weight2 = SettingsManager::Instance()->GetFitnessMaxY();
-    weight3 = SettingsManager::Instance()->GetFitnessAccumY();
-    weight4 = SettingsManager::Instance()->GetFitnessAccumHeadY();
-    weight5 = SettingsManager::Instance()->GetFitnessDeviationX();
-    weight6 = SettingsManager::Instance()->GetFitnessEnergy();
+    float weight1, weight2, weight3, weight4, weight5, weight6, weight7;
+    weight1 = SettingsManager::Instance()->GetFitnessDistanceLight();
+    weight2 = SettingsManager::Instance()->GetFitnessDistanceZ();
+    weight3 = SettingsManager::Instance()->GetFitnessMaxY();
+    weight4 = SettingsManager::Instance()->GetFitnessAccumY();
+    weight5 = SettingsManager::Instance()->GetFitnessAccumHeadY();
+    weight6 = SettingsManager::Instance()->GetFitnessDeviationX();
+    weight7 = SettingsManager::Instance()->GetFitnessEnergy();
 
     // find the max value of each fitness-value to be able to normalize
     SimData data = current_population_[0].simdata;
+    float norm_dist_light = data.distance_light;
     float norm_dist_z = data.distance_z;
     float norm_max_y = data.max_y;
     float norm_accumulated_y = data.accumulated_y;
@@ -111,6 +113,8 @@ void EvolutionManager::CalculateFitnessOnPopulation() {
     for(int i = 1; i < current_population_.size(); ++i) {
     	data = current_population_[i].simdata;
 
+        norm_dist_light = (data.distance_light > norm_dist_light) ?
+                        data.distance_light : norm_dist_light;
     	norm_dist_z = (data.distance_z > norm_dist_z) ?
     					data.distance_z : norm_dist_z;
     	norm_max_y = (data.max_y > norm_max_y) ?
@@ -128,6 +132,7 @@ void EvolutionManager::CalculateFitnessOnPopulation() {
 	// calculate fitness for each creature    
     for(int i = 0; i < current_population_.size(); ++i) {
     	data = current_population_[i].simdata;
+        float dist_light = data.distance_light;
         float dist_z = data.distance_z;
         float max_y = data.max_y;
         float accumulated_y = data.accumulated_y; 
@@ -136,12 +141,13 @@ void EvolutionManager::CalculateFitnessOnPopulation() {
         float energy = data.energy_waste;
 
        	float fitness =
-       		weight1*(dist_z/norm_dist_z) + 
-       		weight2*(max_y/norm_max_y) +
-       		weight3*(accumulated_y/norm_accumulated_y) +
-       		weight4*(accumulated_head_y/norm_accumulated_head_y) + 
-       		weight5*(deviation_x/norm_deviation_x) +
-       		weight6*(energy/norm_energy);
+            weight1*(dist_light/norm_dist_light) +
+            weight2*(dist_z/norm_dist_z) +
+            weight3*(max_y/norm_max_y) +
+            weight4*(accumulated_y/norm_accumulated_y) +
+            weight5*(accumulated_head_y/norm_accumulated_head_y) +
+            weight6*(deviation_x/norm_deviation_x) +
+            weight7*(energy/norm_energy);
         current_population_[i].SetFitness(fitness);
     }
 }
