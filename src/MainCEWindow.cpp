@@ -23,6 +23,7 @@ MainCEWindow::MainCEWindow()
     //QPushButton *renderOneButton = new QPushButton("Render best creature! (not working)");
     //QPushButton *renderAllButton = new QPushButton("3. Render all generations!");
     simButton = new QPushButton("Start simulation");
+    cancelButton = new QPushButton("Cancel");
     loadButton = new QPushButton("Load best creature");
     gameofwormsbtn = new QPushButton("Game of Worms");
     dummyButton = new QPushButton("Hide");
@@ -92,6 +93,7 @@ MainCEWindow::MainCEWindow()
     layout_control->addWidget(mutation_sigma_slider);
 
     layout_control->addWidget(simButton);
+    layout_control->addWidget(cancelButton);
     layout_control->addWidget(loadButton);
     layout_control->addWidget(gameofwormsbtn);
 
@@ -108,6 +110,7 @@ MainCEWindow::MainCEWindow()
     connect(dummyButton,SIGNAL(clicked()), this, SLOT(testPrint()));
     //connect(renderAllButton,SIGNAL(clicked()), glWidget, SLOT(enableRendering()));
     connect(simButton, SIGNAL(clicked()), this, SLOT(startEvolution()));
+    connect(cancelButton, SIGNAL(clicked()), EM_, SLOT(RequestEndNow()));
     connect(loadButton, SIGNAL(clicked()), this, SLOT(loadCreature()));
     connect(gameofwormsbtn, SIGNAL(clicked()), this, SLOT(GameOfWorms()), Qt::DirectConnection);
 
@@ -212,6 +215,7 @@ void MainCEWindow::startEvolution() {
     simButton->setStyleSheet("* { background-color: rgb(1,120,20,80) }");
     loadButton->setStyleSheet("* { background-color: rgb(1,200,20) }");
     QApplication::setOverrideCursor(Qt::BusyCursor);
+    creatures_.clear();        
     evolution_thread_starter_.setFuture(QtConcurrent::run(::startEvo, EM_));
     evoDone();
 }

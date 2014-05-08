@@ -93,6 +93,7 @@ private:
     SliderWidget* mutation_sigma_slider;
 
     QPushButton *simButton;
+    QPushButton *cancelButton;
     QPushButton *loadButton;
     QPushButton *gameofwormsbtn;
     QPushButton *dummyButton;

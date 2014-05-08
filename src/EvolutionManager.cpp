@@ -2,6 +2,8 @@
 #include "SettingsManager.h"
 #include "Simulation.h"
 #include <chrono>
+
+#include <QMutexLocker>
 AutoInitRNG EvolutionManager::rng_;
 
 //! Constructor that get the setting from SettingsManager
@@ -9,6 +11,8 @@ AutoInitRNG EvolutionManager::rng_;
 	from SettingsManager.
 */
 EvolutionManager::EvolutionManager(){
+    end_now_request_ = false;
+    mutex_ = new QBasicMutex();
 }
 
 //! Destructor
@@ -21,6 +25,8 @@ EvolutionManager::~EvolutionManager(void){
 	the population to a new generation until max generation.
 */
 void EvolutionManager::startEvolutionProcess() {
+    current_population_.clear();
+    end_now_request_ = false;
     std::clock_t start_time;
 	start_time = std::clock();
 
@@ -31,7 +37,8 @@ void EvolutionManager::startEvolutionProcess() {
 	// Creates a new random population
 	current_population_ = CreateRandomPopulation(pop_size);
 	std::chrono::time_point<std::chrono::system_clock> start, end;
-    for (int i = 0; i < max_gen; ++i){
+    int i = 0;
+    while(i < max_gen && !NeedEndNow()) {
 		std::cout << "Generation: " << i << std::endl <<
         "Simulating..." << std::endl;
         SimulatePopulation();
@@ -46,6 +53,7 @@ void EvolutionManager::startEvolutionProcess() {
         emit NewCreature(GetBestCreature());
         //best_creatures_.push_back(best);
         NextGeneration();
+        i++;
 	}
 	std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
 }
@@ -225,3 +233,14 @@ Population EvolutionManager::CreateRandomPopulation(int pop_size) {
 // void EvolutionManager::GenerationDone(Creature new_creature) {
 //   emit NewCreature(new_creature);
 // }
+
+
+void EvolutionManager::RequestEndNow() {
+    QMutexLocker locker(mutex_);
+    end_now_request_ = true;
+}
+
+bool EvolutionManager::NeedEndNow() {
+    QMutexLocker locker(mutex_);
+    return end_now_request_;
+}

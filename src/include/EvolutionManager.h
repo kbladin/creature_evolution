@@ -8,6 +8,7 @@
 #include "Creature.h"
 #include "AutoInitRNG.h"
 
+#include <QMutex>
 
 typedef std::vector<Creature> Population;
 
@@ -25,7 +26,12 @@ public:
 	void PrintBestFitnessValues();
 	Creature GetBestCreature();
 	Population GetAllBestCreatures();
-    void PrintPopulation();
+  void PrintPopulation();
+  bool NeedEndNow();
+
+
+public slots:
+	void RequestEndNow();
 
 signals:
 	void NewCreature(const Creature &new_creature);
@@ -42,6 +48,9 @@ private:
 	Creature TournamentSelection();
 
 	void NextGeneration();
+
+	bool end_now_request_;
+	QBasicMutex* mutex_;
 
 };
 
