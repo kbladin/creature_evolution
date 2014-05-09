@@ -30,6 +30,7 @@ public:
   float GetMutation();
   float GetMutationInternal();
   float GetMutationSigma();
+  int GetSimulationTime();
 
   int GetFrameWidth();
   int GetFrameHeight();
@@ -55,6 +56,7 @@ public:
   void SetMutation(float mutation_ratio);
   void SetMutationInternal(float mutation_ratio_internal);
   void SetMutationSigma(float mutation_sigma);
+  void SetSimulationTime(int time);
 
   void SetFrameWidth(int frame_width);
   void SetFrameHeight(int frame_height);
@@ -83,6 +85,7 @@ private:
   float crossover_ratio_;
   float elitism_ratio_;
 
+  int simulation_time_;
   float mutation_ratio_;
   float mutation_ratio_internal_;
   float mutation_sigma_;

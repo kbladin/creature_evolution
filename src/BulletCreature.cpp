@@ -177,10 +177,18 @@ Creature BulletCreature::GetCreature() {
     return blueprint_;
 }
 
-void BulletCreature::CollectData(std::vector<float> sim_data) {
+float BulletCreature::GetDistanceToLight(){
+    return distance_to_light_;
+}
+
+void BulletCreature::SetDistanceToLight(float distance){
+    distance_to_light_ = distance;
+}
+
+void BulletCreature::CollectData() {
     SimData data = blueprint_.simdata;
 
-    data.distance_light = 1.0/sim_data.front();
+    data.distance_light += GetDistanceToLight();
     data.distance_z = GetCenterOfMass().getZ();
     data.max_y = (GetCenterOfMass().getY() > data.max_y) ?
                     GetCenterOfMass().getY() : data.max_y;

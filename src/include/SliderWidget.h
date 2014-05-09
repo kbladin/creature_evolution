@@ -13,7 +13,7 @@ class SliderWidget : public QWidget {
 	Q_OBJECT
 
 public:
-	SliderWidget(QString label_text, int default_value, int range, int step, int page, int tick);
+	SliderWidget(QString label_text, int default_value, int min_val, int max_val, int step, int page, int tick);
 	~SliderWidget(){};
 
 signals:

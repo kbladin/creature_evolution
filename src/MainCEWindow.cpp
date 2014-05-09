@@ -65,12 +65,12 @@ MainCEWindow::MainCEWindow()
     int mutation_internal = 100 * SettingsManager::Instance()->GetMutationInternal();
     int mutation_sigma = 100 * SettingsManager::Instance()->GetMutationSigma();
 
-    generation_slider = new SliderWidget("Number of generations: ", max_gen, 100, 1, 10, 10);
-    generation_size_slider = new SliderWidget("Generation size: ", pop_size, 100, 1, 10, 10);
-    elitism_slider = new SliderWidget("Elitism ratio (%): ", elitism, 100, 1, 10, 10);
+    generation_slider = new SliderWidget("Number of generations: ", max_gen, 0, 100, 1, 10, 10);
+    generation_size_slider = new SliderWidget("Generation size: ", pop_size, 0, 100, 1, 10, 10);
+    elitism_slider = new SliderWidget("Elitism ratio (%): ", elitism, 0, 100, 1, 10, 10);
     // mutation_slider = new SliderWidget("Mutation ratio (%): ", mutation, 100, 1, 10, 10);
-    mutation_internal_slider = new SliderWidget("Mutation ratio internal (%): ", mutation_internal, 100, 1, 10, 10);
-    mutation_sigma_slider = new SliderWidget("Mutation sigma : ", mutation_sigma, 100, 1, 10, 10);
+    mutation_internal_slider = new SliderWidget("Mutation ratio internal (%): ", mutation_internal, 0, 100, 1, 10, 10);
+    mutation_sigma_slider = new SliderWidget("Mutation sigma : ", mutation_sigma, 0, 100, 1, 10, 10);
 
     int f_dist_light = 100*SettingsManager::Instance()->GetFitnessDistanceLight();
     int f_dist_z = 100*SettingsManager::Instance()->GetFitnessDistanceZ();
@@ -80,13 +80,13 @@ MainCEWindow::MainCEWindow()
     int f_dev_x = 100*SettingsManager::Instance()->GetFitnessDeviationX();
     int f_energy = 100*SettingsManager::Instance()->GetFitnessEnergy();
 
-    f_dist_light_slider = new SliderWidget("Distance to target: ", f_dist_light, 100, 1, 10, 10);
-    f_dist_z_slider = new SliderWidget("Distance along Z-axis: ", f_dist_z, 100, 1, 10, 10);
-    f_max_y_slider = new SliderWidget("Max distance along Y-axis: ", f_max_y, 100, 1, 10, 10);
-    f_accum_y_slider = new SliderWidget("Accumulated distance along Y-axis: ", f_accum_y, 100, 1, 10, 10);
-    f_accum_head_slider = new SliderWidget("Keep head high: ", f_accum_head_y, 100, 1, 10, 10);
-    f_dev_x_slider = new SliderWidget("Minimize deviation along X-axis: ", f_dev_x, 100, 1, 10, 10);
-    f_energy_slider = new SliderWidget("Energy efficiency: ", f_energy, 100, 1, 10, 10);
+    f_dist_light_slider = new SliderWidget("Keep distance to target: ", f_dist_light, -100, 100, 1, 10, 10);
+    f_dist_z_slider = new SliderWidget("Distance along Z-axis: ", f_dist_z, -100, 100, 1, 10, 10);
+    f_max_y_slider = new SliderWidget("Jump high: ", f_max_y, -100, 100, 1, 10, 10);
+    f_accum_y_slider = new SliderWidget("Keep center of mass high: ", f_accum_y, -100, 100, 1, 10, 10);
+    f_accum_head_slider = new SliderWidget("Keep head high: ", f_accum_head_y, -100, 100, 1, 10, 10);
+    f_dev_x_slider = new SliderWidget("Minimize deviation along X-axis: ", f_dev_x, -100, 100, 1, 10, 10);
+    f_energy_slider = new SliderWidget("Energy efficiency: ", f_energy, -100, 100, 1, 10, 10);
 
     // int width = 6;
     // int height = 10;
@@ -436,12 +436,12 @@ void MainCEWindow::CreateDockWindows() {
     QWidget* multiple_widgets_fitness = new QWidget;
 
     dockedwidgets_fitness->addWidget(f_dist_light_slider);
-    dockedwidgets_fitness->addWidget(f_dist_z_slider);
+    //dockedwidgets_fitness->addWidget(f_dist_z_slider);
     dockedwidgets_fitness->addWidget(f_max_y_slider);
     dockedwidgets_fitness->addWidget(f_accum_y_slider);
     dockedwidgets_fitness->addWidget(f_accum_head_slider);
-    dockedwidgets_fitness->addWidget(f_dev_x_slider);
-    dockedwidgets_fitness->addWidget(f_energy_slider);
+    //dockedwidgets_fitness->addWidget(f_dev_x_slider);
+    //dockedwidgets_fitness->addWidget(f_energy_slider);
 
     multiple_widgets_fitness->setLayout(dockedwidgets_fitness);
 

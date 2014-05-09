@@ -30,6 +30,7 @@ struct SimData {
         ResetData();
     }
     void ResetData(){
+        distance_light = 0.0f;
         distance_z = 0.0f;
         max_y = 0.0f;
         accumulated_y = 0.0f;

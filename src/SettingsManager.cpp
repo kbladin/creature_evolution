@@ -49,6 +49,9 @@ float SettingsManager::GetMutationInternal(){
 float SettingsManager::GetMutationSigma(){
   return mutation_sigma_;
 }
+int SettingsManager::GetSimulationTime(){
+  return simulation_time_;
+}
 int SettingsManager::GetFrameWidth(){
   return frame_width_;
 }
@@ -124,6 +127,15 @@ void SettingsManager::SetMutationSigma(float mutation_sigma){
   }
   else
     mutation_sigma_ = mutation_sigma;
+}
+void SettingsManager::SetSimulationTime(int sim_time){
+  if(sim_time < 10){
+    simulation_time_ = 10;
+    std::cout << "WARNING: simulation time clamped to " << simulation_time_ <<
+      "!" << std::endl;
+  }
+  else
+    simulation_time_ = sim_time;
 }
 void SettingsManager::SetFrameWidth(int frame_width){
   frame_width_ = frame_width;

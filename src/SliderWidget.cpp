@@ -1,7 +1,7 @@
 #include "SliderWidget.h"
 
 
-SliderWidget::SliderWidget(QString label_text,int default_value, int range, int step, int page, int tick) {
+SliderWidget::SliderWidget(QString label_text,int default_value, int min_val, int max_val, int step, int page, int tick) {
 
   value_ = default_value;
 
@@ -17,7 +17,7 @@ SliderWidget::SliderWidget(QString label_text,int default_value, int range, int 
   label_layout_->addWidget(label_value_);
 
   slider_ = new QSlider(Qt::Horizontal);
-  slider_->setRange(0, range);
+  slider_->setRange(min_val, max_val);
   slider_->setSingleStep(step);
   slider_->setPageStep(page);
   //slider_->setTickInterval(tick);

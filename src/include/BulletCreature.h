@@ -22,10 +22,16 @@ public:
     btRigidBody* GetHead();
     btVector3 GetHeadPosition();
     Creature GetCreature();
+    float GetDistanceToLight();
 
-    void CollectData(std::vector<float> sim_data);
+    void SetDistanceToLight(float distance);
+
+    void CollectData();
 
 private:
+    // Fitness data from world
+    float distance_to_light_;
+
     // Should these be put in a struct?
     std::vector<btScalar> mass_;
     std::vector<btCollisionShape*> m_shapes_;
