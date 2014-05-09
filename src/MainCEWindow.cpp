@@ -107,6 +107,10 @@ void MainCEWindow::setValuePop(int value) {
     SettingsManager::Instance()->SetPopulationSize(value);
 }
 
+void MainCEWindow::setValueSimTime(int value) {
+    SettingsManager::Instance()->SetSimulationTime(value);
+}
+
 void MainCEWindow::setValueCO(int value) {
     SettingsManager::Instance()->SetCrossover((float)(value)/(float)(normalize));
 }
@@ -366,12 +370,21 @@ void MainCEWindow::CreateDockWindows() {
     p_edit = new QLineEdit(QString("%1").arg(SettingsManager::Instance()->GetPopulationSize()));
     connect(p_edit, SIGNAL(valueChanged(int)), this, SLOT(setValuePop(int)));
 
+    QHBoxLayout* sim_time_layout = new QHBoxLayout;
+    QLabel* sim_time_label = new QLabel("Simulation time: ");
+    sim_time_edit = new QLineEdit(QString("%1").arg(SettingsManager::Instance()->GetSimulationTime()));
+    connect(sim_time_edit, SIGNAL(valueChanged(int)), this, SLOT(setValueSimTime(int)));
+
     population_layout->addWidget(p_label);
     population_layout->addWidget(p_edit);
+
+    sim_time_layout->addWidget(sim_time_label);
+    sim_time_layout->addWidget(sim_time_edit);
 
     dockedwidgets->addLayout(creature_layout);
     dockedwidgets->addLayout(generation_layout);
     dockedwidgets->addLayout(population_layout);
+    dockedwidgets->addLayout(sim_time_layout);
     
     dockedwidgets->addWidget(elitism_slider);
     dockedwidgets->addWidget(mutation_internal_slider);

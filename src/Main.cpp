@@ -23,8 +23,8 @@ int main(int argc, char **argv) {
     SettingsManager::Instance()->SetFitnessAccumHeadY(0.0f);
     SettingsManager::Instance()->SetFitnessDeviationX(0.0f);
     SettingsManager::Instance()->SetFitnessEnergy(0.0f);
-
-    SettingsManager::Instance()->SetSimulationTime(0);
+    
+    SettingsManager::Instance()->SetSimulationTime(30);
 
     SettingsManager::Instance()->SetCreatureType(CreatureType::PONY);
     SettingsManager::Instance()->SetMainBodyDimension(Vec3(0.1,0.1,0.2));

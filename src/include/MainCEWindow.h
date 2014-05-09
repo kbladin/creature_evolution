@@ -60,6 +60,7 @@ public slots:
     void setValueMutSigma(int value);
     static void setValueGen(int value);
     void setValuePop(int value);
+    void setValueSimTime(int value);
     void setValueCO(int value);
     void setValueElit(int value);
     void setBodyDimension(int value);
@@ -99,6 +100,7 @@ private:
 
     QLineEdit* p_edit;
     QLineEdit* g_edit;
+    QLineEdit* sim_time_edit;
 
     int creature_count_;
 
