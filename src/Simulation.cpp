@@ -9,9 +9,9 @@ Simulation::Simulation() {
   dynamics_world_ = new btDiscreteDynamicsWorld(dispatcher_,
   broad_phase_, solver_, collision_configuration_);
 
-  time_to_simulate_ = 30;
+  time_to_simulate_ = 100;
   counter_ = 0.0;
-  fps_ = 30;
+  fps_ = 60;
   // no self collision
   bt_creature_collidies_with_ = collisiontypes::COL_GROUND;
   ground_collidies_with_ = collisiontypes::COL_CREATURE;
@@ -85,7 +85,7 @@ void Simulation::SetupEnvironment() {
   light_shape_ = new btBoxShape(btVector3(0.2,0.2,0.2));
   btTransform offset;
   offset.setIdentity();
-  offset.setOrigin(btVector3(5.0,3.0,5.0));
+  offset.setOrigin(btVector3(0.0,3.0,50.0));
   btMotionState* light_motion_state = new btDefaultMotionState(offset);
 
   btRigidBody::btRigidBodyConstructionInfo light_rigid_bodyCI(0,

@@ -43,6 +43,7 @@ public:
 
 signals:
     void valueChanged(int value);
+    void RequestSimulationEnd();
 
 public slots:
     void testPrint();
