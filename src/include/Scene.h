@@ -10,9 +10,9 @@ struct PointLight {
   glm::vec3 color;
   glm::vec3 position;
   PointLight() {
-      intensity = 5000.0f;
+      intensity = 1000.0f;
       color = glm::vec3(1.0f, 1.0f, 1.0f);
-      position = glm::vec3(0.0f, 50.0f, 0.0f);
+      position = glm::vec3(0.0f, 2.0f, 50.0f);
   }
 };
 
@@ -39,6 +39,7 @@ class Scene {
 
     void SetCamera(Camera cam);
     Camera* GetCamera();
+    PointLight GetLight();
     void StartSimulation(std::vector<Creature> viz_creatures);
     void EndSimulation();
     void RestartSimulation(std::vector<Creature> viz_creatures);

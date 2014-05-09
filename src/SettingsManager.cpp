@@ -168,10 +168,10 @@ float SettingsManager::GetFitnessAccumY() {
   return fitness_accumulated_y;
 }
 float SettingsManager::GetFitnessAccumHeadY() {
-  return fitness_deviation_x;
+  return fitness_accumulated_head_y;
 }
 float SettingsManager::GetFitnessDeviationX() {
-  return fitness_accumulated_head_y;
+  return fitness_deviation_x;
 }
 float SettingsManager::GetFitnessEnergy() {
   return fitness_energy_;

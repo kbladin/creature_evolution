@@ -28,6 +28,10 @@ Camera* Scene::GetCamera() {
   return &cam_;
 }
 
+PointLight Scene::GetLight(){
+  return light_;
+}
+
 void Scene::Render() {
    //To make sure we use the same name
   const char* shader_name = "Basic";
