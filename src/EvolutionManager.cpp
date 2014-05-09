@@ -38,23 +38,30 @@ void EvolutionManager::startEvolutionProcess() {
 	current_population_ = CreateRandomPopulation(pop_size);
 	std::chrono::time_point<std::chrono::system_clock> start, end;
     int i = 0;
-    while(i < max_gen && !NeedEndNow()) {
-		std::cout << "Generation: " << i << std::endl <<
-        "Simulating..." << std::endl;
-        SimulatePopulation();
+    while(i < max_gen) { // && !NeedEndNow()) {
+        if(!NeedEndNow()) {
+    		std::cout << "Generation: " << i << std::endl <<
+            "Simulating..." << std::endl;
+            SimulatePopulation();
 
-        CalculateFitnessOnPopulation();
-        SortPopulation();
+            CalculateFitnessOnPopulation();
+            SortPopulation();
 
-		// save the population and the best creatures
-        // SettingsManager::Instance()->AddBestCreature(GetBestCreature());
-        //best = GetBestCreature();
-        //TODO: send Creature via signal
-        emit NewCreature(GetBestCreature());
-        //best_creatures_.push_back(best);
-        NextGeneration();
-        i++;
+    		// save the population and the best creatures
+            // SettingsManager::Instance()->AddBestCreature(GetBestCreature());
+            //best = GetBestCreature();
+            //TODO: send Creature via signal
+            emit NewCreature(GetBestCreature());
+            //best_creatures_.push_back(best);
+            NextGeneration();
+            i++;
+        }
+        else
+            break;
 	}
+
+    //RequestStart();
+
 	std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
 }
 
@@ -236,6 +243,7 @@ Population EvolutionManager::CreateRandomPopulation(int pop_size) {
 
 
 void EvolutionManager::RequestEndNow() {
+    std::cout << "End Sim in thread!" << std::endl;
     QMutexLocker locker(mutex_);
     end_now_request_ = true;
 }
@@ -243,4 +251,14 @@ void EvolutionManager::RequestEndNow() {
 bool EvolutionManager::NeedEndNow() {
     QMutexLocker locker(mutex_);
     return end_now_request_;
+}
+
+void EvolutionManager::RequestEndNowFunc() {
+    QMutexLocker locker(mutex_);
+    end_now_request_ = true;
+}
+
+void EvolutionManager::RequestStart() {
+    QMutexLocker locker(mutex_);
+    end_now_request_ = false;
 }

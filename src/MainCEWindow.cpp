@@ -25,39 +25,14 @@ MainCEWindow::MainCEWindow()
     glFormat.setSampleBuffers( true );
     glWidget = new GLWidget(glFormat,0);
 
-    // QHBoxLayout *layout_main = new QHBoxLayout;
-    // QVBoxLayout *layout_control = new QVBoxLayout;
-    // QVBoxLayout *layout_button = new QVBoxLayout;
-    // QVBoxLayout *layout_hide = new QVBoxLayout;
-
-    //main_menu_ = new QMenu();
-    
-    //status_bar_ = new QStatusBar();
-
-
-
-
 
     simButton = new QPushButton("Start simulation");
     creature_list = new QComboBox();
     creature_list->setEditable(true);
     creature_list->setInsertPolicy(QComboBox::NoInsert);
     connect(creature_list, SIGNAL(activated(int)), this, SLOT(loadCreature(int)));
-    // cancelButton = new QPushButton("Cancel");
-    // loadButton = new QPushButton("Load best creature");
-    // gameofwormsbtn = new QPushButton("Game of Worms");
-    // dummyButton = new QPushButton("Hide");
-
-    // dummyButton->setStyleSheet("* { background-color: rgb(255,125,100) }");
-    // simButton->setStyleSheet("* { background-color: rgb(1,200,20) }");
-    // loadButton->setStyleSheet("* { background-color: rgb(1,120,20,80) }");
-    // gameofwormsbtn->setStyleSheet("* { background-color: rgb(1,120,20,80) }");
-
-    // QDesktopWidget widget;
-    // QRect screenSize = widget.availableGeometry(widget.primaryScreen());
-    // dummyButton->setMaximumSize(screenSize.width()/30, screenSize.height());
-
-
+    cancelButton = new QPushButton("Cancel");
+    cancelButton->setDisabled(true);
     int max_gen = SettingsManager::Instance()->GetMaxGenerations();
     int pop_size = SettingsManager::Instance()->GetPopulationSize();
     int elitism = 100 * SettingsManager::Instance()->GetElitism();
@@ -71,6 +46,7 @@ MainCEWindow::MainCEWindow()
     // mutation_slider = new SliderWidget("Mutation ratio (%): ", mutation, 100, 1, 10, 10);
     mutation_internal_slider = new SliderWidget("Mutation ratio internal (%): ", mutation_internal, 0, 100, 1, 10, 10);
     mutation_sigma_slider = new SliderWidget("Mutation sigma : ", mutation_sigma, 0, 100, 1, 10, 10);
+
 
     int f_dist_light = 100*SettingsManager::Instance()->GetFitnessDistanceLight();
     int f_dist_z = 100*SettingsManager::Instance()->GetFitnessDistanceZ();
@@ -88,15 +64,6 @@ MainCEWindow::MainCEWindow()
     f_dev_x_slider = new SliderWidget("Minimize deviation along X-axis: ", f_dev_x, -100, 100, 1, 10, 10);
     f_energy_slider = new SliderWidget("Energy efficiency: ", f_energy, -100, 100, 1, 10, 10);
 
-    // int width = 6;
-    // int height = 10;
-
-    // generation_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
-    // generation_size_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
-    // elitism_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
-    // mutation_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
-    // mutation_internal_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
-    // mutation_sigma_slider->setMaximumSize(screenSize.width()/width, screenSize.width()/height);
 
     connect(generation_slider, SIGNAL(valueChanged(int)), this, SLOT(setValueGen(int)));
     connect(generation_size_slider, SIGNAL(valueChanged(int)), this, SLOT(setValuePop(int)));
@@ -112,32 +79,11 @@ MainCEWindow::MainCEWindow()
     connect(f_dev_x_slider, SIGNAL(valueChanged(int)), this, SLOT(FSetDeviationX(int)));
     connect(f_energy_slider, SIGNAL(valueChanged(int)), this, SLOT(FSetEnergy(int)));
 
-    // layout_hide->addWidget(dummyButton);
-    // layout_control->addWidget(generation_slider);
-    // layout_control->addWidget(generation_size_slider);
-    // layout_control->addWidget(elitism_slider);
-    // layout_control->addWidget(mutation_slider);
-    // layout_control->addWidget(mutation_internal_slider);
-    // layout_control->addWidget(mutation_sigma_slider);
-
-    // layout_control->addWidget(simButton);
-    // layout_control->addWidget(cancelButton);
-    // layout_control->addWidget(loadButton);
-    // layout_control->addWidget(gameofwormsbtn);
-
-    // layout_main->addWidget(glWidget);
-    // layout_main->addLayout(layout_control);
-    // layout_main->addLayout(layout_hide);
-
-    // setLayout(layout_main);
-    // setWindowTitle(tr("Creature Evolution"));
-
-    // // ----- Connect buttons -----
-    // connect(dummyButton,SIGNAL(clicked()), this, SLOT(testPrint()));
     connect(simButton, SIGNAL(clicked()), this, SLOT(startEvolution()));
-    // connect(cancelButton, SIGNAL(clicked()), EM_, SLOT(RequestEndNow()));
-    // connect(loadButton, SIGNAL(clicked()), this, SLOT(loadCreature()));
-    // connect(gameofwormsbtn, SIGNAL(clicked()), this, SLOT(GameOfWorms()), Qt::DirectConnection);
+
+
+    connect(cancelButton, SIGNAL(clicked()), EM_, SLOT(RequestEndNow()));
+    connect(cancelButton, SIGNAL(clicked()), this, SLOT(evoDone()));
 
     connect(EM_, SIGNAL(NewCreature(const Creature &)), this, SLOT(GotNewCreature(const Creature &)));
 
@@ -252,7 +198,6 @@ void MainCEWindow::testPrint() {
         generation_slider->show();
         generation_size_slider->show();
         elitism_slider->show();
-        //crossover_slider->show();
         mutation_internal_slider->show();
         mutation_sigma_slider->show();
         mutation_slider->show();
@@ -266,6 +211,7 @@ static void startEvo(EvolutionManager* EM) {
 }
 
 void MainCEWindow::startEvolution() {
+
 
     int gens = g_edit->text().toInt();
     int pops = p_edit->text().toInt();
@@ -290,16 +236,16 @@ void MainCEWindow::startEvolution() {
            return;
          }
     }
+    
 
     DisableCriticalWidgets();
 
-    QApplication::setOverrideCursor(Qt::BusyCursor);
     creatures_.clear();
     creature_list->clear();
     creature_count_ = 0;
     first_run_ = false;
+
     evolution_thread_starter_.setFuture(QtConcurrent::run(::startEvo, EM_));
-    evoDone();
 }
 
 void MainCEWindow::loadCreature(int index) {
@@ -320,13 +266,20 @@ void MainCEWindow::GameOfWorms() {
 }
 
 void MainCEWindow::DisableCriticalWidgets() {
-
+    simButton->setDisabled(true);
+    g_edit->setDisabled(true);
+    p_edit->setDisabled(true);
+    cancelButton->setDisabled(false);
 }
 
 
 void MainCEWindow::evoDone() {
     sim_in_progress_ = false;
-
+    statusBar()->showMessage(tr("Simulation done!"));
+    simButton->setDisabled(false);
+    g_edit->setDisabled(false);
+    p_edit->setDisabled(false);
+    cancelButton->setDisabled(true);
 }
 
 void MainCEWindow::renderWorm() {
@@ -373,6 +326,7 @@ void MainCEWindow::CreateToolBar() {
     QLabel* view_gen = new QLabel("View generation: ");
     tool_bar_ = addToolBar(tr("Main Tool Bar"));
     tool_bar_->addWidget(simButton);
+    tool_bar_->addWidget(cancelButton);
     tool_bar_->addWidget(view_gen);
     tool_bar_->addWidget(creature_list);
     tool_bar_->setFloatable(false);
@@ -449,8 +403,6 @@ void MainCEWindow::CreateDockWindows() {
 
 
     addDockWidget(Qt::LeftDockWidgetArea, dock_fitness);
-
-
 
 }
 

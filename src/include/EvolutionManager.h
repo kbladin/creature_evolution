@@ -28,7 +28,8 @@ public:
 	Population GetAllBestCreatures();
   void PrintPopulation();
   bool NeedEndNow();
-
+	void RequestEndNowFunc();
+	void RequestStart();
 
 public slots:
 	void RequestEndNow();

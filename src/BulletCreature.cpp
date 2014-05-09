@@ -107,6 +107,7 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
         float strength = (body.body_list[i].root_joint.strength < 0) ?
                     body.GetMass() + body.body_list[i].GetMass() :
                     body.body_list[i].root_joint.strength;
+        strength*=1000;
 
         joint_strength_.push_back(strength);
         m_joints_.back()->setLimit(
@@ -132,7 +133,7 @@ void BulletCreature::UpdateMotors(std::vector<float> input) {
 
             m_joints_[i]->enableAngularMotor(
                         true,
-                        20.0*sign,
+                        10.0*sign,
                         impulse); // apply force
 
             //update creatures energy for every joint..
