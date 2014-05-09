@@ -629,7 +629,7 @@ BodyTree BodyFactory::CreateLeggedBox(float scale) {
 
     BodyTree torso;
     torso.box_dim = Vec3(0.3 * scale, 0.1 * scale, 0.5 * scale);
-    torso.density = 1000.0f;
+    torso.density = 10.0f;
     torso.friction = 0.5;
 
     BodyTree right_front_leg = BodyFactory::CreateLeg(
@@ -641,7 +641,7 @@ BodyTree BodyFactory::CreateLeggedBox(float scale) {
     right_front_leg.root_joint.connection_branch =
                     Vec3(0.0, right_front_leg.box_dim.y, 0.0);
     right_front_leg.root_joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
-    right_front_leg.root_joint.upper_limit = M_PI*0.5;
+    right_front_leg.root_joint.upper_limit = M_PI*0.2;
     right_front_leg.root_joint.lower_limit = 0.0;
 
     BodyTree left_front_leg = right_front_leg;

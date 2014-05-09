@@ -133,7 +133,7 @@ void BulletCreature::UpdateMotors(std::vector<float> input) {
             m_joints_[i]->enableAngularMotor(
                         true,
                         20.0*sign,
-                        impulse); // apply force
+                        10*impulse); // apply force
 
             //update creatures energy for every joint..
             blueprint_.simdata.energy_waste += impulse;
