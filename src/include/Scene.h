@@ -1,9 +1,11 @@
 #ifndef SCENE_H
 #define SCENE_H
 #include <vector>
-#include "Node.h"
 #include "Camera.h"
-#include "Simulation.h"
+#include "Creature.h"
+
+class Node;
+class Simulation;
 
 struct LightSource {
   float intensity;
@@ -42,10 +44,8 @@ class Scene {
     void EndSimulation();
     void RestartSimulation(std::vector<Creature> viz_creatures);
 
-  private:
-
     static const int N_LIGHTS = 2; // Should match the one in the shader
-
+  private:
     static Scene* instance_;
     Simulation* sim_;
     Camera cam_;

@@ -1,4 +1,5 @@
 #include "ShaderManager.h"
+#include "Scene.h"
 
 ///////////////////
 // ShaderManager //
@@ -59,18 +60,29 @@ ShaderManager::~ShaderManager() {
 */
 
 void ShaderManager::AddAllShaders() {
+  
+  std::stringstream preprocessor;
+  preprocessor << "#version 330 core \n";
+
+  std::stringstream preprocessor_basic_frag;
+  preprocessor_basic_frag << preprocessor.str() << "#define N_LIGHTS " << Scene::N_LIGHTS;
+
   // Create shaders
   Shader* simple_mvp_vert = new Shader(
       "data/shaders/mvp.vert",
+      preprocessor.str().c_str(),
       GL_VERTEX_SHADER);
   Shader* simple_mvp_frag = new Shader(
       "data/shaders/simple.frag",
+      preprocessor.str().c_str(),
       GL_FRAGMENT_SHADER);
   Shader* basic_vert = new Shader(
       "data/shaders/basic.vert",
+      preprocessor.str().c_str(),
       GL_VERTEX_SHADER);
   Shader* basic_frag = new Shader(
       "data/shaders/basic.frag",
+      preprocessor_basic_frag.str().c_str(),
       GL_FRAGMENT_SHADER);
   // Put shaders in the map
   shaders_.insert(StringShaderPair("Simple_MVP_Vert", simple_mvp_vert));
@@ -755,16 +767,17 @@ GLuint ShaderProgram::getID(){
  GL_FRAGMENT_SHADER.
  */
 
-Shader::Shader(const char* file_path, int type){
+Shader::Shader(const char* file_path, const char* preprocessor_code, int type){
   // Create the shader
   shader_id_ = glCreateShader(type);
+
 
   if (shader_id_ == 0) {
     std::cout << "ERROR: Invalid shader type: " << type << "!" << std::endl;
     return;
   }
   // Read the Shader code from the file
-	std::string shader_code;
+	std::string shader_code = preprocessor_code;
 	std::ifstream shader_stream(file_path, std::ios::in);
 	if(shader_stream.is_open()){
 		std::string line = "";
@@ -788,6 +801,7 @@ Shader::Shader(const char* file_path, int type){
 	glShaderSource(shader_id_, 1, &vertex_source_pointer , NULL);
 	glCompileShader(shader_id_);
 
+
 	// Check Vertex Shader
 	glGetShaderiv(shader_id_, GL_COMPILE_STATUS, &result);
 	glGetShaderiv(shader_id_, GL_INFO_LOG_LENGTH, &info_log_length);
@@ -809,8 +823,10 @@ Shader::Shader(const char* file_path, int type){
 */
 
 Shader::~Shader(){
-  glDeleteShader(shader_id_);
+  glDeleteShader
+  (shader_id_);
 }
+
 
 //! Get the id of the Shader.
 

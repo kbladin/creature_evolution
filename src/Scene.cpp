@@ -2,6 +2,9 @@
 #include <btBulletDynamicsCommon.h>
 #include "Plane.h"
 
+#include "Node.h"
+#include "Simulation.h"
+
 Scene* Scene::instance_ = NULL;
 
 Scene* Scene::Instance() {
