@@ -1,4 +1,4 @@
-#version 330 core
+// All preprocessor code is in separate string
 
 // Ouput data
 out vec3 color;

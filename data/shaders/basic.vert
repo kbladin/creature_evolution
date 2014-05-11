@@ -1,6 +1,4 @@
-#version 330 core
-
-
+// All preprocessor code is in separate string
 
 // Input data
 layout(location = 0) in vec3 vertexPosition_modelspace;

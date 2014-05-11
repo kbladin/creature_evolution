@@ -1,5 +1,4 @@
-#version 330 core
-
+// All preprocessor code is in separate string
 struct Material {
   float reflectance;
   float specularity;
@@ -17,7 +16,6 @@ struct LightSource {
 };
 
 // Internal data
-const int N_LIGHTS = 2;
 LightSource lights[N_LIGHTS];
 
 // Input data
