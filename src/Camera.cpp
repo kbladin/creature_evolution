@@ -56,6 +56,10 @@ float Camera::GetFarClipping() {
   return far_clipping_;
 }
 
+glm::vec3 Camera::GetTarget(){
+  return -target_;
+}
+
 void Camera::SetTarget(glm::vec3 target){
   target_ = -target;
 }

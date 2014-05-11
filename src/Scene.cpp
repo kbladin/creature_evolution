@@ -12,6 +12,12 @@ if (!instance_) {
 }
 
 Scene::Scene() {
+  // Initialize the second light source
+  lights_[1].intensity = 200.0f;
+  lights_[1].position = glm::vec4(0.0f, 10.0f, 0.0f, 1.0f);
+  lights_[1].spot_cutoff = 10.0f;
+  lights_[1].spot_exponent = 150.0f;
+
   std::vector<Creature> start_creature;
   StartSimulation(start_creature);
 }
@@ -28,29 +34,23 @@ Camera* Scene::GetCamera() {
   return &cam_;
 }
 
-PointLight Scene::GetLight(){
-  return light_;
+LightSource Scene::GetLight(int i){
+  return lights_[i];
 }
 
 void Scene::Render() {
    //To make sure we use the same name
   const char* shader_name = "Basic";
   ShaderManager::Instance()->UseProgram(shader_name);
-  ShaderManager::Instance()->GetShaderProgramFromName(
-          shader_name)->Uniform1f("light_intensity", light_.intensity);
-  ShaderManager::Instance()->GetShaderProgramFromName(
-          shader_name)->Uniform3fv("light_color", 1, &light_.color.x);
-  ShaderManager::Instance()->GetShaderProgramFromName(
-          shader_name)->Uniform3fv(
-                  "light_position_worldspace",
-                  1,
-                  &light_.position.x);
-  glUseProgram(0);
 
-  //update cam
-  btVector3 target = sim_->GetLastCreatureCoords();
-  cam_.SetTarget(glm::vec3(target.getX(),target.getY(),target.getZ()));
-  cam_.UpdateMatrices();
+  // One light source takes 16 * sizeof(float) in size
+  ShaderManager::Instance()->GetShaderProgramFromName(
+          shader_name)->Uniform1fv(
+                  "light_data",
+                  16 * N_LIGHTS,
+                  &lights_[0].intensity);
+
+  glUseProgram(0);
 
   //draw nodes
   for(Node& n : nodes_) {
@@ -59,11 +59,17 @@ void Scene::Render() {
 }
 
 void Scene::Update() {
+  // Update Camera
+  btVector3 target = sim_->GetLastCreatureCoords();
+  cam_.SetTarget(glm::vec3(target.getX(),target.getY(),target.getZ()));
+  cam_.UpdateMatrices();
+
+  // Update Light source
+  lights_[1].spot_direction = cam_.GetTarget() - glm::vec3(lights_[1].position);
   for(Node& n : nodes_) {
       n.UpdateNode();
   }
   sim_->Step(1.0f/30.0f);
-
 }
 
 void Scene::StartSimulation(std::vector<Creature> viz_creatures) {

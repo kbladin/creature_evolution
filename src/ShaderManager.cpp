@@ -132,11 +132,9 @@ void ShaderManager::AddBasicShaderProgram(){
   shader_programs_[shader_program_name]->CreateUniformLocation("M");
   shader_programs_[shader_program_name]->CreateUniformLocation("V");
   shader_programs_[shader_program_name]->CreateUniformLocation("far_clipping");
+
   shader_programs_[shader_program_name]->CreateUniformLocation(
-          "light_intensity");
-  shader_programs_[shader_program_name]->CreateUniformLocation("light_color");
-  shader_programs_[shader_program_name]->CreateUniformLocation(
-          "light_position_worldspace");
+          "light_data"); // Containt all lights
   shader_programs_[shader_program_name]->CreateUniformLocation(
           "texture_sampler2D");
   shader_programs_[shader_program_name]->CreateUniformLocation(
