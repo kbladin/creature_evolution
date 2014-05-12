@@ -11,7 +11,7 @@ AutoInitRNG Brain::rng_;
 Brain::Brain(int n_input, int n_output) {
     std::uniform_real_distribution<float> r_w(-1.0f, 1.0f);
 
-    int n_hidden = n_input/n_output;
+    int n_hidden = 5*n_input/n_output;
     hidden_nodes_ = std::vector<f_vec>(n_hidden, f_vec(n_input));
     output_nodes_ = std::vector<f_vec>(n_output, f_vec(n_hidden));
 
