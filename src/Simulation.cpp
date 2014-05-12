@@ -154,20 +154,20 @@ void Simulation::Step(float dt) {
     input.push_back(dir_diff.getX());
     input.push_back(dir_diff.getY());
     input.push_back(dir_diff.getZ());
-/*
-    std::vector<btRigidBody*> bodies = bt_population_[i]->GetRigidBodies();
+
     std::vector<btHingeConstraint*> joints = bt_population_[i]->GetJoints();
 
     //joint angles
     for(int j=0; j < joints.size(); j++) {
-      input.push_back(joints[i]->getHingeAngle());
+      input.push_back(joints[j]->getHingeAngle());
     }
 
-
+/*
+    std::vector<btRigidBody*> bodies = bt_population_[i]->GetRigidBodies();
     btTransform inverse_orient = orientation_matrix.inverse();
     //body velocities
     for(int j=0; j < bodies.size(); j++) {
-      btVector3 vel = inverse_orient*bodies[i]->getAngularVelocity();
+      btVector3 vel = inverse_orient*bodies[j]->getAngularVelocity();
       vel *= 0.1;
       input.push_back(vel.getX());
       input.push_back(vel.getY());
