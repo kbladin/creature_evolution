@@ -25,29 +25,36 @@ EvolutionManager::~EvolutionManager(void){
 	the population to a new generation until max generation.
 */
 void EvolutionManager::startEvolutionProcess() {
+    CreateNewRandomPopulation();
+    RunEvolution();
+}
+
+void EvolutionManager::CreateNewRandomPopulation(){
     current_population_.clear();
+
+    // Creates a new random population
+    int pop_size = SettingsManager::Instance()->GetPopulationSize();
+    current_population_ = CreateRandomPopulation(pop_size);
+}
+
+void EvolutionManager::RunEvolution(){
     end_now_request_ = false;
     std::clock_t start_time;
-	start_time = std::clock();
+    start_time = std::clock();
 
-	int max_gen = SettingsManager::Instance()->GetMaxGenerations();
-	int pop_size = SettingsManager::Instance()->GetPopulationSize();
-  Creature best;
+    int max_gen = SettingsManager::Instance()->GetMaxGenerations();
 
-	// Creates a new random population
-	current_population_ = CreateRandomPopulation(pop_size);
-	std::chrono::time_point<std::chrono::system_clock> start, end;
     int i = 0;
     while(i < max_gen) { // && !NeedEndNow()) {
         if(!NeedEndNow()) {
-    		std::cout << "Generation: " << i << std::endl <<
+            std::cout << "Generation: " << i << std::endl <<
             "Simulating..." << std::endl;
             SimulatePopulation();
 
             CalculateFitnessOnPopulation();
             SortPopulation();
 
-    		// save the population and the best creatures
+            // save the population and the best creatures
             // SettingsManager::Instance()->AddBestCreature(GetBestCreature());
             //best = GetBestCreature();
             //TODO: send Creature via signal
@@ -58,11 +65,11 @@ void EvolutionManager::startEvolutionProcess() {
         }
         else
             break;
-	}
+    }
 
     //RequestStart();
 
-	std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
+    std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
 }
 
 //! Prints the fitness value for the best creature in all different generations.

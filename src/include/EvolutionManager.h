@@ -22,6 +22,8 @@ public:
 	~EvolutionManager(void); 
 
 	void startEvolutionProcess();
+    void RunEvolution();
+    void CreateNewRandomPopulation();
 	Creature GetBestCreatureFromLastGeneration();
 	void PrintBestFitnessValues();
 	Creature GetBestCreature();
