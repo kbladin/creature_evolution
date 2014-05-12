@@ -11,7 +11,8 @@ AutoInitRNG Brain::rng_;
 Brain::Brain(int n_input, int n_output) {
     std::uniform_real_distribution<float> r_w(-1.0f, 1.0f);
 
-    int n_hidden = n_input/n_output;
+int n_hidden = 5*n_input/n_output;
+
     hidden_nodes_ = std::vector<f_vec>(n_hidden, f_vec(n_input));
     output_nodes_ = std::vector<f_vec>(n_output, f_vec(n_hidden));
 
@@ -30,6 +31,29 @@ Brain::Brain(int n_input, int n_output) {
 }
 
 std::vector<float> Brain::CalculateOutput(const f_vec& input){
+    if(hidden_nodes_[0].size() != input.size()) { //reset brain with right size
+        std::uniform_real_distribution<float> r_w(-1.0f, 1.0f);
+        int n_input = input.size();
+        int n_output = output_nodes_.size();
+        int n_hidden = n_input+n_output;
+        hidden_nodes_ = std::vector<f_vec>(n_hidden, f_vec(n_input));
+        output_nodes_ = std::vector<f_vec>(n_output, f_vec(n_hidden));
+
+        //init random weights
+        for(f_vec& v : hidden_nodes_) {
+            for(float& w : v) {
+                w = r_w(rng_.mt_rng_);
+            }
+        }
+
+        for(f_vec& v : output_nodes_) {
+            for(float& w : v) {
+                w = r_w(rng_.mt_rng_);
+            }
+        }
+        std::cout << "WRONG INITAL INPUT SIZE TO BRAIN!";
+    }
+
     f_vec output(output_nodes_.size());
     std::vector<float> hidden_output(hidden_nodes_.size());
 
@@ -48,17 +72,23 @@ std::vector<float> Brain::CalculateOutput(const f_vec& input){
 }
 
 void Brain::Mutate() {
+    /*
     std::normal_distribution<float> normal_dist(
                 0.0f,
                 SettingsManager::Instance()->GetMutationSigma());
+                */
     std::uniform_real_distribution<float> int_dist(0.0f,1.0f);
+
+
+    float mutationStrength = SettingsManager::Instance()->GetMutationSigma();
+    std::uniform_real_distribution<float> mut_val(-1.0f*mutationStrength, 1.0f*mutationStrength);
 
     //mutate
     for(f_vec& v : hidden_nodes_) {
         for(float& w : v) {
             float should_mutate = int_dist(rng_.mt_rng_);
             if (SettingsManager::Instance()->GetMutationInternal() >= should_mutate){
-                w += normal_dist(rng_.mt_rng_);
+                w += mut_val(rng_.mt_rng_);
             }
         }
     }
@@ -67,7 +97,7 @@ void Brain::Mutate() {
         for(float& w : v) {
             float should_mutate = int_dist(rng_.mt_rng_);
             if (SettingsManager::Instance()->GetMutationInternal() >= should_mutate){
-                w += normal_dist(rng_.mt_rng_);
+                w += mut_val(rng_.mt_rng_);
             }
         }
     }

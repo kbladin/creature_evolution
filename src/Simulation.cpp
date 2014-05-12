@@ -85,7 +85,9 @@ void Simulation::SetupEnvironment() {
   light_shape_ = new btBoxShape(btVector3(0.2,0.2,0.2));
   btTransform offset;
   offset.setIdentity();
+
   offset.setOrigin(btVector3(10,5,20));
+
   btMotionState* light_motion_state = new btDefaultMotionState(offset);
 
   btRigidBody::btRigidBodyConstructionInfo light_rigid_bodyCI(0,
@@ -100,6 +102,7 @@ void Simulation::SetupEnvironment() {
 void Simulation::AddPopulation(Population population, bool disp) {
   float displacement = 0.0f;
   for (int i = 0; i < population.size(); ++i) {
+    population[i].simdata.ResetData();
     BulletCreature* btc;
     if(disp)
       btc = new BulletCreature(population[i], displacement);
@@ -137,15 +140,12 @@ void Simulation::Step(float dt) {
   for (int i = 0; i < bt_population_.size(); ++i) {
     std::vector<float> input;
     input.push_back(1.0);
-    std::vector<btHingeConstraint*> joints = bt_population_[i]->GetJoints();
-    for(int i=0; i < joints.size(); i++) {
-      input.push_back(joints[i]->getHingeAngle());
-    }
 
     btQuaternion orientation = bt_population_[i]->GetHead()->getOrientation();
     btTransform orientation_matrix = btTransform(orientation);
     btVector3 creature_dir = orientation_matrix*btVector3(0.0,0.0,1.0);
 
+    //light direction
     btVector3 head_light_vec = light_rigid_body_->getCenterOfMassPosition() - bt_population_[i]->GetHeadPosition();
     btVector3 light_dir = head_light_vec.normalized();
     float distance2_to_light = head_light_vec.length2();
@@ -154,6 +154,26 @@ void Simulation::Step(float dt) {
     input.push_back(dir_diff.getX());
     input.push_back(dir_diff.getY());
     input.push_back(dir_diff.getZ());
+/*
+    std::vector<btRigidBody*> bodies = bt_population_[i]->GetRigidBodies();
+    std::vector<btHingeConstraint*> joints = bt_population_[i]->GetJoints();
+
+    //joint angles
+    for(int j=0; j < joints.size(); j++) {
+      input.push_back(joints[i]->getHingeAngle());
+    }
+
+
+    btTransform inverse_orient = orientation_matrix.inverse();
+    //body velocities
+    for(int j=0; j < bodies.size(); j++) {
+      btVector3 vel = inverse_orient*bodies[i]->getAngularVelocity();
+      vel *= 0.1;
+      input.push_back(vel.getX());
+      input.push_back(vel.getY());
+      input.push_back(vel.getZ());
+
+    }*/
 
     bt_population_[i]->UpdateMotors(input);
     //std::vector<float> sim_data;

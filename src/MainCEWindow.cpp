@@ -44,8 +44,8 @@ MainCEWindow::MainCEWindow()
     generation_size_slider = new SliderWidget("Generation size: ", pop_size, 0, 100, 1, 10, 10);
     elitism_slider = new SliderWidget("Elitism ratio (%): ", elitism, 0, 100, 1, 10, 10);
     // mutation_slider = new SliderWidget("Mutation ratio (%): ", mutation, 100, 1, 10, 10);
-    mutation_internal_slider = new SliderWidget("Mutation ratio internal (%): ", mutation_internal, 0, 100, 1, 10, 10);
-    mutation_sigma_slider = new SliderWidget("Mutation sigma : ", mutation_sigma, 0, 100, 1, 10, 10);
+    mutation_internal_slider = new SliderWidget("Mutation rate (%): ", mutation_internal, 0, 100, 1, 10, 10);
+    mutation_sigma_slider = new SliderWidget("Mutation strength (%) : ", mutation_sigma, 0, 100, 1, 10, 10);
 
 
     int f_dist_light = 100*SettingsManager::Instance()->GetFitnessDistanceLight();
@@ -125,11 +125,11 @@ void MainCEWindow::setValueMut(int value) {
 }
 void MainCEWindow::setValueMutInternal(int value) {
     SettingsManager::Instance()->SetMutationInternal((float)(value)/(float)(normalize));
-    qDebug()<<SettingsManager::Instance()->GetMutation();
+    qDebug()<<SettingsManager::Instance()->GetMutationInternal();
 }
 void MainCEWindow::setValueMutSigma(int value) {
     SettingsManager::Instance()->SetMutationSigma((float)(value)/(float)(normalize));
-    qDebug()<<SettingsManager::Instance()->GetMutation();
+    qDebug()<<SettingsManager::Instance()->GetMutationSigma();
 }
 void MainCEWindow::setBodyDimension(int value) {
     float dim = (float)(value)/(float)(normalize);
@@ -219,9 +219,11 @@ void MainCEWindow::startEvolution() {
 
     int gens = g_edit->text().toInt();
     int pops = p_edit->text().toInt();
+    int sim_time = sim_time_edit->text().toInt();
 
     setValueGen(gens);
     setValuePop(pops);
+    setValueSimTime(sim_time);
 
     sim_in_progress_ = true;
     if(!first_run_) {
