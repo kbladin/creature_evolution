@@ -219,9 +219,11 @@ void MainCEWindow::startEvolution() {
 
     int gens = g_edit->text().toInt();
     int pops = p_edit->text().toInt();
+    int sim_time = sim_time_edit->text().toInt();
 
     setValueGen(gens);
     setValuePop(pops);
+    setValueSimTime(sim_time);
 
     sim_in_progress_ = true;
     if(!first_run_) {

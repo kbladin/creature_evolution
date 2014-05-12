@@ -85,7 +85,9 @@ void Simulation::SetupEnvironment() {
   light_shape_ = new btBoxShape(btVector3(0.2,0.2,0.2));
   btTransform offset;
   offset.setIdentity();
+
   offset.setOrigin(btVector3(10,5,20));
+
   btMotionState* light_motion_state = new btDefaultMotionState(offset);
 
   btRigidBody::btRigidBodyConstructionInfo light_rigid_bodyCI(0,
@@ -156,26 +158,21 @@ void Simulation::Step(float dt) {
     std::vector<btHingeConstraint*> joints = bt_population_[i]->GetJoints();
 
     //joint angles
-    for(int i=0; i < joints.size(); i++) {
+    for(int j=0; j < joints.size(); j++) {
       input.push_back(joints[i]->getHingeAngle());
     }
 
 
     btTransform inverse_orient = orientation_matrix.inverse();
     //body velocities
-    for(int i=0; i < bodies.size(); i++) {
+    for(int j=0; j < bodies.size(); j++) {
       btVector3 vel = inverse_orient*bodies[i]->getAngularVelocity();
       vel *= 0.1;
       input.push_back(vel.getX());
       input.push_back(vel.getY());
       input.push_back(vel.getZ());
-*/
-      /*alternatives to getLinearVelocity() are
-       * getAngularVelocity ()
-       * getTotalForce ()
-       * getTotalTorque ()
-       */
-    }
+
+    }*/
 
     bt_population_[i]->UpdateMotors(input);
     //std::vector<float> sim_data;
