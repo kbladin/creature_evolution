@@ -47,6 +47,8 @@ void EvolutionManager::startEvolutionProcess() {
             CalculateFitnessOnPopulation();
             SortPopulation();
 
+            PrintBestFitnessValues();
+
     		// save the population and the best creatures
             // SettingsManager::Instance()->AddBestCreature(GetBestCreature());
             //best = GetBestCreature();
@@ -67,11 +69,14 @@ void EvolutionManager::startEvolutionProcess() {
 
 //! Prints the fitness value for the best creature in all different generations.
 void EvolutionManager::PrintBestFitnessValues(){
-	for(int i=0; i<best_creatures_.size(); i++){
-		std::cout << "🐛" << "Generation " << i+1 << ". Best fitness: " 
-		<< best_creatures_[i].GetFitness() << std::endl;
-	}
-
+    std::cout <<
+    "Distance to light = " << current_population_[0].simdata.distance_light << std::endl <<
+    "Distance z = " << current_population_[0].simdata.distance_z << std::endl <<
+    "Max y = " << current_population_[0].simdata.max_y << std::endl <<
+    "Accumulated y = " << current_population_[0].simdata.accumulated_y << std::endl <<
+    "Accumulated head y = " << current_population_[0].simdata.accumulated_head_y << std::endl <<
+    "Deviation x = " << current_population_[0].simdata.deviation_x << std::endl <<
+    "Energy waste = " << current_population_[0].simdata.energy_waste << std::endl;
 }
 
 void EvolutionManager::PrintPopulation() {

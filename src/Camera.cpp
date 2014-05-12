@@ -8,7 +8,7 @@
 */
 Camera::Camera() {
     target_ = glm::vec3(0.0,0.0,0.0);
-    far_clipping_ = 100.0f;
+    far_clipping_ = 200.0f;
     near_clipping_ = 0.1f;
 
     // Values used to delay the camera
