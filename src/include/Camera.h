@@ -24,6 +24,7 @@ public:
   Camera(glm::mat4 view, glm::mat4 projection);
   glm::mat4 GetViewMatrix();
   glm::mat4 GetProjectionMatrix();
+  glm::vec3 GetTarget();
   void SetTarget(glm::vec3 target);
   float GetFarClipping();
 

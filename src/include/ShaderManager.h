@@ -4,6 +4,7 @@
 // C++
 #include <iostream>
 #include <fstream>
+#include "sstream"
 #include <vector>
 #include <map>
 #include <string>
@@ -104,7 +105,7 @@ private:
 */
 class Shader{
 public:
-	Shader(const char* file_path, int type);
+	Shader(const char* file_path, const char* preprocessor_code, int type);
 	~Shader();
   GLuint GetShaderId();
 private:  
