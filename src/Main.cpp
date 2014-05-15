@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
         myfile << (float)t << endl;
     }
     myfile.close();
-/*
+
     SettingsManager::Instance()->joints_=1;
     SettingsManager::Instance()->SetPopulationSize(1);
     SettingsManager::Instance()->SetSimulationTime(1);
@@ -112,7 +112,7 @@ int main(int argc, char **argv) {
         myfile << (float)t << endl;
     }
     myfile.close();
-*/
+
 
     return 0;
 }
