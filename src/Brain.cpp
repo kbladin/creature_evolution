@@ -51,7 +51,7 @@ std::vector<float> Brain::CalculateOutput(const f_vec& input){
                 w = r_w(rng_.mt_rng_);
             }
         }
-        std::cout << "WRONG INITAL INPUT SIZE TO BRAIN!";
+        //std::cout << "WRONG INITAL INPUT SIZE TO BRAIN!";
     }
 
     f_vec output(output_nodes_.size());

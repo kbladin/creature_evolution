@@ -1,21 +1,23 @@
 #include <QApplication>
 #include <QDesktopWidget>
+#include <iostream>
+#include <fstream>
+#include <time.h>
 
 #include "SettingsManager.h"
-
+#include "EvolutionManager.h"
 #include "MainCEWindow.h"
 
+using namespace std;
 
 int main(int argc, char **argv) {
     QApplication app(argc, argv);
-/*
-    SettingsManager::Instance()->SetMaxGenerations(10);
-    SettingsManager::Instance()->SetPopulationSize(10);
 
 	SettingsManager::Instance()->SetCrossover(0.8f);
 	SettingsManager::Instance()->SetElitism(0.2f);
 	SettingsManager::Instance()->SetMutation(0.8f);
-*/
+    SettingsManager::Instance()->SetMutationSigma(0.5f);
+    SettingsManager::Instance()->SetMutationInternal(0.5f);
     SettingsManager::Instance()->SetFitnessDistanceLight(0.0f);
     SettingsManager::Instance()->SetFitnessDistanceZ(0.0f);
     SettingsManager::Instance()->SetFitnessMaxY(0.0f);
@@ -24,24 +26,93 @@ int main(int argc, char **argv) {
     SettingsManager::Instance()->SetFitnessDeviationX(0.0f);
     SettingsManager::Instance()->SetFitnessEnergy(0.0f);
     
-    SettingsManager::Instance()->SetSimulationTime(30);
 
-    SettingsManager::Instance()->SetCreatureType(CreatureType::PONY);
-    SettingsManager::Instance()->SetMainBodyDimension(Vec3(0.1,0.1,0.2));
-    qRegisterMetaType<Creature>();
-    
-    MainCEWindow window;
+    SettingsManager::Instance()->SetCreatureType(CreatureType::WORM);
 
-    window.resize(window.sizeHint());
 
-    int desktopArea = QApplication::desktop()->width() *
-                     QApplication::desktop()->height();
+    clock_t t;
 
-    int widgetArea = window.width() * window.height();
-    if (((float)widgetArea / (float)desktopArea) < 0.75f)
-        window.show();
-    else
-        window.showMaximized();
+    SettingsManager::Instance()->joints_=1;
+    SettingsManager::Instance()->SetPopulationSize(1);
+    SettingsManager::Instance()->SetSimulationTime(6);
+    SettingsManager::Instance()->SetMaxGenerations(1);
 
-    return app.exec();
+    ofstream myfile;
+    myfile.open ("joints.txt");
+    for(int i=0; i<300; i++)
+    {
+        EvolutionManager em;
+        cout << "joints " << i << endl;
+
+        t = clock();
+        SettingsManager::Instance()->joints_=1+i;
+        em.startEvolutionProcess();
+        t = clock() - t;
+
+        myfile << (float)t << endl;
+    }
+    myfile.close();
+
+    SettingsManager::Instance()->joints_=1;
+    SettingsManager::Instance()->SetPopulationSize(1);
+    SettingsManager::Instance()->SetSimulationTime(1);
+    SettingsManager::Instance()->SetMaxGenerations(1);
+
+    myfile.open ("population.txt");
+    for(int i=0; i<300; i++)
+    {
+        EvolutionManager em;
+        cout << "population " << i << endl;
+
+        t = clock();
+        SettingsManager::Instance()->SetPopulationSize(1+i);
+        em.startEvolutionProcess();
+        t = clock() - t;
+
+        myfile << (float)t << endl;
+    }
+    myfile.close();
+
+    SettingsManager::Instance()->joints_=1;
+    SettingsManager::Instance()->SetPopulationSize(1);
+    SettingsManager::Instance()->SetSimulationTime(1);
+    SettingsManager::Instance()->SetMaxGenerations(1);
+
+    myfile.open ("simtime.txt");
+    for(int i=0; i<300; i++)
+    {
+        EvolutionManager em;
+        cout << "simtime " << i << endl;
+
+        t = clock();
+        SettingsManager::Instance()->SetSimulationTime(1+i);
+        em.startEvolutionProcess();
+        t = clock() - t;
+
+        myfile << (float)t << endl;
+    }
+    myfile.close();
+
+    SettingsManager::Instance()->joints_=1;
+    SettingsManager::Instance()->SetPopulationSize(1);
+    SettingsManager::Instance()->SetSimulationTime(1);
+    SettingsManager::Instance()->SetMaxGenerations(1);
+
+    myfile.open ("generations.txt");
+    for(int i=0; i<300; i++)
+    {
+        EvolutionManager em;
+        cout << "generations " << i << endl;
+
+        t = clock();
+        SettingsManager::Instance()->SetMaxGenerations(1+i);
+        em.startEvolutionProcess();
+        t = clock() - t;
+
+        myfile << (float)t << endl;
+    }
+    myfile.close();
+
+
+    return 0;
 }

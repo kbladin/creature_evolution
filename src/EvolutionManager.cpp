@@ -47,8 +47,8 @@ void EvolutionManager::RunEvolution(){
     int i = 0;
     while(i < max_gen) { // && !NeedEndNow()) {
         if(!NeedEndNow()) {
-            std::cout << "Generation: " << i << std::endl <<
-            "Simulating..." << std::endl;
+            //std::cout << "Generation: " << i << std::endl <<
+            //"Simulating..." << std::endl;
             SimulatePopulation();
 
             CalculateFitnessOnPopulation();
@@ -71,12 +71,12 @@ void EvolutionManager::RunEvolution(){
 
     //RequestStart();
 
-    std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
+    //std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
 }
 
 //! Prints the fitness value for the best creature in all different generations.
 void EvolutionManager::PrintBestFitnessValues(){
-    std::cout <<
+    /*std::cout <<
     "Distance to light = " << current_population_[0].simdata.distance_light << std::endl <<
     "Distance z = " << current_population_[0].simdata.distance_z << std::endl <<
     "Max y = " << current_population_[0].simdata.max_y << std::endl <<
@@ -84,12 +84,12 @@ void EvolutionManager::PrintBestFitnessValues(){
     "Accumulated head y = " << current_population_[0].simdata.accumulated_head_y << std::endl <<
     "Deviation x = " << current_population_[0].simdata.deviation_x << std::endl <<
     "Energy waste = " << current_population_[0].simdata.energy_waste << std::endl;
-}
+*/}
 
 void EvolutionManager::PrintPopulation() {
-	for(int i = 0; i < current_population_.size(); ++i) {
+    /*for(int i = 0; i < current_population_.size(); ++i) {
 		std::cout << "Creature " << i << " " << current_population_[i].GetFitness() << std::endl;
-	}
+    }*/
 }
 
 //! Returns the best creature as of when this method is called
@@ -255,7 +255,7 @@ Population EvolutionManager::CreateRandomPopulation(int pop_size) {
 
 
 void EvolutionManager::RequestEndNow() {
-    std::cout << "End Sim in thread!" << std::endl;
+    //std::cout << "End Sim in thread!" << std::endl;
     QMutexLocker locker(mutex_);
     end_now_request_ = true;
 }

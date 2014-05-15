@@ -129,12 +129,12 @@ void SettingsManager::SetMutationSigma(float mutation_sigma){
     mutation_sigma_ = mutation_sigma;
 }
 void SettingsManager::SetSimulationTime(int sim_time){
-  if(sim_time < 10){
+  /*if(sim_time < 10){
     simulation_time_ = 10;
     std::cout << "WARNING: simulation time clamped to " << simulation_time_ <<
       "!" << std::endl;
   }
-  else
+  else*/
     simulation_time_ = sim_time;
 }
 void SettingsManager::SetFrameWidth(int frame_width){

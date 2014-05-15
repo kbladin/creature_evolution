@@ -74,7 +74,7 @@ int Body::GetTotalNumberOfJoints(){
 BodyTree BodyFactory::CreateWorm(int worm_length){
     float density = 1000.0f;
     float friction_body = 0.5f;
-
+    worm_length = SettingsManager::Instance()->joints_;
     // varje segment på masken
     BodyTree body_segment;
     body_segment.box_dim = Vec3(0.1,0.05,0.1);
@@ -108,7 +108,6 @@ BodyTree BodyFactory::CreateWorm(int worm_length){
 BodyTree BodyFactory::CreateCrawler(int length){
     float density = 1000.0f;
     float friction_body = 0.5f;
-
     // Body
     BodyTree body_segment;
     body_segment.box_dim = Vec3(0.1,0.05,0.15);

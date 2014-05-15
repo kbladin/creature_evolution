@@ -21,6 +21,8 @@
 //! Class to handle all the settings in the program. Can only instance one SettingsManager-class in the whole program. 
 class SettingsManager {
 public:
+
+  int joints_;
   static SettingsManager* Instance();
 
   int GetPopulationSize();
