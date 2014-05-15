@@ -123,7 +123,7 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
 void BulletCreature::UpdateMotors(std::vector<float> input) {
     if(brain_counter_ == 6) {
 
-        std::vector<float> signal = blueprint_.CalculateBrainOutput(input);
+        std::vector<float> signal = std::vector<float>(m_joints_.size(),1.0);//blueprint_.CalculateBrainOutput(input);
 
         for(int i=0; i < m_joints_.size(); i++) {
 

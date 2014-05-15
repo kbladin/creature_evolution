@@ -19,13 +19,13 @@ int n_hidden = 5*n_input/n_output;
     //init random weights
     for(f_vec& v : hidden_nodes_) {
         for(float& w : v) {
-            w = r_w(rng_.mt_rng_);
+            w = 1.0;//r_w(rng_.mt_rng_);
         }
     }
 
     for(f_vec& v : output_nodes_) {
         for(float& w : v) {
-            w = r_w(rng_.mt_rng_);
+            w = 1.0;//r_w(rng_.mt_rng_);
         }
     }
 }
@@ -42,13 +42,13 @@ std::vector<float> Brain::CalculateOutput(const f_vec& input){
         //init random weights
         for(f_vec& v : hidden_nodes_) {
             for(float& w : v) {
-                w = r_w(rng_.mt_rng_);
+                w = 1.0;//r_w(rng_.mt_rng_);
             }
         }
 
         for(f_vec& v : output_nodes_) {
             for(float& w : v) {
-                w = r_w(rng_.mt_rng_);
+                w = 1.0;//r_w(rng_.mt_rng_);
             }
         }
         //std::cout << "WRONG INITAL INPUT SIZE TO BRAIN!";

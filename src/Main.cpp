@@ -15,9 +15,9 @@ int main(int argc, char **argv) {
 
 	SettingsManager::Instance()->SetCrossover(0.8f);
 	SettingsManager::Instance()->SetElitism(0.2f);
-	SettingsManager::Instance()->SetMutation(0.8f);
-    SettingsManager::Instance()->SetMutationSigma(0.5f);
-    SettingsManager::Instance()->SetMutationInternal(0.5f);
+    SettingsManager::Instance()->SetMutation(0.0f);
+    SettingsManager::Instance()->SetMutationSigma(0.0f);
+    SettingsManager::Instance()->SetMutationInternal(0.0f);
     SettingsManager::Instance()->SetFitnessDistanceLight(0.0f);
     SettingsManager::Instance()->SetFitnessDistanceZ(0.0f);
     SettingsManager::Instance()->SetFitnessMaxY(0.0f);
@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
         myfile << (float)t << endl;
     }
     myfile.close();
-
+/*
     SettingsManager::Instance()->joints_=1;
     SettingsManager::Instance()->SetPopulationSize(1);
     SettingsManager::Instance()->SetSimulationTime(1);
@@ -112,7 +112,7 @@ int main(int argc, char **argv) {
         myfile << (float)t << endl;
     }
     myfile.close();
-
+*/
 
     return 0;
 }
