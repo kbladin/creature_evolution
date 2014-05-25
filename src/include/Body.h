@@ -39,7 +39,7 @@ struct BodyTree {
 };
 
 enum CreatureType{
-  PONY, WORM, CRAWLER, HUMAN, TABLE
+  PONY, WORM, CRAWLER, HUMAN, TABLE, FROG
 };
 
 class Body {
@@ -59,6 +59,7 @@ public:
   static BodyTree CreateWorm(int worm_length = 5);
   static BodyTree CreateCrawler(int length = 5);
   static BodyTree CreatePony();
+  static BodyTree CreateFrog(float scale);
   /*
   static BodyTree CreateSheep();
   static BodyTree CreateTurtle();
@@ -67,6 +68,7 @@ private:
   // Body parts
   static BodyTree CreateLeg(Vec3 scale);
   static BodyTree CreateArm(Vec3 scale);
+  static BodyTree CreateFrogLeg(float scale);
 };
 
 #endif //BODY_H

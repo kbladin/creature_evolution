@@ -1,6 +1,6 @@
 #include "include/Body.h"
 
-#ifdef _WIN32
+#ifndef M_PI
     #define M_PI 3.14159265359
 #endif
 
@@ -55,6 +55,9 @@ Body::Body(){
             break;
         case TABLE:
             body_root_ = BodyFactory::CreateLeggedBox();
+            break;
+        case FROG:
+            body_root_ = BodyFactory::CreateFrog(2);
             break;
         default:
             std::cout << "not valid creature.. creating worm as default!" << std::endl;
@@ -668,6 +671,113 @@ BodyTree BodyFactory::CreateLeggedBox(float scale) {
     return torso;
 }
 
+BodyTree BodyFactory::CreateFrog(float scale){
+    // Body parts
+    BodyTree head;
+    head.box_dim = Vec3(0.05, 0.025, 0.05) * scale;
+    head.density = 1000.0f;
+    head.friction = 0.2;
+
+    BodyTree torso;
+    torso.box_dim = Vec3(0.07, 0.03, 0.1) * scale;
+    torso.density = 1000.0f;
+    torso.friction = 0.2;
+
+    BodyTree left_leg = CreateFrogLeg(scale);
+    BodyTree right_leg = left_leg;
+
+    BodyTree upper_arm;
+    upper_arm.box_dim = Vec3(0.02, 0.04, 0.02) * scale;
+    upper_arm.density = 1000.0f;
+    upper_arm.friction = 0.2;
+
+    BodyTree left_upper_arm = upper_arm;
+    BodyTree right_upper_arm = upper_arm;
+
+    BodyTree left_lower_arm = upper_arm;
+    left_lower_arm.friction = 0.8;
+    BodyTree right_lower_arm = upper_arm;
+    right_lower_arm.friction = 0.8;
+
+    BodyTree left_eye;
+    left_eye.box_dim = Vec3(0.015, 0.015, 0.015) * scale;
+    left_eye.density = 1000.0f;
+    left_eye.friction = 0.2;
+
+    BodyTree right_eye = left_eye;
+
+    // Joints
+    Joint neck_joint;
+    neck_joint.connection_root = Vec3(0.0, 0.0, -head.box_dim.z);
+    neck_joint.connection_branch = Vec3(0.0, torso.box_dim.y, torso.box_dim.z);
+    neck_joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
+    neck_joint.upper_limit = M_PI*0.2;
+    neck_joint.lower_limit = -M_PI*0.2;
+    
+    Joint left_leg_joint;
+    left_leg_joint.connection_root = Vec3(torso.box_dim.x, 0.0, -torso.box_dim.z);
+    left_leg_joint.connection_branch = Vec3(0.0, 0.0, -left_leg.box_dim.z);
+    left_leg_joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
+    left_leg_joint.upper_limit = M_PI*0.15;
+    left_leg_joint.lower_limit = -M_PI*0.8;
+
+    Joint right_leg_joint = left_leg_joint;
+    left_leg_joint.connection_root = Vec3(-torso.box_dim.x, 0.0, -torso.box_dim.z);
+    left_leg_joint.connection_branch = Vec3(0.0, 0.0, -right_leg.box_dim.z);
+
+    Joint left_shoulder_joint;
+    left_shoulder_joint.connection_root = Vec3(-torso.box_dim.x, -torso.box_dim.y, torso.box_dim.z);
+    left_shoulder_joint.connection_branch = Vec3(0.0, upper_arm.box_dim.y, 0.0);
+    left_shoulder_joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
+    left_shoulder_joint.upper_limit = M_PI*0.4;
+    left_shoulder_joint.lower_limit = -M_PI*0.4;
+
+    Joint right_shoulder_joint = left_shoulder_joint;
+    right_shoulder_joint.connection_root = Vec3(torso.box_dim.x, -torso.box_dim.y, torso.box_dim.z);
+    right_shoulder_joint.connection_branch = Vec3(0.0, upper_arm.box_dim.y, 0.0);
+
+    Joint elbow_joint;
+    elbow_joint.connection_root = Vec3(0.0, -upper_arm.box_dim.y, 0.0);
+    elbow_joint.connection_branch = Vec3(0.0, right_lower_arm.box_dim.y, 0.0);
+    elbow_joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
+    elbow_joint.upper_limit = M_PI*0.4;
+    elbow_joint.lower_limit = -M_PI*0.0;
+
+    Joint left_eye_joint;
+    left_eye_joint.connection_root = Vec3(head.box_dim.x - left_eye.box_dim.x, head.box_dim.y, 0.0);
+    left_eye_joint.connection_branch = Vec3(0.0, -left_eye.box_dim.y, 0.0);
+    left_eye_joint.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
+    left_eye_joint.upper_limit = M_PI*0.0;
+    left_eye_joint.lower_limit = -M_PI*0.0;
+
+    Joint right_eye_joint = left_eye_joint;
+    right_eye_joint.connection_root = Vec3(-head.box_dim.x + left_eye.box_dim.x, head.box_dim.y, 0.0);
+    right_eye_joint.connection_branch = Vec3(0.0, -right_eye.box_dim.y, 0.0);
+
+    // Connect
+    left_leg.root_joint = left_leg_joint;
+    right_leg.root_joint = right_leg_joint;
+    torso.root_joint = neck_joint;
+    left_upper_arm.root_joint = left_shoulder_joint;
+    right_upper_arm.root_joint = right_shoulder_joint;
+    right_lower_arm.root_joint = elbow_joint;
+    left_lower_arm.root_joint = elbow_joint;
+    left_eye.root_joint = left_eye_joint;
+    right_eye.root_joint = right_eye_joint;
+    // Add
+    right_upper_arm.body_list.push_back(right_lower_arm);
+    left_upper_arm.body_list.push_back(left_lower_arm);
+    torso.body_list.push_back(left_leg);
+    torso.body_list.push_back(right_leg);
+    torso.body_list.push_back(left_upper_arm);
+    torso.body_list.push_back(right_upper_arm);
+    head.body_list.push_back(torso);
+    head.body_list.push_back(left_eye);
+    head.body_list.push_back(right_eye);
+
+    return head;
+}
+
 BodyTree BodyFactory::CreateLeg(Vec3 scale) {
 
     BodyTree upper_leg;
@@ -749,3 +859,44 @@ BodyTree BodyFactory::CreateArm(Vec3 scale) {
     return upper_arm;
 }
 
+BodyTree BodyFactory::CreateFrogLeg(float scale) {
+
+    BodyTree upper_leg;
+    upper_leg.box_dim = Vec3(0.02, 0.02, 0.08) * scale;
+    upper_leg.density = 1000.0f;
+    upper_leg.friction = 0.2;
+
+    BodyTree lower_leg = upper_leg;
+    lower_leg.box_dim = Vec3(0.02, 0.08, 0.02) * scale;
+
+    BodyTree foot = upper_leg;
+    foot.box_dim = Vec3(0.02, 0.01, 0.08) * scale;
+    foot.density = 1000.0f;
+    foot.friction = 0.9;
+
+    // Joints
+    Joint knee;
+    knee.connection_root = Vec3(0.0f,0.0,upper_leg.box_dim.z);
+    knee.connection_branch = Vec3(0.0f,lower_leg.box_dim.y,0.0f);
+    knee.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
+    knee.upper_limit = M_PI*0.4;
+    knee.lower_limit = -M_PI*0.4;
+
+    Joint ancle;
+    ancle.connection_root = Vec3(0.0f,-lower_leg.box_dim.y,0.0);
+    ancle.connection_branch = Vec3(
+                    0.0f,
+                    0.0f,
+                    -foot.box_dim.z + lower_leg.box_dim.z);
+    ancle.hinge_orientation = Vec3(0.0,M_PI/2,0.0);
+    ancle.upper_limit = M_PI*0.4;
+    ancle.lower_limit = -M_PI*0.4;
+
+    foot.root_joint = ancle; 
+    lower_leg.root_joint = knee;
+
+    lower_leg.body_list.push_back(foot);
+    upper_leg.body_list.push_back(lower_leg);
+
+    return upper_leg;
+}

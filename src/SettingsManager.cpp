@@ -149,7 +149,6 @@ void SettingsManager::SetRotationSensitivity(float sense){
 
 void SettingsManager::SetCreatureType(int creature){
   creature_type_ = creature; 
-
 }
 int SettingsManager::GetCreatureType(){
   return creature_type_; 

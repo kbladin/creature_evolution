@@ -354,6 +354,7 @@ void MainCEWindow::CreateDockWindows() {
     c_list->addItem("Crawler");
     c_list->addItem("Human");
     c_list->addItem("Table");
+    c_list->addItem("Frog");
     creature_layout->addWidget(c_label);
     creature_layout->addWidget(c_list);
 
