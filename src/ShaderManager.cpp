@@ -25,7 +25,6 @@ ShaderManager* ShaderManager::Instance() {
  AddAllShaders(). Then all the individual ShaderPrograms are linked.
  These use the shaders added in the previous call.
 */
-
 ShaderManager::ShaderManager() {
   AddAllShaders();
   AddSimpleMvpShaderProgram();
@@ -36,7 +35,6 @@ ShaderManager::ShaderManager() {
 /*!
  First, all Shaders are deleted, then all ShaderPrograms.
 */
-
 ShaderManager::~ShaderManager() {
   //Delete shaders
   std::map<std::string, Shader*>::iterator shader_iter = shaders_.begin();
@@ -56,16 +54,19 @@ ShaderManager::~ShaderManager() {
 //! Add all shaders specified
 /*!
  All the Shaders used by the program shall be added. First all Shaders are
- created (compiled) and then they are put in the std::map of Shaders.
+ created (compiled) and then they are put in the std::map of Shaders. All
+ pre-processor commands for the Shaders are written explicitly here.
+ This is to determine constants like N_LIGHTS before the Shader is
+ compiled.
 */
-
 void ShaderManager::AddAllShaders() {
   
   std::stringstream preprocessor;
   preprocessor << "#version 330 core \n";
 
   std::stringstream preprocessor_basic_frag;
-  preprocessor_basic_frag << preprocessor.str() << "#define N_LIGHTS " << Scene::N_LIGHTS;
+  preprocessor_basic_frag << preprocessor.str() <<
+          "#define N_LIGHTS " << Scene::N_LIGHTS;
 
   // Create shaders
   Shader* simple_mvp_vert = new Shader(

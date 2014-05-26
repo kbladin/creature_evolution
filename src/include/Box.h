@@ -9,6 +9,10 @@
 
 
 //! Used in the render process. A box to render.
+/*!
+  This class extends Shape and it therefore a containter of all the vertex data
+  used by OpenGL in the rendering process.
+*/
 class Box : public Shape {
 public:
   Box();
