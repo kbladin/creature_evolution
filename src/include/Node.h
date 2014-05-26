@@ -20,6 +20,12 @@
 
 class Camera;
 
+//! Interface between simulation and rendering.
+/*!
+  This class is the interface between btRigidBody which describes rigid bodies
+  in the physics world and Shape which are used for rendering the boxes
+  and the planes.
+*/
 class Node {
 public:
   Node(btRigidBody* body);
