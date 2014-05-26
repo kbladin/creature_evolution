@@ -5,7 +5,7 @@
 #include "vec3.h"
 #include "SettingsManager.h"
 
-//! Joint describes the connection between BodyTree.
+//! Joint describes the connection between instances of BodyTree.
 /*!
   All variables except strength needs to be explicitly set after creating a
   joint. connection_root is the position on the parent where to put the

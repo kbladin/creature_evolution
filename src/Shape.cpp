@@ -1,12 +1,13 @@
 #include "Shape.h"
 #include "Camera.h"
 
+//! Creating a Shape initializing all buffers to GL_FALSE
 Shape::Shape() {
-    vertex_array_id_ = GL_FALSE;
-    element_buffer_id_ = GL_FALSE;
-    vertex_position_buffer_id_ = GL_FALSE;
-    vertex_normal_buffer_id_ = GL_FALSE;
-    vertex_uv_buffer_id_ = GL_FALSE;
+  vertex_array_id_ = GL_FALSE;
+  element_buffer_id_ = GL_FALSE;
+  vertex_position_buffer_id_ = GL_FALSE;
+  vertex_normal_buffer_id_ = GL_FALSE;
+  vertex_uv_buffer_id_ = GL_FALSE;
 }
 
 void Shape::DebugPrint() {
@@ -15,6 +16,7 @@ void Shape::DebugPrint() {
   }
 }
 
+//! Generating all buffers and allocating data on the GPU.
 void Shape::SetupBuffers() {
   // Generate the vertex array
   glGenVertexArrays(1, &vertex_array_id_);
@@ -86,29 +88,30 @@ void Shape::SetupBuffers() {
   glBindVertexArray(0);
 }
 
-
+//! The destructor deallocates the data from the GPU using DeleteBuffers().
 Shape::~Shape() {
-  
-
-  
-
-
+  DeleteBuffers();
 }
 
+//! Deallocate all buffer data from the GPU.
 void Shape::DeleteBuffers() {
-    glDeleteBuffers(1, &vertex_uv_buffer_id_);
+  glDeleteBuffers(1, &vertex_uv_buffer_id_);
   glDeleteBuffers(1, &vertex_normal_buffer_id_);
   glDeleteBuffers(1, &vertex_position_buffer_id_);
-  
-
-  
   glDeleteBuffers(1, &element_buffer_id_);
-
   glDeleteVertexArrays(1, &vertex_array_id_);
 }
 
-
-
+//! Function for the actual rendering.
+/*!
+  This function uses one of the ShaderPrograms created. Currently it is
+  hard coded for using the Basic shader program (phong shader) for all
+  renderings. The data which are used in the Shader are set, textures are
+  bound and triangles are rendered.
+  \param camera is a pointer to the camera from where the Shape is rendered.
+  \param model_transform is the transform containing position and orientation
+  of the Shape. The transform comes from the Node owning the Shape.
+*/
 void Shape::Render(Camera* camera, glm::mat4 model_transform) {
   // Matrix data
   glm::mat4 V = camera->GetViewMatrix();
@@ -131,13 +134,21 @@ void Shape::Render(Camera* camera, glm::mat4 model_transform) {
           shader_name)->Uniform1f("far_clipping", camera->GetFarClipping());
 
   ShaderManager::Instance()->GetShaderProgramFromName(
-          shader_name)->Uniform1f("material.reflectance", material_.reflectance);
+          shader_name)->Uniform1f(
+                  "material.reflectance",
+                  material_.reflectance);
   ShaderManager::Instance()->GetShaderProgramFromName(
-          shader_name)->Uniform1f("material.specularity", material_.specularity);
+          shader_name)->Uniform1f(
+                  "material.specularity",
+                  material_.specularity);
   ShaderManager::Instance()->GetShaderProgramFromName(
-          shader_name)->Uniform1f("material.shinyness", material_.shinyness);
+          shader_name)->Uniform1f(
+                  "material.shinyness",
+                  material_.shinyness);
   ShaderManager::Instance()->GetShaderProgramFromName(
-          shader_name)->Uniform1i("material.texture_type", material_.texture_diffuse_type);
+          shader_name)->Uniform1i(
+                  "material.texture_type",
+                  material_.texture_diffuse_type);
   
   TextureManager::Instance()->BindTexture(material_.GetDiffuseTextureID());
 
