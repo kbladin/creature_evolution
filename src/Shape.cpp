@@ -90,7 +90,7 @@ void Shape::SetupBuffers() {
 
 //! The destructor deallocates the data from the GPU using DeleteBuffers().
 Shape::~Shape() {
-  DeleteBuffers();
+  //DeleteBuffers(); Appearently this does not work. Memory leak?
 }
 
 //! Deallocate all buffer data from the GPU.
