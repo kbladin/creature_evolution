@@ -22,12 +22,12 @@ LightSource lights[N_LIGHTS];
 in vec3 position_worldspace;
 in vec3 position_modelspace;
 in vec3 position_viewspace;
-in vec3 normal_viewspace;
+//in vec3 normal_viewspace;
 in vec3 normal_worldspace;
 
-in vec3 view_direction_to_fragment_viewspace;
+//in vec3 view_direction_to_fragment_viewspace;
 in vec3 view_direction_to_fragment_worldspace;
-in vec3 light_position_viewspace;
+//in vec3 light_position_viewspace;
 in vec2 uv;
 
 // Uniforms
@@ -68,7 +68,7 @@ vec3 diffuseCircles(float x, float y, float z, float scale) {
 void main()
 {
 
-  float ambient_brightness = 0.1;
+  float ambient_brightness = 0.4;
   vec3 ambient_color = vec3(1,1,1);
   
   // Diffuse color
@@ -167,7 +167,7 @@ void main()
     total_lighting = total_lighting + lights[i].intensity * (diffuse + specular);
   }
   // Fog
-  float thickness = 0.05; // 0 < thickness < 1
+  float thickness = 0.02; // 0 < thickness < 1
   float fog_border = 10.0;
   float visibility = (-position_viewspace.z < fog_border) ? 1.0 :
           pow(1 - thickness, -position_viewspace.z - fog_border);

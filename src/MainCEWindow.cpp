@@ -323,7 +323,7 @@ void MainCEWindow::renderWorm() {
 }
 
 void MainCEWindow::GotNewCreature(const Creature &new_creature) {
-    std::cout << "Got creature! Fitness: " << new_creature.GetFitness() << std::endl;
+    //std::cout << "Got creature! Fitness: " << new_creature.GetFitness() << std::endl;
     Creature add = new_creature;
     creatures_.push_back(add);
     creature_count_++;

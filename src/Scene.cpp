@@ -23,6 +23,11 @@ Scene::Scene() {
   lights_[1].spot_cutoff = 10.0f;
   lights_[1].spot_exponent = 150.0f;
 
+  // Initialize the third light source
+  //lights_[2].intensity = 1.0f;
+  //lights_[2].color = glm::vec3(0.8f, 0.8f, 1.0f);
+  //lights_[2].position = glm::vec4(0.5f, 1.0f, 0.5f, 0.0f);
+
   std::vector<Creature> start_creature;
   StartSimulation(start_creature);
 }

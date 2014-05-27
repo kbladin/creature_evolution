@@ -15,6 +15,7 @@ Simulation::Simulation() {
 
   // Material
   ground_material_.texture_diffuse_type = CHECKERBOARD;
+  light_material_.texture_diffuse_type = LIGHTSOURCE;
 
   // no self collision
   bt_creature_collidies_with_ = collisiontypes::COL_GROUND;

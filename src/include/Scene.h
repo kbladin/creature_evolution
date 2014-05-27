@@ -65,7 +65,7 @@ public:
   LightSource GetLight(int i);
   void RestartSimulation(std::vector<Creature> viz_creatures);
 
-  static const int N_LIGHTS = 2; // Should be a constant in settingsmanager.
+  static const int N_LIGHTS = 2;
 private:
   void StartSimulation(std::vector<Creature> viz_creatures);
   void EndSimulation();

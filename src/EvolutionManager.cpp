@@ -49,12 +49,14 @@ void EvolutionManager::RunEvolution(){
         if(!NeedEndNow()) {
             std::cout << "Generation: " << i << std::endl <<
             "Simulating..." << std::endl;
+            NextGeneration();
             SimulatePopulation();
 
             CalculateFitnessOnPopulation();
             SortPopulation();
 
-            PrintBestFitnessValues();
+            //PrintBestFitnessValues();
+            //PrintPopulation();
 
     		// save the population and the best creatures
             // SettingsManager::Instance()->AddBestCreature(GetBestCreature());
@@ -62,7 +64,6 @@ void EvolutionManager::RunEvolution(){
             //TODO: send Creature via signal
             emit NewCreature(GetBestCreature());
             //best_creatures_.push_back(best);
-            NextGeneration();
             i++;
         }
         else
@@ -88,7 +89,7 @@ void EvolutionManager::PrintBestFitnessValues(){
 
 void EvolutionManager::PrintPopulation() {
 	for(int i = 0; i < current_population_.size(); ++i) {
-		std::cout << "Creature " << i << " " << current_population_[i].GetFitness() << std::endl;
+		std::cout << "Creature " << i << " " << current_population_[i].simdata.distance_light << std::endl;
 	}
 }
 
@@ -208,13 +209,13 @@ void EvolutionManager::NextGeneration() {
 
 		c.Mutate();
 		
-        new_population[i] = c; 
+        new_population[i] = c;
 	}
 
-	// current_population_ = new_population;
-	for(int i = 0; i < current_population_.size(); ++i) {
+	current_population_ = new_population;
+/*	for(int i = 0; i < current_population_.size(); ++i) {
 		current_population_[i] = new_population[i];
-	}
+	}*/
 }
 
 
