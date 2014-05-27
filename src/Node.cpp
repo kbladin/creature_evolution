@@ -8,7 +8,7 @@
   created.
   \param body is the btRigifBody pointer from which to create the Node.
 */
-Node::Node(btRigidBody* body) {
+Node::Node(btRigidBody* body, Material material) : shape_(material) {
   rigid_body_ = body;
   //init transform
   UpdateNode();
@@ -16,16 +16,16 @@ Node::Node(btRigidBody* body) {
   int shape_type = rigid_body_->getCollisionShape()->getShapeType();
   switch(shape_type) {
   case BOX_SHAPE_PROXYTYPE:
-    InitBoxShape();
+    InitBoxShape(material);
     break;
   case STATIC_PLANE_PROXYTYPE:
-    InitPlaneShape();
+    InitPlaneShape(material);
     break;
   case SPHERE_SHAPE_PROXYTYPE:
-    InitSphereShape();//no sphere implemented yet
+    InitSphereShape(material);//no sphere implemented yet
     break;
   default:
-    shape_ = Box();
+    shape_ = Box(material);
     break;
   }
   shape_.SetupBuffers();
@@ -83,28 +83,28 @@ void Node::UpdateNode(){
 }
 
 //! Internal function making the Shape a Box from the dimensions of the rigid body.
-void Node::InitBoxShape() {
+void Node::InitBoxShape(Material material) {
     btBoxShape* boxShape = (btBoxShape*)(rigid_body_->getCollisionShape());
     btVector3 v;
     boxShape->getVertex(0,v);
 
-    shape_ = Box(v.getX(),v.getY(),v.getZ());
+    shape_ = Box(v.getX(),v.getY(),v.getZ(), material);
 }
 
 //! Internal function making the Shape a Plane from the dimensions of the rigid body.
-void Node::InitPlaneShape() {
+void Node::InitPlaneShape(Material material) {
     btStaticPlaneShape* planeShape = (btStaticPlaneShape*)(rigid_body_->getCollisionShape());
     btVector3 normal = planeShape->getPlaneNormal();
     float constant = planeShape->getPlaneConstant();
     glm::vec4 plane_equation = glm::vec4(normal.getX(),normal.getY(),normal.getZ(),constant);
-    shape_ = Plane(glm::vec3(1.0f) * 200.0f, plane_equation);
+    shape_ = Plane(glm::vec3(1.0f) * 200.0f, plane_equation, material);
 }
 
 //! Internal function making the Shape a Sphere from the dimensions of the rigid body.
 /*!
   Not implemented.
 */
-void Node::InitSphereShape() {
+void Node::InitSphereShape(Material material) {
 
 }
 

@@ -6,13 +6,12 @@
   Currently, the texture type is set in this constructor and can therefore
   not be different for different planes.
 */
-Plane::Plane() {
+Plane::Plane(Material material) : Shape(material) {
   SetupVertexPositionData();
   SetupVertexNormalData();
   SetupVertexUVData();
   SetupElementData();
   TextureManager::Instance();
-  material_.texture_diffuse_type = TextureType::CHECKERBOARD;
 }
 
 //! Constructor. All vertex data are set up.
@@ -21,7 +20,7 @@ Plane::Plane() {
   not be different for different planes.
   \param scale scales the plane in all 3 dimensions.
 */
-Plane::Plane(glm::vec3 scale) {
+Plane::Plane(glm::vec3 scale, Material material) : Shape(material) {
   SetupVertexPositionData();
   SetupVertexNormalData();
   SetupVertexUVData();
@@ -31,7 +30,6 @@ Plane::Plane(glm::vec3 scale) {
     vertex_position_data_[i].y = vertex_position_data_[i].y*scale.y;
     vertex_position_data_[i].z = vertex_position_data_[i].z*scale.z;
   }
-  material_.texture_diffuse_type = TextureType::CHECKERBOARD;
 }
 
 //! Constructor. All vertex data are set up.
@@ -42,7 +40,8 @@ Plane::Plane(glm::vec3 scale) {
   \param plane_equation defines a normal and a position along it. Currently
   only the translation is implemented.
 */
-Plane::Plane(glm::vec3 scale, glm::vec4 plane_equation) {
+Plane::Plane(glm::vec3 scale, glm::vec4 plane_equation, Material material) :
+        Shape(material) {
   SetupVertexPositionData();
   SetupVertexNormalData();
   SetupVertexUVData();
@@ -52,8 +51,6 @@ Plane::Plane(glm::vec3 scale, glm::vec4 plane_equation) {
     vertex_position_data_[i].y = vertex_position_data_[i].y*scale.y;
     vertex_position_data_[i].z = vertex_position_data_[i].z*scale.z;
   }
-  material_.texture_diffuse_type = TextureType::CHECKERBOARD;
-
   //translate plane
   for(int i=0; i < vertex_position_data_.size(); ++i) {
       vertex_position_data_[i].y = plane_equation.w;

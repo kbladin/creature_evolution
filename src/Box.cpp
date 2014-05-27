@@ -6,13 +6,11 @@
   Currently, the texture type is set in this constructor and can therefore
   not be different for different boxes.
 */
-Box::Box() {
+Box::Box(Material material) : Shape(material){
   SetupVertexPositionData();
   SetupVertexNormalData();
   SetupVertexUVData();
   SetupElementData();
-
-  material_.SetDiffuseTexture("test_texture");
 }
 
 //! Constructor. All vertex data are set up.
@@ -23,7 +21,8 @@ Box::Box() {
   \param scale_y is the scale along the y-axis.
   \param scale_z is the scale along the z-axis.
 */
-Box::Box(float scale_x, float scale_y, float scale_z) {
+Box::Box(float scale_x, float scale_y, float scale_z, Material material)
+      : Shape(material) {
   SetupVertexPositionData();
   SetupVertexNormalData();
   SetupVertexUVData();
@@ -33,7 +32,6 @@ Box::Box(float scale_x, float scale_y, float scale_z) {
     vertex_position_data_[i].y = vertex_position_data_[i].y*scale_y;
     vertex_position_data_[i].z = vertex_position_data_[i].z*scale_z;
   }
-  material_.SetDiffuseTexture("test_texture2");
 }
 
 void Box::SetupVertexPositionData() {

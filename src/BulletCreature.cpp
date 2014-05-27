@@ -77,6 +77,9 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
   float mass = body.GetMass();
   shape->calculateLocalInertia(mass,fallInertia);
 
+  // Material
+  Material current_material = body.material;
+
   //body
   btTransform offset;
   offset.setIdentity();
@@ -93,8 +96,9 @@ btRigidBody* BulletCreature::AddBody(BodyTree body, btVector3 position) {
 
   // Add data
   m_bodies_.push_back(current_body);
+  materials_.push_back(current_material);
   mass_.push_back(mass);
-  m_shapes_.push_back(shape);    
+  m_shapes_.push_back(shape);
 
   //add children
   Joint joint;
@@ -188,6 +192,14 @@ btVector3 BulletCreature::GetCenterOfMass(){
 */
 std::vector<btRigidBody*> BulletCreature::GetRigidBodies() {
   return m_bodies_;
+}
+
+//! Get function. 
+/*!
+  \return An std::vector of pointers to Material.
+*/
+std::vector<Material> BulletCreature::GetMaterials() {
+  return materials_;
 }
 
 //! Get function. 

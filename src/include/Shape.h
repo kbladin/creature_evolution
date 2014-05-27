@@ -27,7 +27,7 @@ class Camera;
 */
 class Shape {
 public:
-  Shape();
+  Shape(Material material);
   ~Shape();
   void SetupBuffers();
   void DebugPrint();

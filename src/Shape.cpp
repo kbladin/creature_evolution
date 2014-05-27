@@ -2,12 +2,13 @@
 #include "Camera.h"
 
 //! Creating a Shape initializing all buffers to GL_FALSE
-Shape::Shape() {
+Shape::Shape(Material material) {
   vertex_array_id_ = GL_FALSE;
   element_buffer_id_ = GL_FALSE;
   vertex_position_buffer_id_ = GL_FALSE;
   vertex_normal_buffer_id_ = GL_FALSE;
   vertex_uv_buffer_id_ = GL_FALSE;
+  material_ = material;
 }
 
 void Shape::DebugPrint() {

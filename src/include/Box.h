@@ -15,8 +15,8 @@
 */
 class Box : public Shape {
 public:
-  Box();
-  Box(float scale_x, float scale_y, float scale_z);
+  Box(Material material);
+  Box(float scale_x, float scale_y, float scale_z, Material material);
 private:
   void SetupVertexPositionData();
   void SetupVertexNormalData();

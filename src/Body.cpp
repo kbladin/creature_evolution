@@ -140,7 +140,9 @@ BodyTree BodyFactory::CreateWorm(int worm_length){
     child = parent;
     parent = body_segment;
   }
-
+  
+  // Trying another texture for the head
+  child.material.SetDiffuseTexture("test_texture");
   return child;
 }
 

@@ -40,9 +40,11 @@ class Simulation {
     btCollisionShape* ground_shape_;
     btDefaultMotionState* ground_motion_state_;
     btRigidBody* ground_rigid_body_;
+    Material ground_material_;
 
     btCollisionShape* light_shape_;
     btRigidBody* light_rigid_body_;
+    Material light_material_;
 
 
     int bt_creature_collidies_with_;

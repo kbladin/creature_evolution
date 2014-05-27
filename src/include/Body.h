@@ -4,6 +4,7 @@
 #include <vector>
 #include "vec3.h"
 #include "SettingsManager.h"
+#include "TextureManager.h"
 
 //! Joint describes the connection between instances of BodyTree.
 /*!
@@ -53,6 +54,7 @@ struct BodyTree {
   //skipping orientation for now
   //Vec3 orientation;
   Joint root_joint;
+  Material material;
   std::vector<BodyTree> body_list;
 
   int GetNumberOfElements();

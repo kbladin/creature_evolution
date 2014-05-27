@@ -28,7 +28,7 @@ class Camera;
 */
 class Node {
 public:
-  Node(btRigidBody* body);
+  Node(btRigidBody* body, Material material);
   void Render(Camera* camera);
   void SetTransform(glm::mat4 trans);
   void SetPosition(glm::vec3 pos);
@@ -37,9 +37,9 @@ public:
   void UpdateNode();
   void DeleteBuffers();
 private:
-  void InitBoxShape();
-  void InitPlaneShape();
-  void InitSphereShape();
+  void InitBoxShape(Material material);
+  void InitPlaneShape(Material material);
+  void InitSphereShape(Material material);
 
   glm::mat4 transform_;
   Shape shape_;

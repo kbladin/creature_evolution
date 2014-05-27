@@ -16,9 +16,9 @@
 */
 class Plane : public Shape {
 public:
-  Plane();
-  Plane(glm::vec3 scale);
-  Plane(glm::vec3 scale, glm::vec4 plane_equation);
+  Plane(Material material);
+  Plane(glm::vec3 scale, Material material);
+  Plane(glm::vec3 scale, glm::vec4 plane_equation, Material material);
 private:
   void SetupVertexPositionData();
   void SetupVertexNormalData();

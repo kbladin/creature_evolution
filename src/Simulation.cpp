@@ -12,6 +12,10 @@ Simulation::Simulation() {
   time_to_simulate_ = SettingsManager::Instance()->GetSimulationTime();
   counter_ = 0.0;
   fps_ = 60;
+
+  // Material
+  ground_material_.texture_diffuse_type = CHECKERBOARD;
+
   // no self collision
   bt_creature_collidies_with_ = collisiontypes::COL_GROUND;
   ground_collidies_with_ = collisiontypes::COL_CREATURE;
@@ -216,14 +220,15 @@ std::vector<Node> Simulation::GetNodes() {
     std::vector<Node> nodes;
 
     //add terrain
-    nodes.push_back(Node(ground_rigid_body_));
-    nodes.push_back(Node(light_rigid_body_));
+    nodes.push_back(Node(ground_rigid_body_, ground_material_));
+    nodes.push_back(Node(light_rigid_body_, light_material_));
 
     //add creatures
     for(BulletCreature* bt_creature : bt_population_) {
         std::vector<btRigidBody*> bodies = bt_creature->GetRigidBodies();
-        for(btRigidBody* body : bodies) {
-            nodes.push_back(Node(body));
+        std::vector<Material> materials = bt_creature->GetMaterials();
+        for(int i=0; i<bodies.size(); ++i) {
+            nodes.push_back(Node(bodies[i],materials[i]));
         }
     }
     return nodes;

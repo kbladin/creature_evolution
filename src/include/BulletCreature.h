@@ -27,6 +27,7 @@ public:
   // Getters
   btVector3 GetCenterOfMass();
   std::vector<btRigidBody*> GetRigidBodies();
+  std::vector<Material> GetMaterials();
   std::vector<btHingeConstraint*> GetJoints();
   btRigidBody* GetHead();
   btVector3 GetHeadPosition();
@@ -45,6 +46,7 @@ private:
   std::vector<btScalar> mass_;
   std::vector<btCollisionShape*> m_shapes_;
   std::vector<btRigidBody*> m_bodies_;
+  std::vector<Material> materials_;
   std::vector<btHingeConstraint*> m_joints_;
   std::vector<btScalar> joint_strength_;
 
