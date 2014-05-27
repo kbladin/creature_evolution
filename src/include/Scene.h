@@ -3,6 +3,7 @@
 #include <vector>
 #include "Camera.h"
 #include "Creature.h"
+#include "SettingsManager.h"
 
 class Node;
 class Simulation;

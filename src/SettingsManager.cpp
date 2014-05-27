@@ -21,6 +21,8 @@ SettingsManager::SettingsManager(){
   mutation_ratio_ = 0.8;
   mutation_ratio_internal_ = 0.2;
   mutation_sigma_ = 0.1;
+
+  target_pos_ = Vec3(10,5,20);
 }
 
 //! Destructor
@@ -63,6 +65,9 @@ float SettingsManager::GetRotationSensitivity(){
 }
 Vec3 SettingsManager::GetMainBodyDimension(){
   return main_body_dim_;
+}
+Vec3 SettingsManager::GetTargetPos(){
+  return target_pos_;
 }
 
 // where should the control of all the variables lie?
@@ -136,6 +141,9 @@ void SettingsManager::SetSimulationTime(int sim_time){
   }
   else
     simulation_time_ = sim_time;
+}
+void SettingsManager::SetTargetPos(Vec3 pos){
+  target_pos_ = pos;
 }
 void SettingsManager::SetFrameWidth(int frame_width){
   frame_width_ = frame_width;

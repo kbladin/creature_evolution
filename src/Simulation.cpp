@@ -86,7 +86,10 @@ void Simulation::SetupEnvironment() {
   btTransform offset;
   offset.setIdentity();
 
-  offset.setOrigin(btVector3(10,5,20));
+  offset.setOrigin(btVector3(
+          SettingsManager::Instance()->GetTargetPos().x,
+          SettingsManager::Instance()->GetTargetPos().y,
+          SettingsManager::Instance()->GetTargetPos().z));
 
   btMotionState* light_motion_state = new btDefaultMotionState(offset);
 
@@ -132,11 +135,20 @@ void Simulation::AddPopulation(Population population, bool disp) {
 }
 
 void Simulation::Step(float dt) {
+  // Update the position of the target
+  btTransform light_pos;
+  light_pos.setIdentity();
+
+  light_pos.setOrigin(btVector3(
+          SettingsManager::Instance()->GetTargetPos().x,
+          SettingsManager::Instance()->GetTargetPos().y,
+          SettingsManager::Instance()->GetTargetPos().z));
+  light_rigid_body_->setCenterOfMassTransform(light_pos);
+
   /*
     Step through all BulletCreatures and Creatures to update motors
     and feed Creature with performance data.
   */
-
   for (int i = 0; i < bt_population_.size(); ++i) {
     std::vector<float> input;
     input.push_back(1.0);

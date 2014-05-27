@@ -82,6 +82,13 @@ void Scene::Update() {
 
   // Update Light source
   lights_[1].spot_direction = cam_.GetTarget() - glm::vec3(lights_[1].position);
+  // Update the target light source
+  lights_[0].position = glm::vec4(
+          SettingsManager::Instance()->GetTargetPos().x,
+          SettingsManager::Instance()->GetTargetPos().y,
+          SettingsManager::Instance()->GetTargetPos().z,
+          1.0f);
+
   for(Node& n : nodes_) {
       n.UpdateNode();
   }

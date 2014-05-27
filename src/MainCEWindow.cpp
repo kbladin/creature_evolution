@@ -165,10 +165,41 @@ void MainCEWindow::changeReleased() {
 }
 
 void MainCEWindow::keyPressEvent(QKeyEvent *e) {
-    if (e->key() == Qt::Key_Escape)
-        close();
-    else
-        QWidget::keyPressEvent(e);
+    switch (e->key()){
+        case Qt::Key_Escape:
+            close();
+            break;
+        case Qt::Key_Up: {
+            Vec3 new_pos = SettingsManager::Instance()->GetTargetPos();
+            new_pos.z += 1;
+            SettingsManager::Instance()->SetTargetPos(new_pos);
+            std::cout << "Key_Up" << std::endl;
+            break;
+        }
+        case Qt::Key_Down: {
+            Vec3 new_pos = SettingsManager::Instance()->GetTargetPos();
+            new_pos.z -= 1;
+            SettingsManager::Instance()->SetTargetPos(new_pos);
+            std::cout << "Key_Down" << std::endl;
+            break;
+        }
+        case Qt::Key_Left: {
+            Vec3 new_pos = SettingsManager::Instance()->GetTargetPos();
+            new_pos.x += 1;
+            SettingsManager::Instance()->SetTargetPos(new_pos);
+            std::cout << "Key_Left" << std::endl;
+            break;
+        }
+        case Qt::Key_Right: {
+            Vec3 new_pos = SettingsManager::Instance()->GetTargetPos();
+            new_pos.x -= 1;
+            SettingsManager::Instance()->SetTargetPos(new_pos);
+            std::cout << "Key_Right" << std::endl;
+            break;
+        }
+        default:
+            QWidget::keyPressEvent(e);
+    }
 }
 
 void MainCEWindow::testPrint() {
