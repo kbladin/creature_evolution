@@ -8,7 +8,7 @@ Genetic algorithms are used to simulate evolution of creatures.
 *Created 2014 by
 Linnéa Mellblom,
 Fredrik Lindner,
-Kalle Bladin
+Kalle Bladin,
 Aron Tornberg,
 Kristofer Janukiewicz, 
 Gabriel Baravdish,
