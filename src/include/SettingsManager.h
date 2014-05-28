@@ -18,7 +18,7 @@
 // class Body;
 // class Brain;
 
-//! Class to handle all the settings in the program. Can only instance one SettingsManager-class in the whole program. 
+//! Class to handle all the settings in the program. Can only instance one SettingsManager-class in the whole program. Singleton pattern. 
 class SettingsManager {
 public:
   static SettingsManager* Instance();

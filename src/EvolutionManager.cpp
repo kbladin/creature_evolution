@@ -6,9 +6,8 @@
 #include <QMutexLocker>
 AutoInitRNG EvolutionManager::rng_;
 
-//! Constructor that get the setting from SettingsManager
-/*! Creates a new evolution object and get the max generations
-	from SettingsManager.
+//! Constructor
+/*! 
 */
 EvolutionManager::EvolutionManager(){
     end_now_request_ = false;
@@ -29,6 +28,7 @@ void EvolutionManager::startEvolutionProcess() {
     RunEvolution();
 }
 
+//! Creates a new random population
 void EvolutionManager::CreateNewRandomPopulation(){
     current_population_.clear();
 
@@ -98,6 +98,7 @@ Creature EvolutionManager::GetBestCreature() {
     return current_population_[0];
 }
 
+//! Returns the best creature from the last generation
 Creature EvolutionManager::GetBestCreatureFromLastGeneration() {
 	return best_creatures_.back();
 }
@@ -213,9 +214,6 @@ void EvolutionManager::NextGeneration() {
 	}
 
 	current_population_ = new_population;
-/*	for(int i = 0; i < current_population_.size(); ++i) {
-		current_population_[i] = new_population[i];
-	}*/
 }
 
 

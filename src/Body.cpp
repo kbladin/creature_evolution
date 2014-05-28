@@ -148,7 +148,7 @@ BodyTree BodyFactory::CreateWorm(int worm_length){
 
 //! Creating a crawler creature and returning its head.
 /*!
-  This is a lizard like creture with segments and legs.
+  This is a lizard like creature with segments and legs.
   \param length is the number of segments the creature is built of.
   \return A BodyTree structure for the head of the creature.
 */
