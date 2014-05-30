@@ -12,6 +12,11 @@ Simulation::Simulation() {
   time_to_simulate_ = SettingsManager::Instance()->GetSimulationTime();
   counter_ = 0.0;
   fps_ = 60;
+
+  // Material
+  ground_material_.texture_diffuse_type = CHECKERBOARD;
+  light_material_.texture_diffuse_type = LIGHTSOURCE;
+
   // no self collision
   bt_creature_collidies_with_ = collisiontypes::COL_GROUND;
   ground_collidies_with_ = collisiontypes::COL_CREATURE;
@@ -86,7 +91,10 @@ void Simulation::SetupEnvironment() {
   btTransform offset;
   offset.setIdentity();
 
-  offset.setOrigin(btVector3(10,5,20));
+  offset.setOrigin(btVector3(
+          SettingsManager::Instance()->GetTargetPos().x,
+          SettingsManager::Instance()->GetTargetPos().y,
+          SettingsManager::Instance()->GetTargetPos().z));
 
   btMotionState* light_motion_state = new btDefaultMotionState(offset);
 
@@ -132,11 +140,20 @@ void Simulation::AddPopulation(Population population, bool disp) {
 }
 
 void Simulation::Step(float dt) {
+  // Update the position of the target
+  btTransform light_pos;
+  light_pos.setIdentity();
+
+  light_pos.setOrigin(btVector3(
+          SettingsManager::Instance()->GetTargetPos().x,
+          SettingsManager::Instance()->GetTargetPos().y,
+          SettingsManager::Instance()->GetTargetPos().z));
+  light_rigid_body_->setCenterOfMassTransform(light_pos);
+
   /*
     Step through all BulletCreatures and Creatures to update motors
     and feed Creature with performance data.
   */
-
   for (int i = 0; i < bt_population_.size(); ++i) {
     std::vector<float> input;
     input.push_back(1.0);
@@ -204,14 +221,15 @@ std::vector<Node> Simulation::GetNodes() {
     std::vector<Node> nodes;
 
     //add terrain
-    nodes.push_back(Node(ground_rigid_body_));
-    nodes.push_back(Node(light_rigid_body_));
+    nodes.push_back(Node(ground_rigid_body_, ground_material_));
+    nodes.push_back(Node(light_rigid_body_, light_material_));
 
     //add creatures
     for(BulletCreature* bt_creature : bt_population_) {
         std::vector<btRigidBody*> bodies = bt_creature->GetRigidBodies();
-        for(btRigidBody* body : bodies) {
-            nodes.push_back(Node(body));
+        std::vector<Material> materials = bt_creature->GetMaterials();
+        for(int i=0; i<bodies.size(); ++i) {
+            nodes.push_back(Node(bodies[i],materials[i]));
         }
     }
     return nodes;

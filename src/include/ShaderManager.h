@@ -24,7 +24,6 @@ typedef std::pair<std::string, ShaderProgram*> StringShaderProgPair;
   This class uses the singleton pattern which makes it accessable from all
   around the program.
 */
-
 class ShaderManager{
 public:
 	static ShaderManager* Instance();
@@ -44,13 +43,13 @@ private:
 };
 
 //! A ShaderProgram is the result of linked Shaders.
-
 class ShaderProgram{
 public:
-	ShaderProgram(Shader* vertex_shader = NULL,
-                Shader* fragment_shader = NULL,
-                Shader* geometry_shader = NULL,
-                Shader* tesselation_shader = NULL);
+	ShaderProgram(
+          Shader* vertex_shader = NULL,
+          Shader* fragment_shader = NULL,
+          Shader* geometry_shader = NULL,
+          Shader* tesselation_shader = NULL);
 	~ShaderProgram();
   
   GLuint getID();
@@ -62,7 +61,11 @@ public:
   void Uniform1f(const char* name, GLfloat v0);
   void Uniform2f(const char* name, GLfloat v0, GLfloat v1);
   void Uniform3f(const char* name, GLfloat v0, GLfloat v1, GLfloat v2);
-  void Uniform4f(const char* name, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+  void Uniform4f(const char* name,
+          GLfloat v0,
+          GLfloat v1,
+          GLfloat v2,
+          GLfloat v3);
   void Uniform1i(const char* name, GLint v0);
   void Uniform2i(const char* name, GLint v0, GLint v1);
   void Uniform3i(const char* name, GLint v0, GLint v1, GLint v2);
@@ -75,16 +78,37 @@ public:
   void Uniform2iv(const char* name, GLsizei count, const GLint *value);  
   void Uniform3iv(const char* name, GLsizei count, const GLint *value);  
   void Uniform4iv(const char* name, GLsizei count, const GLint *value);
-  void UniformMatrix2fv(const char* name, GLsizei count, GLboolean transpose, const GLfloat *value); 
-  void UniformMatrix3fv(const char* name, GLsizei count, GLboolean transpose, const GLfloat *value); 
-  void UniformMatrix4fv(const char* name, GLsizei count, GLboolean transpose, const GLfloat *value);
+  void UniformMatrix2fv(const char* name,
+          GLsizei count,
+          GLboolean transpose,
+          const GLfloat *value); 
+  void UniformMatrix3fv(const char* name,
+          GLsizei count,
+          GLboolean transpose,
+          const GLfloat *value); 
+  void UniformMatrix4fv(const char* name,
+          GLsizei count,
+          GLboolean transpose,
+          const GLfloat *value);
 
   void VertexAttrib1f(const char* name, GLfloat v0);
   void VertexAttrib2f(const char* name, GLfloat v0, GLfloat v1);
   void VertexAttrib3f(const char* name, GLfloat v0, GLfloat v1, GLfloat v2);
-  void VertexAttrib4f(const char* name, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
-  void VertexAttribI4i(const char* name, GLint v0, GLint v1, GLint v2, GLint v3);
-  void VertexAttribI4ui(const char* name, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
+  void VertexAttrib4f(const char* name,
+          GLfloat v0,
+          GLfloat v1,
+          GLfloat v2,
+          GLfloat v3);
+  void VertexAttribI4i(const char* name,
+          GLint v0,
+          GLint v1,
+          GLint v2,
+          GLint v3);
+  void VertexAttribI4ui(const char* name,
+          GLuint v0,
+          GLuint v1,
+          GLuint v2,
+          GLuint v3);
   void VertexAttrib1fv(const char* name, const GLfloat *v);
   void VertexAttrib2fv(const char* name, const GLfloat *v);
   void VertexAttrib3fv(const char* name, const GLfloat *v);

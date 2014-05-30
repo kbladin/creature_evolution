@@ -6,9 +6,8 @@
 #include <QMutexLocker>
 AutoInitRNG EvolutionManager::rng_;
 
-//! Constructor that get the setting from SettingsManager
-/*! Creates a new evolution object and get the max generations
-	from SettingsManager.
+//! Constructor
+/*! 
 */
 EvolutionManager::EvolutionManager(){
     end_now_request_ = false;
@@ -29,6 +28,7 @@ void EvolutionManager::startEvolutionProcess() {
     RunEvolution();
 }
 
+//! Creates a new random population
 void EvolutionManager::CreateNewRandomPopulation(){
     current_population_.clear();
 
@@ -49,6 +49,7 @@ void EvolutionManager::RunEvolution(){
         if(!NeedEndNow()) {
             std::cout << "Generation: " << i << std::endl <<
             "Simulating..." << std::endl;
+            NextGeneration();
             SimulatePopulation();
             CalculateFitnessOnPopulation();
             SortPopulation();
@@ -80,7 +81,7 @@ void EvolutionManager::PrintBestFitnessValues(){
 
 void EvolutionManager::PrintPopulation() {
 	for(int i = 0; i < current_population_.size(); ++i) {
-		std::cout << "Creature " << i << " " << current_population_[i].GetFitness() << std::endl;
+		std::cout << "Creature " << i << " " << current_population_[i].simdata.distance_light << std::endl;
 	}
 }
 
@@ -89,6 +90,7 @@ Creature EvolutionManager::GetBestCreature() {
     return current_population_[0];
 }
 
+//! Returns the best creature from the last generation
 Creature EvolutionManager::GetBestCreatureFromLastGeneration() {
 	return best_creatures_.back();
 }
@@ -200,13 +202,10 @@ void EvolutionManager::NextGeneration() {
 
 		c.Mutate();
 		
-        new_population[i] = c; 
+        new_population[i] = c;
 	}
 
-	// current_population_ = new_population;
-	for(int i = 0; i < current_population_.size(); ++i) {
-		current_population_[i] = new_population[i];
-	}
+	current_population_ = new_population;
 }
 
 

@@ -1,15 +1,26 @@
 #include "Plane.h"
 
-Plane::Plane() {
+//! Constructor. All vertex data are set up.
+/*!
+  The default Plane has a horisontal normal and is of size 1.
+  Currently, the texture type is set in this constructor and can therefore
+  not be different for different planes.
+*/
+Plane::Plane(Material material) : Shape(material) {
   SetupVertexPositionData();
   SetupVertexNormalData();
   SetupVertexUVData();
   SetupElementData();
   TextureManager::Instance();
-  material_.texture_diffuse_type = TextureType::CHECKERBOARD;
 }
 
-Plane::Plane(glm::vec3 scale) {
+//! Constructor. All vertex data are set up.
+/*!
+  Currently, the texture type is set in this constructor and can therefore
+  not be different for different planes.
+  \param scale scales the plane in all 3 dimensions.
+*/
+Plane::Plane(glm::vec3 scale, Material material) : Shape(material) {
   SetupVertexPositionData();
   SetupVertexNormalData();
   SetupVertexUVData();
@@ -19,10 +30,18 @@ Plane::Plane(glm::vec3 scale) {
     vertex_position_data_[i].y = vertex_position_data_[i].y*scale.y;
     vertex_position_data_[i].z = vertex_position_data_[i].z*scale.z;
   }
-  material_.texture_diffuse_type = TextureType::CHECKERBOARD;
 }
 
-Plane::Plane(glm::vec3 scale, glm::vec4 plane_equation) {
+//! Constructor. All vertex data are set up.
+/*!
+  Currently, the texture type is set in this constructor and can therefore
+  not be different for different planes.
+  \param scale scales the plane in all 3 dimensions.
+  \param plane_equation defines a normal and a position along it. Currently
+  only the translation is implemented.
+*/
+Plane::Plane(glm::vec3 scale, glm::vec4 plane_equation, Material material) :
+        Shape(material) {
   SetupVertexPositionData();
   SetupVertexNormalData();
   SetupVertexUVData();
@@ -32,13 +51,12 @@ Plane::Plane(glm::vec3 scale, glm::vec4 plane_equation) {
     vertex_position_data_[i].y = vertex_position_data_[i].y*scale.y;
     vertex_position_data_[i].z = vertex_position_data_[i].z*scale.z;
   }
-  material_.texture_diffuse_type = TextureType::CHECKERBOARD;
-
   //translate plane
   for(int i=0; i < vertex_position_data_.size(); ++i) {
       vertex_position_data_[i].y = plane_equation.w;
   }
 }
+
 
 void Plane::SetupVertexPositionData() {
   vertex_position_data_.resize(8);

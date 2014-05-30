@@ -19,9 +19,15 @@
 
 class Camera;
 
+//! This is the class containing all OpenGL data used for rendering
+/*!
+  The Shape class is used by the Node class and is the class closest to the
+  actual rendering process. This class uses the ShaderPrograms and textures to
+  render the actual triangles.
+*/
 class Shape {
 public:
-  Shape();
+  Shape(Material material);
   ~Shape();
   void SetupBuffers();
   void DebugPrint();

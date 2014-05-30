@@ -18,7 +18,7 @@
 // class Body;
 // class Brain;
 
-//! Class to handle all the settings in the program. Can only instance one SettingsManager-class in the whole program. 
+//! Class to handle all the settings in the program. Can only instance one SettingsManager-class in the whole program. Singleton pattern. 
 class SettingsManager {
 public:
   static SettingsManager* Instance();
@@ -41,6 +41,8 @@ public:
   void SetCreatureType(int creature);
   int GetCreatureType();
 
+  Vec3 GetTargetPos();
+
   float GetFitnessDistanceLight();
   float GetFitnessDistanceZ();
   float GetFitnessMaxY();
@@ -57,6 +59,8 @@ public:
   void SetMutationInternal(float mutation_ratio_internal);
   void SetMutationSigma(float mutation_sigma);
   void SetSimulationTime(int time);
+
+  void SetTargetPos(Vec3 pos);
 
   void SetFrameWidth(int frame_width);
   void SetFrameHeight(int frame_height);
@@ -107,6 +111,7 @@ private:
   float fitness_accumulated_head_y;
   float fitness_energy_;
 
+  Vec3 target_pos_;
 
   //std::vector<Creature> best_creatures_;
   Vec3 main_body_dim_;

@@ -9,11 +9,16 @@
 // Internal
 #include "Shape.h"
 
+//! Used in the render process. A plane to render.
+/*!
+  This class extends Shape and it therefore a containter of all the vertex data
+  used by OpenGL in the rendering process.
+*/
 class Plane : public Shape {
 public:
-  Plane();
-  Plane(glm::vec3 scale);
-  Plane(glm::vec3 scale, glm::vec4 plane_equation);
+  Plane(Material material);
+  Plane(glm::vec3 scale, Material material);
+  Plane(glm::vec3 scale, glm::vec4 plane_equation, Material material);
 private:
   void SetupVertexPositionData();
   void SetupVertexNormalData();

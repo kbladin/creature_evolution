@@ -9,7 +9,7 @@ Material::Material() {
   reflectance = 0.5f;
   specularity = 0.5f;
   shinyness = 32;
-  texture_diffuse_id_ = GL_FALSE;
+  SetDiffuseTexture("test_texture2");
   texture_diffuse_type = TextureType::STANDARD;
 }
 

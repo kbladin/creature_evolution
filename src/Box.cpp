@@ -1,15 +1,28 @@
 #include "Box.h"
 
-Box::Box() {
+//! Constructor. All vertex data are set up.
+/*!
+  The default Box is of size 1,1,1 which means its dimenstions are 2,2,2.
+  Currently, the texture type is set in this constructor and can therefore
+  not be different for different boxes.
+*/
+Box::Box(Material material) : Shape(material){
   SetupVertexPositionData();
   SetupVertexNormalData();
   SetupVertexUVData();
   SetupElementData();
-
-  material_.SetDiffuseTexture("test_texture");
 }
 
-Box::Box(float scale_x, float scale_y, float scale_z) {
+//! Constructor. All vertex data are set up.
+/*!
+  Currently, the texture type is set in this constructor and can therefore
+  not be different for different boxes.
+  \param scale_x is the scale along the x-axis.
+  \param scale_y is the scale along the y-axis.
+  \param scale_z is the scale along the z-axis.
+*/
+Box::Box(float scale_x, float scale_y, float scale_z, Material material)
+      : Shape(material) {
   SetupVertexPositionData();
   SetupVertexNormalData();
   SetupVertexUVData();
@@ -19,7 +32,6 @@ Box::Box(float scale_x, float scale_y, float scale_z) {
     vertex_position_data_[i].y = vertex_position_data_[i].y*scale_y;
     vertex_position_data_[i].z = vertex_position_data_[i].z*scale_z;
   }
-  material_.SetDiffuseTexture("test_texture2");
 }
 
 void Box::SetupVertexPositionData() {

@@ -9,10 +9,14 @@
 
 
 //! Used in the render process. A box to render.
+/*!
+  This class extends Shape and it therefore a containter of all the vertex data
+  used by OpenGL in the rendering process.
+*/
 class Box : public Shape {
 public:
-  Box();
-  Box(float scale_x, float scale_y, float scale_z);
+  Box(Material material);
+  Box(float scale_x, float scale_y, float scale_z, Material material);
 private:
   void SetupVertexPositionData();
   void SetupVertexNormalData();

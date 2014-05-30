@@ -41,13 +41,7 @@ Body Creature::GetBody(){
 /*! Simple mutation algorithm on creature.
  This should be extended to try more cases. */
 void Creature::Mutate() {
-	//TODO: if the mutation should be done or not depending on the ratio
-	std::uniform_real_distribution<float> int_dist(0.0f,1.0f);
-	double should_mutate = int_dist(rng_.mt_rng_);
-	if( SettingsManager::Instance()->GetMutation() >= should_mutate) {
-		brain_.Mutate();
-	}
-	//brain_.Mutate();
+	brain_.Mutate();
 }
 
 std::vector<Creature> Creature::Crossover(Creature mate){
