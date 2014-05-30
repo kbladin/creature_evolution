@@ -32,7 +32,11 @@ MainCEWindow::MainCEWindow()
     creature_list->setInsertPolicy(QComboBox::NoInsert);
     connect(creature_list, SIGNAL(activated(int)), this, SLOT(loadCreature(int)));
     cancelButton = new QPushButton("Cancel");
+    pauseButton = new QPushButton("Pause");
+
+    pauseButton->setDisabled(true);
     cancelButton->setDisabled(true);
+    
     int max_gen = SettingsManager::Instance()->GetMaxGenerations();
     int pop_size = SettingsManager::Instance()->GetPopulationSize();
     int elitism = 100 * SettingsManager::Instance()->GetElitism();
@@ -43,7 +47,6 @@ MainCEWindow::MainCEWindow()
     generation_slider = new SliderWidget("Number of generations: ", max_gen, 0, 100, 1, 10, 10);
     generation_size_slider = new SliderWidget("Generation size: ", pop_size, 0, 100, 1, 10, 10);
     elitism_slider = new SliderWidget("Elitism ratio (%): ", elitism, 0, 100, 1, 10, 10);
-    // mutation_slider = new SliderWidget("Mutation ratio (%): ", mutation, 100, 1, 10, 10);
     mutation_internal_slider = new SliderWidget("Mutation rate (%): ", mutation_internal, 0, 100, 1, 10, 10);
     mutation_sigma_slider = new SliderWidget("Mutation strength (%) : ", mutation_sigma, 0, 100, 1, 10, 10);
 
@@ -84,6 +87,7 @@ MainCEWindow::MainCEWindow()
 
     connect(cancelButton, SIGNAL(clicked()), EM_, SLOT(RequestEndNow()));
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(evoDone()));
+    connect(pauseButton, SIGNAL(clicked()), EM_, SLOT(RequestPauseNow()));
 
     connect(EM_, SIGNAL(NewCreature(const Creature &)), this, SLOT(GotNewCreature(const Creature &)));
 
@@ -158,12 +162,6 @@ void MainCEWindow::FSetEnergy(int value) {
     SettingsManager::Instance()->SetFitnessEnergy((float)(value)/(float)(normalize));
 }
 
-void MainCEWindow::changePressed() {
-}
-
-void MainCEWindow::changeReleased() {
-}
-
 void MainCEWindow::keyPressEvent(QKeyEvent *e) {
     if (e->key() == Qt::Key_Escape)
         close();
@@ -171,52 +169,11 @@ void MainCEWindow::keyPressEvent(QKeyEvent *e) {
         QWidget::keyPressEvent(e);
 }
 
-void MainCEWindow::testPrint() {
-    if(isVisible)
-    {
-        isVisible = false;
-
-        dummyButton->setText("Show");
-
-        simButton->hide();
-        loadButton->hide();
-        gameofwormsbtn->hide();
-        generation_slider->hide();
-        generation_size_slider->hide();
-        elitism_slider->hide();
-        mutation_internal_slider->hide();
-        mutation_sigma_slider->hide();
-        mutation_slider->hide();
-
-    }
-    else
-    {
-        isVisible = true;
-
-        dummyButton->setText("Hide");
-
-        simButton->show();
-        loadButton->show();
-        gameofwormsbtn->show();
-
-        generation_slider->show();
-        generation_size_slider->show();
-        elitism_slider->show();
-        mutation_internal_slider->show();
-        mutation_sigma_slider->show();
-        mutation_slider->show();
-
-    }
-}
-
 static void startEvo(EvolutionManager* EM) {
-    //CE->Run();
     EM->startEvolutionProcess();
 }
 
 void MainCEWindow::startEvolution() {
-
-
     int gens = g_edit->text().toInt();
     int pops = p_edit->text().toInt();
     int sim_time = sim_time_edit->text().toInt();
@@ -226,14 +183,15 @@ void MainCEWindow::startEvolution() {
     setValueSimTime(sim_time);
 
     sim_in_progress_ = true;
-    if(!first_run_) {
+    if (!first_run_) {
      QMessageBox msgBox;
      msgBox.setText("Are you sure you want to start a new simulation?");
      msgBox.setInformativeText("Old simulation will be deleted.");
      msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
      msgBox.setDefaultButton(QMessageBox::Save);
      int ret = msgBox.exec();
-     switch(ret) {
+
+     switch (ret) {
         case QMessageBox::Ok:
             break;
        case QMessageBox::Cancel:
@@ -242,7 +200,6 @@ void MainCEWindow::startEvolution() {
            return;
          }
     }
-    
 
     DisableCriticalWidgets();
 
@@ -255,7 +212,8 @@ void MainCEWindow::startEvolution() {
 }
 
 void MainCEWindow::loadCreature(int index) {
-    Scene::Instance()->RestartSimulation(std::vector<Creature>(1,creatures_.at(index)));
+    Scene::Instance()->RestartSimulation(std::vector<Creature>(1,
+        creatures_.at(index)));
 }
 
 void MainCEWindow::GameOfWorms() {
@@ -278,7 +236,6 @@ void MainCEWindow::DisableCriticalWidgets() {
     cancelButton->setDisabled(false);
 }
 
-
 void MainCEWindow::evoDone() {
     sim_in_progress_ = false;
     statusBar()->showMessage(tr("Simulation done!"));
@@ -286,13 +243,12 @@ void MainCEWindow::evoDone() {
     g_edit->setDisabled(false);
     p_edit->setDisabled(false);
     cancelButton->setDisabled(true);
-}
-
-void MainCEWindow::renderWorm() {
+    pauseButton->setDisabled(true);
 }
 
 void MainCEWindow::GotNewCreature(const Creature &new_creature) {
-    std::cout << "Got creature! Fitness: " << new_creature.GetFitness() << std::endl;
+    std::cout << "Got creature! Fitness: " <<
+        new_creature.GetFitness() << std::endl;
     Creature add = new_creature;
     creatures_.push_back(add);
     creature_count_++;
@@ -341,7 +297,8 @@ void MainCEWindow::CreateToolBar() {
 
 void MainCEWindow::CreateDockWindows() {
     dock_simulation = new QDockWidget(tr("Simulation properties"), this);
-    dock_simulation->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    dock_simulation->setAllowedAreas(Qt::LeftDockWidgetArea |
+         Qt::RightDockWidgetArea);
 
     QVBoxLayout* dockedwidgets = new QVBoxLayout;
     QWidget* multiple_widgets = new QWidget;
@@ -357,7 +314,8 @@ void MainCEWindow::CreateDockWindows() {
     creature_layout->addWidget(c_label);
     creature_layout->addWidget(c_list);
 
-    connect(c_list, SIGNAL(activated(int)), this, SLOT(ChangeCreatureType(int)));
+    connect (c_list, SIGNAL (activated (int)), this,
+         SLOT (ChangeCreatureType (int)));
 
     QHBoxLayout* generation_layout = new QHBoxLayout;
     QLabel* g_label = new QLabel("Number of generations: ");
@@ -395,7 +353,6 @@ void MainCEWindow::CreateDockWindows() {
     multiple_widgets->setLayout(dockedwidgets);
     dock_simulation->setWidget(multiple_widgets);
 
-
     addDockWidget(Qt::RightDockWidgetArea, dock_simulation);
 
     dock_fitness = new QDockWidget(tr("Fitness properties"), this);
@@ -405,12 +362,9 @@ void MainCEWindow::CreateDockWindows() {
     QWidget* multiple_widgets_fitness = new QWidget;
 
     dockedwidgets_fitness->addWidget(f_dist_light_slider);
-    //dockedwidgets_fitness->addWidget(f_dist_z_slider);
     dockedwidgets_fitness->addWidget(f_max_y_slider);
     dockedwidgets_fitness->addWidget(f_accum_y_slider);
     dockedwidgets_fitness->addWidget(f_accum_head_slider);
-    //dockedwidgets_fitness->addWidget(f_dev_x_slider);
-    //dockedwidgets_fitness->addWidget(f_energy_slider);
 
     multiple_widgets_fitness->setLayout(dockedwidgets_fitness);
 

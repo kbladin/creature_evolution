@@ -45,31 +45,23 @@ void EvolutionManager::RunEvolution(){
     int max_gen = SettingsManager::Instance()->GetMaxGenerations();
 
     int i = 0;
-    while(i < max_gen) { // && !NeedEndNow()) {
+    while(i < max_gen) {
         if(!NeedEndNow()) {
             std::cout << "Generation: " << i << std::endl <<
             "Simulating..." << std::endl;
             SimulatePopulation();
-
             CalculateFitnessOnPopulation();
             SortPopulation();
-
             PrintBestFitnessValues();
-
-    		// save the population and the best creatures
-            // SettingsManager::Instance()->AddBestCreature(GetBestCreature());
-            //best = GetBestCreature();
-            //TODO: send Creature via signal
+            
             emit NewCreature(GetBestCreature());
-            //best_creatures_.push_back(best);
+            
             NextGeneration();
             i++;
         }
         else
             break;
     }
-
-    //RequestStart();
 
     std::cout << "Total simulation time: " << float(std::clock() - start_time) / CLOCKS_PER_SEC  << " s" << std::endl;
 }
