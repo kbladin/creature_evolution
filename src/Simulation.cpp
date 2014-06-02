@@ -160,17 +160,18 @@ void Simulation::Step(float dt) {
 
     btQuaternion orientation = bt_population_[i]->GetHead()->getOrientation();
     btTransform orientation_matrix = btTransform(orientation);
-    btVector3 creature_dir = orientation_matrix*btVector3(0.0,0.0,1.0);
+    btTransform inverse_orient = orientation_matrix.inverse();
 
     //light direction
     btVector3 head_light_vec = light_rigid_body_->getCenterOfMassPosition() - bt_population_[i]->GetHeadPosition();
     btVector3 light_dir = head_light_vec.normalized();
     float distance2_to_light = head_light_vec.length2();
 
-    btVector3 dir_diff = light_dir - creature_dir;
-    input.push_back(dir_diff.getX());
-    input.push_back(dir_diff.getY());
-    input.push_back(dir_diff.getZ());
+    //light direction relatie to head
+    light_dir = inverse_orient*light_dir;
+    input.push_back(light_dir.getX());
+    input.push_back(light_dir.getY());
+    input.push_back(light_dir.getZ());
 
     std::vector<btHingeConstraint*> joints = bt_population_[i]->GetJoints();
 
@@ -181,7 +182,7 @@ void Simulation::Step(float dt) {
 
 /*
     std::vector<btRigidBody*> bodies = bt_population_[i]->GetRigidBodies();
-    btTransform inverse_orient = orientation_matrix.inverse();
+
     //body velocities
     for(int j=0; j < bodies.size(); j++) {
       btVector3 vel = inverse_orient*bodies[j]->getAngularVelocity();
