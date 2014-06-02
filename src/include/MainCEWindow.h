@@ -46,10 +46,10 @@ signals:
     void RequestSimulationEnd();
 
 public slots:
-    void testPrint();
+    //void testPrint();
     void startEvolution();
     void loadCreature(int index);
-    void renderWorm();
+    //void renderWorm();
 
     void evoDone();
 
@@ -64,8 +64,8 @@ public slots:
     void setValueCO(int value);
     void setValueElit(int value);
     void setBodyDimension(int value);
-    void changePressed();
-    void changeReleased();
+    //void changePressed();
+    //void changeReleased();
     void GameOfWorms();
     void ChangeCreatureType(int type);
 
@@ -143,6 +143,7 @@ private:
     SliderWidget* f_energy_slider;
 
     QPushButton *simButton;
+    QPushButton *pauseButton; 
     QPushButton *cancelButton;
     QPushButton *loadButton;
     QPushButton *gameofwormsbtn;
