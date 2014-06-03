@@ -84,13 +84,17 @@ void main()
                   position_modelspace.y + 0.001,
                   position_modelspace.z + 0.001);
       break;
-    case 2: // Checkerboard
+    case 2: // Circles
       vec3 circles = diffuseCircles(
                   position_modelspace.x,
                   position_modelspace.y,
                   position_modelspace.z,
                   0.7);
       material_diffuse_color = (vec3(1,1,1) - circles) * vec3(1,0,0) + circles;
+      break;
+    case 3: // Lightsource
+      color = vec3(1,1,1);
+      return;
       break;
     default: // Checkerboard
       material_diffuse_color =

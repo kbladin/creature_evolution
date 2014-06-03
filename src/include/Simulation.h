@@ -17,7 +17,7 @@ typedef std::vector<Creature> Population;
 
 class Simulation {
   public:
-    Simulation();
+    Simulation(bool vis_sim = false);
     ~Simulation();
 
     virtual void Step(float dt);
@@ -54,6 +54,7 @@ class Simulation {
     float counter_;
 
     AutoInitRNG rng_;
+    bool vis_sim_;
 };
 
 #endif  // Simulation_H

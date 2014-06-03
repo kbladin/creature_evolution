@@ -1,6 +1,6 @@
 #include "Simulation.h"
 
-Simulation::Simulation() {
+Simulation::Simulation(bool vis_sim) {
   broad_phase_ = new btDbvtBroadphase();
   collision_configuration_ = new btDefaultCollisionConfiguration();
   dispatcher_ = new btCollisionDispatcher(collision_configuration_);
@@ -12,6 +12,7 @@ Simulation::Simulation() {
   time_to_simulate_ = SettingsManager::Instance()->GetSimulationTime();
   counter_ = 0.0;
   fps_ = 60;
+  vis_sim_ = vis_sim;
 
   // Material
   ground_material_.texture_diffuse_type = CHECKERBOARD;
@@ -91,14 +92,21 @@ void Simulation::SetupEnvironment() {
   btTransform offset;
   offset.setIdentity();
 
+  if (vis_sim_) {
+    offset.setOrigin(btVector3(
+            SettingsManager::Instance()->GetTargetPos().x,
+            SettingsManager::Instance()->GetTargetPos().y,
+            SettingsManager::Instance()->GetTargetPos().z));
+  }
+  else {
   std::uniform_int_distribution<int> int_dist_(-20, 20);
   int x = int_dist_(rng_.mt_rng_);
   int z = int_dist_(rng_.mt_rng_);
-
   offset.setOrigin(btVector3(
           x,
-          SettingsManager::Instance()->GetTargetPos().y,
+          5,
           z));
+  }
 
   btMotionState* light_motion_state = new btDefaultMotionState(offset);
 
