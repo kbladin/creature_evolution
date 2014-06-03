@@ -120,6 +120,7 @@ void Simulation::SetupEnvironment() {
 }
 
 void Simulation::AddPopulation(Population population, bool disp) {
+
   float displacement = 0.0f;
   for (int i = 0; i < population.size(); ++i) {
     population[i].simdata.ResetData();
@@ -153,14 +154,17 @@ void Simulation::AddPopulation(Population population, bool disp) {
 
 void Simulation::Step(float dt) {
   // Update the position of the target
-/*  btTransform light_pos;
-  light_pos.setIdentity();
+  if (vis_sim_) {
+    btTransform light_pos;
+    light_pos.setIdentity();
 
-  light_pos.setOrigin(btVector3(
-          SettingsManager::Instance()->GetTargetPos().x,
-          SettingsManager::Instance()->GetTargetPos().y,
-          SettingsManager::Instance()->GetTargetPos().z));
-  light_rigid_body_->setCenterOfMassTransform(light_pos);*/
+    light_pos.setOrigin(btVector3(
+            SettingsManager::Instance()->GetTargetPos().x,
+            SettingsManager::Instance()->GetTargetPos().y,
+            SettingsManager::Instance()->GetTargetPos().z));
+    light_rigid_body_->setCenterOfMassTransform(light_pos);
+  }
+
 
   /*
     Step through all BulletCreatures and Creatures to update motors
