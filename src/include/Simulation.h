@@ -17,7 +17,7 @@ typedef std::vector<Creature> Population;
 
 class Simulation {
   public:
-    Simulation();
+    Simulation(bool vis_sim = false);
     ~Simulation();
 
     virtual void Step(float dt);
@@ -33,7 +33,6 @@ class Simulation {
     btCollisionDispatcher* dispatcher_;
     btSequentialImpulseConstraintSolver* solver_;
     btDiscreteDynamicsWorld* dynamics_world_;
-
 
     std::vector<BulletCreature*> bt_population_;
 
@@ -53,6 +52,9 @@ class Simulation {
     int time_to_simulate_;
     int fps_;
     float counter_;
+
+    AutoInitRNG rng_;
+    bool vis_sim_;
 };
 
 #endif  // Simulation_H
