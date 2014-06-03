@@ -16,7 +16,7 @@ MainCEWindow::MainCEWindow()
     creature_count_ = 0;
     first_run_ = true;
     sim_in_progress_ = false;
-
+    setFocusPolicy(Qt::StrongFocus);
 
     EM_ = new EvolutionManager();
     QGLFormat glFormat;
