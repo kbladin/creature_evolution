@@ -165,6 +165,7 @@ void MainCEWindow::FSetEnergy(int value) {
 void MainCEWindow::keyPressEvent(QKeyEvent *e) {
     switch (e->key()){
         case Qt::Key_Escape:
+            EM_->RequestEndNow();
             close();
             break;
         case Qt::Key_Up: {
