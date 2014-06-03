@@ -34,7 +34,6 @@ class Simulation {
     btSequentialImpulseConstraintSolver* solver_;
     btDiscreteDynamicsWorld* dynamics_world_;
 
-
     std::vector<BulletCreature*> bt_population_;
 
     btCollisionShape* ground_shape_;
@@ -53,6 +52,8 @@ class Simulation {
     int time_to_simulate_;
     int fps_;
     float counter_;
+
+    AutoInitRNG rng_;
 };
 
 #endif  // Simulation_H
