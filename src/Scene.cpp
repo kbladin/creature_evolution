@@ -106,7 +106,7 @@ void Scene::Update() {
   simulation.
 */
 void Scene::StartSimulation(std::vector<Creature> viz_creatures) {
-    sim_ = new Simulation();
+    sim_ = new Simulation(true);
     sim_->AddPopulation(viz_creatures, true);
     nodes_ = sim_->GetNodes();
 }

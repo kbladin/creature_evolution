@@ -16,7 +16,7 @@ MainCEWindow::MainCEWindow()
     creature_count_ = 0;
     first_run_ = true;
     sim_in_progress_ = false;
-
+    setFocusPolicy(Qt::StrongFocus);
 
     EM_ = new EvolutionManager();
     QGLFormat glFormat;
@@ -165,6 +165,7 @@ void MainCEWindow::FSetEnergy(int value) {
 void MainCEWindow::keyPressEvent(QKeyEvent *e) {
     switch (e->key()){
         case Qt::Key_Escape:
+            EM_->RequestEndNow();
             close();
             break;
         case Qt::Key_Up: {
